@@ -14,6 +14,12 @@
 		1351179E1A257EB20015C133 /* LRefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1351179B1A257EB20015C133 /* LRefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		135117A61A257F2D0015C133 /* UIColor+ConvertColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 135117A21A257F2D0015C133 /* UIColor+ConvertColor.m */; };
 		135117A71A257F2D0015C133 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 135117A51A257F2D0015C133 /* UIView+Frame.m */; };
+		138023281A2C69CF0053BDDA /* anli_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023221A2C69CF0053BDDA /* anli_back@2x.png */; };
+		138023291A2C69CF0053BDDA /* anli_carType@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023231A2C69CF0053BDDA /* anli_carType@2x.png */; };
+		1380232A1A2C69CF0053BDDA /* anli_daohang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023241A2C69CF0053BDDA /* anli_daohang@2x.png */; };
+		1380232B1A2C69CF0053BDDA /* anli_fangda@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023251A2C69CF0053BDDA /* anli_fangda@2x.png */; };
+		1380232C1A2C69CF0053BDDA /* anli_shoucang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023261A2C69CF0053BDDA /* anli_shoucang@2x.png */; };
+		1380232D1A2C69CF0053BDDA /* anli_zhuanfa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023271A2C69CF0053BDDA /* anli_zhuanfa@2x.png */; };
 		19B34DCB1A24666500ED1935 /* SelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DCA1A24666500ED1935 /* SelectedViewController.m */; };
 		19B34DCE1A2466A300ED1935 /* PicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DCD1A2466A300ED1935 /* PicViewController.m */; };
 		19B34DD11A2466C300ED1935 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DD01A2466C300ED1935 /* StoreViewController.m */; };
@@ -136,6 +142,12 @@
 		135117A21A257F2D0015C133 /* UIColor+ConvertColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ConvertColor.m"; sourceTree = "<group>"; };
 		135117A41A257F2D0015C133 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		135117A51A257F2D0015C133 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		138023221A2C69CF0053BDDA /* anli_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_back@2x.png"; sourceTree = "<group>"; };
+		138023231A2C69CF0053BDDA /* anli_carType@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_carType@2x.png"; sourceTree = "<group>"; };
+		138023241A2C69CF0053BDDA /* anli_daohang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_daohang@2x.png"; sourceTree = "<group>"; };
+		138023251A2C69CF0053BDDA /* anli_fangda@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_fangda@2x.png"; sourceTree = "<group>"; };
+		138023261A2C69CF0053BDDA /* anli_shoucang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_shoucang@2x.png"; sourceTree = "<group>"; };
+		138023271A2C69CF0053BDDA /* anli_zhuanfa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_zhuanfa@2x.png"; sourceTree = "<group>"; };
 		199B0BA807D6890CA852B6FD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		19B34DC91A24666500ED1935 /* SelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedViewController.h; sourceTree = "<group>"; };
 		19B34DCA1A24666500ED1935 /* SelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedViewController.m; sourceTree = "<group>"; };
@@ -366,6 +378,19 @@
 				135117A51A257F2D0015C133 /* UIView+Frame.m */,
 			);
 			path = "UIView+Frame";
+			sourceTree = "<group>";
+		};
+		138023211A2C69CF0053BDDA /* AnLiControllerImages */ = {
+			isa = PBXGroup;
+			children = (
+				138023221A2C69CF0053BDDA /* anli_back@2x.png */,
+				138023231A2C69CF0053BDDA /* anli_carType@2x.png */,
+				138023241A2C69CF0053BDDA /* anli_daohang@2x.png */,
+				138023251A2C69CF0053BDDA /* anli_fangda@2x.png */,
+				138023261A2C69CF0053BDDA /* anli_shoucang@2x.png */,
+				138023271A2C69CF0053BDDA /* anli_zhuanfa@2x.png */,
+			);
+			path = AnLiControllerImages;
 			sourceTree = "<group>";
 		};
 		19B34DB41A2465F300ED1935 /* Controls */ = {
@@ -605,6 +630,7 @@
 		560CB5391A270B1C0067F7AA /* AllImages */ = {
 			isa = PBXGroup;
 			children = (
+				138023211A2C69CF0053BDDA /* AnLiControllerImages */,
 				56621CFB1A285A1900310A48 /* leftMenuImages */,
 				569FFEEF1A2737C4008A02A6 /* LogInImages */,
 				560CB53A1A270B230067F7AA /* navgationBar_background_image@2x.png */,
@@ -1050,9 +1076,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				56621D511A28605B00310A48 /* send1sss@2x.png in Resources */,
+				1380232A1A2C69CF0053BDDA /* anli_daohang@2x.png in Resources */,
+				138023281A2C69CF0053BDDA /* anli_back@2x.png in Resources */,
+				1380232B1A2C69CF0053BDDA /* anli_fangda@2x.png in Resources */,
+				1380232D1A2C69CF0053BDDA /* anli_zhuanfa@2x.png in Resources */,
 				56621D501A28605B00310A48 /* nav_btn_bg_lighted@2x.png in Resources */,
 				56621D4F1A28605B00310A48 /* nav_btn_bg@2x.png in Resources */,
 				565EE8C71A2C47840063CAA3 /* loginBackground@2x.png in Resources */,
+				138023291A2C69CF0053BDDA /* anli_carType@2x.png in Resources */,
 				56621D451A28605B00310A48 /* item_ok_selected@2x.png in Resources */,
 				565EE8D91A2C50950063CAA3 /* logIn_close@2x.png in Resources */,
 				E311CD2E1A24573C007D69D3 /* Main.storyboard in Resources */,
@@ -1090,6 +1121,7 @@
 				565EE8D31A2C50710063CAA3 /* zc_phoneNum@2x.png in Resources */,
 				565EE8D71A2C50830063CAA3 /* zc_xieyi@2x.png in Resources */,
 				56621D4B1A28605B00310A48 /* messages_toolbar_background@2x.png in Resources */,
+				1380232C1A2C69CF0053BDDA /* anli_shoucang@2x.png in Resources */,
 				565EE8C81A2C47840063CAA3 /* logo@2x.png in Resources */,
 				56621D481A28605B00310A48 /* messages_tableview_background.png in Resources */,
 				56621D591A28605B00310A48 /* UMFeedbackViewController.xib in Resources */,

@@ -54,6 +54,13 @@ alpha:(a)]
 
 //整屏幕的Frame
 #define ALL_FRAME [UIScreen mainScreen].applicationFrame
+
+//整屏幕的Frame 宽
+#define ALL_FRAME_WIDTH ALL_FRAME.size.width
+
+//整屏幕的Frame 高
+#define ALL_FRAME_HEIGHT ALL_FRAME.size.height
+
 //title的高度
 #define TITLE_HEIGHT 44
 //底部菜单的高度
