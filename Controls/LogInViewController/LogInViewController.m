@@ -171,6 +171,25 @@
         if ([dic isKindOfClass:[NSDictionary class]]) {
 
             NSLog(@"%@",dic);
+        if ([[dic objectForKey:@"errcode"] intValue] == 0) {
+            
+            [j stopAnimating];
+            
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
+            
+            AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [delegate showControlView:Root_home];
+            
+            //下列信息为融云提供 这里先注掉
+//            NSDictionary *datainfo = [dic objectForKey:@"datainfo"];
+//            NSString *userid = [datainfo objectForKey:@"uid"];
+//            NSString *username = [datainfo objectForKey:@"name"];
+//            NSString *authkey = [datainfo objectForKey:@"authkey"];
+//            [weakSelf loginRongCloudWithUserId:userid name:username headImageUrl:[LCWTools headImageForUserId:userid] pass:passw authkey:authkey];
+            
+        }else{
+            
+            [j stopAnimating];
             
             if ([[dic objectForKey:@"errcode"] intValue] == 0) {//登录成功
                 [j stopAnimating];
@@ -205,6 +224,7 @@
         
         
         [defaults synchronize];
+        }
         
     }];
     
