@@ -5,13 +5,21 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
+<<<<<<< HEAD
 	<string>B87EB0B2-38EE-46EC-80F5-62C91E1FAEAB</string>
+=======
+	<string>D64C4096-CC1B-4429-B7B5-C06003157464</string>
+>>>>>>> FETCH_HEAD
 	<key>IDESourceControlProjectName</key>
 	<string>CustomNewProject</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>26D9C5376C9A9B2D8952FD1D811D41E525832F7E</key>
+<<<<<<< HEAD
 		<string>github.com:TeamOfFBAuto/CarNew1201.git</string>
+=======
+		<string>https://github.com/TeamOfFBAuto/CarNew1201.git</string>
+>>>>>>> FETCH_HEAD
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>CustomNewProject.xcworkspace</string>
@@ -21,7 +29,11 @@
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
+<<<<<<< HEAD
 	<string>github.com:TeamOfFBAuto/CarNew1201.git</string>
+=======
+	<string>https://github.com/TeamOfFBAuto/CarNew1201.git</string>
+>>>>>>> FETCH_HEAD
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
