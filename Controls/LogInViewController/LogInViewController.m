@@ -31,7 +31,7 @@
 
 @implementation LogInViewController
 
-- (IBAction)CloseButtonTap:(id)sender
+- (void)CloseButtonTap:(id)sender
 {
     AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate showControlView:Root_home];
@@ -64,6 +64,12 @@
     // Do any additional setup after loading the view from its nib.
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    
+    
+    
+    
+    
     
     NSLog(@"%s",__FUNCTION__);
     
@@ -106,6 +112,11 @@
         
     }];
     
+    UIButton * close_button = [UIButton buttonWithType:UIButtonTypeCustom];
+    close_button.frame = CGRectMake(DEVICE_WIDTH - 50,20,50,50);
+    [close_button setImage:[UIImage imageNamed:@"login_close_image"] forState:UIControlStateNormal];
+    [close_button addTarget:self action:@selector(CloseButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:close_button];
     
 }
 
@@ -162,6 +173,8 @@
         if ([[dic objectForKey:@"errcode"] intValue] == 0) {
             
             [j stopAnimating];
+            
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
             
             AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             [delegate showControlView:Root_home];
