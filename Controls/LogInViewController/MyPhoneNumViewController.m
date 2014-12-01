@@ -60,11 +60,11 @@
     }
     
     
-    self.navigationItem.title = @"验证手机号码";
+    self.myTitle = @"验证手机号码";
     
     self.leftImageName = @"logIn_close.png";
     
-    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
+    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
     
     UIImageView * backGround_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(23/2,23/2,594/2,87/2)];

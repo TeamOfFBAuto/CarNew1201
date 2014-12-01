@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LogInViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIButton *logIn_close_button;
 
-- (IBAction)CloseButtonTap:(id)sender;
 + (LogInViewController *)sharedManager;
 
 @end
