@@ -59,7 +59,7 @@
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:MY_MACRO_NAME?IOS7DAOHANGLANBEIJING_PUSH:IOS6DAOHANGLANBEIJING] forBarMetrics: UIBarMetricsDefault];
     }
     
-    _myTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,200,44)];
+    _myTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,100,44)];
     _myTitleLabel.textAlignment = NSTextAlignmentCenter;
     _myTitleLabel.text = _myTitle;
     _myTitleLabel.textColor = [UIColor blackColor];
