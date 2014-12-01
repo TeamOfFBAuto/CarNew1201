@@ -6,12 +6,14 @@
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>0B38724C-A2C0-44C4-B8A6-4C96CFF76FF5</string>
+	<string>B87EB0B2-38EE-46EC-80F5-62C91E1FAEAB</string>
 	<string>D64C4096-CC1B-4429-B7B5-C06003157464</string>
 	<key>IDESourceControlProjectName</key>
 	<string>CustomNewProject</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>26D9C5376C9A9B2D8952FD1D811D41E525832F7E</key>
+		<string>github.com:TeamOfFBAuto/CarNew1201.git</string>
 		<string>https://github.com/TeamOfFBAuto/CarNew1201.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
@@ -22,6 +24,7 @@
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
+	<string>github.com:TeamOfFBAuto/CarNew1201.git</string>
 	<string>https://github.com/TeamOfFBAuto/CarNew1201.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
