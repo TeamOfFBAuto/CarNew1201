@@ -51,7 +51,8 @@
         UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:_selectedVC];
         
         PHMenuViewController   * menuController = [[PHMenuViewController alloc] initWithRootViewController:navc atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        self.window.rootViewController = menuController;
+        UINavigationController * menu_nav = [[UINavigationController alloc] initWithRootViewController:menuController];
+        self.window.rootViewController = menu_nav;
     }else if (type == Root_login)
     {
         LogInViewController * logIn = [LogInViewController sharedManager];//[[LogInViewController alloc] initWithNibName:@"LogInViewController" bundle:nil];

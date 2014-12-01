@@ -12,6 +12,7 @@
 #import "BusinessViewController.h"
 #import "PersonalViewController.h"
 #import "AppDelegate.h"
+#import "SliderRightSettingViewController.h"
 
 @implementation PHMenuViewController
 {
@@ -23,6 +24,8 @@
     
     UINavigationController *_personalNav;
     
+    UINavigationController * _settingNav;
+    
     NSArray * titles;
 }
 
@@ -30,6 +33,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = RGBCOLOR(32,33,35);
+    self.navigationController.navigationBarHidden = YES;
     
     _picNav=[[UINavigationController alloc]initWithRootViewController:[[PicViewController alloc]init]];
     
@@ -39,7 +43,9 @@
     
     _personalNav=[[UINavigationController alloc]initWithRootViewController:[[PersonalViewController alloc]init]];
     
-    titles = @[@"精选推荐",@"案例图库",@"配件商城", @"服务商家", @"个人中心"];
+    _settingNav = [[UINavigationController alloc] initWithRootViewController:[[SliderRightSettingViewController alloc] init]];
+    
+    titles = @[@"案例图库", @"服务商家", @"个人中心"];
     
 }
 
@@ -47,6 +53,9 @@
 -(void)settingTap:(UIButton *)sender
 {
     NSLog(@"设置");
+    
+    SliderRightSettingViewController * settingVC = [[SliderRightSettingViewController alloc] init];
+    [self.navigationController pushViewController:settingVC animated:YES];
 }
 
 #pragma mark - PHAirMenuDelegate & DataSource
@@ -58,7 +67,7 @@
 
 - (NSInteger)numberOfRowsInSession:(NSInteger)sesion
 {
-    return 5;
+    return titles.count;
 }
 
 - (NSString*)titleForRowAtIndexPath:(NSIndexPath*)indexPath
@@ -89,6 +98,9 @@
             break;
         case 4:
             viewController = _personalNav;
+            break;
+        case 5:
+            viewController = _settingNav;
             break;
     }
     return viewController;

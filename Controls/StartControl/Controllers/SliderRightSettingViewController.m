@@ -274,7 +274,7 @@
         
         label.backgroundColor = [UIColor clearColor];
         
-        label.text = [ZSNApi fileSizeAtPath:path];
+//        label.text = [ZSNApi fileSizeAtPath:path];
         
         label.font = [UIFont systemFontOfSize:15];
         

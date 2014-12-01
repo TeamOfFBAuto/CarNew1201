@@ -30,7 +30,7 @@
 
 -(void)leftButtonTap:(UIButton *)sender
 {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -77,48 +77,30 @@
     
     
     UILabel * tishi_label = [[UILabel alloc] initWithFrame:CGRectMake(0,0,68,87/2)];
-    
     tishi_label.text = @"中国 +86";
-    
     tishi_label.backgroundColor = [UIColor clearColor];
-    
     tishi_label.textAlignment = NSTextAlignmentCenter;
-    
     tishi_label.font = [UIFont systemFontOfSize:15];
-    
     tishi_label.textColor = [UIColor blackColor];
-    
     [backGround_imageView addSubview:tishi_label];
     
     
     
     phone_textField = [[UITextField alloc] initWithFrame:CGRectMake(83.5,5,200,33.5)];
-    
     phone_textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-
     [phone_textField becomeFirstResponder];
-    
     phone_textField.delegate = self;
-    
     phone_textField.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;
-    
     phone_textField.keyboardType = UIKeyboardTypeNumberPad;
-    
     [backGround_imageView addSubview:phone_textField];
     
     
     UIButton * next_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
     next_button.frame = CGRectMake(23/2,backGround_imageView.frame.origin.y+backGround_imageView.frame.size.height+23/2,297,43);
-    
     next_button.backgroundColor = RGBCOLOR(101,102,104);
-    
     [next_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
     [next_button setTitle:@"下一步" forState:UIControlStateNormal];
-    
     [next_button addTarget:self action:@selector(nextStep:) forControlEvents:UIControlEventTouchUpInside];
-    
     [self.view addSubview:next_button];
     
     

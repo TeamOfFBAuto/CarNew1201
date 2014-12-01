@@ -193,7 +193,7 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    self.navigationController.navigationBarHidden = YES;
     // layout menu
     [self reloadData];
 }

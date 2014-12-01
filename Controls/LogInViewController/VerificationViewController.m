@@ -62,27 +62,7 @@
     
     self.navigationItem.title = @"填写验证码";
     
-//    UIColor * cc = [UIColor blackColor];
-//    
-//    NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:cc,[UIFont systemFontOfSize:20],[UIColor clearColor],nil] forKeys:[NSArray arrayWithObjects:UITextAttributeTextColor,UITextAttributeFont,UITextAttributeTextShadowColor,nil]];
-//    
-//    self.navigationController.navigationBar.titleTextAttributes = dict;
-//    
-//    UIBarButtonItem * space_button = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-//    space_button.width = MY_MACRO_NAME?0:5;
-//    
-//    
-//    
-//    UIButton *button_back=[[UIButton alloc]initWithFrame:CGRectMake(10,8,12,21.5)];
-//    [button_back addTarget:self action:@selector(backH) forControlEvents:UIControlEventTouchUpInside];
-//    [button_back setBackgroundImage:[UIImage imageNamed:BACK_DEFAULT_IMAGE] forState:UIControlStateNormal];
-//    
-//    UIBarButtonItem *back_item = [[UIBarButtonItem alloc]initWithCustomView:button_back];
-//    self.navigationItem.leftBarButtonItems = @[space_button,back_item];
-    
-    
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
-    
     
     UILabel * label1 = [[UILabel alloc] initWithFrame:CGRectMake(23/2,23/2,200,20)];
     
@@ -145,38 +125,27 @@
     
     
     ReSendButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
     ReSendButton.frame = CGRectMake(94,200,132,43.5);
-    
     ReSendButton.hidden = YES;
-    
     [ReSendButton setTitle:@"重新发送验证码" forState:UIControlStateNormal];
-    
     [ReSendButton setTitleColor:RGBCOLOR(151,151,151) forState:UIControlStateNormal];
-    
     ReSendButton.titleLabel.font = [UIFont systemFontOfSize:16];
-    
     [ReSendButton setBackgroundImage:[UIImage imageNamed:@"zc_resendimage.png"] forState:UIControlStateNormal];
-    
     [ReSendButton addTarget:self action:@selector(reSend:) forControlEvents:UIControlEventTouchUpInside];
-    
     [self.view addSubview:ReSendButton];
     
     time_number = 60;
     
     time_label = [[UILabel alloc] initWithFrame:CGRectMake(70,200,180,43.5)];
-    
     time_label.text = [NSString stringWithFormat:@"接收短信大约需要%d秒钟",time_number];
-    
     time_label.textAlignment = NSTextAlignmentCenter;
-    
     time_label.textColor = [UIColor grayColor];
-    
     time_label.font = [UIFont systemFontOfSize:15];
-    
     time_label.backgroundColor = [UIColor clearColor];
-    
     [self.view addSubview:time_label];
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doTap:)];
+    [self.view addGestureRecognizer:tap];
     
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timeCount) userInfo:nil repeats:YES];
 }
@@ -186,6 +155,10 @@
     [self initReSendRequest];
 }
 
+-(void)doTap:(UITapGestureRecognizer *)sender
+{
+    [self.view endEditing:YES];
+}
 
 -(void)timeCount
 {
