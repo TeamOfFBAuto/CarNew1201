@@ -1,0 +1,64 @@
+//
+//  PrefixHeader.pch
+//  CustomNewProject
+//
+//  Created by soulnear on 14-11-26.
+//  Copyright (c) 2014年 FBLIFE. All rights reserved.
+//
+
+#ifndef CustomNewProject_PrefixHeader_pch
+#define CustomNewProject_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#import "MyViewController.h"
+#import <UIKit/UIKit.h>
+
+#import "UIView+Frame.h"
+#import "UIViewAdditions.h"
+#import "PHAirViewController.h"
+#import "PHViewController.h"
+#import "DefaultConstant.h"
+#import "UIImageView+WebCache.h"
+#import "ZSNApi.h"
+#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
+#import "AFHTTPRequestOperation.h"
+#import "JSONKit.h"
+#import "LTools.h"
+#pragma mark - 自定义的宏，方便调动
+///颜色
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f \
+alpha:(a)]
+
+#pragma mark - 屏幕宽度
+///屏幕宽度
+#define DEVICE_WIDTH  [UIScreen mainScreen].bounds.size.width
+#pragma mark - 屏幕高度
+///屏幕高度
+#define DEVICE_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define iPhone6PLUS ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define isHaveNetWork [[LTools checkNetWork ]isEqualToString:@"NONetWork"]?YES:NO
+#define MY_MACRO_NAME ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+#define IOS7DAOHANGLANBEIJING @"sliderBBSNavigationBarImage_ios7.png"
+#define IOS7DAOHANGLANBEIJING_PUSH @"navgationBar_background_image.png"
+#define IOS6DAOHANGLANBEIJING @"sliderBBSNavigationBarImage_ios6.png"
+#define TheNavigationBarBackgroundImg MY_MACRO_NAME?[UIImage imageNamed:IOS7DAOHANGLANBEIJING]:[UIImage imageNamed:@"ios7eva320_44.png"]
+
+#define BACK_DEFAULT_IMAGE @"fanhui_image"
+
+#define WRITE_DEFAULT_IMAGE @"default_write_pen_image.png"
+
+#define TITLEFONT [UIFont fontWithName:@"Helvetica" size:20]
+
+
+#endif
