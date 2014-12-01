@@ -113,6 +113,9 @@
 
 #pragma mark - 登录
 -(void)dengluWithUserName:(NSString *)name pass:(NSString *)passw{
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"gdenglu" object:nil];
+    
     //菊花
     if (j) {
         
@@ -138,10 +141,7 @@
     
     NSString *str = [NSString stringWithFormat:G_LOGIN,name,passw,deviceToken];
     
-    //保存用户手机号
-    [[NSUserDefaults standardUserDefaults]setObject:name forKey:USERPHONENUMBER];
-    
-    [GMAPI cache:name ForKey:LOGIN_PHONE];
+
     
     NSLog(@"登录请求接口======%@",str);
     
@@ -155,33 +155,44 @@
             return;
         }
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-        NSLog(@"%@ %@",dic,[dic objectForKey:@"errinfo"]);
-        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
-        if ([[dic objectForKey:@"errcode"] intValue] == 0) {
+        
+        if ([dic isKindOfClass:[NSDictionary class]]) {
             
-            [j stopAnimating];
+            NSLog(@"%@",dic);
             
-            AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [delegate showControlView:Root_home];
+            if ([[dic objectForKey:@"errcode"] intValue] == 0) {//登录成功
+                [j stopAnimating];
+                
+                
+                //下列信息为融云提供 这里先注掉
+                NSDictionary *datainfo = [dic objectForKey:@"datainfo"];
+                NSString *userid = [datainfo objectForKey:@"uid"];
+                NSString *username = [datainfo objectForKey:@"name"];
+                NSString *authkey = [datainfo objectForKey:@"authkey"];
+                
+                [GMAPI cache:userid ForKey:USERID];
+                [GMAPI cache:username ForKey:USERNAME];
+                [GMAPI cache:authkey ForKey:AUTHKEY];
+                
+                AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [delegate showControlView:Root_home];
+                
+                
+            }else{
+                
+                [j stopAnimating];
+                
+                UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请核对用户名或密码是否正确" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [al show];
+                
+                [defaults setBool:NO forKey:LOGIN_SUCCESS];
+            }
             
-            //下列信息为融云提供 这里先注掉
-//            NSDictionary *datainfo = [dic objectForKey:@"datainfo"];
-//            NSString *userid = [datainfo objectForKey:@"uid"];
-//            NSString *username = [datainfo objectForKey:@"name"];
-//            NSString *authkey = [datainfo objectForKey:@"authkey"];
-//            [weakSelf loginRongCloudWithUserId:userid name:username headImageUrl:[LCWTools headImageForUserId:userid] pass:passw authkey:authkey];
-            
-        }else{
-            
-            [j stopAnimating];
-            
-            UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请核对用户名或密码是否正确" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [al show];
-            
-            [defaults setBool:NO forKey:LOGIN_SUCCESS];
         }
+        
+        
         
         [defaults synchronize];
         

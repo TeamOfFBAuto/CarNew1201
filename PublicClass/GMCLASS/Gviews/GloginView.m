@@ -53,6 +53,9 @@
         
         
         
+        //接受登录的通知
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(Gshou) name:@"gdenglu" object:nil];
+        
         //点击回收键盘
         UIControl *backControl = [[UIControl alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
         [backControl addTarget:self action:@selector(Gshou) forControlEvents:UIControlEventTouchUpInside];
