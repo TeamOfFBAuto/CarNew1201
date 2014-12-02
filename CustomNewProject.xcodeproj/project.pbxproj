@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1312611B1A2C7237001E46E4 /* AnliViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 131261191A2C7237001E46E4 /* AnliViewCell.m */; };
+		1312611C1A2C7237001E46E4 /* AnliViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1312611A1A2C7237001E46E4 /* AnliViewCell.xib */; };
 		1351178D1A257E8E0015C133 /* LTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 135117721A257E8E0015C133 /* LTools.m */; };
 		1351178E1A257E8E0015C133 /* RefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 135117741A257E8E0015C133 /* RefreshTableView.m */; };
 		1351179C1A257EB20015C133 /* bluedown1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 135117981A257EB20015C133 /* bluedown1@2x.png */; };
@@ -129,6 +131,9 @@
 
 /* Begin PBXFileReference section */
 		0474E0B8AA75297C0DC9AFBA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		131261181A2C7237001E46E4 /* AnliViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnliViewCell.h; sourceTree = SOURCE_ROOT; };
+		131261191A2C7237001E46E4 /* AnliViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnliViewCell.m; sourceTree = SOURCE_ROOT; };
+		1312611A1A2C7237001E46E4 /* AnliViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnliViewCell.xib; sourceTree = SOURCE_ROOT; };
 		135117711A257E8E0015C133 /* LTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTools.h; sourceTree = "<group>"; };
 		135117721A257E8E0015C133 /* LTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTools.m; sourceTree = "<group>"; };
 		135117731A257E8E0015C133 /* RefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTableView.h; sourceTree = "<group>"; };
@@ -474,6 +479,9 @@
 		19B34DBC1A2465F300ED1935 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				131261181A2C7237001E46E4 /* AnliViewCell.h */,
+				131261191A2C7237001E46E4 /* AnliViewCell.m */,
+				1312611A1A2C7237001E46E4 /* AnliViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1100,6 +1108,7 @@
 				56621D551A28605B00310A48 /* UMContactViewController.xib in Resources */,
 				1351179C1A257EB20015C133 /* bluedown1@2x.png in Resources */,
 				56621D411A28605B00310A48 /* icon_rightArrow_selected@2x.png in Resources */,
+				1312611C1A2C7237001E46E4 /* AnliViewCell.xib in Resources */,
 				E311CD301A24573C007D69D3 /* Images.xcassets in Resources */,
 				56621D491A28605B00310A48 /* messages_tableview_background@2x.png in Resources */,
 				56621D3E1A28605B00310A48 /* background@2x.png in Resources */,
@@ -1175,6 +1184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1312611B1A2C7237001E46E4 /* AnliViewCell.m in Sources */,
 				19B34DD41A2466FB00ED1935 /* BusinessViewController.m in Sources */,
 				19B34DE01A246F1100ED1935 /* LeftViewController.m in Sources */,
 				E392C3161A2815FA001AEA0D /* GloginView.m in Sources */,

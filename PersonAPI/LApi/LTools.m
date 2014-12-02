@@ -343,6 +343,29 @@
 
 #pragma mark - 常用视图快速创建
 
+
+/**
+ *  通过xib创建cell
+ *
+ *  @param identify  标识名称
+ *  @param tableView
+ *  @param cellName
+ *
+ *  @return cell
+ */
++ (UITableViewCell *)cellForIdentify:(NSString *)identify
+                            cellName:(NSString *)cellName
+                            forTable:(UITableView *)tableView
+{
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    
+    if (cell == nil)
+    {
+        cell = [[[NSBundle mainBundle]loadNibNamed:cellName owner:self options:nil]objectAtIndex:0];
+    }
+    return cell;
+}
+
 + (UIButton *)createButtonWithType:(UIButtonType)buttonType
                              frame:(CGRect)aFrame
                              normalTitle:(NSString *)normalTitle
