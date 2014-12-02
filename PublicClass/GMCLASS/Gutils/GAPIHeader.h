@@ -33,5 +33,11 @@
 //用户登录
 #define G_LOGIN @"http://gztest.fblife.com/index.php?c=interface&a=dologin&username=%@&password=%@&token=%@&fbtype=json"
 
+//案例
+
+//案例列表
+
+#define ANLI_LIST @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=JSON&page=%d&ps=%d"   
+
 
 #endif

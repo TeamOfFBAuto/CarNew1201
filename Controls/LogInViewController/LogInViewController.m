@@ -1,7 +1,7 @@
 //
 //  LogInViewController.m
 //  CustomNewProject
-//
+//123
 //  Created by soulnear on 14-11-27.
 //  Copyright (c) 2014年 FBLIFE. All rights reserved.
 //
@@ -26,7 +26,7 @@
 {
     UIActivityIndicatorView *j;
 }
-@property(nonatomic,strong)GloginView *gloginView;
+
 @end
 
 @implementation LogInViewController
@@ -66,15 +66,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     
-    
-    
-    
-    
-    
     NSLog(@"%s",__FUNCTION__);
     
     GloginView *gloginView = [[GloginView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568:480)];
-    self.gloginView = gloginView;
     [self.view addSubview:gloginView];
     
     
@@ -99,12 +93,16 @@
         NSLog(@"--%@     --%@",usern,passw);
         
         if (usern.length ==0 && passw.length == 0) {//无账号密码
+            UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入用户名和密码" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [al show];
             
         }else if (usern.length == 0 || passw.length == 0){//无账号或密码
             if (usern.length == 0) {
-
+                UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入用户名" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [al show];
             }else if (passw.length == 0){
-
+                UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入密码" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [al show];
             }
         }else{//有账号密码
             [bself dengluWithUserName:usern pass:passw];
@@ -121,18 +119,20 @@
 }
 
 
-
 #pragma mark - 登录
 -(void)dengluWithUserName:(NSString *)name pass:(NSString *)passw{
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"gdenglu" object:nil];
+    
     //菊花
     if (j) {
         
     }else{
         j = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         if (iPhone5) {
-            j.center = CGPointMake(160, 250);
+            j.center = CGPointMake(160, 170);
         }else{
-            j.center = CGPointMake(160, 200);
+            j.center = CGPointMake(160, 120);
         }
         
         [self.view addSubview:j];
@@ -149,10 +149,7 @@
     
     NSString *str = [NSString stringWithFormat:G_LOGIN,name,passw,deviceToken];
     
-    //保存用户手机号
-    [[NSUserDefaults standardUserDefaults]setObject:name forKey:USERPHONENUMBER];
     
-    [GMAPI cache:name ForKey:LOGIN_PHONE];
     
     NSLog(@"登录请求接口======%@",str);
     
@@ -162,41 +159,41 @@
         
         NSLog(@"error-----------%@",connectionError);
         
+        [j stopAnimating];
+        
         if ([data length] == 0) {
             return;
         }
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-        NSLog(@"%@ %@",dic,[dic objectForKey:@"errinfo"]);
-        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
-        if ([[dic objectForKey:@"errcode"] intValue] == 0) {
+        if ([dic isKindOfClass:[NSDictionary class]]) {
             
-            [j stopAnimating];
+            NSLog(@"%@",dic);
+            if ([[dic objectForKey:@"errcode"] intValue] == 0) {//登录成功
+                
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
+                NSDictionary *datainfo = [dic objectForKey:@"datainfo"];
+                NSString *userid = [datainfo objectForKey:@"uid"];
+                NSString *username = [datainfo objectForKey:@"name"];
+                NSString *authkey = [datainfo objectForKey:@"authkey"];
+                [GMAPI cache:userid ForKey:USERID];
+                [GMAPI cache:username ForKey:USERNAME];
+                [GMAPI cache:authkey ForKey:AUTHKEY];
+                
+                AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [delegate showControlView:Root_home];
+                
+            }else{
+                
+                UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请核对用户名或密码是否正确" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [al show];
+                [defaults setBool:NO forKey:LOGIN_SUCCESS];
+            }
             
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
-            
-            AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [delegate showControlView:Root_home];
-            
-            //下列信息为融云提供 这里先注掉
-//            NSDictionary *datainfo = [dic objectForKey:@"datainfo"];
-//            NSString *userid = [datainfo objectForKey:@"uid"];
-//            NSString *username = [datainfo objectForKey:@"name"];
-//            NSString *authkey = [datainfo objectForKey:@"authkey"];
-//            [weakSelf loginRongCloudWithUserId:userid name:username headImageUrl:[LCWTools headImageForUserId:userid] pass:passw authkey:authkey];
-            
-        }else{
-            
-            [j stopAnimating];
-            
-            UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请核对用户名或密码是否正确" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [al show];
-            
-         //   [defaults setBool:NO forKey:LOGIN_SUCCESS];
+            [defaults synchronize];
         }
         
-        [defaults synchronize];
         
     }];
     

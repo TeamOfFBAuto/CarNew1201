@@ -9,6 +9,9 @@
 #import "PicViewController.h"
 #import "RefreshTableView.h"
 
+#import "AnliViewCell.h"
+#import "AnliModel.h"
+
 @interface PicViewController ()<UITableViewDataSource,RefreshDelegate>
 {
     RefreshTableView *_table;
@@ -34,7 +37,7 @@
     [self createNavigationTools];
     
     //数据展示table
-    _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT - 44 - 49 - 20)];
+    _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT - 44)];
     _table.refreshDelegate = self;
     _table.dataSource = self;
     
@@ -53,6 +56,45 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark 网络请求
+
+- (void)networkForAnliList:(int)pageSize
+{
+    
+    __weak typeof(RefreshTableView *)weakTable = _table;
+    __weak typeof(self)weakSelf = self;
+    NSString *url = nil;
+    LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
+    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+        
+        if ([result isKindOfClass:[NSDictionary class]]) {
+            
+            NSDictionary *dataInfo = result[@"datainfo"];
+            
+            if ([LTools isDictinary:dataInfo]) {
+                
+                int total = [dataInfo[@"total"] intValue];
+                NSArray *data = dataInfo[@"data"];
+                NSMutableArray *temp_arr = [NSMutableArray arrayWithCapacity:data.count];
+                for (NSDictionary *aDic in temp_arr) {
+                    AnliModel *aModel = [[AnliModel alloc]initWithDictionary:aDic];
+                    [temp_arr addObject:aModel];
+                }
+                
+                [weakTable reloadData:temp_arr total:total];
+                
+            }
+            
+        }
+        
+        
+    } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        
+        [weakTable loadFail];
+    }];
+    
 }
 
 #pragma mark 创建视图
@@ -112,7 +154,7 @@
 }
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath
 {
-    return 75;
+    return 295;
 }
 
 #pragma mark - UITableViewDelegate
@@ -127,17 +169,15 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _table.dataArray.count;
+    return _table.dataArray.count + 5;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString * identifier = @"CarSourceCell";
+    static NSString * identifier = @"AnliViewCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
+    AnliViewCell *cell = (AnliViewCell *)[LTools cellForIdentify:identifier cellName:@"AnliViewCell" forTable:tableView];
+    
     
     return cell;
     
