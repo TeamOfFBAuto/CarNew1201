@@ -22,6 +22,8 @@
 		1380232B1A2C69CF0053BDDA /* anli_fangda@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023251A2C69CF0053BDDA /* anli_fangda@2x.png */; };
 		1380232C1A2C69CF0053BDDA /* anli_shoucang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023261A2C69CF0053BDDA /* anli_shoucang@2x.png */; };
 		1380232D1A2C69CF0053BDDA /* anli_zhuanfa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023271A2C69CF0053BDDA /* anli_zhuanfa@2x.png */; };
+		13F9D4701A2D5A6E002A6904 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D46F1A2D5A6E002A6904 /* BaseModel.m */; };
+		13F9D4731A2D5A80002A6904 /* AnliModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D4721A2D5A80002A6904 /* AnliModel.m */; };
 		19B34DCB1A24666500ED1935 /* SelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DCA1A24666500ED1935 /* SelectedViewController.m */; };
 		19B34DCE1A2466A300ED1935 /* PicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DCD1A2466A300ED1935 /* PicViewController.m */; };
 		19B34DD11A2466C300ED1935 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DD01A2466C300ED1935 /* StoreViewController.m */; };
@@ -154,6 +156,10 @@
 		138023251A2C69CF0053BDDA /* anli_fangda@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_fangda@2x.png"; sourceTree = "<group>"; };
 		138023261A2C69CF0053BDDA /* anli_shoucang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_shoucang@2x.png"; sourceTree = "<group>"; };
 		138023271A2C69CF0053BDDA /* anli_zhuanfa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_zhuanfa@2x.png"; sourceTree = "<group>"; };
+		13F9D46E1A2D5A6E002A6904 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		13F9D46F1A2D5A6E002A6904 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		13F9D4711A2D5A80002A6904 /* AnliModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnliModel.h; sourceTree = "<group>"; };
+		13F9D4721A2D5A80002A6904 /* AnliModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnliModel.m; sourceTree = "<group>"; };
 		199B0BA807D6890CA852B6FD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		19B34DC91A24666500ED1935 /* SelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedViewController.h; sourceTree = "<group>"; };
 		19B34DCA1A24666500ED1935 /* SelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedViewController.m; sourceTree = "<group>"; };
@@ -400,6 +406,17 @@
 			path = AnLiControllerImages;
 			sourceTree = "<group>";
 		};
+		13F9D46D1A2D5A60002A6904 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				13F9D46E1A2D5A6E002A6904 /* BaseModel.h */,
+				13F9D46F1A2D5A6E002A6904 /* BaseModel.m */,
+				13F9D4711A2D5A80002A6904 /* AnliModel.h */,
+				13F9D4721A2D5A80002A6904 /* AnliModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		19B34DB41A2465F300ED1935 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,8 +471,8 @@
 		19B34DB91A2465F300ED1935 /* PicControl */ = {
 			isa = PBXGroup;
 			children = (
+				13F9D46D1A2D5A60002A6904 /* Models */,
 				19B34DBA1A2465F300ED1935 /* Controllers */,
-				19B34DBB1A2465F300ED1935 /* Models */,
 				19B34DBC1A2465F300ED1935 /* Views */,
 			);
 			name = PicControl;
@@ -469,13 +486,6 @@
 				19B34DCD1A2466A300ED1935 /* PicViewController.m */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		19B34DBB1A2465F300ED1935 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		19B34DBC1A2465F300ED1935 /* Views */ = {
@@ -1197,6 +1207,7 @@
 				569FFEED1A272EA6008A02A6 /* LogInViewController.m in Sources */,
 				1351178D1A257E8E0015C133 /* LTools.m in Sources */,
 				565EE8BD1A2C3DEE0063CAA3 /* ASINetworkQueue.m in Sources */,
+				13F9D4701A2D5A6E002A6904 /* BaseModel.m in Sources */,
 				565EE8C01A2C40010063CAA3 /* FriendAttribute.m in Sources */,
 				565EE8D11A2C4C380063CAA3 /* ZhuCeViewController.m in Sources */,
 				19B34DCE1A2466A300ED1935 /* PicViewController.m in Sources */,
@@ -1230,6 +1241,7 @@
 				565EE8B71A2C3DEE0063CAA3 /* ASIDataCompressor.m in Sources */,
 				E392C31A1A2818C9001AEA0D /* GzhuceViewController.m in Sources */,
 				135117A61A257F2D0015C133 /* UIColor+ConvertColor.m in Sources */,
+				13F9D4731A2D5A80002A6904 /* AnliModel.m in Sources */,
 				565EE8BC1A2C3DEE0063CAA3 /* ASIInputStream.m in Sources */,
 				E392C31D1A2818FD001AEA0D /* GfindPasswViewController.m in Sources */,
 				56CE4B601A25D48100876AC7 /* UIViewAdditions.m in Sources */,

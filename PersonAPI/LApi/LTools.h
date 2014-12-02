@@ -41,6 +41,9 @@ typedef void(^versionBlock)(BOOL isNewVersion,NSString *updateUrl,NSString *upda
 
 - (void)requestCompletion:(void(^)(NSDictionary *result,NSError *erro))completionBlock failBlock:(void(^)(NSDictionary *failDic,NSError *erro))failedBlock;//处理请求结果
 
+/**
+ *  block请求方式
+ */
 - (void)requestSpecialCompletion:(void(^)(NSDictionary *result,NSError *erro))completionBlock failBlock:(void(^)(NSDictionary *failDic,NSError *erro))failedBlock;//特殊请求 不进行 UTF8编码
 
 - (void)cancelRequest;
@@ -128,6 +131,8 @@ typedef void(^versionBlock)(BOOL isNewVersion,NSString *updateUrl,NSString *upda
 + (BOOL)NSStringIsNull:(NSString *)string;//判断字符串是否全为空格
 
 #pragma mark - 验证有效性
+
++ (BOOL)isDictinary:(id)object;//是否是字典
 
 /**
  *  验证 邮箱、电话等

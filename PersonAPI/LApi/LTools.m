@@ -430,6 +430,16 @@
     return aSize.height;
 }
 
+#pragma mark - 验证有消息
+
+//是否是字典
++ (BOOL)isDictinary:(id)object
+{
+    if ([object isKindOfClass:[NSDictionary class]]) {
+        return YES;
+    }
+    return NO;
+}
 
 #pragma - mark 验证邮箱、电话等有效性
 
