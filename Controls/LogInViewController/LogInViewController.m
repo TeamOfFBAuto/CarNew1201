@@ -180,7 +180,7 @@
                 NSString *authkey = [datainfo objectForKey:@"authkey"];
                 [GMAPI cache:userid ForKey:USERID];
                 [GMAPI cache:username ForKey:USERNAME];
-                [GMAPI cache:authkey ForKey:AUTHKEY];
+                [GMAPI cache:authkey ForKey:USER_AUTHOD];
                 
                 AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                 [delegate showControlView:Root_home];
