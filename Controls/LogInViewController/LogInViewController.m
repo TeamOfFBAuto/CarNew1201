@@ -190,10 +190,10 @@
             
             [j stopAnimating];
             
-            UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请核对用户名或密码是否正确" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请核对用户名或密码是否正确" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [al show];
             
-            [defaults setBool:NO forKey:LOGIN_SUCCESS];
+         //   [defaults setBool:NO forKey:LOGIN_SUCCESS];
         }
         
         [defaults synchronize];
