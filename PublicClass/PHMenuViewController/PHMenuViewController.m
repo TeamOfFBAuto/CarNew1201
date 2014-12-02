@@ -84,22 +84,22 @@
 {
     UIViewController * viewController;
     switch (indexPath.row) {
-        case 0:
+        case 4:///精选推荐
             viewController = [(AppDelegate*)[UIApplication sharedApplication].delegate selectedVC];
             break;
-        case 1:
+        case 0:///案例图库
             viewController = _picNav;
             break;
-        case 2:
+        case 3:///商品
             viewController = _storeNav;
             break;
-        case 3:
+        case 1:///服务商家
             viewController = _businessNav;
             break;
-        case 4:
+        case 2:///个人中心
             viewController = _personalNav;
             break;
-        case 5:
+        case 5:///设置界面
             viewController = _settingNav;
             break;
     }

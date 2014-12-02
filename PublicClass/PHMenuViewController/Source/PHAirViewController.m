@@ -582,7 +582,6 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
     
     // Init menu item for session
     for (int i = 0; i < session; i ++) {
-        NSLog(@"走了多少遍呢 ----   %d",i);
         PHSessionView * sessionView = sessionViews[@(i)];
         // Remove all sub-view for contain of PHSessionView
         for (UIView * view in sessionView.containView.subviews) {
@@ -598,11 +597,29 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [button setTitleColor:RGBCOLOR(255,134,0) forState:UIControlStateHighlighted];
             [button setTitleColor:RGBCOLOR(255,134,0) forState:UIControlStateSelected];
-            button.frame = CGRectMake(0,iPhone5?64+j*70:64+j*60,260, 50);
+            button.frame = CGRectMake(0,200+60*j,260, 50);
             button.tag = j;
             [button addTarget:self action:@selector(rowDidTouch:) forControlEvents:UIControlEventTouchUpInside];
             sessionView.containView.tag = i;
             [sessionView.containView addSubview:button];
+            
+            UIImageView * headerBackImageView = [[UIImageView alloc] initWithFrame:CGRectMake(89,40,82,82)];
+            headerBackImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+            headerBackImageView.layer.cornerRadius = 41;
+            headerBackImageView.layer.borderWidth = 0.5;
+            [sessionView.containView addSubview:headerBackImageView];
+            UIImageView * headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(95,40,70,70)];
+            headerImageView.backgroundColor = [UIColor redColor];
+            headerImageView.center = CGPointMake(41,41);
+            headerImageView.layer.cornerRadius = 35;
+            [headerImageView sd_setImageWithURL:[NSURL URLWithString:[ZSNApi returnUrl:[GMAPI getUid]]] placeholderImage:[UIImage imageNamed:HEADER_DEFAULT_IMAGE]];
+            [headerBackImageView addSubview:headerImageView];
+            
+            UILabel * userName = [[UILabel alloc] initWithFrame:CGRectMake(0,135,260,18)];
+            userName.text = [GMAPI getUsername];
+            userName.textAlignment = NSTextAlignmentCenter;
+            userName.textColor = [UIColor whiteColor];
+            [sessionView.containView addSubview:userName];
         }
     }
     

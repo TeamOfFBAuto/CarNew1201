@@ -47,7 +47,7 @@
     
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
-    self.title = @"设置";
+    self.myTitle = @"设置";
     
     title_array = [NSArray arrayWithObjects:@"",@"清除缓存",@"意见反馈",@"版本更新",@"关于",@"",@"精品应用",@"",@"",nil];
     

@@ -23,12 +23,12 @@
 		19B34DCB1A24666500ED1935 /* SelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DCA1A24666500ED1935 /* SelectedViewController.m */; };
 		19B34DCE1A2466A300ED1935 /* PicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DCD1A2466A300ED1935 /* PicViewController.m */; };
 		19B34DD11A2466C300ED1935 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DD01A2466C300ED1935 /* StoreViewController.m */; };
-		19B34DD41A2466FB00ED1935 /* BusinessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DD31A2466FB00ED1935 /* BusinessViewController.m */; };
 		19B34DD71A24672B00ED1935 /* PersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DD61A24672B00ED1935 /* PersonalViewController.m */; };
 		19B34DDD1A246DDE00ED1935 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DDB1A246DDE00ED1935 /* RightViewController.m */; };
 		19B34DE01A246F1100ED1935 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DDF1A246F1100ED1935 /* LeftViewController.m */; };
 		19B34DE31A246FD700ED1935 /* FansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DE21A246FD700ED1935 /* FansViewController.m */; };
 		560CB53B1A270B230067F7AA /* navgationBar_background_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560CB53A1A270B230067F7AA /* navgationBar_background_image@2x.png */; };
+		56500AFB1A2D63CC00E834A1 /* BusinessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56500AF81A2D63CC00E834A1 /* BusinessViewController.m */; };
 		565EE8B61A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A31A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		565EE8B71A2C3DEE0063CAA3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A61A2C3DEE0063CAA3 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		565EE8B81A2C3DEE0063CAA3 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A81A2C3DEE0063CAA3 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -88,6 +88,7 @@
 		56621D611A28620200310A48 /* downloadtool.m in Sources */ = {isa = PBXBuildFile; fileRef = 56621D601A28620200310A48 /* downloadtool.m */; };
 		56621D641A28625900310A48 /* AlertRePlaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56621D631A28625900310A48 /* AlertRePlaceView.m */; };
 		56621D671A286A0900310A48 /* ZSNApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 56621D661A286A0900310A48 /* ZSNApi.m */; };
+		566ADC221A2D5B4C009529A5 /* default_touxiang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 566ADC211A2D5B4C009529A5 /* default_touxiang@2x.png */; };
 		567B13AA1A2C6B8C003A3C59 /* fanhui_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 567B13A91A2C6B8C003A3C59 /* fanhui_image@2x.png */; };
 		569FFEED1A272EA6008A02A6 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569FFEEB1A272EA6008A02A6 /* LogInViewController.m */; };
 		569FFEF31A27380F008A02A6 /* login_close_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 569FFEF01A27380F008A02A6 /* login_close_image@2x.png */; };
@@ -155,8 +156,6 @@
 		19B34DCD1A2466A300ED1935 /* PicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicViewController.m; sourceTree = "<group>"; };
 		19B34DCF1A2466C300ED1935 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
 		19B34DD01A2466C300ED1935 /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
-		19B34DD21A2466FB00ED1935 /* BusinessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessViewController.h; sourceTree = "<group>"; };
-		19B34DD31A2466FB00ED1935 /* BusinessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessViewController.m; sourceTree = "<group>"; };
 		19B34DD51A24672B00ED1935 /* PersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewController.h; sourceTree = "<group>"; };
 		19B34DD61A24672B00ED1935 /* PersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewController.m; sourceTree = "<group>"; };
 		19B34DDA1A246DDE00ED1935 /* RightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightViewController.h; sourceTree = "<group>"; };
@@ -167,6 +166,8 @@
 		19B34DE21A246FD700ED1935 /* FansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FansViewController.m; sourceTree = "<group>"; };
 		560CB53A1A270B230067F7AA /* navgationBar_background_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navgationBar_background_image@2x.png"; sourceTree = "<group>"; };
 		560CB53C1A2719880067F7AA /* DefaultConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultConstant.h; sourceTree = "<group>"; };
+		56500AF71A2D63CC00E834A1 /* BusinessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessViewController.h; sourceTree = "<group>"; };
+		56500AF81A2D63CC00E834A1 /* BusinessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessViewController.m; sourceTree = "<group>"; };
 		565EE8A21A2C3DEE0063CAA3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		565EE8A31A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		565EE8A41A2C3DEE0063CAA3 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -264,6 +265,7 @@
 		56621D631A28625900310A48 /* AlertRePlaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertRePlaceView.m; sourceTree = "<group>"; };
 		56621D651A286A0900310A48 /* ZSNApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSNApi.h; sourceTree = "<group>"; };
 		56621D661A286A0900310A48 /* ZSNApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSNApi.m; sourceTree = "<group>"; };
+		566ADC211A2D5B4C009529A5 /* default_touxiang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_touxiang@2x.png"; sourceTree = "<group>"; };
 		567B13A91A2C6B8C003A3C59 /* fanhui_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fanhui_image@2x.png"; sourceTree = "<group>"; };
 		569FFEEA1A272EA6008A02A6 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		569FFEEB1A272EA6008A02A6 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
@@ -396,11 +398,11 @@
 		19B34DB41A2465F300ED1935 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				56500AF51A2D63CC00E834A1 /* BusinessControl */,
 				560CB53D1A2719DE0067F7AA /* LogInViewController */,
 				19B34DB51A2465F300ED1935 /* SelectedViewControl */,
 				19B34DB91A2465F300ED1935 /* PicControl */,
 				19B34DBD1A2465F300ED1935 /* StoreControl */,
-				19B34DC11A2465F300ED1935 /* BusinessControl */,
 				19B34DC51A2465F300ED1935 /* PersonalControl */,
 			);
 			path = Controls;
@@ -506,40 +508,6 @@
 			sourceTree = "<group>";
 		};
 		19B34DC01A2465F300ED1935 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		19B34DC11A2465F300ED1935 /* BusinessControl */ = {
-			isa = PBXGroup;
-			children = (
-				19B34DC21A2465F300ED1935 /* Controllers */,
-				19B34DC31A2465F300ED1935 /* Models */,
-				19B34DC41A2465F300ED1935 /* Views */,
-			);
-			name = BusinessControl;
-			path = MyControl;
-			sourceTree = "<group>";
-		};
-		19B34DC21A2465F300ED1935 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				19B34DD21A2466FB00ED1935 /* BusinessViewController.h */,
-				19B34DD31A2466FB00ED1935 /* BusinessViewController.m */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		19B34DC31A2465F300ED1935 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		19B34DC41A2465F300ED1935 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -653,6 +621,39 @@
 			path = LogInViewController;
 			sourceTree = "<group>";
 		};
+		56500AF51A2D63CC00E834A1 /* BusinessControl */ = {
+			isa = PBXGroup;
+			children = (
+				56500AF61A2D63CC00E834A1 /* BusinessControllers */,
+				56500AF91A2D63CC00E834A1 /* BusinessModels */,
+				56500AFA1A2D63CC00E834A1 /* BusinessViews */,
+			);
+			path = BusinessControl;
+			sourceTree = "<group>";
+		};
+		56500AF61A2D63CC00E834A1 /* BusinessControllers */ = {
+			isa = PBXGroup;
+			children = (
+				56500AF71A2D63CC00E834A1 /* BusinessViewController.h */,
+				56500AF81A2D63CC00E834A1 /* BusinessViewController.m */,
+			);
+			path = BusinessControllers;
+			sourceTree = "<group>";
+		};
+		56500AF91A2D63CC00E834A1 /* BusinessModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BusinessModels;
+			sourceTree = "<group>";
+		};
+		56500AFA1A2D63CC00E834A1 /* BusinessViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BusinessViews;
+			sourceTree = "<group>";
+		};
 		565EE8A11A2C3DEE0063CAA3 /* ASIHttpRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,6 +694,7 @@
 			isa = PBXGroup;
 			children = (
 				56621CFC1A285A2500310A48 /* setting_image@2x.png */,
+				566ADC211A2D5B4C009529A5 /* default_touxiang@2x.png */,
 			);
 			path = leftMenuImages;
 			sourceTree = "<group>";
@@ -1094,6 +1096,7 @@
 				56621D421A28605B00310A48 /* item_cancel@2x.png in Resources */,
 				56621D521A28605B00310A48 /* send_selected@2x.png in Resources */,
 				E38F1E1F1A2C3ABE0048C58D /* logo@2x.png in Resources */,
+				566ADC221A2D5B4C009529A5 /* default_touxiang@2x.png in Resources */,
 				E311CD331A24573C007D69D3 /* LaunchScreen.xib in Resources */,
 				56621D4D1A28605B00310A48 /* nav_bg.png in Resources */,
 				1351179D1A257EB20015C133 /* blueup1@2x.png in Resources */,
@@ -1175,7 +1178,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19B34DD41A2466FB00ED1935 /* BusinessViewController.m in Sources */,
 				19B34DE01A246F1100ED1935 /* LeftViewController.m in Sources */,
 				E392C3161A2815FA001AEA0D /* GloginView.m in Sources */,
 				56621D581A28605B00310A48 /* UMFeedbackViewController.m in Sources */,
@@ -1188,6 +1190,7 @@
 				565EE8D11A2C4C380063CAA3 /* ZhuCeViewController.m in Sources */,
 				19B34DCE1A2466A300ED1935 /* PicViewController.m in Sources */,
 				56621D001A285FA800310A48 /* SliderRightSettingViewController.m in Sources */,
+				56500AFB1A2D63CC00E834A1 /* BusinessViewController.m in Sources */,
 				565EE8CE1A2C4C160063CAA3 /* VerificationViewController.m in Sources */,
 				E311CD2B1A24573C007D69D3 /* ViewController.m in Sources */,
 				56621D3D1A28605B00310A48 /* UMEGORefreshTableHeaderView.m in Sources */,
