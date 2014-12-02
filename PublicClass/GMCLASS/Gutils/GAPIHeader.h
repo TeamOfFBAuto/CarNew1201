@@ -11,28 +11,28 @@
 
 
 
-//保存用户信息
+////保存用户信息
+//
+//#define USERPHONENUMBER @"iphonenumber"
+//
+//#define USERID @"userid"
+//
+//#define USERNAME @"username"
+//
+//#define USERAUTHKEY @"userauthkey"
+//
+////#define DEVICETOKEN @"devicetoken"
+//
+//#define USERPASSWORD @"userpassword"
+//
+//#define LOGIN_SUCCESS @"LOGIN_SUCCESS" //登录成功
+//
+//
+//
+//
+////用户登录
+//#define G_LOGIN @"http://gztest.fblife.com/index.php?c=interface&a=dologin&username=%@&password=%@&token=%@&fbtype=json"
 
-#define USERPHONENUMBER @"iphonenumber"
-
-#define USERID @"userid"
-
-#define USERNAME @"username"
-
-#define USERAUTHKEY @"userauthkey"
-
-//#define DEVICETOKEN @"devicetoken"
-
-#define USERPASSWORD @"userpassword"
-
-#define LOGIN_SUCCESS @"LOGIN_SUCCESS" //登录成功
-
-
-
-
-//用户登录
-#define G_LOGIN @"http://gztest.fblife.com/index.php?c=interface&a=dologin&username=%@&password=%@&token=%@&fbtype=json"
-  
 
 
 #endif

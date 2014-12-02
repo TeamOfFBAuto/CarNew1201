@@ -10,12 +10,7 @@
 
 @implementation GMAPI
 
-//用户名
 
-+(NSString *)getUserPhoneNumber{
-    NSString *phoneNumber = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:USERPHONENUMBER]];
-    return phoneNumber;
-}
 
 
 //获取用户的devicetoken
@@ -31,7 +26,7 @@
 //获取用户名
 +(NSString *)getUsername{
     
-    NSString *str_devicetoken=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:USERNAME]];
+    NSString *str_devicetoken=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:USER_NAME]];
     if ([str_devicetoken isEqualToString:@"(null)"]) {
         str_devicetoken=@"";
     }
@@ -43,7 +38,7 @@
 //获取authkey
 +(NSString *)getAuthkey{
     
-    NSString *str_authkey=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:USERAUTHKEY]];
+    NSString *str_authkey=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:USER_AUTHOD]];
     return str_authkey;
     
 }
@@ -52,7 +47,7 @@
 //获取用户id
 +(NSString *)getUid{
     
-    NSString *str_uid=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:USERID]];
+    NSString *str_uid=[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:USER_UID]];
     return str_uid;
     
 }
@@ -60,7 +55,7 @@
 
 //获取用户密码
 +(NSString *)getUserPassWord{
-    NSString *str_password = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:USERPASSWORD]];
+    NSString *str_password = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:USER_PW]];
     return str_password;
 }
 
