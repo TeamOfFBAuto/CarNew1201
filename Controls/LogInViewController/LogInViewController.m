@@ -133,9 +133,9 @@
     }else{
         j = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         if (iPhone5) {
-            j.center = CGPointMake(160, 250);
+            j.center = CGPointMake(160, 170);
         }else{
-            j.center = CGPointMake(160, 200);
+            j.center = CGPointMake(160, 120);
         }
         
         [self.view addSubview:j];
@@ -162,6 +162,8 @@
         
         NSLog(@"error-----------%@",connectionError);
         
+        [j stopAnimating];
+        
         if ([data length] == 0) {
             return;
         }
@@ -171,60 +173,30 @@
         if ([dic isKindOfClass:[NSDictionary class]]) {
 
             NSLog(@"%@",dic);
-        if ([[dic objectForKey:@"errcode"] intValue] == 0) {
-            
-            [j stopAnimating];
-            
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
-            
-            AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [delegate showControlView:Root_home];
-            
-            //下列信息为融云提供 这里先注掉
-//            NSDictionary *datainfo = [dic objectForKey:@"datainfo"];
-//            NSString *userid = [datainfo objectForKey:@"uid"];
-//            NSString *username = [datainfo objectForKey:@"name"];
-//            NSString *authkey = [datainfo objectForKey:@"authkey"];
-//            [weakSelf loginRongCloudWithUserId:userid name:username headImageUrl:[LCWTools headImageForUserId:userid] pass:passw authkey:authkey];
-            
-        }else{
-            
-            [j stopAnimating];
-            
             if ([[dic objectForKey:@"errcode"] intValue] == 0) {//登录成功
-                [j stopAnimating];
                 
-                
-                //下列信息为融云提供 这里先注掉
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
                 NSDictionary *datainfo = [dic objectForKey:@"datainfo"];
                 NSString *userid = [datainfo objectForKey:@"uid"];
                 NSString *username = [datainfo objectForKey:@"name"];
                 NSString *authkey = [datainfo objectForKey:@"authkey"];
-                
                 [GMAPI cache:userid ForKey:USERID];
                 [GMAPI cache:username ForKey:USERNAME];
                 [GMAPI cache:authkey ForKey:AUTHKEY];
                 
                 AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                 [delegate showControlView:Root_home];
-                
-                
+            
             }else{
                 
-                [j stopAnimating];
-                
-                UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请核对用户名或密码是否正确" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请核对用户名或密码是否正确" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 [al show];
-                
                 [defaults setBool:NO forKey:LOGIN_SUCCESS];
             }
             
+            [defaults synchronize];
         }
         
-        
-        
-        [defaults synchronize];
-        }
         
     }];
     
