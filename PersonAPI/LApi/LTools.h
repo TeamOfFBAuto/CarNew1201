@@ -11,6 +11,8 @@
 
 #import "MBProgressHUD.h"
 
+#import "GTCommontHeader.h"
+
 #define ERROR_INFO @"ERRO_INFO" //错误信息
 
 typedef void(^ urlRequestBlock)(NSDictionary *result,NSError *erro);

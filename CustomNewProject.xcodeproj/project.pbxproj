@@ -24,6 +24,8 @@
 		1380232D1A2C69CF0053BDDA /* anli_zhuanfa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023271A2C69CF0053BDDA /* anli_zhuanfa@2x.png */; };
 		13F9D4701A2D5A6E002A6904 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D46F1A2D5A6E002A6904 /* BaseModel.m */; };
 		13F9D4731A2D5A80002A6904 /* AnliModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D4721A2D5A80002A6904 /* AnliModel.m */; };
+		13F9D4781A2D9A89002A6904 /* AnliDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D4761A2D9A89002A6904 /* AnliDetailViewController.m */; };
+		13F9D4791A2D9A89002A6904 /* AnliDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F9D4771A2D9A89002A6904 /* AnliDetailViewController.xib */; };
 		19B34DCB1A24666500ED1935 /* SelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DCA1A24666500ED1935 /* SelectedViewController.m */; };
 		19B34DCE1A2466A300ED1935 /* PicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DCD1A2466A300ED1935 /* PicViewController.m */; };
 		19B34DD11A2466C300ED1935 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DD01A2466C300ED1935 /* StoreViewController.m */; };
@@ -162,6 +164,10 @@
 		13F9D46F1A2D5A6E002A6904 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		13F9D4711A2D5A80002A6904 /* AnliModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnliModel.h; sourceTree = "<group>"; };
 		13F9D4721A2D5A80002A6904 /* AnliModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnliModel.m; sourceTree = "<group>"; };
+		13F9D4741A2D7457002A6904 /* GTCommontHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTCommontHeader.h; sourceTree = "<group>"; };
+		13F9D4751A2D9A89002A6904 /* AnliDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnliDetailViewController.h; sourceTree = "<group>"; };
+		13F9D4761A2D9A89002A6904 /* AnliDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnliDetailViewController.m; sourceTree = "<group>"; };
+		13F9D4771A2D9A89002A6904 /* AnliDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnliDetailViewController.xib; sourceTree = "<group>"; };
 		199B0BA807D6890CA852B6FD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		19B34DC91A24666500ED1935 /* SelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedViewController.h; sourceTree = "<group>"; };
 		19B34DCA1A24666500ED1935 /* SelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedViewController.m; sourceTree = "<group>"; };
@@ -489,6 +495,9 @@
 			children = (
 				19B34DCC1A2466A300ED1935 /* PicViewController.h */,
 				19B34DCD1A2466A300ED1935 /* PicViewController.m */,
+				13F9D4751A2D9A89002A6904 /* AnliDetailViewController.h */,
+				13F9D4761A2D9A89002A6904 /* AnliDetailViewController.m */,
+				13F9D4771A2D9A89002A6904 /* AnliDetailViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -584,6 +593,7 @@
 				56621D011A28600300310A48 /* UMtui推广 */,
 				E392C3101A2815FA001AEA0D /* GMCLASS */,
 				560CB53C1A2719880067F7AA /* DefaultConstant.h */,
+				13F9D4741A2D7457002A6904 /* GTCommontHeader.h */,
 				56CE4B501A25D48100876AC7 /* PHMenuViewController */,
 				56CE4B2B1A257FB400876AC7 /* ZSNClasses */,
 			);
@@ -1120,6 +1130,7 @@
 				56621D171A28600300310A48 /* UMUFP.bundle in Resources */,
 				56621D461A28605B00310A48 /* messages_left_bubble@2x.png in Resources */,
 				56621D421A28605B00310A48 /* item_cancel@2x.png in Resources */,
+				13F9D4791A2D9A89002A6904 /* AnliDetailViewController.xib in Resources */,
 				56621D521A28605B00310A48 /* send_selected@2x.png in Resources */,
 				E38F1E1F1A2C3ABE0048C58D /* logo@2x.png in Resources */,
 				566ADC221A2D5B4C009529A5 /* default_touxiang@2x.png in Resources */,
@@ -1206,6 +1217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13F9D4781A2D9A89002A6904 /* AnliDetailViewController.m in Sources */,
 				1312611B1A2C7237001E46E4 /* AnliViewCell.m in Sources */,
 				19B34DE01A246F1100ED1935 /* LeftViewController.m in Sources */,
 				E392C3161A2815FA001AEA0D /* GloginView.m in Sources */,
