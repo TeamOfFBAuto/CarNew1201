@@ -88,7 +88,8 @@
             viewController = [(AppDelegate*)[UIApplication sharedApplication].delegate selectedVC];
             break;
         case 0:///案例图库
-            viewController = _picNav;
+//            viewController = _picNav;
+            viewController = [(AppDelegate*)[UIApplication sharedApplication].delegate picVC];
             break;
         case 3:///商品
             viewController = _storeNav;
