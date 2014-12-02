@@ -61,6 +61,10 @@ typedef void(^versionBlock)(BOOL isNewVersion,NSString *updateUrl,NSString *upda
 
 #pragma mark - 常用视图快速创建
 
++ (UITableViewCell *)cellForIdentify:(NSString *)identify
+                            cellName:(NSString *)cellName
+                            forTable:(UITableView *)tableView;
+
 + (UIButton *)createButtonWithType:(UIButtonType)buttonType
                              frame:(CGRect)aFrame
                        normalTitle:(NSString *)normalTitle

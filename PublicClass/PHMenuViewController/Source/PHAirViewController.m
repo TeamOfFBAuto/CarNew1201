@@ -611,8 +611,9 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
             UIImageView * headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(95,40,70,70)];
             headerImageView.backgroundColor = [UIColor redColor];
             headerImageView.center = CGPointMake(41,41);
-            headerImageView.layer.cornerRadius = 35;
             [headerImageView sd_setImageWithURL:[NSURL URLWithString:[ZSNApi returnUrl:[GMAPI getUid]]] placeholderImage:[UIImage imageNamed:HEADER_DEFAULT_IMAGE]];
+            headerImageView.layer.cornerRadius = 35;
+            headerImageView.layer.masksToBounds = YES;
             [headerBackImageView addSubview:headerImageView];
             
             UILabel * userName = [[UILabel alloc] initWithFrame:CGRectMake(0,135,260,18)];
