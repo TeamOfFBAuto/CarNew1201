@@ -20,7 +20,6 @@
 #import "LogInViewController.h"
 #import "PicViewController.h"
 
-
 #import "UMSocial.h"
 #import "WeiboSDK.h"
 #import "MobClick.h"
@@ -50,6 +49,9 @@
     [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:BATCH channelId:nil];
     
     [MobClick setLogEnabled:YES];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window makeKeyAndVisible];
+    
     
     BOOL isLogIn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_IN];
     
