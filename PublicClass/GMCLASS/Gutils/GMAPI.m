@@ -79,6 +79,9 @@
 + (void)cache:(id)dataInfo ForKey:(NSString *)key
 {
     
+    NSLog(@"key===%@",key);
+    
+    
     @try {
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

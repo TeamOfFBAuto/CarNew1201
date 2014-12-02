@@ -117,6 +117,7 @@
 }
 
 
+
 -(void)noUserNameAndPassW{
     id obj=NSClassFromString(@"UIAlertController");
     if ( obj!=nil){
@@ -133,7 +134,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请填写用户名和密码"
                                                        delegate:self cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil,nil];
-        alert.tag=2;
+        
         [alert show];
     }
 }
@@ -154,7 +155,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请填写用户名"
                                                        delegate:self cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil,nil];
-        alert.tag=2;
+        
         [alert show];
     }
 }
@@ -175,10 +176,11 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请填写密码"
                                                        delegate:self cancelButtonTitle:@"确定"
                                               otherButtonTitles:nil,nil];
-        alert.tag=2;
+        
         [alert show];
     }
 }
+
 
 
 #pragma mark - 登录
@@ -211,7 +213,7 @@
     
     NSString *str = [NSString stringWithFormat:G_LOGIN,name,passw,deviceToken];
     
-
+    
     
     NSLog(@"登录请求接口======%@",str);
     
@@ -231,7 +233,7 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
         if ([dic isKindOfClass:[NSDictionary class]]) {
-
+            
             NSLog(@"%@",dic);
             if ([[dic objectForKey:@"errcode"] intValue] == 0) {//登录成功
                 
@@ -246,7 +248,7 @@
                 
                 AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                 [delegate showControlView:Root_home];
-            
+                
             }else{
                 id obj=NSClassFromString(@"UIAlertController");
                 if ( obj!=nil){
@@ -263,7 +265,7 @@
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请核对用户名或密码是否正确"
                                                                    delegate:self cancelButtonTitle:@"确定"
                                                           otherButtonTitles:nil,nil];
-                    alert.tag=2;
+                    
                     [alert show];
                 }
                 
