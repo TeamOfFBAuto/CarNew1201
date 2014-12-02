@@ -19,6 +19,16 @@
 #import "PHViewController.h"
 #import "LogInViewController.h"
 #import "PicViewController.h"
+
+
+#import "UMSocial.h"
+#import "WeiboSDK.h"
+#import "MobClick.h"
+
+#define WXAPPID @"wxda592c816f3e5c23"
+#define SINAAPPID @"1552967260"
+#define UMENG_APPKEY @"54646d3efd98c5657c005abc"
+
 @interface AppDelegate ()
 
 @end
@@ -28,6 +38,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    [UMSocialData setAppKey:UMENG_APPKEY];
+    [WXApi registerApp:WXAPPID];
+    
+    [WeiboSDK registerApp:SINAAPPID];
+    [WeiboSDK enableDebugMode:YES ];
+    
+    
+    [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:BATCH channelId:nil];
+    
+    [MobClick setLogEnabled:YES];
     
     BOOL isLogIn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_IN];
     

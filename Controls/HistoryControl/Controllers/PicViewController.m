@@ -106,23 +106,53 @@
 //导航右上角按钮
 - (void)createNavigationTools
 {
-    UIButton *saveButton =[[UIButton alloc]initWithFrame:CGRectMake(0,0,25,44)];
+    
+    //空格
+    UIBarButtonItem * spaceButton1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    spaceButton1.width = -15;
+    
+    UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 80, 44)];
+    //    rightView.backgroundColor = [UIColor orangeColor];
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightView];
+    self.navigationItem.rightBarButtonItems = @[spaceButton1,rightItem];
+    
+    //第一个按钮
+    UIButton *saveButton =[[UIButton alloc]initWithFrame:CGRectMake(10,0,30,44)];
     [saveButton addTarget:self action:@selector(clickToCar:) forControlEvents:UIControlEventTouchUpInside];
     [saveButton setImage:[UIImage imageNamed:@"anli_carType"] forState:UIControlStateNormal];
-    UIBarButtonItem *save_item=[[UIBarButtonItem alloc]initWithCustomView:saveButton];
-    [saveButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
-//    saveButton.backgroundColor = [UIColor orangeColor];
     
-    UIButton *share_Button =[[UIButton alloc]initWithFrame:CGRectMake(0,0,25,44)];
+    [rightView addSubview:saveButton];
+    
+    //第二个按钮
+    UIButton *share_Button =[[UIButton alloc]initWithFrame:CGRectMake(saveButton.right + 5,0,30,44)];
     [share_Button addTarget:self action:@selector(clickToSearch:) forControlEvents:UIControlEventTouchUpInside];
     [share_Button setImage:[UIImage imageNamed:@"anli_fangda"] forState:UIControlStateNormal];
-    [share_Button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
     
-//    share_Button.backgroundColor = [UIColor redColor];
+    [rightView addSubview:share_Button];
     
-    UIBarButtonItem *share_item=[[UIBarButtonItem alloc]initWithCustomView:share_Button];
-    self.navigationItem.rightBarButtonItems = @[share_item,save_item];
 }
+
+////导航右上角按钮
+//- (void)createNavigationTools
+//{
+//    UIButton *saveButton =[[UIButton alloc]initWithFrame:CGRectMake(0,0,25,44)];
+//    [saveButton addTarget:self action:@selector(clickToCar:) forControlEvents:UIControlEventTouchUpInside];
+//    [saveButton setImage:[UIImage imageNamed:@"anli_carType"] forState:UIControlStateNormal];
+//    UIBarButtonItem *save_item=[[UIBarButtonItem alloc]initWithCustomView:saveButton];
+//    [saveButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+////    saveButton.backgroundColor = [UIColor orangeColor];
+//    
+//    UIButton *share_Button =[[UIButton alloc]initWithFrame:CGRectMake(0,0,25,44)];
+//    [share_Button addTarget:self action:@selector(clickToSearch:) forControlEvents:UIControlEventTouchUpInside];
+//    [share_Button setImage:[UIImage imageNamed:@"anli_fangda"] forState:UIControlStateNormal];
+//    [share_Button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+//    
+////    share_Button.backgroundColor = [UIColor redColor];
+//    
+//    UIBarButtonItem *share_item=[[UIBarButtonItem alloc]initWithCustomView:share_Button];
+//    self.navigationItem.rightBarButtonItems = @[share_item,save_item];
+//}
 
 #pragma mark 事件处理
 
