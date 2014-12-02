@@ -228,10 +228,10 @@
 
 
 
-#pragma mark - UITextFieldDelegate
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    return YES;
-}
+//#pragma mark - UITextFieldDelegate
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+//    return YES;
+//}
 
 
 
@@ -239,6 +239,9 @@
 
 //键盘出现
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"beginInput" object:nil];
+    
     [UIView animateWithDuration:0.3 animations:^{
         self.Row3backView.frame = _Frame_row3Up;
     } completion:^(BOOL finished) {

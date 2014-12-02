@@ -114,8 +114,23 @@
     [close_button addTarget:self action:@selector(CloseButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:close_button];
     
+    
+    
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(stopJ) name:@"beginInput" object:nil];
+    
+    
+    
 }
 
+
+-(void)stopJ{
+    if (j) {
+        [j stopAnimating];
+        [j removeFromSuperview];
+        j = nil;
+    }
+}
 
 
 -(void)noUserNameAndPassW{
@@ -182,6 +197,27 @@
 }
 
 
+-(void)loginFail{
+    id obj=NSClassFromString(@"UIAlertController");
+    if ( obj!=nil){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"登录失败，请检查网络" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            
+        }];
+        [alertController addAction:cancelAction];
+        [self presentViewController:alertController animated:YES completion:^{
+            
+        }];
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"登录失败，请检查网络"
+                                                       delegate:self cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil,nil];
+        
+        [alert show];
+    }
+}
+
 
 #pragma mark - 登录
 -(void)dengluWithUserName:(NSString *)name pass:(NSString *)passw{
@@ -206,15 +242,9 @@
     
     
     //登录接口
-    //http://gztest.fblife.com/index.php?c=interface&a=dologin&username=ivyandrich&password=yangjinli&token=12sadddsa&fbtype=xml
-    
     
     NSString *deviceToken = [GMAPI getDeviceToken] ? [GMAPI getDeviceToken] : @"testToken";
-    
     NSString *str = [NSString stringWithFormat:G_LOGIN,name,passw,deviceToken];
-    
-    
-    
     NSLog(@"登录请求接口======%@",str);
     
     NSURL *url = [NSURL URLWithString:str];
@@ -227,6 +257,9 @@
         j = nil;
         
         if ([data length] == 0) {
+            
+            [self loginFail];
+            
             return;
         }
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
