@@ -26,7 +26,7 @@
 {
     UIActivityIndicatorView *j;
 }
-@property(nonatomic,strong)GloginView *gloginView;
+
 @end
 
 @implementation LogInViewController
@@ -66,15 +66,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     
-    
-    
-    
-    
-    
     NSLog(@"%s",__FUNCTION__);
     
     GloginView *gloginView = [[GloginView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568:480)];
-    self.gloginView = gloginView;
     [self.view addSubview:gloginView];
     
     
@@ -99,12 +93,16 @@
         NSLog(@"--%@     --%@",usern,passw);
         
         if (usern.length ==0 && passw.length == 0) {//无账号密码
+            UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入用户名和密码" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [al show];
             
         }else if (usern.length == 0 || passw.length == 0){//无账号或密码
             if (usern.length == 0) {
-
+                UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入用户名" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [al show];
             }else if (passw.length == 0){
-
+                UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入密码" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                [al show];
             }
         }else{//有账号密码
             [bself dengluWithUserName:usern pass:passw];
