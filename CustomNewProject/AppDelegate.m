@@ -18,7 +18,7 @@
 #import "PHMenuViewController.h"
 #import "PHViewController.h"
 #import "LogInViewController.h"
-
+#import "PicViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -47,8 +47,8 @@
 {
     if (type == Root_home)
     {
-        _selectedVC = [[SelectedViewController alloc] init];
-        UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:_selectedVC];
+        _picVC = [[PicViewController alloc] init];
+        UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:_picVC];
         
         PHMenuViewController   * menuController = [[PHMenuViewController alloc] initWithRootViewController:navc atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         UINavigationController * menu_nav = [[UINavigationController alloc] initWithRootViewController:menuController];

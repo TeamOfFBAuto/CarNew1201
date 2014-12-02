@@ -13,4 +13,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *aTitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
 
+- (void)setCellWithModel:(id)aModel;
+
 @end

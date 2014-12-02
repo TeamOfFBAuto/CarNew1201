@@ -90,7 +90,6 @@
     @try {
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:nil forKey:key];
         [defaults setObject:dataInfo forKey:key];
         [defaults synchronize];
         

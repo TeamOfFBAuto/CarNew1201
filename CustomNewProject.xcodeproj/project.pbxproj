@@ -33,6 +33,8 @@
 		19B34DE31A246FD700ED1935 /* FansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DE21A246FD700ED1935 /* FansViewController.m */; };
 		560CB53B1A270B230067F7AA /* navgationBar_background_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560CB53A1A270B230067F7AA /* navgationBar_background_image@2x.png */; };
 		56500AFB1A2D63CC00E834A1 /* BusinessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56500AF81A2D63CC00E834A1 /* BusinessViewController.m */; };
+		56500AFF1A2D676900E834A1 /* BusinessListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56500AFD1A2D676900E834A1 /* BusinessListTableViewCell.m */; };
+		56500B001A2D676900E834A1 /* BusinessListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56500AFE1A2D676900E834A1 /* BusinessListTableViewCell.xib */; };
 		565EE8B61A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A31A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		565EE8B71A2C3DEE0063CAA3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A61A2C3DEE0063CAA3 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		565EE8B81A2C3DEE0063CAA3 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A81A2C3DEE0063CAA3 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -179,6 +181,9 @@
 		560CB53C1A2719880067F7AA /* DefaultConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultConstant.h; sourceTree = "<group>"; };
 		56500AF71A2D63CC00E834A1 /* BusinessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessViewController.h; sourceTree = "<group>"; };
 		56500AF81A2D63CC00E834A1 /* BusinessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessViewController.m; sourceTree = "<group>"; };
+		56500AFC1A2D676900E834A1 /* BusinessListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessListTableViewCell.h; sourceTree = "<group>"; };
+		56500AFD1A2D676900E834A1 /* BusinessListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessListTableViewCell.m; sourceTree = "<group>"; };
+		56500AFE1A2D676900E834A1 /* BusinessListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessListTableViewCell.xib; sourceTree = "<group>"; };
 		565EE8A21A2C3DEE0063CAA3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		565EE8A31A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		565EE8A41A2C3DEE0063CAA3 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -668,6 +673,9 @@
 		56500AFA1A2D63CC00E834A1 /* BusinessViews */ = {
 			isa = PBXGroup;
 			children = (
+				56500AFC1A2D676900E834A1 /* BusinessListTableViewCell.h */,
+				56500AFD1A2D676900E834A1 /* BusinessListTableViewCell.m */,
+				56500AFE1A2D676900E834A1 /* BusinessListTableViewCell.xib */,
 			);
 			path = BusinessViews;
 			sourceTree = "<group>";
@@ -1129,6 +1137,7 @@
 				569FFEF31A27380F008A02A6 /* login_close_image@2x.png in Resources */,
 				56621CFD1A285A2500310A48 /* setting_image@2x.png in Resources */,
 				56621D4C1A28605B00310A48 /* nav_bar_bg@2x.png in Resources */,
+				56500B001A2D676900E834A1 /* BusinessListTableViewCell.xib in Resources */,
 				56621D4E1A28605B00310A48 /* nav_btn_bg.png in Resources */,
 				56621D4A1A28605B00310A48 /* messages_toolbar_background.png in Resources */,
 				560CB53B1A270B230067F7AA /* navgationBar_background_image@2x.png in Resources */,
@@ -1198,7 +1207,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1312611B1A2C7237001E46E4 /* AnliViewCell.m in Sources */,
-				19B34DD41A2466FB00ED1935 /* BusinessViewController.m in Sources */,
 				19B34DE01A246F1100ED1935 /* LeftViewController.m in Sources */,
 				E392C3161A2815FA001AEA0D /* GloginView.m in Sources */,
 				56621D581A28605B00310A48 /* UMFeedbackViewController.m in Sources */,
@@ -1224,6 +1232,7 @@
 				19B34DDD1A246DDE00ED1935 /* RightViewController.m in Sources */,
 				565EE8C41A2C41F10063CAA3 /* pinyin.c in Sources */,
 				565EE8B91A2C3DEE0063CAA3 /* ASIDownloadCache.m in Sources */,
+				56500AFF1A2D676900E834A1 /* BusinessListTableViewCell.m in Sources */,
 				56CE4B641A25D48100876AC7 /* PHAirViewController.m in Sources */,
 				56621D141A28600300310A48 /* UMTableViewCell.m in Sources */,
 				56621D611A28620200310A48 /* downloadtool.m in Sources */,

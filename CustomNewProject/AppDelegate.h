@@ -16,6 +16,8 @@ typedef enum{
 #import "FansViewController.h"
 #import "SelectedViewController.h"
 
+@class PicViewController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
@@ -30,7 +32,7 @@ typedef enum{
 
 @property(nonatomic,strong)FansViewController * pushViewController;//控制跳转的透明view
 @property(nonatomic,strong)SelectedViewController * selectedVC;
-
+@property(nonatomic,strong)PicViewController * picVC;
 
 - (void)showControlView:(ROOTVC_TYPE)type;
 @end
