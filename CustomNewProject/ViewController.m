@@ -14,9 +14,15 @@
 
 @implementation ViewController
 
+
+- (void)dealloc
+{    
+    NSLog(@"%s",__FUNCTION__);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSLog(@"%s",__FUNCTION__);
     self.view.backgroundColor=[UIColor redColor];
     // Do any additional setup after loading the view, typically from a nib.
 }
