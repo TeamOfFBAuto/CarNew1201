@@ -25,7 +25,7 @@
         
         self.touchView.backgroundColor=[[UIColor blackColor]colorWithAlphaComponent:0.4];
         
-        self.frame=CGRectMake(0, self.touchView.frame.size.height-268, DEVICE_WIDTH, 268);
+        self.frame=CGRectMake(0, self.touchView.frame.size.height-268, DEVICE_WIDTH, 268 + 7);
 
         
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shareviewHiden)];
@@ -43,8 +43,8 @@
         
         //title
         
-        UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(34, 20, 200, 20)];
-        titleLabel.text=@"分享到";
+        UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(34, 20 - 5, 200, 20)];
+        titleLabel.text=@"分享到:";
         titleLabel.textColor=RGBCOLOR(44, 44, 44);
         titleLabel.font=[UIFont systemFontOfSize:15];
         
@@ -84,21 +84,21 @@
             
         }
         //分割线
-        UIView *viewLine=[[UIView alloc]initWithFrame:CGRectMake(0, 220, DEVICE_WIDTH, 1)];
+        UIView *viewLine=[[UIView alloc]initWithFrame:CGRectMake(0, 220, DEVICE_WIDTH, 0.5)];
         
         viewLine.backgroundColor=RGBCOLOR(173, 173, 173);
         
         [self addSubview:viewLine];
         
-        UIButton *cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 221, DEVICE_WIDTH, 50)];
+        UIButton *cancelButton=[[UIButton alloc]initWithFrame:CGRectMake(30, 221 + 7, DEVICE_WIDTH - 60, 67 / 2.f)];
         
         [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
         
         cancelButton.titleLabel.font=[UIFont systemFontOfSize:17];
         
-        [cancelButton setTitleColor:RGBCOLOR(27, 27, 27) forState:UIControlStateNormal];
+        [cancelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
-        cancelButton.backgroundColor=[UIColor clearColor];
+        cancelButton.backgroundColor=RGBCOLOR(252, 160, 50);
         cancelButton.tag=self.array_icon.count+100;
         
         [cancelButton addTarget:self action:@selector(shareviewHiden) forControlEvents:UIControlEventTouchUpInside];
