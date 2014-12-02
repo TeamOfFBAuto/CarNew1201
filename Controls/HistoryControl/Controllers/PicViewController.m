@@ -191,7 +191,9 @@
 
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    AnliModel *aModel = [_table.dataArray objectAtIndex:indexPath.row];
     AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
+    detail.anli_id = aModel.id;
     [self.navigationController pushViewController:detail animated:YES];
     
     [_table deselectRowAtIndexPath:indexPath animated:YES];

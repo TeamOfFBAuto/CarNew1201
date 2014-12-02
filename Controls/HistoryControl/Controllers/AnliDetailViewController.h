@@ -13,4 +13,6 @@
  */
 @interface AnliDetailViewController : MyViewController
 
+@property (nonatomic,retain)NSString *anli_id;
+
 @end
