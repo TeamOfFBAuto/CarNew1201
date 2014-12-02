@@ -8,7 +8,7 @@
 
 //登录界面view
 #import <UIKit/UIKit.h>
-@class LogInViewController;
+
 
 typedef void (^zhuceBlock)();//注册
 typedef void (^findPasswBlock)();//找回密码
@@ -51,7 +51,7 @@ typedef void (^dengluBlock)(NSString *usern,NSString *passw);//登录
 @property(nonatomic,strong)NSString *userName;//用户输入的用户名
 @property(nonatomic,strong)NSString *userPassWord;//用户输入的密码
 
-@property(nonatomic,assign)LogInViewController *delegate;
+//@property(nonatomic,assign)LogInViewController *delegate;
 
 
 

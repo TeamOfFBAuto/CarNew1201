@@ -9,16 +9,6 @@
 #import "GloginView.h"
 
 #import "LogInViewController.h"
-#import "LTools.h"
-
-
-////4寸屏幕
-//#define Frame_row3Down CGRectMake(24, 312, 275, 210)
-//#define Frame_row3Up CGRectMake(24, 312-180, 275, 210)
-//
-////3.5屏幕
-//#define Frame_row3Down4s CGRectMake(24, 200, 275, 210)
-//#define Frame_row3Up4s CGRectMake(24, 200-180, 275, 210)
 
 #define backGroundImageName @"loginBackground@2x.png"
 #define logoImageName @"logo@2x.png"
@@ -53,8 +43,7 @@
         
         
         
-        //接受登录的通知
-        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(Gshou) name:@"gdenglu" object:nil];
+        
         
         //点击回收键盘
         UIControl *backControl = [[UIControl alloc]initWithFrame:CGRectMake(0, 0, 320, 568)];
@@ -194,6 +183,8 @@
         
         
         
+        //接受登录的通知
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(Gshou) name:@"gdenglu" object:nil];
         
     }
     return self;
