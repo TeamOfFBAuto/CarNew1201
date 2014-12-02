@@ -87,9 +87,11 @@ alpha:(a)]
 #define SENDERVerification @"http://bbs.fblife.com/bbsapinew/register.php?type=phone&step=2&telphone=%@&telcode=%@&datatype=json"
 #define SENDUSERINFO @"http://bbs.fblife.com/bbsapinew/register.php?type=phone&step=3&telphone=%@&telcode=%@&username=%@&password=%@&email=%@&datatype=json"
 
+//案例
 
+//案例列表
 
-
+#define ANLI_LIST @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=JSON&page=%d&ps=%d"
 
 
 

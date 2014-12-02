@@ -45,6 +45,8 @@
     
     _table.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_table];
+    
+    [_table showRefreshHeader:YES];
 }
 
 
@@ -60,12 +62,12 @@
 
 #pragma mark 网络请求
 
-- (void)networkForAnliList:(int)pageSize
+- (void)networkForAnliList:(int)pageNum
 {
     
     __weak typeof(RefreshTableView *)weakTable = _table;
     __weak typeof(self)weakSelf = self;
-    NSString *url = nil;
+    NSString *url = [NSString stringWithFormat:ANLI_LIST,pageNum,10];
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
         
@@ -140,11 +142,14 @@
 - (void)loadNewData
 {
     NSLog(@"loadNewData");
+    
+    [self networkForAnliList:1];
 }
 
 - (void)loadMoreData
 {
     NSLog(@"loadMoreData");
+    [self networkForAnliList:_table.pageNum];
 }
 
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -169,7 +174,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _table.dataArray.count + 5;
+    return _table.dataArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -178,6 +183,8 @@
     
     AnliViewCell *cell = (AnliViewCell *)[LTools cellForIdentify:identifier cellName:@"AnliViewCell" forTable:tableView];
     
+    AnliModel *aModel = (AnliModel *)[_table.dataArray objectAtIndex:indexPath.row];
+    [cell setCellWithModel:aModel];
     
     return cell;
     

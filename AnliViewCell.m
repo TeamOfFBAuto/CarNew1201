@@ -7,6 +7,7 @@
 //
 
 #import "AnliViewCell.h"
+#import "AnliModel.h"
 
 @implementation AnliViewCell
 
@@ -18,6 +19,13 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setCellWithModel:(AnliModel *)aModel
+{
+    [self.bigImageView sd_setImageWithURL:[NSURL URLWithString:aModel.pichead] placeholderImage:nil];
+    self.aTitleLabel.text = aModel.title;
+    self.nameLabel.text = aModel.sname;
 }
 
 @end
