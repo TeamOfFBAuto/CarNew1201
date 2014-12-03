@@ -144,6 +144,7 @@
 		E311CD301A24573C007D69D3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E311CD2F1A24573C007D69D3 /* Images.xcassets */; };
 		E311CD331A24573C007D69D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E311CD311A24573C007D69D3 /* LaunchScreen.xib */; };
 		E311CD3F1A24573C007D69D3 /* CustomNewProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E311CD3E1A24573C007D69D3 /* CustomNewProjectTests.m */; };
+		E358B2C01A2DEAF700B0FA51 /* GmPrepareNetData.m in Sources */ = {isa = PBXBuildFile; fileRef = E358B2BF1A2DEAF700B0FA51 /* GmPrepareNetData.m */; };
 		E38F1E1A1A2C16870048C58D /* GMAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E38F1E191A2C16870048C58D /* GMAPI.m */; };
 		E38F1E1E1A2C3ABE0048C58D /* loginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E38F1E1C1A2C3ABE0048C58D /* loginBackground@2x.png */; };
 		E38F1E1F1A2C3ABE0048C58D /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E38F1E1D1A2C3ABE0048C58D /* logo@2x.png */; };
@@ -405,6 +406,8 @@
 		E311CD381A24573C007D69D3 /* CustomNewProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomNewProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E311CD3D1A24573C007D69D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E311CD3E1A24573C007D69D3 /* CustomNewProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomNewProjectTests.m; sourceTree = "<group>"; };
+		E358B2BE1A2DEAF700B0FA51 /* GmPrepareNetData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmPrepareNetData.h; sourceTree = "<group>"; };
+		E358B2BF1A2DEAF700B0FA51 /* GmPrepareNetData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GmPrepareNetData.m; sourceTree = "<group>"; };
 		E38F1E181A2C16870048C58D /* GMAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMAPI.h; sourceTree = "<group>"; };
 		E38F1E191A2C16870048C58D /* GMAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMAPI.m; sourceTree = "<group>"; };
 		E38F1E1B1A2C1B2D0048C58D /* GAPIHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GAPIHeader.h; sourceTree = "<group>"; };
@@ -1267,6 +1270,8 @@
 		E392C3171A281653001AEA0D /* Gutils */ = {
 			isa = PBXGroup;
 			children = (
+				E358B2BE1A2DEAF700B0FA51 /* GmPrepareNetData.h */,
+				E358B2BF1A2DEAF700B0FA51 /* GmPrepareNetData.m */,
 				E38F1E181A2C16870048C58D /* GMAPI.h */,
 				E38F1E191A2C16870048C58D /* GMAPI.m */,
 				E38F1E1B1A2C1B2D0048C58D /* GAPIHeader.h */,
@@ -1525,6 +1530,7 @@
 				565EE8B71A2C3DEE0063CAA3 /* ASIDataCompressor.m in Sources */,
 				E392C31A1A2818C9001AEA0D /* GzhuceViewController.m in Sources */,
 				135117A61A257F2D0015C133 /* UIColor+ConvertColor.m in Sources */,
+				E358B2C01A2DEAF700B0FA51 /* GmPrepareNetData.m in Sources */,
 				13F9D4731A2D5A80002A6904 /* AnliModel.m in Sources */,
 				565EE8BC1A2C3DEE0063CAA3 /* ASIInputStream.m in Sources */,
 				E392C31D1A2818FD001AEA0D /* GfindPasswViewController.m in Sources */,

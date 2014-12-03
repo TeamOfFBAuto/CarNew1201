@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RefreshTableView.h"
 
-@interface PersonalViewController : MyViewController
+@interface PersonalViewController : MyViewController<RefreshDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @end
