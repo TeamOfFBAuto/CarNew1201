@@ -32,6 +32,10 @@
 		19B34DE01A246F1100ED1935 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DDF1A246F1100ED1935 /* LeftViewController.m */; };
 		19B34DE31A246FD700ED1935 /* FansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DE21A246FD700ED1935 /* FansViewController.m */; };
 		560CB53B1A270B230067F7AA /* navgationBar_background_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560CB53A1A270B230067F7AA /* navgationBar_background_image@2x.png */; };
+		563E4CB81A2D8C2D0022755C /* BusinessListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 563E4CB71A2D8C2D0022755C /* BusinessListModel.m */; };
+		563E4CBF1A2DC3540022755C /* ScreeningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 563E4CBE1A2DC3540022755C /* ScreeningViewController.m */; };
+		563E4CC21A2DC3740022755C /* ScreeningCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 563E4CC11A2DC3740022755C /* ScreeningCarModel.m */; };
+		563E4CC51A2DC3A80022755C /* ScreeningCarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563E4CC41A2DC3A80022755C /* ScreeningCarView.m */; };
 		56500AFB1A2D63CC00E834A1 /* BusinessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56500AF81A2D63CC00E834A1 /* BusinessViewController.m */; };
 		56500AFF1A2D676900E834A1 /* BusinessListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56500AFD1A2D676900E834A1 /* BusinessListTableViewCell.m */; };
 		56500B001A2D676900E834A1 /* BusinessListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56500AFE1A2D676900E834A1 /* BusinessListTableViewCell.xib */; };
@@ -179,6 +183,14 @@
 		19B34DE21A246FD700ED1935 /* FansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FansViewController.m; sourceTree = "<group>"; };
 		560CB53A1A270B230067F7AA /* navgationBar_background_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navgationBar_background_image@2x.png"; sourceTree = "<group>"; };
 		560CB53C1A2719880067F7AA /* DefaultConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultConstant.h; sourceTree = "<group>"; };
+		563E4CB61A2D8C2D0022755C /* BusinessListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessListModel.h; sourceTree = "<group>"; };
+		563E4CB71A2D8C2D0022755C /* BusinessListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessListModel.m; sourceTree = "<group>"; };
+		563E4CBD1A2DC3540022755C /* ScreeningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreeningViewController.h; sourceTree = "<group>"; };
+		563E4CBE1A2DC3540022755C /* ScreeningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreeningViewController.m; sourceTree = "<group>"; };
+		563E4CC01A2DC3740022755C /* ScreeningCarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreeningCarModel.h; sourceTree = "<group>"; };
+		563E4CC11A2DC3740022755C /* ScreeningCarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreeningCarModel.m; sourceTree = "<group>"; };
+		563E4CC31A2DC3A80022755C /* ScreeningCarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreeningCarView.h; sourceTree = "<group>"; };
+		563E4CC41A2DC3A80022755C /* ScreeningCarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreeningCarView.m; sourceTree = "<group>"; };
 		56500AF71A2D63CC00E834A1 /* BusinessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessViewController.h; sourceTree = "<group>"; };
 		56500AF81A2D63CC00E834A1 /* BusinessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessViewController.m; sourceTree = "<group>"; };
 		56500AFC1A2D676900E834A1 /* BusinessListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessListTableViewCell.h; sourceTree = "<group>"; };
@@ -425,6 +437,7 @@
 		19B34DB41A2465F300ED1935 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				563E4CB91A2DC32D0022755C /* AllScreeningControls */,
 				56500AF51A2D63CC00E834A1 /* BusinessControl */,
 				560CB53D1A2719DE0067F7AA /* LogInViewController */,
 				19B34DB51A2465F300ED1935 /* SelectedViewControl */,
@@ -644,6 +657,43 @@
 			path = LogInViewController;
 			sourceTree = "<group>";
 		};
+		563E4CB91A2DC32D0022755C /* AllScreeningControls */ = {
+			isa = PBXGroup;
+			children = (
+				563E4CBA1A2DC32D0022755C /* ScreeningControllers */,
+				563E4CBB1A2DC32D0022755C /* ScreeningModels */,
+				563E4CBC1A2DC32D0022755C /* ScreeningViews */,
+			);
+			path = AllScreeningControls;
+			sourceTree = "<group>";
+		};
+		563E4CBA1A2DC32D0022755C /* ScreeningControllers */ = {
+			isa = PBXGroup;
+			children = (
+				563E4CBD1A2DC3540022755C /* ScreeningViewController.h */,
+				563E4CBE1A2DC3540022755C /* ScreeningViewController.m */,
+			);
+			path = ScreeningControllers;
+			sourceTree = "<group>";
+		};
+		563E4CBB1A2DC32D0022755C /* ScreeningModels */ = {
+			isa = PBXGroup;
+			children = (
+				563E4CC01A2DC3740022755C /* ScreeningCarModel.h */,
+				563E4CC11A2DC3740022755C /* ScreeningCarModel.m */,
+			);
+			path = ScreeningModels;
+			sourceTree = "<group>";
+		};
+		563E4CBC1A2DC32D0022755C /* ScreeningViews */ = {
+			isa = PBXGroup;
+			children = (
+				563E4CC31A2DC3A80022755C /* ScreeningCarView.h */,
+				563E4CC41A2DC3A80022755C /* ScreeningCarView.m */,
+			);
+			path = ScreeningViews;
+			sourceTree = "<group>";
+		};
 		56500AF51A2D63CC00E834A1 /* BusinessControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,6 +716,8 @@
 		56500AF91A2D63CC00E834A1 /* BusinessModels */ = {
 			isa = PBXGroup;
 			children = (
+				563E4CB61A2D8C2D0022755C /* BusinessListModel.h */,
+				563E4CB71A2D8C2D0022755C /* BusinessListModel.m */,
 			);
 			path = BusinessModels;
 			sourceTree = "<group>";
@@ -1220,6 +1272,7 @@
 				565EE8D11A2C4C380063CAA3 /* ZhuCeViewController.m in Sources */,
 				19B34DCE1A2466A300ED1935 /* PicViewController.m in Sources */,
 				56621D001A285FA800310A48 /* SliderRightSettingViewController.m in Sources */,
+				563E4CC51A2DC3A80022755C /* ScreeningCarView.m in Sources */,
 				56500AFB1A2D63CC00E834A1 /* BusinessViewController.m in Sources */,
 				565EE8CE1A2C4C160063CAA3 /* VerificationViewController.m in Sources */,
 				E311CD2B1A24573C007D69D3 /* ViewController.m in Sources */,
@@ -1247,6 +1300,7 @@
 				19B34DD71A24672B00ED1935 /* PersonalViewController.m in Sources */,
 				56621D161A28600300310A48 /* UMTableViewLoadingCell.m in Sources */,
 				56621D641A28625900310A48 /* AlertRePlaceView.m in Sources */,
+				563E4CBF1A2DC3540022755C /* ScreeningViewController.m in Sources */,
 				565EE8B71A2C3DEE0063CAA3 /* ASIDataCompressor.m in Sources */,
 				E392C31A1A2818C9001AEA0D /* GzhuceViewController.m in Sources */,
 				135117A61A257F2D0015C133 /* UIColor+ConvertColor.m in Sources */,
@@ -1257,12 +1311,14 @@
 				565EE8BB1A2C3DEE0063CAA3 /* ASIHTTPRequest.m in Sources */,
 				56CE4B631A25D48100876AC7 /* PHViewController.m in Sources */,
 				565EE8CD1A2C4C160063CAA3 /* MyPhoneNumViewController.m in Sources */,
+				563E4CB81A2D8C2D0022755C /* BusinessListModel.m in Sources */,
 				56621D5C1A2860AC00310A48 /* AboutViewController.m in Sources */,
 				19B34DCB1A24666500ED1935 /* SelectedViewController.m in Sources */,
 				565EE8BA1A2C3DEE0063CAA3 /* ASIFormDataRequest.m in Sources */,
 				56621D151A28600300310A48 /* UMTableViewController.m in Sources */,
 				56621D571A28605B00310A48 /* UMFeedbackTableViewCellRight.m in Sources */,
 				56CE4B371A25873D00876AC7 /* NSString+Emoji.m in Sources */,
+				563E4CC21A2DC3740022755C /* ScreeningCarModel.m in Sources */,
 				1351178E1A257E8E0015C133 /* RefreshTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

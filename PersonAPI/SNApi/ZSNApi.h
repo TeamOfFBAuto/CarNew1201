@@ -120,6 +120,8 @@
 +(BOOL)matchIntWithString:(NSString *)string;
 ///判断是否是邮箱地址
 +(BOOL) validateEmail: (NSString *) candidate;
+///获取字符串高宽度
++(CGSize)stringHeightAndWidthWith:(NSString *)string WithHeight:(float)aHeight WithWidth:(float)aWidth WithFont:(float)aFont;
 @end
 
 

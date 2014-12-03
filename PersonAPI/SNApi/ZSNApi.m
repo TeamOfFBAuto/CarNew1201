@@ -720,6 +720,13 @@
     return [emailTest evaluateWithObject:candidate];
 }
 
+#pragma mark - 获取字符串高度跟宽度
++(CGSize)stringHeightAndWidthWith:(NSString *)string WithHeight:(float)aHeight WithWidth:(float)aWidth WithFont:(float)aFont
+{
+   CGRect rectr = [string boundingRectWithSize:CGSizeMake(aWidth,aHeight) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:aFont]} context:nil];
+    return rectr.size;
+}
+
 @end
 
 

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BusinessListModel.h"
 
 @interface BusinessListTableViewCell : UITableViewCell
 
@@ -15,7 +16,9 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *header_imageView;
 @property (strong, nonatomic) IBOutlet UILabel *business_name_label;
+@property (strong, nonatomic) IBOutlet UILabel *comment_num_label;
+@property (strong, nonatomic) IBOutlet UIView *stars_back_view;
+@property (strong, nonatomic) IBOutlet UIView *labels_back_view;
 
-
-
+-(void)setInfoWithModel:(BusinessListModel *)info;
 @end

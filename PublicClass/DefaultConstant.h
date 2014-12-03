@@ -82,12 +82,19 @@ alpha:(a)]
 #define NOTIFICATION_REPLY @"reply"
 #define DEVICETOKEN @"pushdevicetoken"
 
+
+#pragma mark - 所有接口 -************************************************************
+
+#define BASE_URL @"http://gztest.fblife.com/"
+
 //注册
 #define SENDPHONENUMBER @"http://bbs.fblife.com/bbsapinew/register.php?type=phone&step=1&telphone=%@&keycode=e2e3420683&datatype=json"
 #define SENDERVerification @"http://bbs.fblife.com/bbsapinew/register.php?type=phone&step=2&telphone=%@&telcode=%@&datatype=json"
 #define SENDUSERINFO @"http://bbs.fblife.com/bbsapinew/register.php?type=phone&step=3&telphone=%@&telcode=%@&username=%@&password=%@&email=%@&datatype=json"
 
-
+#pragma mark - 商家信息相关接口
+#pragma mark - 商家列表接口
+#define BUSINESS_LIST_URL @"index.php?c=interface&a=getStore&ps=20&page=%d&fbtype=json"
 
 
 
