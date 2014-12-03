@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Controls/LogInViewController/LogInViewController.m"
-            timestampString = "439183821.613751"
+            timestampString = "439203914.040253"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "-dengluWithUserName:pass:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,43 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Controls/LogInViewController/LogInViewController.m"
-            timestampString = "439183885.995147"
+            timestampString = "439203915.716769"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "-dengluWithUserName:pass:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Controls/LogInViewController/LogInViewController.m"
-            timestampString = "439183886.64043"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "-dengluWithUserName:pass:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Controls/LogInViewController/LogInViewController.m"
-            timestampString = "439183971.219536"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "-dengluWithUserName:pass:"
             landmarkType = "5">
          </BreakpointContent>

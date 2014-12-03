@@ -23,7 +23,6 @@
 
 +(NSString *)getUserPassWord;
 
-+(NSString *)getUserPhoneNumber;
 
 + (MBProgressHUD *)showMBProgressWithText:(NSString *)text addToView:(UIView *)aView;
 

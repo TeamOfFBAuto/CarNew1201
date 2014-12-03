@@ -95,10 +95,15 @@ alpha:(a)]
 #pragma mark - 商家信息相关接口
 #pragma mark - 商家列表接口
 #define BUSINESS_LIST_URL @"index.php?c=interface&a=getStore&ps=20&page=%d&fbtype=json"
+//登录
+#define G_LOGIN @"http://gztest.fblife.com/index.php?c=interface&a=dologin&username=%@&password=%@&token=%@&fbtype=json"
+//案例
 
+//案例列表
+#define ANLI_LIST @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&page=%d&ps=%d"
 
-
-
+//案例收藏
+#define ANLI_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=addFavCase&fbtype=json&uid=%@&caseid=%@"
 
 
 

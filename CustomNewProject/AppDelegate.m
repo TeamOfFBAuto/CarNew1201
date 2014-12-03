@@ -19,7 +19,16 @@
 #import "PHViewController.h"
 #import "LogInViewController.h"
 #import "PicViewController.h"
-@interface AppDelegate ()
+
+#import "UMSocial.h"
+#import "WeiboSDK.h"
+#import "MobClick.h"
+
+#define WXAPPID @"wxda592c816f3e5c23"
+#define SINAAPPID @"1552967260"
+#define UMENG_APPKEY @"54646d3efd98c5657c005abc"
+
+@interface AppDelegate ()<MobClickDelegate,WXApiDelegate>
 
 @end
 
@@ -28,6 +37,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    [UMSocialData setAppKey:UMENG_APPKEY];
+    [WXApi registerApp:WXAPPID];
+    
+    [WeiboSDK registerApp:SINAAPPID];
+    [WeiboSDK enableDebugMode:YES ];
+    
+    
+    [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:BATCH channelId:nil];
+    
+    [MobClick setLogEnabled:YES];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window makeKeyAndVisible];
+    
     
     BOOL isLogIn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_IN];
     
@@ -144,12 +168,29 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
-
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return  [WXApi handleOpenURL:url delegate:self];
+    
+    // return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+}
+#pragma mark-这里处理新浪微博SSO授权进入新浪微博客户端后进入后台，再返回原来应用
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return  [WXApi handleOpenURL:url delegate:self];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [UMSocialSnsService  applicationDidBecomeActive];
+}
+
 
 @end

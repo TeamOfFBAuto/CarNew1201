@@ -1142,9 +1142,46 @@ static char const * const SwipeObject    = "SWIPE_OBJECT";
     return (id)parent;
 }
 
-- (void)dealloc
+
+//去掉 dealloc,替换为以下 1、2、3、4
+
+//- (void)dealloc
+//{
+//    self.phSwipeHander = nil;
+//}
+
+// 1
+- (BOOL)phSwipeGestureRecognizerExists {
+    return objc_getAssociatedObject(self, SwipeObject) ? YES : NO;
+}
+// 2
+- (void)ph_dealloc
 {
-    self.phSwipeHander = nil;
+    if (self.phSwipeGestureRecognizerExists) {
+        self.phSwipeHander = nil;
+    }
+    [self ph_dealloc]; // This calls the original dealloc.
+}
+
+// 3
+
+/// Swizzle the method into place.
+void PH_MethodSwizzle(Class c, SEL origSEL, SEL overrideSEL) {
+    Method origMethod = class_getInstanceMethod(c, origSEL);
+    Method overrideMethod = class_getInstanceMethod(c, overrideSEL);
+    if (class_addMethod(c, origSEL, method_getImplementation(overrideMethod), method_getTypeEncoding(overrideMethod))) {
+        class_replaceMethod(c, overrideSEL, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
+    } else {
+        method_exchangeImplementations(origMethod, overrideMethod);
+    }
+}
+
+// 4
+
+/// Swizzle dealloc at load time.
++ (void)load {
+    SEL deallocSelector = NSSelectorFromString(@"dealloc"); // Because ARC won't allow @selector(dealloc).
+    PH_MethodSwizzle(self, deallocSelector, @selector(ph_dealloc));
 }
 
 @end

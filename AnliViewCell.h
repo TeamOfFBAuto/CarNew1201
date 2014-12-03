@@ -12,5 +12,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *bigImageView;
 @property (strong, nonatomic) IBOutlet UILabel *aTitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *nameLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *smallImageView;
+
+- (void)setCellWithModel:(id)aModel;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LogInViewController : UIViewController
+@interface LogInViewController : UIViewController<UIAlertViewDelegate>
 
 + (LogInViewController *)sharedManager;
 

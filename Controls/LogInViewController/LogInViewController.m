@@ -25,6 +25,7 @@
 @interface LogInViewController ()
 {
     UIActivityIndicatorView *j;
+    UIAlertView *al;
 }
 
 @end
@@ -93,16 +94,13 @@
         NSLog(@"--%@     --%@",usern,passw);
         
         if (usern.length ==0 && passw.length == 0) {//无账号密码
-            UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入用户名和密码" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-            [al show];
             
+            [bself noUserNameAndPassW];
         }else if (usern.length == 0 || passw.length == 0){//无账号或密码
             if (usern.length == 0) {
-                UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入用户名" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [al show];
+                [bself noUserName];
             }else if (passw.length == 0){
-                UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入密码" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [al show];
+                [bself noPassW];
             }
         }else{//有账号密码
             [bself dengluWithUserName:usern pass:passw];
@@ -116,8 +114,109 @@
     [close_button addTarget:self action:@selector(CloseButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:close_button];
     
+    
+    
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(stopJ) name:@"beginInput" object:nil];
+    
+    
+    
 }
 
+
+-(void)stopJ{
+    if (j) {
+        [j stopAnimating];
+        [j removeFromSuperview];
+        j = nil;
+    }
+}
+
+
+-(void)noUserNameAndPassW{
+    id obj=NSClassFromString(@"UIAlertController");
+    if ( obj!=nil){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请填写用户名和密码" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            
+        }];
+        [alertController addAction:cancelAction];
+        [self presentViewController:alertController animated:YES completion:^{
+            
+        }];
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请填写用户名和密码"
+                                                       delegate:self cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil,nil];
+        
+        [alert show];
+    }
+}
+
+-(void)noUserName{
+    id obj=NSClassFromString(@"UIAlertController");
+    if ( obj!=nil){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请填写用户名" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            
+        }];
+        [alertController addAction:cancelAction];
+        [self presentViewController:alertController animated:YES completion:^{
+            
+        }];
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请填写用户名"
+                                                       delegate:self cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil,nil];
+        
+        [alert show];
+    }
+}
+
+-(void)noPassW{
+    id obj=NSClassFromString(@"UIAlertController");
+    if ( obj!=nil){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请填写密码" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            
+        }];
+        [alertController addAction:cancelAction];
+        [self presentViewController:alertController animated:YES completion:^{
+            
+        }];
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请填写密码"
+                                                       delegate:self cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil,nil];
+        
+        [alert show];
+    }
+}
+
+
+-(void)loginFail{
+    id obj=NSClassFromString(@"UIAlertController");
+    if ( obj!=nil){
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"登录失败，请检查网络" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            
+        }];
+        [alertController addAction:cancelAction];
+        [self presentViewController:alertController animated:YES completion:^{
+            
+        }];
+    }
+    else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"登录失败，请检查网络"
+                                                       delegate:self cancelButtonTitle:@"确定"
+                                              otherButtonTitles:nil,nil];
+        
+        [alert show];
+    }
+}
 
 
 #pragma mark - 登录
@@ -133,7 +232,7 @@
         if (iPhone5) {
             j.center = CGPointMake(160, 170);
         }else{
-            j.center = CGPointMake(160, 120);
+            j.center = CGPointMake(160, 170);
         }
         
         [self.view addSubview:j];
@@ -143,15 +242,9 @@
     
     
     //登录接口
-    //http://gztest.fblife.com/index.php?c=interface&a=dologin&username=ivyandrich&password=yangjinli&token=12sadddsa&fbtype=xml
-    
     
     NSString *deviceToken = [GMAPI getDeviceToken] ? [GMAPI getDeviceToken] : @"testToken";
-    
     NSString *str = [NSString stringWithFormat:G_LOGIN,name,passw,deviceToken];
-    
-
-    
     NSLog(@"登录请求接口======%@",str);
     
     NSURL *url = [NSURL URLWithString:str];
@@ -161,15 +254,19 @@
         NSLog(@"error-----------%@",connectionError);
         
         [j stopAnimating];
+        j = nil;
         
         if ([data length] == 0) {
+            
+            [self loginFail];
+            
             return;
         }
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
         if ([dic isKindOfClass:[NSDictionary class]]) {
-
+            
             NSLog(@"%@",dic);
             if ([[dic objectForKey:@"errcode"] intValue] == 0) {//登录成功
                 
@@ -178,18 +275,38 @@
                 NSString *userid = [datainfo objectForKey:@"uid"];
                 NSString *username = [datainfo objectForKey:@"name"];
                 NSString *authkey = [datainfo objectForKey:@"authkey"];
-                [GMAPI cache:userid ForKey:USERID];
-                [GMAPI cache:username ForKey:USERNAME];
-                [GMAPI cache:authkey ForKey:AUTHKEY];
+                [GMAPI cache:userid ForKey:USER_UID];
+                [GMAPI cache:username ForKey:USER_NAME];
+                [GMAPI cache:authkey ForKey:USER_AUTHOD];
                 
                 AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                 [delegate showControlView:Root_home];
-            
-            }else{
                 
-                UIAlertView *al = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请核对用户名或密码是否正确" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [al show];
-                [defaults setBool:NO forKey:LOGIN_SUCCESS];
+            }else{
+                id obj=NSClassFromString(@"UIAlertController");
+                if ( obj!=nil){
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请核对用户名或密码是否正确" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+
+                    }];
+                    [alertController addAction:cancelAction];
+                    [self presentViewController:alertController animated:YES completion:^{
+                        
+                    }];
+                }
+                else{
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请核对用户名或密码是否正确"
+                                                                   delegate:self cancelButtonTitle:@"确定"
+                                                          otherButtonTitles:nil,nil];
+                    
+                    [alert show];
+                }
+                
+                
+                
+                
+                
+                [defaults setBool:NO forKey:USER_IN];
             }
             
             [defaults synchronize];
@@ -216,6 +333,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
 }
 
 @end

@@ -12,6 +12,8 @@
 #import "AnliViewCell.h"
 #import "AnliModel.h"
 
+#import "AnliDetailViewController.h"
+
 @interface PicViewController ()<UITableViewDataSource,RefreshDelegate>
 {
     RefreshTableView *_table;
@@ -41,10 +43,12 @@
     _table.refreshDelegate = self;
     _table.dataSource = self;
     
-    _table.backgroundColor = [UIColor orangeColor];
+    _table.backgroundColor = [UIColor whiteColor];
     
     _table.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_table];
+    
+    [_table showRefreshHeader:YES];
 }
 
 
@@ -60,12 +64,12 @@
 
 #pragma mark 网络请求
 
-- (void)networkForAnliList:(int)pageSize
+- (void)networkForAnliList:(int)pageNum
 {
     
     __weak typeof(RefreshTableView *)weakTable = _table;
     __weak typeof(self)weakSelf = self;
-    NSString *url = nil;
+    NSString *url = [NSString stringWithFormat:ANLI_LIST,pageNum,10];
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
         
@@ -78,7 +82,7 @@
                 int total = [dataInfo[@"total"] intValue];
                 NSArray *data = dataInfo[@"data"];
                 NSMutableArray *temp_arr = [NSMutableArray arrayWithCapacity:data.count];
-                for (NSDictionary *aDic in temp_arr) {
+                for (NSDictionary *aDic in data) {
                     AnliModel *aModel = [[AnliModel alloc]initWithDictionary:aDic];
                     [temp_arr addObject:aModel];
                 }
@@ -102,18 +106,53 @@
 //导航右上角按钮
 - (void)createNavigationTools
 {
-    UIButton *saveButton =[[UIButton alloc]initWithFrame:CGRectMake(0,8,30,21.5)];
+    
+    //空格
+    UIBarButtonItem * spaceButton1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    spaceButton1.width = -15;
+    
+    UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 80, 44)];
+    //    rightView.backgroundColor = [UIColor orangeColor];
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightView];
+    self.navigationItem.rightBarButtonItems = @[spaceButton1,rightItem];
+    
+    //第一个按钮
+    UIButton *saveButton =[[UIButton alloc]initWithFrame:CGRectMake(10,0,30,44)];
     [saveButton addTarget:self action:@selector(clickToCar:) forControlEvents:UIControlEventTouchUpInside];
     [saveButton setImage:[UIImage imageNamed:@"anli_carType"] forState:UIControlStateNormal];
-    UIBarButtonItem *save_item=[[UIBarButtonItem alloc]initWithCustomView:saveButton];
     
+    [rightView addSubview:saveButton];
     
-    UIButton *share_Button =[[UIButton alloc]initWithFrame:CGRectMake(0,8,30,21.5)];
+    //第二个按钮
+    UIButton *share_Button =[[UIButton alloc]initWithFrame:CGRectMake(saveButton.right + 5,0,30,44)];
     [share_Button addTarget:self action:@selector(clickToSearch:) forControlEvents:UIControlEventTouchUpInside];
     [share_Button setImage:[UIImage imageNamed:@"anli_fangda"] forState:UIControlStateNormal];
-    UIBarButtonItem *share_item=[[UIBarButtonItem alloc]initWithCustomView:share_Button];
-    self.navigationItem.rightBarButtonItems = @[share_item,save_item];
+    
+    [rightView addSubview:share_Button];
+    
 }
+
+////导航右上角按钮
+//- (void)createNavigationTools
+//{
+//    UIButton *saveButton =[[UIButton alloc]initWithFrame:CGRectMake(0,0,25,44)];
+//    [saveButton addTarget:self action:@selector(clickToCar:) forControlEvents:UIControlEventTouchUpInside];
+//    [saveButton setImage:[UIImage imageNamed:@"anli_carType"] forState:UIControlStateNormal];
+//    UIBarButtonItem *save_item=[[UIBarButtonItem alloc]initWithCustomView:saveButton];
+//    [saveButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+////    saveButton.backgroundColor = [UIColor orangeColor];
+//    
+//    UIButton *share_Button =[[UIButton alloc]initWithFrame:CGRectMake(0,0,25,44)];
+//    [share_Button addTarget:self action:@selector(clickToSearch:) forControlEvents:UIControlEventTouchUpInside];
+//    [share_Button setImage:[UIImage imageNamed:@"anli_fangda"] forState:UIControlStateNormal];
+//    [share_Button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
+//    
+////    share_Button.backgroundColor = [UIColor redColor];
+//    
+//    UIBarButtonItem *share_item=[[UIBarButtonItem alloc]initWithCustomView:share_Button];
+//    self.navigationItem.rightBarButtonItems = @[share_item,save_item];
+//}
 
 #pragma mark 事件处理
 
@@ -140,21 +179,29 @@
 - (void)loadNewData
 {
     NSLog(@"loadNewData");
+    
+    [self networkForAnliList:1];
 }
 
 - (void)loadMoreData
 {
     NSLog(@"loadMoreData");
+    [self networkForAnliList:_table.pageNum];
 }
 
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    AnliModel *aModel = [_table.dataArray objectAtIndex:indexPath.row];
+    AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
+    detail.anli_id = aModel.id;
+    [self.navigationController pushViewController:detail animated:YES];
     
+    [_table deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath
 {
-    return 295;
+    return 297;
 }
 
 #pragma mark - UITableViewDelegate
@@ -169,7 +216,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _table.dataArray.count + 5;
+    return _table.dataArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -178,6 +225,8 @@
     
     AnliViewCell *cell = (AnliViewCell *)[LTools cellForIdentify:identifier cellName:@"AnliViewCell" forTable:tableView];
     
+    AnliModel *aModel = (AnliModel *)[_table.dataArray objectAtIndex:indexPath.row];
+    [cell setCellWithModel:aModel];
     
     return cell;
     
