@@ -70,7 +70,51 @@
     spaceButton.width = MY_MACRO_NAME?-5:5;
     
     self.navigationController.navigationBarHidden=NO;
+    
+    
+    UIPanGestureRecognizer * panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGestures:)];
+    panGestureRecognizer.minimumNumberOfTouches = 1;
+    panGestureRecognizer.maximumNumberOfTouches = 1;
+    [self.view addGestureRecognizer:panGestureRecognizer];
+    
+    
+    UISwipeGestureRecognizer * swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeOnAirImageView:)];
+    swipe.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipe];
+
    
+}
+
+#pragma mark - 拖拽手势
+BOOL isFirst;
+CGPoint began_point;
+-(void)handlePanGestures:(UIPanGestureRecognizer *)sender
+{
+    if (!isFirst)
+    {
+        began_point = [sender locationInView:self.view];
+        if (began_point.x > 0)
+        {
+            NSLog(@"mdasdajsdkalsjdlaksjdlkasjdklasjdlkjsdlkasjdlaksjdkasjdklsajdlkadjlkdkjlkj ---  %f",began_point.x);
+            isFirst = YES;
+        }
+    }
+    
+    if (sender.state == UIGestureRecognizerStateChanged) {
+        CGPoint current_point = [sender locationInView:self.view];
+        
+        if (current_point.x - began_point.x > 40 && began_point.x != 0)
+        {
+            NSLog(@"mamamamamamamamamama -----  %f ----   %f",current_point.x,began_point.x);
+            isFirst = NO;
+            [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
+        }
+    }
+}
+
+-(void)handleSwipeOnAirImageView:(UISwipeGestureRecognizer *)sender
+{
+    [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
 }
 
 -(void)setMyViewControllerLeftButtonType:(MyViewControllerLeftbuttonType)theType WithRightButtonType:(MyViewControllerRightbuttonType)rightType

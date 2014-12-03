@@ -8,13 +8,14 @@
 
 #import "BusinessViewController.h"
 #import "BusinessListTableViewCell.h"
+#import "SNRefreshTableView.h"
 
-@interface BusinessViewController ()<RefreshDelegate,UITableViewDataSource>
+@interface BusinessViewController ()<SNRefreshDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
-
+    
 }
 
-@property(nonatomic,strong)RefreshTableView * myTableView;
+@property(nonatomic,strong)SNRefreshTableView * myTableView;
 @property(nonatomic,strong)NSMutableArray * data_array;
 @end
 
@@ -30,9 +31,10 @@
     
     
     _data_array = [NSMutableArray array];
-    _myTableView = [[RefreshTableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64) showLoadMore:YES];
+    _myTableView = [[SNRefreshTableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64) showLoadMore:YES];
     _myTableView.refreshDelegate = self;
     _myTableView.dataSource = self;
+    _myTableView.contentSize = CGSizeMake(340,_myTableView.contentSize.height);
     [self.view addSubview:_myTableView];
     
     [self getBusinessData];
@@ -43,6 +45,8 @@
 {
     [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
 }
+
+
 
 #pragma mark - 获取数据
 -(void)getBusinessData
@@ -105,6 +109,7 @@
     BusinessListTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"BusinessListTableViewCell" owner:nil options:nil] objectAtIndex:0];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     for (UIView * view in cell.labels_back_view.subviews) {
@@ -133,6 +138,17 @@
 {
     return 85;
 }
+
+#pragma mark - UIScrollViewDelegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffset.x<-40)
+    {
+        [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
+    }
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

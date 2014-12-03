@@ -125,6 +125,7 @@
 		56621D671A286A0900310A48 /* ZSNApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 56621D661A286A0900310A48 /* ZSNApi.m */; };
 		566ADC221A2D5B4C009529A5 /* default_touxiang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 566ADC211A2D5B4C009529A5 /* default_touxiang@2x.png */; };
 		567B13AA1A2C6B8C003A3C59 /* fanhui_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 567B13A91A2C6B8C003A3C59 /* fanhui_image@2x.png */; };
+		567D6DFC1A2EC508006E108C /* SNRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 567D6DFB1A2EC508006E108C /* SNRefreshTableView.m */; };
 		569FFEED1A272EA6008A02A6 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569FFEEB1A272EA6008A02A6 /* LogInViewController.m */; };
 		569FFEF31A27380F008A02A6 /* login_close_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 569FFEF01A27380F008A02A6 /* login_close_image@2x.png */; };
 		569FFEF41A27380F008A02A6 /* login_mima_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 569FFEF11A27380F008A02A6 /* login_mima_image@2x.png */; };
@@ -372,6 +373,8 @@
 		56621D661A286A0900310A48 /* ZSNApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSNApi.m; sourceTree = "<group>"; };
 		566ADC211A2D5B4C009529A5 /* default_touxiang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_touxiang@2x.png"; sourceTree = "<group>"; };
 		567B13A91A2C6B8C003A3C59 /* fanhui_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fanhui_image@2x.png"; sourceTree = "<group>"; };
+		567D6DFA1A2EC508006E108C /* SNRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRefreshTableView.h; sourceTree = "<group>"; };
+		567D6DFB1A2EC508006E108C /* SNRefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRefreshTableView.m; sourceTree = "<group>"; };
 		569FFEEA1A272EA6008A02A6 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		569FFEEB1A272EA6008A02A6 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		569FFEF01A27380F008A02A6 /* login_close_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_close_image@2x.png"; sourceTree = "<group>"; };
@@ -1117,6 +1120,8 @@
 			children = (
 				56CE4B2C1A257FC600876AC7 /* MyViewController.h */,
 				56CE4B2D1A257FC600876AC7 /* MyViewController.m */,
+				567D6DFA1A2EC508006E108C /* SNRefreshTableView.h */,
+				567D6DFB1A2EC508006E108C /* SNRefreshTableView.m */,
 			);
 			path = ZSNClasses;
 			sourceTree = "<group>";
@@ -1545,6 +1550,7 @@
 				565EE8BA1A2C3DEE0063CAA3 /* ASIFormDataRequest.m in Sources */,
 				56621D151A28600300310A48 /* UMTableViewController.m in Sources */,
 				56621D571A28605B00310A48 /* UMFeedbackTableViewCellRight.m in Sources */,
+				567D6DFC1A2EC508006E108C /* SNRefreshTableView.m in Sources */,
 				56CE4B371A25873D00876AC7 /* NSString+Emoji.m in Sources */,
 				563E4CC21A2DC3740022755C /* ScreeningCarModel.m in Sources */,
 				1351178E1A257E8E0015C133 /* RefreshTableView.m in Sources */,
