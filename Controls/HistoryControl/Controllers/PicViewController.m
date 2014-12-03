@@ -201,7 +201,14 @@
 }
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath
 {
-    return 297;
+    return [self heightFor:297];
+}
+
+//根据宽度适应高度
+- (CGFloat)heightFor:(CGFloat)oHeight
+{
+   CGFloat aHeight = (ALL_FRAME_WIDTH / 320) * oHeight;
+    return aHeight;
 }
 
 #pragma mark - UITableViewDelegate

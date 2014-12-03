@@ -14,21 +14,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="猛禽魔抓金卡杀菌前杠" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJG-nV-nL0">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="猛禽魔抓金卡杀菌前杠" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJG-nV-nL0">
                         <rect key="frame" x="10" y="228" width="212" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.36078431372549019" green="0.36078431372549019" blue="0.36078431372549019" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
-                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                             <rect key="frame" x="10" y="240" width="212" height="21"/>
                         </variation>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="运量改装" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJN-Hs-ZaQ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="运量改装" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJN-Hs-ZaQ">
                         <rect key="frame" x="10" y="248" width="212" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.74901960784313726" green="0.74901960784313726" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
-                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                        <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                             <rect key="frame" x="10" y="257" width="212" height="21"/>
                         </variation>
                     </label>
@@ -38,17 +38,20 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E2D-Fh-rzN">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <color key="backgroundColor" red="1" green="0.44705882349999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                        </variation>
                     </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="lJN-Hs-ZaQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="2Cl-f5-QGu"/>
                     <constraint firstItem="0Iw-Du-m6k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="DkV-sb-Ghz"/>
                     <constraint firstAttribute="trailing" secondItem="0Iw-Du-m6k" secondAttribute="trailing" id="ECr-Ht-Zbo"/>
-                    <constraint firstAttribute="bottom" secondItem="E2D-Fh-rzN" secondAttribute="bottom" constant="50" id="J3S-5f-ap9"/>
+                    <constraint firstAttribute="bottom" secondItem="hJG-nV-nL0" secondAttribute="bottom" constant="36" id="G4c-HS-fV8"/>
                     <constraint firstItem="0Iw-Du-m6k" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="NnJ-L6-B36"/>
-                    <constraint firstItem="E2D-Fh-rzN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="202" id="NxG-ih-hbX"/>
-                    <constraint firstAttribute="trailing" secondItem="E2D-Fh-rzN" secondAttribute="trailing" constant="9" id="k3I-2W-Kda"/>
+                    <constraint firstItem="hJG-nV-nL0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="OHg-kw-l0a"/>
+                    <constraint firstAttribute="bottom" secondItem="lJN-Hs-ZaQ" secondAttribute="bottom" constant="19" id="Yx5-0f-VnN"/>
                     <constraint firstAttribute="bottom" secondItem="0Iw-Du-m6k" secondAttribute="bottom" constant="83" id="sh3-yl-H6j"/>
-                    <constraint firstItem="E2D-Fh-rzN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="266" id="w4c-Dg-XSp"/>
                 </constraints>
                 <variation key="default">
                     <mask key="subviews">
@@ -56,14 +59,14 @@
                         <exclude reference="E2D-Fh-rzN"/>
                     </mask>
                     <mask key="constraints">
+                        <exclude reference="G4c-HS-fV8"/>
+                        <exclude reference="OHg-kw-l0a"/>
+                        <exclude reference="2Cl-f5-QGu"/>
+                        <exclude reference="Yx5-0f-VnN"/>
                         <exclude reference="DkV-sb-Ghz"/>
                         <exclude reference="ECr-Ht-Zbo"/>
                         <exclude reference="NnJ-L6-B36"/>
                         <exclude reference="sh3-yl-H6j"/>
-                        <exclude reference="J3S-5f-ap9"/>
-                        <exclude reference="NxG-ih-hbX"/>
-                        <exclude reference="k3I-2W-Kda"/>
-                        <exclude reference="w4c-Dg-XSp"/>
                     </mask>
                 </variation>
                 <variation key="heightClass=regular-widthClass=compact">
@@ -72,14 +75,14 @@
                         <include reference="E2D-Fh-rzN"/>
                     </mask>
                     <mask key="constraints">
+                        <include reference="G4c-HS-fV8"/>
+                        <include reference="OHg-kw-l0a"/>
+                        <include reference="2Cl-f5-QGu"/>
+                        <include reference="Yx5-0f-VnN"/>
                         <include reference="DkV-sb-Ghz"/>
                         <include reference="ECr-Ht-Zbo"/>
                         <include reference="NnJ-L6-B36"/>
                         <include reference="sh3-yl-H6j"/>
-                        <include reference="J3S-5f-ap9"/>
-                        <include reference="NxG-ih-hbX"/>
-                        <include reference="k3I-2W-Kda"/>
-                        <include reference="w4c-Dg-XSp"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
@@ -89,7 +92,7 @@
                 <outlet property="nameLabel" destination="lJN-Hs-ZaQ" id="U1n-VG-pjx"/>
                 <outlet property="smallImageView" destination="E2D-Fh-rzN" id="t1H-OU-8DY"/>
             </connections>
-            <point key="canvasLocation" x="-255" y="178.5"/>
+            <point key="canvasLocation" x="-394" y="205.5"/>
         </tableViewCell>
     </objects>
 </document>
