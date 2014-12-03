@@ -22,9 +22,12 @@
     UIView *_threeBtnBackgroundView;//三个按钮的底层view
     
     
-    UILabel *_anliNumLabel;//收藏案例上的数字
-    UILabel *_chanpinNumLabel;//收藏产品上的数字
-    UILabel *_dianpuLabel;//收藏店铺上的数字
+    UILabel *_anliNumLabel;//收藏案例上的数字label
+    UILabel *_chanpinNumLabel;//收藏产品上的数字label
+    UILabel *_dianpuNumLabel;//收藏店铺上的数字label
+    UILabel *_anliTitleLabel;//案例title
+    UILabel *_chanpinTitleLabel;//产品title
+    UILabel *_dianpuTitleLabel;//店铺title
     
     
     
@@ -104,7 +107,7 @@
     [_upThreeViewBackGroundView addSubview:_topImv];
     
     //头像
-    _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH*70/320, ALL_FRAME_HEIGHT*70/568)];
+    _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH*70/320.0, ALL_FRAME_HEIGHT*70/568.0)];
     _faceImv.backgroundColor = [UIColor orangeColor];
     _faceImv.center = CGPointMake(ALL_FRAME_WIDTH/2, _topImv.frame.size.height);
     _faceImv.layer.cornerRadius = ALL_FRAME_WIDTH*70/320/2;
@@ -112,7 +115,8 @@
     [_upThreeViewBackGroundView addSubview:_faceImv];
     
     //用户名
-    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_faceImv.frame)+8, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT *17/568)];
+    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_faceImv.frame)+8, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT *19/568)];
+    _nameLabel.font = [UIFont systemFontOfSize:16];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
     _nameLabel.text = @"newbilityPangSmall";
     _nameLabel.textColor = [UIColor blackColor];
@@ -127,8 +131,64 @@
     _upThreeViewBackGroundView.frame = CGRectMake(0, 0, ALL_FRAME_WIDTH, CGRectGetMaxY(_threeBtnBackgroundView.frame));
     
     for (int i = 0; i<3; i++) {
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0+i * ALL_FRAME_WIDTH/3, 0.5, ALL_FRAME_WIDTH/3, _threeBtnBackgroundView.frame.size.height)];
-        view.backgroundColor = RGBCOLOR(arc4random()%255, arc4random()%255, arc4random()%255);
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0+i * ALL_FRAME_WIDTH/3.0, 0.5, ALL_FRAME_WIDTH/3, _threeBtnBackgroundView.frame.size.height)];
+        view.backgroundColor = RGBCOLOR(251, 251, 251);
+        view.tag = i+10;
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(gTap:)];
+        [view addGestureRecognizer:tap];
+        
+        if (i == 0) {//案例
+            //案例的数字
+            _anliNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.0/568*ALL_FRAME_HEIGHT)];
+//            _anliNumLabel.backgroundColor = RGBCOLOR_ONE;
+            _anliNumLabel.textAlignment = NSTextAlignmentCenter;
+            NSLog(@"案例的数字label%@",NSStringFromCGRect(_anliNumLabel.frame));
+            _anliNumLabel.text = @"8";
+            [view addSubview:_anliNumLabel];
+            
+            _anliTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_anliNumLabel.frame), _anliNumLabel.frame.size.width, view.frame.size.height-_anliNumLabel.frame.size.height)];
+            _anliTitleLabel.text = @"收藏案例";
+            _anliTitleLabel.textColor = RGBCOLOR(134, 134, 134);
+            _anliTitleLabel.font = [UIFont systemFontOfSize:13];
+            _anliTitleLabel.textAlignment = NSTextAlignmentCenter;
+            [view addSubview:_anliTitleLabel];
+            
+            
+        }else if (i == 1){//产品
+            //产品的数字
+            _chanpinNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.0/568*ALL_FRAME_HEIGHT)];
+//            _chanpinNumLabel.backgroundColor = RGBCOLOR_ONE;
+            _chanpinNumLabel.text = @"23";
+            _chanpinNumLabel.textAlignment = NSTextAlignmentCenter;
+            [view addSubview:_chanpinNumLabel];
+            
+            _chanpinTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_chanpinNumLabel.frame), _chanpinNumLabel.frame.size.width, view.frame.size.height-_chanpinNumLabel.frame.size.height)];
+            _chanpinTitleLabel.text = @"收藏产品";
+            _chanpinTitleLabel.textColor = RGBCOLOR(134, 134, 134);
+            _chanpinTitleLabel.font = [UIFont systemFontOfSize:13];
+            _chanpinTitleLabel.textAlignment = NSTextAlignmentCenter;
+            [view addSubview:_chanpinTitleLabel];
+
+            
+            
+        }else if (i == 2){//收藏店铺
+            //店铺的数字
+            _dianpuNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.0/568 * ALL_FRAME_HEIGHT)];
+//            _dianpuNumLabel.backgroundColor = RGBCOLOR_ONE;
+            _dianpuNumLabel.text = @"34";
+            _dianpuNumLabel.textAlignment = NSTextAlignmentCenter;
+            [view addSubview:_dianpuNumLabel];
+            
+            _dianpuTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_dianpuNumLabel.frame), _dianpuNumLabel.frame.size.width, view.frame.size.height-_dianpuNumLabel.frame.size.height)];
+            _dianpuTitleLabel.text = @"收藏店铺";
+            _dianpuTitleLabel.textColor = RGBCOLOR(134, 134, 134);
+            _dianpuTitleLabel.font = [UIFont systemFontOfSize:13];
+            _dianpuTitleLabel.textAlignment = NSTextAlignmentCenter;
+            [view addSubview:_dianpuTitleLabel];
+        }
+        
+        
         [_threeBtnBackgroundView addSubview:view];
         
     }
@@ -140,6 +200,53 @@
     
     [self.view addSubview:_upThreeViewBackGroundView];
 }
+
+
+
+
+-(void)gTap:(UITapGestureRecognizer *)sender{
+    NSLog(@"%d",sender.view.tag);
+    [self changeNumAndTitleColorWithTag:sender.view.tag];
+}
+
+
+-(void)changeNumAndTitleColorWithTag:(NSInteger)theTag{
+    if (theTag == 10) {//点击的是收藏案例
+        _anliTitleLabel.textColor = RGBCOLOR(253, 160, 51);
+        _anliNumLabel.textColor = RGBCOLOR(253, 160, 51);
+        
+        _chanpinTitleLabel.textColor = RGBCOLOR(160, 160, 160);
+        _chanpinNumLabel.textColor = [UIColor blackColor];
+        
+        _dianpuTitleLabel.textColor = RGBCOLOR(160, 160, 160);
+        _dianpuNumLabel.textColor = [UIColor blackColor];
+        
+    }else if (theTag == 11){//点击的是收藏产品
+        
+        _anliTitleLabel.textColor = RGBCOLOR(160, 160, 160);
+        _anliNumLabel.textColor = [UIColor blackColor];
+        
+        _chanpinTitleLabel.textColor = RGBCOLOR(253, 160, 51);
+        _chanpinNumLabel.textColor = RGBCOLOR(253, 160, 51);
+        
+        _dianpuTitleLabel.textColor = RGBCOLOR(160, 160, 160);
+        _dianpuNumLabel.textColor = [UIColor blackColor];
+        
+    }else if (theTag == 12){//收藏店铺
+        
+        _anliTitleLabel.textColor = RGBCOLOR(160, 160, 160);
+        _anliNumLabel.textColor = [UIColor blackColor];
+        
+        _chanpinTitleLabel.textColor = RGBCOLOR(160, 160, 160);
+        _chanpinNumLabel.textColor = [UIColor blackColor];
+        
+        _dianpuTitleLabel.textColor =  RGBCOLOR(253, 160, 51);
+        _dianpuNumLabel.textColor =  RGBCOLOR(253, 160, 51);
+        
+    }
+}
+
+
 
 #pragma mark - 上提下拉相关方法开始
 
