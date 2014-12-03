@@ -13,6 +13,9 @@
 
 #import "GmPrepareNetData.h"
 
+#import "BusinessListTableViewCell.h"
+#import "BusinessListModel.h"
+
 typedef enum{
     GANLI = 0,//案例
     GCHANPIN ,//产品
@@ -145,9 +148,17 @@ typedef enum{
     _upThreeViewBackGroundView.frame = CGRectMake(0, 0, ALL_FRAME_WIDTH, CGRectGetMaxY(_threeBtnBackgroundView.frame));
     
     for (int i = 0; i<3; i++) {
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0+i * ALL_FRAME_WIDTH/3.0, 0.5, ALL_FRAME_WIDTH/3, _threeBtnBackgroundView.frame.size.height)];
+        
+        UIView *view = [[UIView alloc]init];
+        if (i == 0) {
+            view.frame = CGRectMake(0+i * ALL_FRAME_WIDTH/3.0, 0.5, ALL_FRAME_WIDTH/3, _threeBtnBackgroundView.frame.size.height);
+        }else{
+            view.frame = CGRectMake(0+i * (ALL_FRAME_WIDTH/3.0+0.5), 0.5, ALL_FRAME_WIDTH/3, _threeBtnBackgroundView.frame.size.height);
+        }
+        
         view.backgroundColor = RGBCOLOR(251, 251, 251);
         view.tag = i+10;
+        
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(gTap:)];
         [view addGestureRecognizer:tap];
