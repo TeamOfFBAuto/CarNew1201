@@ -29,6 +29,9 @@
     UILabel *_chanpinTitleLabel;//产品title
     UILabel *_dianpuTitleLabel;//店铺title
     
+    CGFloat _cellHight;//单元格高度
+    
+    
     
     
 
@@ -107,7 +110,7 @@
     [_upThreeViewBackGroundView addSubview:_topImv];
     
     //头像
-    _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH*70/320.0, ALL_FRAME_HEIGHT*70/568.0)];
+    _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH*70/320.0, ALL_FRAME_WIDTH*70/320.0)];
     _faceImv.backgroundColor = [UIColor orangeColor];
     _faceImv.center = CGPointMake(ALL_FRAME_WIDTH/2, _topImv.frame.size.height);
     _faceImv.layer.cornerRadius = ALL_FRAME_WIDTH*70/320/2;
