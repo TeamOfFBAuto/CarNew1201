@@ -618,6 +618,7 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
             
             UILabel * userName = [[UILabel alloc] initWithFrame:CGRectMake(0,135,260,18)];
             userName.text = [GMAPI getUsername];
+            NSLog(@"不靠谱 -----   %@",[GMAPI getUsername]);
             userName.textAlignment = NSTextAlignmentCenter;
             userName.textColor = [UIColor whiteColor];
             [sessionView.containView addSubview:userName];

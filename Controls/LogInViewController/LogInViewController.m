@@ -273,7 +273,7 @@
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
                 NSDictionary *datainfo = [dic objectForKey:@"datainfo"];
                 NSString *userid = [datainfo objectForKey:@"uid"];
-                NSString *username = [datainfo objectForKey:@"name"];
+                NSString *username = [datainfo objectForKey:@"username"];
                 NSString *authkey = [datainfo objectForKey:@"authkey"];
                 [GMAPI cache:userid ForKey:USER_UID];
                 [GMAPI cache:username ForKey:USER_NAME];
