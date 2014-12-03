@@ -97,7 +97,40 @@ alpha:(a)]
 #define BUSINESS_LIST_URL @"index.php?c=interface&a=getStore&ps=20&page=%d&fbtype=json"
 //登录
 #define G_LOGIN @"http://gztest.fblife.com/index.php?c=interface&a=dologin&username=%@&password=%@&token=%@&fbtype=json"
-//案例
+
+//个人中心相关
+//获取收藏案例
+#define G_ANLI @"http://gztest.fblife.com/index.php?c=interface&a=getFavCase&fbtype=json&uid=%@&page=%d&ps=%d"
+//获取收藏配件
+#define G_PEIJIAN @"http://gztest.fblife.com/index.php?c=interface&a=getFavGoods&fbtype=json&uid=%@&page=%d&ps=%d"
+//获取收藏店铺：
+#define G_DIANPU @"http://gztest.fblife.com/index.php?c=interface&a=getFavStore&fbtype=json&uid=%@&page=%d&ps=%d"
+
+//搜索相关
+
+//搜索店铺
+//按店铺名称搜索
+#define G_SEACHER_DIANPU_NAME @"http://gztest.fblife.com/index.php?c=interface&a=getStore&fbtype=json&keyword=%@"
+//按地区搜索
+#define G_SEACHER_DIANPU_AREA @"http://gztest.fblife.com/index.php?c=interface&a=getStore&fbtype=json&province=%d&city=%d"
+
+//搜索案例
+//按案例名称搜索
+#define G_SEACHER_ANLI_NAME @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&keyword=%@"
+//按品牌搜索
+#define G_SEACHER_ANLI_PINPAINAME @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&brand=%d&models=%d"
+//按地区搜索
+#define G_SEACHER_ANLI_AREA @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&city=%d&province=%d"
+
+//搜索配件
+//按关键字搜索配件
+#define G_SEARCH_PEIJIAN_GUANJIANZI @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&keyword=%@"
+//按商家搜索配件
+#define G_SEARCH_PEIJIAN_SHANGJIA @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&storeid=%@"
+
+
+
+
 
 //案例列表
 #define ANLI_LIST @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&page=%d&ps=%d"

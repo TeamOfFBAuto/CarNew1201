@@ -13,6 +13,12 @@
 
 #import "GmPrepareNetData.h"
 
+typedef enum{
+    GANLI = 0,//案例
+    GCHANPIN ,//产品
+    GDIANPU ,//店铺
+}CELLTYPE;
+
 @interface PersonalViewController ()
 {
     UIView *_upThreeViewBackGroundView;//headerview
@@ -30,7 +36,7 @@
     UILabel *_dianpuTitleLabel;//店铺title
     
     CGFloat _cellHight;//单元格高度
-    
+    CELLTYPE _cellType;//单元格类型 案例 产品 店铺
     
     
     
@@ -70,12 +76,17 @@
     //设置tabelview headerview
     [self creatHeaderView];
     
+    _page = 1;
+    _pageCapacity = 10;
+    
+    [self changeNumAndTitleColorWithTag:11];
+    
     _tableView = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT)];
     _tableView.refreshDelegate = self;//用refreshDelegate替换UITableViewDelegate
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
     
-    _page = 1;
+    
     
     [_tableView showRefreshHeader:YES];//进入界面先刷新数据
     
@@ -100,18 +111,18 @@
 -(void)creatHeaderView{
     //bannaer 头像 用户名 三个按钮底层view 的下层view
     _upThreeViewBackGroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 0)];
-    _upThreeViewBackGroundView.backgroundColor = [UIColor yellowColor];
+//    _upThreeViewBackGroundView.backgroundColor = [UIColor yellowColor];
     
     
     
     //banner
     _topImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH,ALL_FRAME_HEIGHT*142/568 )];
-    _topImv.backgroundColor = [UIColor redColor];
+    _topImv.backgroundColor = RGBCOLOR_ONE;
     [_upThreeViewBackGroundView addSubview:_topImv];
     
     //头像
     _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH*70/320.0, ALL_FRAME_WIDTH*70/320.0)];
-    _faceImv.backgroundColor = [UIColor orangeColor];
+    _faceImv.backgroundColor = RGBCOLOR_ONE;
     _faceImv.center = CGPointMake(ALL_FRAME_WIDTH/2, _topImv.frame.size.height);
     _faceImv.layer.cornerRadius = ALL_FRAME_WIDTH*70/320/2;
     _faceImv.layer.masksToBounds = YES;
@@ -121,9 +132,9 @@
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_faceImv.frame)+8, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT *19/568)];
     _nameLabel.font = [UIFont systemFontOfSize:16];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
-    _nameLabel.text = @"newbilityPangSmall";
+    _nameLabel.text = [GMAPI getUsername];
     _nameLabel.textColor = [UIColor blackColor];
-    _nameLabel.backgroundColor = [UIColor lightGrayColor];
+//    _nameLabel.backgroundColor = [UIColor lightGrayColor];
     [_upThreeViewBackGroundView addSubview:_nameLabel];
     
     
@@ -214,6 +225,12 @@
 
 
 -(void)changeNumAndTitleColorWithTag:(NSInteger)theTag{
+    
+    _dataArray = nil;
+    _page = 1;
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     if (theTag == 10) {//点击的是收藏案例
         _anliTitleLabel.textColor = RGBCOLOR(253, 160, 51);
         _anliNumLabel.textColor = RGBCOLOR(253, 160, 51);
@@ -223,6 +240,11 @@
         
         _dianpuTitleLabel.textColor = RGBCOLOR(160, 160, 160);
         _dianpuNumLabel.textColor = [UIColor blackColor];
+        
+        _cellHight = 220;
+        _cellType = GCHANPIN;
+        [self loadNewData];
+        
         
     }else if (theTag == 11){//点击的是收藏产品
         
@@ -235,6 +257,11 @@
         _dianpuTitleLabel.textColor = RGBCOLOR(160, 160, 160);
         _dianpuNumLabel.textColor = [UIColor blackColor];
         
+        _cellHight = 220;
+        _cellType = GCHANPIN;
+        [self loadNewData];
+        
+        
     }else if (theTag == 12){//收藏店铺
         
         _anliTitleLabel.textColor = RGBCOLOR(160, 160, 160);
@@ -246,6 +273,10 @@
         _dianpuTitleLabel.textColor =  RGBCOLOR(253, 160, 51);
         _dianpuNumLabel.textColor =  RGBCOLOR(253, 160, 51);
         
+        _cellHight = 85;
+        _cellType = GDIANPU;
+        [self loadNewData];
+        
     }
 }
 
@@ -254,17 +285,29 @@
 #pragma mark - 上提下拉相关方法开始
 
 //请求网络数据
--(void)prepareNetData{
+-(void)prepareNetDataWithCellType:(CELLTYPE)theType{
     
-    NSString *api = [@"123" stringByAppendingString:[NSString stringWithFormat:@"&page=%d&ps=%d",_page,_pageCapacity]];
-    //请求用户通知接口
-    NSLog(@"请求用户通知接口:%@",api);
+    //请求地址
+    NSString *api = nil;
+    
+    if (theType == GANLI) {//案例
+        api = [NSString stringWithFormat:G_ANLI,[GMAPI getUid],_page,_pageCapacity];
+    }else if (theType == GCHANPIN){//产品
+        api = [NSString stringWithFormat:G_PEIJIAN,[GMAPI getUid],_page,_pageCapacity];
+    }else if (theType == GDIANPU){//店铺
+        api = [NSString stringWithFormat:G_DIANPU,[GMAPI getUid],_page,_pageCapacity];
+    }
+    
+    NSLog(@"请求的接口:%@",api);
     
     __weak typeof (self)bself = self;
     
     GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:api isPost:NO postData:nil];
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
         
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        NSLog(@"我操到底走了吗%@",result);
         
         NSDictionary *datainfo = [result objectForKey:@"datainfo"];
         
@@ -281,11 +324,14 @@
         
         [bself reloadData:dataArray isReload:_tableView.isReloadData];
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
         if (_tableView.isReloadData) {
             
             _page --;
             
-            [_tableView performSelector:@selector(finishReloadigData) withObject:nil afterDelay:1.0];
+            [_tableView performSelector:@selector(finishReloadigData) withObject:nil afterDelay:0.2];
         }
     }];
     
@@ -312,7 +358,7 @@
         _dataArray = newArr;
     }
     
-    [_tableView performSelector:@selector(finishReloadigData) withObject:nil afterDelay:1.0];
+    [_tableView performSelector:@selector(finishReloadigData) withObject:nil afterDelay:0.2];
 }
 
 
@@ -322,8 +368,9 @@
 - (void)loadNewData
 {
     _page = 1;
+    _tableView.isReloadData = YES;
     
-    [self prepareNetData];
+    [self prepareNetDataWithCellType:_cellType];
 }
 
 - (void)loadMoreData
@@ -331,8 +378,9 @@
     NSLog(@"loadMoreData");
     
     _page ++;
+    _tableView.isReloadData = NO;
     
-    [self prepareNetData];
+    [self prepareNetDataWithCellType:_cellType];
 }
 
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -342,7 +390,7 @@
 
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath
 {
-    return 65;
+    return _cellHight;
 }
 
 
@@ -368,7 +416,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    
     return _dataArray.count;
 }
 

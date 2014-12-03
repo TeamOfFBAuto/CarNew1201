@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Controls/LogInViewController/LogInViewController.m"
-            timestampString = "439203914.040253"
+            filePath = "Controls/StartControl/Controllers/PersonalViewController.m"
+            timestampString = "439294064.126226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
-            landmarkName = "-dengluWithUserName:pass:"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
+            landmarkName = "-prepareNetDataWithCellType:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Controls/LogInViewController/LogInViewController.m"
-            timestampString = "439203915.716769"
+            filePath = "Controls/StartControl/Controllers/PersonalViewController.m"
+            timestampString = "439294064.126226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
-            landmarkName = "-dengluWithUserName:pass:"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
+            landmarkName = "-prepareNetDataWithCellType:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
