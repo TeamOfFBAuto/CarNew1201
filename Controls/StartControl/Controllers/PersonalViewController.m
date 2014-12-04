@@ -18,13 +18,15 @@
 
 #import "GcustomActionSheet.h"
 
+#import "MLImageCrop.h"
+
 typedef enum{
     GANLI = 0,//案例
     GCHANPIN ,//产品
     GDIANPU ,//店铺
 }CELLTYPE;
 
-@interface PersonalViewController ()<GcustomActionSheetDelegate>
+@interface PersonalViewController ()<GcustomActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,MLImageCropDelegate>
 {
     UIView *_upThreeViewBackGroundView;//headerview
     UIImageView *_topImv;//banner
@@ -52,7 +54,15 @@ typedef enum{
     
     RefreshTableView *_tableView;//主tableview
     
+    
+    ASIFormDataRequest *request__;//tap==123 上传头像
+
+    
 }
+
+@property(nonatomic,strong)UIImage *userUpFaceImage;//用户需要上传的头像image
+@property(nonatomic,strong)NSData *userUpFaceImagedata;//用户上传头像data
+
 @end
 
 @implementation PersonalViewController
@@ -300,6 +310,171 @@ typedef enum{
     
     NSLog(@"actionsheet.tag = %d, buttonIndex = %d",actionSheet.tag,buttonIndex);
     
+    if (actionSheet.tag == 90) {//banner
+        
+       
+        if (buttonIndex == 1) {
+            UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+            picker.delegate = self;
+            
+            //        [picker.navigationBar setBackgroundImage:FBCIRCLE_NAVIGATION_IMAGE forBarMetrics: UIBarMetricsDefault];
+            picker.navigationBar.barTintColor = [UIColor blackColor];
+            UIColor * cc = [UIColor whiteColor];//RGBCOLOR(91,138,59);
+            NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:cc,[UIFont systemFontOfSize:18],[UIColor clearColor],nil] forKeys:[NSArray arrayWithObjects:UITextAttributeTextColor,UITextAttributeFont,UITextAttributeTextShadowColor,nil]];
+            picker.navigationBar.titleTextAttributes = dict;
+            
+            picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+            
+            [self presentViewController:picker animated:YES completion:^{
+                if (IOS7_OR_LATER) {
+                    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+                    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+                }
+            }];
+        }
+        
+        
+        
+    }else if (actionSheet.tag == 91){//头像
+        
+    }
+    
+    
+}
+
+
+#pragma mark - UIImagePickerControllerDelegate 拍照选择照片协议方法
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    NSLog(@"%s",__FUNCTION__);
+    [UIApplication sharedApplication].statusBarHidden = NO;
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    
+    if ([mediaType isEqualToString:@"public.image"]) {
+        
+        //压缩图片 不展示原图
+        UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+        
+        //按比例缩放
+        UIImage *scaleImage = [self scaleImage:originImage toScale:0.5];
+        
+        
+        //将图片传递给截取界面进行截取并设置回调方法（协议）
+        MLImageCrop *imageCrop = [[MLImageCrop alloc]init];
+        imageCrop.delegate = self;
+        
+        //按像素缩放
+        imageCrop.ratioOfWidthAndHeight = 750.0f/560.0f;//设置缩放比例
+        
+        imageCrop.image = scaleImage;
+        //[imageCrop showWithAnimation:NO];
+        picker.navigationBar.hidden = YES;
+        [picker pushViewController:imageCrop animated:YES];
+        
+        
+        
+        
+        
+    }
+    
+    
+}
+
+#pragma mark- 缩放图片
+//按比例缩放
+-(UIImage *)scaleImage:(UIImage *)image toScale:(float)scaleSize
+{
+    UIGraphicsBeginImageContext(CGSizeMake(image.size.width*scaleSize,image.size.height*scaleSize));
+    [image drawInRect:CGRectMake(0, 0, image.size.width * scaleSize, image.size.height *scaleSize)];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
+
+//按像素缩放
+-(UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size{
+    // 创建一个bitmap的context
+    // 并把它设置成为当前正在使用的context
+    UIGraphicsBeginImageContext(size);
+    // 绘制改变大小的图片
+    [img drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    // 从当前context中创建一个改变大小后的图片
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    // 使当前的context出堆栈
+    UIGraphicsEndImageContext();
+    // 返回新的改变大小后的图片
+    return scaledImage;
+}
+
+
+#pragma mark - crop delegate
+#pragma mark - 图片回传协议方法
+- (void)cropImage:(UIImage*)cropImage forOriginalImage:(UIImage*)originalImage
+{
+    
+    
+    //按像素缩放
+    //UIImage *doneImage = [self scaleToSize:cropImage size:CGSizeMake(400, 400)];
+    
+    //用户需要上传的剪裁后的头像image
+    self.userUpFaceImage = cropImage;
+    NSLog(@"在此设置用户上传的头像");
+    self.userUpFaceImagedata = UIImagePNGRepresentation(self.userUpFaceImage);
+    
+    
+    //缓存到本地
+    [GMAPI setUserFaceImageWithData:self.userUpFaceImagedata];
+    NSString *str = @"yes";
+    [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"gIsUpFace"];
+    
+    
+    //ASI上传
+    [self test];
+    
+    
+//    _isChooseTouxiang = YES;
+    [_tableView reloadData];
+    
+}
+
+
+#pragma mark - 上传banner(图片)
+
+#define TT_CACHE_EXPIRATION_AGE_NEVER     (1.0 / 0.0)
+-(void)test{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+//        NSString* fullURL = [NSString stringWithFormat:@"http://quan.fblife.com/index.php?c=interface&a=updatehead&authkey=%@",[GMAPI getAuthkey]];
+        
+        NSString* fullURL = @"123";
+        NSLog(@"上传头像请求的地址===%@     ----%s",fullURL,__FUNCTION__);
+        
+        //设置标志位
+        NSString *str = @"yes";
+        [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"gIsUpFace"];
+        
+        request__ = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:fullURL]];
+        AppDelegate *_appDelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
+        request__.delegate = _appDelegate;
+        request__.tag = 123;
+        
+        //得到图片的data
+        NSData* data;
+        //获取图片质量
+        NSMutableData *myRequestData=[NSMutableData data];
+        [request__ setPostFormat:ASIMultipartFormDataPostFormat];
+        data = UIImageJPEGRepresentation(self.userUpFaceImage,0.5);
+        NSLog(@"xxxx===%@",data);
+        [request__ addRequestHeader:@"uphead" value:[NSString stringWithFormat:@"%d", [myRequestData length]]];
+        //设置http body
+        [request__ addData:data withFileName:[NSString stringWithFormat:@"boris.png"] andContentType:@"image/PNG" forKey:[NSString stringWithFormat:@"uphead"]];
+        
+        [request__ setRequestMethod:@"POST"];
+        request__.cachePolicy = TT_CACHE_EXPIRATION_AGE_NEVER;
+        request__.cacheStoragePolicy = ASICacheForSessionDurationCacheStoragePolicy;
+        [request__ startAsynchronous];
+        
+    });
     
     
 }

@@ -193,4 +193,66 @@
 }
 
 
+
+
+
+
+#pragma mark - 个人中心界面 上传的代理回调方法
+-(void)requestFinished:(ASIHTTPRequest *)request
+{
+    NSLog(@"上传完成");
+    
+    if (request.tag == 123)//上传用户banner
+    {
+        
+        NSLog(@"走了request.tag = %d    123:banner",request.tag);
+        
+        NSDictionary * dic = [[NSDictionary alloc] initWithDictionary:[request.responseData objectFromJSONData]];
+        NSLog(@"tupiandic==%@",dic);
+        
+        if ([[dic objectForKey:@"errcode"]intValue] == 0) {
+            request.delegate = nil;
+            NSString *str = @"no";
+            [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"gIsUpFace"];
+            
+        }else{
+            NSString *str = @"yes";
+            [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"gIsUpFace"];
+        }
+        
+        NSLog(@"上传头像标志位%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"gIsUpFace"]);
+        
+        //发通知
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"chagePersonalInformation" object:nil];
+        
+    }else if (request.tag == 122)//上传用户头像
+    {
+        
+        NSLog(@"走了request.tag = %d    122:用户头像",request.tag);
+        
+        NSDictionary * dic = [[NSDictionary alloc] initWithDictionary:[request.responseData objectFromJSONData]];
+        
+        NSLog(@"tupiandic==%@",dic);
+        
+        if ([[dic objectForKey:@"errcode"]intValue] == 0) {
+            NSLog(@"上传成功");
+            NSString *str = @"no";
+            [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"gIsUpBanner"];
+            
+        }else{
+            NSString *str = @"yes";
+            [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"gIsUpBanner"];
+            
+        }
+        
+        NSLog(@"上传banner标志位%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"gIsUpBanner"]);
+        
+        
+        //发通知
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"chagePersonalInformation" object:nil];
+        
+    }
+    
+}
+
 @end

@@ -16,7 +16,7 @@
 #import "MyPhoneNumViewController.h"//注册界面vc
 #import "GfindPasswViewController.h"//找回密码界面vc
 #import "GMAPI.h"
-#import "GAPIHeader.h"
+
 
 #define LOGIN_PHONE @"LOGIN_PHONE"//登录手机号
 #define LOGIN_PASS @"LOGIN_PASS"//登录密码

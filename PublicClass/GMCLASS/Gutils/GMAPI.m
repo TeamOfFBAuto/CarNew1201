@@ -72,6 +72,79 @@
 }
 
 
+//把用户bannerImage写到本地
++(BOOL)setUserBannerImageWithData:(NSData *)data{
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *pathD = paths[0];
+    
+    NSString *userBannerName = @"/guserBannerImage.png";
+    
+    NSString *path = [pathD stringByAppendingString:userBannerName];
+    
+    NSLog(@"%@",path);
+    
+    
+    BOOL is = [data writeToFile:path atomically:YES];
+    
+    NSLog(@"%d",is);
+    
+    if (is) {
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"chagePersonalInformation" object:nil];
+        
+    }
+    
+    return is;
+}
+
+//把用户头像image写到本地
++(BOOL)setUserFaceImageWithData:(NSData *)data{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *pathD = paths[0];
+    
+    NSString *userFaceName = @"/guserFaceImage.png";
+    
+    NSString *path = [pathD stringByAppendingString:userFaceName];
+    
+    NSLog(@"%@",path);
+    
+    BOOL is = [data writeToFile:path atomically:YES];
+    NSLog(@"%d",is);
+    
+    if (is) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"chagePersonalInformation" object:nil];
+    }
+    
+    
+    return is;
+}
+
+//读数据=============================================
+
+
+//获取banner
++(UIImage *)getUserBannerImage{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *pathD = paths[0];
+    NSString *userBannerName = @"/guserBannerImage.png";
+    NSString *path = [pathD stringByAppendingString:userBannerName];
+    UIImage *image = [UIImage imageWithContentsOfFile:path];
+    return image;
+}
+
+//获取faceImage
++(UIImage *)getUserFaceImage{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *pathD = paths[0];
+    NSString *userFaceName = @"/guserFaceImage.png";
+    NSString *path = [pathD stringByAppendingString:userFaceName];
+    
+    UIImage *image = [UIImage imageWithContentsOfFile:path];
+    return image;
+}
+
+
 
 #pragma mark - NSUserDefault缓存
 

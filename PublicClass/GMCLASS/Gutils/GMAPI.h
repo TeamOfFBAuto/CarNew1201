@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "MBProgressHUD.h"
-#import "GAPIHeader.h"
+
+
+
+#define IOS7_OR_LATER   ( [[[UIDevice currentDevice] systemVersion] compare:@"7.0"] != NSOrderedAscending )
+
 
 @interface GMAPI : NSObject
 
@@ -33,5 +37,29 @@
 + (void)cache:(id)dataInfo ForKey:(NSString *)key;
 //取
 + (id)cacheForKey:(NSString *)key;
+
+
+
+//写数据=========================
+
+//保存用户banner到本地
++(BOOL)setUserBannerImageWithData:(NSData *)data;
+
+//保存用户头像到本地
++(BOOL)setUserFaceImageWithData:(NSData *)data;
+
+
+
+//获取document路径
++ (NSString *)documentFolder;
+
+
+//读数据=========================
+
+//获取用户bannerImage
++(UIImage *)getUserBannerImage;
+
+//获取用户头像Image
++(UIImage *)getUserFaceImage;
 
 @end
