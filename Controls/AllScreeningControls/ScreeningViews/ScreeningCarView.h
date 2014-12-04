@@ -24,6 +24,7 @@
 @property(nonatomic,strong)UITableView * cars_tableView;
 ///车系数据容器
 @property(nonatomic,strong)NSMutableArray * cars_array;
-
+///列表头
+@property(nonatomic,strong)NSMutableArray * section_array;
 
 @end

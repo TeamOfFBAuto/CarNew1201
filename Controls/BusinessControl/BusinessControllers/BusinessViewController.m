@@ -9,6 +9,7 @@
 #import "BusinessViewController.h"
 #import "BusinessListTableViewCell.h"
 #import "SNRefreshTableView.h"
+#import "ScreeningViewController.h"
 
 @interface BusinessViewController ()<SNRefreshDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
@@ -27,8 +28,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.leftString = @"菜单";
     self.myTitle = @"服务商家";
-    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeText WithRightButtonType:MyViewControllerRightbuttonTypeNull];
-    
+    self.rightString = @"筛选";
+    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeText WithRightButtonType:MyViewControllerRightbuttonTypeText];
     
     _data_array = [NSMutableArray array];
     _myTableView = [[SNRefreshTableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64) showLoadMore:YES];
@@ -46,6 +47,11 @@
     [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
 }
 
+-(void)rightButtonTap:(UIButton *)sender
+{
+    ScreeningViewController * screenVC = [[ScreeningViewController alloc] init];
+    [self.navigationController pushViewController:screenVC animated:YES];
+}
 
 
 #pragma mark - 获取数据

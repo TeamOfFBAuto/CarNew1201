@@ -7,6 +7,7 @@
 //testsvn
 
 #import "MyPhoneNumViewController.h"
+#import "PrivacyPolicyViewController.h"
 
 @interface MyPhoneNumViewController ()
 {
@@ -125,7 +126,9 @@
 
 -(void)chakanxieyi:(UIButton *)sender
 {
-    
+    PrivacyPolicyViewController * PPVC = [[PrivacyPolicyViewController alloc] init];
+    UINavigationController * navc  = [[UINavigationController alloc] initWithRootViewController:PPVC];
+    [self presentViewController:navc animated:YES completion:nil];
 }
 
 

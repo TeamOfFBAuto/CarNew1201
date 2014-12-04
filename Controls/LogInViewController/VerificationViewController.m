@@ -46,14 +46,18 @@
     
 }
 
-
+-(void)cancelKeyboradTap:(UITapGestureRecognizer *)sender
+{
+    [self.view endEditing:YES];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.view.backgroundColor = RGBCOLOR(245,245,245);
-    
+    UITapGestureRecognizer * cancel_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelKeyboradTap:)];
+    [self.view addGestureRecognizer:cancel_tap];
     
     if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] )
     {

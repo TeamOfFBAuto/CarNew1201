@@ -130,6 +130,12 @@
 		569FFEF31A27380F008A02A6 /* login_close_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 569FFEF01A27380F008A02A6 /* login_close_image@2x.png */; };
 		569FFEF41A27380F008A02A6 /* login_mima_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 569FFEF11A27380F008A02A6 /* login_mima_image@2x.png */; };
 		569FFEF51A27380F008A02A6 /* login_userName_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 569FFEF21A27380F008A02A6 /* login_userName_image@2x.png */; };
+		56CC07111A2FF9C70014F285 /* PrivacyPolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CC07101A2FF9C70014F285 /* PrivacyPolicyViewController.m */; };
+		56CC071F1A302C3C0014F285 /* zhuce.css in Resources */ = {isa = PBXBuildFile; fileRef = 56CC071C1A302C3C0014F285 /* zhuce.css */; };
+		56CC07201A302C3C0014F285 /* 服务条款.html in Resources */ = {isa = PBXBuildFile; fileRef = 56CC071D1A302C3C0014F285 /* 服务条款.html */; };
+		56CC07211A302C3C0014F285 /* 隐私条款.html in Resources */ = {isa = PBXBuildFile; fileRef = 56CC071E1A302C3C0014F285 /* 隐私条款.html */; };
+		56CC07241A3034F90014F285 /* BusinessHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CC07231A3034F90014F285 /* BusinessHomeViewController.m */; };
+		56CC07271A3039630014F285 /* BrandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CC07261A3039630014F285 /* BrandModel.m */; };
 		56CE4B2E1A257FC600876AC7 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CE4B2D1A257FC600876AC7 /* MyViewController.m */; };
 		56CE4B311A2581A000876AC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56CE4B301A2581A000876AC7 /* UIKit.framework */; };
 		56CE4B371A25873D00876AC7 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CE4B361A25873D00876AC7 /* NSString+Emoji.m */; };
@@ -382,6 +388,15 @@
 		569FFEF01A27380F008A02A6 /* login_close_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_close_image@2x.png"; sourceTree = "<group>"; };
 		569FFEF11A27380F008A02A6 /* login_mima_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_mima_image@2x.png"; sourceTree = "<group>"; };
 		569FFEF21A27380F008A02A6 /* login_userName_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_userName_image@2x.png"; sourceTree = "<group>"; };
+		56CC070F1A2FF9C70014F285 /* PrivacyPolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPolicyViewController.h; sourceTree = "<group>"; };
+		56CC07101A2FF9C70014F285 /* PrivacyPolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyPolicyViewController.m; sourceTree = "<group>"; };
+		56CC071C1A302C3C0014F285 /* zhuce.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = zhuce.css; sourceTree = "<group>"; };
+		56CC071D1A302C3C0014F285 /* 服务条款.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "服务条款.html"; sourceTree = "<group>"; };
+		56CC071E1A302C3C0014F285 /* 隐私条款.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "隐私条款.html"; sourceTree = "<group>"; };
+		56CC07221A3034F90014F285 /* BusinessHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessHomeViewController.h; sourceTree = "<group>"; };
+		56CC07231A3034F90014F285 /* BusinessHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessHomeViewController.m; sourceTree = "<group>"; };
+		56CC07251A3039630014F285 /* BrandModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandModel.h; sourceTree = "<group>"; };
+		56CC07261A3039630014F285 /* BrandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandModel.m; sourceTree = "<group>"; };
 		56CE4B2C1A257FC600876AC7 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
 		56CE4B2D1A257FC600876AC7 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
 		56CE4B2F1A25800F00876AC7 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -859,6 +874,7 @@
 		560CB53D1A2719DE0067F7AA /* LogInViewController */ = {
 			isa = PBXGroup;
 			children = (
+				56CC071B1A302C3C0014F285 /* htmlsource */,
 				569FFEEA1A272EA6008A02A6 /* LogInViewController.h */,
 				569FFEEB1A272EA6008A02A6 /* LogInViewController.m */,
 				565EE8C91A2C4C160063CAA3 /* MyPhoneNumViewController.h */,
@@ -867,6 +883,8 @@
 				565EE8CC1A2C4C160063CAA3 /* VerificationViewController.m */,
 				565EE8CF1A2C4C380063CAA3 /* ZhuCeViewController.h */,
 				565EE8D01A2C4C380063CAA3 /* ZhuCeViewController.m */,
+				56CC070F1A2FF9C70014F285 /* PrivacyPolicyViewController.h */,
+				56CC07101A2FF9C70014F285 /* PrivacyPolicyViewController.m */,
 			);
 			path = LogInViewController;
 			sourceTree = "<group>";
@@ -895,6 +913,8 @@
 			children = (
 				563E4CC01A2DC3740022755C /* ScreeningCarModel.h */,
 				563E4CC11A2DC3740022755C /* ScreeningCarModel.m */,
+				56CC07251A3039630014F285 /* BrandModel.h */,
+				56CC07261A3039630014F285 /* BrandModel.m */,
 			);
 			path = ScreeningModels;
 			sourceTree = "<group>";
@@ -923,6 +943,8 @@
 			children = (
 				56500AF71A2D63CC00E834A1 /* BusinessViewController.h */,
 				56500AF81A2D63CC00E834A1 /* BusinessViewController.m */,
+				56CC07221A3034F90014F285 /* BusinessHomeViewController.h */,
+				56CC07231A3034F90014F285 /* BusinessHomeViewController.m */,
 			);
 			path = BusinessControllers;
 			sourceTree = "<group>";
@@ -1118,6 +1140,16 @@
 				569FFEF21A27380F008A02A6 /* login_userName_image@2x.png */,
 			);
 			path = LogInImages;
+			sourceTree = "<group>";
+		};
+		56CC071B1A302C3C0014F285 /* htmlsource */ = {
+			isa = PBXGroup;
+			children = (
+				56CC071C1A302C3C0014F285 /* zhuce.css */,
+				56CC071D1A302C3C0014F285 /* 服务条款.html */,
+				56CC071E1A302C3C0014F285 /* 隐私条款.html */,
+			);
+			path = htmlsource;
 			sourceTree = "<group>";
 		};
 		56CE4B2B1A257FB400876AC7 /* ZSNClasses */ = {
@@ -1409,6 +1441,7 @@
 				566ADC221A2D5B4C009529A5 /* default_touxiang@2x.png in Resources */,
 				E311CD331A24573C007D69D3 /* LaunchScreen.xib in Resources */,
 				13F9D4BB1A2DA951002A6904 /* UMSocialLocalizable.strings in Resources */,
+				56CC07201A302C3C0014F285 /* 服务条款.html in Resources */,
 				56621D4D1A28605B00310A48 /* nav_bg.png in Resources */,
 				1351179D1A257EB20015C133 /* blueup1@2x.png in Resources */,
 				56621D551A28605B00310A48 /* UMContactViewController.xib in Resources */,
@@ -1425,6 +1458,7 @@
 				56621CFD1A285A2500310A48 /* setting_image@2x.png in Resources */,
 				56621D4C1A28605B00310A48 /* nav_bar_bg@2x.png in Resources */,
 				56500B001A2D676900E834A1 /* BusinessListTableViewCell.xib in Resources */,
+				56CC07211A302C3C0014F285 /* 隐私条款.html in Resources */,
 				13F9D4C01A2DA951002A6904 /* UMSCommentInputController.xib in Resources */,
 				56621D4E1A28605B00310A48 /* nav_btn_bg.png in Resources */,
 				56621D4A1A28605B00310A48 /* messages_toolbar_background.png in Resources */,
@@ -1437,6 +1471,7 @@
 				569FFEF51A27380F008A02A6 /* login_userName_image@2x.png in Resources */,
 				56621D401A28605B00310A48 /* icon_rightArrow@2x.png in Resources */,
 				56621D441A28605B00310A48 /* item_ok@2x.png in Resources */,
+				56CC071F1A302C3C0014F285 /* zhuce.css in Resources */,
 				56621D531A28605B00310A48 /* umeng_logo1.png in Resources */,
 				565EE8D31A2C50710063CAA3 /* zc_phoneNum@2x.png in Resources */,
 				565EE8D71A2C50830063CAA3 /* zc_xieyi@2x.png in Resources */,
@@ -1515,7 +1550,9 @@
 				56500AFB1A2D63CC00E834A1 /* BusinessViewController.m in Sources */,
 				565EE8CE1A2C4C160063CAA3 /* VerificationViewController.m in Sources */,
 				E311CD2B1A24573C007D69D3 /* ViewController.m in Sources */,
+				56CC07241A3034F90014F285 /* BusinessHomeViewController.m in Sources */,
 				56621D3D1A28605B00310A48 /* UMEGORefreshTableHeaderView.m in Sources */,
+				56CC07111A2FF9C70014F285 /* PrivacyPolicyViewController.m in Sources */,
 				565EE8B61A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m in Sources */,
 				1351179E1A257EB20015C133 /* LRefreshTableHeaderView.m in Sources */,
 				19B34DD11A2466C300ED1935 /* StoreViewController.m in Sources */,
@@ -1544,6 +1581,7 @@
 				563E4CBF1A2DC3540022755C /* ScreeningViewController.m in Sources */,
 				565EE8B71A2C3DEE0063CAA3 /* ASIDataCompressor.m in Sources */,
 				E392C31A1A2818C9001AEA0D /* GzhuceViewController.m in Sources */,
+				56CC07271A3039630014F285 /* BrandModel.m in Sources */,
 				135117A61A257F2D0015C133 /* UIColor+ConvertColor.m in Sources */,
 				E358B2C01A2DEAF700B0FA51 /* GmPrepareNetData.m in Sources */,
 				13F9D4731A2D5A80002A6904 /* AnliModel.m in Sources */,
