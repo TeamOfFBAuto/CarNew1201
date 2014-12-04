@@ -152,6 +152,7 @@
 		E392C3161A2815FA001AEA0D /* GloginView.m in Sources */ = {isa = PBXBuildFile; fileRef = E392C3151A2815FA001AEA0D /* GloginView.m */; };
 		E392C31A1A2818C9001AEA0D /* GzhuceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E392C3191A2818C9001AEA0D /* GzhuceViewController.m */; };
 		E392C31D1A2818FD001AEA0D /* GfindPasswViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E392C31C1A2818FD001AEA0D /* GfindPasswViewController.m */; };
+		E3ED4A671A2FF83E004A2D72 /* GcustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E3ED4A661A2FF83E004A2D72 /* GcustomActionSheet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -422,6 +423,8 @@
 		E392C3191A2818C9001AEA0D /* GzhuceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GzhuceViewController.m; sourceTree = "<group>"; };
 		E392C31B1A2818FD001AEA0D /* GfindPasswViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfindPasswViewController.h; sourceTree = "<group>"; };
 		E392C31C1A2818FD001AEA0D /* GfindPasswViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GfindPasswViewController.m; sourceTree = "<group>"; };
+		E3ED4A651A2FF83E004A2D72 /* GcustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GcustomActionSheet.h; sourceTree = "<group>"; };
+		E3ED4A661A2FF83E004A2D72 /* GcustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GcustomActionSheet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1275,6 +1278,8 @@
 		E392C3171A281653001AEA0D /* Gutils */ = {
 			isa = PBXGroup;
 			children = (
+				E3ED4A651A2FF83E004A2D72 /* GcustomActionSheet.h */,
+				E3ED4A661A2FF83E004A2D72 /* GcustomActionSheet.m */,
 				E358B2BE1A2DEAF700B0FA51 /* GmPrepareNetData.h */,
 				E358B2BF1A2DEAF700B0FA51 /* GmPrepareNetData.m */,
 				E38F1E181A2C16870048C58D /* GMAPI.h */,
@@ -1520,6 +1525,7 @@
 				56CE4B641A25D48100876AC7 /* PHAirViewController.m in Sources */,
 				56621D141A28600300310A48 /* UMTableViewCell.m in Sources */,
 				56621D611A28620200310A48 /* downloadtool.m in Sources */,
+				E3ED4A671A2FF83E004A2D72 /* GcustomActionSheet.m in Sources */,
 				56CE4B2E1A257FC600876AC7 /* MyViewController.m in Sources */,
 				56621D561A28605B00310A48 /* UMFeedbackTableViewCellLeft.m in Sources */,
 				E311CD281A24573C007D69D3 /* AppDelegate.m in Sources */,

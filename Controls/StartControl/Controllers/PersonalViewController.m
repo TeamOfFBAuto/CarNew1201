@@ -16,13 +16,15 @@
 #import "BusinessListTableViewCell.h"
 #import "BusinessListModel.h"
 
+#import "GcustomActionSheet.h"
+
 typedef enum{
     GANLI = 0,//案例
     GCHANPIN ,//产品
     GDIANPU ,//店铺
 }CELLTYPE;
 
-@interface PersonalViewController ()
+@interface PersonalViewController ()<GcustomActionSheetDelegate>
 {
     UIView *_upThreeViewBackGroundView;//headerview
     UIImageView *_topImv;//banner
@@ -60,6 +62,23 @@ typedef enum{
 - (void)dealloc
 {
     NSLog(@"%s",__FUNCTION__);
+}
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    
+    NSString *api = [NSString stringWithFormat:G_USERINFO,[GMAPI getUid],[GMAPI getAuthkey]];
+    
+    
+    NSLog(@"请求个人信息接口：%@",api);
+    
+    GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:api isPost:NO postData:nil];
+    [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
+        NSLog(@"请求个人信息成功");
+        NSLog(@"个人信息dic：%@",result);
+    } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        NSLog(@"请求个人信息失败");
+    }];
 }
 
 
@@ -122,6 +141,9 @@ typedef enum{
     _topImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH,ALL_FRAME_HEIGHT*142/568 )];
     _topImv.backgroundColor = RGBCOLOR_ONE;
     [_upThreeViewBackGroundView addSubview:_topImv];
+    _topImv.userInteractionEnabled = YES;
+    UITapGestureRecognizer *ddd = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userBannerClicked)];
+    [_topImv addGestureRecognizer:ddd];
     
     //头像
     _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH*70/320.0, ALL_FRAME_WIDTH*70/320.0)];
@@ -129,6 +151,9 @@ typedef enum{
     _faceImv.center = CGPointMake(ALL_FRAME_WIDTH/2, _topImv.frame.size.height);
     _faceImv.layer.cornerRadius = ALL_FRAME_WIDTH*70/320/2;
     _faceImv.layer.masksToBounds = YES;
+    _faceImv.userInteractionEnabled = YES;
+    UITapGestureRecognizer *ccc = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userFaceClicked)];
+    [_faceImv addGestureRecognizer:ccc];
     [_upThreeViewBackGroundView addSubview:_faceImv];
     
     //用户名
@@ -227,8 +252,62 @@ typedef enum{
 }
 
 
+//banner的点击方法
+-(void)userBannerClicked{
+    NSLog(@"点击用户banner");
+    
+    
+    
+    GcustomActionSheet *aaa = [[GcustomActionSheet alloc]initWithTitle:nil
+                                                          buttonTitles:@[@"更换相册封面"]
+                                                     buttonTitlesColor:[UIColor blackColor]
+                                                           buttonColor:[UIColor whiteColor]
+                                                           CancelTitle:@"取消"
+                                                      cancelTitelColor:[UIColor whiteColor]
+                                                           CancelColor:RGBCOLOR(253, 144, 39)
+                                                       actionBackColor:RGBCOLOR(236, 236, 236)];
+    
+    
+    aaa.tag = 90;
+    aaa.delegate = self;
+    [aaa showInView:self.view WithAnimation:YES];
+    
+    
+}
 
 
+//头像的点击方法
+-(void)userFaceClicked{
+    NSLog(@"点击头像");
+    
+    GcustomActionSheet *aaa = [[GcustomActionSheet alloc]initWithTitle:nil
+                                                          buttonTitles:@[@"更换头像"]
+                                                     buttonTitlesColor:[UIColor blackColor]
+                                                           buttonColor:[UIColor whiteColor]
+                                                           CancelTitle:@"取消"
+                                                      cancelTitelColor:[UIColor whiteColor]
+                                                           CancelColor:RGBCOLOR(253, 144, 39)
+                                                       actionBackColor:RGBCOLOR(236, 236, 236)];
+    
+    
+    aaa.tag = 91;
+    aaa.delegate = self;
+    [aaa showInView:self.view WithAnimation:YES];
+}
+
+
+-(void)gActionSheet:(GcustomActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    NSLog(@"actionsheet.tag = %d, buttonIndex = %d",actionSheet.tag,buttonIndex);
+    
+    
+    
+}
+
+
+
+
+//收藏案例 收藏产品 收藏店铺 的点击方法
 -(void)gTap:(UITapGestureRecognizer *)sender{
     NSLog(@"%d",sender.view.tag);
     [self changeNumAndTitleColorWithTag:sender.view.tag];

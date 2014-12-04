@@ -105,6 +105,8 @@ alpha:(a)]
 #define G_PEIJIAN @"http://gztest.fblife.com/index.php?c=interface&a=getFavGoods&fbtype=json&uid=%@&page=%d&ps=%d"
 //获取收藏店铺：
 #define G_DIANPU @"http://gztest.fblife.com/index.php?c=interface&a=getFavStore&fbtype=json&uid=%@&page=%d&ps=%d"
+//获取个人信息
+#define G_USERINFO @"http://bbs.fblife.com/bbsapi/getuser.php?&uid=%@&authcode=%@"
 
 //搜索相关
 
