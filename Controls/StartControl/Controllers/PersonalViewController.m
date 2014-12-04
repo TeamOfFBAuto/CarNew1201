@@ -20,11 +20,19 @@
 
 #import "MLImageCrop.h"
 
+#import "GpersonCenterCustomCell.h"
+
 typedef enum{
     GANLI = 0,//案例
     GCHANPIN ,//产品
     GDIANPU ,//店铺
 }CELLTYPE;
+
+typedef enum{
+    USERFACE = 0,//头像
+    USERBANNER,//banner
+    USERIMAGENULL,
+}CHANGEIMAGETYPE;
 
 @interface PersonalViewController ()<GcustomActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,MLImageCropDelegate>
 {
@@ -55,13 +63,16 @@ typedef enum{
     RefreshTableView *_tableView;//主tableview
     
     
-    ASIFormDataRequest *request__;//tap==123 上传头像
+    ASIFormDataRequest *_request;//tap==123 上传头像
+    CHANGEIMAGETYPE _changeImageType;//imagePicker 更改的是头像还是banner
 
     
 }
 
 @property(nonatomic,strong)UIImage *userUpFaceImage;//用户需要上传的头像image
 @property(nonatomic,strong)NSData *userUpFaceImagedata;//用户上传头像data
+@property(nonatomic,strong)UIImage *userUpBannerImage;//用户需要上传的bannerImage
+@property(nonatomic,strong)NSData *userUpBannerImageData;//用户上传bannerdata
 
 @end
 
@@ -311,15 +322,15 @@ typedef enum{
     NSLog(@"actionsheet.tag = %d, buttonIndex = %d",actionSheet.tag,buttonIndex);
     
     if (actionSheet.tag == 90) {//banner
-        
-       
         if (buttonIndex == 1) {
+            _changeImageType = USERBANNER;
             UIImagePickerController *picker = [[UIImagePickerController alloc]init];
             picker.delegate = self;
             
             //        [picker.navigationBar setBackgroundImage:FBCIRCLE_NAVIGATION_IMAGE forBarMetrics: UIBarMetricsDefault];
+            
             picker.navigationBar.barTintColor = [UIColor blackColor];
-            UIColor * cc = [UIColor whiteColor];//RGBCOLOR(91,138,59);
+            UIColor * cc = [UIColor whiteColor];
             NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:cc,[UIFont systemFontOfSize:18],[UIColor clearColor],nil] forKeys:[NSArray arrayWithObjects:UITextAttributeTextColor,UITextAttributeFont,UITextAttributeTextShadowColor,nil]];
             picker.navigationBar.titleTextAttributes = dict;
             
@@ -333,10 +344,27 @@ typedef enum{
             }];
         }
         
-        
-        
+
     }else if (actionSheet.tag == 91){//头像
-        
+        if (buttonIndex == 1) {
+            _changeImageType = USERFACE;
+            UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+            picker.delegate = self;
+            //        [picker.navigationBar setBackgroundImage:FBCIRCLE_NAVIGATION_IMAGE forBarMetrics: UIBarMetricsDefault];
+            picker.navigationBar.barTintColor = [UIColor blackColor];
+            UIColor * cc = [UIColor whiteColor];
+            NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:cc,[UIFont systemFontOfSize:18],[UIColor clearColor],nil] forKeys:[NSArray arrayWithObjects:UITextAttributeTextColor,UITextAttributeFont,UITextAttributeTextShadowColor,nil]];
+            picker.navigationBar.titleTextAttributes = dict;
+            
+            picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+            
+            [self presentViewController:picker animated:YES completion:^{
+                if (IOS7_OR_LATER) {
+                    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+                    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+                }
+            }];
+        }
     }
     
     
@@ -363,16 +391,17 @@ typedef enum{
         imageCrop.delegate = self;
         
         //按像素缩放
-        imageCrop.ratioOfWidthAndHeight = 750.0f/560.0f;//设置缩放比例
+        if (_changeImageType == USERFACE) {//头像
+            imageCrop.ratioOfWidthAndHeight = 300.0f/300.0f;//设置缩放比例
+        }else if (_changeImageType == USERBANNER){
+            imageCrop.ratioOfWidthAndHeight = 750.0f/560.0f;//设置缩放比例
+        }
+        
         
         imageCrop.image = scaleImage;
         //[imageCrop showWithAnimation:NO];
         picker.navigationBar.hidden = YES;
         [picker pushViewController:imageCrop animated:YES];
-        
-        
-        
-        
         
     }
     
@@ -411,24 +440,37 @@ typedef enum{
 - (void)cropImage:(UIImage*)cropImage forOriginalImage:(UIImage*)originalImage
 {
     
+    if (_changeImageType == USERFACE) {//上传用户头像
+        //用户需要上传的剪裁后的image
+        self.userUpFaceImage = cropImage;
+        NSLog(@"在此设置用户上传的头像");
+        self.userUpFaceImagedata = UIImagePNGRepresentation(self.userUpFaceImage);
+        
+        
+        //缓存到本地
+        [GMAPI setUserFaceImageWithData:self.userUpFaceImagedata];
+        NSString *str = @"yes";
+        [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"gIsUpFace"];
+        //ASI上传
+        [self test];
+    }else if (_changeImageType == USERBANNER){//上传用户banner
+        //用户需要上传的剪裁后的image
+        self.userUpBannerImage = cropImage;
+        NSLog(@"在此设置用户上传的头像");
+        self.userUpBannerImageData = UIImagePNGRepresentation(self.userUpBannerImage);
+        
+        
+        //缓存到本地
+        [GMAPI setUserFaceImageWithData:self.userUpBannerImageData];
+        NSString *str = @"yes";
+        [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"gIsUpBanner"];
+        //ASI上传
+        [self test];
+    }
     
-    //按像素缩放
-    //UIImage *doneImage = [self scaleToSize:cropImage size:CGSizeMake(400, 400)];
-    
-    //用户需要上传的剪裁后的头像image
-    self.userUpFaceImage = cropImage;
-    NSLog(@"在此设置用户上传的头像");
-    self.userUpFaceImagedata = UIImagePNGRepresentation(self.userUpFaceImage);
     
     
-    //缓存到本地
-    [GMAPI setUserFaceImageWithData:self.userUpFaceImagedata];
-    NSString *str = @"yes";
-    [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"gIsUpFace"];
     
-    
-    //ASI上传
-    [self test];
     
     
 //    _isChooseTouxiang = YES;
@@ -437,44 +479,74 @@ typedef enum{
 }
 
 
-#pragma mark - 上传banner(图片)
+#pragma mark - 上传头像(图片)
 
 #define TT_CACHE_EXPIRATION_AGE_NEVER     (1.0 / 0.0)
 -(void)test{
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    
+    
+    if (_changeImageType == USERFACE) {//上传用户头像
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            //        NSString* fullURL = [NSString stringWithFormat:@"http://quan.fblife.com/index.php?c=interface&a=updatehead&authkey=%@",[GMAPI getAuthkey]];
+            
+            NSString* fullURL = @"123";
+            NSLog(@"上传头像请求的地址===%@     ----%s",fullURL,__FUNCTION__);
+            //设置标志位
+            NSString *str = @"yes";
+            [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"gIsUpFace"];
+            
+            _request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:fullURL]];
+            AppDelegate *_appDelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
+            _request.delegate = _appDelegate;
+            _request.tag = 123;
+            
+            //得到图片的data
+            NSData* data;
+            //获取图片质量
+            NSMutableData *myRequestData=[NSMutableData data];
+            [_request setPostFormat:ASIMultipartFormDataPostFormat];
+            data = UIImageJPEGRepresentation(self.userUpFaceImage,0.5);
+            NSLog(@"xxxx===%@",data);
+            [_request addRequestHeader:@"uphead" value:[NSString stringWithFormat:@"%d", [myRequestData length]]];
+            //设置http body
+            [_request addData:data withFileName:[NSString stringWithFormat:@"boris.png"] andContentType:@"image/PNG" forKey:[NSString stringWithFormat:@"uphead"]];
+            
+            [_request setRequestMethod:@"POST"];
+            _request.cachePolicy = TT_CACHE_EXPIRATION_AGE_NEVER;
+            _request.cacheStoragePolicy = ASICacheForSessionDurationCacheStoragePolicy;
+            [_request startAsynchronous];
+            
+        });
+    }else if (_changeImageType == USERBANNER){//上传用户banner
         
-//        NSString* fullURL = [NSString stringWithFormat:@"http://quan.fblife.com/index.php?c=interface&a=updatehead&authkey=%@",[GMAPI getAuthkey]];
-        
-        NSString* fullURL = @"123";
-        NSLog(@"上传头像请求的地址===%@     ----%s",fullURL,__FUNCTION__);
-        
-        //设置标志位
+        //        NSString* fullURL = [NSString stringWithFormat:@"http://quan.fblife.com/index.php?c=interface&a=updatehead&authkey=%@",[GMAPI getAuthkey]];
+        NSString *fullURL = @"123";
+        //上传标志位
         NSString *str = @"yes";
-        [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"gIsUpFace"];
+        [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"gIsUpBanner"];
         
-        request__ = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:fullURL]];
+        
+        _request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:fullURL]];
+        
         AppDelegate *_appDelegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
-        request__.delegate = _appDelegate;
-        request__.tag = 123;
         
-        //得到图片的data
-        NSData* data;
-        //获取图片质量
-        NSMutableData *myRequestData=[NSMutableData data];
-        [request__ setPostFormat:ASIMultipartFormDataPostFormat];
-        data = UIImageJPEGRepresentation(self.userUpFaceImage,0.5);
-        NSLog(@"xxxx===%@",data);
-        [request__ addRequestHeader:@"uphead" value:[NSString stringWithFormat:@"%d", [myRequestData length]]];
+        _request.delegate = _appDelegate;
+        _request.tag = 122;
+        
+        
+        [_request addRequestHeader:@"frontpic" value:[NSString stringWithFormat:@"%d", [self.userUpBannerImageData length]]];
         //设置http body
-        [request__ addData:data withFileName:[NSString stringWithFormat:@"boris.png"] andContentType:@"image/PNG" forKey:[NSString stringWithFormat:@"uphead"]];
+        [_request addData:self.userUpBannerImageData withFileName:[NSString stringWithFormat:@"boris.png"] andContentType:@"image/PNG" forKey:[NSString stringWithFormat:@"frontpic"]];
         
-        [request__ setRequestMethod:@"POST"];
-        request__.cachePolicy = TT_CACHE_EXPIRATION_AGE_NEVER;
-        request__.cacheStoragePolicy = ASICacheForSessionDurationCacheStoragePolicy;
-        [request__ startAsynchronous];
-        
-    });
+        [_request setRequestMethod:@"POST"];
+        _request.cachePolicy = TT_CACHE_EXPIRATION_AGE_NEVER;
+        _request.cacheStoragePolicy = ASICacheForSessionDurationCacheStoragePolicy;
+        [_request startAsynchronous];
+    }
+    
+    
     
     
 }
@@ -506,7 +578,7 @@ typedef enum{
         _dianpuTitleLabel.textColor = RGBCOLOR(160, 160, 160);
         _dianpuNumLabel.textColor = [UIColor blackColor];
         
-        _cellHight = 220;
+        _cellHight = 220.0/568*ALL_FRAME_HEIGHT;
         _cellType = GCHANPIN;
         [self loadNewData];
         
@@ -522,7 +594,7 @@ typedef enum{
         _dianpuTitleLabel.textColor = RGBCOLOR(160, 160, 160);
         _dianpuNumLabel.textColor = [UIColor blackColor];
         
-        _cellHight = 220;
+        _cellHight = 220.0/568*ALL_FRAME_HEIGHT;
         _cellType = GCHANPIN;
         [self loadNewData];
         
@@ -538,7 +610,7 @@ typedef enum{
         _dianpuTitleLabel.textColor =  RGBCOLOR(253, 160, 51);
         _dianpuNumLabel.textColor =  RGBCOLOR(253, 160, 51);
         
-        _cellHight = 85;
+        _cellHight = 85.0/568*ALL_FRAME_HEIGHT;
         _cellType = GDIANPU;
         [self loadNewData];
         
@@ -584,6 +656,21 @@ typedef enum{
         }else
         {
             _tableView.isHaveMoreData = YES;
+        }
+        
+        
+        
+        if (theType == GDIANPU) {
+            NSMutableArray *dataArr = [NSMutableArray arrayWithCapacity:1];
+            for (NSDictionary *dic in dataArray) {
+                
+                BusinessListModel *model = [[BusinessListModel alloc]initWithDictionary:dic];
+                [dataArr addObject:model];
+                
+            }
+            
+            dataArray = (NSArray*)dataArr;
+            
         }
         
         
@@ -671,11 +758,54 @@ typedef enum{
 
 #pragma mark -  UITableViewDataSource
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    
+    if (_cellType == GDIANPU) {//收藏店铺
+        static NSString *identifier = @"dianpu";
+        GpersonCenterCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            cell = [[GpersonCenterCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        
+        for (UIView * view in cell.contentView.subviews) {
+            [view removeFromSuperview];
+        }
+        
+        BusinessListModel *model = _dataArray[indexPath.row];
+        [cell loadCustomViewWithType:3];
+        [cell setdataWithData:model];
+        
+        return cell;
+        
+    }else if (_cellType == GCHANPIN){//收藏产品
+        static NSString *identifier = @"chanpin";
+        GpersonCenterCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            cell = [[GpersonCenterCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        return cell;
+        
+    }else if (_cellType == GANLI){//收藏案例
+        static NSString *identifier = @"anli";
+        GpersonCenterCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            cell = [[GpersonCenterCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        return cell;
+    }
+    
+    
+    
+    
     static NSString *identifier = @"identifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    
+    
+    
     
     return cell;
 }
@@ -693,15 +823,14 @@ typedef enum{
 
 //单元格个数一个屏幕里占不满的话 下面不显示出来
 //_tableView继承自RefreshTableView  RefreshTableView遵循UITableViewDelegate协议
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-//{
-//    return [UIView new];
-//}
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//    return 0.01f;
-//}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    return [UIView new];
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.01f;
+}
 
 
 #pragma mark - 上提下拉相关方法结束

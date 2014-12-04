@@ -160,6 +160,7 @@
 		E392C31D1A2818FD001AEA0D /* GfindPasswViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E392C31C1A2818FD001AEA0D /* GfindPasswViewController.m */; };
 		E3ED4A671A2FF83E004A2D72 /* GcustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E3ED4A661A2FF83E004A2D72 /* GcustomActionSheet.m */; };
 		E3ED4A6A1A30233A004A2D72 /* MLImageCrop.m in Sources */ = {isa = PBXBuildFile; fileRef = E3ED4A691A30233A004A2D72 /* MLImageCrop.m */; };
+		E3ED4A6D1A30413F004A2D72 /* GpersonCenterCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3ED4A6C1A30413F004A2D72 /* GpersonCenterCustomCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -442,6 +443,8 @@
 		E3ED4A661A2FF83E004A2D72 /* GcustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GcustomActionSheet.m; sourceTree = "<group>"; };
 		E3ED4A681A30233A004A2D72 /* MLImageCrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLImageCrop.h; sourceTree = "<group>"; };
 		E3ED4A691A30233A004A2D72 /* MLImageCrop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLImageCrop.m; sourceTree = "<group>"; };
+		E3ED4A6B1A30413F004A2D72 /* GpersonCenterCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpersonCenterCustomCell.h; sourceTree = "<group>"; };
+		E3ED4A6C1A30413F004A2D72 /* GpersonCenterCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GpersonCenterCustomCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1305,6 +1308,8 @@
 			children = (
 				E392C3141A2815FA001AEA0D /* GloginView.h */,
 				E392C3151A2815FA001AEA0D /* GloginView.m */,
+				E3ED4A6B1A30413F004A2D72 /* GpersonCenterCustomCell.h */,
+				E3ED4A6C1A30413F004A2D72 /* GpersonCenterCustomCell.m */,
 			);
 			path = Gviews;
 			sourceTree = "<group>";
@@ -1534,6 +1539,7 @@
 				13F9D4781A2D9A89002A6904 /* AnliDetailViewController.m in Sources */,
 				1312611B1A2C7237001E46E4 /* AnliViewCell.m in Sources */,
 				19B34DE01A246F1100ED1935 /* LeftViewController.m in Sources */,
+				E3ED4A6D1A30413F004A2D72 /* GpersonCenterCustomCell.m in Sources */,
 				E392C3161A2815FA001AEA0D /* GloginView.m in Sources */,
 				56621D581A28605B00310A48 /* UMFeedbackViewController.m in Sources */,
 				565EE8B81A2C3DEE0063CAA3 /* ASIDataDecompressor.m in Sources */,
