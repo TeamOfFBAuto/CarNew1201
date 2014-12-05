@@ -40,7 +40,7 @@
     _brand_tableView.sectionIndexBackgroundColor = [UIColor clearColor];
 
     
-    _cars_tableView = [[UITableView alloc] initWithFrame:CGRectMake(self.bounds.size.width,0,180,self.frame.size.height) style:UITableViewStylePlain];
+    _cars_tableView = [[UITableView alloc] initWithFrame:CGRectMake(self.bounds.size.width+10,0,180,self.frame.size.height) style:UITableViewStylePlain];
     _cars_tableView.separatorColor = RGBCOLOR(197,197,197);
     _cars_tableView.delegate = self;
     _cars_tableView.dataSource = self;

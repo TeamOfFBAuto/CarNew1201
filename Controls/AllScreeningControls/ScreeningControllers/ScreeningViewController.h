@@ -9,7 +9,15 @@
  *筛选界面
  */
 #import <UIKit/UIKit.h>
+#import "SliderBBSTitleView.h"
 
 @interface ScreeningViewController : MyViewController
+{
+    
+}
+
+@property(nonatomic,strong)SliderBBSTitleView * seg_view;
+
+
 
 @end

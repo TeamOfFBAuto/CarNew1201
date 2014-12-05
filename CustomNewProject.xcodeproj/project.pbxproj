@@ -124,6 +124,8 @@
 		56621D641A28625900310A48 /* AlertRePlaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56621D631A28625900310A48 /* AlertRePlaceView.m */; };
 		56621D671A286A0900310A48 /* ZSNApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 56621D661A286A0900310A48 /* ZSNApi.m */; };
 		566ADC221A2D5B4C009529A5 /* default_touxiang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 566ADC211A2D5B4C009529A5 /* default_touxiang@2x.png */; };
+		567760931A31410800A4A23B /* ScreeningAreaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 567760921A31410800A4A23B /* ScreeningAreaView.m */; };
+		567760961A31453200A4A23B /* SliderBBSTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 567760951A31453200A4A23B /* SliderBBSTitleView.m */; };
 		567B13AA1A2C6B8C003A3C59 /* fanhui_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 567B13A91A2C6B8C003A3C59 /* fanhui_image@2x.png */; };
 		567D6DFC1A2EC508006E108C /* SNRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 567D6DFB1A2EC508006E108C /* SNRefreshTableView.m */; };
 		569FFEED1A272EA6008A02A6 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 569FFEEB1A272EA6008A02A6 /* LogInViewController.m */; };
@@ -381,6 +383,10 @@
 		56621D651A286A0900310A48 /* ZSNApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSNApi.h; sourceTree = "<group>"; };
 		56621D661A286A0900310A48 /* ZSNApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSNApi.m; sourceTree = "<group>"; };
 		566ADC211A2D5B4C009529A5 /* default_touxiang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_touxiang@2x.png"; sourceTree = "<group>"; };
+		567760911A31410800A4A23B /* ScreeningAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreeningAreaView.h; sourceTree = "<group>"; };
+		567760921A31410800A4A23B /* ScreeningAreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreeningAreaView.m; sourceTree = "<group>"; };
+		567760941A31453200A4A23B /* SliderBBSTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderBBSTitleView.h; sourceTree = "<group>"; };
+		567760951A31453200A4A23B /* SliderBBSTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderBBSTitleView.m; sourceTree = "<group>"; };
 		567B13A91A2C6B8C003A3C59 /* fanhui_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fanhui_image@2x.png"; sourceTree = "<group>"; };
 		567D6DFA1A2EC508006E108C /* SNRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNRefreshTableView.h; sourceTree = "<group>"; };
 		567D6DFB1A2EC508006E108C /* SNRefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNRefreshTableView.m; sourceTree = "<group>"; };
@@ -927,6 +933,8 @@
 			children = (
 				563E4CC31A2DC3A80022755C /* ScreeningCarView.h */,
 				563E4CC41A2DC3A80022755C /* ScreeningCarView.m */,
+				567760911A31410800A4A23B /* ScreeningAreaView.h */,
+				567760921A31410800A4A23B /* ScreeningAreaView.m */,
 			);
 			path = ScreeningViews;
 			sourceTree = "<group>";
@@ -1162,6 +1170,8 @@
 				56CE4B2D1A257FC600876AC7 /* MyViewController.m */,
 				567D6DFA1A2EC508006E108C /* SNRefreshTableView.h */,
 				567D6DFB1A2EC508006E108C /* SNRefreshTableView.m */,
+				567760941A31453200A4A23B /* SliderBBSTitleView.h */,
+				567760951A31453200A4A23B /* SliderBBSTitleView.m */,
 			);
 			path = ZSNClasses;
 			sourceTree = "<group>";
@@ -1569,6 +1579,7 @@
 				565EE8B91A2C3DEE0063CAA3 /* ASIDownloadCache.m in Sources */,
 				E3ED4A6A1A30233A004A2D72 /* MLImageCrop.m in Sources */,
 				56500AFF1A2D676900E834A1 /* BusinessListTableViewCell.m in Sources */,
+				567760931A31410800A4A23B /* ScreeningAreaView.m in Sources */,
 				56CE4B641A25D48100876AC7 /* PHAirViewController.m in Sources */,
 				56621D141A28600300310A48 /* UMTableViewCell.m in Sources */,
 				56621D611A28620200310A48 /* downloadtool.m in Sources */,
@@ -1587,6 +1598,7 @@
 				563E4CBF1A2DC3540022755C /* ScreeningViewController.m in Sources */,
 				565EE8B71A2C3DEE0063CAA3 /* ASIDataCompressor.m in Sources */,
 				E392C31A1A2818C9001AEA0D /* GzhuceViewController.m in Sources */,
+				567760961A31453200A4A23B /* SliderBBSTitleView.m in Sources */,
 				56CC07271A3039630014F285 /* BrandModel.m in Sources */,
 				135117A61A257F2D0015C133 /* UIColor+ConvertColor.m in Sources */,
 				E358B2C01A2DEAF700B0FA51 /* GmPrepareNetData.m in Sources */,
