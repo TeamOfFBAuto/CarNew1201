@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -38,8 +39,21 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E2D-Fh-rzN">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <color key="backgroundColor" red="1" green="0.44705882349999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="Bds-JF-5Gs"/>
+                            <constraint firstAttribute="width" constant="45" id="Wxv-fX-M0C"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Bds-JF-5Gs"/>
+                                <exclude reference="Wxv-fX-M0C"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Bds-JF-5Gs"/>
+                                <include reference="Wxv-fX-M0C"/>
+                            </mask>
                         </variation>
                     </imageView>
                 </subviews>
@@ -48,10 +62,12 @@
                     <constraint firstItem="0Iw-Du-m6k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="DkV-sb-Ghz"/>
                     <constraint firstAttribute="trailing" secondItem="0Iw-Du-m6k" secondAttribute="trailing" id="ECr-Ht-Zbo"/>
                     <constraint firstAttribute="bottom" secondItem="hJG-nV-nL0" secondAttribute="bottom" constant="36" id="G4c-HS-fV8"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="E2D-Fh-rzN" secondAttribute="trailing" constant="5" id="MSL-bS-INN"/>
                     <constraint firstItem="0Iw-Du-m6k" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="NnJ-L6-B36"/>
                     <constraint firstItem="hJG-nV-nL0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="OHg-kw-l0a"/>
                     <constraint firstAttribute="bottom" secondItem="lJN-Hs-ZaQ" secondAttribute="bottom" constant="19" id="Yx5-0f-VnN"/>
                     <constraint firstAttribute="bottom" secondItem="0Iw-Du-m6k" secondAttribute="bottom" constant="83" id="sh3-yl-H6j"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="E2D-Fh-rzN" secondAttribute="bottom" constant="47.5" id="w0x-C9-So8"/>
                 </constraints>
                 <variation key="default">
                     <mask key="subviews">
@@ -59,14 +75,16 @@
                         <exclude reference="E2D-Fh-rzN"/>
                     </mask>
                     <mask key="constraints">
-                        <exclude reference="G4c-HS-fV8"/>
-                        <exclude reference="OHg-kw-l0a"/>
-                        <exclude reference="2Cl-f5-QGu"/>
-                        <exclude reference="Yx5-0f-VnN"/>
                         <exclude reference="DkV-sb-Ghz"/>
                         <exclude reference="ECr-Ht-Zbo"/>
                         <exclude reference="NnJ-L6-B36"/>
                         <exclude reference="sh3-yl-H6j"/>
+                        <exclude reference="G4c-HS-fV8"/>
+                        <exclude reference="OHg-kw-l0a"/>
+                        <exclude reference="2Cl-f5-QGu"/>
+                        <exclude reference="Yx5-0f-VnN"/>
+                        <exclude reference="MSL-bS-INN"/>
+                        <exclude reference="w0x-C9-So8"/>
                     </mask>
                 </variation>
                 <variation key="heightClass=regular-widthClass=compact">
@@ -75,14 +93,16 @@
                         <include reference="E2D-Fh-rzN"/>
                     </mask>
                     <mask key="constraints">
-                        <include reference="G4c-HS-fV8"/>
-                        <include reference="OHg-kw-l0a"/>
-                        <include reference="2Cl-f5-QGu"/>
-                        <include reference="Yx5-0f-VnN"/>
                         <include reference="DkV-sb-Ghz"/>
                         <include reference="ECr-Ht-Zbo"/>
                         <include reference="NnJ-L6-B36"/>
                         <include reference="sh3-yl-H6j"/>
+                        <include reference="G4c-HS-fV8"/>
+                        <include reference="OHg-kw-l0a"/>
+                        <include reference="2Cl-f5-QGu"/>
+                        <include reference="Yx5-0f-VnN"/>
+                        <include reference="MSL-bS-INN"/>
+                        <include reference="w0x-C9-So8"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
@@ -92,7 +112,7 @@
                 <outlet property="nameLabel" destination="lJN-Hs-ZaQ" id="U1n-VG-pjx"/>
                 <outlet property="smallImageView" destination="E2D-Fh-rzN" id="t1H-OU-8DY"/>
             </connections>
-            <point key="canvasLocation" x="-394" y="205.5"/>
+            <point key="canvasLocation" x="-536" y="187.5"/>
         </tableViewCell>
     </objects>
 </document>

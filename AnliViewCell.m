@@ -48,7 +48,7 @@
     [self.smallImageView sd_setImageWithURL:[NSURL URLWithString:aModel.spichead] placeholderImage:nil];
     
     self.smallImageView.layer.masksToBounds = YES;
-    self.smallImageView.layer.cornerRadius = self.smallImageView.width / 2.f;
+    self.smallImageView.layer.cornerRadius = 45 / 2.f;
 }
 
 @end
