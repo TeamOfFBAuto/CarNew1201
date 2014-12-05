@@ -14,9 +14,10 @@
 
 #import <MessageUI/MessageUI.h>
 
-@interface AnliDetailViewController ()<MFMailComposeViewControllerDelegate>
+@interface AnliDetailViewController ()<MFMailComposeViewControllerDelegate,UIWebViewDelegate>
 {
     ShareView *_shareView;
+    MBProgressHUD *loading;
 }
 
 @end
@@ -36,6 +37,9 @@
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
     [self createNavigationTools];
+    
+    loading = [LTools MBProgressWithText:@"数据加载中..." addToView:self.view];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -351,6 +355,26 @@
 {
     [LTools alertText:msg];
     
+}
+
+#define mark 代理
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    return YES;
+}
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [loading show:YES];
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [loading hide:YES];
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [loading hide:YES];
+    NSLog(@"erro %@",error);
 }
 
 

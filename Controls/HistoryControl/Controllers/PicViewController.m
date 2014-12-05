@@ -13,6 +13,7 @@
 #import "AnliModel.h"
 
 #import "AnliDetailViewController.h"
+#import "CarTypeViewController.h"
 
 @interface PicViewController ()<UITableViewDataSource,RefreshDelegate>
 {
@@ -37,6 +38,8 @@
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeText WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
     [self createNavigationTools];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chooseCarType:) name:@"ChooseCarTypeNotification" object:nil];
     
     //数据展示table
     _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT - 44)];
@@ -156,12 +159,18 @@
 
 #pragma mark 事件处理
 
+- (void)chooseCarType:(NSNotification *)notification
+{
+    NSLog(@"notification %@ %@",notification.object,notification.userInfo);
+}
+
 /**
  *  车型筛选
  */
 - (void)clickToCar:(UIButton *)sender
 {
-    
+    CarTypeViewController *carType = [[CarTypeViewController alloc]init];
+    [self.navigationController pushViewController:carType animated:YES];
 }
 
 /**

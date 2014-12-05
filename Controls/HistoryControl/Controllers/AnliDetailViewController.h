@@ -14,5 +14,6 @@
 @interface AnliDetailViewController : MyViewController
 
 @property (nonatomic,retain)NSString *anli_id;
+@property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 @end

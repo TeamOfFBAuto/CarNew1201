@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -75,14 +76,14 @@
                         <exclude reference="E2D-Fh-rzN"/>
                     </mask>
                     <mask key="constraints">
-                        <exclude reference="DkV-sb-Ghz"/>
-                        <exclude reference="ECr-Ht-Zbo"/>
-                        <exclude reference="NnJ-L6-B36"/>
-                        <exclude reference="sh3-yl-H6j"/>
                         <exclude reference="G4c-HS-fV8"/>
                         <exclude reference="OHg-kw-l0a"/>
                         <exclude reference="2Cl-f5-QGu"/>
                         <exclude reference="Yx5-0f-VnN"/>
+                        <exclude reference="DkV-sb-Ghz"/>
+                        <exclude reference="ECr-Ht-Zbo"/>
+                        <exclude reference="NnJ-L6-B36"/>
+                        <exclude reference="sh3-yl-H6j"/>
                         <exclude reference="MSL-bS-INN"/>
                         <exclude reference="w0x-C9-So8"/>
                     </mask>
@@ -93,14 +94,14 @@
                         <include reference="E2D-Fh-rzN"/>
                     </mask>
                     <mask key="constraints">
-                        <include reference="DkV-sb-Ghz"/>
-                        <include reference="ECr-Ht-Zbo"/>
-                        <include reference="NnJ-L6-B36"/>
-                        <include reference="sh3-yl-H6j"/>
                         <include reference="G4c-HS-fV8"/>
                         <include reference="OHg-kw-l0a"/>
                         <include reference="2Cl-f5-QGu"/>
                         <include reference="Yx5-0f-VnN"/>
+                        <include reference="DkV-sb-Ghz"/>
+                        <include reference="ECr-Ht-Zbo"/>
+                        <include reference="NnJ-L6-B36"/>
+                        <include reference="sh3-yl-H6j"/>
                         <include reference="MSL-bS-INN"/>
                         <include reference="w0x-C9-So8"/>
                     </mask>

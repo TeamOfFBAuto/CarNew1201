@@ -22,6 +22,8 @@
 		1380232B1A2C69CF0053BDDA /* anli_fangda@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023251A2C69CF0053BDDA /* anli_fangda@2x.png */; };
 		1380232C1A2C69CF0053BDDA /* anli_shoucang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023261A2C69CF0053BDDA /* anli_shoucang@2x.png */; };
 		1380232D1A2C69CF0053BDDA /* anli_zhuanfa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023271A2C69CF0053BDDA /* anli_zhuanfa@2x.png */; };
+		138178CA1A319572001DB92C /* CarTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 138178C81A319572001DB92C /* CarTypeViewController.m */; };
+		138178CB1A319572001DB92C /* CarTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 138178C91A319572001DB92C /* CarTypeViewController.xib */; };
 		13F9D4701A2D5A6E002A6904 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D46F1A2D5A6E002A6904 /* BaseModel.m */; };
 		13F9D4731A2D5A80002A6904 /* AnliModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D4721A2D5A80002A6904 /* AnliModel.m */; };
 		13F9D4781A2D9A89002A6904 /* AnliDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D4761A2D9A89002A6904 /* AnliDetailViewController.m */; };
@@ -199,6 +201,9 @@
 		138023251A2C69CF0053BDDA /* anli_fangda@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_fangda@2x.png"; sourceTree = "<group>"; };
 		138023261A2C69CF0053BDDA /* anli_shoucang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_shoucang@2x.png"; sourceTree = "<group>"; };
 		138023271A2C69CF0053BDDA /* anli_zhuanfa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_zhuanfa@2x.png"; sourceTree = "<group>"; };
+		138178C71A319572001DB92C /* CarTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTypeViewController.h; sourceTree = "<group>"; };
+		138178C81A319572001DB92C /* CarTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarTypeViewController.m; sourceTree = "<group>"; };
+		138178C91A319572001DB92C /* CarTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarTypeViewController.xib; sourceTree = "<group>"; };
 		13F9D46E1A2D5A6E002A6904 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		13F9D46F1A2D5A6E002A6904 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		13F9D4711A2D5A80002A6904 /* AnliModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnliModel.h; sourceTree = "<group>"; };
@@ -734,6 +739,9 @@
 				13F9D4751A2D9A89002A6904 /* AnliDetailViewController.h */,
 				13F9D4761A2D9A89002A6904 /* AnliDetailViewController.m */,
 				13F9D4771A2D9A89002A6904 /* AnliDetailViewController.xib */,
+				138178C71A319572001DB92C /* CarTypeViewController.h */,
+				138178C81A319572001DB92C /* CarTypeViewController.m */,
+				138178C91A319572001DB92C /* CarTypeViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1474,6 +1482,7 @@
 				56621D4C1A28605B00310A48 /* nav_bar_bg@2x.png in Resources */,
 				56500B001A2D676900E834A1 /* BusinessListTableViewCell.xib in Resources */,
 				56CC07211A302C3C0014F285 /* 隐私条款.html in Resources */,
+				138178CB1A319572001DB92C /* CarTypeViewController.xib in Resources */,
 				13F9D4C01A2DA951002A6904 /* UMSCommentInputController.xib in Resources */,
 				56621D4E1A28605B00310A48 /* nav_btn_bg.png in Resources */,
 				56621D4A1A28605B00310A48 /* messages_toolbar_background.png in Resources */,
@@ -1571,6 +1580,7 @@
 				56CC07111A2FF9C70014F285 /* PrivacyPolicyViewController.m in Sources */,
 				565EE8B61A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m in Sources */,
 				1351179E1A257EB20015C133 /* LRefreshTableHeaderView.m in Sources */,
+				138178CA1A319572001DB92C /* CarTypeViewController.m in Sources */,
 				19B34DD11A2466C300ED1935 /* StoreViewController.m in Sources */,
 				56CE4B611A25D48100876AC7 /* PHMenuViewController.m in Sources */,
 				56CE4B651A25D48100876AC7 /* PHSessionView.m in Sources */,
