@@ -210,7 +210,7 @@
 }
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath
 {
-    return [self heightFor:297];
+    return [self heightFor:240];
 }
 
 //根据宽度适应高度

@@ -16,7 +16,6 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.bigImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 214)];
         
     }
     return self;
@@ -30,6 +29,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.smallImageView.layer.cornerRadius = _smallImageView.width / 2.f;
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -47,8 +49,16 @@
     self.nameLabel.text = aModel.sname;
     [self.smallImageView sd_setImageWithURL:[NSURL URLWithString:aModel.spichead] placeholderImage:nil];
     
+//    
+//    [self setNeedsUpdateConstraints];
+//    [self updateConstraintsIfNeeded];
+    
     self.smallImageView.layer.masksToBounds = YES;
-    self.smallImageView.layer.cornerRadius = 45 / 2.f;
+    self.smallImageView.layer.cornerRadius = 32 / 2.f;
+    
+    //layer.cornerRadius
+    
+    
 }
 
 @end
