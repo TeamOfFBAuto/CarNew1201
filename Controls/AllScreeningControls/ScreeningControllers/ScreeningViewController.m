@@ -8,6 +8,7 @@
 
 #import "ScreeningViewController.h"
 #import "ScreeningCarView.h"
+#import "ScreeningAreaView.h"
 
 @interface ScreeningViewController ()<UIScrollViewDelegate>
 {
@@ -26,17 +27,22 @@
     UIBarButtonItem * right_bar = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
     self.navigationItem.rightBarButtonItem = right_bar;
     
-    myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
+    myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH+20,DEVICE_HEIGHT-64)];
     myScrollView.pagingEnabled = YES;
     myScrollView.delegate = self;
-    myScrollView.backgroundColor=[UIColor redColor];
-    myScrollView.contentSize = CGSizeMake(DEVICE_WIDTH*2,0);
+    myScrollView.bounces = NO;
+    myScrollView.backgroundColor=[UIColor grayColor];
+    myScrollView.contentSize = CGSizeMake((DEVICE_WIDTH+20)*2,0);
     [self.view addSubview:myScrollView];
     
+    ///筛选车型
     ScreeningCarView * carView = [[ScreeningCarView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,myScrollView.frame.size.height)];
     carView.clipsToBounds = YES;
     [myScrollView addSubview:carView];
     
+    ///地区筛选
+    ScreeningAreaView * areaView = [[ScreeningAreaView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH+20,0,DEVICE_WIDTH,myScrollView.frame.size.height)];
+    [myScrollView addSubview:areaView];
     
     
     ///加载顶部选择
@@ -46,6 +52,7 @@
         [bself selectedForumWith:index];
     }];
     self.navigationItem.titleView = _seg_view;
+    
 }
 
 

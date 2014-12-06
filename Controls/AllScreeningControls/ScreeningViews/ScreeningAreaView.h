@@ -11,10 +11,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScreeningAreaView : UIView
+@interface ScreeningAreaView : UIView<UITableViewDataSource,UITableViewDelegate>
 {
     
 }
+
+
+@property(nonatomic,strong)UITableView * myTableView;
 
 
 @end
