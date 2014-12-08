@@ -112,6 +112,14 @@
         if (data.length > 0) {
             
             NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:Nil];
+            
+            NSArray *results = [dic objectForKey:@"results"];
+            
+            if (results.count == 0) {
+                version(NO,@"no",@"没有更新");
+                return ;
+            }
+            
             //appStore 版本
             NSString *newVersion = [[[dic objectForKey:@"results"] objectAtIndex:0]objectForKey:@"version"];
             NSString *updateContent = [[[dic objectForKey:@"results"] objectAtIndex:0]objectForKey:@"releaseNotes"];

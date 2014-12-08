@@ -9,6 +9,10 @@
 #import "MyViewController.h"
 
 @interface MyViewController ()
+{
+    UIPanGestureRecognizer * panGestureRecognizer;
+    UISwipeGestureRecognizer * swipe;
+}
 
 @end
 
@@ -40,6 +44,22 @@
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    
+    panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGestures:)];
+    panGestureRecognizer.minimumNumberOfTouches = 1;
+    panGestureRecognizer.maximumNumberOfTouches = 1;
+    [self.view addGestureRecognizer:panGestureRecognizer];
+    
+    
+    swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeOnAirImageView:)];
+    swipe.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipe];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.view removeGestureRecognizer:panGestureRecognizer];
+    [self.view removeGestureRecognizer:swipe];
 }
 
 - (void)viewDidLoad
@@ -70,19 +90,7 @@
     spaceButton.width = MY_MACRO_NAME?-5:5;
     
     self.navigationController.navigationBarHidden=NO;
-    
-    
-    UIPanGestureRecognizer * panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGestures:)];
-    panGestureRecognizer.minimumNumberOfTouches = 1;
-    panGestureRecognizer.maximumNumberOfTouches = 1;
-    [self.view addGestureRecognizer:panGestureRecognizer];
-    
-    
-    UISwipeGestureRecognizer * swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeOnAirImageView:)];
-    swipe.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:swipe];
 
-   
 }
 
 #pragma mark - 拖拽手势
@@ -130,7 +138,7 @@ CGPoint began_point;
         
         UIButton *button_back=[[UIButton alloc]initWithFrame:CGRectMake(MY_MACRO_NAME? -5:5,8,40,44)];
         [button_back addTarget:self action:@selector(leftButtonTap:) forControlEvents:UIControlEventTouchUpInside];
-        [button_back setImage:[UIImage imageNamed:BACK_DEFAULT_IMAGE] forState:UIControlStateNormal];
+        [button_back setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];
         UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:button_back];
         self.navigationItem.leftBarButtonItems=@[spaceButton1,back_item];
     }else if (theType == MyViewControllerLeftbuttonTypelogo)
@@ -145,19 +153,12 @@ CGPoint began_point;
     }else if(theType == MyViewControllerLeftbuttonTypeOther)
     {
         UIImage * leftImage = [UIImage imageNamed:_leftImageName];
-        
         UIButton * leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        
         [leftButton addTarget:self action:@selector(leftButtonTap:) forControlEvents:UIControlEventTouchUpInside];
-        
         [leftButton setImage:[UIImage imageNamed:self.leftImageName] forState:UIControlStateNormal];
-        
         leftButton.frame = CGRectMake(0,0,leftImage.size.width,leftImage.size.height);
-        
         UIBarButtonItem * leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
-        
         self.navigationItem.leftBarButtonItems = @[spaceButton,leftBarButton];;
-        
     }else if (theType == MyViewControllerLeftbuttonTypeText)
     {
         UIButton * left_button = [UIButton buttonWithType:UIButtonTypeCustom];

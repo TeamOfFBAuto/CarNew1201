@@ -59,10 +59,10 @@ alpha:(a)]
 #define IOS6DAOHANGLANBEIJING @"sliderBBSNavigationBarImage_ios6.png"
 #define TheNavigationBarBackgroundImg MY_MACRO_NAME?[UIImage imageNamed:IOS7DAOHANGLANBEIJING]:[UIImage imageNamed:@"ios7eva320_44.png"]
 
-#define BACK_DEFAULT_IMAGE @"fanhui_image"
+#define BACK_DEFAULT_IMAGE [UIImage imageNamed:@"fanhui_image"]
 #define HEADER_DEFAULT_IMAGE @"default_touxiang"
 #define WRITE_DEFAULT_IMAGE @"default_write_pen_image.png"
-
+#define NAVIGATION_MENU_IMAGE_NAME @"navigaiton_menu_image"
 #define TITLEFONT [UIFont fontWithName:@"Helvetica" size:20]
 
 

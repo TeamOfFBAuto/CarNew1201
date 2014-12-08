@@ -10,7 +10,7 @@
 #import "BusinessListTableViewCell.h"
 #import "SNRefreshTableView.h"
 #import "ScreeningViewController.h"
-
+#import "BusinessHomeViewController.h"
 @interface BusinessViewController ()<SNRefreshDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
     
@@ -26,10 +26,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    self.leftString = @"菜单";
+    self.leftImageName = NAVIGATION_MENU_IMAGE_NAME;
     self.myTitle = @"服务商家";
     self.rightString = @"筛选";
-    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeText WithRightButtonType:MyViewControllerRightbuttonTypeText];
+    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeText];
     
     _data_array = [NSMutableArray array];
     _myTableView = [[SNRefreshTableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64) showLoadMore:YES];
@@ -138,7 +138,8 @@
 }
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    BusinessHomeViewController * home = [[BusinessHomeViewController alloc] init];
+    [self.navigationController pushViewController:home animated:YES];
 }
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath
 {
