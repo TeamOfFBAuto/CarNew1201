@@ -124,6 +124,9 @@ alpha:(a)]
 //按地区搜索
 #define G_SEACHER_ANLI_AREA @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&city=%d&province=%d"
 
+
+
+
 //搜索配件
 //按关键字搜索配件
 #define G_SEARCH_PEIJIAN_GUANJIANZI @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&keyword=%@"

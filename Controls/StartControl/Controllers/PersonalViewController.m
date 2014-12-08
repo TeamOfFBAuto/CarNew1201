@@ -106,12 +106,22 @@ typedef enum{
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         NSLog(@"请求个人信息失败");
     }];
+    
+    
+    self.navigationController.navigationBarHidden = YES;
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=7.0))
+    {
+        self.navigationController.navigationBar.translucent = NO;
+    }
+    
+    
     
     NSLog(@"%s",__FUNCTION__);
     
@@ -130,7 +140,7 @@ typedef enum{
     
     [self changeNumAndTitleColorWithTag:11];
     
-    _tableView = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT)];
+    _tableView = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, DEVICE_HEIGHT)];
     _tableView.refreshDelegate = self;//用refreshDelegate替换UITableViewDelegate
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
@@ -158,14 +168,15 @@ typedef enum{
 
 //创建tableviewheaderview
 -(void)creatHeaderView{
+    
     //bannaer 头像 用户名 三个按钮底层view 的下层view
     _upThreeViewBackGroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 0)];
-//    _upThreeViewBackGroundView.backgroundColor = [UIColor yellowColor];
     
+   
     
     
     //banner
-    _topImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH,ALL_FRAME_HEIGHT*142/568 )];
+    _topImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH,0)];
     _topImv.backgroundColor = RGBCOLOR_ONE;
     [_upThreeViewBackGroundView addSubview:_topImv];
     _topImv.userInteractionEnabled = YES;
@@ -175,7 +186,7 @@ typedef enum{
     //头像
     _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH*70/320.0, ALL_FRAME_WIDTH*70/320.0)];
     _faceImv.backgroundColor = RGBCOLOR_ONE;
-    _faceImv.center = CGPointMake(ALL_FRAME_WIDTH/2, _topImv.frame.size.height);
+    _faceImv.center = CGPointMake(ALL_FRAME_WIDTH/2,88.00/568*ALL_FRAME_HEIGHT);
     _faceImv.layer.cornerRadius = ALL_FRAME_WIDTH*70/320/2;
     _faceImv.layer.masksToBounds = YES;
     _faceImv.userInteractionEnabled = YES;
@@ -188,27 +199,39 @@ typedef enum{
     _nameLabel.font = [UIFont systemFontOfSize:16];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
     _nameLabel.text = [GMAPI getUsername];
-    _nameLabel.textColor = [UIColor blackColor];
-//    _nameLabel.backgroundColor = [UIColor lightGrayColor];
+    _nameLabel.textColor = [UIColor whiteColor];
+    
+    
+    _nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    _nameLabel.layer.shadowOffset = CGSizeMake(0,1);
+    _nameLabel.layer.shadowRadius = 0.5;
+    _nameLabel.layer.shadowOpacity = 0.8;
+    
     [_upThreeViewBackGroundView addSubview:_nameLabel];
     
     
     //三个按钮的下层view
-    _threeBtnBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_nameLabel.frame)+25, ALL_FRAME_WIDTH, ALL_FRAME_WIDTH *50/320)];
-    _threeBtnBackgroundView.backgroundColor = RGBCOLOR(214, 213, 218);
+    _threeBtnBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_nameLabel.frame)+27, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT *50.00/568)];
     [_upThreeViewBackGroundView addSubview:_threeBtnBackgroundView];
-    _upThreeViewBackGroundView.frame = CGRectMake(0, 0, ALL_FRAME_WIDTH, CGRectGetMaxY(_threeBtnBackgroundView.frame));
+    
+     _upThreeViewBackGroundView.frame = CGRectMake(0, 0, ALL_FRAME_WIDTH,CGRectGetMaxY(_threeBtnBackgroundView.frame)+5);
+    
+    
+    _topImv.frame = _upThreeViewBackGroundView.frame;
+    
+    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_topImv.bounds];
+    _topImv.layer.masksToBounds = NO;
+    _topImv.layer.shadowColor = [UIColor blackColor].CGColor;
+    _topImv.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
+    _topImv.layer.shadowOpacity = 0.5f;
+    _topImv.layer.shadowPath = shadowPath.CGPath;
     
     for (int i = 0; i<3; i++) {
         
         UIView *view = [[UIView alloc]init];
-        if (i == 0) {
-            view.frame = CGRectMake(0+i * ALL_FRAME_WIDTH/3.0, 0.5, ALL_FRAME_WIDTH/3, _threeBtnBackgroundView.frame.size.height);
-        }else{
-            view.frame = CGRectMake(0+i * (ALL_FRAME_WIDTH/3.0+0.5), 0.5, ALL_FRAME_WIDTH/3, _threeBtnBackgroundView.frame.size.height);
-        }
         
-        view.backgroundColor = RGBCOLOR(251, 251, 251);
+        view.frame = CGRectMake(0+i * ALL_FRAME_WIDTH/3.00, 0.5, ALL_FRAME_WIDTH/3.00,_threeBtnBackgroundView.frame.size.height);
+        
         view.tag = i+10;
         
         
@@ -217,8 +240,7 @@ typedef enum{
         
         if (i == 0) {//案例
             //案例的数字
-            _anliNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.0/568*ALL_FRAME_HEIGHT)];
-//            _anliNumLabel.backgroundColor = RGBCOLOR_ONE;
+            _anliNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/568*ALL_FRAME_HEIGHT)];
             _anliNumLabel.textAlignment = NSTextAlignmentCenter;
             NSLog(@"案例的数字label%@",NSStringFromCGRect(_anliNumLabel.frame));
             _anliNumLabel.text = @"8";
@@ -226,7 +248,10 @@ typedef enum{
             
             _anliTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_anliNumLabel.frame), _anliNumLabel.frame.size.width, view.frame.size.height-_anliNumLabel.frame.size.height)];
             _anliTitleLabel.text = @"收藏案例";
-            _anliTitleLabel.textColor = RGBCOLOR(134, 134, 134);
+            _anliTitleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+            _anliTitleLabel.layer.shadowOffset = CGSizeMake(0,1);
+            _anliTitleLabel.layer.shadowRadius = 0.5;
+            _anliTitleLabel.layer.shadowOpacity = 0.8;
             _anliTitleLabel.font = [UIFont systemFontOfSize:13];
             _anliTitleLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_anliTitleLabel];
@@ -234,15 +259,17 @@ typedef enum{
             
         }else if (i == 1){//产品
             //产品的数字
-            _chanpinNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.0/568*ALL_FRAME_HEIGHT)];
-//            _chanpinNumLabel.backgroundColor = RGBCOLOR_ONE;
+            _chanpinNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/568*ALL_FRAME_HEIGHT)];
             _chanpinNumLabel.text = @"23";
             _chanpinNumLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_chanpinNumLabel];
             
             _chanpinTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_chanpinNumLabel.frame), _chanpinNumLabel.frame.size.width, view.frame.size.height-_chanpinNumLabel.frame.size.height)];
             _chanpinTitleLabel.text = @"收藏产品";
-            _chanpinTitleLabel.textColor = RGBCOLOR(134, 134, 134);
+            _chanpinTitleLabel.layer.shadowColor = [[UIColor blackColor]CGColor];
+            _chanpinTitleLabel.layer.shadowOffset = CGSizeMake(0, 1);
+            _chanpinTitleLabel.layer.shadowRadius = 0.5;
+            _chanpinTitleLabel.layer.shadowOpacity = 0.8;
             _chanpinTitleLabel.font = [UIFont systemFontOfSize:13];
             _chanpinTitleLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_chanpinTitleLabel];
@@ -251,15 +278,17 @@ typedef enum{
             
         }else if (i == 2){//收藏店铺
             //店铺的数字
-            _dianpuNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.0/568 * ALL_FRAME_HEIGHT)];
-//            _dianpuNumLabel.backgroundColor = RGBCOLOR_ONE;
+            _dianpuNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/568 * ALL_FRAME_HEIGHT)];
             _dianpuNumLabel.text = @"34";
             _dianpuNumLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_dianpuNumLabel];
             
             _dianpuTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_dianpuNumLabel.frame), _dianpuNumLabel.frame.size.width, view.frame.size.height-_dianpuNumLabel.frame.size.height)];
             _dianpuTitleLabel.text = @"收藏店铺";
-            _dianpuTitleLabel.textColor = RGBCOLOR(134, 134, 134);
+            _dianpuTitleLabel.layer.shadowColor = [[UIColor blackColor]CGColor];
+            _dianpuTitleLabel.layer.shadowOffset = CGSizeMake(0, 1);
+            _dianpuTitleLabel.layer.shadowRadius = 0.5;
+            _dianpuTitleLabel.layer.shadowOpacity = 0.8;
             _dianpuTitleLabel.font = [UIFont systemFontOfSize:13];
             _dianpuTitleLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_dianpuTitleLabel];
@@ -269,13 +298,10 @@ typedef enum{
         [_threeBtnBackgroundView addSubview:view];
         
     }
+
+   
     
     
-    
-    
-    
-    
-    [self.view addSubview:_upThreeViewBackGroundView];
 }
 
 
@@ -356,12 +382,7 @@ typedef enum{
             _changeImageType = USERFACE;
             UIImagePickerController *picker = [[UIImagePickerController alloc]init];
             picker.delegate = self;
-            //        [picker.navigationBar setBackgroundImage:FBCIRCLE_NAVIGATION_IMAGE forBarMetrics: UIBarMetricsDefault];
-//            picker.navigationBar.barTintColor = [UIColor blackColor];
-//            UIColor * cc = [UIColor whiteColor];
-//            NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:cc,[UIFont systemFontOfSize:18],[UIColor clearColor],nil] forKeys:[NSArray arrayWithObjects:UITextAttributeTextColor,UITextAttributeFont,UITextAttributeTextShadowColor,nil]];
-//            picker.navigationBar.titleTextAttributes = dict;
-            
+
             picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
             
             [self presentViewController:picker animated:YES completion:^{
@@ -575,30 +596,30 @@ typedef enum{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     if (theTag == 10) {//点击的是收藏案例
-        _anliTitleLabel.textColor = RGBCOLOR(253, 160, 51);
-        _anliNumLabel.textColor = RGBCOLOR(253, 160, 51);
+        _anliTitleLabel.textColor = RGBCOLOR(155, 155, 155);
+        _anliNumLabel.textColor = RGBCOLOR(155, 155, 155);
         
-        _chanpinTitleLabel.textColor = RGBCOLOR(160, 160, 160);
-        _chanpinNumLabel.textColor = [UIColor blackColor];
+        _chanpinTitleLabel.textColor = [UIColor whiteColor];
+        _chanpinNumLabel.textColor = [UIColor whiteColor];
         
-        _dianpuTitleLabel.textColor = RGBCOLOR(160, 160, 160);
-        _dianpuNumLabel.textColor = [UIColor blackColor];
+        _dianpuTitleLabel.textColor = [UIColor whiteColor];
+        _dianpuNumLabel.textColor = [UIColor whiteColor];
         
-        _cellHight = 220.0/568*ALL_FRAME_HEIGHT;
+        _cellHight = 240.00/568*ALL_FRAME_HEIGHT;
         _cellType = GANLI;
         [self loadNewData];
         
         
     }else if (theTag == 11){//点击的是收藏产品
         
-        _anliTitleLabel.textColor = RGBCOLOR(160, 160, 160);
-        _anliNumLabel.textColor = [UIColor blackColor];
+        _anliTitleLabel.textColor = [UIColor whiteColor];
+        _anliNumLabel.textColor = [UIColor whiteColor];
         
-        _chanpinTitleLabel.textColor = RGBCOLOR(253, 160, 51);
-        _chanpinNumLabel.textColor = RGBCOLOR(253, 160, 51);
+        _chanpinTitleLabel.textColor = RGBCOLOR(155, 155, 155);
+        _chanpinNumLabel.textColor = RGBCOLOR(155, 155, 155);
         
-        _dianpuTitleLabel.textColor = RGBCOLOR(160, 160, 160);
-        _dianpuNumLabel.textColor = [UIColor blackColor];
+        _dianpuTitleLabel.textColor = [UIColor whiteColor];
+        _dianpuNumLabel.textColor = [UIColor whiteColor];
         
         _cellHight = 220.0/568*ALL_FRAME_HEIGHT;
         _cellType = GCHANPIN;
@@ -607,14 +628,14 @@ typedef enum{
         
     }else if (theTag == 12){//收藏店铺
         
-        _anliTitleLabel.textColor = RGBCOLOR(160, 160, 160);
-        _anliNumLabel.textColor = [UIColor blackColor];
+        _anliTitleLabel.textColor = [UIColor whiteColor];
+        _anliNumLabel.textColor = [UIColor whiteColor];
         
-        _chanpinTitleLabel.textColor = RGBCOLOR(160, 160, 160);
-        _chanpinNumLabel.textColor = [UIColor blackColor];
+        _chanpinTitleLabel.textColor = [UIColor whiteColor];
+        _chanpinNumLabel.textColor = [UIColor whiteColor];
         
-        _dianpuTitleLabel.textColor =  RGBCOLOR(253, 160, 51);
-        _dianpuNumLabel.textColor =  RGBCOLOR(253, 160, 51);
+        _dianpuTitleLabel.textColor =  RGBCOLOR(155, 155, 155);
+        _dianpuNumLabel.textColor =  RGBCOLOR(155, 155, 155);
         
         _cellHight = 85.0/568*ALL_FRAME_HEIGHT;
         _cellType = GDIANPU;
@@ -846,14 +867,14 @@ typedef enum{
 
 //单元格个数一个屏幕里占不满的话 下面不显示出来
 //_tableView继承自RefreshTableView  RefreshTableView遵循UITableViewDelegate协议
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    return [UIView new];
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0.01f;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+//{
+//    return [UIView new];
+//}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    return 0.01f;
+//}
 
 
 #pragma mark - 上提下拉相关方法结束

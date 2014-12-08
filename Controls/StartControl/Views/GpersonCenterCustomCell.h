@@ -14,6 +14,7 @@
 #import "BusinessListModel.h"
 #import "GCaseModel.h"
 #import "GGoodsModel.h"
+#import "GstartView.h"
 
 @interface GpersonCenterCustomCell : UITableViewCell
 {
@@ -22,21 +23,19 @@
     UIImageView *_header_imageView;
     UILabel *_business_name_label;
     UILabel *_comment_num_label;
-    UIView *_stars_back_view;
+    GstartView *_stars_back_view;
     UIView *_labels_back_view;
     UILabel *_biaoqianLabel;
     
     //收藏产品相关
-    UIImageView *_mainImv;
-    UIView *_priceView;
-    UILabel *_priceLabel;
+    
     
     
     //收藏案例相关
-    UIImageView *_mainImv1;
-    UIImageView *_logoImv;
-    UILabel *_titileLabel;
-    UILabel *_subTitleLabel;
+    UIImageView *_mainImv;
+    UIImageView *_logoImageView;
+    UILabel *_titleLabel1;
+    UILabel *_titleLabel2;
     
     
 }

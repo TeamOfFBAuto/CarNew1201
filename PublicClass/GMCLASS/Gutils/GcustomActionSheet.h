@@ -59,7 +59,7 @@ typedef enum{
 
 
 
--(GcustomActionSheet *)initWithTitle:(NSString *)aTitle logOutBtnImageName:(NSString *)imageName logOutBtnTitle:(NSString *)logOutTitle buttonColor:(UIColor *)buttonColor CancelTitle:(NSString *)canceTitle CancelColor:(UIColor *)cancelColor actionBackColor:(UIColor *)actionColor;
+
 
 -(void)showInView:(UIView *)view WithAnimation:(BOOL)animatio;
 

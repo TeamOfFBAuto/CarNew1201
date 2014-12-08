@@ -26,6 +26,7 @@
         self.dateline = [dic stringValueForKey:@"dateline"];
         self.sname = [dic stringValueForKey:@"sname"];
         self.spichead = [dic stringValueForKey:@"spichead"];
+        self.username = [dic stringValueForKey:@"username"];
         
     }
     return self;

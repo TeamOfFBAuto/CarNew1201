@@ -25,6 +25,7 @@
 @property(nonatomic,strong)NSString *dateline;
 @property(nonatomic,strong)NSString *sname;
 @property(nonatomic,strong)NSString *spichead;
+@property(nonatomic,strong)NSString *username;
 
 
 -(id)initWithDictionary:(NSDictionary *)dic;

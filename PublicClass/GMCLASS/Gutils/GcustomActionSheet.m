@@ -114,89 +114,7 @@
 
 
 
--(GcustomActionSheet *)initWithTitle:(NSString *)aTitle logOutBtnImageName:(NSString *)imageName logOutBtnTitle:(NSString *)logOutTitle buttonColor:(UIColor *)buttonColor CancelTitle:(NSString *)canceTitle CancelColor:(UIColor *)cancelColor actionBackColor:(UIColor *)actionColor{
-    self = [super init];
-    
-    if (self)
-    {
-        self.frame = [UIScreen mainScreen].bounds;
-        self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
-        self.window.windowLevel = UIWindowLevelStatusBar+1;
-        
-        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doTap:)];
-        [self addGestureRecognizer:tap];
-        
-        
-        _content_view = [[UIView alloc] init];
-        
-        if (actionColor)
-        {
-            _content_view.backgroundColor = actionColor;
-        }
-        [self addSubview:_content_view];
-        
-        float content_height = 0;
-        
-        if (aTitle)
-        {
-            content_height = 30;
-            UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,10,280,20)];
-            titleLabel.backgroundColor = [UIColor clearColor];
-            titleLabel.textAlignment = NSTextAlignmentCenter;
-            titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
-            titleLabel.textColor = [UIColor blackColor];
-            titleLabel.numberOfLines = 1;
-            titleLabel.text = aTitle;
-            _title_label = titleLabel;
-            [_content_view addSubview:_title_label];
-        }
-        
-        //普通按钮
-        if (imageName)
-        {
-            UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
-            b.frame = CGRectMake(20,firstBtnForTopSpacing,280,44);
-            b.tag = 101;
-            b.layer.cornerRadius = 5.0f;
-            b.layer.masksToBounds = YES;
-            b.layer.borderWidth = 0.5;
-            b.layer.borderColor = RGBCOLOR(0,167,21).CGColor;
-            b.backgroundColor = buttonColor;
-            
-            [b setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-            [b setTitle:logOutTitle forState:UIControlStateNormal];
-            [b addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-            [_content_view addSubview:b];
-            
-            
-            content_height += 22+53;
-        }
-        
-        //取消按钮
-        if (canceTitle)
-        {
-            UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
-            b.frame = CGRectMake(20,content_height+10,280,44);
-            b.tag = 100;
-            b.layer.cornerRadius = 5.0f;
-            b.layer.masksToBounds = YES;
-            b.layer.borderWidth = 0.5f;
-            b.layer.borderColor = RGBCOLOR(170,170,170).CGColor;
-            b.backgroundColor = cancelColor;
-            [b setTitle:canceTitle forState:UIControlStateNormal];
-            [b setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [b addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-            [_content_view addSubview:b];
-            
-            content_height += 64;
-        }
-        content_height += 74;
-        
-        _content_view.frame = CGRectMake(0,(iPhone5?568:480),320,content_height);
-    }
-    
-    return self;
-}
+
 
 
 #pragma mark - 点空白区域收回视图
@@ -232,7 +150,7 @@
     
     CGRect content_frame = _content_view.frame;
     
-    content_frame.origin.y = ALL_FRAME_HEIGHT -  content_frame.size.height;
+    content_frame.origin.y = DEVICE_HEIGHT -  content_frame.size.height;
     
     if (animation)
     {
