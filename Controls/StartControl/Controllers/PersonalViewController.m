@@ -22,6 +22,12 @@
 
 #import "GpersonCenterCustomCell.h"
 
+#import "GGoodsModel.h"
+
+#import "GCaseModel.h"
+
+#import "NSDictionary+GJson.h"
+
 typedef enum{
     GANLI = 0,//案例
     GCHANPIN ,//产品
@@ -329,18 +335,18 @@ typedef enum{
             
             //        [picker.navigationBar setBackgroundImage:FBCIRCLE_NAVIGATION_IMAGE forBarMetrics: UIBarMetricsDefault];
             
-            picker.navigationBar.barTintColor = [UIColor blackColor];
-            UIColor * cc = [UIColor whiteColor];
-            NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:cc,[UIFont systemFontOfSize:18],[UIColor clearColor],nil] forKeys:[NSArray arrayWithObjects:UITextAttributeTextColor,UITextAttributeFont,UITextAttributeTextShadowColor,nil]];
-            picker.navigationBar.titleTextAttributes = dict;
+//            picker.navigationBar.barTintColor = [UIColor blackColor];
+//            UIColor * cc = [UIColor whiteColor];
+//            NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:cc,[UIFont systemFontOfSize:18],[UIColor clearColor],nil] forKeys:[NSArray arrayWithObjects:UITextAttributeTextColor,UITextAttributeFont,UITextAttributeTextShadowColor,nil]];
+//            picker.navigationBar.titleTextAttributes = dict;
             
             picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
             
             [self presentViewController:picker animated:YES completion:^{
-                if (IOS7_OR_LATER) {
-                    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-                    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-                }
+//                if (IOS7_OR_LATER) {
+//                    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+//                    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+//                }
             }];
         }
         
@@ -351,18 +357,18 @@ typedef enum{
             UIImagePickerController *picker = [[UIImagePickerController alloc]init];
             picker.delegate = self;
             //        [picker.navigationBar setBackgroundImage:FBCIRCLE_NAVIGATION_IMAGE forBarMetrics: UIBarMetricsDefault];
-            picker.navigationBar.barTintColor = [UIColor blackColor];
-            UIColor * cc = [UIColor whiteColor];
-            NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:cc,[UIFont systemFontOfSize:18],[UIColor clearColor],nil] forKeys:[NSArray arrayWithObjects:UITextAttributeTextColor,UITextAttributeFont,UITextAttributeTextShadowColor,nil]];
-            picker.navigationBar.titleTextAttributes = dict;
+//            picker.navigationBar.barTintColor = [UIColor blackColor];
+//            UIColor * cc = [UIColor whiteColor];
+//            NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:cc,[UIFont systemFontOfSize:18],[UIColor clearColor],nil] forKeys:[NSArray arrayWithObjects:UITextAttributeTextColor,UITextAttributeFont,UITextAttributeTextShadowColor,nil]];
+//            picker.navigationBar.titleTextAttributes = dict;
             
             picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
             
             [self presentViewController:picker animated:YES completion:^{
-                if (IOS7_OR_LATER) {
-                    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-                    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-                }
+//                if (IOS7_OR_LATER) {
+//                    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+//                    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+//                }
             }];
         }
     }
@@ -579,7 +585,7 @@ typedef enum{
         _dianpuNumLabel.textColor = [UIColor blackColor];
         
         _cellHight = 220.0/568*ALL_FRAME_HEIGHT;
-        _cellType = GCHANPIN;
+        _cellType = GANLI;
         [self loadNewData];
         
         
@@ -660,7 +666,7 @@ typedef enum{
         
         
         
-        if (theType == GDIANPU) {
+        if (theType == GDIANPU) {//店铺
             NSMutableArray *dataArr = [NSMutableArray arrayWithCapacity:1];
             for (NSDictionary *dic in dataArray) {
                 
@@ -671,10 +677,33 @@ typedef enum{
             
             dataArray = (NSArray*)dataArr;
             
+        }else if (theType == GCHANPIN){//产品
+            NSMutableArray *dataArr = [NSMutableArray arrayWithCapacity:1];
+            
+            for (NSDictionary *dic in dataArray) {
+                
+                GGoodsModel *model = [[GGoodsModel alloc]initWithDictionary:dic];
+                
+                [dataArr addObject:model];
+                
+            }
+            
+            dataArray = (NSArray *)dataArr;
+            
+        }else if (theType == GANLI){//案例
+            NSMutableArray *dataArr = [NSMutableArray arrayWithCapacity:1];
+            for (NSDictionary *dic in dataArray) {
+                
+                GCaseModel *model = [[GCaseModel alloc]initWithDictionary:dic];
+                [dataArr addObject:model];
+                
+            }
+            
+            dataArray = (NSArray *)dataArr;
         }
         
-        
         [bself reloadData:dataArray isReload:_tableView.isReloadData];
+        
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -759,19 +788,17 @@ typedef enum{
 #pragma mark -  UITableViewDataSource
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    static NSString *identifier = @"identifier";
+    GpersonCenterCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[GpersonCenterCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
     
-    
+    for (UIView *view in cell.contentView.subviews) {
+        [view removeFromSuperview];
+    }
+
     if (_cellType == GDIANPU) {//收藏店铺
-        static NSString *identifier = @"dianpu";
-        GpersonCenterCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (!cell) {
-            cell = [[GpersonCenterCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        }
-        
-        for (UIView * view in cell.contentView.subviews) {
-            [view removeFromSuperview];
-        }
-        
         BusinessListModel *model = _dataArray[indexPath.row];
         [cell loadCustomViewWithType:3];
         [cell setdataWithData:model];
@@ -779,30 +806,26 @@ typedef enum{
         return cell;
         
     }else if (_cellType == GCHANPIN){//收藏产品
-        static NSString *identifier = @"chanpin";
-        GpersonCenterCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (!cell) {
-            cell = [[GpersonCenterCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        }
+        
+        [cell loadCustomViewWithType:2];
+        GGoodsModel *model = _dataArray[indexPath.row];
+        [cell setChanpinWithData:model];
+        
         return cell;
         
     }else if (_cellType == GANLI){//收藏案例
-        static NSString *identifier = @"anli";
-        GpersonCenterCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-        if (!cell) {
-            cell = [[GpersonCenterCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        }
+        
+        [cell loadCustomViewWithType:1];
+        GCaseModel *model = _dataArray[indexPath.row];
+        [cell setAnliDataWithData:model];
+        
         return cell;
     }
     
     
     
     
-    static NSString *identifier = @"identifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
+    
     
     
     

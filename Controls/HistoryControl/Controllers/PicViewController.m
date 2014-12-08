@@ -15,6 +15,8 @@
 #import "AnliDetailViewController.h"
 #import "CarTypeViewController.h"
 
+#import "GSeachViewController.h"
+
 @interface PicViewController ()<UITableViewDataSource,RefreshDelegate>
 {
     RefreshTableView *_table;
@@ -178,6 +180,17 @@
  */
 - (void)clickToSearch:(UIButton *)sender
 {
+    
+    
+    NSLog(@"点击放大镜");
+    GSeachViewController *sss = [[GSeachViewController alloc]init];
+    UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:sss];
+    [self presentViewController:navc animated:YES completion:^{
+        
+    }];
+    
+    
+    
     
 }
 

@@ -27,17 +27,23 @@
         _mainImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 220.0/568*ALL_FRAME_HEIGHT)];
 //        88 42
         _priceView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 88.0/320*ALL_FRAME_WIDTH, 42.0/568*ALL_FRAME_HEIGHT)];
+        _priceLabel = [[UILabel alloc]initWithFrame:_priceView.frame];
+        _priceLabel.textColor = RGBCOLOR(252, 161, 51);
+        [_priceView addSubview:_priceLabel];
+        
         [self.contentView addSubview:_mainImv];
         [self.contentView addSubview:_priceView];
     }else if (theType == 2){//收藏产品
+        
         _mainImv1 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 220.0/568*ALL_FRAME_HEIGHT)];
-        _priceView1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 88.0/320*ALL_FRAME_WIDTH, 42.0/568*ALL_FRAME_HEIGHT)];
-        [self.contentView addSubview:_mainImv1];
-        [self.contentView addSubview:_priceView1];
+        _logoImv = [[UIImageView alloc]initWithFrame:CGRectMake(20, 265, 42, 42)];
+        _titileLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_logoImv.frame)+15, _logoImv.frame.origin.y, ALL_FRAME_WIDTH-CGRectGetMaxX(_logoImv.frame)-15-20, _logoImv.frame.size.height/2)];
+        _subTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(_titileLabel.frame.origin.x, CGRectGetMaxY(_titileLabel.frame), _titileLabel.frame.size.width, _titileLabel.frame.size.height)];
+        
         
     }else if (theType == 3){//收藏店铺
         //图片
-        _header_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 12, 92.0/320*ALL_FRAME_WIDTH, 60.0/568*ALL_FRAME_HEIGHT)];
+        _header_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 12, 60.0/320*ALL_FRAME_WIDTH, 60.0/568*ALL_FRAME_HEIGHT)];
         
         //名字
         _business_name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_header_imageView.frame)+12, _header_imageView.frame.origin.y, ALL_FRAME_WIDTH-_header_imageView.frame.size.width-12-12-12, 16.0/568*ALL_FRAME_HEIGHT)];
@@ -73,7 +79,7 @@
 }
 
 
-
+//填充数据 店铺
 -(void)setdataWithData:(BusinessListModel *)theModel{
     _business_name_label.text = theModel.storename;
     [_header_imageView sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
@@ -94,12 +100,29 @@
 
 
 
--(void)setAnliDataWithData:(NSDictionary *)modelDic{
+//填充数据 ： 案例
+-(void)setAnliDataWithData:(GCaseModel *)theModel{
+//    NSString *imageName = theModel.pichead;
+//    [_mainImv1 setImage:[UIImage imageNamed:imageName]];
+//    
+//    _priceLabel1.text = theModel.price;
+    
+    NSString *imageName = theModel.pichead;
+    [_mainImv setImage:[UIImage imageNamed:imageName]];
+    
+    
+    
     
 }
 
-
--(void)setChanpinWithData:(NSDictionary *)modelDic{
+//填充数据 ： 产品
+-(void)setChanpinWithData:(GGoodsModel *)theModel{
+    
+    NSString *imageName = theModel.pichead;
+    [_mainImv1 setImage:[UIImage imageNamed:imageName]];
+    
+    
+    
     
 }
 

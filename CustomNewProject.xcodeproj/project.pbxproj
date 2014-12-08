@@ -156,6 +156,11 @@
 		E311CD331A24573C007D69D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E311CD311A24573C007D69D3 /* LaunchScreen.xib */; };
 		E311CD3F1A24573C007D69D3 /* CustomNewProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E311CD3E1A24573C007D69D3 /* CustomNewProjectTests.m */; };
 		E358B2C01A2DEAF700B0FA51 /* GmPrepareNetData.m in Sources */ = {isa = PBXBuildFile; fileRef = E358B2BF1A2DEAF700B0FA51 /* GmPrepareNetData.m */; };
+		E35A00E51A319E4000A9CD24 /* GCaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E35A00E21A319E4000A9CD24 /* GCaseModel.m */; };
+		E35A00E61A319E4000A9CD24 /* GGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E35A00E41A319E4000A9CD24 /* GGoodsModel.m */; };
+		E35A00E91A319E4E00A9CD24 /* GpersonCenterCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E35A00E81A319E4E00A9CD24 /* GpersonCenterCustomCell.m */; };
+		E35A00EC1A319FA100A9CD24 /* GSeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E35A00EB1A319FA100A9CD24 /* GSeachViewController.m */; };
+		E372307A1A316C5100597D8C /* NSDictionary+GJson.m in Sources */ = {isa = PBXBuildFile; fileRef = E37230791A316C5100597D8C /* NSDictionary+GJson.m */; };
 		E38F1E1A1A2C16870048C58D /* GMAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E38F1E191A2C16870048C58D /* GMAPI.m */; };
 		E38F1E1E1A2C3ABE0048C58D /* loginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E38F1E1C1A2C3ABE0048C58D /* loginBackground@2x.png */; };
 		E38F1E1F1A2C3ABE0048C58D /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E38F1E1D1A2C3ABE0048C58D /* logo@2x.png */; };
@@ -164,7 +169,6 @@
 		E392C31D1A2818FD001AEA0D /* GfindPasswViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E392C31C1A2818FD001AEA0D /* GfindPasswViewController.m */; };
 		E3ED4A671A2FF83E004A2D72 /* GcustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E3ED4A661A2FF83E004A2D72 /* GcustomActionSheet.m */; };
 		E3ED4A6A1A30233A004A2D72 /* MLImageCrop.m in Sources */ = {isa = PBXBuildFile; fileRef = E3ED4A691A30233A004A2D72 /* MLImageCrop.m */; };
-		E3ED4A6D1A30413F004A2D72 /* GpersonCenterCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E3ED4A6C1A30413F004A2D72 /* GpersonCenterCustomCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -440,6 +444,16 @@
 		E311CD3E1A24573C007D69D3 /* CustomNewProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomNewProjectTests.m; sourceTree = "<group>"; };
 		E358B2BE1A2DEAF700B0FA51 /* GmPrepareNetData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmPrepareNetData.h; sourceTree = "<group>"; };
 		E358B2BF1A2DEAF700B0FA51 /* GmPrepareNetData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GmPrepareNetData.m; sourceTree = "<group>"; };
+		E35A00E11A319E4000A9CD24 /* GCaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCaseModel.h; sourceTree = "<group>"; };
+		E35A00E21A319E4000A9CD24 /* GCaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCaseModel.m; sourceTree = "<group>"; };
+		E35A00E31A319E4000A9CD24 /* GGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGoodsModel.h; sourceTree = "<group>"; };
+		E35A00E41A319E4000A9CD24 /* GGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGoodsModel.m; sourceTree = "<group>"; };
+		E35A00E71A319E4E00A9CD24 /* GpersonCenterCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpersonCenterCustomCell.h; sourceTree = "<group>"; };
+		E35A00E81A319E4E00A9CD24 /* GpersonCenterCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GpersonCenterCustomCell.m; sourceTree = "<group>"; };
+		E35A00EA1A319FA100A9CD24 /* GSeachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSeachViewController.h; sourceTree = "<group>"; };
+		E35A00EB1A319FA100A9CD24 /* GSeachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSeachViewController.m; sourceTree = "<group>"; };
+		E37230781A316C5100597D8C /* NSDictionary+GJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+GJson.h"; sourceTree = "<group>"; };
+		E37230791A316C5100597D8C /* NSDictionary+GJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+GJson.m"; sourceTree = "<group>"; };
 		E38F1E181A2C16870048C58D /* GMAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMAPI.h; sourceTree = "<group>"; };
 		E38F1E191A2C16870048C58D /* GMAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMAPI.m; sourceTree = "<group>"; };
 		E38F1E1C1A2C3ABE0048C58D /* loginBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginBackground@2x.png"; sourceTree = "<group>"; };
@@ -454,8 +468,6 @@
 		E3ED4A661A2FF83E004A2D72 /* GcustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GcustomActionSheet.m; sourceTree = "<group>"; };
 		E3ED4A681A30233A004A2D72 /* MLImageCrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLImageCrop.h; sourceTree = "<group>"; };
 		E3ED4A691A30233A004A2D72 /* MLImageCrop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLImageCrop.m; sourceTree = "<group>"; };
-		E3ED4A6B1A30413F004A2D72 /* GpersonCenterCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpersonCenterCustomCell.h; sourceTree = "<group>"; };
-		E3ED4A6C1A30413F004A2D72 /* GpersonCenterCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GpersonCenterCustomCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -793,9 +805,9 @@
 		19B34DC51A2465F300ED1935 /* PersonalControl */ = {
 			isa = PBXGroup;
 			children = (
+				E35A00DF1A319E3400A9CD24 /* Models */,
+				E35A00E01A319E3400A9CD24 /* Views */,
 				19B34DC61A2465F300ED1935 /* Controllers */,
-				19B34DC71A2465F300ED1935 /* Models */,
-				19B34DC81A2465F300ED1935 /* Views */,
 			);
 			name = PersonalControl;
 			path = StartControl;
@@ -812,20 +824,6 @@
 				56621D5B1A2860AC00310A48 /* AboutViewController.m */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		19B34DC71A2465F300ED1935 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		19B34DC81A2465F300ED1935 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		19B34DE41A24818400ED1935 /* PublicClass */ = {
@@ -1292,6 +1290,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E35A00DF1A319E3400A9CD24 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E35A00E11A319E4000A9CD24 /* GCaseModel.h */,
+				E35A00E21A319E4000A9CD24 /* GCaseModel.m */,
+				E35A00E31A319E4000A9CD24 /* GGoodsModel.h */,
+				E35A00E41A319E4000A9CD24 /* GGoodsModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E35A00E01A319E3400A9CD24 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E35A00E71A319E4E00A9CD24 /* GpersonCenterCustomCell.h */,
+				E35A00E81A319E4E00A9CD24 /* GpersonCenterCustomCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E392C3101A2815FA001AEA0D /* GMCLASS */ = {
 			isa = PBXGroup;
 			children = (
@@ -1310,6 +1328,8 @@
 				E392C3191A2818C9001AEA0D /* GzhuceViewController.m */,
 				E392C31B1A2818FD001AEA0D /* GfindPasswViewController.h */,
 				E392C31C1A2818FD001AEA0D /* GfindPasswViewController.m */,
+				E35A00EA1A319FA100A9CD24 /* GSeachViewController.h */,
+				E35A00EB1A319FA100A9CD24 /* GSeachViewController.m */,
 			);
 			path = Gcontrollers;
 			sourceTree = "<group>";
@@ -1326,8 +1346,6 @@
 			children = (
 				E392C3141A2815FA001AEA0D /* GloginView.h */,
 				E392C3151A2815FA001AEA0D /* GloginView.m */,
-				E3ED4A6B1A30413F004A2D72 /* GpersonCenterCustomCell.h */,
-				E3ED4A6C1A30413F004A2D72 /* GpersonCenterCustomCell.m */,
 			);
 			path = Gviews;
 			sourceTree = "<group>";
@@ -1343,6 +1361,8 @@
 				E358B2BF1A2DEAF700B0FA51 /* GmPrepareNetData.m */,
 				E38F1E181A2C16870048C58D /* GMAPI.h */,
 				E38F1E191A2C16870048C58D /* GMAPI.m */,
+				E37230781A316C5100597D8C /* NSDictionary+GJson.h */,
+				E37230791A316C5100597D8C /* NSDictionary+GJson.m */,
 			);
 			path = Gutils;
 			sourceTree = "<group>";
@@ -1558,7 +1578,6 @@
 				13F9D4781A2D9A89002A6904 /* AnliDetailViewController.m in Sources */,
 				1312611B1A2C7237001E46E4 /* AnliViewCell.m in Sources */,
 				19B34DE01A246F1100ED1935 /* LeftViewController.m in Sources */,
-				E3ED4A6D1A30413F004A2D72 /* GpersonCenterCustomCell.m in Sources */,
 				E392C3161A2815FA001AEA0D /* GloginView.m in Sources */,
 				56621D581A28605B00310A48 /* UMFeedbackViewController.m in Sources */,
 				565EE8B81A2C3DEE0063CAA3 /* ASIDataDecompressor.m in Sources */,
@@ -1584,6 +1603,7 @@
 				19B34DD11A2466C300ED1935 /* StoreViewController.m in Sources */,
 				56CE4B611A25D48100876AC7 /* PHMenuViewController.m in Sources */,
 				56CE4B651A25D48100876AC7 /* PHSessionView.m in Sources */,
+				E35A00EC1A319FA100A9CD24 /* GSeachViewController.m in Sources */,
 				19B34DDD1A246DDE00ED1935 /* RightViewController.m in Sources */,
 				565EE8C41A2C41F10063CAA3 /* pinyin.c in Sources */,
 				565EE8B91A2C3DEE0063CAA3 /* ASIDownloadCache.m in Sources */,
@@ -1599,14 +1619,17 @@
 				E311CD281A24573C007D69D3 /* AppDelegate.m in Sources */,
 				135117A71A257F2D0015C133 /* UIView+Frame.m in Sources */,
 				56621D671A286A0900310A48 /* ZSNApi.m in Sources */,
+				E35A00E51A319E4000A9CD24 /* GCaseModel.m in Sources */,
 				E311CD251A24573C007D69D3 /* main.m in Sources */,
 				E38F1E1A1A2C16870048C58D /* GMAPI.m in Sources */,
+				E35A00E61A319E4000A9CD24 /* GGoodsModel.m in Sources */,
 				19B34DE31A246FD700ED1935 /* FansViewController.m in Sources */,
 				19B34DD71A24672B00ED1935 /* PersonalViewController.m in Sources */,
 				56621D161A28600300310A48 /* UMTableViewLoadingCell.m in Sources */,
 				56621D641A28625900310A48 /* AlertRePlaceView.m in Sources */,
 				563E4CBF1A2DC3540022755C /* ScreeningViewController.m in Sources */,
 				565EE8B71A2C3DEE0063CAA3 /* ASIDataCompressor.m in Sources */,
+				E35A00E91A319E4E00A9CD24 /* GpersonCenterCustomCell.m in Sources */,
 				E392C31A1A2818C9001AEA0D /* GzhuceViewController.m in Sources */,
 				567760961A31453200A4A23B /* SliderBBSTitleView.m in Sources */,
 				56CC07271A3039630014F285 /* BrandModel.m in Sources */,
@@ -1623,6 +1646,7 @@
 				13F9D47C1A2DA767002A6904 /* ShareView.m in Sources */,
 				56621D5C1A2860AC00310A48 /* AboutViewController.m in Sources */,
 				19B34DCB1A24666500ED1935 /* SelectedViewController.m in Sources */,
+				E372307A1A316C5100597D8C /* NSDictionary+GJson.m in Sources */,
 				565EE8BA1A2C3DEE0063CAA3 /* ASIFormDataRequest.m in Sources */,
 				56621D151A28600300310A48 /* UMTableViewController.m in Sources */,
 				56621D571A28605B00310A48 /* UMFeedbackTableViewCellRight.m in Sources */,

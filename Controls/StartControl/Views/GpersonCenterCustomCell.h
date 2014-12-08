@@ -12,6 +12,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BusinessListModel.h"
+#import "GCaseModel.h"
+#import "GGoodsModel.h"
 
 @interface GpersonCenterCustomCell : UITableViewCell
 {
@@ -27,11 +29,15 @@
     //收藏产品相关
     UIImageView *_mainImv;
     UIView *_priceView;
+    UILabel *_priceLabel;
     
     
     //收藏案例相关
     UIImageView *_mainImv1;
-    UIView *_priceView1;
+    UIImageView *_logoImv;
+    UILabel *_titileLabel;
+    UILabel *_subTitleLabel;
+    
     
 }
 
@@ -44,9 +50,9 @@
 
 
 //收藏案例
--(void)setAnliDataWithData:(NSDictionary *)modelDic;
+-(void)setAnliDataWithData:(GCaseModel *)theModel;
 
 //收藏产品
--(void)setChanpinWithData:(NSDictionary *)modelDic;
+-(void)setChanpinWithData:(GGoodsModel *)theModel;
 
 @end
