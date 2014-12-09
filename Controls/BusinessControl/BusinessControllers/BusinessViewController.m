@@ -11,6 +11,7 @@
 #import "SNRefreshTableView.h"
 #import "ScreeningViewController.h"
 #import "BusinessHomeViewController.h"
+#import "GpersonCenterCustomCell.h"
 @interface BusinessViewController ()<SNRefreshDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
     
@@ -112,17 +113,18 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"identifier";
-    BusinessListTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"BusinessListTableViewCell" owner:nil options:nil] objectAtIndex:0];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    GpersonCenterCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[GpersonCenterCustomCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
-    for (UIView * view in cell.labels_back_view.subviews) {
+    for (UIView * view in cell.contentView.subviews) {
         [view removeFromSuperview];
     }
     
-    [cell setInfoWithModel:[_data_array objectAtIndex:indexPath.row]];
+    BusinessListModel *model = _data_array[indexPath.row];
+    [cell loadCustomViewWithType:3];
+    [cell setdataWithData:model];
     
     return cell;
 }
