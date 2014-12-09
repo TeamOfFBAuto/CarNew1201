@@ -92,9 +92,12 @@ typedef enum{
     NSLog(@"%s",__FUNCTION__);
 }
 
+-(void)viewDidDisappear:(BOOL)animated{
+    self.navigationController.navigationBarHidden = NO;
+}
 
 -(void)viewWillAppear:(BOOL)animated{
-    
+    [super viewWillAppear:YES];
     self.navigationController.navigationBarHidden = YES;
 }
 
@@ -107,8 +110,6 @@ typedef enum{
     {
         self.navigationController.navigationBar.translucent = NO;
     }
-    
-    
     
     NSLog(@"%s",__FUNCTION__);
     
@@ -174,10 +175,11 @@ typedef enum{
         
         [_faceImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"pichead"]] placeholderImage:nil];
         
+        [_topImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"bunner"]] placeholderImage:nil];
+        
         _anliNumLabel.text = [dic stringValueForKey:@"fcase"];
         _chanpinNumLabel.text = [dic stringValueForKey:@"fgoods"];
         _dianpuNumLabel.text = [dic stringValueForKey:@"fstore"];
-        
         _tableView.tableHeaderView = _upThreeViewBackGroundView;
         
         
@@ -388,20 +390,20 @@ typedef enum{
 //头像的点击方法
 -(void)userFaceClicked{
     NSLog(@"点击头像");
-    
-    GcustomActionSheet *aaa = [[GcustomActionSheet alloc]initWithTitle:nil
-                                                          buttonTitles:@[@"更换头像"]
-                                                     buttonTitlesColor:[UIColor blackColor]
-                                                           buttonColor:[UIColor whiteColor]
-                                                           CancelTitle:@"取消"
-                                                      cancelTitelColor:[UIColor whiteColor]
-                                                           CancelColor:RGBCOLOR(253, 144, 39)
-                                                       actionBackColor:RGBCOLOR(236, 236, 236)];
-    
-    
-    aaa.tag = 91;
-    aaa.delegate = self;
-    [aaa showInView:self.view WithAnimation:YES];
+//    
+//    GcustomActionSheet *aaa = [[GcustomActionSheet alloc]initWithTitle:nil
+//                                                          buttonTitles:@[@"更换头像"]
+//                                                     buttonTitlesColor:[UIColor blackColor]
+//                                                           buttonColor:[UIColor whiteColor]
+//                                                           CancelTitle:@"取消"
+//                                                      cancelTitelColor:[UIColor whiteColor]
+//                                                           CancelColor:RGBCOLOR(253, 144, 39)
+//                                                       actionBackColor:RGBCOLOR(236, 236, 236)];
+//    
+//    
+//    aaa.tag = 91;
+//    aaa.delegate = self;
+//    [aaa showInView:self.view WithAnimation:YES];
 }
 
 
@@ -604,8 +606,7 @@ typedef enum{
         });
     }else if (_changeImageType == USERBANNER){//上传用户banner
         
-        //        NSString* fullURL = [NSString stringWithFormat:@"http://quan.fblife.com/index.php?c=interface&a=updatehead&authkey=%@",[GMAPI getAuthkey]];
-        NSString *fullURL = @"123";
+        NSString* fullURL = [NSString stringWithFormat:G_CHANGEUSERBANNER,[GMAPI getUid]];
         //上传标志位
         NSString *str = @"yes";
         [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"gIsUpBanner"];
@@ -619,9 +620,9 @@ typedef enum{
         _request.tag = 122;
         
         
-        [_request addRequestHeader:@"frontpic" value:[NSString stringWithFormat:@"%d", [self.userUpBannerImageData length]]];
+        [_request addRequestHeader:@"pichead" value:[NSString stringWithFormat:@"%d", [self.userUpBannerImageData length]]];
         //设置http body
-        [_request addData:self.userUpBannerImageData withFileName:[NSString stringWithFormat:@"boris.png"] andContentType:@"image/PNG" forKey:[NSString stringWithFormat:@"frontpic"]];
+        [_request addData:self.userUpBannerImageData withFileName:[NSString stringWithFormat:@"boris.png"] andContentType:@"image/PNG" forKey:[NSString stringWithFormat:@"pichead"]];
         
         [_request setRequestMethod:@"POST"];
         _request.cachePolicy = TT_CACHE_EXPIRATION_AGE_NEVER;
