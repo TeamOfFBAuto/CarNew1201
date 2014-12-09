@@ -146,31 +146,59 @@
 
 
 
-#pragma mark - NSUserDefault缓存
++(BOOL)cleanUserFaceAndBanner{
+    //上传标志位
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"gIsUpBanner"];
+    [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"gIsUpFace"];
+    
+    
+    
+    //document路径
+    NSString *documentPathStr = [GMAPI documentFolder];
+    NSString *userFace = @"/guserFaceImage.png";
+    NSString *userBanner = @"/guserBannerImage.png";
+    
+    
+    //文件管理器
+    NSFileManager *fileM = [NSFileManager defaultManager];
+    
+    //清除 头像和 banner
+    
+    BOOL isCleanUserFaceSuccess = NO;
+    BOOL isCleanUserBannerSuccess = NO;
+    BOOL isSuccess = NO;
+    isCleanUserFaceSuccess = [fileM removeItemAtPath:[documentPathStr stringByAppendingString:userFace] error:nil];
+    isCleanUserBannerSuccess = [fileM removeItemAtPath:[documentPathStr stringByAppendingString:userBanner] error:nil];
+    if (isCleanUserFaceSuccess && isCleanUserBannerSuccess) {
+        isSuccess = YES;
+    }
+    
+    return isSuccess;
+}
 
+
++ (NSString *)documentFolder{
+    return [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+}
+
+
+
+
+#pragma mark - NSUserDefault缓存
 //存
 + (void)cache:(id)dataInfo ForKey:(NSString *)key
 {
-    
     NSLog(@"key===%@",key);
-    
-    
     @try {
-        
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:dataInfo forKey:key];
         [defaults synchronize];
-        
     }
     @catch (NSException *exception) {
-        
         NSLog(@"exception %@",exception);
-        
     }
     @finally {
-        
     }
-    
 }
 
 //取
@@ -179,6 +207,5 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     return [defaults objectForKey:key];
 }
-
 
 @end

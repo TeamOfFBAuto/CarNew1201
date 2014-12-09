@@ -34,4 +34,11 @@
 
 
 
+-(void)leftButtonTap:(UIButton *)sender
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
 @end

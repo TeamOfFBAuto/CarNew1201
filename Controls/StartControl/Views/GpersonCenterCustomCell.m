@@ -69,7 +69,8 @@
         _header_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 12, 60.00/320*ALL_FRAME_WIDTH, 60.00/320*ALL_FRAME_WIDTH)];
         
         //名字
-        _business_name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_header_imageView.frame)+12, _header_imageView.frame.origin.y, ALL_FRAME_WIDTH-_header_imageView.frame.size.width-12-12-12, 16.0/568*ALL_FRAME_HEIGHT)];
+        _business_name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_header_imageView.frame)+12, _header_imageView.frame.origin.y, ALL_FRAME_WIDTH-_header_imageView.frame.size.width-12-12-12, 17.0/568*ALL_FRAME_HEIGHT)];
+        _business_name_label.font = [UIFont systemFontOfSize:16];
         
         //星星
         _stars_back_view = [[GstartView alloc]initWithStartNum:0 Frame:CGRectMake(_business_name_label.frame.origin.x, CGRectGetMaxY(_business_name_label.frame)+6, 60, 12)];

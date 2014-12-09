@@ -167,15 +167,47 @@ typedef enum{
     NSString *api = [NSString stringWithFormat:G_USERINFO,[GMAPI getUid]];
     NSLog(@"请求个人信息接口：%@",api);
     
+    if ([GMAPI getUserBannerImage]) {
+        
+        [_topImv setImage:[GMAPI getUserBannerImage]];
+    }
+    
+    if ([GMAPI getUserFaceImage]) {
+        [_faceImv setImage:[GMAPI getUserFaceImage]];
+    }
+    
     GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:api isPost:NO postData:nil];
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
         NSLog(@"请求个人信息成功");
         NSLog(@"个人信息dic：%@",result);
         NSDictionary *dic = [result dictionaryValueForKey:@"datainfo"];
         
-        [_faceImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"pichead"]] placeholderImage:nil];
+        //banner
+        if ([GMAPI getUserBannerImage]) {
+            
+            [_topImv setImage:[GMAPI getUserBannerImage]];
+        }else{
+            
+            [_topImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"bunner"]] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                NSData *imageData = UIImageJPEGRepresentation(_topImv.image, 1.0);
+                [GMAPI setUserBannerImageWithData:imageData];
+            }];
+        }
         
-        [_topImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"bunner"]] placeholderImage:nil];
+        
+        //头像
+        if ([GMAPI getUserFaceImage]) {
+            [_faceImv setImage:[GMAPI getUserFaceImage]];
+        }else{
+            [_faceImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"pichead"]] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                NSData *imageData = UIImageJPEGRepresentation(_faceImv.image, 1.0);
+                [GMAPI setUserFaceImageWithData:imageData];
+            }];
+        }
+        
+        
+        
+        
         
         _anliNumLabel.text = [dic stringValueForKey:@"fcase"];
         _chanpinNumLabel.text = [dic stringValueForKey:@"fgoods"];
@@ -546,7 +578,7 @@ typedef enum{
         
         
         //缓存到本地
-        [GMAPI setUserFaceImageWithData:self.userUpBannerImageData];
+        [GMAPI setUserBannerImageWithData:self.userUpBannerImageData];
         NSString *str = @"yes";
         [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"gIsUpBanner"];
         //ASI上传
@@ -569,7 +601,7 @@ typedef enum{
 #define TT_CACHE_EXPIRATION_AGE_NEVER     (1.0 / 0.0)
 -(void)test{
     
-    
+    [_topImv setImage:[GMAPI getUserBannerImage]];//替换用户本地图片
     
     if (_changeImageType == USERFACE) {//上传用户头像
         dispatch_async(dispatch_get_main_queue(), ^{

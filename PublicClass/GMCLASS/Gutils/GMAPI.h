@@ -30,13 +30,7 @@
 
 + (MBProgressHUD *)showMBProgressWithText:(NSString *)text addToView:(UIView *)aView;
 
-/**
- *  NSUserDefault 缓存
- */
-//存
-+ (void)cache:(id)dataInfo ForKey:(NSString *)key;
-//取
-+ (id)cacheForKey:(NSString *)key;
+
 
 
 
@@ -61,5 +55,20 @@
 
 //获取用户头像Image
 +(UIImage *)getUserFaceImage;
+
+
+//获取document路径
++ (NSString *)documentFolder;
+
+//清除banner和头像
++(BOOL)cleanUserFaceAndBanner;
+
+
+
+//NSUserDefault 缓存
+//存
++ (void)cache:(id)dataInfo ForKey:(NSString *)key;
+//取
++ (id)cacheForKey:(NSString *)key;
 
 @end
