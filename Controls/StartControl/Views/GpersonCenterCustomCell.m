@@ -61,7 +61,36 @@
         
         _mainImv_chapin = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 240.00/568*ALL_FRAME_HEIGHT)];
         
+        UILabel *moneyFlagLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 200.00/568*ALL_FRAME_HEIGHT, 20, 20)];
+        moneyFlagLabel.text = @"￥";
+        moneyFlagLabel.textColor = RGBCOLOR(253, 180, 44);
+        moneyFlagLabel.font = [UIFont systemFontOfSize:19];
+//        moneyFlagLabel.backgroundColor = [UIColor redColor];
+        
+        
+        _price_chanpin = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(moneyFlagLabel.frame), moneyFlagLabel.frame.origin.y-10, 90, moneyFlagLabel.frame.size.height+10)];
+        _price_chanpin.font = [UIFont systemFontOfSize:27];
+        _price_chanpin.textColor = RGBCOLOR(252, 160, 51);
+        _price_chanpin.text = @"1280";
+//        _price_chanpin.backgroundColor = [UIColor redColor];
+        
+        
+        _title1_chanpin = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_price_chanpin.frame), _price_chanpin.frame.origin.y, ALL_FRAME_WIDTH - 15 -_price_chanpin.frame.size.width-15, _price_chanpin.frame.size.height*0.5)];
+        _title1_chanpin.textAlignment = NSTextAlignmentLeft;
+        _title1_chanpin.textColor = RGBCOLOR(222, 222, 222);
+        
+        _title2_chanpin = [[UILabel alloc]initWithFrame:CGRectMake(_title1_chanpin.frame.origin.x, CGRectGetMaxY(_title1_chanpin.frame), _title1_chanpin.frame.size.width, _title1_chanpin.frame.size.height)];
+        _title2_chanpin.textAlignment = NSTextAlignmentLeft;
+        _title2_chanpin.textColor = RGBCOLOR(222, 222, 222);
+        
+        
+        
+        
         [self.contentView addSubview:_mainImv_chapin];
+        [self.contentView addSubview:moneyFlagLabel];
+        [self.contentView addSubview:_price_chanpin];
+        [self.contentView addSubview:_title1_chanpin];
+        [self.contentView addSubview:_title2_chanpin];
         
         
     }else if (theType == 3){//收藏店铺
@@ -150,6 +179,11 @@
 -(void)setChanpinWithData:(GGoodsModel *)theModel{
     
     [_mainImv_chapin sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
+    
+    _price_chanpin.text = theModel.price;
+    _title1_chanpin.text = theModel.title;
+    _title2_chanpin.text = theModel.gtype;
+    
     
 }
 

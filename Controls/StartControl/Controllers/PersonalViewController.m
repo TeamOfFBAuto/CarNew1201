@@ -135,22 +135,14 @@ typedef enum{
     
     _tableView.tableHeaderView = _upThreeViewBackGroundView;
     
-//    [self getUserInfo];
-    
     
     [_tableView showRefreshHeader:YES];//进入界面先刷新数据
     
     
     
-//    UIButton *gbackBtn = [[UIImageView alloc]initWithFrame:CGRectMake(12, 35, 10, 17)];
-//    imv.backgroundColor = [UIColor redColor];
-//    [self.view addSubview:imv];
-    
-    
     UIButton *gBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [gBackBtn setImage:[UIImage imageNamed:@"gback.png"] forState:UIControlStateNormal];
-    [gBackBtn setFrame:CGRectMake(6, 25, 44, 44)];
-//    gBackBtn.backgroundColor = [UIColor redColor];
+    [gBackBtn setFrame:CGRectMake(6, 25, 44.00/320*ALL_FRAME_WIDTH, 44.00/320*ALL_FRAME_WIDTH)];
     [gBackBtn addTarget:self action:@selector(gGoBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:gBackBtn];
     
@@ -346,6 +338,11 @@ typedef enum{
             _anliTitleLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_anliTitleLabel];
             
+            //分割线
+            UIView *fView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_anliNumLabel.frame)-0.5, _anliNumLabel.frame.origin.y+5, 0.5,40.00/568*ALL_FRAME_HEIGHT)];
+            fView.backgroundColor = RGBCOLOR(145, 145, 145);
+            [view addSubview:fView];
+            
             
         }else if (i == 1){//产品
             //产品的数字
@@ -364,6 +361,10 @@ typedef enum{
             _chanpinTitleLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_chanpinTitleLabel];
 
+            //分割线
+            UIView *fenView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_chanpinNumLabel.frame)-0.5, _chanpinNumLabel.frame.origin.y+5, 0.5,40.00/568*ALL_FRAME_HEIGHT)];
+            fenView.backgroundColor = RGBCOLOR(145, 145, 145);
+            [view addSubview:fenView];
             
             
         }else if (i == 2){//收藏店铺
@@ -382,6 +383,7 @@ typedef enum{
             _dianpuTitleLabel.font = [UIFont systemFontOfSize:13];
             _dianpuTitleLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_dianpuTitleLabel];
+            
         }
         
         

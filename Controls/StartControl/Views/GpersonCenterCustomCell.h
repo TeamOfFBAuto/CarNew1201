@@ -29,6 +29,11 @@
     
     //收藏产品相关
     UIImageView *_mainImv_chapin;
+    UILabel *_price_chanpin;
+    UILabel *_title1_chanpin;
+    UILabel *_title2_chanpin;
+    
+    
     
     
     
