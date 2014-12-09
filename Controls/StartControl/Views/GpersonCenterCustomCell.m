@@ -68,19 +68,21 @@
 //        moneyFlagLabel.backgroundColor = [UIColor redColor];
         
         
-        _price_chanpin = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(moneyFlagLabel.frame), moneyFlagLabel.frame.origin.y-10, 90, moneyFlagLabel.frame.size.height+10)];
-        _price_chanpin.font = [UIFont systemFontOfSize:27];
+        _price_chanpin = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(moneyFlagLabel.frame), moneyFlagLabel.frame.origin.y-15, 90, moneyFlagLabel.frame.size.height+15)];
+        _price_chanpin.font = [UIFont systemFontOfSize:36];
         _price_chanpin.textColor = RGBCOLOR(252, 160, 51);
-        _price_chanpin.text = @"1280";
 //        _price_chanpin.backgroundColor = [UIColor redColor];
         
         
-        _title1_chanpin = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_price_chanpin.frame), _price_chanpin.frame.origin.y, ALL_FRAME_WIDTH - 15 -_price_chanpin.frame.size.width-15, _price_chanpin.frame.size.height*0.5)];
+        _title1_chanpin = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_price_chanpin.frame), _price_chanpin.frame.origin.y+2, ALL_FRAME_WIDTH - 15 -_price_chanpin.frame.size.width-15, _price_chanpin.frame.size.height*0.5)];
         _title1_chanpin.textAlignment = NSTextAlignmentLeft;
+        _title1_chanpin.font = [UIFont systemFontOfSize:14];
         _title1_chanpin.textColor = RGBCOLOR(222, 222, 222);
+//        _title1_chanpin.backgroundColor = [UIColor redColor];
         
         _title2_chanpin = [[UILabel alloc]initWithFrame:CGRectMake(_title1_chanpin.frame.origin.x, CGRectGetMaxY(_title1_chanpin.frame), _title1_chanpin.frame.size.width, _title1_chanpin.frame.size.height)];
         _title2_chanpin.textAlignment = NSTextAlignmentLeft;
+        _title2_chanpin.font = [UIFont systemFontOfSize:14];
         _title2_chanpin.textColor = RGBCOLOR(222, 222, 222);
         
         
@@ -95,7 +97,7 @@
         
     }else if (theType == 3){//收藏店铺
         //图片
-        _header_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 12, 60.00/320*ALL_FRAME_WIDTH, 60.00/320*ALL_FRAME_WIDTH)];
+        _header_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 12, 60.00, 60.00)];
         
         //名字
         _business_name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_header_imageView.frame)+12, _header_imageView.frame.origin.y, ALL_FRAME_WIDTH-_header_imageView.frame.size.width-12-12-12, 17.0/568*ALL_FRAME_HEIGHT)];
@@ -110,7 +112,7 @@
         _comment_num_label.textColor = RGBCOLOR(253, 163, 72);
         
         //标签
-        _labels_back_view = [[UIView alloc]initWithFrame:CGRectMake(_stars_back_view.frame.origin.x, CGRectGetMaxY(_stars_back_view.frame)+9, _stars_back_view.frame.size.width, 16.0/568*ALL_FRAME_HEIGHT)];
+        _labels_back_view = [[UIView alloc]initWithFrame:CGRectMake(_stars_back_view.frame.origin.x, CGRectGetMaxY(_stars_back_view.frame)+9, _stars_back_view.frame.size.width, 16.0)];
         _labels_back_view.backgroundColor = RGBCOLOR(244, 244, 244);
         
         _biaoqianLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, _labels_back_view.frame.size.width, _labels_back_view.frame.size.height)];
@@ -183,6 +185,7 @@
     _price_chanpin.text = theModel.price;
     _title1_chanpin.text = theModel.title;
     _title2_chanpin.text = theModel.gtype;
+//    _title2_chanpin.text = @"小胖";
     
     
 }

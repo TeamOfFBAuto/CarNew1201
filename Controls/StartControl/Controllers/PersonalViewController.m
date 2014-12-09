@@ -728,7 +728,7 @@ typedef enum{
         _dianpuTitleLabel.textColor =  RGBCOLOR(155, 155, 155);
         _dianpuNumLabel.textColor =  RGBCOLOR(155, 155, 155);
         
-        _cellHight = 85.00/568*ALL_FRAME_HEIGHT;
+        _cellHight = 85.00;
         _cellType = GDIANPU;
         [self loadNewData];
         
