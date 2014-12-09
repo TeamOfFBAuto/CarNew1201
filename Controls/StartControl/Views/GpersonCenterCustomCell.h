@@ -28,6 +28,7 @@
     UILabel *_biaoqianLabel;
     
     //收藏产品相关
+    UIImageView *_mainImv_chapin;
     
     
     

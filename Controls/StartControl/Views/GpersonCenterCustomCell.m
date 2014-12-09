@@ -59,15 +59,14 @@
         [self.contentView addSubview:_titleLabel2];
     }else if (theType == 2){//收藏产品
         
-//        _mainImv1 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 220.0/568*ALL_FRAME_HEIGHT)];
-//        _logoImv = [[UIImageView alloc]initWithFrame:CGRectMake(20, 265, 42, 42)];
-//        _titileLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_logoImv.frame)+15, _logoImv.frame.origin.y, ALL_FRAME_WIDTH-CGRectGetMaxX(_logoImv.frame)-15-20, _logoImv.frame.size.height/2)];
-//        _subTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(_titileLabel.frame.origin.x, CGRectGetMaxY(_titileLabel.frame), _titileLabel.frame.size.width, _titileLabel.frame.size.height)];
+        _mainImv_chapin = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 240.00/568*ALL_FRAME_HEIGHT)];
+        
+        [self.contentView addSubview:_mainImv_chapin];
         
         
     }else if (theType == 3){//收藏店铺
         //图片
-        _header_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 12, 60.0/320*ALL_FRAME_WIDTH, 60.0/568*ALL_FRAME_HEIGHT)];
+        _header_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 12, 60.00/320*ALL_FRAME_WIDTH, 60.00/320*ALL_FRAME_WIDTH)];
         
         //名字
         _business_name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_header_imageView.frame)+12, _header_imageView.frame.origin.y, ALL_FRAME_WIDTH-_header_imageView.frame.size.width-12-12-12, 16.0/568*ALL_FRAME_HEIGHT)];
@@ -149,6 +148,7 @@
 //填充数据 ： 产品
 -(void)setChanpinWithData:(GGoodsModel *)theModel{
     
+    [_mainImv_chapin sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
     
 }
 

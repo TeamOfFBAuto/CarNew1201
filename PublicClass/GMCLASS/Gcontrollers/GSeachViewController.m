@@ -20,6 +20,8 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
+    
     
     
     

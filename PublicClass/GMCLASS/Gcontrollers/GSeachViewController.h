@@ -12,6 +12,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GSeachViewController : UIViewController
+@interface GSeachViewController : MyViewController
 
 @end

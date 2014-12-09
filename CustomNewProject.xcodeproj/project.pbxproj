@@ -163,6 +163,7 @@
 		E35A00E91A319E4E00A9CD24 /* GpersonCenterCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E35A00E81A319E4E00A9CD24 /* GpersonCenterCustomCell.m */; };
 		E35A00EC1A319FA100A9CD24 /* GSeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E35A00EB1A319FA100A9CD24 /* GSeachViewController.m */; };
 		E372307A1A316C5100597D8C /* NSDictionary+GJson.m in Sources */ = {isa = PBXBuildFile; fileRef = E37230791A316C5100597D8C /* NSDictionary+GJson.m */; };
+		E38CD77E1A36ACBB009E1E23 /* gback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E38CD77D1A36ACBB009E1E23 /* gback@2x.png */; };
 		E38F1E1A1A2C16870048C58D /* GMAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E38F1E191A2C16870048C58D /* GMAPI.m */; };
 		E38F1E1E1A2C3ABE0048C58D /* loginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E38F1E1C1A2C3ABE0048C58D /* loginBackground@2x.png */; };
 		E38F1E1F1A2C3ABE0048C58D /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E38F1E1D1A2C3ABE0048C58D /* logo@2x.png */; };
@@ -461,6 +462,7 @@
 		E35A00EB1A319FA100A9CD24 /* GSeachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSeachViewController.m; sourceTree = "<group>"; };
 		E37230781A316C5100597D8C /* NSDictionary+GJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+GJson.h"; sourceTree = "<group>"; };
 		E37230791A316C5100597D8C /* NSDictionary+GJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+GJson.m"; sourceTree = "<group>"; };
+		E38CD77D1A36ACBB009E1E23 /* gback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gback@2x.png"; sourceTree = "<group>"; };
 		E38F1E181A2C16870048C58D /* GMAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMAPI.h; sourceTree = "<group>"; };
 		E38F1E191A2C16870048C58D /* GMAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMAPI.m; sourceTree = "<group>"; };
 		E38F1E1C1A2C3ABE0048C58D /* loginBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginBackground@2x.png"; sourceTree = "<group>"; };
@@ -1314,6 +1316,7 @@
 		E35A00DF1A319E3400A9CD24 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E38CD77D1A36ACBB009E1E23 /* gback@2x.png */,
 				E3CA7B3C1A35A0B300B72008 /* gstart_half.png */,
 				E3CA7B3A1A359BC300B72008 /* gstart@2x.png */,
 				E35A00E11A319E4000A9CD24 /* GCaseModel.h */,
@@ -1511,6 +1514,7 @@
 				E311CD331A24573C007D69D3 /* LaunchScreen.xib in Resources */,
 				13F9D4BB1A2DA951002A6904 /* UMSocialLocalizable.strings in Resources */,
 				56CC07201A302C3C0014F285 /* 服务条款.html in Resources */,
+				E38CD77E1A36ACBB009E1E23 /* gback@2x.png in Resources */,
 				56621D4D1A28605B00310A48 /* nav_bg.png in Resources */,
 				1351179D1A257EB20015C133 /* blueup1@2x.png in Resources */,
 				56621D551A28605B00310A48 /* UMContactViewController.xib in Resources */,

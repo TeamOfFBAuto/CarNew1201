@@ -27,6 +27,7 @@
 #import "GCaseModel.h"
 
 #import "NSDictionary+GJson.h"
+#import "ZSNApi.h"
 
 typedef enum{
     GANLI = 0,//案例
@@ -94,20 +95,6 @@ typedef enum{
 
 -(void)viewWillAppear:(BOOL)animated{
     
-    NSString *api = [NSString stringWithFormat:G_USERINFO,[GMAPI getUid],[GMAPI getAuthkey]];
-    
-    
-    NSLog(@"请求个人信息接口：%@",api);
-    
-    GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:api isPost:NO postData:nil];
-    [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
-        NSLog(@"请求个人信息成功");
-        NSLog(@"个人信息dic：%@",result);
-    } failBlock:^(NSDictionary *failDic, NSError *erro) {
-        NSLog(@"请求个人信息失败");
-    }];
-    
-    
     self.navigationController.navigationBarHidden = YES;
 }
 
@@ -145,12 +132,81 @@ typedef enum{
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
     
+    _tableView.tableHeaderView = _upThreeViewBackGroundView;
+    
+//    [self getUserInfo];
     
     
     [_tableView showRefreshHeader:YES];//进入界面先刷新数据
     
-    _tableView.tableHeaderView = _upThreeViewBackGroundView;
     
+    
+//    UIButton *gbackBtn = [[UIImageView alloc]initWithFrame:CGRectMake(12, 35, 10, 17)];
+//    imv.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:imv];
+    
+    
+    UIButton *gBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [gBackBtn setImage:[UIImage imageNamed:@"gback.png"] forState:UIControlStateNormal];
+    [gBackBtn setFrame:CGRectMake(6, 25, 44, 44)];
+//    gBackBtn.backgroundColor = [UIColor redColor];
+    [gBackBtn addTarget:self action:@selector(gGoBack) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:gBackBtn];
+    
+    
+}
+
+
+-(void)gGoBack{
+    [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
+}
+
+
+-(void)getUserInfo{
+    NSString *api = [NSString stringWithFormat:G_USERINFO,[GMAPI getUid]];
+    NSLog(@"请求个人信息接口：%@",api);
+    
+    GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:api isPost:NO postData:nil];
+    [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
+        NSLog(@"请求个人信息成功");
+        NSLog(@"个人信息dic：%@",result);
+        NSDictionary *dic = [result dictionaryValueForKey:@"datainfo"];
+        
+        [_faceImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"pichead"]] placeholderImage:nil];
+        
+        _anliNumLabel.text = [dic stringValueForKey:@"fcase"];
+        _chanpinNumLabel.text = [dic stringValueForKey:@"fgoods"];
+        _dianpuNumLabel.text = [dic stringValueForKey:@"fstore"];
+        
+        _tableView.tableHeaderView = _upThreeViewBackGroundView;
+        
+        
+    } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        
+        NSLog(@"请求个人信息失败");
+        
+        id obj=NSClassFromString(@"UIAlertController");
+        if ( obj!=nil){
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"个人信息加载失败请重新加载" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                
+            }];
+            [alertController addAction:cancelAction];
+            [self presentViewController:alertController animated:YES completion:^{
+                
+            }];
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"个人信息加载失败请重新加载"
+                                                           delegate:self cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil,nil];
+            
+            [alert show];
+        }
+        
+        
+        
+    }];
 }
 
 
@@ -243,7 +299,7 @@ typedef enum{
             _anliNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/568*ALL_FRAME_HEIGHT)];
             _anliNumLabel.textAlignment = NSTextAlignmentCenter;
             NSLog(@"案例的数字label%@",NSStringFromCGRect(_anliNumLabel.frame));
-            _anliNumLabel.text = @"8";
+            
             [view addSubview:_anliNumLabel];
             
             _anliTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_anliNumLabel.frame), _anliNumLabel.frame.size.width, view.frame.size.height-_anliNumLabel.frame.size.height)];
@@ -260,7 +316,7 @@ typedef enum{
         }else if (i == 1){//产品
             //产品的数字
             _chanpinNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/568*ALL_FRAME_HEIGHT)];
-            _chanpinNumLabel.text = @"23";
+            
             _chanpinNumLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_chanpinNumLabel];
             
@@ -279,7 +335,7 @@ typedef enum{
         }else if (i == 2){//收藏店铺
             //店铺的数字
             _dianpuNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/568 * ALL_FRAME_HEIGHT)];
-            _dianpuNumLabel.text = @"34";
+            
             _dianpuNumLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_dianpuNumLabel];
             
@@ -621,7 +677,7 @@ typedef enum{
         _dianpuTitleLabel.textColor = [UIColor whiteColor];
         _dianpuNumLabel.textColor = [UIColor whiteColor];
         
-        _cellHight = 220.0/568*ALL_FRAME_HEIGHT;
+        _cellHight = 240.00/568*ALL_FRAME_HEIGHT;
         _cellType = GCHANPIN;
         [self loadNewData];
         
@@ -637,7 +693,7 @@ typedef enum{
         _dianpuTitleLabel.textColor =  RGBCOLOR(155, 155, 155);
         _dianpuNumLabel.textColor =  RGBCOLOR(155, 155, 155);
         
-        _cellHight = 85.0/568*ALL_FRAME_HEIGHT;
+        _cellHight = 85.00/568*ALL_FRAME_HEIGHT;
         _cellType = GDIANPU;
         [self loadNewData];
         
@@ -729,6 +785,25 @@ typedef enum{
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
+        id obj=NSClassFromString(@"UIAlertController");
+        if ( obj!=nil){
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"加载数据失败请重新加载" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                
+            }];
+            [alertController addAction:cancelAction];
+            [self presentViewController:alertController animated:YES completion:^{
+                
+            }];
+        }
+        else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"加载数据失败请重新加载"
+                                                           delegate:self cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil,nil];
+            
+            [alert show];
+        }
+        
         if (_tableView.isReloadData) {
             
             _page --;
@@ -773,6 +848,8 @@ typedef enum{
     _tableView.isReloadData = YES;
     
     [self prepareNetDataWithCellType:_cellType];
+    
+    [self getUserInfo];
 }
 
 - (void)loadMoreData
@@ -823,7 +900,7 @@ typedef enum{
         BusinessListModel *model = _dataArray[indexPath.row];
         [cell loadCustomViewWithType:3];
         [cell setdataWithData:model];
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
     }else if (_cellType == GCHANPIN){//收藏产品
@@ -831,7 +908,7 @@ typedef enum{
         [cell loadCustomViewWithType:2];
         GGoodsModel *model = _dataArray[indexPath.row];
         [cell setChanpinWithData:model];
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
     }else if (_cellType == GANLI){//收藏案例
@@ -839,7 +916,7 @@ typedef enum{
         [cell loadCustomViewWithType:1];
         GCaseModel *model = _dataArray[indexPath.row];
         [cell setAnliDataWithData:model];
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     
