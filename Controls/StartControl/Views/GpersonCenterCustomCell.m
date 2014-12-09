@@ -111,7 +111,7 @@
     
     _stars_back_view.startNum = [theModel.score floatValue];
     _stars_back_view.maxStartNum = 5;
-    _stars_back_view.startNum = 4.5;
+    _stars_back_view.startNum = [theModel.score floatValue];
     [_stars_back_view updateStartNum];
     
     
