@@ -32,7 +32,7 @@
         _logoImageView.layer.masksToBounds = YES;
         _logoImageView.userInteractionEnabled = YES;
         
-        _titleLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_logoImageView.frame)+10, _logoImageView.frame.origin.y, ALL_FRAME_WIDTH - 15-15-10-_logoImageView.frame.size.width, _logoImageView.frame.size.height*0.5)];
+        _titleLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_logoImageView.frame)+10, _logoImageView.frame.origin.y-2, ALL_FRAME_WIDTH - 15-15-10-_logoImageView.frame.size.width, _logoImageView.frame.size.height*0.5)];
 //        _titleLabel1.backgroundColor = RGBCOLOR_ONE;
         _titleLabel1.textColor = [UIColor whiteColor];
         _titleLabel1.font = [UIFont systemFontOfSize:15];

@@ -142,7 +142,7 @@ typedef enum{
     
     UIButton *gBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [gBackBtn setImage:[UIImage imageNamed:@"gback.png"] forState:UIControlStateNormal];
-    [gBackBtn setFrame:CGRectMake(6, 25, 44.00/320*ALL_FRAME_WIDTH, 44.00/320*ALL_FRAME_WIDTH)];
+    [gBackBtn setFrame:CGRectMake(6, 15, 44.00/320*ALL_FRAME_WIDTH, 44.00/320*ALL_FRAME_WIDTH)];
     [gBackBtn addTarget:self action:@selector(gGoBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:gBackBtn];
     
@@ -296,7 +296,7 @@ typedef enum{
     _threeBtnBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_nameLabel.frame)+27, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT *50.00/568)];
     [_upThreeViewBackGroundView addSubview:_threeBtnBackgroundView];
     
-     _upThreeViewBackGroundView.frame = CGRectMake(0, 0, ALL_FRAME_WIDTH,CGRectGetMaxY(_threeBtnBackgroundView.frame)+5);
+     _upThreeViewBackGroundView.frame = CGRectMake(0, 0, ALL_FRAME_WIDTH,240.00/568*ALL_FRAME_HEIGHT);
     
     
     _topImv.frame = _upThreeViewBackGroundView.frame;
@@ -312,7 +312,7 @@ typedef enum{
         
         UIView *view = [[UIView alloc]init];
         
-        view.frame = CGRectMake(0+i * ALL_FRAME_WIDTH/3.00, 0.5, ALL_FRAME_WIDTH/3.00,_threeBtnBackgroundView.frame.size.height);
+        view.frame = CGRectMake(0+i * ALL_FRAME_WIDTH/3.00, 0, ALL_FRAME_WIDTH/3.00,_threeBtnBackgroundView.frame.size.height);
         
         view.tag = i+10;
         
@@ -328,7 +328,7 @@ typedef enum{
             
             [view addSubview:_anliNumLabel];
             
-            _anliTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_anliNumLabel.frame), _anliNumLabel.frame.size.width, view.frame.size.height-_anliNumLabel.frame.size.height)];
+            _anliTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_anliNumLabel.frame)-5, _anliNumLabel.frame.size.width, view.frame.size.height-_anliNumLabel.frame.size.height)];
             _anliTitleLabel.text = @"收藏案例";
             _anliTitleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
             _anliTitleLabel.layer.shadowOffset = CGSizeMake(0,1);
@@ -339,7 +339,7 @@ typedef enum{
             [view addSubview:_anliTitleLabel];
             
             //分割线
-            UIView *fView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_anliNumLabel.frame)-0.5, _anliNumLabel.frame.origin.y+5, 0.5,40.00/568*ALL_FRAME_HEIGHT)];
+            UIView *fView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_anliNumLabel.frame)-0.5, _anliNumLabel.frame.origin.y+5, 0.5,35.00/568*ALL_FRAME_HEIGHT)];
             fView.backgroundColor = RGBCOLOR(145, 145, 145);
             [view addSubview:fView];
             
@@ -351,7 +351,7 @@ typedef enum{
             _chanpinNumLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_chanpinNumLabel];
             
-            _chanpinTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_chanpinNumLabel.frame), _chanpinNumLabel.frame.size.width, view.frame.size.height-_chanpinNumLabel.frame.size.height)];
+            _chanpinTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_chanpinNumLabel.frame)-5, _chanpinNumLabel.frame.size.width, view.frame.size.height-_chanpinNumLabel.frame.size.height)];
             _chanpinTitleLabel.text = @"收藏产品";
             _chanpinTitleLabel.layer.shadowColor = [[UIColor blackColor]CGColor];
             _chanpinTitleLabel.layer.shadowOffset = CGSizeMake(0, 1);
@@ -362,7 +362,7 @@ typedef enum{
             [view addSubview:_chanpinTitleLabel];
 
             //分割线
-            UIView *fenView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_chanpinNumLabel.frame)-0.5, _chanpinNumLabel.frame.origin.y+5, 0.5,40.00/568*ALL_FRAME_HEIGHT)];
+            UIView *fenView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_chanpinNumLabel.frame)-0.5, _chanpinNumLabel.frame.origin.y+5, 0.5,35.00/568*ALL_FRAME_HEIGHT)];
             fenView.backgroundColor = RGBCOLOR(145, 145, 145);
             [view addSubview:fenView];
             
@@ -374,7 +374,7 @@ typedef enum{
             _dianpuNumLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_dianpuNumLabel];
             
-            _dianpuTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_dianpuNumLabel.frame), _dianpuNumLabel.frame.size.width, view.frame.size.height-_dianpuNumLabel.frame.size.height)];
+            _dianpuTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_dianpuNumLabel.frame)-5, _dianpuNumLabel.frame.size.width, view.frame.size.height-_dianpuNumLabel.frame.size.height)];
             _dianpuTitleLabel.text = @"收藏店铺";
             _dianpuTitleLabel.layer.shadowColor = [[UIColor blackColor]CGColor];
             _dianpuTitleLabel.layer.shadowOffset = CGSizeMake(0, 1);
@@ -820,24 +820,33 @@ typedef enum{
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
-        id obj=NSClassFromString(@"UIAlertController");
-        if ( obj!=nil){
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"加载数据失败请重新加载" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                
-            }];
-            [alertController addAction:cancelAction];
-            [self presentViewController:alertController animated:YES completion:^{
-                
-            }];
-        }
-        else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"加载数据失败请重新加载"
-                                                           delegate:self cancelButtonTitle:@"确定"
-                                                  otherButtonTitles:nil,nil];
+        
+        
+        NSLog(@"%@",failDic);
+        if ([[failDic objectForKey:@"ERRO_INFO"]isEqualToString:@"结果为空"]) {
             
-            [alert show];
+        }else{
+            id obj=NSClassFromString(@"UIAlertController");
+            if ( obj!=nil){
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"加载数据失败请重新加载" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                    
+                }];
+                [alertController addAction:cancelAction];
+                [self presentViewController:alertController animated:YES completion:^{
+                    
+                }];
+            }
+            else{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"加载数据失败请重新加载"
+                                                               delegate:self cancelButtonTitle:@"确定"
+                                                      otherButtonTitles:nil,nil];
+                
+                [alert show];
+            }
         }
+        
+        
         
         if (_tableView.isReloadData) {
             

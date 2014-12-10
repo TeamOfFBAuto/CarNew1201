@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Controls/StartControl/Controllers/PersonalViewController.m"
-            timestampString = "439813431.071902"
+            timestampString = "439888844.109743"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
-            landmarkName = "-creatHeaderView"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
+            landmarkName = "-getUserInfo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
