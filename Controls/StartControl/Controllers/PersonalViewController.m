@@ -788,7 +788,7 @@ typedef enum{
                 
             }
             
-            dataArray = (NSArray*)dataArr;
+            _dataArray = (NSArray*)dataArr;
             
         }else if (theType == GCHANPIN){//产品
             NSMutableArray *dataArr = [NSMutableArray arrayWithCapacity:1];
@@ -801,7 +801,7 @@ typedef enum{
                 
             }
             
-            dataArray = (NSArray *)dataArr;
+            _dataArray = (NSArray *)dataArr;
             
         }else if (theType == GANLI){//案例
             NSMutableArray *dataArr = [NSMutableArray arrayWithCapacity:1];
@@ -812,10 +812,10 @@ typedef enum{
                 
             }
             
-            dataArray = (NSArray *)dataArr;
+            _dataArray = (NSArray *)dataArr;
         }
         
-        [bself reloadData:dataArray isReload:_tableView.isReloadData];
+        [bself reloadData:_dataArray isReload:_tableView.isReloadData];
         
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         
@@ -892,6 +892,8 @@ typedef enum{
 {
     _page = 1;
     _tableView.isReloadData = YES;
+    
+    _dataArray = nil;
     
     [self prepareNetDataWithCellType:_cellType];
     
