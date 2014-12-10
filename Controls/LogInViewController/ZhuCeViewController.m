@@ -154,7 +154,7 @@
     
     [complete_button setTitle:@"完 成" forState:UIControlStateNormal];
     
-    complete_button.backgroundColor = RGBCOLOR(101,102,104);
+    complete_button.backgroundColor = RGBCOLOR(255,135,0);
     
     [complete_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     

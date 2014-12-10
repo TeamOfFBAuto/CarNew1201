@@ -36,7 +36,7 @@
     _myTableView = [[SNRefreshTableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64) showLoadMore:YES];
     _myTableView.refreshDelegate = self;
     _myTableView.dataSource = self;
-    _myTableView.contentSize = CGSizeMake(340,_myTableView.contentSize.height);
+    _myTableView.contentSize = CGSizeMake(DEVICE_WIDTH+20,_myTableView.contentSize.height);
     [self.view addSubview:_myTableView];
     
     [self getBusinessData];

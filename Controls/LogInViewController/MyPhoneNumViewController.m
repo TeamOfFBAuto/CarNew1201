@@ -98,7 +98,7 @@
     
     UIButton * next_button = [UIButton buttonWithType:UIButtonTypeCustom];
     next_button.frame = CGRectMake(23/2,backGround_imageView.frame.origin.y+backGround_imageView.frame.size.height+23/2,297,43);
-    next_button.backgroundColor = RGBCOLOR(101,102,104);
+    next_button.backgroundColor = RGBCOLOR(255,135,0);
     [next_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [next_button setTitle:@"下一步" forState:UIControlStateNormal];
     [next_button addTarget:self action:@selector(nextStep:) forControlEvents:UIControlEventTouchUpInside];

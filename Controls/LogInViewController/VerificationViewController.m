@@ -116,7 +116,7 @@
     
     next_button.frame = CGRectMake(23/2,80+23/2,297,43);
     
-    next_button.backgroundColor = RGBCOLOR(101,102,104);
+    next_button.backgroundColor = RGBCOLOR(255,135,0);
     
     [next_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     

@@ -122,7 +122,6 @@
     content_label.textColor = RGBCOLOR(105,105,105);
     content_label.font = [UIFont systemFontOfSize:14];
     [sectionView addSubview:content_label];
-    
     section_frame.size.height = section_frame.size.height + content_size.height;
     sectionView.frame = section_frame;
     

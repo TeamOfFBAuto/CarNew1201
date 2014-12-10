@@ -610,7 +610,7 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
             headerBackImageView.layer.borderWidth = 0.5;
             [sessionView.containView addSubview:headerBackImageView];
             UIImageView * headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(95,40,70,70)];
-            headerImageView.backgroundColor = [UIColor redColor];
+            headerImageView.backgroundColor = [UIColor clearColor];
             headerImageView.center = CGPointMake(41,41);
             [headerImageView sd_setImageWithURL:[NSURL URLWithString:[ZSNApi returnUrl:[GMAPI getUid]]] placeholderImage:[UIImage imageNamed:HEADER_DEFAULT_IMAGE]];
             headerImageView.layer.cornerRadius = 35;
