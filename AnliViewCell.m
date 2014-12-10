@@ -48,13 +48,20 @@
     self.aTitleLabel.text = aModel.title;
     self.nameLabel.text = aModel.sname;
     [self.smallImageView sd_setImageWithURL:[NSURL URLWithString:aModel.spichead] placeholderImage:nil];
-    
-//    
-//    [self setNeedsUpdateConstraints];
-//    [self updateConstraintsIfNeeded];
+
     
     self.smallImageView.layer.masksToBounds = YES;
     self.smallImageView.layer.cornerRadius = 32 / 2.f;
+    
+    self.nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.nameLabel.layer.shadowOffset = CGSizeMake(0,1);
+    self.nameLabel.layer.shadowRadius = 0.5;
+    self.nameLabel.layer.shadowOpacity = 0.8;
+    
+    self.aTitleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.aTitleLabel.layer.shadowOffset = CGSizeMake(0,1);
+    self.aTitleLabel.layer.shadowRadius = 0.5;
+    self.aTitleLabel.layer.shadowOpacity = 0.8;
     
     //layer.cornerRadius
     

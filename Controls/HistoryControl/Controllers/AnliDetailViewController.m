@@ -29,22 +29,73 @@
     NSLog(@"---dealloc");
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+//    self.navigationController.navigationBarHidden = YES;
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    self.navigationController.navigationBarHidden = NO;
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.myTitle = @"案例详情";
-    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    [self createNavigationTools];
+//    self.myTitle = @"案例详情";
+//    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
+    
+//    [self createNavigationTools];
+    
+    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT + 20)];
+    _webView.delegate = self;
+    [self.view addSubview:_webView];
     
     loading = [LTools MBProgressWithText:@"数据加载中..." addToView:self.view];
+    
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]]];
+    
+    [self setNavgationView];
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)setNavgationView
+{
+    UIImageView * navigation_view = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,64)];
+    navigation_view.image = [UIImage imageNamed:@"default_navigation_clear_image"];
+    [self.view addSubview:navigation_view];
+    navigation_view.userInteractionEnabled = YES;
+    [self.view bringSubviewToFront:navigation_view];
+    
+    UIButton * back_button = [UIButton buttonWithType:UIButtonTypeCustom];
+    back_button.frame = CGRectMake(8,20,44,44);
+//    back_button.backgroundColor = [UIColor orangeColor];
+    [back_button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [back_button setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];
+    [navigation_view addSubview:back_button];
+}
+
+-(void)back:(UIButton *)button
+{
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+//    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - 网络请求

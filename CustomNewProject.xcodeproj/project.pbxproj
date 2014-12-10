@@ -16,6 +16,7 @@
 		1351179E1A257EB20015C133 /* LRefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1351179B1A257EB20015C133 /* LRefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		135117A61A257F2D0015C133 /* UIColor+ConvertColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 135117A21A257F2D0015C133 /* UIColor+ConvertColor.m */; };
 		135117A71A257F2D0015C133 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 135117A51A257F2D0015C133 /* UIView+Frame.m */; };
+		137664E31A382DE100C8695D /* anli_bottom_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 137664E21A382DE100C8695D /* anli_bottom_clear@2x.png */; };
 		138023281A2C69CF0053BDDA /* anli_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023221A2C69CF0053BDDA /* anli_back@2x.png */; };
 		138023291A2C69CF0053BDDA /* anli_carType@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023231A2C69CF0053BDDA /* anli_carType@2x.png */; };
 		1380232A1A2C69CF0053BDDA /* anli_daohang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023241A2C69CF0053BDDA /* anli_daohang@2x.png */; };
@@ -27,7 +28,6 @@
 		13F9D4701A2D5A6E002A6904 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D46F1A2D5A6E002A6904 /* BaseModel.m */; };
 		13F9D4731A2D5A80002A6904 /* AnliModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D4721A2D5A80002A6904 /* AnliModel.m */; };
 		13F9D4781A2D9A89002A6904 /* AnliDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D4761A2D9A89002A6904 /* AnliDetailViewController.m */; };
-		13F9D4791A2D9A89002A6904 /* AnliDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F9D4771A2D9A89002A6904 /* AnliDetailViewController.xib */; };
 		13F9D47C1A2DA767002A6904 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D47B1A2DA767002A6904 /* ShareView.m */; };
 		13F9D4831A2DA7BB002A6904 /* sharefriendquan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9D47E1A2DA7BB002A6904 /* sharefriendquan@2x.png */; };
 		13F9D4841A2DA7BB002A6904 /* sharemail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13F9D47F1A2DA7BB002A6904 /* sharemail@2x.png */; };
@@ -205,6 +205,7 @@
 		135117A21A257F2D0015C133 /* UIColor+ConvertColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ConvertColor.m"; sourceTree = "<group>"; };
 		135117A41A257F2D0015C133 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		135117A51A257F2D0015C133 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		137664E21A382DE100C8695D /* anli_bottom_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_bottom_clear@2x.png"; sourceTree = "<group>"; };
 		138023221A2C69CF0053BDDA /* anli_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_back@2x.png"; sourceTree = "<group>"; };
 		138023231A2C69CF0053BDDA /* anli_carType@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_carType@2x.png"; sourceTree = "<group>"; };
 		138023241A2C69CF0053BDDA /* anli_daohang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_daohang@2x.png"; sourceTree = "<group>"; };
@@ -221,7 +222,6 @@
 		13F9D4741A2D7457002A6904 /* GTCommontHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTCommontHeader.h; sourceTree = "<group>"; };
 		13F9D4751A2D9A89002A6904 /* AnliDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnliDetailViewController.h; sourceTree = "<group>"; };
 		13F9D4761A2D9A89002A6904 /* AnliDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnliDetailViewController.m; sourceTree = "<group>"; };
-		13F9D4771A2D9A89002A6904 /* AnliDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnliDetailViewController.xib; sourceTree = "<group>"; };
 		13F9D47A1A2DA767002A6904 /* ShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
 		13F9D47B1A2DA767002A6904 /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
 		13F9D47E1A2DA7BB002A6904 /* sharefriendquan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharefriendquan@2x.png"; sourceTree = "<group>"; };
@@ -558,6 +558,7 @@
 		138023211A2C69CF0053BDDA /* AnLiControllerImages */ = {
 			isa = PBXGroup;
 			children = (
+				137664E21A382DE100C8695D /* anli_bottom_clear@2x.png */,
 				138023221A2C69CF0053BDDA /* anli_back@2x.png */,
 				138023231A2C69CF0053BDDA /* anli_carType@2x.png */,
 				138023241A2C69CF0053BDDA /* anli_daohang@2x.png */,
@@ -763,7 +764,6 @@
 				19B34DCD1A2466A300ED1935 /* PicViewController.m */,
 				13F9D4751A2D9A89002A6904 /* AnliDetailViewController.h */,
 				13F9D4761A2D9A89002A6904 /* AnliDetailViewController.m */,
-				13F9D4771A2D9A89002A6904 /* AnliDetailViewController.xib */,
 				138178C71A319572001DB92C /* CarTypeViewController.h */,
 				138178C81A319572001DB92C /* CarTypeViewController.m */,
 				138178C91A319572001DB92C /* CarTypeViewController.xib */,
@@ -1505,7 +1505,6 @@
 				56621D461A28605B00310A48 /* messages_left_bubble@2x.png in Resources */,
 				13F9D4871A2DA7BB002A6904 /* shareziliudi@2x.png in Resources */,
 				56621D421A28605B00310A48 /* item_cancel@2x.png in Resources */,
-				13F9D4791A2D9A89002A6904 /* AnliDetailViewController.xib in Resources */,
 				13F9D4C41A2DA951002A6904 /* UMSLoginViewController.xib in Resources */,
 				56621D521A28605B00310A48 /* send_selected@2x.png in Resources */,
 				13F9D4C21A2DA951002A6904 /* UMShareEditViewController.xib in Resources */,
@@ -1550,6 +1549,7 @@
 				56CC071F1A302C3C0014F285 /* zhuce.css in Resources */,
 				56621D531A28605B00310A48 /* umeng_logo1.png in Resources */,
 				565EE8D31A2C50710063CAA3 /* zc_phoneNum@2x.png in Resources */,
+				137664E31A382DE100C8695D /* anli_bottom_clear@2x.png in Resources */,
 				E3CA7B3B1A359BC300B72008 /* gstart@2x.png in Resources */,
 				565EE8D71A2C50830063CAA3 /* zc_xieyi@2x.png in Resources */,
 				56621D4B1A28605B00310A48 /* messages_toolbar_background@2x.png in Resources */,

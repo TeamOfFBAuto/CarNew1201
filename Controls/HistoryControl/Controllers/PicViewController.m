@@ -35,11 +35,12 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor grayColor];    
     
-    self.leftString = @"菜单";
-    self.myTitle = @"案例图库";
-    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeText WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
-    [self createNavigationTools];
+    self.leftImageName = NAVIGATION_MENU_IMAGE_NAME;
+    self.myTitle = @"改装案例";
+    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
+    
+//    [self createNavigationTools];//暂时没有筛选和搜索
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chooseCarType:) name:@"ChooseCarTypeNotification" object:nil];
     
@@ -223,7 +224,7 @@
 }
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath
 {
-    return [self heightFor:240];
+    return [self heightFor:252];
 }
 
 //根据宽度适应高度
