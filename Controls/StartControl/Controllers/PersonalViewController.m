@@ -97,6 +97,7 @@ typedef enum{
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    self.isAddGestureRecognizer = YES;
     [super viewWillAppear:YES];
     self.navigationController.navigationBarHidden = YES;
 }
@@ -827,8 +828,9 @@ typedef enum{
             
         }else{
             id obj=NSClassFromString(@"UIAlertController");
+            NSString *tishiStr = [failDic objectForKey:@"ERRO_INFO"];
             if ( obj!=nil){
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"加载数据失败请重新加载" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:tishiStr preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
                     
                 }];
