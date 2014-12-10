@@ -45,15 +45,17 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     
-    panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGestures:)];
-    panGestureRecognizer.minimumNumberOfTouches = 1;
-    panGestureRecognizer.maximumNumberOfTouches = 1;
-    [self.view addGestureRecognizer:panGestureRecognizer];
-    
-    
-    swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeOnAirImageView:)];
-    swipe.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:swipe];
+    if (_isAddGestureRecognizer) {
+        panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGestures:)];
+        panGestureRecognizer.minimumNumberOfTouches = 1;
+        panGestureRecognizer.maximumNumberOfTouches = 1;
+        [self.view addGestureRecognizer:panGestureRecognizer];
+        
+        
+        swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeOnAirImageView:)];
+        swipe.direction = UISwipeGestureRecognizerDirectionRight;
+        [self.view addGestureRecognizer:swipe];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -103,7 +105,6 @@ CGPoint began_point;
         began_point = [sender locationInView:self.view];
         if (began_point.x > 0)
         {
-            NSLog(@"mdasdajsdkalsjdlaksjdlkasjdklasjdlkjsdlkasjdlaksjdkasjdklsajdlkadjlkdkjlkj ---  %f",began_point.x);
             isFirst = YES;
         }
     }
@@ -113,7 +114,6 @@ CGPoint began_point;
         
         if (current_point.x - began_point.x > 40 && began_point.x != 0)
         {
-            NSLog(@"mamamamamamamamamama -----  %f ----   %f",current_point.x,began_point.x);
             isFirst = NO;
             [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
         }
@@ -292,6 +292,16 @@ CGPoint began_point;
 {
     _leftImageName = leftImageName;
     [self setMyViewControllerLeftButtonType:leftType WithRightButtonType:myRightType];
+}
+
+-(void)setIsAddGestureRecognizer:(BOOL)isAddGestureRecognizer
+{
+    _isAddGestureRecognizer = isAddGestureRecognizer;
+    if (!isAddGestureRecognizer)
+    {
+        [self.view removeGestureRecognizer:panGestureRecognizer];
+        [self.view removeGestureRecognizer:swipe];
+    }
 }
 
 

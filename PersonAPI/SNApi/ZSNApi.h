@@ -104,9 +104,6 @@
 +(NSString *)encodeSpecialCharactersString:(NSString *)input;
 ///特殊字符解码（例：&lt;转化成<）
 +(NSString *)ddecodeSpecialCharactersStringWith:(NSString *)input;
-///设置label行间距
-+(NSMutableAttributedString*)setLabelLineSpace:(NSMutableAttributedString*)string WithLineSpace:(CGFloat)lineSpace;
-
 
 ///ios7计算字符串高度
 +(float)returnLabelHeightForIos7:(NSString *)content WIthFont:(float)aFont WithWidth:(float)aWidth;

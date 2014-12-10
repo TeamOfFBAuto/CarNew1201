@@ -53,6 +53,8 @@ typedef enum
 @property(nonatomic,strong)NSString * myTitle;
 //右上角按钮
 @property(nonatomic,strong)UIButton * my_right_button;
+///是否添加滑动到侧边栏手势
+@property(nonatomic,assign)BOOL isAddGestureRecognizer;
 
 
 -(void)setMyViewControllerLeftButtonType:(MyViewControllerLeftbuttonType)theType WithRightButtonType:(MyViewControllerRightbuttonType)rightType;

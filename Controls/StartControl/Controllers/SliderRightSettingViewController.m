@@ -202,7 +202,7 @@
         
         [logOut_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         
-        logOut_button.backgroundColor = RGBCOLOR(120,121,123);
+        logOut_button.backgroundColor = RGBCOLOR(255,135,0);
         
         [logOut_button addTarget:self action:@selector(logOutTap:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -221,7 +221,7 @@
         
         label.backgroundColor = [UIColor clearColor];
         
-//        label.text = [ZSNApi fileSizeAtPath:path];
+        label.text = [ZSNApi fileSizeAtPath:path];
         
         label.font = [UIFont systemFontOfSize:15];
         

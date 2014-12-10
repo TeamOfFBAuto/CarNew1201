@@ -59,6 +59,15 @@
 		19B34DE01A246F1100ED1935 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DDF1A246F1100ED1935 /* LeftViewController.m */; };
 		19B34DE31A246FD700ED1935 /* FansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DE21A246FD700ED1935 /* FansViewController.m */; };
 		560CB53B1A270B230067F7AA /* navgationBar_background_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 560CB53A1A270B230067F7AA /* navgationBar_background_image@2x.png */; };
+		563B32221A382AF900015088 /* emotion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 563B32131A382AF900015088 /* emotion.plist */; };
+		563B32231A382AF900015088 /* emotionImage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 563B32141A382AF900015088 /* emotionImage.plist */; };
+		563B32241A382AF900015088 /* FBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 563B32161A382AF900015088 /* FBHelper.m */; };
+		563B32251A382AF900015088 /* MarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 563B32181A382AF900015088 /* MarkupParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		563B32261A382AF900015088 /* NSAttributedString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 563B321A1A382AF900015088 /* NSAttributedString+Attributes.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		563B32271A382AF900015088 /* OHAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 563B321C1A382AF900015088 /* OHAttributedLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		563B32281A382AF900015088 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 563B321F1A382AF900015088 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		563B32291A382AF900015088 /* SCGIFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563B32211A382AF900015088 /* SCGIFImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		563B322B1A382D7A00015088 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 563B322A1A382D7A00015088 /* libicucore.dylib */; };
 		563E4CB81A2D8C2D0022755C /* BusinessListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 563E4CB71A2D8C2D0022755C /* BusinessListModel.m */; };
 		563E4CBF1A2DC3540022755C /* ScreeningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 563E4CBE1A2DC3540022755C /* ScreeningViewController.m */; };
 		563E4CC21A2DC3740022755C /* ScreeningCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 563E4CC11A2DC3740022755C /* ScreeningCarModel.m */; };
@@ -287,6 +296,21 @@
 		19B34DE21A246FD700ED1935 /* FansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FansViewController.m; sourceTree = "<group>"; };
 		560CB53A1A270B230067F7AA /* navgationBar_background_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navgationBar_background_image@2x.png"; sourceTree = "<group>"; };
 		560CB53C1A2719880067F7AA /* DefaultConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultConstant.h; sourceTree = "<group>"; };
+		563B32131A382AF900015088 /* emotion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emotion.plist; sourceTree = "<group>"; };
+		563B32141A382AF900015088 /* emotionImage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emotionImage.plist; sourceTree = "<group>"; };
+		563B32151A382AF900015088 /* FBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBHelper.h; sourceTree = "<group>"; };
+		563B32161A382AF900015088 /* FBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBHelper.m; sourceTree = "<group>"; };
+		563B32171A382AF900015088 /* MarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkupParser.h; sourceTree = "<group>"; };
+		563B32181A382AF900015088 /* MarkupParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkupParser.m; sourceTree = "<group>"; };
+		563B32191A382AF900015088 /* NSAttributedString+Attributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Attributes.h"; sourceTree = "<group>"; };
+		563B321A1A382AF900015088 /* NSAttributedString+Attributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Attributes.m"; sourceTree = "<group>"; };
+		563B321B1A382AF900015088 /* OHAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHAttributedLabel.h; sourceTree = "<group>"; };
+		563B321C1A382AF900015088 /* OHAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHAttributedLabel.m; sourceTree = "<group>"; };
+		563B321E1A382AF900015088 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		563B321F1A382AF900015088 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
+		563B32201A382AF900015088 /* SCGIFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGIFImageView.h; sourceTree = "<group>"; };
+		563B32211A382AF900015088 /* SCGIFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGIFImageView.m; sourceTree = "<group>"; };
+		563B322A1A382D7A00015088 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		563E4CB61A2D8C2D0022755C /* BusinessListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessListModel.h; sourceTree = "<group>"; };
 		563E4CB71A2D8C2D0022755C /* BusinessListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessListModel.m; sourceTree = "<group>"; };
 		563E4CBD1A2DC3540022755C /* ScreeningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreeningViewController.h; sourceTree = "<group>"; };
@@ -488,6 +512,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				563B322B1A382D7A00015088 /* libicucore.dylib in Frameworks */,
 				13F9D4CA1A2DAA66002A6904 /* MessageUI.framework in Frameworks */,
 				56CE4B311A2581A000876AC7 /* UIKit.framework in Frameworks */,
 				13F9D4BE1A2DA951002A6904 /* libUMSocial_Sdk_Comment_2.2.1.a in Frameworks */,
@@ -842,6 +867,7 @@
 		19B34DE41A24818400ED1935 /* PublicClass */ = {
 			isa = PBXGroup;
 			children = (
+				563B32121A382AF900015088 /* RichViewAndGif */,
 				13F9D4881A2DA951002A6904 /* 社会化分享 */,
 				13F9D47A1A2DA767002A6904 /* ShareView.h */,
 				13F9D47B1A2DA767002A6904 /* ShareView.m */,
@@ -871,6 +897,7 @@
 		34D51D6C4A802172BEAD4711 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				563B322A1A382D7A00015088 /* libicucore.dylib */,
 				13F9D4C91A2DAA66002A6904 /* MessageUI.framework */,
 				56CE4B301A2581A000876AC7 /* UIKit.framework */,
 				0474E0B8AA75297C0DC9AFBA /* libPods.a */,
@@ -916,6 +943,35 @@
 				56CC07101A2FF9C70014F285 /* PrivacyPolicyViewController.m */,
 			);
 			path = LogInViewController;
+			sourceTree = "<group>";
+		};
+		563B32121A382AF900015088 /* RichViewAndGif */ = {
+			isa = PBXGroup;
+			children = (
+				563B32131A382AF900015088 /* emotion.plist */,
+				563B32141A382AF900015088 /* emotionImage.plist */,
+				563B32151A382AF900015088 /* FBHelper.h */,
+				563B32161A382AF900015088 /* FBHelper.m */,
+				563B32171A382AF900015088 /* MarkupParser.h */,
+				563B32181A382AF900015088 /* MarkupParser.m */,
+				563B32191A382AF900015088 /* NSAttributedString+Attributes.h */,
+				563B321A1A382AF900015088 /* NSAttributedString+Attributes.m */,
+				563B321B1A382AF900015088 /* OHAttributedLabel.h */,
+				563B321C1A382AF900015088 /* OHAttributedLabel.m */,
+				563B321D1A382AF900015088 /* RegexKitLite */,
+				563B32201A382AF900015088 /* SCGIFImageView.h */,
+				563B32211A382AF900015088 /* SCGIFImageView.m */,
+			);
+			path = RichViewAndGif;
+			sourceTree = "<group>";
+		};
+		563B321D1A382AF900015088 /* RegexKitLite */ = {
+			isa = PBXGroup;
+			children = (
+				563B321E1A382AF900015088 /* RegexKitLite.h */,
+				563B321F1A382AF900015088 /* RegexKitLite.m */,
+			);
+			path = RegexKitLite;
 			sourceTree = "<group>";
 		};
 		563E4CB91A2DC32D0022755C /* AllScreeningControls */ = {
@@ -1481,6 +1537,7 @@
 			files = (
 				56621D511A28605B00310A48 /* send1sss@2x.png in Resources */,
 				1380232A1A2C69CF0053BDDA /* anli_daohang@2x.png in Resources */,
+				563B32221A382AF900015088 /* emotion.plist in Resources */,
 				13F9D4BF1A2DA951002A6904 /* UMSCommentDetailController.xib in Resources */,
 				13F9D4C81A2DA951002A6904 /* UMSocialSDKResourcesNew.bundle in Resources */,
 				138023281A2C69CF0053BDDA /* anli_back@2x.png in Resources */,
@@ -1529,6 +1586,7 @@
 				569FFEF31A27380F008A02A6 /* login_close_image@2x.png in Resources */,
 				56621CFD1A285A2500310A48 /* setting_image@2x.png in Resources */,
 				5662DEA71A353D9D009F75F6 /* navigaiton_menu_image@2x.png in Resources */,
+				563B32231A382AF900015088 /* emotionImage.plist in Resources */,
 				56621D4C1A28605B00310A48 /* nav_bar_bg@2x.png in Resources */,
 				56500B001A2D676900E834A1 /* BusinessListTableViewCell.xib in Resources */,
 				56CC07211A302C3C0014F285 /* 隐私条款.html in Resources */,
@@ -1624,6 +1682,7 @@
 				19B34DCE1A2466A300ED1935 /* PicViewController.m in Sources */,
 				56621D001A285FA800310A48 /* SliderRightSettingViewController.m in Sources */,
 				563E4CC51A2DC3A80022755C /* ScreeningCarView.m in Sources */,
+				563B32241A382AF900015088 /* FBHelper.m in Sources */,
 				56500AFB1A2D63CC00E834A1 /* BusinessViewController.m in Sources */,
 				565EE8CE1A2C4C160063CAA3 /* VerificationViewController.m in Sources */,
 				E311CD2B1A24573C007D69D3 /* ViewController.m in Sources */,
@@ -1635,12 +1694,14 @@
 				138178CA1A319572001DB92C /* CarTypeViewController.m in Sources */,
 				19B34DD11A2466C300ED1935 /* StoreViewController.m in Sources */,
 				56CE4B611A25D48100876AC7 /* PHMenuViewController.m in Sources */,
+				563B32281A382AF900015088 /* RegexKitLite.m in Sources */,
 				56CE4B651A25D48100876AC7 /* PHSessionView.m in Sources */,
 				E35A00EC1A319FA100A9CD24 /* GSeachViewController.m in Sources */,
 				19B34DDD1A246DDE00ED1935 /* RightViewController.m in Sources */,
 				565EE8C41A2C41F10063CAA3 /* pinyin.c in Sources */,
 				565EE8B91A2C3DEE0063CAA3 /* ASIDownloadCache.m in Sources */,
 				E3ED4A6A1A30233A004A2D72 /* MLImageCrop.m in Sources */,
+				563B32261A382AF900015088 /* NSAttributedString+Attributes.m in Sources */,
 				56500AFF1A2D676900E834A1 /* BusinessListTableViewCell.m in Sources */,
 				567760931A31410800A4A23B /* ScreeningAreaView.m in Sources */,
 				56CE4B641A25D48100876AC7 /* PHAirViewController.m in Sources */,
@@ -1650,6 +1711,7 @@
 				56CE4B2E1A257FC600876AC7 /* MyViewController.m in Sources */,
 				56621D561A28605B00310A48 /* UMFeedbackTableViewCellLeft.m in Sources */,
 				E311CD281A24573C007D69D3 /* AppDelegate.m in Sources */,
+				563B32291A382AF900015088 /* SCGIFImageView.m in Sources */,
 				135117A71A257F2D0015C133 /* UIView+Frame.m in Sources */,
 				56621D671A286A0900310A48 /* ZSNApi.m in Sources */,
 				E35A00E51A319E4000A9CD24 /* GCaseModel.m in Sources */,
@@ -1663,8 +1725,10 @@
 				563E4CBF1A2DC3540022755C /* ScreeningViewController.m in Sources */,
 				565EE8B71A2C3DEE0063CAA3 /* ASIDataCompressor.m in Sources */,
 				E35A00E91A319E4E00A9CD24 /* GpersonCenterCustomCell.m in Sources */,
+				563B32271A382AF900015088 /* OHAttributedLabel.m in Sources */,
 				E3CA7B391A3598EB00B72008 /* GstartView.m in Sources */,
 				E392C31A1A2818C9001AEA0D /* GzhuceViewController.m in Sources */,
+				563B32251A382AF900015088 /* MarkupParser.m in Sources */,
 				567760961A31453200A4A23B /* SliderBBSTitleView.m in Sources */,
 				56CC07271A3039630014F285 /* BrandModel.m in Sources */,
 				135117A61A257F2D0015C133 /* UIColor+ConvertColor.m in Sources */,

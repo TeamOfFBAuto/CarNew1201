@@ -7,6 +7,8 @@
 //
 
 #import "ZSNApi.h"
+#include "sys/stat.h"
+#include <dirent.h>
 #import "FriendAttribute.h"
 
 @implementation ZSNApi
@@ -70,6 +72,58 @@
     return sections;
     
 }
+
+//获取文件大小
++(NSString *) fileSizeAtPath:(NSString*) filePath
+{
+    int sizez_b = (int)[self _folderSizeAtPath:[filePath cStringUsingEncoding:NSUTF8StringEncoding]]/10240;
+    
+    if (sizez_b < 1024)
+    {
+        return [NSString stringWithFormat:@"%dK",sizez_b];
+    }else if (sizez_b < 1024*1024 && sizez_b >= 1024)
+    {
+        return [NSString stringWithFormat:@"%.1fM",sizez_b/1024.0];
+    }else
+    {
+        return [NSString stringWithFormat:@"%.2fG",sizez_b/1048576.0];
+    }
+}
+
+
++ (long long) _folderSizeAtPath: (const char*)folderPath{
+    long long folderSize = 0;
+    DIR* dir = opendir(folderPath);
+    if (dir == NULL) return 0;
+    struct dirent* child;
+    while ((child = readdir(dir))!=NULL) {
+        if (child->d_type == DT_DIR && (
+                                        (child->d_name[0] == '.' && child->d_name[1] == 0) || // 忽略目录 .
+                                        (child->d_name[0] == '.' && child->d_name[1] == '.' && child->d_name[2] == 0) // 忽略目录 ..
+                                        )) continue;
+        
+        int folderPathLength = strlen(folderPath);
+        char childPath[1024]; // 子文件的路径地址
+        stpcpy(childPath, folderPath);
+        if (folderPath[folderPathLength-1] != '/'){
+            childPath[folderPathLength] = '/';
+            folderPathLength++;
+        }
+        stpcpy(childPath+folderPathLength, child->d_name);
+        childPath[folderPathLength + child->d_namlen] = 0;
+        if (child->d_type == DT_DIR){ // directory
+            folderSize += [self _folderSizeAtPath:childPath]; // 递归调用子目录
+            // 把目录本身所占的空间也加上
+            struct stat st;
+            if(lstat(childPath, &st) == 0) folderSize += st.st_size;
+        }else if (child->d_type == DT_REG || child->d_type == DT_LNK){ // file or link
+            struct stat st;
+            if(lstat(childPath, &st) == 0) folderSize += st.st_size;
+        }
+    }
+    return folderSize;
+}
+
 
 
 //按比例缩放
@@ -712,13 +766,33 @@
     return arr1;
 }
 
-#pragma mark-判断是否是邮箱
-+(BOOL) validateEmail: (NSString *) candidate
+#pragma mark - 匹配是否是网址URL
++(BOOL)matchURLWithString:(NSString *)string
 {
-    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-    return [emailTest evaluateWithObject:candidate];
+    NSString *regex_email = @"[a-zA-z]+://[^\\s]*";
+    NSArray *array_email = [string componentsMatchedByRegex:regex_email];
+    if (array_email.count == 0)
+    {
+        return NO;
+    }else
+    {
+        return YES;
+    }
 }
+#pragma mark - 匹配是否是纯数字
++(BOOL)matchIntWithString:(NSString *)string
+{
+    NSString *regex_email = @"^[1-9]\\d*$";
+    NSArray *array_email = [string componentsMatchedByRegex:regex_email];
+    if (array_email.count == 0)
+    {
+        return NO;
+    }else
+    {
+        return YES;
+    }
+}
+
 
 #pragma mark - 获取字符串高度跟宽度
 +(CGSize)stringHeightAndWidthWith:(NSString *)string WithHeight:(float)aHeight WithWidth:(float)aWidth WithFont:(float)aFont

@@ -29,6 +29,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.leftImageName = NAVIGATION_MENU_IMAGE_NAME;
     self.myTitle = @"服务商家";
+    self.isAddGestureRecognizer = YES;
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
     _data_array = [NSMutableArray array];
@@ -39,6 +40,8 @@
     [self.view addSubview:_myTableView];
     
     [self getBusinessData];
+    
+    
 }
 
 
@@ -52,7 +55,6 @@
     ScreeningViewController * screenVC = [[ScreeningViewController alloc] init];
     [self.navigationController pushViewController:screenVC animated:YES];
 }
-
 
 #pragma mark - 获取数据
 -(void)getBusinessData
