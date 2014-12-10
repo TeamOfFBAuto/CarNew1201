@@ -17,6 +17,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-Du-m6k">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="anli_bottom_clear.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qev-Ey-BGl">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <constraints>
@@ -34,9 +37,6 @@
                                 <include reference="Ixs-HH-33g"/>
                             </mask>
                         </variation>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-Du-m6k">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="猛禽魔抓金卡杀菌前杠" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJG-nV-nL0">
                         <rect key="frame" x="10" y="228" width="212" height="21"/>
@@ -140,8 +140,8 @@
                 </constraints>
                 <variation key="default">
                     <mask key="subviews">
-                        <exclude reference="Qev-Ey-BGl"/>
                         <exclude reference="0Iw-Du-m6k"/>
+                        <exclude reference="Qev-Ey-BGl"/>
                         <exclude reference="E2D-Fh-rzN"/>
                     </mask>
                     <mask key="constraints">
@@ -165,8 +165,8 @@
                 </variation>
                 <variation key="heightClass=regular-widthClass=compact">
                     <mask key="subviews">
-                        <include reference="Qev-Ey-BGl"/>
                         <include reference="0Iw-Du-m6k"/>
+                        <include reference="Qev-Ey-BGl"/>
                         <include reference="E2D-Fh-rzN"/>
                     </mask>
                     <mask key="constraints">
