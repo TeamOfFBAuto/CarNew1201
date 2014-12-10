@@ -45,6 +45,10 @@ alpha:(a)]
 #define kSCNavBarImageTag 10
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 
+//列表 默认图
+
+#define ANLI_LIST_DEFAULT @"anli_list_defatult"
+
 //整屏幕的Frame
 #define ALL_FRAME [UIScreen mainScreen].applicationFrame
 

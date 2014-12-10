@@ -35,7 +35,7 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-Du-m6k">
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-Du-m6k">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="猛禽魔抓金卡杀菌前杠" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJG-nV-nL0">
@@ -145,22 +145,22 @@
                         <exclude reference="E2D-Fh-rzN"/>
                     </mask>
                     <mask key="constraints">
-                        <exclude reference="0mG-yM-sIk"/>
-                        <exclude reference="Inq-Bu-AMu"/>
-                        <exclude reference="WHr-1T-GQC"/>
-                        <exclude reference="cmI-9f-Iy4"/>
-                        <exclude reference="5QF-Zc-Th9"/>
-                        <exclude reference="Tfb-WI-14X"/>
-                        <exclude reference="cGO-FC-tlP"/>
                         <exclude reference="tnD-uD-Hj4"/>
-                        <exclude reference="hf7-Ht-j8L"/>
-                        <exclude reference="pUP-g0-vrk"/>
                         <exclude reference="52X-eK-rVm"/>
                         <exclude reference="F5m-mv-oRz"/>
                         <exclude reference="JEY-C2-wkO"/>
                         <exclude reference="UGS-eD-wbO"/>
                         <exclude reference="nid-ov-2wf"/>
                         <exclude reference="qPD-9f-xHg"/>
+                        <exclude reference="0mG-yM-sIk"/>
+                        <exclude reference="Inq-Bu-AMu"/>
+                        <exclude reference="WHr-1T-GQC"/>
+                        <exclude reference="cmI-9f-Iy4"/>
+                        <exclude reference="hf7-Ht-j8L"/>
+                        <exclude reference="pUP-g0-vrk"/>
+                        <exclude reference="5QF-Zc-Th9"/>
+                        <exclude reference="Tfb-WI-14X"/>
+                        <exclude reference="cGO-FC-tlP"/>
                     </mask>
                 </variation>
                 <variation key="heightClass=regular-widthClass=compact">
@@ -170,22 +170,22 @@
                         <include reference="E2D-Fh-rzN"/>
                     </mask>
                     <mask key="constraints">
-                        <include reference="0mG-yM-sIk"/>
-                        <include reference="Inq-Bu-AMu"/>
-                        <include reference="WHr-1T-GQC"/>
-                        <include reference="cmI-9f-Iy4"/>
-                        <include reference="5QF-Zc-Th9"/>
-                        <include reference="Tfb-WI-14X"/>
-                        <include reference="cGO-FC-tlP"/>
                         <include reference="tnD-uD-Hj4"/>
-                        <include reference="hf7-Ht-j8L"/>
-                        <include reference="pUP-g0-vrk"/>
                         <include reference="52X-eK-rVm"/>
                         <include reference="F5m-mv-oRz"/>
                         <include reference="JEY-C2-wkO"/>
                         <include reference="UGS-eD-wbO"/>
                         <exclude reference="nid-ov-2wf"/>
                         <include reference="qPD-9f-xHg"/>
+                        <include reference="0mG-yM-sIk"/>
+                        <include reference="Inq-Bu-AMu"/>
+                        <include reference="WHr-1T-GQC"/>
+                        <include reference="cmI-9f-Iy4"/>
+                        <include reference="hf7-Ht-j8L"/>
+                        <include reference="pUP-g0-vrk"/>
+                        <include reference="5QF-Zc-Th9"/>
+                        <include reference="Tfb-WI-14X"/>
+                        <include reference="cGO-FC-tlP"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>

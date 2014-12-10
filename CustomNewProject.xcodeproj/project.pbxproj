@@ -17,6 +17,7 @@
 		135117A61A257F2D0015C133 /* UIColor+ConvertColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 135117A21A257F2D0015C133 /* UIColor+ConvertColor.m */; };
 		135117A71A257F2D0015C133 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 135117A51A257F2D0015C133 /* UIView+Frame.m */; };
 		137664E31A382DE100C8695D /* anli_bottom_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 137664E21A382DE100C8695D /* anli_bottom_clear@2x.png */; };
+		137664E51A38557300C8695D /* anli_list_defatult@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 137664E41A38557300C8695D /* anli_list_defatult@2x.png */; };
 		138023281A2C69CF0053BDDA /* anli_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023221A2C69CF0053BDDA /* anli_back@2x.png */; };
 		138023291A2C69CF0053BDDA /* anli_carType@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023231A2C69CF0053BDDA /* anli_carType@2x.png */; };
 		1380232A1A2C69CF0053BDDA /* anli_daohang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023241A2C69CF0053BDDA /* anli_daohang@2x.png */; };
@@ -215,6 +216,7 @@
 		135117A41A257F2D0015C133 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		135117A51A257F2D0015C133 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		137664E21A382DE100C8695D /* anli_bottom_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_bottom_clear@2x.png"; sourceTree = "<group>"; };
+		137664E41A38557300C8695D /* anli_list_defatult@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_list_defatult@2x.png"; sourceTree = "<group>"; };
 		138023221A2C69CF0053BDDA /* anli_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_back@2x.png"; sourceTree = "<group>"; };
 		138023231A2C69CF0053BDDA /* anli_carType@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_carType@2x.png"; sourceTree = "<group>"; };
 		138023241A2C69CF0053BDDA /* anli_daohang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_daohang@2x.png"; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 		138023211A2C69CF0053BDDA /* AnLiControllerImages */ = {
 			isa = PBXGroup;
 			children = (
+				137664E41A38557300C8695D /* anli_list_defatult@2x.png */,
 				137664E21A382DE100C8695D /* anli_bottom_clear@2x.png */,
 				138023221A2C69CF0053BDDA /* anli_back@2x.png */,
 				138023231A2C69CF0053BDDA /* anli_carType@2x.png */,
@@ -1560,6 +1563,7 @@
 				565EE8D61A2C50830063CAA3 /* zc_resendimage@2x.png in Resources */,
 				56621D171A28600300310A48 /* UMUFP.bundle in Resources */,
 				56621D461A28605B00310A48 /* messages_left_bubble@2x.png in Resources */,
+				137664E51A38557300C8695D /* anli_list_defatult@2x.png in Resources */,
 				13F9D4871A2DA7BB002A6904 /* shareziliudi@2x.png in Resources */,
 				56621D421A28605B00310A48 /* item_cancel@2x.png in Resources */,
 				13F9D4C41A2DA951002A6904 /* UMSLoginViewController.xib in Resources */,
