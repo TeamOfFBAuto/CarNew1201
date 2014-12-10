@@ -124,6 +124,9 @@ typedef enum{
     //设置tabelview headerview
     [self creatHeaderView];
     
+    [_topImv setImage:[UIImage imageNamed:@"gBanner.png"]];
+    [_faceImv setImage:[UIImage imageNamed:@"gTouxiang.png"]];
+    
     _page = 1;
     _pageCapacity = 10;
     
@@ -181,7 +184,7 @@ typedef enum{
             [_topImv setImage:[GMAPI getUserBannerImage]];
         }else{
             
-            [_topImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"bunner"]] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [_topImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"bunner"]] placeholderImage:[UIImage imageNamed:@"gBanner.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                 NSData *imageData = UIImageJPEGRepresentation(_topImv.image, 1.0);
                 [GMAPI setUserBannerImageWithData:imageData];
             }];
@@ -192,7 +195,7 @@ typedef enum{
         if ([GMAPI getUserFaceImage]) {
             [_faceImv setImage:[GMAPI getUserFaceImage]];
         }else{
-            [_faceImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"pichead"]] placeholderImage:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [_faceImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"pichead"]] placeholderImage:[UIImage imageNamed:@"gTouxiang.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                 NSData *imageData = UIImageJPEGRepresentation(_faceImv.image, 1.0);
                 [GMAPI setUserFaceImageWithData:imageData];
             }];
@@ -260,7 +263,7 @@ typedef enum{
     
     //banner
     _topImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH,0)];
-    _topImv.backgroundColor = RGBCOLOR_ONE;
+//    _topImv.backgroundColor = RGBCOLOR_ONE;
     [_upThreeViewBackGroundView addSubview:_topImv];
     _topImv.userInteractionEnabled = YES;
     UITapGestureRecognizer *ddd = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userBannerClicked)];
@@ -268,7 +271,7 @@ typedef enum{
     
     //头像
     _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH*70/320.0, ALL_FRAME_WIDTH*70/320.0)];
-    _faceImv.backgroundColor = RGBCOLOR_ONE;
+//    _faceImv.backgroundColor = RGBCOLOR_ONE;
     _faceImv.center = CGPointMake(ALL_FRAME_WIDTH/2,88.00/568*ALL_FRAME_HEIGHT);
     _faceImv.layer.cornerRadius = ALL_FRAME_WIDTH*70/320/2;
     _faceImv.layer.masksToBounds = YES;
@@ -302,12 +305,16 @@ typedef enum{
     
     _topImv.frame = _upThreeViewBackGroundView.frame;
     
-    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_topImv.bounds];
+    //模糊效果
     _topImv.layer.masksToBounds = NO;
     _topImv.layer.shadowColor = [UIColor blackColor].CGColor;
-    _topImv.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);
-    _topImv.layer.shadowOpacity = 0.5f;
-    _topImv.layer.shadowPath = shadowPath.CGPath;
+    _topImv.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);//shadowOffset阴影偏移,x向右偏移4，y向下偏移4，默认(0, -3),这个跟shadowRadius配合使用
+    _topImv.layer.shadowOpacity = 0.5f;//阴影透明度，默认0
+    _topImv.layer.shadowRadius = 4;//阴影半径，默认3
+    
+    //整个图片变模糊
+//    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_topImv.bounds];
+//    _topImv.layer.shadowPath = shadowPath.CGPath;
     
     for (int i = 0; i<3; i++) {
         
