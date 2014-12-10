@@ -29,8 +29,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.leftImageName = NAVIGATION_MENU_IMAGE_NAME;
     self.myTitle = @"服务商家";
-    self.rightString = @"筛选";
-    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeText];
+    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
     _data_array = [NSMutableArray array];
     _myTableView = [[SNRefreshTableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64) showLoadMore:YES];
