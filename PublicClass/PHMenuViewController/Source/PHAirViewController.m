@@ -197,7 +197,11 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
     // layout menu
     [self reloadData];
 }
-
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
 #pragma mark - 设置按钮
 -(void)settingTap:(UIButton *)sender
 {
@@ -612,7 +616,7 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
             UIImageView * headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(95,40,70,70)];
             headerImageView.backgroundColor = [UIColor clearColor];
             headerImageView.center = CGPointMake(41,41);
-            [headerImageView sd_setImageWithURL:[NSURL URLWithString:[ZSNApi returnUrl:[GMAPI getUid]]] placeholderImage:[UIImage imageNamed:HEADER_DEFAULT_IMAGE]];
+            [headerImageView sd_setImageWithURL:[NSURL URLWithString:[ZSNApi returnMiddleUrl:[GMAPI getUid]]] placeholderImage:[UIImage imageNamed:HEADER_DEFAULT_IMAGE]];
             headerImageView.layer.cornerRadius = 35;
             headerImageView.layer.masksToBounds = YES;
             [headerBackImageView addSubview:headerImageView];
@@ -775,6 +779,7 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
             [self bringViewControllerToTop:controller atIndexPath:self.currentIndexPath];
         }
     }];
+    
 }
 
 #pragma mark - property

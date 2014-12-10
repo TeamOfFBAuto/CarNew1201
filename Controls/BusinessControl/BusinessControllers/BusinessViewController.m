@@ -28,7 +28,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     self.leftImageName = NAVIGATION_MENU_IMAGE_NAME;
-    self.myTitle = @"服务商家";
+    self.myTitle = @"改装商家";
     self.isAddGestureRecognizer = YES;
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
@@ -36,6 +36,7 @@
     _myTableView = [[SNRefreshTableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64) showLoadMore:YES];
     _myTableView.refreshDelegate = self;
     _myTableView.dataSource = self;
+    _myTableView.separatorColor = RGBCOLOR(223,223,223);
     _myTableView.contentSize = CGSizeMake(DEVICE_WIDTH+20,_myTableView.contentSize.height);
     [self.view addSubview:_myTableView];
     
@@ -123,6 +124,7 @@
         [view removeFromSuperview];
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     BusinessListModel *model = _data_array[indexPath.row];
     [cell loadCustomViewWithType:3];
     [cell setdataWithData:model];

@@ -45,7 +45,7 @@
     
     _settingNav = [[UINavigationController alloc] initWithRootViewController:[[SliderRightSettingViewController alloc] init]];
     
-    titles = @[@"案例图库", @"服务商家", @"个人中心"];
+    titles = @[@"案例图库", @"改装商家", @"个人中心"];
     
 }
 
@@ -89,7 +89,7 @@
             break;
         case 0:///案例图库
 //            viewController = _picNav;
-            viewController = [(AppDelegate*)[UIApplication sharedApplication].delegate picVC];
+            viewController = [(AppDelegate*)[UIApplication sharedApplication].delegate picNavc];
             break;
         case 3:///商品
             viewController = _storeNav;

@@ -85,7 +85,7 @@
     _myTitleLabel.textAlignment = NSTextAlignmentCenter;
     _myTitleLabel.text = _myTitle;
     _myTitleLabel.textColor = [UIColor blackColor];
-    _myTitleLabel.font = [UIFont systemFontOfSize:20];
+    _myTitleLabel.font = [UIFont systemFontOfSize:17];
     self.navigationItem.titleView = _myTitleLabel;
     
     spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];

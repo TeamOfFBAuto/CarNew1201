@@ -33,6 +33,7 @@ typedef enum{
 @property(nonatomic,strong)FansViewController * pushViewController;//控制跳转的透明view
 @property(nonatomic,strong)SelectedViewController * selectedVC;
 @property(nonatomic,strong)PicViewController * picVC;
+@property(nonatomic,strong)UINavigationController * picNavc;
 
 - (void)showControlView:(ROOTVC_TYPE)type;
 @end

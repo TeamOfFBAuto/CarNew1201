@@ -72,9 +72,9 @@
     if (type == Root_home)
     {
         _picVC = [[PicViewController alloc] init];
-        UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:_picVC];
+        _picNavc = [[UINavigationController alloc] initWithRootViewController:_picVC];
         
-        PHMenuViewController   * menuController = [[PHMenuViewController alloc] initWithRootViewController:navc atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        PHMenuViewController   * menuController = [[PHMenuViewController alloc] initWithRootViewController:_picNavc atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         UINavigationController * menu_nav = [[UINavigationController alloc] initWithRootViewController:menuController];
         self.window.rootViewController = menu_nav;
     }else if (type == Root_login)
