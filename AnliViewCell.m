@@ -44,20 +44,7 @@
 
 - (void)setCellWithModel:(AnliModel *)aModel
 {
-    [self.bigImageView sd_setImageWithURL:[NSURL URLWithString:aModel.pichead] placeholderImage:[UIImage imageNamed:ANLI_LIST_DEFAULT] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        
-        NSLog(@"----> %@",error);
-        
-        if (error) {
-            
-            self.bigImageView.contentMode = UIViewContentModeCenter;
-        }else
-        {
-            self.bigImageView.contentMode = UIViewContentModeScaleToFill;
-        }
-        
-    }];
-    
+    [self.bigImageView sd_setImageWithURL:[NSURL URLWithString:aModel.pichead] placeholderImage:nil];
     
     self.aTitleLabel.text = aModel.title;
     self.nameLabel.text = aModel.sname;
