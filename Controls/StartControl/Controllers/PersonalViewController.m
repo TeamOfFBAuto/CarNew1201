@@ -195,7 +195,10 @@ typedef enum{
         if ([GMAPI getUserFaceImage]) {
             [_faceImv setImage:[GMAPI getUserFaceImage]];
         }else{
-            [_faceImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"pichead"]] placeholderImage:[UIImage imageNamed:@"gTouxiang.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            
+            NSString *midleUserFaceStr = [ZSNApi returnMiddleUrl:[GMAPI getUid]];
+            
+            [_faceImv sd_setImageWithURL:[NSURL URLWithString:midleUserFaceStr] placeholderImage:[UIImage imageNamed:@"gTouxiang.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                 NSData *imageData = UIImageJPEGRepresentation(_faceImv.image, 1.0);
                 [GMAPI setUserFaceImageWithData:imageData];
             }];

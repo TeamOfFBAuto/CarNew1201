@@ -89,9 +89,15 @@
         _title2_chanpin.textColor = RGBCOLOR(222, 222, 222);
         
         
+        UIImageView *_mainImv_backImv = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"anli_bottom_clear.png"]];
         
+        CGFloat yinyingHeight = (100.00/320*ALL_FRAME_WIDTH);
+        
+        CGRect r = CGRectMake(0, _mainImv_chapin.frame.size.height-yinyingHeight, ALL_FRAME_WIDTH, yinyingHeight);
+        [_mainImv_backImv setFrame:r];
         
         [self.contentView addSubview:_mainImv_chapin];
+        [self.contentView addSubview:_mainImv_backImv];
         [self.contentView addSubview:_price_chanpin];
         [self.contentView addSubview:_title1_chanpin];
         [self.contentView addSubview:_title2_chanpin];

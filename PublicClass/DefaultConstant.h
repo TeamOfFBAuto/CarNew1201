@@ -100,7 +100,7 @@ alpha:(a)]
 #pragma mark - 商家列表接口
 #define BUSINESS_LIST_URL @"index.php?c=interface&a=getStore&ps=20&page=%d&fbtype=json"
 //登录
-#define G_LOGIN @"http://gztest.fblife.com/index.php?c=interface&a=dologin&username=%@&password=%@&token=%@&fbtype=json"
+#define G_LOGIN @"http://gztest.fblife.com/index.php?c=interface&a=dologin&fbtype=json"
 
 //个人中心相关
 //获取收藏案例

@@ -21,6 +21,8 @@
 #define LOGIN_PHONE @"LOGIN_PHONE"//登录手机号
 #define LOGIN_PASS @"LOGIN_PASS"//登录密码
 
+#import "GmPrepareNetData.h"
+
 
 @interface LogInViewController ()
 {
@@ -251,44 +253,27 @@
     //登录接口
     
     NSString *deviceToken = [GMAPI getDeviceToken] ? [GMAPI getDeviceToken] : @"testToken";
-    NSString *str = [NSString stringWithFormat:G_LOGIN,name,passw,deviceToken];
-    NSLog(@"登录请求接口======%@",str);
     
-    NSURL *url = [NSURL URLWithString:str];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        
-        NSLog(@"error-----------%@",connectionError);
-        
+    NSString *post = [NSString stringWithFormat:@"&username=%@&password=%@&token=%@",name,passw,deviceToken];
+    NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+    GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:G_LOGIN isPost:YES postData:postData];
+    [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
         [j stopAnimating];
-        j = nil;
-        
-        if ([data length] == 0) {
-            
-            [self loginFail];
-            
-            return;
-        }
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        
-        if ([dic isKindOfClass:[NSDictionary class]]) {
-            
-            NSLog(@"%@",dic);
-            if ([[dic objectForKey:@"errcode"] intValue] == 0) {//登录成功
-                
+        NSLog(@"登录成功:%@",result);
+        if ([[result objectForKey:@"errcode"] intValue] == 0) {//登录成功
+
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
-                NSDictionary *datainfo = [dic objectForKey:@"datainfo"];
+                NSDictionary *datainfo = [result objectForKey:@"datainfo"];
                 NSString *userid = [datainfo objectForKey:@"uid"];
                 NSString *username = [datainfo objectForKey:@"username"];
                 NSString *authkey = [datainfo objectForKey:@"authkey"];
                 [GMAPI cache:userid ForKey:USER_UID];
                 [GMAPI cache:username ForKey:USER_NAME];
                 [GMAPI cache:authkey ForKey:USER_AUTHOD];
-                
+
                 AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
                 [delegate showControlView:Root_home];
-                
+
             }else{
                 id obj=NSClassFromString(@"UIAlertController");
                 if ( obj!=nil){
@@ -298,10 +283,9 @@
                     }];
                     [alertController addAction:cancelAction];
                     [self presentViewController:alertController animated:YES completion:^{
-                        
+
                     }];
-                }
-                else{
+                }else{
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请核对用户名或密码是否正确"
                                                                    delegate:self cancelButtonTitle:@"确定"
                                                           otherButtonTitles:nil,nil];
@@ -313,14 +297,84 @@
                 
                 
                 
-                [defaults setBool:NO forKey:USER_IN];
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_IN];
             }
             
-            [defaults synchronize];
-        }
-        
-        
+            [[NSUserDefaults standardUserDefaults] synchronize];
+     
+    } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        [j stopAnimating];
+        NSLog(@"登录失败:%@",failDic);
     }];
+    
+    
+    
+    
+//    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+//        
+//        NSLog(@"error-----------%@",connectionError);
+//        
+//        [j stopAnimating];
+//        j = nil;
+//        
+//        if ([data length] == 0) {
+//            
+//            [self loginFail];
+//            
+//            return;
+//        }
+//        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//        
+//        if ([dic isKindOfClass:[NSDictionary class]]) {
+//            
+//            NSLog(@"%@",dic);
+//            if ([[dic objectForKey:@"errcode"] intValue] == 0) {//登录成功
+//                
+//                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
+//                NSDictionary *datainfo = [dic objectForKey:@"datainfo"];
+//                NSString *userid = [datainfo objectForKey:@"uid"];
+//                NSString *username = [datainfo objectForKey:@"username"];
+//                NSString *authkey = [datainfo objectForKey:@"authkey"];
+//                [GMAPI cache:userid ForKey:USER_UID];
+//                [GMAPI cache:username ForKey:USER_NAME];
+//                [GMAPI cache:authkey ForKey:USER_AUTHOD];
+//                
+//                AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//                [delegate showControlView:Root_home];
+//                
+//            }else{
+//                id obj=NSClassFromString(@"UIAlertController");
+//                if ( obj!=nil){
+//                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请核对用户名或密码是否正确" preferredStyle:UIAlertControllerStyleAlert];
+//                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//
+//                    }];
+//                    [alertController addAction:cancelAction];
+//                    [self presentViewController:alertController animated:YES completion:^{
+//                        
+//                    }];
+//                }
+//                else{
+//                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请核对用户名或密码是否正确"
+//                                                                   delegate:self cancelButtonTitle:@"确定"
+//                                                          otherButtonTitles:nil,nil];
+//                    
+//                    [alert show];
+//                }
+//                
+//                
+//                
+//                
+//                
+//                [defaults setBool:NO forKey:USER_IN];
+//            }
+//            
+//            [defaults synchronize];
+//        }
+//        
+//        
+//    }];
     
 }
 
