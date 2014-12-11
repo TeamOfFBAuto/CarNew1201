@@ -112,7 +112,7 @@
         //用户名
         self.userTf = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(userImv.frame)+20, 0,220, 45)];
         self.userTf.autocapitalizationType = UITextAutocapitalizationTypeNone;
-        self.userTf.keyboardType = UIKeyboardTypeASCIICapable;
+        self.userTf.keyboardType = UIKeyboardTypeDefault;
         self.userTf.textColor = [UIColor whiteColor];
         self.userTf.delegate = self;
         self.userTf.tag = 50;

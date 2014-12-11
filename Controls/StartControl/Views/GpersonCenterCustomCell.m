@@ -57,6 +57,11 @@
         [self.contentView addSubview:_logoImageView];
         [self.contentView addSubview:_titleLabel1];
         [self.contentView addSubview:_titleLabel2];
+        UIImageView *_mainImv_backImv = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"anli_bottom_clear.png"]];
+        _mainImv_backImv.frame = _mainImv.frame;
+        [self.contentView addSubview:_mainImv_backImv];
+        
+        
     }else if (theType == 2){//收藏产品
         
         _mainImv_chapin = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 240.00/568*ALL_FRAME_HEIGHT)];

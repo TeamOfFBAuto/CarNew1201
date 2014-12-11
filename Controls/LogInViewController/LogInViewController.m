@@ -67,10 +67,17 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     
+    if (IOS7_OR_LATER) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    }
+
+    
     NSLog(@"%s",__FUNCTION__);
     
     GloginView *gloginView = [[GloginView alloc]initWithFrame:CGRectMake(0, 0, 320, iPhone5?568:480)];
     [self.view addSubview:gloginView];
+    
     
     
     __weak typeof (self)bself = self;

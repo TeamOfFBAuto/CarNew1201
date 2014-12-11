@@ -14,6 +14,8 @@
 #import "UMTableViewController.h"
 #import "AppDelegate.h"
 
+#import "GMAPI.h"
+
 @interface SliderRightSettingViewController ()
 {
     UMUFPTableView * _mTableView;
@@ -302,6 +304,8 @@
     {
         [logOut_button setTitle:@"立即登录" forState:UIControlStateNormal];
         
+        [GMAPI cleanUserFaceAndBanner];
+        
         [self deletetoken];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"clearolddata" object:nil];
@@ -329,6 +333,8 @@
         [user synchronize];
     }else
     {
+        
+        
         AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [delegate showControlView:Root_login];
     }
