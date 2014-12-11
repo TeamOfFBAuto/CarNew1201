@@ -55,112 +55,81 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = RGBCOLOR(245,245,245);
+    self.view.backgroundColor = RGBCOLOR(247,247,247);
     
-    self.navigationItem.title = @"完善个人资料";
+    self.myTitle = @"完善个人资料";
     
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
     
     UILabel * yonghuming = [[UILabel alloc] initWithFrame:CGRectMake(23/2,23/2,100,20)];
-    
     yonghuming.text = @"用户名:";
-    
     yonghuming.textAlignment = NSTextAlignmentLeft;
-    
-    yonghuming.textColor = RGBCOLOR(101,102,104);
-    
+    yonghuming.textColor = RGBCOLOR(120,121,122);
     yonghuming.backgroundColor = [UIColor clearColor];
-    
     [self.view addSubview:yonghuming];
     
     
     userName_tf = [[UITextField alloc] initWithFrame:CGRectMake(23/2,38,296,42)];
-    
     userName_tf.backgroundColor = [UIColor whiteColor];
-    
     userName_tf.delegate = self;
-    
     userName_tf.font = [UIFont systemFontOfSize:15];
-    
     userName_tf.placeholder = @"最多可输入7个中文,注册后用户名不可更改";
-    
     [self.view addSubview:userName_tf];
     
     
     UILabel * mima_label = [[UILabel alloc] initWithFrame:CGRectMake(23/2,90,200,20)];
-    
-    mima_label.textColor = RGBCOLOR(101,102,104);
-    
+    mima_label.textColor = RGBCOLOR(120,121,122);
     mima_label.text = @"密码:";
-    
     mima_label.textAlignment = NSTextAlignmentLeft;
-    
     mima_label.backgroundColor = [UIColor clearColor];
-    
     [self.view addSubview:mima_label];
     
     
     mima_tf = [[UITextField alloc] initWithFrame:CGRectMake(23/2,120,296,42)];
-    
     mima_tf.placeholder = @"请输入密码";
-    
     mima_tf.delegate = self;
-    
     mima_tf.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;//垂直居中
-    
     mima_tf.secureTextEntry = YES;                              //密码输入时
-    
     mima_tf.backgroundColor = [UIColor whiteColor];
-    
-    mima_tf.layer.borderColor = [UIColor blackColor].CGColor;
-    
+    mima_tf.layer.borderColor = RGBCOLOR(31,31,31).CGColor;
     mima_tf.font = [UIFont systemFontOfSize:15];
-    
     mima_tf.layer.borderWidth = 0.5;
-    
     [self.view addSubview:mima_tf];
     
     
     UILabel * youxiang_label = [[UILabel alloc] initWithFrame:CGRectMake(23/2,175,200,20)];
-    
-    youxiang_label.text = @"邮箱";
-    
-    youxiang_label.textColor = RGBCOLOR(101,102,104);
-    
+    youxiang_label.text = @"邮箱:";
+    youxiang_label.textColor = RGBCOLOR(120,121,122);
     youxiang_label.backgroundColor = [UIColor clearColor];
-    
     youxiang_label.textAlignment = NSTextAlignmentLeft;
-    
     [self.view addSubview:youxiang_label];
     
     
     youxiang_tf = [[UITextField alloc] initWithFrame:CGRectMake(23/2,200,296,42)];
-    
     youxiang_tf.placeholder = @"用来找回密码,请慎重填写";
-    
     youxiang_tf.backgroundColor = [UIColor whiteColor];
-    
     youxiang_tf.delegate = self;
-    
     youxiang_tf.font = [UIFont systemFontOfSize:15];
-    
     [self.view addSubview:youxiang_tf];
     
     
     UIButton * complete_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
     complete_button.frame = CGRectMake(23/2,257,593/2,43);
-    
     [complete_button setTitle:@"完 成" forState:UIControlStateNormal];
-    
-    complete_button.backgroundColor = RGBCOLOR(255,135,0);
-    
+    complete_button.backgroundColor = RGBCOLOR(255,144,0);
     [complete_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
     [complete_button addTarget:self action:@selector(zhuCe:) forControlEvents:UIControlEventTouchUpInside];
-    
     [self.view addSubview:complete_button];
+    
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doTap:)];
+    [self.view addGestureRecognizer:tap];
+}
+
+-(void)doTap:(UITapGestureRecognizer *)sender
+{
+    [self.view endEditing:YES];
 }
 
 
@@ -169,9 +138,7 @@
     if (userName_tf.text.length == 0)
     {
         UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"用户名不能为空" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
-        
         [alertView show];
-        
         [userName_tf becomeFirstResponder];
         
         return;
@@ -181,7 +148,6 @@
     if (mima_tf.text.length == 0)
     {
         UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"密码不能为空" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
-        
         [alertView show];
         
         [mima_tf becomeFirstResponder];

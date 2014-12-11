@@ -143,7 +143,9 @@
 }
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    BusinessListModel *model = _data_array[indexPath.row];
     BusinessHomeViewController * home = [[BusinessHomeViewController alloc] init];
+    home.business_id = model.id;
     [self.navigationController pushViewController:home animated:YES];
 }
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath

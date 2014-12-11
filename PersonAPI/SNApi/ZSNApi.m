@@ -793,6 +793,13 @@
     }
 }
 
+#pragma mark - 匹配是否是邮箱
++(BOOL) validateEmail: (NSString *) candidate
+{
+    NSString * emailRegex = @"\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+    NSPredicate * emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",emailRegex];
+    return [emailTest evaluateWithObject:candidate];
+}
 
 #pragma mark - 获取字符串高度跟宽度
 +(CGSize)stringHeightAndWidthWith:(NSString *)string WithHeight:(float)aHeight WithWidth:(float)aWidth WithFont:(float)aFont

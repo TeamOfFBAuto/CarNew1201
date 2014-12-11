@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface BusinessHomeViewController : MyViewController
+{
+    
+}
+
+
+@property(nonatomic,strong)NSString * business_id;
+
 
 @end

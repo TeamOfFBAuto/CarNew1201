@@ -52,14 +52,7 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = RGBCOLOR(245,245,245);
-    
-    
-    if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] )
-    {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:MY_MACRO_NAME?IOS7DAOHANGLANBEIJING:IOS6DAOHANGLANBEIJING] forBarMetrics: UIBarMetricsDefault];
-    }
-    
+    self.view.backgroundColor = RGBCOLOR(247,247,247);
     
     self.myTitle = @"验证手机号码";
     
@@ -98,7 +91,7 @@
     
     UIButton * next_button = [UIButton buttonWithType:UIButtonTypeCustom];
     next_button.frame = CGRectMake(23/2,backGround_imageView.frame.origin.y+backGround_imageView.frame.size.height+23/2,297,43);
-    next_button.backgroundColor = RGBCOLOR(255,135,0);
+    next_button.backgroundColor = RGBCOLOR(255,144,0);
     [next_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [next_button setTitle:@"下一步" forState:UIControlStateNormal];
     [next_button addTarget:self action:@selector(nextStep:) forControlEvents:UIControlEventTouchUpInside];
@@ -121,6 +114,14 @@
     [xieyi_button addTarget:self action:@selector(chakanxieyi:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:xieyi_button];
     
+    
+    UITapGestureRecognizer * view_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doTap:)];
+    [self.view addGestureRecognizer:view_tap];
+    
+}
+-(void)doTap:(UITapGestureRecognizer *)sender
+{
+    [self.view endEditing:YES];
 }
 
 
@@ -133,7 +134,11 @@
 
 
 -(void)nextStep:(UIButton *)sender
-{
+{[ZSNApi showAutoHiddenMBProgressWithText:@"发送成功" addToView:self.view];
+    VerificationViewController * verification = [[VerificationViewController alloc] init];
+    verification.MyPhoneNumber = phone_textField.text;
+    [self.navigationController pushViewController:verification animated:YES];
+    return;
     if (phone_textField.text.length != 11)
     {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"请输入正确的手机号码" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];

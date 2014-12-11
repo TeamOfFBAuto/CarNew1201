@@ -55,16 +55,11 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = RGBCOLOR(245,245,245);
+    self.view.backgroundColor = RGBCOLOR(247,247,247);
     UITapGestureRecognizer * cancel_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancelKeyboradTap:)];
     [self.view addGestureRecognizer:cancel_tap];
     
-    if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] )
-    {
-        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:MY_MACRO_NAME?IOS7DAOHANGLANBEIJING:IOS6DAOHANGLANBEIJING] forBarMetrics: UIBarMetricsDefault];
-    }
-    
-    self.navigationItem.title = @"填写验证码";
+    self.myTitle = @"填写验证码";
     
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
@@ -116,7 +111,7 @@
     
     next_button.frame = CGRectMake(23/2,80+23/2,297,43);
     
-    next_button.backgroundColor = RGBCOLOR(255,135,0);
+    next_button.backgroundColor = RGBCOLOR(255,144,0);
     
     [next_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     

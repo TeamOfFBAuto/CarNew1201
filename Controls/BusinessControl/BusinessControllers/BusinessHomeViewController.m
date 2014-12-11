@@ -8,7 +8,7 @@
 
 #import "BusinessHomeViewController.h"
 
-@interface BusinessHomeViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface BusinessHomeViewController ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>
 {
     ///背景图
     UIImageView * banner_imageView;
@@ -49,6 +49,18 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    
+    UIWebView * myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+    myWebView.delegate = self;
+    [self.view addSubview:myWebView];
+    
+    NSString * fullUrl = @"http://gztest.fblife.com/web.php?c=wap&a=getCase&caseid=1";
+    
+    [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
+    
+    
+    /*
     [self setTableSectionView];
     
     _myTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT) style:UITableViewStylePlain];
@@ -60,7 +72,32 @@
     
     
     [self setNavgationView];
+     */
 }
+
+
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    
+}
+-(void)webViewDidStartLoad:(UIWebView *)webView
+{
+    
+}
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    
+    NSLog(@"request.url ----   %@ ---  %d",[request.URL absoluteString],navigationType);
+    
+    return YES;
+}
+
+
 
 -(void)setNavgationView
 {

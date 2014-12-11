@@ -24,15 +24,9 @@
 
 - (void)viewDidLoad
 {
-    
-    
-    NSArray *family=[UIFont familyNames];
-    NSLog(@"famlilyname=%@",family);
-    
-
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor colorWithRed:245/255.f green:245/255.f blue:245/255.f alpha:1];
-    self.title = @"关于";
+    self.myTitle = @"关于";
     
 //    UIColor * cc = [UIColor blackColor];
 //    
@@ -60,11 +54,11 @@
     
     [button_back addTarget:self action:@selector(backto) forControlEvents:UIControlEventTouchUpInside];
     //[button_back setBackgroundImage:[UIImage imageNamed:BACK_DEFAULT_IMAGE] forState:UIControlStateNormal];
-    [button_back setImage:[UIImage imageNamed:BACK_DEFAULT_IMAGE] forState:UIControlStateNormal];
+    [button_back setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];
     
     
     //1008  832
-    imageView = [[UIImageView alloc] initWithImage:[ZSNApi getImageWithName:iPhone5?@"newAboultIphone5@2x":@"newAbout@2x"]];
+    imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iPhone5?@"newAboultIphone5@2x":@"newAbout@2x"]];
     imageView.frame = CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT - 64);
 
     imageView.backgroundColor = [UIColor clearColor];

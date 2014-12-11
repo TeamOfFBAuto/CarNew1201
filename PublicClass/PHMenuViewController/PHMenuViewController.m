@@ -89,7 +89,7 @@
             break;
         case 0:///案例图库
 //            viewController = _picNav;
-            viewController = [(AppDelegate*)[UIApplication sharedApplication].delegate picVC];
+            viewController = [(AppDelegate*)[UIApplication sharedApplication].delegate picNavc];
             break;
         case 3:///商品
             viewController = _storeNav;

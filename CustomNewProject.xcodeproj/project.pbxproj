@@ -76,6 +76,8 @@
 		56500AFB1A2D63CC00E834A1 /* BusinessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56500AF81A2D63CC00E834A1 /* BusinessViewController.m */; };
 		56500AFF1A2D676900E834A1 /* BusinessListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56500AFD1A2D676900E834A1 /* BusinessListTableViewCell.m */; };
 		56500B001A2D676900E834A1 /* BusinessListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56500AFE1A2D676900E834A1 /* BusinessListTableViewCell.xib */; };
+		5653E5101A39754500CEB749 /* newAboultIphone5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5653E50E1A39754500CEB749 /* newAboultIphone5@2x.png */; };
+		5653E5111A39754500CEB749 /* newAbout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5653E50F1A39754500CEB749 /* newAbout@2x.png */; };
 		565EE8B61A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A31A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		565EE8B71A2C3DEE0063CAA3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A61A2C3DEE0063CAA3 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		565EE8B81A2C3DEE0063CAA3 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A81A2C3DEE0063CAA3 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -328,6 +330,8 @@
 		56500AFC1A2D676900E834A1 /* BusinessListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessListTableViewCell.h; sourceTree = "<group>"; };
 		56500AFD1A2D676900E834A1 /* BusinessListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessListTableViewCell.m; sourceTree = "<group>"; };
 		56500AFE1A2D676900E834A1 /* BusinessListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessListTableViewCell.xib; sourceTree = "<group>"; };
+		5653E50E1A39754500CEB749 /* newAboultIphone5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newAboultIphone5@2x.png"; sourceTree = "<group>"; };
+		5653E50F1A39754500CEB749 /* newAbout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newAbout@2x.png"; sourceTree = "<group>"; };
 		565EE8A21A2C3DEE0063CAA3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		565EE8A31A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		565EE8A41A2C3DEE0063CAA3 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -924,6 +928,7 @@
 		560CB5391A270B1C0067F7AA /* AllImages */ = {
 			isa = PBXGroup;
 			children = (
+				5653E50D1A39753700CEB749 /* personalImages */,
 				568848CB1A32E1D500862472 /* businessImages */,
 				13F9D47D1A2DA7A1002A6904 /* ShareImages */,
 				138023211A2C69CF0053BDDA /* AnLiControllerImages */,
@@ -1060,6 +1065,15 @@
 				56500AFE1A2D676900E834A1 /* BusinessListTableViewCell.xib */,
 			);
 			path = BusinessViews;
+			sourceTree = "<group>";
+		};
+		5653E50D1A39753700CEB749 /* personalImages */ = {
+			isa = PBXGroup;
+			children = (
+				5653E50E1A39754500CEB749 /* newAboultIphone5@2x.png */,
+				5653E50F1A39754500CEB749 /* newAbout@2x.png */,
+			);
+			path = personalImages;
 			sourceTree = "<group>";
 		};
 		565EE8A11A2C3DEE0063CAA3 /* ASIHttpRequest */ = {
@@ -1583,6 +1597,7 @@
 				13F9D4BB1A2DA951002A6904 /* UMSocialLocalizable.strings in Resources */,
 				56CC07201A302C3C0014F285 /* 服务条款.html in Resources */,
 				56621D4D1A28605B00310A48 /* nav_bg.png in Resources */,
+				5653E5111A39754500CEB749 /* newAbout@2x.png in Resources */,
 				1351179D1A257EB20015C133 /* blueup1@2x.png in Resources */,
 				56621D551A28605B00310A48 /* UMContactViewController.xib in Resources */,
 				1351179C1A257EB20015C133 /* bluedown1@2x.png in Resources */,
@@ -1611,6 +1626,7 @@
 				56621D471A28605B00310A48 /* messages_right_bubble@2x.png in Resources */,
 				56621D3F1A28605B00310A48 /* blueArrow@2x.png in Resources */,
 				569FFEF41A27380F008A02A6 /* login_mima_image@2x.png in Resources */,
+				5653E5101A39754500CEB749 /* newAboultIphone5@2x.png in Resources */,
 				E36AAF6D1A385B2C006A6F21 /* gstart_half@2x.png in Resources */,
 				13F9D4BA1A2DA951002A6904 /* WeiboSDK.bundle in Resources */,
 				569FFEF51A27380F008A02A6 /* login_userName_image@2x.png in Resources */,
