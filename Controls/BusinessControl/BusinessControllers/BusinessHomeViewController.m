@@ -53,6 +53,8 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     
+    
+    
     UIWebView * myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
     myWebView.delegate = self;
     [self.view addSubview:myWebView];
@@ -78,6 +80,8 @@
     
     [self setNavgationView];
      */
+    
+    [self setNavgationView];
 }
 
 
@@ -115,7 +119,8 @@
     [self.view bringSubviewToFront:navigation_view];
     
     UIButton * back_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    back_button.frame = CGRectMake(10,20,44,44);
+    back_button.frame = CGRectMake(8,20,44,44);
+    //    back_button.backgroundColor = [UIColor orangeColor];
     [back_button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [back_button setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];
     [navigation_view addSubview:back_button];
@@ -124,7 +129,7 @@
 -(void)back:(UIButton *)button
 {
     self.edgesForExtendedLayout = UIRectEdgeAll;
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    //    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
