@@ -63,7 +63,7 @@
     
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
-    UILabel * label1 = [[UILabel alloc] initWithFrame:CGRectMake(23/2,23/2,200,20)];
+    UILabel * label1 = [[UILabel alloc] initWithFrame:CGRectMake(23/2,23/2,200,16)];
     
     label1.text = @"请输入收到的短信验证码:";
     
@@ -100,11 +100,12 @@
     verification_tf.backgroundColor = [UIColor clearColor];
     
     verification_tf.font = [UIFont systemFontOfSize:15];
-    
+    verification_tf.layer.borderColor = RGBCOLOR(226,226,226).CGColor;
+    verification_tf.layer.borderWidth = 0.5;
     [verification_tf becomeFirstResponder];
     
     [back_view addSubview:verification_tf];
-    
+    [ZSNApi returnMiddleUrl:@""];
     
     
     UIButton * next_button = [UIButton buttonWithType:UIButtonTypeCustom];

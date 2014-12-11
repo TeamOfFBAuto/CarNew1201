@@ -178,7 +178,7 @@
     if (indexPath.row == 0) {
         lineView.hidden = YES;
         
-        cell.backgroundColor = RGBCOLOR(248,248,248);
+        cell.backgroundColor = RGBCOLOR(239,237,237);
     }else
     {
         lineView.hidden = NO;
@@ -428,7 +428,7 @@
 -(void)checkVersionUpdate
 {
 
-    [[LTools shareInstance]versionForAppid:@"933737704" Block:^(BOOL isNewVersion, NSString *updateUrl, NSString *updateContent) {
+    [LTools versionForAppid:@"933737704" Block:^(BOOL isNewVersion, NSString *updateUrl, NSString *updateContent) {
         
         NSLog(@"updateContent %@ %@",updateUrl,updateContent);
         

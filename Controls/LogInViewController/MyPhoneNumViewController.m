@@ -109,7 +109,7 @@
     UIButton * xieyi_button = [UIButton buttonWithType:UIButtonTypeCustom];
     xieyi_button.frame = CGRectMake(29,123,280,20);
     xieyi_button.titleLabel.font = [UIFont systemFontOfSize:16];
-    [xieyi_button setTitleColor:RGBCOLOR(135,135,135) forState:UIControlStateNormal];
+    [xieyi_button setTitleColor:RGBCOLOR(153,153,153) forState:UIControlStateNormal];
     [xieyi_button setTitle:@"同意越野e族《隐私条款和服务条款》" forState:UIControlStateNormal];
     [xieyi_button addTarget:self action:@selector(chakanxieyi:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:xieyi_button];
@@ -134,11 +134,7 @@
 
 
 -(void)nextStep:(UIButton *)sender
-{[ZSNApi showAutoHiddenMBProgressWithText:@"发送成功" addToView:self.view];
-    VerificationViewController * verification = [[VerificationViewController alloc] init];
-    verification.MyPhoneNumber = phone_textField.text;
-    [self.navigationController pushViewController:verification animated:YES];
-    return;
+{
     if (phone_textField.text.length != 11)
     {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"请输入正确的手机号码" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];

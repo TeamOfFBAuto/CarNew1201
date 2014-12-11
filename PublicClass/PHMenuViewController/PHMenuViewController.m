@@ -45,7 +45,7 @@
     
     _settingNav = [[UINavigationController alloc] initWithRootViewController:[[SliderRightSettingViewController alloc] init]];
     
-    titles = @[@"案例图库", @"服务商家", @"个人中心"];
+    titles = @[@"改装案例", @"服务商家", @"个人中心"];
     
 }
 
