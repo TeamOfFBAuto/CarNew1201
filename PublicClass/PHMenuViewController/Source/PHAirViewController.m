@@ -200,7 +200,6 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
 }
 #pragma mark - 设置按钮
 -(void)settingTap:(UIButton *)sender
