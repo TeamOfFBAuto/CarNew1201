@@ -33,6 +33,12 @@
             _Frame_logoDown = CGRectMake((self.bounds.size.width-logoImvWidth)/2, 70, logoImvWidth, logoImvHight);
             _Frame_logoUp = CGRectMake((self.bounds.size.width-logoImvWidth)/2, 40, logoImvWidth, logoImvHight);
             
+        }else if (iPhone6 || iPhone6PLUS){
+            _Frame_row3Down = CGRectMake(24, 210.00/320*ALL_FRAME_WIDTH, 280.00/320*ALL_FRAME_WIDTH, 350.00/320*ALL_FRAME_WIDTH);
+            _Frame_row3Up = CGRectMake(24, (312.00-180)/320*ALL_FRAME_WIDTH, 280.00/320*ALL_FRAME_WIDTH, 350.00/320*ALL_FRAME_WIDTH);
+            
+            _Frame_logoDown = CGRectMake((self.bounds.size.width-logoImvWidth)/2, 70, logoImvWidth, logoImvHight);
+            _Frame_logoUp = CGRectMake((self.bounds.size.width-logoImvWidth)/2, 40, logoImvWidth, logoImvHight);
         }else{
             _Frame_row3Down = CGRectMake(24, 210, 275, 350);
             _Frame_row3Up = CGRectMake(24, 312-180-50, 275, 350);
@@ -52,7 +58,7 @@
         
         //背景图
         UIImageView *backGroundImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:backGroundImageName]];
-        backGroundImageView.frame = CGRectMake(0, 0, 320, 568);
+        backGroundImageView.frame = CGRectMake(0, 0, ALL_FRAME_WIDTH, DEVICE_HEIGHT);
         [self addSubview:backGroundImageView];
 
         
@@ -73,13 +79,21 @@
         
         //账号和密码输入框
         //输入框
-        _zhanghaoBackView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 275, 45)];
+        _zhanghaoBackView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 275.00/320*ALL_FRAME_WIDTH, 45)];
         _zhanghaoBackView.layer.borderColor = [UIColor whiteColor].CGColor;
         _zhanghaoBackView.layer.borderWidth = 0.5;
         
-        _passWordBackView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 60, 275, 45)];
+        if (iPhone6PLUS) {
+            [_zhanghaoBackView setFrame:CGRectMake(0, 0, 280.00/320*ALL_FRAME_WIDTH, 45)];
+        }
+        
+        
+        _passWordBackView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 60, 275.00/320*ALL_FRAME_WIDTH, 45)];
         _passWordBackView.layer.borderColor = [UIColor whiteColor].CGColor;
         _passWordBackView.layer.borderWidth = 0.5;
+        if (iPhone6PLUS) {
+            [_passWordBackView setFrame:CGRectMake(0, 60, 280.00/320*ALL_FRAME_WIDTH, 45)];
+        }
         
         
         
@@ -110,7 +124,7 @@
         
         //输入textField
         //用户名
-        self.userTf = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(userImv.frame)+20, 0,220, 45)];
+        self.userTf = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(userImv.frame)+20, 0,220.00/320*ALL_FRAME_WIDTH, 45)];
         self.userTf.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.userTf.keyboardType = UIKeyboardTypeDefault;
         self.userTf.textColor = [UIColor whiteColor];
@@ -120,7 +134,7 @@
         [self.userTf setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
         
         //密码
-        self.passWordTf = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(passwordImv.frame)+20, 60, 220, 45)];
+        self.passWordTf = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(passwordImv.frame)+20, 60, 220.00/320*ALL_FRAME_WIDTH, 45)];
         self.passWordTf.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.passWordTf.secureTextEntry = YES;
         self.passWordTf.textColor = a_color;
@@ -142,7 +156,11 @@
         loginBtn.backgroundColor = [UIColor orangeColor];
         [loginBtn setTitle:@"登 录" forState:UIControlStateNormal];
         loginBtn.titleLabel.textColor = [UIColor whiteColor];
-        loginBtn.frame = CGRectMake(0, 130, 275, 50);
+        loginBtn.frame = CGRectMake(0, 130, 275.00/320*ALL_FRAME_WIDTH, 50);
+        if (iPhone6PLUS) {
+            [loginBtn setFrame:CGRectMake(0, 130, 280.00/320*ALL_FRAME_WIDTH, 50)];
+        }
+        
         [loginBtn addTarget:self action:@selector(denglu) forControlEvents:UIControlEventTouchUpInside];
         [self.Row3backView addSubview:loginBtn];
         
@@ -152,9 +170,11 @@
         UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn1 setTitle:@"注册账号" forState:UIControlStateNormal];
         if (iPhone5) {
-            btn1.frame = CGRectMake(105, CGRectGetMaxY(loginBtn.frame)+115, 65, 30);
+            btn1.frame = CGRectMake(105.00/320*ALL_FRAME_WIDTH, CGRectGetMaxY(loginBtn.frame)+115, 65, 30);
+        }else if (iPhone6PLUS || iPhone6){
+            btn1.frame = CGRectMake(115.00/320*ALL_FRAME_WIDTH, CGRectGetMaxY(loginBtn.frame)+115, 65, 30);
         }else{
-            btn1.frame = CGRectMake(105, CGRectGetMaxY(loginBtn.frame)+40, 65, 30);
+            btn1.frame = CGRectMake(105.00/320*ALL_FRAME_WIDTH, CGRectGetMaxY(loginBtn.frame)+40, 65, 30);
         }
         
         btn1.titleLabel.font = [UIFont systemFontOfSize:15];

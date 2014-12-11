@@ -7,6 +7,7 @@
 //
 
 #import "GpersonCenterCustomCell.h"
+#import "UILabel+GautoMatchedText.h"
 
 @implementation GpersonCenterCustomCell
 
@@ -24,9 +25,9 @@
 
 -(void)loadCustomViewWithType:(int)theType{
     if (theType == 1) {//收藏案例
-        _mainImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 240.00/568*ALL_FRAME_HEIGHT)];
+        _mainImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 240.00/320*ALL_FRAME_WIDTH)];
 //        88 42
-        _logoImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 190.0/568*ALL_FRAME_HEIGHT, 30.00/320*ALL_FRAME_WIDTH, 30.00/320*ALL_FRAME_WIDTH)];
+        _logoImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 190.0/320*ALL_FRAME_WIDTH, 30.00/320*ALL_FRAME_WIDTH, 30.00/320*ALL_FRAME_WIDTH)];
         _logoImageView.backgroundColor = RGBCOLOR_ONE;
         _logoImageView.layer.cornerRadius = ALL_FRAME_WIDTH*30/320/2;
         _logoImageView.layer.masksToBounds = YES;
@@ -36,54 +37,51 @@
 //        _titleLabel1.backgroundColor = RGBCOLOR_ONE;
         _titleLabel1.textColor = [UIColor whiteColor];
         _titleLabel1.font = [UIFont systemFontOfSize:15];
-        _titleLabel1.layer.shadowColor = [UIColor blackColor].CGColor;
-        _titleLabel1.layer.shadowOffset = CGSizeMake(0,1);
-        _titleLabel1.layer.shadowRadius = 0.5;
-        _titleLabel1.layer.shadowOpacity = 0.8;
+//        _titleLabel1.layer.shadowColor = [UIColor blackColor].CGColor;
+//        _titleLabel1.layer.shadowOffset = CGSizeMake(0,1);
+//        _titleLabel1.layer.shadowRadius = 0.5;
+//        _titleLabel1.layer.shadowOpacity = 0.8;
         
         
         _titleLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(_titleLabel1.frame.origin.x, CGRectGetMaxY(_titleLabel1.frame)+1, _titleLabel1.frame.size.width, _titleLabel1.frame.size.height)];
 //        _titleLabel2.backgroundColor = RGBCOLOR_ONE;
-        _titleLabel2.textColor = RGBCOLOR(139, 137, 138);
+        _titleLabel2.textColor = RGBCOLOR(165, 163, 164);
         _titleLabel2.font = [UIFont systemFontOfSize:14];
-        _titleLabel2.layer.shadowColor = [UIColor blackColor].CGColor;
-        _titleLabel2.layer.shadowOffset = CGSizeMake(0,1);
-        _titleLabel2.layer.shadowRadius = 0.5;
-        _titleLabel2.layer.shadowOpacity = 0.8;
+//        _titleLabel2.layer.shadowColor = [UIColor blackColor].CGColor;
+//        _titleLabel2.layer.shadowOffset = CGSizeMake(0,1);
+//        _titleLabel2.layer.shadowRadius = 0.5;
+//        _titleLabel2.layer.shadowOpacity = 0.8;
         
+        UIImageView *_mainImv_backImv = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"anli_bottom_clear.png"]];
+        
+        CGFloat yinyingHeight = (100.00/320*ALL_FRAME_WIDTH);
+        
+        CGRect r = CGRectMake(0, _mainImv.frame.size.height-yinyingHeight, ALL_FRAME_WIDTH, yinyingHeight);
+        [_mainImv_backImv setFrame:r];
         
         
         [self.contentView addSubview:_mainImv];
+        [self.contentView addSubview:_mainImv_backImv];
         [self.contentView addSubview:_logoImageView];
         [self.contentView addSubview:_titleLabel1];
         [self.contentView addSubview:_titleLabel2];
-        UIImageView *_mainImv_backImv = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"anli_bottom_clear.png"]];
-        _mainImv_backImv.frame = _mainImv.frame;
-        [self.contentView addSubview:_mainImv_backImv];
+        
+        
         
         
     }else if (theType == 2){//收藏产品
         
-        _mainImv_chapin = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 240.00/568*ALL_FRAME_HEIGHT)];
+        _mainImv_chapin = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 240.00/320*ALL_FRAME_WIDTH)];
         
-        UILabel *moneyFlagLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, 200.00/568*ALL_FRAME_HEIGHT, 20, 20)];
-        moneyFlagLabel.text = @"￥";
-        moneyFlagLabel.textColor = RGBCOLOR(253, 180, 44);
-        moneyFlagLabel.font = [UIFont systemFontOfSize:19];
-//        moneyFlagLabel.backgroundColor = [UIColor redColor];
-        
-        
-        _price_chanpin = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(moneyFlagLabel.frame), moneyFlagLabel.frame.origin.y-15, 90, moneyFlagLabel.frame.size.height+15)];
-        _price_chanpin.font = [UIFont systemFontOfSize:36];
+        _price_chanpin = [[UILabel alloc]initWithFrame:CGRectMake(15, 200.00/320*ALL_FRAME_WIDTH-15, 130, 35)];
+        _price_chanpin.font = [UIFont systemFontOfSize:35];
         _price_chanpin.textColor = RGBCOLOR(252, 160, 51);
-//        _price_chanpin.backgroundColor = [UIColor redColor];
         
         
         _title1_chanpin = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_price_chanpin.frame), _price_chanpin.frame.origin.y+2, ALL_FRAME_WIDTH - 15 -_price_chanpin.frame.size.width-15, _price_chanpin.frame.size.height*0.5)];
         _title1_chanpin.textAlignment = NSTextAlignmentLeft;
         _title1_chanpin.font = [UIFont systemFontOfSize:14];
         _title1_chanpin.textColor = RGBCOLOR(222, 222, 222);
-//        _title1_chanpin.backgroundColor = [UIColor redColor];
         
         _title2_chanpin = [[UILabel alloc]initWithFrame:CGRectMake(_title1_chanpin.frame.origin.x, CGRectGetMaxY(_title1_chanpin.frame), _title1_chanpin.frame.size.width, _title1_chanpin.frame.size.height)];
         _title2_chanpin.textAlignment = NSTextAlignmentLeft;
@@ -94,7 +92,6 @@
         
         
         [self.contentView addSubview:_mainImv_chapin];
-        [self.contentView addSubview:moneyFlagLabel];
         [self.contentView addSubview:_price_chanpin];
         [self.contentView addSubview:_title1_chanpin];
         [self.contentView addSubview:_title2_chanpin];
@@ -105,7 +102,7 @@
         _header_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 12, 60.00, 60.00)];
         
         //名字
-        _business_name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_header_imageView.frame)+12, _header_imageView.frame.origin.y, ALL_FRAME_WIDTH-_header_imageView.frame.size.width-12-12-12, 17.0/568*ALL_FRAME_HEIGHT)];
+        _business_name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_header_imageView.frame)+12, _header_imageView.frame.origin.y, ALL_FRAME_WIDTH-_header_imageView.frame.size.width-12-12-12, 17.0/320*ALL_FRAME_WIDTH)];
         _business_name_label.font = [UIFont systemFontOfSize:16];
         
         //星星
@@ -159,6 +156,8 @@
 //    label.font = [UIFont systemFontOfSize:11];
 //    label.textColor = RGBCOLOR(153,153,153);
 //    [_labels_back_view addSubview:label];
+    
+    
     _biaoqianLabel.text = theModel.business;
     
 }
@@ -168,12 +167,7 @@
 
 //填充数据 ： 案例
 -(void)setAnliDataWithData:(GCaseModel *)theModel{
-//    NSString *imageName = theModel.pichead;
-//    [_mainImv1 setImage:[UIImage imageNamed:imageName]];
-//    
-//    _priceLabel1.text = theModel.price;
-    
-    
+
     [_logoImageView sd_setImageWithURL:[NSURL URLWithString:theModel.spichead] placeholderImage:nil];
     [_mainImv sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
     
@@ -187,10 +181,16 @@
     
     [_mainImv_chapin sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
     
-    _price_chanpin.text = theModel.price;
+    
+    NSString *sss = [NSString stringWithFormat:@"￥%@",theModel.price];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:sss];
+    
+    [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20] range:NSMakeRange(0, 1)];
+    [str addAttribute:NSForegroundColorAttributeName value:RGBCOLOR(253, 180, 44) range:NSMakeRange(0,1)];
+    
+    _price_chanpin.attributedText = str;
     _title1_chanpin.text = theModel.title;
     _title2_chanpin.text = theModel.gtype;
-//    _title2_chanpin.text = @"小胖";
     
     
 }

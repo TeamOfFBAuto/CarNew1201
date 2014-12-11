@@ -256,23 +256,31 @@ typedef enum{
 -(void)creatHeaderView{
     
     //bannaer 头像 用户名 三个按钮底层view 的下层view
-    _upThreeViewBackGroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 0)];
-    
+    _upThreeViewBackGroundView = [[UIView alloc]initWithFrame:CGRectZero];
+    _upThreeViewBackGroundView.frame = CGRectMake(0, 0, ALL_FRAME_WIDTH,240.00/320*ALL_FRAME_WIDTH);
    
     
     
     //banner
     _topImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH,0)];
-//    _topImv.backgroundColor = RGBCOLOR_ONE;
-    [_upThreeViewBackGroundView addSubview:_topImv];
     _topImv.userInteractionEnabled = YES;
+    
+    //banner下面的黑色透明层
+    UIImageView *back_topimv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 240.00/320*ALL_FRAME_WIDTH)];
+    [back_topimv setImage:[UIImage imageNamed:@"anli_bottom_clear"]];
+    
+    [_upThreeViewBackGroundView addSubview:_topImv];
+    [_upThreeViewBackGroundView addSubview:back_topimv];
+    
+    
+    
     UITapGestureRecognizer *ddd = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userBannerClicked)];
     [_topImv addGestureRecognizer:ddd];
     
     //头像
     _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH*70/320.0, ALL_FRAME_WIDTH*70/320.0)];
 //    _faceImv.backgroundColor = RGBCOLOR_ONE;
-    _faceImv.center = CGPointMake(ALL_FRAME_WIDTH/2,88.00/568*ALL_FRAME_HEIGHT);
+    _faceImv.center = CGPointMake(ALL_FRAME_WIDTH/2,88.00/320*ALL_FRAME_WIDTH);
     _faceImv.layer.cornerRadius = ALL_FRAME_WIDTH*70/320/2;
     _faceImv.layer.masksToBounds = YES;
     _faceImv.userInteractionEnabled = YES;
@@ -281,26 +289,29 @@ typedef enum{
     [_upThreeViewBackGroundView addSubview:_faceImv];
     
     //用户名
-    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_faceImv.frame)+8, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT *19/568)];
+    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_faceImv.frame)+8, ALL_FRAME_WIDTH, 19.00/320*ALL_FRAME_WIDTH)];
     _nameLabel.font = [UIFont systemFontOfSize:16];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
     _nameLabel.text = [GMAPI getUsername];
     _nameLabel.textColor = [UIColor whiteColor];
     
     
-    _nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    _nameLabel.layer.shadowOffset = CGSizeMake(0,1);
-    _nameLabel.layer.shadowRadius = 0.5;
-    _nameLabel.layer.shadowOpacity = 0.8;
+//    _nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+//    _nameLabel.layer.shadowOffset = CGSizeMake(0,1);
+//    _nameLabel.layer.shadowRadius = 0.5;
+//    _nameLabel.layer.shadowOpacity = 0.8;
     
     [_upThreeViewBackGroundView addSubview:_nameLabel];
     
     
+
+    
     //三个按钮的下层view
-    _threeBtnBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_nameLabel.frame)+27, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT *50.00/568)];
+    _threeBtnBackgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_nameLabel.frame)+27, ALL_FRAME_WIDTH, 50.00/320*ALL_FRAME_WIDTH)];
+    _threeBtnBackgroundView.backgroundColor = [UIColor clearColor];
     [_upThreeViewBackGroundView addSubview:_threeBtnBackgroundView];
     
-     _upThreeViewBackGroundView.frame = CGRectMake(0, 0, ALL_FRAME_WIDTH,240.00/568*ALL_FRAME_HEIGHT);
+    
     
     
     _topImv.frame = _upThreeViewBackGroundView.frame;
@@ -312,7 +323,7 @@ typedef enum{
     _topImv.layer.shadowOpacity = 0.5f;//阴影透明度，默认0
     _topImv.layer.shadowRadius = 4;//阴影半径，默认3
     
-    //整个图片变模糊
+    //整个图片变模糊 四周
 //    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_topImv.bounds];
 //    _topImv.layer.shadowPath = shadowPath.CGPath;
     
@@ -330,7 +341,7 @@ typedef enum{
         
         if (i == 0) {//案例
             //案例的数字
-            _anliNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/568*ALL_FRAME_HEIGHT)];
+            _anliNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/320*ALL_FRAME_WIDTH)];
             _anliNumLabel.textAlignment = NSTextAlignmentCenter;
             NSLog(@"案例的数字label%@",NSStringFromCGRect(_anliNumLabel.frame));
             
@@ -338,56 +349,44 @@ typedef enum{
             
             _anliTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_anliNumLabel.frame)-5, _anliNumLabel.frame.size.width, view.frame.size.height-_anliNumLabel.frame.size.height)];
             _anliTitleLabel.text = @"收藏案例";
-            _anliTitleLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-            _anliTitleLabel.layer.shadowOffset = CGSizeMake(0,1);
-            _anliTitleLabel.layer.shadowRadius = 0.5;
-            _anliTitleLabel.layer.shadowOpacity = 0.8;
             _anliTitleLabel.font = [UIFont systemFontOfSize:13];
             _anliTitleLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_anliTitleLabel];
             
             //分割线
-            UIView *fView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_anliNumLabel.frame)-0.5, _anliNumLabel.frame.origin.y+5, 0.5,35.00/568*ALL_FRAME_HEIGHT)];
+            UIView *fView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_anliNumLabel.frame)-0.5, _anliNumLabel.frame.origin.y+5, 0.5,35.00/320*ALL_FRAME_WIDTH)];
             fView.backgroundColor = RGBCOLOR(145, 145, 145);
             [view addSubview:fView];
             
             
         }else if (i == 1){//产品
             //产品的数字
-            _chanpinNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/568*ALL_FRAME_HEIGHT)];
+            _chanpinNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/320*ALL_FRAME_WIDTH)];
             
             _chanpinNumLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_chanpinNumLabel];
             
             _chanpinTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_chanpinNumLabel.frame)-5, _chanpinNumLabel.frame.size.width, view.frame.size.height-_chanpinNumLabel.frame.size.height)];
             _chanpinTitleLabel.text = @"收藏产品";
-            _chanpinTitleLabel.layer.shadowColor = [[UIColor blackColor]CGColor];
-            _chanpinTitleLabel.layer.shadowOffset = CGSizeMake(0, 1);
-            _chanpinTitleLabel.layer.shadowRadius = 0.5;
-            _chanpinTitleLabel.layer.shadowOpacity = 0.8;
             _chanpinTitleLabel.font = [UIFont systemFontOfSize:13];
             _chanpinTitleLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_chanpinTitleLabel];
 
             //分割线
-            UIView *fenView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_chanpinNumLabel.frame)-0.5, _chanpinNumLabel.frame.origin.y+5, 0.5,35.00/568*ALL_FRAME_HEIGHT)];
+            UIView *fenView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_chanpinNumLabel.frame)-0.5, _chanpinNumLabel.frame.origin.y+5, 0.5,35.00/320*ALL_FRAME_WIDTH)];
             fenView.backgroundColor = RGBCOLOR(145, 145, 145);
             [view addSubview:fenView];
             
             
         }else if (i == 2){//收藏店铺
             //店铺的数字
-            _dianpuNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/568 * ALL_FRAME_HEIGHT)];
+            _dianpuNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/320 * ALL_FRAME_WIDTH)];
             
             _dianpuNumLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_dianpuNumLabel];
             
             _dianpuTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_dianpuNumLabel.frame)-5, _dianpuNumLabel.frame.size.width, view.frame.size.height-_dianpuNumLabel.frame.size.height)];
             _dianpuTitleLabel.text = @"收藏店铺";
-            _dianpuTitleLabel.layer.shadowColor = [[UIColor blackColor]CGColor];
-            _dianpuTitleLabel.layer.shadowOffset = CGSizeMake(0, 1);
-            _dianpuTitleLabel.layer.shadowRadius = 0.5;
-            _dianpuTitleLabel.layer.shadowOpacity = 0.8;
             _dianpuTitleLabel.font = [UIFont systemFontOfSize:13];
             _dianpuTitleLabel.textAlignment = NSTextAlignmentCenter;
             [view addSubview:_dianpuTitleLabel];
@@ -704,7 +703,7 @@ typedef enum{
         _dianpuTitleLabel.textColor = [UIColor whiteColor];
         _dianpuNumLabel.textColor = [UIColor whiteColor];
         
-        _cellHight = 240.00/568*ALL_FRAME_HEIGHT;
+        _cellHight = 240.00/320*ALL_FRAME_WIDTH;
         _cellType = GANLI;
         [self loadNewData];
         
@@ -720,7 +719,7 @@ typedef enum{
         _dianpuTitleLabel.textColor = [UIColor whiteColor];
         _dianpuNumLabel.textColor = [UIColor whiteColor];
         
-        _cellHight = 240.00/568*ALL_FRAME_HEIGHT;
+        _cellHight = 240.00/320*ALL_FRAME_WIDTH;
         _cellType = GCHANPIN;
         [self loadNewData];
         

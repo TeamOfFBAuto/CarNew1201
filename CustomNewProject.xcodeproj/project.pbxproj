@@ -179,6 +179,8 @@
 		E36AAF6B1A3854AE006A6F21 /* gTouxiang.png in Resources */ = {isa = PBXBuildFile; fileRef = E36AAF691A3854AE006A6F21 /* gTouxiang.png */; };
 		E36AAF6D1A385B2C006A6F21 /* gstart_half@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E36AAF6C1A385B2C006A6F21 /* gstart_half@2x.png */; };
 		E372307A1A316C5100597D8C /* NSDictionary+GJson.m in Sources */ = {isa = PBXBuildFile; fileRef = E37230791A316C5100597D8C /* NSDictionary+GJson.m */; };
+		E377E4EB1A39732700B2D6C9 /* gthreebtnback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E377E4EA1A39732700B2D6C9 /* gthreebtnback@2x.png */; };
+		E377E4EE1A397D0600B2D6C9 /* UILabel+GautoMatchedText.m in Sources */ = {isa = PBXBuildFile; fileRef = E377E4ED1A397D0600B2D6C9 /* UILabel+GautoMatchedText.m */; };
 		E38F1E1A1A2C16870048C58D /* GMAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E38F1E191A2C16870048C58D /* GMAPI.m */; };
 		E38F1E1E1A2C3ABE0048C58D /* loginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E38F1E1C1A2C3ABE0048C58D /* loginBackground@2x.png */; };
 		E38F1E1F1A2C3ABE0048C58D /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E38F1E1D1A2C3ABE0048C58D /* logo@2x.png */; };
@@ -498,6 +500,9 @@
 		E36AAF6C1A385B2C006A6F21 /* gstart_half@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstart_half@2x.png"; sourceTree = "<group>"; };
 		E37230781A316C5100597D8C /* NSDictionary+GJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+GJson.h"; sourceTree = "<group>"; };
 		E37230791A316C5100597D8C /* NSDictionary+GJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+GJson.m"; sourceTree = "<group>"; };
+		E377E4EA1A39732700B2D6C9 /* gthreebtnback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gthreebtnback@2x.png"; sourceTree = "<group>"; };
+		E377E4EC1A397D0600B2D6C9 /* UILabel+GautoMatchedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+GautoMatchedText.h"; sourceTree = "<group>"; };
+		E377E4ED1A397D0600B2D6C9 /* UILabel+GautoMatchedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+GautoMatchedText.m"; sourceTree = "<group>"; };
 		E38F1E181A2C16870048C58D /* GMAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMAPI.h; sourceTree = "<group>"; };
 		E38F1E191A2C16870048C58D /* GMAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMAPI.m; sourceTree = "<group>"; };
 		E38F1E1C1A2C3ABE0048C58D /* loginBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginBackground@2x.png"; sourceTree = "<group>"; };
@@ -1393,6 +1398,7 @@
 		E35A00DF1A319E3400A9CD24 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E377E4EA1A39732700B2D6C9 /* gthreebtnback@2x.png */,
 				E36AAF6C1A385B2C006A6F21 /* gstart_half@2x.png */,
 				E36AAF681A3854AE006A6F21 /* gBanner.png */,
 				E36AAF691A3854AE006A6F21 /* gTouxiang.png */,
@@ -1460,6 +1466,8 @@
 		E392C3171A281653001AEA0D /* Gutils */ = {
 			isa = PBXGroup;
 			children = (
+				E377E4EC1A397D0600B2D6C9 /* UILabel+GautoMatchedText.h */,
+				E377E4ED1A397D0600B2D6C9 /* UILabel+GautoMatchedText.m */,
 				E3ED4A681A30233A004A2D72 /* MLImageCrop.h */,
 				E3ED4A691A30233A004A2D72 /* MLImageCrop.m */,
 				E3ED4A651A2FF83E004A2D72 /* GcustomActionSheet.h */,
@@ -1576,6 +1584,7 @@
 				E36AAF671A382CA4006A6F21 /* gback@2x.png in Resources */,
 				565EE8C71A2C47840063CAA3 /* loginBackground@2x.png in Resources */,
 				138023291A2C69CF0053BDDA /* anli_carType@2x.png in Resources */,
+				E377E4EB1A39732700B2D6C9 /* gthreebtnback@2x.png in Resources */,
 				13F9D4841A2DA7BB002A6904 /* sharemail@2x.png in Resources */,
 				13F9D4C31A2DA951002A6904 /* UMShareEditViewControlleriPad.xib in Resources */,
 				56621D451A28605B00310A48 /* item_ok_selected@2x.png in Resources */,
@@ -1772,6 +1781,7 @@
 				13F9D47C1A2DA767002A6904 /* ShareView.m in Sources */,
 				56621D5C1A2860AC00310A48 /* AboutViewController.m in Sources */,
 				19B34DCB1A24666500ED1935 /* SelectedViewController.m in Sources */,
+				E377E4EE1A397D0600B2D6C9 /* UILabel+GautoMatchedText.m in Sources */,
 				E372307A1A316C5100597D8C /* NSDictionary+GJson.m in Sources */,
 				565EE8BA1A2C3DEE0063CAA3 /* ASIFormDataRequest.m in Sources */,
 				56621D151A28600300310A48 /* UMTableViewController.m in Sources */,
