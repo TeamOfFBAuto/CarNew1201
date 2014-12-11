@@ -21,11 +21,7 @@ typedef void(^ShareBloc)(NSInteger indexPath);
 
 @property(nonatomic,strong)UIView *bgView;
 
-
-
 @property(copy,nonatomic)ShareBloc mybloc;
-
-
 
 - (id)initWithFrame:(CGRect)frame thebloc:(ShareBloc)sbloc;
 

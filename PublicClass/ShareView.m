@@ -38,7 +38,6 @@
         
         [self.touchView addSubview:self];
         
-        
         _mybloc=sbloc;
         
         //title
