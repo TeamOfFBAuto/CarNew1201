@@ -61,7 +61,7 @@
     
     self.aTitleLabel.text = aModel.title;
     self.nameLabel.text = aModel.sname;
-    [self.smallImageView sd_setImageWithURL:[NSURL URLWithString:aModel.spichead] placeholderImage:nil];
+    [self.smallImageView sd_setImageWithURL:[NSURL URLWithString:aModel.spichead] placeholderImage:PERSONAL_DEFAULTS_IMAGE];
 
     
     self.smallImageView.layer.masksToBounds = YES;
