@@ -149,7 +149,8 @@ alpha:(a)]
 
 //案例收藏
 #define ANLI_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=addFavCase&fbtype=json&uid=%@&caseid=%@"
-
+//案例详情
+#define ANLI_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getCase&caseid=%@"
 
 
 
