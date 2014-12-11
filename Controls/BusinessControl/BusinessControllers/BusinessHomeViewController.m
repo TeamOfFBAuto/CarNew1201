@@ -59,7 +59,7 @@
     myWebView.delegate = self;
     [self.view addSubview:myWebView];
     
-    NSString * fullUrl = @"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=1";
+    NSString * fullUrl = [NSString stringWithFormat:@"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=%@",_business_id];
     
     [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
     
@@ -129,6 +129,7 @@
 -(void)back:(UIButton *)button
 {
     self.edgesForExtendedLayout = UIRectEdgeAll;
+    self.navigationController.navigationBarHidden = NO;
     //    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
