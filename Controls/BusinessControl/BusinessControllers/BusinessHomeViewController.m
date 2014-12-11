@@ -24,6 +24,8 @@
     UIButton * address_button;
     ///商家电话
     UIButton * phone_button;
+    
+    MBProgressHUD * hud;
 }
 
 @property(nonatomic,strong)UITableView * myTableView;
@@ -55,10 +57,13 @@
     myWebView.delegate = self;
     [self.view addSubview:myWebView];
     
-    NSString * fullUrl = @"http://gztest.fblife.com/web.php?c=wap&a=getCase&caseid=1";
+    NSString * fullUrl = @"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=1";
     
     [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
     
+    
+    hud = [ZSNApi showMBProgressWithText:@"加载中..." addToView:self.view];
+    hud.mode = MBProgressHUDModeIndeterminate;
     
     /*
     [self setTableSectionView];
@@ -78,12 +83,14 @@
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    
+    hud.labelText = @"加载失败";
+    hud.mode = MBProgressHUDModeText;
+    [hud hide:YES afterDelay:1.5];
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    
+    [hud hide:YES];
 }
 -(void)webViewDidStartLoad:(UIWebView *)webView
 {
