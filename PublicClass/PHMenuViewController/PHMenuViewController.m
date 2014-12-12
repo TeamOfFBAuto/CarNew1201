@@ -13,6 +13,7 @@
 #import "PersonalViewController.h"
 #import "AppDelegate.h"
 #import "SliderRightSettingViewController.h"
+#import "LogInViewController.h"
 
 @implementation PHMenuViewController
 {
@@ -98,7 +99,9 @@
             viewController = _businessNav;
             break;
         case 2:///个人中心
+        {
             viewController = _personalNav;
+        }
             break;
         case 5:///设置界面
             viewController = _settingNav;
@@ -106,5 +109,14 @@
     }
     return viewController;
 }
+
+
+-(void)pushToLogInViewController
+{
+    LogInViewController * logIn = [LogInViewController sharedManager];
+    UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
+    [self presentViewController:navc animated:YES completion:nil];
+}
+
 
 @end

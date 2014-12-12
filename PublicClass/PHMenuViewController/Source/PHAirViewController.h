@@ -53,6 +53,9 @@
 - (void)showAirViewFromViewController:(UIViewController*)controller complete:(void (^)(void))complete;
 - (void)switchToViewController:(UIViewController*)controller atIndexPath:(NSIndexPath*)indexPath;
 
+////如果没有登录跳到登录界面 add by soulnear
+-(void)pushToLogInViewController;
+
 @end
 
 #pragma mark - PHAirViewControllerDelegate Protocol

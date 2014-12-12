@@ -53,15 +53,12 @@
     [self.window makeKeyAndVisible];
     
     
-    BOOL isLogIn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_IN];
+    _picVC = [[PicViewController alloc] init];
+    _picNavc = [[UINavigationController alloc] initWithRootViewController:_picVC];
     
-    if (isLogIn)//已经登陆跳转到主界面
-    {
-        [self showControlView:Root_home];
-    }else//未登录跳转到登陆界面
-    {
-        [self showControlView:Root_login];
-    }
+    PHMenuViewController   * menuController = [[PHMenuViewController alloc] initWithRootViewController:_picNavc atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    UINavigationController * menu_nav = [[UINavigationController alloc] initWithRootViewController:menuController];
+    self.window.rootViewController = menu_nav;
     
   //  [self NewShowMainVC];
     return YES;
@@ -80,9 +77,7 @@
     }else if (type == Root_login)
     {
         LogInViewController * logIn = [LogInViewController sharedManager];//[[LogInViewController alloc] initWithNibName:@"LogInViewController" bundle:nil];
-        
         UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
-        
         self.window.rootViewController = navc;
     }
 }

@@ -7,6 +7,7 @@
 //
 
 #import "BusinessHomeViewController.h"
+#import "NavigationFunctionView.h"
 
 @interface BusinessHomeViewController ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>
 {
@@ -26,6 +27,9 @@
     UIButton * phone_button;
     
     MBProgressHUD * hud;
+    
+    ///右上角菜单栏
+    NavigationFunctionView * functionView;
 }
 
 @property(nonatomic,strong)UITableView * myTableView;
@@ -124,6 +128,16 @@
     [back_button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [back_button setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];
     [navigation_view addSubview:back_button];
+    
+    
+    UIButton * right_button = [UIButton buttonWithType:UIButtonTypeCustom];
+    right_button.frame = CGRectMake(DEVICE_WIDTH-8-44,20,44,44);
+    [right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+    [right_button setImage:[UIImage imageNamed:@"navigation_right_menu_image"] forState:UIControlStateNormal];
+    [navigation_view addSubview:right_button];
+    
+    
+   
 }
 
 -(void)back:(UIButton *)button
@@ -133,6 +147,24 @@
     //    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
+-(void)rightButtonTap:(UIButton *)button
+{
+    if (!functionView)
+    {
+        functionView = [[NavigationFunctionView alloc] init];
+        functionView.myHidden = YES;
+        [self.view addSubview:functionView];
+        
+        
+        [functionView setNav_function_block:^(int index) {
+            
+        }];
+    }
+    
+    functionView.myHidden = !functionView.myHidden;
+}
+
+
 
 -(void)setTableSectionView
 {

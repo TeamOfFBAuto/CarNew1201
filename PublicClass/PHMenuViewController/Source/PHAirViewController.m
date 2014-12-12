@@ -732,6 +732,14 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
 
 - (void)rowDidTouch:(UIButton*)button
 {
+    ///点击个人中心的
+    if (button.tag == 2 && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_IN])
+    {
+        [self pushToLogInViewController];
+        
+        return;
+    }
+    
     // Save row touch in session
     lastIndexInSession[@(currentIndexSession)] = @(button.superview.tag);
     
@@ -781,6 +789,12 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
             [self bringViewControllerToTop:controller atIndexPath:self.currentIndexPath];
         }
     }];
+    
+}
+
+#pragma mark - 跳转到登录界面
+-(void)pushToLogInViewController
+{
     
 }
 
