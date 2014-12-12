@@ -28,6 +28,7 @@
 {
     UIActivityIndicatorView *j;
     UIAlertView *al;
+    GloginView *_gloginView;
 }
 
 @end
@@ -77,28 +78,28 @@
     
     NSLog(@"%s",__FUNCTION__);
     
-    GloginView *gloginView = [[GloginView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT)];
-    [self.view addSubview:gloginView];
+    _gloginView = [[GloginView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT)];
+    [self.view addSubview:_gloginView];
     
     
     
     __weak typeof (self)bself = self;
-    __weak typeof (gloginView)bgloginView = gloginView;
+    __weak typeof (_gloginView)bgloginView = _gloginView;
     
     //设置跳转注册block
-    [gloginView setZhuceBlock:^{
+    [_gloginView setZhuceBlock:^{
         [bgloginView Gshou];
         [bself pushToZhuceVC];
     }];
     
     //设置找回密码block
-    [gloginView setFindPassBlock:^{
+    [_gloginView setFindPassBlock:^{
         [bgloginView Gshou];
         [bself pushToFindPassWordVC];
     }];
     
     //登录
-    [gloginView setDengluBlock:^(NSString *usern, NSString *passw) {
+    [_gloginView setDengluBlock:^(NSString *usern, NSString *passw) {
         
         NSLog(@"--%@     --%@",usern,passw);
         
@@ -301,6 +302,8 @@
             }
             
             [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        
      
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         [j stopAnimating];
