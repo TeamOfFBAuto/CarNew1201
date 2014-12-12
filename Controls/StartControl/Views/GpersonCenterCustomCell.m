@@ -104,17 +104,17 @@
         
     }else if (theType == 3){//收藏店铺
         //图片
-        _header_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 12, 60.00, 60.00)];
+        self.header_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 12, 60.00, 60.00)];
         
         //名字
-        _business_name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_header_imageView.frame)+12, _header_imageView.frame.origin.y, ALL_FRAME_WIDTH-_header_imageView.frame.size.width-12-12-12, 17.0/320*ALL_FRAME_WIDTH)];
+        _business_name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.header_imageView.frame)+12, self.header_imageView.frame.origin.y, ALL_FRAME_WIDTH-self.header_imageView.frame.size.width-12-12-12, 17.0/320*ALL_FRAME_WIDTH)];
         _business_name_label.font = [UIFont systemFontOfSize:16];
         
         //星星
         _stars_back_view = [[GstartView alloc]initWithStartNum:0 Frame:CGRectMake(_business_name_label.frame.origin.x, CGRectGetMaxY(_business_name_label.frame)+6, 60, 12)];
         
         //评论
-        _comment_num_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_stars_back_view.frame)+5, _stars_back_view.frame.origin.y, ALL_FRAME_WIDTH-12-_header_imageView.frame.size.width-12-_stars_back_view.frame.size.width-5-5, _stars_back_view.frame.size.height)];
+        _comment_num_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_stars_back_view.frame)+5, _stars_back_view.frame.origin.y, ALL_FRAME_WIDTH-12-self.header_imageView.frame.size.width-12-_stars_back_view.frame.size.width-5-5, _stars_back_view.frame.size.height)];
         _comment_num_label.font = [UIFont systemFontOfSize:_comment_num_label.frame.size.height-1];
         _comment_num_label.textColor = RGBCOLOR(253, 163, 72);
         
@@ -130,7 +130,7 @@
         
         
         //视图添加
-        [self.contentView addSubview:_header_imageView];
+        [self.contentView addSubview:self.header_imageView];
         [self.contentView addSubview:_business_name_label];
         [self.contentView addSubview:_stars_back_view];
         [self.contentView addSubview:_comment_num_label];
@@ -144,7 +144,7 @@
 //填充数据 店铺
 -(void)setdataWithData:(BusinessListModel *)theModel{
     _business_name_label.text = theModel.storename;
-    [_header_imageView sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
+    [self.header_imageView sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
     _comment_num_label.text = [NSString stringWithFormat:@"%@人评论",theModel.com_num];
     
     _stars_back_view.startNum = [theModel.score floatValue];

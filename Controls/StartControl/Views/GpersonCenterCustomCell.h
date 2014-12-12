@@ -20,7 +20,6 @@
 {
     
     //收藏店铺相关
-    UIImageView *_header_imageView;
     UILabel *_business_name_label;
     UILabel *_comment_num_label;
     GstartView *_stars_back_view;
@@ -59,5 +58,8 @@
 
 //收藏产品
 -(void)setChanpinWithData:(GGoodsModel *)theModel;
+
+//收藏店铺的图
+@property(nonatomic,strong)UIImageView *header_imageView;
 
 @end
