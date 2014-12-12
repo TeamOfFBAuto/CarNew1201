@@ -251,6 +251,8 @@
     
     
     
+    __weak typeof (_gloginView)bloginView = _gloginView;
+    
     //登录接口
     
     NSString *deviceToken = [GMAPI getDeviceToken] ? [GMAPI getDeviceToken] : @"testToken";
@@ -262,8 +264,9 @@
         [j stopAnimating];
         NSLog(@"登录成功:%@",result);
         if ([[result objectForKey:@"errcode"] intValue] == 0) {//登录成功
-
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
+            
+                [bloginView cleanUserNameAndPassWordTextfied];
                 NSDictionary *datainfo = [result objectForKey:@"datainfo"];
                 NSString *userid = [datainfo objectForKey:@"uid"];
                 NSString *username = [datainfo objectForKey:@"username"];

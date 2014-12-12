@@ -71,6 +71,8 @@ typedef void (^dengluBlock)(NSString *usern,NSString *passw);//登录
 //登录
 -(void)setDengluBlock:(dengluBlock)dengluBlock;
 
+//清除用户名密码
+-(void)cleanUserNameAndPassWordTextfied;
 
 //收键盘
 -(void)Gshou;

@@ -100,6 +100,10 @@ typedef enum{
     self.isAddGestureRecognizer = YES;
     [super viewWillAppear:YES];
     self.navigationController.navigationBarHidden = YES;
+    if (IOS7_OR_LATER) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    }
 }
 
 
@@ -146,7 +150,8 @@ typedef enum{
     
     UIButton *gBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [gBackBtn setImage:[UIImage imageNamed:@"gback.png"] forState:UIControlStateNormal];
-    [gBackBtn setFrame:CGRectMake(6, 15, 44.00/320*ALL_FRAME_WIDTH, 44.00/320*ALL_FRAME_WIDTH)];
+    [gBackBtn setFrame:CGRectMake(0, 15, 80.00/320*ALL_FRAME_WIDTH, 80.00/320*ALL_FRAME_WIDTH)];
+    gBackBtn.backgroundColor = [UIColor redColor];
     [gBackBtn addTarget:self action:@selector(gGoBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:gBackBtn];
     
@@ -345,6 +350,7 @@ typedef enum{
         if (i == 0) {//案例
             //案例的数字
             _anliNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/320*ALL_FRAME_WIDTH)];
+            _anliNumLabel.text = @"0";
             _anliNumLabel.textAlignment = NSTextAlignmentCenter;
             NSLog(@"案例的数字label%@",NSStringFromCGRect(_anliNumLabel.frame));
             
@@ -367,6 +373,7 @@ typedef enum{
             _chanpinNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/320*ALL_FRAME_WIDTH)];
             
             _chanpinNumLabel.textAlignment = NSTextAlignmentCenter;
+            _chanpinNumLabel.text = @"0";
             [view addSubview:_chanpinNumLabel];
             
             _chanpinTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_chanpinNumLabel.frame)-5, _chanpinNumLabel.frame.size.width, view.frame.size.height-_chanpinNumLabel.frame.size.height)];
@@ -386,6 +393,7 @@ typedef enum{
             _dianpuNumLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, view.frame.size.width, 28.00/320 * ALL_FRAME_WIDTH)];
             
             _dianpuNumLabel.textAlignment = NSTextAlignmentCenter;
+            _dianpuNumLabel.text = @"0";
             [view addSubview:_dianpuNumLabel];
             
             _dianpuTitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_dianpuNumLabel.frame)-5, _dianpuNumLabel.frame.size.width, view.frame.size.height-_dianpuNumLabel.frame.size.height)];
