@@ -149,7 +149,7 @@
     BusinessHomeViewController * home = [[BusinessHomeViewController alloc] init];
     home.business_id = model.id;
     home.share_title = model.storename;
-    home.share_image = cell.imageView.image;
+    home.share_image = cell.header_imageView.image;
     [self.navigationController pushViewController:home animated:YES];
 }
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath

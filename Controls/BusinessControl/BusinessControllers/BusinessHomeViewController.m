@@ -106,10 +106,14 @@
 }
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    NSLog(@" -- - -- - - - --   %d -----  %@",navigationType,[request.URL absoluteString]);
     
-    NSLog(@"request.url ----   %@ ---  %d",[request.URL absoluteString],navigationType);
-    
-    return YES;
+    if (navigationType == UIWebViewNavigationTypeOther) {
+        return YES;
+    }else
+    {
+        return NO;
+    }
 }
 
 
