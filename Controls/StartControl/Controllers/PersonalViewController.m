@@ -150,8 +150,9 @@ typedef enum{
     
     UIButton *gBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [gBackBtn setImage:[UIImage imageNamed:@"gback.png"] forState:UIControlStateNormal];
+    [gBackBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 10, 15)];
     [gBackBtn setFrame:CGRectMake(0, 15, 80.00/320*ALL_FRAME_WIDTH, 80.00/320*ALL_FRAME_WIDTH)];
-    gBackBtn.backgroundColor = [UIColor redColor];
+//    gBackBtn.backgroundColor = [UIColor redColor];
     [gBackBtn addTarget:self action:@selector(gGoBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:gBackBtn];
     
