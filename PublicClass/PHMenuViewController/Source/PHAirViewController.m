@@ -194,6 +194,9 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+
     // layout menu
     [self reloadData];
 }

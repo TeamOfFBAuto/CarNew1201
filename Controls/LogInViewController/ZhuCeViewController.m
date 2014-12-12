@@ -34,7 +34,8 @@
 
 -(void)backH
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -70,7 +71,7 @@
     [self.view addSubview:yonghuming];
     
     
-    userName_tf = [[UITextField alloc] initWithFrame:CGRectMake(23/2,38,296,42)];
+    userName_tf = [[UITextField alloc] initWithFrame:CGRectMake(23/2,38,DEVICE_WIDTH-23,42)];
     userName_tf.backgroundColor = [UIColor whiteColor];
     userName_tf.delegate = self;
     userName_tf.font = [UIFont systemFontOfSize:15];
@@ -86,7 +87,7 @@
     [self.view addSubview:mima_label];
     
     
-    mima_tf = [[UITextField alloc] initWithFrame:CGRectMake(23/2,120,296,42)];
+    mima_tf = [[UITextField alloc] initWithFrame:CGRectMake(23/2,120,DEVICE_WIDTH-23,42)];
     mima_tf.placeholder = @"请输入密码";
     mima_tf.delegate = self;
     mima_tf.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;//垂直居中
@@ -106,7 +107,7 @@
     [self.view addSubview:youxiang_label];
     
     
-    youxiang_tf = [[UITextField alloc] initWithFrame:CGRectMake(23/2,200,296,42)];
+    youxiang_tf = [[UITextField alloc] initWithFrame:CGRectMake(23/2,200,DEVICE_WIDTH-23,42)];
     youxiang_tf.placeholder = @"用来找回密码,请慎重填写";
     youxiang_tf.backgroundColor = [UIColor whiteColor];
     youxiang_tf.delegate = self;
@@ -115,7 +116,7 @@
     
     
     UIButton * complete_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    complete_button.frame = CGRectMake(23/2,257,593/2,43);
+    complete_button.frame = CGRectMake(23/2,257,DEVICE_WIDTH-23,43);
     [complete_button setTitle:@"完 成" forState:UIControlStateNormal];
     complete_button.backgroundColor = RGBCOLOR(255,144,0);
     [complete_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -236,7 +237,7 @@
 {
     if (buttonIndex == 1)
     {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
 

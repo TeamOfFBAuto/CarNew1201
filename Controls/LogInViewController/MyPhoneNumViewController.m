@@ -61,12 +61,9 @@
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
     
-    UIImageView * backGround_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(23/2,23/2,594/2,87/2)];
-    
+    UIImageView * backGround_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(23/2,23/2,DEVICE_WIDTH-23,87/2)];
     backGround_imageView.userInteractionEnabled = YES;
-    
-    backGround_imageView.image = [UIImage imageNamed:@"zc_phoneNum.png"];
-    
+    backGround_imageView.image = [[UIImage imageNamed:@"zc_phoneNum.png"] stretchableImageWithLeftCapWidth:100 topCapHeight:20];
     [self.view addSubview:backGround_imageView];
     
     
@@ -80,7 +77,7 @@
     
     
     
-    phone_textField = [[UITextField alloc] initWithFrame:CGRectMake(83.5,5,200,33.5)];
+    phone_textField = [[UITextField alloc] initWithFrame:CGRectMake(83.5,5,DEVICE_WIDTH-23-85,33.5)];
     phone_textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [phone_textField becomeFirstResponder];
     phone_textField.delegate = self;
@@ -90,24 +87,20 @@
     
     
     UIButton * next_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    next_button.frame = CGRectMake(23/2,backGround_imageView.frame.origin.y+backGround_imageView.frame.size.height+23/2,297,43);
+    next_button.frame = CGRectMake(23/2,backGround_imageView.frame.origin.y+backGround_imageView.frame.size.height+23/2,DEVICE_WIDTH-23,43);
     next_button.backgroundColor = RGBCOLOR(255,144,0);
     [next_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [next_button setTitle:@"下一步" forState:UIControlStateNormal];
     [next_button addTarget:self action:@selector(nextStep:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:next_button];
     
-    
-    
+
     UIImageView * icon_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(23/2,124.5,35/2,34/2)];
-    
     icon_imageView.image = [UIImage imageNamed:@"zc_xieyi.png"];
-    
     [self.view addSubview:icon_imageView];
     
-    
     UIButton * xieyi_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    xieyi_button.frame = CGRectMake(29,123,280,20);
+    xieyi_button.frame = CGRectMake(30,123,280,20);
     xieyi_button.titleLabel.font = [UIFont systemFontOfSize:16];
     [xieyi_button setTitleColor:RGBCOLOR(153,153,153) forState:UIControlStateNormal];
     [xieyi_button setTitle:@"同意越野e族《隐私条款和服务条款》" forState:UIControlStateNormal];
@@ -135,6 +128,12 @@
 
 -(void)nextStep:(UIButton *)sender
 {
+//    [ZSNApi showAutoHiddenMBProgressWithText:@"发送成功" addToView:self.view];
+//    VerificationViewController * verification = [[VerificationViewController alloc] init];
+//    verification.MyPhoneNumber = phone_textField.text;
+//    [self.navigationController pushViewController:verification animated:YES];
+//    return;
+    
     if (phone_textField.text.length != 11)
     {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"请输入正确的手机号码" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];

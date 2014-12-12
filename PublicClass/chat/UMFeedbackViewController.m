@@ -190,7 +190,7 @@ static UITapGestureRecognizer *tapRecognizer;
 //    UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:back_view];
 //    self.navigationItem.leftBarButtonItem=back_item;
 
-    self.title = @"用户反馈";
+    self.myTitle = @"用户反馈";
     
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
 

@@ -78,6 +78,9 @@
 		56500B001A2D676900E834A1 /* BusinessListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56500AFE1A2D676900E834A1 /* BusinessListTableViewCell.xib */; };
 		5653E5101A39754500CEB749 /* newAboultIphone5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5653E50E1A39754500CEB749 /* newAboultIphone5@2x.png */; };
 		5653E5111A39754500CEB749 /* newAbout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5653E50F1A39754500CEB749 /* newAbout@2x.png */; };
+		5653E5151A39A1E300CEB749 /* 20130502_fabiao.png in Resources */ = {isa = PBXBuildFile; fileRef = 5653E5121A39A1E300CEB749 /* 20130502_fabiao.png */; };
+		5653E5161A39A1E300CEB749 /* 20130502_pinglun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5653E5131A39A1E300CEB749 /* 20130502_pinglun@2x.png */; };
+		5653E5171A39A1E300CEB749 /* 20130502_shubiao.png in Resources */ = {isa = PBXBuildFile; fileRef = 5653E5141A39A1E300CEB749 /* 20130502_shubiao.png */; };
 		565EE8B61A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A31A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		565EE8B71A2C3DEE0063CAA3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A61A2C3DEE0063CAA3 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		565EE8B81A2C3DEE0063CAA3 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A81A2C3DEE0063CAA3 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -334,6 +337,9 @@
 		56500AFE1A2D676900E834A1 /* BusinessListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessListTableViewCell.xib; sourceTree = "<group>"; };
 		5653E50E1A39754500CEB749 /* newAboultIphone5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newAboultIphone5@2x.png"; sourceTree = "<group>"; };
 		5653E50F1A39754500CEB749 /* newAbout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newAbout@2x.png"; sourceTree = "<group>"; };
+		5653E5121A39A1E300CEB749 /* 20130502_fabiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 20130502_fabiao.png; sourceTree = "<group>"; };
+		5653E5131A39A1E300CEB749 /* 20130502_pinglun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20130502_pinglun@2x.png"; sourceTree = "<group>"; };
+		5653E5141A39A1E300CEB749 /* 20130502_shubiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 20130502_shubiao.png; sourceTree = "<group>"; };
 		565EE8A21A2C3DEE0063CAA3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		565EE8A31A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		565EE8A41A2C3DEE0063CAA3 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -1075,6 +1081,9 @@
 		5653E50D1A39753700CEB749 /* personalImages */ = {
 			isa = PBXGroup;
 			children = (
+				5653E5121A39A1E300CEB749 /* 20130502_fabiao.png */,
+				5653E5131A39A1E300CEB749 /* 20130502_pinglun@2x.png */,
+				5653E5141A39A1E300CEB749 /* 20130502_shubiao.png */,
 				5653E50E1A39754500CEB749 /* newAboultIphone5@2x.png */,
 				5653E50F1A39754500CEB749 /* newAbout@2x.png */,
 			);
@@ -1568,6 +1577,7 @@
 			files = (
 				56621D511A28605B00310A48 /* send1sss@2x.png in Resources */,
 				1380232A1A2C69CF0053BDDA /* anli_daohang@2x.png in Resources */,
+				5653E5161A39A1E300CEB749 /* 20130502_pinglun@2x.png in Resources */,
 				563B32221A382AF900015088 /* emotion.plist in Resources */,
 				13F9D4BF1A2DA951002A6904 /* UMSCommentDetailController.xib in Resources */,
 				E36AAF6B1A3854AE006A6F21 /* gTouxiang.png in Resources */,
@@ -1597,6 +1607,7 @@
 				13F9D4871A2DA7BB002A6904 /* shareziliudi@2x.png in Resources */,
 				56621D421A28605B00310A48 /* item_cancel@2x.png in Resources */,
 				13F9D4C41A2DA951002A6904 /* UMSLoginViewController.xib in Resources */,
+				5653E5171A39A1E300CEB749 /* 20130502_shubiao.png in Resources */,
 				56621D521A28605B00310A48 /* send_selected@2x.png in Resources */,
 				13F9D4C21A2DA951002A6904 /* UMShareEditViewController.xib in Resources */,
 				E38F1E1F1A2C3ABE0048C58D /* logo@2x.png in Resources */,
@@ -1626,6 +1637,7 @@
 				56500B001A2D676900E834A1 /* BusinessListTableViewCell.xib in Resources */,
 				56CC07211A302C3C0014F285 /* 隐私条款.html in Resources */,
 				138178CB1A319572001DB92C /* CarTypeViewController.xib in Resources */,
+				5653E5151A39A1E300CEB749 /* 20130502_fabiao.png in Resources */,
 				13F9D4C01A2DA951002A6904 /* UMSCommentInputController.xib in Resources */,
 				56621D4E1A28605B00310A48 /* nav_btn_bg.png in Resources */,
 				56621D4A1A28605B00310A48 /* messages_toolbar_background.png in Resources */,
