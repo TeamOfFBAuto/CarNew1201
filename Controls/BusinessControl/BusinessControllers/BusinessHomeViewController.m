@@ -154,16 +154,22 @@
         functionView = [[NavigationFunctionView alloc] init];
         functionView.myHidden = YES;
         [self.view addSubview:functionView];
+        __weak typeof(self)bself = self;
         
-        
-        [functionView setNav_function_block:^(int index) {
+        [functionView setFunctionBlock:^(int index) {
+            [bself clickkkkkkk:[NSString stringWithFormat:@"%d",index]];
             
+            NSLog(@" -----   %d",index);
         }];
     }
     
     functionView.myHidden = !functionView.myHidden;
 }
 
+-(void)clickkkkkkk:(NSString *)string
+{
+    NSLog(@" -----   %@",string);
+}
 
 
 -(void)setTableSectionView

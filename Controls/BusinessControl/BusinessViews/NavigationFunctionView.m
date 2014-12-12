@@ -25,7 +25,7 @@
 
 
 -(void)setup
-{
+{    
     NSArray * image_array = [NSArray arrayWithObjects:[UIImage imageNamed:@"navigation_forward_image"],[UIImage imageNamed:@"navigation_praise_image"],nil];
     
     UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,33,0.5)];
@@ -46,12 +46,16 @@
 
 -(void)buttonTap:(UIButton *)button
 {
-    _nav_function_block(button.tag - 100);
+    self.myHidden = YES;
+    if (nav_function_block)
+    {
+        nav_function_block(button.tag - 100);
+    }
 }
 
--(void)setNav_function_block:(navFunctionBlock)nav_function_block
+-(void)setFunctionBlock:(navFunctionBlock)aBlock
 {
-    _nav_function_block = nav_function_block;
+    nav_function_block = aBlock;
 }
 
 -(void)setMyHidden:(BOOL)myHidden

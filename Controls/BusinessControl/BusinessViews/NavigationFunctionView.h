@@ -16,16 +16,16 @@ typedef void(^navFunctionBlock)(int index);
 
 @interface NavigationFunctionView : UIView
 {
-    
+    navFunctionBlock nav_function_block;
 }
 
 ///设置当前view是否隐藏
 @property(nonatomic,assign)BOOL myHidden;
 
-@property(nonatomic,assign)navFunctionBlock nav_function_block;
+//@property(nonatomic,weak)navFunctionBlock nav_function_block;
 
 ///点击第一个为分享，点击第二个为收藏
--(void)setNav_function_block:(navFunctionBlock)nav_function_block;
+//-(void)setNav_function_block:(navFunctionBlock)nav_function_block;
 
-
+-(void)setFunctionBlock:(navFunctionBlock)aBlock;
 @end
