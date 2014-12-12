@@ -143,9 +143,13 @@
 }
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    GpersonCenterCustomCell * cell = (GpersonCenterCustomCell*)[_myTableView cellForRowAtIndexPath:indexPath];
+    
     BusinessListModel *model = _data_array[indexPath.row];
     BusinessHomeViewController * home = [[BusinessHomeViewController alloc] init];
     home.business_id = model.id;
+    home.share_title = model.storename;
+    home.share_image = cell.imageView.image;
     [self.navigationController pushViewController:home animated:YES];
 }
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath

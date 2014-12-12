@@ -15,6 +15,9 @@
 
 
 @property(nonatomic,strong)NSString * business_id;
-
+///要分享的图片
+@property(nonatomic,strong)UIImage * share_image;
+///要分享的标题
+@property(nonatomic,strong)NSString * share_title;
 
 @end
