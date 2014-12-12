@@ -97,7 +97,6 @@
         [_mainImv_backImv setFrame:r];
         
         [self.contentView addSubview:_mainImv_chapin];
-        [self.contentView addSubview:_mainImv_backImv];
         [self.contentView addSubview:_price_chanpin];
         [self.contentView addSubview:_title1_chanpin];
         [self.contentView addSubview:_title2_chanpin];

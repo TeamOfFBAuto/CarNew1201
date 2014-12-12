@@ -772,7 +772,7 @@ typedef enum{
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
-        NSLog(@"我操到底走了吗%@",result);
+        NSLog(@"到底走了吗%@",result);
         
         NSDictionary *datainfo = [result objectForKey:@"datainfo"];
         
