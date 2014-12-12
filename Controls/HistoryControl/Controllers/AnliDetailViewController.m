@@ -140,9 +140,8 @@
                 LShareTools *tool = [LShareTools shareInstance];
                 
                 NSString *url = [NSString stringWithFormat:ANLI_DETAIL,weakSelf.anli_id];
-                NSString *imageUrl = @"http://fbautoapp.fblife.com/resource/head/84/9b/thumb_1_Thu.jpg";
                 
-                [tool showOrHidden:YES title:@"这里是分享的标题" description:@"这是一个非常牛逼的应用" imageUrl:imageUrl aShareImage:[UIImage imageNamed:@""] linkUrl:url];
+                [tool showOrHidden:YES title:weakSelf.shareTitle description:weakSelf.shareDescrition imageUrl:nil aShareImage:weakSelf.shareImage linkUrl:url];
                 
             }else if (index == 1){
                 

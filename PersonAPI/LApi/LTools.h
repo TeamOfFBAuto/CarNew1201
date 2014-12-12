@@ -55,6 +55,7 @@ typedef void(^versionBlock)(BOOL isNewVersion,NSString *updateUrl,NSString *upda
  */
 + (void)versionForAppid:(NSString *)appid Block:(void(^)(BOOL isNewVersion,NSString *updateUrl,NSString *updateContent))version;//是否有新版本、新版本更新下地址
 
++ (UIImage *)sd_imageForUrl:(NSString *)url;
 
 /**
  *  NSUserDefault 缓存

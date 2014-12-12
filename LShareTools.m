@@ -119,7 +119,7 @@
         NSLog(@"到新浪微博界面的");
         WBWebpageObject *pageObject = [ WBWebpageObject object ];
         pageObject.objectID =@"nimeideid";
-        pageObject.thumbnailData =UIImageJPEGRepresentation(shareImage, 1);
+        pageObject.thumbnailData = UIImageJPEGRepresentation(shareImage, 0.1);
         pageObject.title = @"分享自越野e族客户端";
         pageObject.description = description;
         pageObject.webpageUrl = string_url;
@@ -150,14 +150,14 @@
             message.title = string_title;
             message.description = description;
             
-            [message setThumbImage:shareImage] ;
+//            [message setThumbImage:shareImage] ;
+            
+            message.thumbData = UIImageJPEGRepresentation(shareImage, 0.1);
+            
             WXWebpageObject *ext = [WXWebpageObject object];
             //ext.imageData = _weburl_Str;
             ext.webpageUrl=string_url;
             message.mediaObject = ext;
-            
-            WXImageObject *imageObject = [WXImageObject object];
-            imageObject.imageUrl = imageUrl;
             
             SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
             
@@ -182,14 +182,15 @@
             message.title = string_title;
             message.description = description;
             
-            [message setThumbImage:shareImage] ;
+//            [message setThumbImage:shareImage] ;
+            
+            message.thumbData = UIImageJPEGRepresentation(shareImage, 0.1);
+            
             WXWebpageObject *ext = [WXWebpageObject object];
-            //ext.imageData = _weburl_Str;
-        
-            WXImageObject *imageObject = [WXImageObject object];
-            imageObject.imageUrl = imageUrl;
+//            ext.imageData = _weburl_Str;
             
             ext.webpageUrl=string_url;
+
             message.mediaObject = ext;
             
             SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];

@@ -317,6 +317,17 @@
 
 }
 
++ (UIImage *)sd_imageForUrl:(NSString *)url
+{
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    NSString *imageKey = [manager cacheKeyForURL:[NSURL URLWithString:url]];
+
+    SDImageCache *cache = [SDImageCache sharedImageCache];
+    UIImage *cacheImage = [cache imageFromDiskCacheForKey:imageKey];
+
+    return cacheImage;
+}
+
 #pragma mark - NSUserDefault缓存
 
 //存

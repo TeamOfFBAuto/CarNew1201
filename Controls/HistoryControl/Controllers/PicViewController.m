@@ -217,6 +217,12 @@
     AnliModel *aModel = [_table.dataArray objectAtIndex:indexPath.row];
     AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
     detail.anli_id = aModel.id;
+    
+    detail.shareTitle = aModel.title;
+    detail.shareDescrition = aModel.sname;
+    detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
+//    detail.shareImageUrl = aModel.pichead;
+    
     [self.navigationController pushViewController:detail animated:YES];
     
     [_table deselectRowAtIndexPath:indexPath animated:YES];

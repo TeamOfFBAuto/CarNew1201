@@ -16,4 +16,9 @@
 @property (nonatomic,retain)NSString *anli_id;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 
+@property(nonatomic,retain)NSString *shareTitle;
+@property(nonatomic,retain)NSString *shareDescrition;
+@property(nonatomic,retain)UIImage *shareImage;
+
+
 @end
