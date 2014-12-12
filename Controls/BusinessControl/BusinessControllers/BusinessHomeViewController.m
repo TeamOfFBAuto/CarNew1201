@@ -8,6 +8,7 @@
 
 #import "BusinessHomeViewController.h"
 #import "NavigationFunctionView.h"
+#import "LShareTools.h"
 
 @interface BusinessHomeViewController ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>
 {
@@ -48,6 +49,7 @@
 {
     [super viewWillDisappear:animated];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)viewDidLoad {
@@ -139,16 +141,11 @@
     [right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     [right_button setImage:[UIImage imageNamed:@"navigation_right_menu_image"] forState:UIControlStateNormal];
     [navigation_view addSubview:right_button];
-    
-    
-   
 }
 
 -(void)back:(UIButton *)button
 {
     self.edgesForExtendedLayout = UIRectEdgeAll;
-    self.navigationController.navigationBarHidden = NO;
-    //    [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)rightButtonTap:(UIButton *)button
@@ -161,18 +158,70 @@
         __weak typeof(self)bself = self;
         
         [functionView setFunctionBlock:^(int index) {
-            [bself clickkkkkkk:[NSString stringWithFormat:@"%d",index]];
-            
-            NSLog(@" -----   %d",index);
+            switch (index) {
+                case 0:
+                {
+                    [bself shareClicked];
+                }
+                    break;
+                case 1:
+                {
+                    [bself collectionClicked];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
         }];
     }
     
     functionView.myHidden = !functionView.myHidden;
 }
 
--(void)clickkkkkkk:(NSString *)string
+#pragma mark - 分享
+-(void)shareClicked
 {
-    NSLog(@" -----   %@",string);
+    LShareTools *tool = [LShareTools shareInstance];
+    
+    NSString *url = [NSString stringWithFormat:BUSINESS_DETAIL_URL,_business_id];
+    NSString *imageUrl = @"http://fbautoapp.fblife.com/resource/head/84/9b/thumb_1_Thu.jpg";
+    
+    [tool showOrHidden:YES title:_share_title description:@"这是一个非常牛逼的应用" imageUrl:imageUrl aShareImage:_share_image linkUrl:url];
+}
+#pragma mark - 收藏或取消收藏
+-(void)collectionClicked
+{
+    
+    MBProgressHUD * aHud = [ZSNApi showMBProgressWithText:@"正在收藏..." addToView:self.view];
+    aHud.mode = MBProgressHUDModeIndeterminate;
+    
+    NSString *url = [NSString stringWithFormat:BUSINESS_COLLECTION_URL,[GMAPI getUid],_business_id];
+    LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
+    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+        
+        int errcode = [[result objectForKey:@"errcode"]intValue];
+        if (errcode == 0)
+        {
+            aHud.labelText = @"收藏成功";
+            aHud.mode = MBProgressHUDModeText;
+            [aHud hide:YES afterDelay:1.5];
+            
+            [functionView setCollectionState:YES];
+        }else
+        {
+            aHud.labelText = [result objectForKey:ERROR_INFO];
+            aHud.mode = MBProgressHUDModeText;
+            [aHud hide:YES afterDelay:1.5];
+        }
+        
+    } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        [functionView setCollectionState:YES];
+        aHud.labelText = [failDic objectForKey:ERROR_INFO];
+        aHud.mode = MBProgressHUDModeText;
+        [aHud hide:YES afterDelay:1.5];
+        
+    }];
 }
 
 

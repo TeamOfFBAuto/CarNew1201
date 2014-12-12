@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.frame = CGRectMake(DEVICE_WIDTH-50,50,34,72);
+        self.frame = CGRectMake(DEVICE_WIDTH-50,70,34,72);
         self.backgroundColor = [UIColor blackColor];
         [self setup];
         
@@ -40,6 +40,11 @@
         [button setTag:100+i];
         [button addTarget:self action:@selector(buttonTap:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
+        
+        if (i == 1)
+        {
+            [button setImage:[UIImage imageNamed:@"navigation_praised_image"] forState:UIControlStateSelected];
+        }
     }
 }
 
@@ -74,6 +79,18 @@
     }];
 }
 
+#pragma mark - 设置收藏状态
+-(void)setCollectionState:(BOOL)isCollect
+{
+    _isCollection = isCollect;
+    
+    UIButton * button = (UIButton *)[self viewWithTag:101];
+    
+    if (isCollect)
+    {
+        button.selected = isCollect;
+    }
+}
 
 @end
 

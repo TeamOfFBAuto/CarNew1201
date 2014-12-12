@@ -61,7 +61,8 @@ alpha:(a)]
 #define IOS6DAOHANGLANBEIJING @"sliderBBSNavigationBarImage_ios6.png"
 #define TheNavigationBarBackgroundImg MY_MACRO_NAME?[UIImage imageNamed:IOS7DAOHANGLANBEIJING]:[UIImage imageNamed:@"ios7eva320_44.png"]
 
-#define BACK_DEFAULT_IMAGE [UIImage imageNamed:@"fanhui_image"]
+#define BACK_DEFAULT_IMAGE [UIImage imageNamed:@"navigation_back_jiantou_image"]
+#define BACK_DEFAULT_IMAGE2 [UIImage imageNamed:@"fanhui_image"]
 #define HEADER_DEFAULT_IMAGE @"default_touxiang"
 #define WRITE_DEFAULT_IMAGE @"default_write_pen_image.png"
 #define NAVIGATION_MENU_IMAGE_NAME @"navigaiton_menu_image"

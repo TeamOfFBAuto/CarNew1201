@@ -101,6 +101,11 @@ alpha:(a)]
 #define BUSINESS_LIST_URL @"index.php?c=interface&a=getStore&ps=20&page=%d&fbtype=json"
 //登录
 #define G_LOGIN @"http://gztest.fblife.com/index.php?c=interface&a=dologin&fbtype=json"
+///商家详情
+#define BUSINESS_DETAIL_URL @"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=%@"
+///收藏商家接口
+#define BUSINESS_COLLECTION_URL @"http://gztest.fblife.com/index.php?c=interface&a=addFavStore&fbtype=json&uid=%@&storeid=%@"
+
 
 //个人中心相关
 //获取收藏案例

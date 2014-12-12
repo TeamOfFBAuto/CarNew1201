@@ -21,6 +21,8 @@ typedef void(^navFunctionBlock)(int index);
 
 ///设置当前view是否隐藏
 @property(nonatomic,assign)BOOL myHidden;
+///设置是否收藏
+@property(nonatomic,assign)BOOL isCollection;
 
 //@property(nonatomic,weak)navFunctionBlock nav_function_block;
 
@@ -28,4 +30,6 @@ typedef void(^navFunctionBlock)(int index);
 //-(void)setNav_function_block:(navFunctionBlock)nav_function_block;
 
 -(void)setFunctionBlock:(navFunctionBlock)aBlock;
+///isCollect为NO,未收藏为YES已收藏，默认为NO
+-(void)setCollectionState:(BOOL)isCollect;
 @end
