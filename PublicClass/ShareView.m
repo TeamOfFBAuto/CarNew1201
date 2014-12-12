@@ -104,12 +104,6 @@
         
         [self addSubview:cancelButton];
         
-        
-        
-        
-        
-        
-        
     }
     return self;
 }

@@ -16,6 +16,7 @@
 		1351179E1A257EB20015C133 /* LRefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1351179B1A257EB20015C133 /* LRefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		135117A61A257F2D0015C133 /* UIColor+ConvertColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 135117A21A257F2D0015C133 /* UIColor+ConvertColor.m */; };
 		135117A71A257F2D0015C133 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 135117A51A257F2D0015C133 /* UIView+Frame.m */; };
+		136153E61A3ACA3B001217F1 /* LShareTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 136153E51A3ACA3B001217F1 /* LShareTools.m */; };
 		137664E31A382DE100C8695D /* anli_bottom_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 137664E21A382DE100C8695D /* anli_bottom_clear@2x.png */; };
 		137664E51A38557300C8695D /* anli_list_defatult@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 137664E41A38557300C8695D /* anli_list_defatult@2x.png */; };
 		138023281A2C69CF0053BDDA /* anli_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023221A2C69CF0053BDDA /* anli_back@2x.png */; };
@@ -228,6 +229,8 @@
 		135117A21A257F2D0015C133 /* UIColor+ConvertColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ConvertColor.m"; sourceTree = "<group>"; };
 		135117A41A257F2D0015C133 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		135117A51A257F2D0015C133 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		136153E41A3ACA3B001217F1 /* LShareTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LShareTools.h; sourceTree = SOURCE_ROOT; };
+		136153E51A3ACA3B001217F1 /* LShareTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LShareTools.m; sourceTree = SOURCE_ROOT; };
 		137664E21A382DE100C8695D /* anli_bottom_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_bottom_clear@2x.png"; sourceTree = "<group>"; };
 		137664E41A38557300C8695D /* anli_list_defatult@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_list_defatult@2x.png"; sourceTree = "<group>"; };
 		138023221A2C69CF0053BDDA /* anli_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_back@2x.png"; sourceTree = "<group>"; };
@@ -833,6 +836,8 @@
 				131261181A2C7237001E46E4 /* AnliViewCell.h */,
 				131261191A2C7237001E46E4 /* AnliViewCell.m */,
 				1312611A1A2C7237001E46E4 /* AnliViewCell.xib */,
+				136153E41A3ACA3B001217F1 /* LShareTools.h */,
+				136153E51A3ACA3B001217F1 /* LShareTools.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1800,6 +1805,7 @@
 				56CC07271A3039630014F285 /* BrandModel.m in Sources */,
 				135117A61A257F2D0015C133 /* UIColor+ConvertColor.m in Sources */,
 				E358B2C01A2DEAF700B0FA51 /* GmPrepareNetData.m in Sources */,
+				136153E61A3ACA3B001217F1 /* LShareTools.m in Sources */,
 				13F9D4731A2D5A80002A6904 /* AnliModel.m in Sources */,
 				565EE8BC1A2C3DEE0063CAA3 /* ASIInputStream.m in Sources */,
 				E392C31D1A2818FD001AEA0D /* GfindPasswViewController.m in Sources */,
