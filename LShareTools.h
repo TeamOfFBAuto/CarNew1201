@@ -15,6 +15,7 @@
 {
     ShareView *_shareView;
     NSString *_title;//标题
+    NSString *_description;//描述
     NSString *_imageUrl;//图片url
     UIImage *_aShareImage;//图片对象
     NSString *_linkUrl;//连接地址
@@ -24,6 +25,7 @@
 
 - (void)showOrHidden:(BOOL)show
                title:(NSString *)atitle
+         description:(NSString *)description
             imageUrl:(NSString *)aimageUrl
          aShareImage:(UIImage *)aImage
              linkUrl:(NSString *)linkUrl;

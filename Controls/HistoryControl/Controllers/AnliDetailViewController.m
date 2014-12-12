@@ -15,6 +15,7 @@
 #import <MessageUI/MessageUI.h>
 
 #import "NavigationFunctionView.h"
+#import "LShareTools.h"
 
 @interface AnliDetailViewController ()<MFMailComposeViewControllerDelegate,UIWebViewDelegate>
 {
@@ -132,23 +133,40 @@
         
         __weak typeof(self)weakSelf = self;
         
-        [functionView setNav_function_block:^(int index) {
+        [functionView setFunctionBlock:^(int index) {
             
             if (index == 0) {
                 
-                NSLog(@"lll");
+                LShareTools *tool = [LShareTools shareInstance];
                 
-                [weakSelf clickToZhuanFa:button];
+                NSString *url = [NSString stringWithFormat:ANLI_DETAIL,weakSelf.anli_id];
+                NSString *imageUrl = @"http://fbautoapp.fblife.com/resource/head/84/9b/thumb_1_Thu.jpg";
+                
+                [tool showOrHidden:YES title:@"这里是分享的标题" description:@"这是一个非常牛逼的应用" imageUrl:imageUrl aShareImage:[UIImage imageNamed:@""] linkUrl:url];
                 
             }else if (index == 1){
                 
-                [weakSelf networkForCollect];
-                
-                NSLog(@"aaa");
-
             }
             
         }];
+        
+//        [functionView setNav_function_block:^(int index) {
+//            
+//            if (index == 0) {
+//                
+//                NSLog(@"lll");
+//                
+//                [weakSelf clickToZhuanFa:button];
+//                
+//            }else if (index == 1){
+//                
+//                [weakSelf networkForCollect];
+//                
+//                NSLog(@"aaa");
+//
+//            }
+//            
+//        }];
     }
     
     functionView.myHidden = !functionView.myHidden;

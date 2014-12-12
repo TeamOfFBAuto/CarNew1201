@@ -19,10 +19,10 @@
 + (id)shareInstance
 {
     static dispatch_once_t once_t;
-    static LTools *dataBlock;
+    static LShareTools *dataBlock;
     
     dispatch_once(&once_t, ^{
-        dataBlock = [[LTools alloc]init];
+        dataBlock = [[LShareTools alloc]init];
     });
     
     return dataBlock;
@@ -48,6 +48,7 @@
 
 - (void)showOrHidden:(BOOL)show
                title:(NSString *)atitle
+         description:(NSString *)description
                  imageUrl:(NSString *)aimageUrl
                aShareImage:(UIImage *)aImage
             linkUrl:(NSString *)linkUrl
@@ -58,6 +59,7 @@
 //    NSString *linkUrl;//连接地址
     
     _title = atitle;
+    _description = description;
     _imageUrl = aimageUrl;
     _aShareImage = aImage;
     _linkUrl = linkUrl;
@@ -79,6 +81,8 @@
     NSString * string_url = _linkUrl;
     
     NSString *string_title = _title;
+    
+    NSString *description = _description;
     
     UIImage *shareImage = _aShareImage;//[UIImage imageNamed:@"Icon@2x.png"]
     
@@ -117,7 +121,7 @@
         pageObject.objectID =@"nimeideid";
         pageObject.thumbnailData =UIImageJPEGRepresentation(shareImage, 1);
         pageObject.title = @"分享自越野e族客户端";
-        pageObject.description = string_title;
+        pageObject.description = description;
         pageObject.webpageUrl = string_url;
         WBMessageObject *message = [ [ WBMessageObject alloc ] init ];
         message.text =[NSString stringWithFormat:@"%@（分享自@越野e族）",string_title] ;
@@ -144,13 +148,16 @@
         if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi]) {
             WXMediaMessage *message = [WXMediaMessage message];
             message.title = string_title;
-            message.description = string_title;
+            message.description = description;
             
             [message setThumbImage:shareImage] ;
             WXWebpageObject *ext = [WXWebpageObject object];
             //ext.imageData = _weburl_Str;
             ext.webpageUrl=string_url;
             message.mediaObject = ext;
+            
+            WXImageObject *imageObject = [WXImageObject object];
+            imageObject.imageUrl = imageUrl;
             
             SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
             
@@ -173,14 +180,14 @@
         if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi]) {
             WXMediaMessage *message = [WXMediaMessage message];
             message.title = string_title;
-            message.description = string_title;
+            message.description = description;
             
             [message setThumbImage:shareImage] ;
             WXWebpageObject *ext = [WXWebpageObject object];
             //ext.imageData = _weburl_Str;
         
             WXImageObject *imageObject = [WXImageObject object];
-            imageObject.imageUrl = @"";
+            imageObject.imageUrl = imageUrl;
             
             ext.webpageUrl=string_url;
             message.mediaObject = ext;
