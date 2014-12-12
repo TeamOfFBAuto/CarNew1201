@@ -24,9 +24,9 @@
 #import "WeiboSDK.h"
 #import "MobClick.h"
 
+#define UMENG_APPKEY @"548a8a05fd98c5318d001273"
 #define WXAPPID @"wxda592c816f3e5c23"
 #define SINAAPPID @"1552967260"
-#define UMENG_APPKEY @"54646d3efd98c5657c005abc"
 
 @interface AppDelegate ()<MobClickDelegate,WXApiDelegate>
 
