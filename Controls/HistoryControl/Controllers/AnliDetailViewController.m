@@ -36,6 +36,17 @@
     
 //    self.navigationController.navigationBarHidden = YES;
     
+    
+}
+
+//更新状态栏颜色
+
+- (void)updateStatusBarColor
+{
+    if (IOS7_OR_LATER) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -57,6 +68,7 @@
 //    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
 //    [self createNavigationTools];
+    
     
     self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT + 20)];
     _webView.delegate = self;
@@ -450,6 +462,8 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [loading hide:YES];
+    
+    [self updateStatusBarColor];
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
