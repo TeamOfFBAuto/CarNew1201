@@ -10,6 +10,8 @@
 #import "NavigationFunctionView.h"
 #import "LShareTools.h"
 
+#import "AnliDetailViewController.h"
+
 @interface BusinessHomeViewController ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>
 {
     ///背景图
@@ -69,6 +71,8 @@
     
     [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
     
+    myWebView.backgroundColor = COLOR_WEB_DETAIL_BACKCOLOR;
+    
     
     hud = [ZSNApi showMBProgressWithText:@"加载中..." addToView:self.view];
     hud.mode = MBProgressHUDModeIndeterminate;
@@ -110,6 +114,57 @@
 {
     NSLog(@" -- - -- - - - --   %d -----  %@",navigationType,[request.URL absoluteString]);
     
+    NSString *relativeUrl = request.URL.relativeString;
+    if ([relativeUrl rangeOfString:@"anlixingqing"].length > 0) {
+        
+        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"/anlixingqing"];
+        if (dianpu.count > 1) {
+            
+            NSString *dianpuId = dianpu[1];
+            NSLog(@"案例详情 id:%@",dianpuId);
+            
+            AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
+            detail.anli_id = dianpuId;
+            
+//            detail.shareTitle = aModel.title;
+//            detail.shareDescrition = aModel.sname;
+//            detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
+//            detail.storeName = aModel.sname;
+//            detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
+            
+            [self.navigationController pushViewController:detail animated:YES];
+        }
+        
+        return NO;
+    }
+    
+    if ([relativeUrl rangeOfString:@"peijianxiangqing"].length > 0) {
+        
+        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"/peijianxiangqing"];
+        if (dianpu.count > 1) {
+            
+            NSString *dianpuId = dianpu[1];
+            NSLog(@"配件详情 id:%@",dianpuId);
+            
+            AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
+            detail.anli_id = dianpuId;
+            
+            detail.detailType = Detail_Peijian;
+            
+            //            detail.shareTitle = aModel.title;
+            //            detail.shareDescrition = aModel.sname;
+            //            detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
+            //            detail.storeName = aModel.sname;
+            //            detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
+            
+            [self.navigationController pushViewController:detail animated:YES];
+
+        }
+        
+        return NO;
+    }
+    
+    
     if (navigationType == UIWebViewNavigationTypeOther) {
         return YES;
     }else
@@ -129,7 +184,7 @@
     [self.view bringSubviewToFront:navigation_view];
     
     UIButton * back_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    back_button.frame = CGRectMake(8,20,44,44);
+    back_button.frame = CGRectMake(0,20,40,44);
     //    back_button.backgroundColor = [UIColor orangeColor];
     [back_button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [back_button setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];

@@ -17,6 +17,9 @@
 #import "NavigationFunctionView.h"
 #import "LShareTools.h"
 
+#import "BusinessHomeViewController.h"
+#import "BusinessViewController.h"
+
 @interface AnliDetailViewController ()<MFMailComposeViewControllerDelegate,UIWebViewDelegate>
 {
     ShareView *_shareView;
@@ -38,8 +41,7 @@
 {
     [super viewWillAppear:animated];
     
-//    self.navigationController.navigationBarHidden = YES;
-    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     
 }
 
@@ -57,7 +59,7 @@
 {
     [super viewWillDisappear:animated];
     
-    self.navigationController.navigationBarHidden = NO;
+//    self.navigationController.navigationBarHidden = NO;
     
 }
 
@@ -65,7 +67,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
 //    self.myTitle = @"案例详情";
@@ -80,9 +81,21 @@
     
     loading = [LTools MBProgressWithText:@"数据加载中..." addToView:self.view];
     
-    NSString *url = [NSString stringWithFormat:ANLI_DETAIL,self.anli_id,[GMAPI getUid]];
+    NSString *api;
+    if (self.detailType == Detail_Anli) {
+        
+        api = ANLI_DETAIL;
+        
+    }else if (self.detailType == Detail_Peijian){
+        
+        api = ANLI_PEIJIAN_DETAIL;
+    }
+    
+    NSString *url = [NSString stringWithFormat:api,self.anli_id,[GMAPI getUid]];
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+    
+    self.webView.backgroundColor = COLOR_WEB_DETAIL_BACKCOLOR;
     
     [self setNavgationView];
 
@@ -101,8 +114,9 @@
     navigation_view.userInteractionEnabled = YES;
     [self.view bringSubviewToFront:navigation_view];
     
+    
     UIButton * back_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    back_button.frame = CGRectMake(8,20,44,44);
+    back_button.frame = CGRectMake(0,20,40,44);
 //    back_button.backgroundColor = [UIColor orangeColor];
     [back_button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [back_button setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];
@@ -496,11 +510,48 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     NSLog(@"navigationType %d",navigationType);
-
-    
     NSLog(@"request %@",request.URL.relativeString);
-    NSLog(@"request absolutly %@",request.URL.relativeString);
 
+    NSString *relativeUrl = request.URL.relativeString;
+    
+    if ([relativeUrl rangeOfString:@"dianpuanli"].length > 0) {
+        
+        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"/dianpuanli"];
+        if (dianpu.count > 1) {
+            
+            NSString *dianpuId = dianpu[1];
+            NSLog(@"店铺案例 id:%@",dianpuId);
+            
+            BusinessViewController *business = [[BusinessViewController alloc]init];
+            business.storeId = dianpuId;
+            business.isStoreAnli = YES;
+            business.storeName = self.storeName;
+            [self.navigationController pushViewController:business animated:YES];
+        }
+        
+        return NO;
+    }
+    
+    
+    if ([relativeUrl rangeOfString:@"dianpu"].length > 0) {
+        
+        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"/dianpu"];
+        if (dianpu.count > 1) {
+            
+            NSString *dianpuId = dianpu[1];
+            NSLog(@"店铺 id:%@",dianpuId);
+            
+            BusinessHomeViewController * home = [[BusinessHomeViewController alloc] init];
+            home.business_id = dianpuId;
+            home.share_title = self.storeName;
+            home.share_image = self.storeImage;
+            [self.navigationController pushViewController:home animated:YES];
+
+        }
+        
+        return NO;
+    }
+    
     
     return YES;
 }

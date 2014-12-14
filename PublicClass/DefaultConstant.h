@@ -98,7 +98,9 @@ alpha:(a)]
 
 #pragma mark - 商家信息相关接口
 #pragma mark - 商家列表接口
-#define BUSINESS_LIST_URL @"index.php?c=interface&a=getStore&ps=20&page=%d&fbtype=json"
+
+//案例列表
+#define BUSINESS_LIST_URL @"index.php?c=interface&a=getStore&storeid=%@&ps=20&page=%d&fbtype=json"
 //登录
 #define G_LOGIN @"http://gztest.fblife.com/index.php?c=interface&a=dologin&fbtype=json"
 ///商家详情
@@ -145,7 +147,8 @@ alpha:(a)]
 //按商家搜索配件
 #define G_SEARCH_PEIJIAN_SHANGJIA @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&storeid=%@"
 
-
+//配件详情
+#define ANLI_PEIJIAN_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&uid=%@"
 
 
 

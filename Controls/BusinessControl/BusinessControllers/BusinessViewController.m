@@ -27,10 +27,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    self.leftImageName = NAVIGATION_MENU_IMAGE_NAME;
-    self.myTitle = @"改装商家";
-    self.isAddGestureRecognizer = YES;
-    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
+    
+    if (self.isStoreAnli) {
+        
+        self.myTitle = self.storeName;
+        [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
+        
+    }else
+    {
+        self.leftImageName = NAVIGATION_MENU_IMAGE_NAME;
+
+        self.myTitle = @"改装商家";
+        self.isAddGestureRecognizer = YES;
+        [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
+    }
+    
     
     _data_array = [NSMutableArray array];
     _myTableView = [[SNRefreshTableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64) showLoadMore:YES];
@@ -48,6 +59,11 @@
 
 -(void)leftButtonTap:(UIButton *)sender
 {
+    if (self.isStoreAnli) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        return;
+    }
     [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
 }
 
@@ -60,7 +76,7 @@
 #pragma mark - 获取数据
 -(void)getBusinessData
 {
-    NSString * fullUrl = [NSString stringWithFormat:@"%@%@",BASE_URL,[NSString stringWithFormat:BUSINESS_LIST_URL,_myTableView.pageNum]];
+    NSString * fullUrl = [NSString stringWithFormat:@"%@%@",BASE_URL,[NSString stringWithFormat:BUSINESS_LIST_URL,self.storeId,_myTableView.pageNum]];
     NSLog(@"current_page -----  %d",_myTableView.pageNum);
     AFHTTPRequestOperation * operation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
     __weak typeof(self)bself = self;

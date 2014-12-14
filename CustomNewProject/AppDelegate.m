@@ -39,6 +39,8 @@
     // Override point for customization after application launch.
     
     
+    NSLog(@"屏幕宽度 %f  %f",ALL_FRAME_WIDTH,ALL_FRAME_HEIGHT);
+    
     [UMSocialData setAppKey:UMENG_APPKEY];
     [WXApi registerApp:WXAPPID];
     

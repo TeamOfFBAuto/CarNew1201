@@ -13,4 +13,9 @@
 
 @interface BusinessViewController : MyViewController
 
+@property(nonatomic,assign)BOOL isStoreAnli;//是否是某个店铺的案例列表
+
+@property(nonatomic,retain)NSString *storeName;
+@property(nonatomic,retain)NSString *storeId;//店铺id
+
 @end

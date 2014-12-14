@@ -26,9 +26,17 @@
 
 @implementation PicViewController
 
--(void)viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    
+    if (self.navigationController.isNavigationBarHidden) {
+        
+        self.navigationController.navigationBarHidden = NO;
+
+    }
+    
 }
 
 - (void)viewDidLoad {
@@ -221,7 +229,8 @@
     detail.shareTitle = aModel.title;
     detail.shareDescrition = aModel.sname;
     detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
-//    detail.shareImageUrl = aModel.pichead;
+    detail.storeName = aModel.sname;
+    detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
     
     [self.navigationController pushViewController:detail animated:YES];
     
