@@ -80,7 +80,7 @@
     
     loading = [LTools MBProgressWithText:@"数据加载中..." addToView:self.view];
     
-    NSString *url = [NSString stringWithFormat:ANLI_DETAIL,self.anli_id];
+    NSString *url = [NSString stringWithFormat:ANLI_DETAIL,self.anli_id,[GMAPI getUid]];
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
     
@@ -139,33 +139,20 @@
                 
                 LShareTools *tool = [LShareTools shareInstance];
                 
-                NSString *url = [NSString stringWithFormat:ANLI_DETAIL,weakSelf.anli_id];
+                NSString *url = [NSString stringWithFormat:ANLI_DETAIL,weakSelf.anli_id,[GMAPI getUid]];
+                NSString *imageUrl = @"http://fbautoapp.fblife.com/resource/head/84/9b/thumb_1_Thu.jpg";
                 
-                [tool showOrHidden:YES title:weakSelf.shareTitle description:weakSelf.shareDescrition imageUrl:nil aShareImage:weakSelf.shareImage linkUrl:url];
+                [tool showOrHidden:YES title:@"这里是分享的标题" description:@"这是一个非常牛逼的应用" imageUrl:imageUrl aShareImage:[UIImage imageNamed:@""] linkUrl:url];
                 
             }else if (index == 1){
+                
+                [weakSelf networkForCollect];
+                
+//                [weakSelf networkForCancelCollect];
                 
             }
             
         }];
-        
-//        [functionView setNav_function_block:^(int index) {
-//            
-//            if (index == 0) {
-//                
-//                NSLog(@"lll");
-//                
-//                [weakSelf clickToZhuanFa:button];
-//                
-//            }else if (index == 1){
-//                
-//                [weakSelf networkForCollect];
-//                
-//                NSLog(@"aaa");
-//
-//            }
-//            
-//        }];
     }
     
     functionView.myHidden = !functionView.myHidden;
@@ -173,9 +160,12 @@
 
 #pragma mark - 网络请求
 
-- (void)netWorkForDetail
+/**
+ *  取消收藏
+ */
+- (void)networkForCancelCollect
 {
-    NSString *url = [NSString stringWithFormat:ANLI_DETAIL,self.anli_id];
+    NSString *url = [NSString stringWithFormat:ANLI_CANCEL_COLLECT,[GMAPI getUid],1,self.anli_id];
     
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {

@@ -13,7 +13,7 @@
 
 #import "GTCommontHeader.h"
 
-#define ERROR_INFO @"ERRO_INFO" //错误信息
+#define ERROR_INFO @"errinfo" //错误信息
 
 typedef void(^ urlRequestBlock)(NSDictionary *result,NSError *erro);
 

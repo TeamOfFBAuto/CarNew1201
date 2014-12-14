@@ -46,6 +46,8 @@
 {
     [self.bigImageView sd_setImageWithURL:[NSURL URLWithString:aModel.pichead] placeholderImage:nil];
     
+//    NSLog(@"lll  %@",aModel.pichead);
+    
     self.aTitleLabel.text = aModel.title;
     self.nameLabel.text = aModel.sname;
     [self.smallImageView sd_setImageWithURL:[NSURL URLWithString:aModel.spichead] placeholderImage:PERSONAL_DEFAULTS_IMAGE];
