@@ -535,7 +535,7 @@
     
     if ([relativeUrl rangeOfString:@"dianpu"].length > 0) {
         
-        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"/dianpu"];
+        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"&dianpu"];
         if (dianpu.count > 1) {
             
             NSString *dianpuId = dianpu[1];
@@ -552,6 +552,33 @@
         return NO;
     }
     
+    
+    if ([relativeUrl rangeOfString:@"peijianxiangqing"].length > 0) {
+        
+        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"&peijianxiangqing"];
+        if (dianpu.count > 1) {
+            
+            NSString *dianpuId = dianpu[1];
+            NSLog(@"配件详情 id:%@",dianpuId);
+            
+            AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
+            detail.anli_id = dianpuId;
+            
+            detail.detailType = Detail_Peijian;
+            
+            //            detail.shareTitle = aModel.title;
+            //            detail.shareDescrition = aModel.sname;
+            //            detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
+            //            detail.storeName = aModel.sname;
+            //            detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
+            
+            [self.navigationController pushViewController:detail animated:YES];
+            
+        }
+        
+        return NO;
+    }
+
     
     return YES;
 }

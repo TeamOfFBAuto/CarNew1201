@@ -117,7 +117,7 @@
     NSString *relativeUrl = request.URL.relativeString;
     if ([relativeUrl rangeOfString:@"anlixingqing"].length > 0) {
         
-        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"/anlixingqing"];
+        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"&anlixingqing"];
         if (dianpu.count > 1) {
             
             NSString *dianpuId = dianpu[1];
@@ -140,7 +140,7 @@
     
     if ([relativeUrl rangeOfString:@"peijianxiangqing"].length > 0) {
         
-        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"/peijianxiangqing"];
+        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"&peijianxiangqing"];
         if (dianpu.count > 1) {
             
             NSString *dianpuId = dianpu[1];

@@ -41,7 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor grayColor];    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     
     self.leftImageName = NAVIGATION_MENU_IMAGE_NAME;
@@ -57,7 +57,7 @@
     _table.refreshDelegate = self;
     _table.dataSource = self;
     
-    _table.backgroundColor = [UIColor whiteColor];
+    _table.backgroundColor = [UIColor clearColor];
     
     _table.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_table];
@@ -269,9 +269,10 @@
     static NSString * identifier = @"AnliViewCell";
     
     AnliViewCell *cell = (AnliViewCell *)[LTools cellForIdentify:identifier cellName:@"AnliViewCell" forTable:tableView];
-    
     AnliModel *aModel = (AnliModel *)[_table.dataArray objectAtIndex:indexPath.row];
     [cell setCellWithModel:aModel];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
     
