@@ -158,6 +158,7 @@ typedef enum{
     [self.view addSubview:gBackBtn];
     
     
+    
 }
 
 
@@ -191,7 +192,7 @@ typedef enum{
             [_topImv setImage:[GMAPI getUserBannerImage]];
         }else{
             
-            [_topImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"bunner"]] placeholderImage:[UIImage imageNamed:@"gBanner.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [_topImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"bunner"]] placeholderImage:[UIImage imageNamed:@"gBanner.jpg"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                 NSData *imageData = UIImageJPEGRepresentation(_topImv.image, 1.0);
                 [GMAPI setUserBannerImageWithData:imageData];
             }];
@@ -277,7 +278,7 @@ typedef enum{
     
     //banner下面的黑色透明层
     UIImageView *back_topimv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 240.00/320*ALL_FRAME_WIDTH)];
-    [back_topimv setImage:[UIImage imageNamed:@"anli_bottom_clear"]];
+    [back_topimv setImage:[UIImage imageNamed:@"anli_bottom_clear.png"]];
     
     [_upThreeViewBackGroundView addSubview:_topImv];
     [_upThreeViewBackGroundView addSubview:back_topimv];
@@ -289,7 +290,6 @@ typedef enum{
     
     //头像
     _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH*70/320.0, ALL_FRAME_WIDTH*70/320.0)];
-//    _faceImv.backgroundColor = RGBCOLOR_ONE;
     _faceImv.center = CGPointMake(ALL_FRAME_WIDTH/2,88.00/320*ALL_FRAME_WIDTH);
     _faceImv.layer.cornerRadius = ALL_FRAME_WIDTH*70/320/2;
     _faceImv.layer.masksToBounds = YES;
@@ -305,11 +305,6 @@ typedef enum{
     _nameLabel.text = [GMAPI getUsername];
     _nameLabel.textColor = [UIColor whiteColor];
     
-    
-//    _nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-//    _nameLabel.layer.shadowOffset = CGSizeMake(0,1);
-//    _nameLabel.layer.shadowRadius = 0.5;
-//    _nameLabel.layer.shadowOpacity = 0.8;
     
     [_upThreeViewBackGroundView addSubview:_nameLabel];
     
@@ -476,20 +471,12 @@ typedef enum{
             UIImagePickerController *picker = [[UIImagePickerController alloc]init];
             picker.delegate = self;
             
-            //        [picker.navigationBar setBackgroundImage:FBCIRCLE_NAVIGATION_IMAGE forBarMetrics: UIBarMetricsDefault];
-            
-//            picker.navigationBar.barTintColor = [UIColor blackColor];
-//            UIColor * cc = [UIColor whiteColor];
-//            NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:cc,[UIFont systemFontOfSize:18],[UIColor clearColor],nil] forKeys:[NSArray arrayWithObjects:UITextAttributeTextColor,UITextAttributeFont,UITextAttributeTextShadowColor,nil]];
-//            picker.navigationBar.titleTextAttributes = dict;
+
             
             picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
             
             [self presentViewController:picker animated:YES completion:^{
-//                if (IOS7_OR_LATER) {
-//                    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-//                    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-//                }
+
             }];
         }
         
@@ -503,10 +490,7 @@ typedef enum{
             picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
             
             [self presentViewController:picker animated:YES completion:^{
-//                if (IOS7_OR_LATER) {
-//                    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-//                    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-//                }
+
             }];
         }
     }
