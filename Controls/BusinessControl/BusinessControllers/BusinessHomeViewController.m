@@ -9,7 +9,7 @@
 #import "BusinessHomeViewController.h"
 #import "NavigationFunctionView.h"
 #import "LShareTools.h"
-
+#import "CommentBottomView.h"
 #import "AnliDetailViewController.h"
 
 @interface BusinessHomeViewController ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>
@@ -33,6 +33,8 @@
     
     ///右上角菜单栏
     NavigationFunctionView * functionView;
+    ///底部评论视图
+    CommentBottomView * bottomView;
 }
 
 @property(nonatomic,strong)UITableView * myTableView;
@@ -45,6 +47,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -91,6 +95,14 @@
     [self setNavgationView];
      */
     
+    
+    bottomView = [[CommentBottomView alloc] init];
+    bottomView.hidden = YES;
+    [self.view addSubview:bottomView];
+    [bottomView setMyBlock:^(CommentTapType aType) {
+        NSLog(@"bottom tap : %d",aType);
+    }];
+    
     [self setNavgationView];
 }
 
@@ -105,6 +117,7 @@
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [hud hide:YES];
+    bottomView.hidden = NO;
 }
 -(void)webViewDidStartLoad:(UIWebView *)webView
 {
