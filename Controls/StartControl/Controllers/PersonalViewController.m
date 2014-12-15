@@ -693,7 +693,13 @@ typedef enum{
 
 //收藏案例 收藏产品 收藏店铺 的点击方法
 -(void)gTap:(UITapGestureRecognizer *)sender{
+    
+    
+    
     NSLog(@"%d",sender.view.tag);
+    
+    
+    
     [self changeNumAndTitleColorWithTag:sender.view.tag];
 }
 
