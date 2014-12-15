@@ -180,6 +180,9 @@
 		E311CD301A24573C007D69D3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E311CD2F1A24573C007D69D3 /* Images.xcassets */; };
 		E311CD331A24573C007D69D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E311CD311A24573C007D69D3 /* LaunchScreen.xib */; };
 		E311CD3F1A24573C007D69D3 /* CustomNewProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E311CD3E1A24573C007D69D3 /* CustomNewProjectTests.m */; };
+		E3571F291A3E71E6001F7C8C /* GscoreStarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3571F281A3E71E6001F7C8C /* GscoreStarViewController.m */; };
+		E3571F3F1A3E7D37001F7C8C /* TQStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3571F3E1A3E7D37001F7C8C /* TQStarRatingView.m */; };
+		E3571F411A3E920C001F7C8C /* gstarBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3571F401A3E920C001F7C8C /* gstarBack@2x.png */; };
 		E358B2C01A2DEAF700B0FA51 /* GmPrepareNetData.m in Sources */ = {isa = PBXBuildFile; fileRef = E358B2BF1A2DEAF700B0FA51 /* GmPrepareNetData.m */; };
 		E35A00E51A319E4000A9CD24 /* GCaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E35A00E21A319E4000A9CD24 /* GCaseModel.m */; };
 		E35A00E61A319E4000A9CD24 /* GGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E35A00E41A319E4000A9CD24 /* GGoodsModel.m */; };
@@ -508,6 +511,11 @@
 		E311CD381A24573C007D69D3 /* CustomNewProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomNewProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E311CD3D1A24573C007D69D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E311CD3E1A24573C007D69D3 /* CustomNewProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomNewProjectTests.m; sourceTree = "<group>"; };
+		E3571F271A3E71E6001F7C8C /* GscoreStarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GscoreStarViewController.h; sourceTree = "<group>"; };
+		E3571F281A3E71E6001F7C8C /* GscoreStarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GscoreStarViewController.m; sourceTree = "<group>"; };
+		E3571F3D1A3E7D37001F7C8C /* TQStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TQStarRatingView.h; sourceTree = "<group>"; };
+		E3571F3E1A3E7D37001F7C8C /* TQStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TQStarRatingView.m; sourceTree = "<group>"; };
+		E3571F401A3E920C001F7C8C /* gstarBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstarBack@2x.png"; sourceTree = "<group>"; };
 		E358B2BE1A2DEAF700B0FA51 /* GmPrepareNetData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmPrepareNetData.h; sourceTree = "<group>"; };
 		E358B2BF1A2DEAF700B0FA51 /* GmPrepareNetData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GmPrepareNetData.m; sourceTree = "<group>"; };
 		E35A00E11A319E4000A9CD24 /* GCaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCaseModel.h; sourceTree = "<group>"; };
@@ -1432,9 +1440,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E3571F331A3E7CE5001F7C8C /* Gmodels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Gmodels;
+			sourceTree = "<group>";
+		};
 		E35A00DF1A319E3400A9CD24 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E3571F401A3E920C001F7C8C /* gstarBack@2x.png */,
 				E38159511A3AE74400864F81 /* gback@2x.png */,
 				E381594F1A3AE1D500864F81 /* gBanner@2x.jpg */,
 				E377E4EA1A39732700B2D6C9 /* gthreebtnback@2x.png */,
@@ -1463,9 +1479,9 @@
 		E392C3101A2815FA001AEA0D /* GMCLASS */ = {
 			isa = PBXGroup;
 			children = (
+				E3571F331A3E7CE5001F7C8C /* Gmodels */,
 				E392C3171A281653001AEA0D /* Gutils */,
 				E392C3111A2815FA001AEA0D /* Gcontrollers */,
-				E392C3121A2815FA001AEA0D /* Gmodels */,
 				E392C3131A2815FA001AEA0D /* Gviews */,
 			);
 			path = GMCLASS;
@@ -1480,20 +1496,17 @@
 				E392C31C1A2818FD001AEA0D /* GfindPasswViewController.m */,
 				E35A00EA1A319FA100A9CD24 /* GSeachViewController.h */,
 				E35A00EB1A319FA100A9CD24 /* GSeachViewController.m */,
+				E3571F271A3E71E6001F7C8C /* GscoreStarViewController.h */,
+				E3571F281A3E71E6001F7C8C /* GscoreStarViewController.m */,
 			);
 			path = Gcontrollers;
-			sourceTree = "<group>";
-		};
-		E392C3121A2815FA001AEA0D /* Gmodels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Gmodels;
 			sourceTree = "<group>";
 		};
 		E392C3131A2815FA001AEA0D /* Gviews */ = {
 			isa = PBXGroup;
 			children = (
+				E3571F3D1A3E7D37001F7C8C /* TQStarRatingView.h */,
+				E3571F3E1A3E7D37001F7C8C /* TQStarRatingView.m */,
 				E392C3141A2815FA001AEA0D /* GloginView.h */,
 				E392C3151A2815FA001AEA0D /* GloginView.m */,
 			);
@@ -1680,6 +1693,7 @@
 				56621D471A28605B00310A48 /* messages_right_bubble@2x.png in Resources */,
 				E38159521A3AE74400864F81 /* gback@2x.png in Resources */,
 				56621D3F1A28605B00310A48 /* blueArrow@2x.png in Resources */,
+				E3571F411A3E920C001F7C8C /* gstarBack@2x.png in Resources */,
 				569FFEF41A27380F008A02A6 /* login_mima_image@2x.png in Resources */,
 				5653E5101A39754500CEB749 /* newAboultIphone5@2x.png in Resources */,
 				E36AAF6D1A385B2C006A6F21 /* gstart_half@2x.png in Resources */,
@@ -1767,9 +1781,11 @@
 				56621D001A285FA800310A48 /* SliderRightSettingViewController.m in Sources */,
 				563E4CC51A2DC3A80022755C /* ScreeningCarView.m in Sources */,
 				563B32241A382AF900015088 /* FBHelper.m in Sources */,
+				E3571F3F1A3E7D37001F7C8C /* TQStarRatingView.m in Sources */,
 				56500AFB1A2D63CC00E834A1 /* BusinessViewController.m in Sources */,
 				565EE8CE1A2C4C160063CAA3 /* VerificationViewController.m in Sources */,
 				E311CD2B1A24573C007D69D3 /* ViewController.m in Sources */,
+				E3571F291A3E71E6001F7C8C /* GscoreStarViewController.m in Sources */,
 				56CC07241A3034F90014F285 /* BusinessHomeViewController.m in Sources */,
 				56621D3D1A28605B00310A48 /* UMEGORefreshTableHeaderView.m in Sources */,
 				56CC07111A2FF9C70014F285 /* PrivacyPolicyViewController.m in Sources */,

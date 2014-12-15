@@ -12,7 +12,8 @@
 
 
 #define IOS7_OR_LATER   ( [[[UIDevice currentDevice] systemVersion] compare:@"7.0"] != NSOrderedAscending )
-
+//代码屏幕适配（设计图为320*568）
+#define GscreenRatio_320 DEVICE_WIDTH/320.00
 
 @interface GMAPI : NSObject
 

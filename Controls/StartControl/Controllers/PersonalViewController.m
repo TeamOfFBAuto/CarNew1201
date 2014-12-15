@@ -29,6 +29,8 @@
 #import "NSDictionary+GJson.h"
 #import "ZSNApi.h"
 
+#import "GscoreStarViewController.h"
+
 typedef enum{
     GANLI = 0,//案例
     GCHANPIN ,//产品
@@ -152,7 +154,6 @@ typedef enum{
     [gBackBtn setImage:[UIImage imageNamed:@"gback.png"] forState:UIControlStateNormal];
     [gBackBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 10, 15)];
     [gBackBtn setFrame:CGRectMake(0, 15, 80.00/320*ALL_FRAME_WIDTH, 80.00/320*ALL_FRAME_WIDTH)];
-//    gBackBtn.backgroundColor = [UIColor redColor];
     [gBackBtn addTarget:self action:@selector(gGoBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:gBackBtn];
     
@@ -420,6 +421,11 @@ typedef enum{
 -(void)userBannerClicked{
     NSLog(@"点击用户banner");
     
+//    GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
+//    UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:cc];
+//    [self presentViewController:navc animated:YES completion:^{
+//        
+//    }];
     
     
     GcustomActionSheet *aaa = [[GcustomActionSheet alloc]initWithTitle:nil

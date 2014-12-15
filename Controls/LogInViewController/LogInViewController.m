@@ -285,7 +285,7 @@
             }else{
                 id obj=NSClassFromString(@"UIAlertController");
                 if ( obj!=nil){
-                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请核对用户名或密码是否正确" preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:[result objectForKey:@"errinfo"] preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
 
                     }];
@@ -294,7 +294,7 @@
 
                     }];
                 }else{
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请核对用户名或密码是否正确"
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[result objectForKey:@"errinfo"]
                                                                    delegate:self cancelButtonTitle:@"确定"
                                                           otherButtonTitles:nil,nil];
                     
@@ -314,6 +314,25 @@
      
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         [j stopAnimating];
+        
+        id obj=NSClassFromString(@"UIAlertController");
+        if ( obj!=nil){
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:[failDic objectForKey:@"ERRO_INFO"] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                
+            }];
+            [alertController addAction:cancelAction];
+            [self presentViewController:alertController animated:YES completion:^{
+                
+            }];
+        }else{
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[failDic objectForKey:@"ERRO_INFO"]
+                                                           delegate:self cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil,nil];
+            
+            [alert show];
+        }
+        
         NSLog(@"登录失败:%@",failDic);
         
         [self loginFail];
