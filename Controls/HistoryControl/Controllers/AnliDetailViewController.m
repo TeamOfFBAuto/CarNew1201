@@ -22,6 +22,8 @@
 
 #import "LogInViewController.h"
 
+#import "GscoreStarViewController.h"
+
 @interface AnliDetailViewController ()<MFMailComposeViewControllerDelegate,UIWebViewDelegate>
 {
     ShareView *_shareView;
@@ -135,6 +137,8 @@
     [comment_btn setTitleColor:[UIColor colorWithHexString:@"979797"] forState:UIControlStateNormal];
     comment_btn.center = CGPointMake(ALL_FRAME_WIDTH /2.f, comment_view.height / 2.f);
     comment_btn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [comment_btn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    
     
     //发表按钮
     
@@ -156,6 +160,14 @@
     }else
     {
         NSLog(@"点评页面");
+        
+        GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
+        cc.commentType = Comment_Anli;
+        cc.commentId = self.anli_id;
+        UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:cc];
+        [self presentViewController:navc animated:YES completion:^{
+            
+        }];
     }
     
 }
@@ -229,35 +241,6 @@
     }
     
     functionView.myHidden = !functionView.myHidden;
-}
-
-#pragma mark - 网络请求
-
-/**
- *  添加评论
- */
-- (void)networkForComment
-{
-    NSString *url = [NSString stringWithFormat:ANLI_COLLECT,[GMAPI getUid],self.anli_id];
-    LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
-    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
-        
-        int errcode = [[result objectForKey:@"errcode"]intValue];
-        if (errcode == 0) {
-            
-            
-        }else
-        {
-            
-        }
-        [LTools alertText:result[@"errinfo"]];
-        
-        
-    } failBlock:^(NSDictionary *failDic, NSError *erro) {
-        
-        [LTools alertText:failDic[@"errinfo"]];
-        
-    }];
 }
 
 /**

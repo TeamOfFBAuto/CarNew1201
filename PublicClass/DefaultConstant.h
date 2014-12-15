@@ -140,7 +140,6 @@ alpha:(a)]
 
 
 
-
 //搜索配件
 //按关键字搜索配件
 #define G_SEARCH_PEIJIAN_GUANJIANZI @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&keyword=%@"
@@ -163,6 +162,17 @@ alpha:(a)]
 
 //案例详情
 #define ANLI_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getCase&caseid=%@&uid=%@"
+
+
+//评论接口
+
+//案例评论
+#define COMMENT_ANLI_API @"http://gztest.fblife.com/index.php?c=interface&a=addcomcase&fbtype=json&uid=%@&caseid=%@&score=%@&content=%@"
+//店铺评论
+#define COMMENT_DIANPU_API @"http://gztest.fblife.com/index.php?c=interface&a=addcomStore&fbtype=json&uid=%@&storeid=%@&score=%@&content=%@"
+//配件评论
+#define COMMENT_PEIJIAN_API @"http://gztest.fblife.com/index.php?c=interface&a=addcomGoods&fbtype=json&uid=%@&goodsid=%@&score=%@&content=%@"
+
 
 
 
