@@ -37,8 +37,10 @@
 
 - (void)CloseButtonTap:(id)sender
 {
-    AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [delegate showControlView:Root_home];
+//    AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    [delegate showControlView:Root_home];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 + (LogInViewController *)sharedManager
@@ -275,8 +277,10 @@
                 [GMAPI cache:username ForKey:USER_NAME];
                 [GMAPI cache:authkey ForKey:USER_AUTHOD];
 
-                AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                [delegate showControlView:Root_home];
+//                AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//                [delegate showControlView:Root_home];
+            
+            [self CloseButtonTap:nil];
 
             }else{
                 id obj=NSClassFromString(@"UIAlertController");
@@ -311,6 +315,8 @@
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         [j stopAnimating];
         NSLog(@"登录失败:%@",failDic);
+        
+        [self loginFail];
     }];
     
     

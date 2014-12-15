@@ -30,8 +30,8 @@
     
     if (self.isStoreAnli) {
         
+        self.leftImageName = BACK_DEFAULT_IMAGE_GRAY;
         self.myTitle = self.storeName;
-        [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
         
     }else
     {
@@ -39,9 +39,9 @@
 
         self.myTitle = @"改装商家";
         self.isAddGestureRecognizer = YES;
-        [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     }
     
+    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
     _data_array = [NSMutableArray array];
     _myTableView = [[SNRefreshTableView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64) showLoadMore:YES];

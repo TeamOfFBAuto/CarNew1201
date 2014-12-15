@@ -27,6 +27,7 @@
 		1380232D1A2C69CF0053BDDA /* anli_zhuanfa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023271A2C69CF0053BDDA /* anli_zhuanfa@2x.png */; };
 		138178CA1A319572001DB92C /* CarTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 138178C81A319572001DB92C /* CarTypeViewController.m */; };
 		138178CB1A319572001DB92C /* CarTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 138178C91A319572001DB92C /* CarTypeViewController.xib */; };
+		138F59FB1A3E903F009B0612 /* navigation_back_jiantou_image_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138F59FA1A3E903F009B0612 /* navigation_back_jiantou_image_gray@2x.png */; };
 		13F9D4701A2D5A6E002A6904 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D46F1A2D5A6E002A6904 /* BaseModel.m */; };
 		13F9D4731A2D5A80002A6904 /* AnliModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D4721A2D5A80002A6904 /* AnliModel.m */; };
 		13F9D4781A2D9A89002A6904 /* AnliDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D4761A2D9A89002A6904 /* AnliDetailViewController.m */; };
@@ -244,6 +245,7 @@
 		138178C71A319572001DB92C /* CarTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTypeViewController.h; sourceTree = "<group>"; };
 		138178C81A319572001DB92C /* CarTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarTypeViewController.m; sourceTree = "<group>"; };
 		138178C91A319572001DB92C /* CarTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarTypeViewController.xib; sourceTree = "<group>"; };
+		138F59FA1A3E903F009B0612 /* navigation_back_jiantou_image_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_back_jiantou_image_gray@2x.png"; sourceTree = "<group>"; };
 		13F9D46E1A2D5A6E002A6904 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		13F9D46F1A2D5A6E002A6904 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		13F9D4711A2D5A80002A6904 /* AnliModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnliModel.h; sourceTree = "<group>"; };
@@ -1269,6 +1271,7 @@
 		568848CB1A32E1D500862472 /* businessImages */ = {
 			isa = PBXGroup;
 			children = (
+				138F59FA1A3E903F009B0612 /* navigation_back_jiantou_image_gray@2x.png */,
 				5653E5231A3AE9D200CEB749 /* navigation_back_jiantou_image@2x.png */,
 				5653E51A1A3A9B5B00CEB749 /* navigation_forward_image@2x.png */,
 				5653E51B1A3A9B5B00CEB749 /* navigation_praise_image@2x.png */,
@@ -1619,6 +1622,7 @@
 				565EE8C71A2C47840063CAA3 /* loginBackground@2x.png in Resources */,
 				5653E51C1A3A9B5B00CEB749 /* navigation_forward_image@2x.png in Resources */,
 				138023291A2C69CF0053BDDA /* anli_carType@2x.png in Resources */,
+				138F59FB1A3E903F009B0612 /* navigation_back_jiantou_image_gray@2x.png in Resources */,
 				E377E4EB1A39732700B2D6C9 /* gthreebtnback@2x.png in Resources */,
 				13F9D4841A2DA7BB002A6904 /* sharemail@2x.png in Resources */,
 				13F9D4C31A2DA951002A6904 /* UMShareEditViewControlleriPad.xib in Resources */,
@@ -1915,7 +1919,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
+				PROVISIONING_PROFILE = "96c93639-ff5c-44ac-ad74-809c23c1de89";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1953,7 +1957,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
+				PROVISIONING_PROFILE = "96c93639-ff5c-44ac-ad74-809c23c1de89";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1981,7 +1985,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
+				PROVISIONING_PROFILE = "96c93639-ff5c-44ac-ad74-809c23c1de89";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -2008,7 +2012,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
+				PROVISIONING_PROFILE = "96c93639-ff5c-44ac-ad74-809c23c1de89";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;

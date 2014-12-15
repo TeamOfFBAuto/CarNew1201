@@ -13,6 +13,8 @@
 
 #import "GTCommontHeader.h"
 
+#import "UIColor+ConvertColor.h"
+
 #define ERROR_INFO @"errinfo" //错误信息
 
 typedef void(^ urlRequestBlock)(NSDictionary *result,NSError *erro);
@@ -64,6 +66,10 @@ typedef void(^versionBlock)(BOOL isNewVersion,NSString *updateUrl,NSString *upda
 + (void)cache:(id)dataInfo ForKey:(NSString *)key;
 //取
 + (id)cacheForKey:(NSString *)key;
+
++ (void)cacheBool:(BOOL)boo ForKey:(NSString *)key;
+
++ (BOOL)cacheBoolForKey:(NSString *)key;
 
 #pragma mark - 常用视图快速创建
 
