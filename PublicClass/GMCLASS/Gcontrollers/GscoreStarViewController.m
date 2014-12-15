@@ -167,20 +167,24 @@
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
         
+        
+        [LTools showMBProgressWithText:result[@"errinfo"] addToView:self.view];
+        
         int errcode = [[result objectForKey:@"errcode"]intValue];
+        
         if (errcode == 0) {
             
+            [self performSelector:@selector(Gdismiss) withObject:nil afterDelay:0.5];
             
         }else
         {
             
         }
-        [LTools alertText:result[@"errinfo"]];
         
         
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         
-        [LTools alertText:failDic[@"errinfo"]];
+        [LTools showMBProgressWithText:failDic[@"errinfo"] addToView:self.view];
         
     }];
 }
