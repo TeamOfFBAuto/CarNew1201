@@ -22,6 +22,8 @@
 
 #import "LogInViewController.h"
 
+//#import "GscoreStarViewController.h"
+
 @interface AnliDetailViewController ()<MFMailComposeViewControllerDelegate,UIWebViewDelegate>
 {
     ShareView *_shareView;
@@ -135,6 +137,8 @@
     [comment_btn setTitleColor:[UIColor colorWithHexString:@"979797"] forState:UIControlStateNormal];
     comment_btn.center = CGPointMake(ALL_FRAME_WIDTH /2.f, comment_view.height / 2.f);
     comment_btn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [comment_btn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    
     
     //发表按钮
     
@@ -156,6 +160,12 @@
     }else
     {
         NSLog(@"点评页面");
+        
+//        GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
+//        UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:cc];
+//        [self presentViewController:navc animated:YES completion:^{
+//            
+//        }];
     }
     
 }
