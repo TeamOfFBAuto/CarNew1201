@@ -43,6 +43,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.isAddGestureRecognizer = YES;
+
     
     self.leftImageName = NAVIGATION_MENU_IMAGE_NAME;
     self.myTitle = @"改装案例";

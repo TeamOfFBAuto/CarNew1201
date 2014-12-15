@@ -79,11 +79,6 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-//    self.myTitle = @"案例详情";
-//    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
-    
-//    [self createNavigationTools];
-    
     
     self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT + 20 - 62)];
     _webView.delegate = self;
@@ -107,15 +102,13 @@
     
     self.webView.backgroundColor = COLOR_WEB_DETAIL_BACKCOLOR;
     
+    self.view.backgroundColor = COLOR_WEB_DETAIL_BACKCOLOR;
+    
     [self setNavgationView];
     
-//    [self createCommentView];//评论view
-    
     bottomView = [[CommentBottomView alloc] init];
-    bottomView.hidden = YES;
+//    bottomView.hidden = YES;
     [self.view addSubview:bottomView];
-    
-//    bottomView.top = self.view.bottom - bottomView.height;
     
     __weak typeof(self)weakSelf = self;
     
@@ -142,70 +135,6 @@
     }];
 
 }
-
-//- (void)createCommentView
-//
-//{
-//    comment_view = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.bottom - 65, ALL_FRAME_WIDTH, 65)];
-//    comment_view.backgroundColor = [UIColor whiteColor];
-//    [self.view addSubview:comment_view];
-//    
-//    CGFloat left = 0.f;
-//    if ([LTools cacheBoolForKey:USER_IN]) {
-//        
-//        left = 15.f;
-//    }else
-//    {
-////        UIButton *login = [LTools createButtonWithType:UIButtonTypeCustom frame:CGRectMake(15, 0, 42, 42) normalTitle:@"" image:nil backgroudImage:nil superView:comment_view target:self action:@selector(clickToLogin:)];
-////        login.layer.cornerRadius = login.width/2.f;
-////        [login setTitle:@"登录" forState:UIControlStateNormal];
-////        [login setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-////        [login setBackgroundColor:[UIColor colorWithHexString:@"cfcfcf"]];
-////        
-//        left =  15.f;
-//    }
-//    
-//    NSString *title = @"下面,我简单说两句";
-//    UIButton *comment_btn = [LTools createButtonWithType:UIButtonTypeCustom frame:CGRectMake(left, 0, ALL_FRAME_WIDTH - 30, 30) normalTitle:title image:nil backgroudImage:nil superView:comment_view target:self action:@selector(clickToLogin:)];
-//    comment_btn.layer.borderColor = [UIColor colorWithHexString:@"ff9000"].CGColor;
-//    comment_btn.layer.borderWidth = 0.5f;
-//    [comment_btn setTitleColor:[UIColor colorWithHexString:@"979797"] forState:UIControlStateNormal];
-//    comment_btn.center = CGPointMake(ALL_FRAME_WIDTH /2.f, comment_view.height / 2.f);
-//    comment_btn.titleLabel.font = [UIFont systemFontOfSize:14];
-//    [comment_btn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-//    
-//    
-//    //发表按钮
-//    
-//    NSString *title1 = @"发表";
-//    UIButton *fabiao_btn = [LTools createButtonWithType:UIButtonTypeCustom frame:CGRectMake(comment_btn.width - 50 - 2.5, 2.5, 50, 25) normalTitle:title1 image:nil backgroudImage:nil superView:comment_btn target:self action:@selector(clickToLogin:)];
-//   
-//    [fabiao_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [fabiao_btn setBackgroundColor:[UIColor colorWithHexString:@"ff9000"]];
-//    fabiao_btn.titleLabel.font = [UIFont systemFontOfSize:15];
-//    
-//}
-//
-//- (void)clickToLogin:(UIButton *)sender
-//{
-//    if ([LTools cacheBoolForKey:USER_IN] == NO) {
-//        LogInViewController * logIn = [LogInViewController sharedManager];
-//        UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
-//        [self presentViewController:navc animated:YES completion:nil];
-//    }else
-//    {
-//        NSLog(@"点评页面");
-//        
-//        GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
-//        cc.commentType = Comment_Anli;
-//        cc.commentId = self.anli_id;
-//        UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:cc];
-//        [self presentViewController:navc animated:YES completion:^{
-//            
-//        }];
-//    }
-//    
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -296,12 +225,12 @@
         {
             
         }
-        [LTools alertText:result[@"errinfo"]];
+        [LTools showMBProgressWithText:result[@"errinfo"] addToView:self.view];
         
         
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         
-        [LTools alertText:failDic[@"errinfo"]];
+        [LTools showMBProgressWithText:failDic[@"errinfo"] addToView:self.view];
         
     }];
 }
