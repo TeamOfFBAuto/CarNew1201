@@ -9,8 +9,17 @@
 //星星评分
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    Comment_Anli = 0,//案例
+    Comment_DianPu,//店铺
+    Comment_PeiJian //配件
+    
+}Comment_Type;
+
 @interface GscoreStarViewController : UIViewController
 
+@property(nonatomic,assign)Comment_Type commentType;
+@property(nonatomic,retain)NSString *commentId;//对应 案例、店铺、配件id
 
 @property(nonatomic,assign)float theScore;//评分  1.0~5.0
 

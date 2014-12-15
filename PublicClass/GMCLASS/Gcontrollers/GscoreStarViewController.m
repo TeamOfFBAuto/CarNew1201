@@ -69,6 +69,9 @@
     starRatingView.delegate = self;
     [self.view addSubview:starRatingView];
     
+    
+    self.theScore = 5.0;//默认是五星
+    
     //提交评论按钮
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
     [btn setBackgroundColor:RGBCOLOR(253, 144, 39)];
@@ -77,8 +80,7 @@
     [btn setTitle:@"提交评论" forState:UIControlStateNormal];
     [self.view addSubview:btn];
     
-    
-    
+    [btn addTarget:self action:@selector(clickToComment:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 
@@ -118,6 +120,69 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - 事件处理
+
+- (void)clickToComment:(UIButton *)sender
+{
+    
+    [self allShou];
+    
+    if (self.cc_content.length == 0) {
+        
+        [LTools alertText:@"评论不能为空"];
+        
+        return;
+    }
+    
+    [self networkForCommentContent:self.cc_content score:[NSString stringWithFormat:@"%.f",self.theScore]];
+}
+
+
+#pragma mark - 网络请求
+
+/**
+ *  添加评论
+ */
+- (void)networkForCommentContent:(NSString *)content score:(NSString *)scoreStr
+{
+    NSString *api;
+    
+    if (self.commentType == Comment_Anli) {
+        
+        api = COMMENT_ANLI_API;
+        
+    }else if (self.commentType == Comment_DianPu){
+        
+        api = COMMENT_DIANPU_API;
+        
+    }else if (self.commentType == Comment_PeiJian){
+        
+        api = COMMENT_PEIJIAN_API;
+    }
+    
+    NSString *url = [NSString stringWithFormat:api,[GMAPI getUid],self.commentId,scoreStr,content];
+    
+    LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
+    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+        
+        int errcode = [[result objectForKey:@"errcode"]intValue];
+        if (errcode == 0) {
+            
+            
+        }else
+        {
+            
+        }
+        [LTools alertText:result[@"errinfo"]];
+        
+        
+    } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        
+        [LTools alertText:failDic[@"errinfo"]];
+        
+    }];
 }
 
 
