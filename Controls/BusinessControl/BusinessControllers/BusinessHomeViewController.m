@@ -13,6 +13,7 @@
 #import "AnliDetailViewController.h"
 #import "GscoreStarViewController.h"
 #import "LogInViewController.h"
+#import "BusinessDetailModel.h"
 
 @interface BusinessHomeViewController ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>
 {
@@ -42,6 +43,7 @@
 }
 
 @property(nonatomic,strong)UITableView * myTableView;
+@property(nonatomic,strong)BusinessDetailModel * businessModel;
 
 @end
 
@@ -69,7 +71,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    
+    _businessModel = [[BusinessDetailModel alloc] init];
     
     
     UIWebView * myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
@@ -125,9 +127,9 @@
                 }];
             }
                 break;
-            case BusinessCommentViewTapTypeConsult://咨询
+            case BusinessCommentViewTapTypeConsult://电话咨询
             {
-                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",bself.businessModel.phone]]];
             }
                 break;
                 
@@ -138,6 +140,7 @@
     
     [self setNavgationView];
     
+    [self getBusinessDetailData];
     
     view_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTap:)];
     [self.view addGestureRecognizer:view_tap];
@@ -295,7 +298,7 @@
 {
     LShareTools *tool = [LShareTools shareInstance];
     
-    NSString *url = [NSString stringWithFormat:BUSINESS_DETAIL_URL,_business_id];
+    NSString *url = [NSString stringWithFormat:BUSINESS_DETAIL_HTML5_URL,_business_id];
     NSString *imageUrl = @"http://fbautoapp.fblife.com/resource/head/84/9b/thumb_1_Thu.jpg";
     
     [tool showOrHidden:YES title:_share_title description:@"这是一个非常牛逼的应用" imageUrl:imageUrl aShareImage:_share_image linkUrl:url];
@@ -380,6 +383,45 @@
     UIView * lineView = [[UIView alloc]initWithFrame:CGRectMake(0,section_frame.size.height-0.5,DEVICE_WIDTH,0.5)];
     lineView.backgroundColor = RGBCOLOR(217,217,217);
     [sectionView addSubview:lineView];
+}
+
+#pragma mark - 获取商家详情信息
+-(void)getBusinessDetailData
+{
+    NSString * fullUrl = [NSString stringWithFormat:BUSINESS_DETAIL_URL,_business_id];
+    
+    AFHTTPRequestOperation * request = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
+    __weak typeof(self)bself = self;
+    [request setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        @try {
+            NSDictionary * allDic = [operation.responseString objectFromJSONString];
+            
+            NSLog(@"allDic ------   %@",allDic);
+            
+            if ([[allDic objectForKey:@"errcode"] intValue] == 0)
+            {
+                bself.businessModel = [[BusinessDetailModel alloc] initWithDictionary:[allDic objectForKey:@"datainfo"]];
+            }else
+            {
+                
+            }
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    
+    
+    [request start];
+    
 }
 
 
