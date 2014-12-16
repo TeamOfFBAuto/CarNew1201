@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Controls/StartControl/Controllers/PersonalViewController.m"
-            timestampString = "440325331.483839"
+            filePath = "Controls/StartControl/Views/GpersonCenterCustomCell.m"
+            timestampString = "440413477.152163"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "-getUserInfo"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "-loadCustomViewWithType:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Controls/StartControl/Controllers/PersonalViewController.m"
-            timestampString = "440325555.477826"
+            filePath = "Controls/StartControl/Views/GpersonCenterCustomCell.m"
+            timestampString = "440417259.151858"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
-            landmarkName = "-creatHeaderView"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "-setAnliDataWithData:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

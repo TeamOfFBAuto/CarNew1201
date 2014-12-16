@@ -178,7 +178,7 @@
     [_mainImv sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
     
     _titleLabel1.text = theModel.title;
-    _titleLabel2.text = theModel.username;
+    _titleLabel2.text = theModel.sname;
     
 }
 
