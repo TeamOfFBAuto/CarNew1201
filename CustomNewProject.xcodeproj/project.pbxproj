@@ -162,6 +162,7 @@
 		569FFEF51A27380F008A02A6 /* login_userName_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 569FFEF21A27380F008A02A6 /* login_userName_image@2x.png */; };
 		56BD7EA01A3EAC660038E378 /* CommentBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BD7E9F1A3EAC660038E378 /* CommentBottomView.m */; };
 		56BD7EA21A3EAE940038E378 /* reminderLogIn_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56BD7EA11A3EAE940038E378 /* reminderLogIn_image@2x.png */; };
+		56BD7EA51A3ED55C0038E378 /* BusinessCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BD7EA41A3ED55C0038E378 /* BusinessCommentView.m */; };
 		56CC07111A2FF9C70014F285 /* PrivacyPolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CC07101A2FF9C70014F285 /* PrivacyPolicyViewController.m */; };
 		56CC071F1A302C3C0014F285 /* zhuce.css in Resources */ = {isa = PBXBuildFile; fileRef = 56CC071C1A302C3C0014F285 /* zhuce.css */; };
 		56CC07201A302C3C0014F285 /* 服务条款.html in Resources */ = {isa = PBXBuildFile; fileRef = 56CC071D1A302C3C0014F285 /* 服务条款.html */; };
@@ -480,6 +481,8 @@
 		56BD7E9E1A3EAC660038E378 /* CommentBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentBottomView.h; sourceTree = "<group>"; };
 		56BD7E9F1A3EAC660038E378 /* CommentBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentBottomView.m; sourceTree = "<group>"; };
 		56BD7EA11A3EAE940038E378 /* reminderLogIn_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reminderLogIn_image@2x.png"; sourceTree = "<group>"; };
+		56BD7EA31A3ED55C0038E378 /* BusinessCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCommentView.h; sourceTree = "<group>"; };
+		56BD7EA41A3ED55C0038E378 /* BusinessCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCommentView.m; sourceTree = "<group>"; };
 		56CC070F1A2FF9C70014F285 /* PrivacyPolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPolicyViewController.h; sourceTree = "<group>"; };
 		56CC07101A2FF9C70014F285 /* PrivacyPolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyPolicyViewController.m; sourceTree = "<group>"; };
 		56CC071C1A302C3C0014F285 /* zhuce.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = zhuce.css; sourceTree = "<group>"; };
@@ -1113,6 +1116,8 @@
 				5653E51F1A3A9BBF00CEB749 /* NavigationFunctionView.m */,
 				56BD7E9E1A3EAC660038E378 /* CommentBottomView.h */,
 				56BD7E9F1A3EAC660038E378 /* CommentBottomView.m */,
+				56BD7EA31A3ED55C0038E378 /* BusinessCommentView.h */,
+				56BD7EA41A3ED55C0038E378 /* BusinessCommentView.m */,
 			);
 			path = BusinessViews;
 			sourceTree = "<group>";
@@ -1813,6 +1818,7 @@
 				19B34DDD1A246DDE00ED1935 /* RightViewController.m in Sources */,
 				565EE8C41A2C41F10063CAA3 /* pinyin.c in Sources */,
 				565EE8B91A2C3DEE0063CAA3 /* ASIDownloadCache.m in Sources */,
+				56BD7EA51A3ED55C0038E378 /* BusinessCommentView.m in Sources */,
 				E3ED4A6A1A30233A004A2D72 /* MLImageCrop.m in Sources */,
 				563B32261A382AF900015088 /* NSAttributedString+Attributes.m in Sources */,
 				56500AFF1A2D676900E834A1 /* BusinessListTableViewCell.m in Sources */,

@@ -9,8 +9,10 @@
 #import "BusinessHomeViewController.h"
 #import "NavigationFunctionView.h"
 #import "LShareTools.h"
-#import "CommentBottomView.h"
+#import "BusinessCommentView.h"
 #import "AnliDetailViewController.h"
+#import "GscoreStarViewController.h"
+#import "LogInViewController.h"
 
 @interface BusinessHomeViewController ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>
 {
@@ -34,7 +36,9 @@
     ///右上角菜单栏
     NavigationFunctionView * functionView;
     ///底部评论视图
-    CommentBottomView * bottomView;
+    BusinessCommentView * bottomView;
+    ///屏幕点击
+    UITapGestureRecognizer * view_tap;
 }
 
 @property(nonatomic,strong)UITableView * myTableView;
@@ -49,11 +53,12 @@
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    self.navigationController.navigationBarHidden = YES;
 }
 
--(void)viewWillDisappear:(BOOL)animated
+-(void)viewDidDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
+    [super viewDidDisappear:animated];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.navigationController.navigationBarHidden = NO;
 }
@@ -67,7 +72,7 @@
     
     
     
-    UIWebView * myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+    UIWebView * myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
     myWebView.delegate = self;
     [self.view addSubview:myWebView];
     
@@ -96,14 +101,46 @@
      */
     
     
-    bottomView = [[CommentBottomView alloc] init];
+    bottomView = [[BusinessCommentView alloc] init];
     bottomView.hidden = YES;
     [self.view addSubview:bottomView];
-    [bottomView setMyBlock:^(CommentTapType aType) {
-        NSLog(@"bottom tap : %d",aType);
+    __weak typeof(self)bself = self;
+    [bottomView setMyBlock:^(BusinessCommentViewTapType aType) {
+        switch (aType) {
+            case BusinessCommentViewTapTypeLogIn://登陆
+            {
+                LogInViewController * logInVC = [LogInViewController sharedManager];
+                UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logInVC];
+                [bself presentViewController:navc animated:YES completion:nil];
+            }
+                break;
+            case BusinessCommentViewTapTypeComment://评论
+            {
+                GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
+                cc.commentType = Comment_Anli;//评论类型（枚举）
+                cc.commentId = bself.business_id;//对应的id
+                UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:cc];
+                [bself presentViewController:navc animated:YES completion:^{
+                    
+                }];
+            }
+                break;
+            case BusinessCommentViewTapTypeConsult://咨询
+            {
+                
+            }
+                break;
+                
+            default:
+                break;
+        }
     }];
     
     [self setNavgationView];
+    
+    
+    view_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTap:)];
+    [self.view addGestureRecognizer:view_tap];
 }
 
 
@@ -245,6 +282,12 @@
     }
     
     functionView.myHidden = !functionView.myHidden;
+}
+
+#pragma mark - 消失弹出层
+-(void)viewTap:(UITapGestureRecognizer *)sender
+{
+    
 }
 
 #pragma mark - 分享
