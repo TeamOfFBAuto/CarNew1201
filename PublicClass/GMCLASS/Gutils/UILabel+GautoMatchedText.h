@@ -10,8 +10,10 @@
 
 @interface UILabel (GautoMatchedText)
 
--(CGRect)matchedRectWithWidth:(CGFloat)width;
 
 -(void)setMatchedFrame4LabelWithOrigin:(CGPoint)o width:(CGFloat)theWidth;
+
+
+-(void)setMatchedFrame4LabelWithOrigin:(CGPoint)o height:(CGFloat)theHeight limitMaxWidth:(CGFloat)theWidth;
 
 @end

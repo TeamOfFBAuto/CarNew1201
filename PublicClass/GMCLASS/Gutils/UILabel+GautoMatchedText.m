@@ -34,7 +34,7 @@
 
 //设定高度 最大宽度  自适应宽度
 -(void)setMatchedFrame4LabelWithOrigin:(CGPoint)o height:(CGFloat)theHeight limitMaxWidth:(CGFloat)theWidth{
-    CGRect r = [self matchedRectWithWidth:theHeight];
+    CGRect r = [self matchedrectWithHeight:theHeight];
     if (r.size.width>theWidth) {
         [self setFrame:CGRectMake(o.x, o.y, theWidth, r.size.height)];
     }else{
