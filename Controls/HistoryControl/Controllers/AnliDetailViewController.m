@@ -26,7 +26,7 @@
 
 #import "CommentBottomView.h"
 
-@interface AnliDetailViewController ()<MFMailComposeViewControllerDelegate,UIWebViewDelegate>
+@interface AnliDetailViewController ()<MFMailComposeViewControllerDelegate,UIWebViewDelegate,UIScrollViewDelegate>
 {
     ShareView *_shareView;
     MBProgressHUD *loading;
@@ -35,6 +35,8 @@
     UIView *comment_view;//评论视图
     
     CommentBottomView *bottomView;
+    
+    CGFloat currentOffY;
 }
 
 @end
@@ -79,10 +81,14 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
+    currentOffY = 0.f;
     
-    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT + 20 - 62)];
+    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT + 20)];
     _webView.delegate = self;
     [self.view addSubview:_webView];
+    _webView.scrollView.delegate = self;
+    
+    _webView.scrollView.bounces = NO;
     
     loading = [LTools MBProgressWithText:@"数据加载中..." addToView:self.view];
     [loading show:YES];
@@ -107,7 +113,7 @@
     [self setNavgationView];
     
     bottomView = [[CommentBottomView alloc] init];
-//    bottomView.hidden = YES;
+    bottomView.hidden = YES;
     [self.view addSubview:bottomView];
     
     __weak typeof(self)weakSelf = self;
@@ -141,28 +147,7 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)setNavgationView
-{
-    UIImageView * navigation_view = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,64)];
-    navigation_view.image = [UIImage imageNamed:@"default_navigation_clear_image"];
-    [self.view addSubview:navigation_view];
-    navigation_view.userInteractionEnabled = YES;
-    [self.view bringSubviewToFront:navigation_view];
-    
-    
-    UIButton * back_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    back_button.frame = CGRectMake(0,20,40,44);
-//    back_button.backgroundColor = [UIColor orangeColor];
-    [back_button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-    [back_button setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];
-    [navigation_view addSubview:back_button];
-    
-    UIButton * right_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    right_button.frame = CGRectMake(DEVICE_WIDTH-8-44,20,44,44);
-    [right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
-    [right_button setImage:[UIImage imageNamed:@"navigation_right_menu_image"] forState:UIControlStateNormal];
-    [navigation_view addSubview:right_button];
-}
+
 
 -(void)back:(UIButton *)button
 {
@@ -206,6 +191,8 @@
     
     functionView.myHidden = !functionView.myHidden;
 }
+
+#pragma mark -  网络请求
 
 /**
  *  取消收藏
@@ -252,12 +239,12 @@
         {
             
         }
-        [LTools alertText:result[@"errinfo"]];
+        [LTools showMBProgressWithText:result[@"errinfo"] addToView:self.view];
 
         
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         
-        [LTools alertText:failDic[@"errinfo"]];
+        [LTools showMBProgressWithText:failDic[@"errinfo"] addToView:self.view];
 
     }];
 }
@@ -292,6 +279,29 @@
     
     [rightView addSubview:share_Button];
     
+}
+
+-(void)setNavgationView
+{
+//    UIImageView * navigation_view = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,64)];
+//    navigation_view.image = [UIImage imageNamed:@"default_navigation_clear_image"];
+//    [self.view addSubview:navigation_view];
+//    navigation_view.userInteractionEnabled = YES;
+//    [self.view bringSubviewToFront:navigation_view];
+    
+    
+    UIButton * back_button = [UIButton buttonWithType:UIButtonTypeCustom];
+    back_button.frame = CGRectMake(0,20,40,44);
+    //    back_button.backgroundColor = [UIColor orangeColor];
+    [back_button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [back_button setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];
+    [self.view addSubview:back_button];
+    
+    UIButton * right_button = [UIButton buttonWithType:UIButtonTypeCustom];
+    right_button.frame = CGRectMake(DEVICE_WIDTH-8-44,20,44,44);
+    [right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+    [right_button setImage:[UIImage imageNamed:@"navigation_right_menu_image"] forState:UIControlStateNormal];
+    [self.view addSubview:right_button];
 }
 
 #pragma mark 事件处理
@@ -621,11 +631,16 @@
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    bottomView.hidden = NO;
+//    bottomView.hidden = NO;
     
     [loading hide:YES];
     
     [self updateStatusBarColor];
+    
+//    webView.scrollView.contentSize  = CGSizeMake(webView.width, webView.scrollView.contentSize.height + 62);
+//    [webView.scrollView addSubview:bottomView];
+//    bottomView.top = webView.scrollView.contentSize.height - 62;
+    
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
@@ -633,5 +648,28 @@
     NSLog(@"erro %@",error);
 }
 
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSLog(@"=== %@",NSStringFromCGSize(scrollView.contentSize));
+    
+    CGFloat offset = scrollView.contentOffset.y;
+    
+    
+    if (offset > currentOffY) {
+        bottomView.hidden = NO;
+        
+        self.webView.height = ALL_FRAME_HEIGHT + 20 - 62;
+        
+    }else
+    {
+        bottomView.hidden = YES;
+        self.webView.height = ALL_FRAME_HEIGHT + 20;
+    }
+    
+    currentOffY = offset;
+}
 
 @end
