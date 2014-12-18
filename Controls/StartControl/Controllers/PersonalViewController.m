@@ -873,12 +873,9 @@ typedef enum{
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"加载数据失败请重新加载"
                                                                delegate:self cancelButtonTitle:@"确定"
                                                       otherButtonTitles:nil,nil];
-                
                 [alert show];
             }
         }
-        
-        
         
         if (_tableView.isReloadData) {
             
@@ -889,7 +886,6 @@ typedef enum{
     }];
     
 }
-
 
 #pragma mark - 下拉刷新上提加载更多
 /**
