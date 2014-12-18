@@ -15,5 +15,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *smallImageView;
 
 - (void)setCellWithModel:(id)aModel;
+@property (strong, nonatomic) IBOutlet UIImageView *quanImageView;
 
 @end

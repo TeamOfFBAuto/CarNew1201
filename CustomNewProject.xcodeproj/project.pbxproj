@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1312611B1A2C7237001E46E4 /* AnliViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 131261191A2C7237001E46E4 /* AnliViewCell.m */; };
 		1312611C1A2C7237001E46E4 /* AnliViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1312611A1A2C7237001E46E4 /* AnliViewCell.xib */; };
+		132FB8C71A42D2CB00D5A9F0 /* anli_touxian_quan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 132FB8C61A42D2CB00D5A9F0 /* anli_touxian_quan@2x.png */; };
+		132FB8C91A42DD7200D5A9F0 /* anli_touxiang_yuan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 132FB8C81A42DD7200D5A9F0 /* anli_touxiang_yuan@2x.png */; };
 		1351178D1A257E8E0015C133 /* LTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 135117721A257E8E0015C133 /* LTools.m */; };
 		1351178E1A257E8E0015C133 /* RefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 135117741A257E8E0015C133 /* RefreshTableView.m */; };
 		1351179C1A257EB20015C133 /* bluedown1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 135117981A257EB20015C133 /* bluedown1@2x.png */; };
@@ -228,6 +230,8 @@
 		131261181A2C7237001E46E4 /* AnliViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnliViewCell.h; sourceTree = SOURCE_ROOT; };
 		131261191A2C7237001E46E4 /* AnliViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnliViewCell.m; sourceTree = SOURCE_ROOT; };
 		1312611A1A2C7237001E46E4 /* AnliViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnliViewCell.xib; sourceTree = SOURCE_ROOT; };
+		132FB8C61A42D2CB00D5A9F0 /* anli_touxian_quan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_touxian_quan@2x.png"; sourceTree = "<group>"; };
+		132FB8C81A42DD7200D5A9F0 /* anli_touxiang_yuan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_touxiang_yuan@2x.png"; sourceTree = "<group>"; };
 		135117711A257E8E0015C133 /* LTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTools.h; sourceTree = "<group>"; };
 		135117721A257E8E0015C133 /* LTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTools.m; sourceTree = "<group>"; };
 		135117731A257E8E0015C133 /* RefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTableView.h; sourceTree = "<group>"; };
@@ -645,6 +649,8 @@
 		138023211A2C69CF0053BDDA /* AnLiControllerImages */ = {
 			isa = PBXGroup;
 			children = (
+				132FB8C81A42DD7200D5A9F0 /* anli_touxiang_yuan@2x.png */,
+				132FB8C61A42D2CB00D5A9F0 /* anli_touxian_quan@2x.png */,
 				137664E41A38557300C8695D /* anli_list_defatult@2x.png */,
 				137664E21A382DE100C8695D /* anli_bottom_clear@2x.png */,
 				138023221A2C69CF0053BDDA /* anli_back@2x.png */,
@@ -1676,9 +1682,11 @@
 				13F9D4871A2DA7BB002A6904 /* shareziliudi@2x.png in Resources */,
 				56621D421A28605B00310A48 /* item_cancel@2x.png in Resources */,
 				13F9D4C41A2DA951002A6904 /* UMSLoginViewController.xib in Resources */,
+				132FB8C71A42D2CB00D5A9F0 /* anli_touxian_quan@2x.png in Resources */,
 				5653E5241A3AE9D200CEB749 /* navigation_back_jiantou_image@2x.png in Resources */,
 				5653E5171A39A1E300CEB749 /* 20130502_shubiao.png in Resources */,
 				56621D521A28605B00310A48 /* send_selected@2x.png in Resources */,
+				132FB8C91A42DD7200D5A9F0 /* anli_touxiang_yuan@2x.png in Resources */,
 				13F9D4C21A2DA951002A6904 /* UMShareEditViewController.xib in Resources */,
 				E38F1E1F1A2C3ABE0048C58D /* logo@2x.png in Resources */,
 				13F9D4C61A2DA951002A6904 /* UMSShareListController.xib in Resources */,

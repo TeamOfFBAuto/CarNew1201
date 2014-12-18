@@ -54,7 +54,15 @@
 
     
     self.smallImageView.layer.masksToBounds = YES;
-    self.smallImageView.layer.cornerRadius = 32 / 2.f;
+    self.smallImageView.layer.cornerRadius = 30 / 2.f;
+    
+    self.quanImageView.layer.masksToBounds = YES;
+    self.quanImageView.layer.cornerRadius = 34 / 2.f;
+    
+    self.quanImageView.center = self.smallImageView.center;
+    
+//    self.smallImageView.layer.borderWidth = 2.f;
+//    self.smallImageView.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.4].CGColor;
     
     self.nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
     self.nameLabel.layer.shadowOffset = CGSizeMake(0,1);
@@ -65,6 +73,7 @@
     self.aTitleLabel.layer.shadowOffset = CGSizeMake(0,1);
     self.aTitleLabel.layer.shadowRadius = 0.5;
     self.aTitleLabel.layer.shadowOpacity = 0.8;
+    
     
     //layer.cornerRadius
     
