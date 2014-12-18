@@ -13,7 +13,7 @@
 #import "AboutViewController.h"
 #import "UMTableViewController.h"
 #import "AppDelegate.h"
-
+#import "LogInViewController.h"
 #import "GMAPI.h"
 
 @interface SliderRightSettingViewController ()
@@ -46,7 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
     self.myTitle = @"设置";
@@ -333,10 +333,13 @@
         [user synchronize];
     }else
     {
+        LogInViewController * logIn = [[LogInViewController alloc] init];
+        UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
+        [self presentViewController:navc animated:YES completion:nil];
         
         
-        AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [delegate showControlView:Root_login];
+//        AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//        [delegate showControlView:Root_login];
     }
 }
 

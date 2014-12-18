@@ -49,6 +49,17 @@
     titles = @[@"改装案例", @"服务商家", @"个人中心"];
     
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
 
 #pragma mark - 跳到设置界面
 -(void)settingTap:(UIButton *)sender
