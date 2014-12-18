@@ -300,7 +300,7 @@
     [self.view addSubview:back_button];
     
     UIButton * right_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    right_button.frame = CGRectMake(DEVICE_WIDTH-8-44,20,44,44);
+    right_button.frame = CGRectMake(DEVICE_WIDTH-44,20,44,44);
     [right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     [right_button setImage:[UIImage imageNamed:@"navigation_right_menu_image"] forState:UIControlStateNormal];
     [self.view addSubview:right_button];
@@ -311,6 +311,13 @@
 - (void)clickToShouCang:(UIButton *)sender
 {
     [self networkForCollect];
+}
+
+
+#pragma mark-touches
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    functionView.myHidden = YES;
 }
 
 //- (void)clickToZhuanFa:(UIButton *)sender
