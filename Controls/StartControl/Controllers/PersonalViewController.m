@@ -287,6 +287,22 @@ typedef enum{
     UITapGestureRecognizer *ddd = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userBannerClicked)];
     [_topImv addGestureRecognizer:ddd];
     
+    
+    //zking
+    
+    
+    UIImageView *imgV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 6+ALL_FRAME_WIDTH*70/320.0,6+ ALL_FRAME_WIDTH*70/320.0)];
+    
+    imgV.center=CGPointMake(ALL_FRAME_WIDTH/2,88.00/320*ALL_FRAME_WIDTH);
+    
+    imgV.layer.cornerRadius = ALL_FRAME_WIDTH*72/320/2;
+    imgV.layer.masksToBounds = YES;
+
+    
+    imgV.backgroundColor=[[UIColor whiteColor]colorWithAlphaComponent:0.5];
+    
+    [_upThreeViewBackGroundView addSubview:imgV];
+    
     //头像
     _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH*70/320.0, ALL_FRAME_WIDTH*70/320.0)];
 //    _faceImv.backgroundColor = RGBCOLOR_ONE;
@@ -297,6 +313,11 @@ typedef enum{
     UITapGestureRecognizer *ccc = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userFaceClicked)];
     [_faceImv addGestureRecognizer:ccc];
     [_upThreeViewBackGroundView addSubview:_faceImv];
+    
+    
+    
+
+    
     
     //用户名
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_faceImv.frame)+8, ALL_FRAME_WIDTH, 19.00/320*ALL_FRAME_WIDTH)];

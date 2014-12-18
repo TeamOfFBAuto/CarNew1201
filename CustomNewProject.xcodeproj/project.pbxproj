@@ -55,6 +55,7 @@
 		13F9D4C71A2DA951002A6904 /* umFeedback.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 13F9D4B61A2DA951002A6904 /* umFeedback.bundle */; };
 		13F9D4C81A2DA951002A6904 /* UMSocialSDKResourcesNew.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 13F9D4B71A2DA951002A6904 /* UMSocialSDKResourcesNew.bundle */; };
 		13F9D4CA1A2DAA66002A6904 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F9D4C91A2DAA66002A6904 /* MessageUI.framework */; };
+		198D4CCC1A42D49C008C9AD2 /* alfcircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 198D4CCB1A42D49C008C9AD2 /* alfcircle@2x.png */; };
 		19B34DCB1A24666500ED1935 /* SelectedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DCA1A24666500ED1935 /* SelectedViewController.m */; };
 		19B34DCE1A2466A300ED1935 /* PicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DCD1A2466A300ED1935 /* PicViewController.m */; };
 		19B34DD11A2466C300ED1935 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19B34DD01A2466C300ED1935 /* StoreViewController.m */; };
@@ -310,6 +311,7 @@
 		13F9D4B71A2DA951002A6904 /* UMSocialSDKResourcesNew.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResourcesNew.bundle; sourceTree = "<group>"; };
 		13F9D4B81A2DA951002A6904 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UMSocialLocalizable.strings"; sourceTree = "<group>"; };
 		13F9D4C91A2DAA66002A6904 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		198D4CCB1A42D49C008C9AD2 /* alfcircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alfcircle@2x.png"; sourceTree = "<group>"; };
 		199B0BA807D6890CA852B6FD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		19B34DC91A24666500ED1935 /* SelectedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedViewController.h; sourceTree = "<group>"; };
 		19B34DCA1A24666500ED1935 /* SelectedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedViewController.m; sourceTree = "<group>"; };
@@ -1130,6 +1132,7 @@
 		5653E50D1A39753700CEB749 /* personalImages */ = {
 			isa = PBXGroup;
 			children = (
+				198D4CCB1A42D49C008C9AD2 /* alfcircle@2x.png */,
 				5653E5121A39A1E300CEB749 /* 20130502_fabiao.png */,
 				5653E5131A39A1E300CEB749 /* 20130502_pinglun@2x.png */,
 				5653E5141A39A1E300CEB749 /* 20130502_shubiao.png */,
@@ -1719,6 +1722,7 @@
 				E3571F411A3E920C001F7C8C /* gstarBack@2x.png in Resources */,
 				569FFEF41A27380F008A02A6 /* login_mima_image@2x.png in Resources */,
 				5653E5101A39754500CEB749 /* newAboultIphone5@2x.png in Resources */,
+				198D4CCC1A42D49C008C9AD2 /* alfcircle@2x.png in Resources */,
 				E36AAF6D1A385B2C006A6F21 /* gstart_half@2x.png in Resources */,
 				13F9D4BA1A2DA951002A6904 /* WeiboSDK.bundle in Resources */,
 				569FFEF51A27380F008A02A6 /* login_userName_image@2x.png in Resources */,
