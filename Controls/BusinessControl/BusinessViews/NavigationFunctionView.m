@@ -14,9 +14,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
-        self.frame = CGRectMake(DEVICE_WIDTH-50,70,34,72);
-        self.backgroundColor = [UIColor blackColor];
+        self.frame = CGRectMake(0,64,DEVICE_WIDTH,DEVICE_HEIGHT-64);
+        self.backgroundColor = [UIColor clearColor];
         [self setup];
         
     }
@@ -25,21 +24,25 @@
 
 
 -(void)setup
-{    
+{
+    back_view = [[UIView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-56,6,34,72)];
+    back_view.backgroundColor = [UIColor blackColor];
+    [self addSubview:back_view];
+    
     NSArray * image_array = [NSArray arrayWithObjects:[UIImage imageNamed:@"navigation_forward_image"],[UIImage imageNamed:@"navigation_praise_image"],nil];
     
     UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,33,0.5)];
     line_view.backgroundColor = RGBCOLOR(70,70,70);
-    line_view.center = CGPointMake(self.width/2,self.height/2);
-    [self addSubview:line_view];
+    line_view.center = CGPointMake(back_view.width/2,back_view.height/2);
+    [back_view addSubview:line_view];
     for (int i = 0;i < 2;i++)
     {
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(0,(self.height/2+0.5)*i,self.width,(self.height-0.5)/2);
+        button.frame = CGRectMake(0,(back_view.height/2+0.5)*i,back_view.width,(back_view.height-0.5)/2);
         [button setImage:[image_array objectAtIndex:i] forState:UIControlStateNormal];
         [button setTag:100+i];
         [button addTarget:self action:@selector(buttonTap:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:button];
+        [back_view addSubview:button];
         
         if (i == 1)
         {
@@ -66,13 +69,14 @@
 -(void)setMyHidden:(BOOL)myHidden
 {
     _myHidden = myHidden;
+    __weak typeof(self)bself = self;
     [UIView animateWithDuration:0.4 animations:^{
         if (myHidden)
         {
-            self.alpha = 0;
+            bself.alpha = 0;
         }else
         {
-            self.alpha = 0.8;
+            bself.alpha = 0.8;
         }
     } completion:^(BOOL finished) {
         
@@ -91,7 +95,6 @@
         button.selected = isCollect;
     }
 }
-
 @end
 
 

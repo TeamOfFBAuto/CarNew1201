@@ -17,6 +17,7 @@ typedef void(^navFunctionBlock)(int index);
 @interface NavigationFunctionView : UIView
 {
     navFunctionBlock nav_function_block;
+    UIView * back_view;
 }
 
 ///设置当前view是否隐藏

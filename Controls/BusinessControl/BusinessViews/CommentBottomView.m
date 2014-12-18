@@ -26,6 +26,7 @@
 {
     UIImageView * headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(16,10,42,42)];
     headerImageView.layer.cornerRadius = 21;
+    headerImageView.image = [UIImage imageNamed:HEADER_DEFAULT_IMAGE];
     headerImageView.layer.masksToBounds = YES;
     headerImageView.userInteractionEnabled = YES;
     [self addSubview:headerImageView];

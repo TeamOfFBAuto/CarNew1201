@@ -15,7 +15,7 @@
 #import "LogInViewController.h"
 #import "BusinessDetailModel.h"
 
-@interface BusinessHomeViewController ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate>
+@interface BusinessHomeViewController ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate,UIScrollViewDelegate>
 {
     ///背景图
     UIImageView * banner_imageView;
@@ -40,11 +40,13 @@
     BusinessCommentView * bottomView;
     ///屏幕点击
     UITapGestureRecognizer * view_tap;
+    
+    float currentOffY;
 }
 
 @property(nonatomic,strong)UITableView * myTableView;
 @property(nonatomic,strong)BusinessDetailModel * businessModel;
-
+@property(nonatomic,strong)UIWebView * myWebView;
 @end
 
 @implementation BusinessHomeViewController
@@ -72,17 +74,17 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     _businessModel = [[BusinessDetailModel alloc] init];
+    currentOffY = 0.f;
     
-    
-    UIWebView * myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
-    myWebView.delegate = self;
-    [self.view addSubview:myWebView];
+    _myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
+    _myWebView.delegate = self;
+    _myWebView.scrollView.delegate = self;
+    _myWebView.scrollView.bounces = NO;
+    [self.view addSubview:_myWebView];
     
     NSString * fullUrl = [NSString stringWithFormat:@"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=%@",_business_id];
-    
-    [myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
-    
-    myWebView.backgroundColor = COLOR_WEB_DETAIL_BACKCOLOR;
+    [_myWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
+    _myWebView.backgroundColor = COLOR_WEB_DETAIL_BACKCOLOR;
     
     
     hud = [ZSNApi showMBProgressWithText:@"加载中..." addToView:self.view];
@@ -142,8 +144,6 @@
     
     [self getBusinessDetailData];
     
-    view_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTap:)];
-    [self.view addGestureRecognizer:view_tap];
 }
 
 
@@ -245,7 +245,7 @@
     
     
     UIButton * right_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    right_button.frame = CGRectMake(DEVICE_WIDTH-8-44,20,44,44);
+    right_button.frame = CGRectMake(DEVICE_WIDTH-44,20,44,44);
     [right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     [right_button setImage:[UIImage imageNamed:@"navigation_right_menu_image"] forState:UIControlStateNormal];
     [navigation_view addSubview:right_button];
@@ -285,12 +285,6 @@
     }
     
     functionView.myHidden = !functionView.myHidden;
-}
-
-#pragma mark - 消失弹出层
--(void)viewTap:(UITapGestureRecognizer *)sender
-{
-    
 }
 
 #pragma mark - 分享
@@ -475,8 +469,30 @@
 }
 
 
+#pragma mark - UIScrollViewDelegate
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat offset = scrollView.contentOffset.y;
+    
+    if (offset > currentOffY) {
+        bottomView.hidden = NO;
+        _myWebView.height = ALL_FRAME_HEIGHT + 20 - 62;
+        
+    }else
+    {
+        bottomView.hidden = YES;
+        _myWebView.height = ALL_FRAME_HEIGHT + 20;
+    }
+    
+    currentOffY = offset;
+}
 
 
+#pragma mark-touches
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    functionView.myHidden = YES;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
