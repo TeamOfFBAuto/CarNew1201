@@ -55,6 +55,8 @@
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     
+    [self updateStatusBarColor];
+    
 }
 
 //更新状态栏颜色
