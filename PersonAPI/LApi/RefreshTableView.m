@@ -251,18 +251,18 @@
     [noDataImv setImage:[UIImage imageNamed:@"noDataView@2x"]];
     
     //上分割线
-    UIView *shangxian = [[UIView alloc]initWithFrame:CGRectMake(noDataImv.frame.origin.x, CGRectGetMaxY(noDataImv.frame)+10, noDataImv.frame.size.width, 1)];
+    UIView *shangxian = [[UIView alloc]initWithFrame:CGRectMake(noDataImv.frame.origin.x, CGRectGetMaxY(noDataImv.frame)+12, noDataImv.frame.size.width, 1)];
     shangxian.backgroundColor = RGBCOLOR(233, 233, 233);
     
     //文字提示
-    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(shangxian.frame.origin.x, CGRectGetMaxY(shangxian.frame), shangxian.frame.size.width, 13)];
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(shangxian.frame.origin.x, CGRectGetMaxY(shangxian.frame)+5, shangxian.frame.size.width, 13)];
     titleLabel.text = @"没有收藏任何内容";
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont systemFontOfSize:13];
     titleLabel.textColor = RGBCOLOR(129, 129, 129);
     
     //下分割线
-    UIView *xiaxian = [[UIView alloc]initWithFrame:CGRectMake(titleLabel.frame.origin.x, CGRectGetMaxY(titleLabel.frame), titleLabel.frame.size.width, 1)];
+    UIView *xiaxian = [[UIView alloc]initWithFrame:CGRectMake(titleLabel.frame.origin.x, CGRectGetMaxY(titleLabel.frame)+5, titleLabel.frame.size.width, 1)];
     xiaxian.backgroundColor = RGBCOLOR(233, 233, 233);
     
     
