@@ -37,6 +37,10 @@
     CommentBottomView *bottomView;
     
     CGFloat currentOffY;
+    
+    UIView *progress;
+    UIView *greenView;//绿色
+    NSTimer *timer;
 }
 
 @end
@@ -46,6 +50,9 @@
 - (void)dealloc
 {
     NSLog(@"---dealloc");
+    self.webView.delegate = nil;
+    self.webView = nil;
+    bottomView = nil;
 }
 
 
@@ -92,8 +99,8 @@
     
     _webView.scrollView.bounces = NO;
     
-    loading = [LTools MBProgressWithText:@"数据加载中..." addToView:self.view];
-    [loading show:YES];
+//    loading = [LTools MBProgressWithText:@"数据加载中..." addToView:self.view];
+//    [loading show:YES];
 
     NSString *api;
     if (self.detailType == Detail_Anli) {
@@ -141,7 +148,66 @@
         }
         
     }];
+    
+    [self progress];
 
+}
+
+- (void)progress
+{
+    progress = [[UIView alloc]initWithFrame:CGRectMake(0, bottomView.bottom - 2, DEVICE_WIDTH, 2)];
+    progress.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:progress];
+    
+    greenView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, progress.height)];
+    greenView.backgroundColor = RGBCOLOR(0, 255, 0);
+    [progress addSubview:greenView];
+    
+    [self progressAnimation];
+
+}
+
+- (void)progressAnimation
+{
+    CGFloat seg = DEVICE_WIDTH / 10.f;
+    
+    
+        [UIView animateWithDuration:1.5 animations:^{
+            
+            if (greenView.width <= 7 * seg) {
+                
+                greenView.width = 7 * seg;
+                
+            }
+            
+        } completion:^(BOOL finished) {
+            
+            
+            [UIView animateWithDuration:1.5 animations:^{
+                
+                greenView.width = 9 * seg;
+                
+            }];
+            
+        }];
+}
+
+- (void)progressToFinish
+{
+    [timer invalidate];
+    
+    [UIView animateWithDuration:1.f animations:^{
+        
+        greenView.width = DEVICE_WIDTH;
+        
+    } completion:^(BOOL finished) {
+        
+        [greenView removeFromSuperview];
+        greenView = nil;
+        [progress removeFromSuperview];
+        progress = nil;
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -645,6 +711,8 @@
     [loading hide:YES];
     
     [self updateStatusBarColor];
+    
+    [self progressToFinish];
     
 //    webView.scrollView.contentSize  = CGSizeMake(webView.width, webView.scrollView.contentSize.height + 62);
 //    [webView.scrollView addSubview:bottomView];
