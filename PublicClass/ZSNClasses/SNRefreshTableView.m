@@ -230,6 +230,7 @@
         [self stopLoading:2];
     }
     
+    
     self.userInteractionEnabled = YES;
 }
 

@@ -24,7 +24,9 @@
 @end
 
 @interface RefreshTableView : UITableView<L_EGORefreshTableDelegate,UITableViewDataSource,UITableViewDelegate>
-
+{
+    UIView *_noDataView;//没有数据时候的展示view;
+}
 
 @property (nonatomic,retain)LRefreshTableHeaderView * refreshHeaderView;
 

@@ -244,7 +244,7 @@
         if (iPhone5) {
             j.center = CGPointMake(160, 170);
         }else{
-            j.center = CGPointMake(160, 170);
+            j.center = CGPointMake(DEVICE_WIDTH/2.0, 170);
         }
         
         [self.view addSubview:j];

@@ -103,8 +103,8 @@ typedef enum{
     [super viewWillAppear:YES];
     self.navigationController.navigationBarHidden = YES;
     if (IOS7_OR_LATER) {
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+//        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     }
 }
 
@@ -117,6 +117,10 @@ typedef enum{
     {
         self.navigationController.navigationBar.translucent = NO;
     }
+    
+    
+
+    
     
     NSLog(@"%s",__FUNCTION__);
     
@@ -158,7 +162,14 @@ typedef enum{
     [self.view addSubview:gBackBtn];
     
     
+    
+    
 }
+
+
+
+
+
 
 
 -(void)gGoBack{
@@ -917,6 +928,7 @@ typedef enum{
  */
 - (void)reloadData:(NSArray *)dataArr isReload:(BOOL)isReload
 {
+    
     if (isReload) {
         
         _dataArray = dataArr;
@@ -927,6 +939,10 @@ typedef enum{
         [newArr addObjectsFromArray:dataArr];
         _dataArray = newArr;
     }
+    
+    
+    
+    _tableView.dataArray = [NSMutableArray arrayWithArray:_dataArray];
     
     [_tableView performSelector:@selector(finishReloadigData) withObject:nil afterDelay:0.2];
 }

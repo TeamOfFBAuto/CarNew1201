@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Controls/StartControl/Views/GpersonCenterCustomCell.m"
-            timestampString = "440413477.152163"
+            filePath = "PersonAPI/LApi/RefreshTableView.m"
+            timestampString = "440663535.10752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "-loadCustomViewWithType:"
+            startingLineNumber = "464"
+            endingLineNumber = "464"
+            landmarkName = "-stopLoading:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Controls/StartControl/Views/GpersonCenterCustomCell.m"
-            timestampString = "440417259.151858"
+            filePath = "PersonAPI/LApi/RefreshTableView.m"
+            timestampString = "440663535.10752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "-setAnliDataWithData:"
+            startingLineNumber = "449"
+            endingLineNumber = "449"
+            landmarkName = "-stopLoading:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

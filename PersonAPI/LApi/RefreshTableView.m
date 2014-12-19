@@ -227,10 +227,52 @@
         
     }else {
         
+        
         [self stopLoading:2];
     }
     
+    
+    
+    if (self.dataArray.count == 0) {
+        [self stopLoading:3];
+    }
+    
     self.userInteractionEnabled = YES;
+}
+
+
+-(void)setNodataView{
+    //整个视图
+    _noDataView = [[UIView alloc]initWithFrame:CGRectMake(0, 240, DEVICE_WIDTH, 105)];
+    _noDataView.backgroundColor = [UIColor whiteColor];
+    
+    //图
+    UIImageView *noDataImv = [[UIImageView alloc]initWithFrame:CGRectMake(90, 90, 130, 60)];
+    [noDataImv setImage:[UIImage imageNamed:@"noDataView@2x"]];
+    
+    //上分割线
+    UIView *shangxian = [[UIView alloc]initWithFrame:CGRectMake(noDataImv.frame.origin.x, CGRectGetMaxY(noDataImv.frame)+10, noDataImv.frame.size.width, 1)];
+    shangxian.backgroundColor = RGBCOLOR(233, 233, 233);
+    
+    //文字提示
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(shangxian.frame.origin.x, CGRectGetMaxY(shangxian.frame), shangxian.frame.size.width, 13)];
+    titleLabel.text = @"没有收藏任何内容";
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.font = [UIFont systemFontOfSize:13];
+    titleLabel.textColor = RGBCOLOR(129, 129, 129);
+    
+    //下分割线
+    UIView *xiaxian = [[UIView alloc]initWithFrame:CGRectMake(titleLabel.frame.origin.x, CGRectGetMaxY(titleLabel.frame), titleLabel.frame.size.width, 1)];
+    xiaxian.backgroundColor = RGBCOLOR(233, 233, 233);
+    
+    
+    
+    //视图添加
+    [_noDataView addSubview:noDataImv];
+    [_noDataView addSubview:shangxian];
+    [_noDataView addSubview:titleLabel];
+    [_noDataView addSubview:xiaxian];
+    
 }
 
 - (BOOL)egoRefreshTableDataSourceIsLoading:(UIView*)view
@@ -417,6 +459,14 @@
             [self.normalLabel setText:NSLocalizedString(NOMORE_TEXT, nil)];
             [self.loadingLabel setHidden:YES];
             break;
+        case 3:
+        {
+            
+            [self setNodataView];
+            self.tableFooterView = _noDataView;
+        }
+            break;
+            
         default:
             break;
     }

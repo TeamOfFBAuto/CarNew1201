@@ -13,5 +13,8 @@
 #import "RefreshTableView.h"
 
 @interface PersonalViewController : MyViewController<RefreshDelegate,UITableViewDataSource,UITableViewDelegate>
-
+{
+    UIView *_noDataView;//没有数据时候的展示view
+    NSString *_isNoDataView;//是否显示没有数据的view
+}
 @end

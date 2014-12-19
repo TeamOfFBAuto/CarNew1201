@@ -105,7 +105,6 @@
 		565EE8C01A2C40010063CAA3 /* FriendAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8BF1A2C40010063CAA3 /* FriendAttribute.m */; };
 		565EE8C41A2C41F10063CAA3 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8C21A2C41F10063CAA3 /* pinyin.c */; };
 		565EE8C71A2C47840063CAA3 /* loginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565EE8C51A2C47840063CAA3 /* loginBackground@2x.png */; };
-		565EE8C81A2C47840063CAA3 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565EE8C61A2C47840063CAA3 /* logo@2x.png */; };
 		565EE8CD1A2C4C160063CAA3 /* MyPhoneNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8CA1A2C4C160063CAA3 /* MyPhoneNumViewController.m */; };
 		565EE8CE1A2C4C160063CAA3 /* VerificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8CC1A2C4C160063CAA3 /* VerificationViewController.m */; };
 		565EE8D11A2C4C380063CAA3 /* ZhuCeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8D01A2C4C380063CAA3 /* ZhuCeViewController.m */; };
@@ -203,13 +202,14 @@
 		E377E4EB1A39732700B2D6C9 /* gthreebtnback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E377E4EA1A39732700B2D6C9 /* gthreebtnback@2x.png */; };
 		E377E4EE1A397D0600B2D6C9 /* UILabel+GautoMatchedText.m in Sources */ = {isa = PBXBuildFile; fileRef = E377E4ED1A397D0600B2D6C9 /* UILabel+GautoMatchedText.m */; };
 		E38159501A3AE1D500864F81 /* gBanner@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E381594F1A3AE1D500864F81 /* gBanner@2x.jpg */; };
-		E38159521A3AE74400864F81 /* gback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E38159511A3AE74400864F81 /* gback@2x.png */; };
 		E38F1E1A1A2C16870048C58D /* GMAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E38F1E191A2C16870048C58D /* GMAPI.m */; };
 		E38F1E1E1A2C3ABE0048C58D /* loginBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E38F1E1C1A2C3ABE0048C58D /* loginBackground@2x.png */; };
-		E38F1E1F1A2C3ABE0048C58D /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E38F1E1D1A2C3ABE0048C58D /* logo@2x.png */; };
 		E392C3161A2815FA001AEA0D /* GloginView.m in Sources */ = {isa = PBXBuildFile; fileRef = E392C3151A2815FA001AEA0D /* GloginView.m */; };
 		E392C31A1A2818C9001AEA0D /* GzhuceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E392C3191A2818C9001AEA0D /* GzhuceViewController.m */; };
 		E392C31D1A2818FD001AEA0D /* GfindPasswViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E392C31C1A2818FD001AEA0D /* GfindPasswViewController.m */; };
+		E3B2DC651A43ED8A00607B11 /* gback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B2DC641A43ED8A00607B11 /* gback@2x.png */; };
+		E3B2DC671A43EEC000607B11 /* noDataView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B2DC661A43EEC000607B11 /* noDataView@2x.png */; };
+		E3B2DC691A43FF3F00607B11 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B2DC681A43FF3F00607B11 /* logo@2x.png */; };
 		E3CA7B391A3598EB00B72008 /* GstartView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CA7B381A3598EB00B72008 /* GstartView.m */; };
 		E3CA7B3B1A359BC300B72008 /* gstart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CA7B3A1A359BC300B72008 /* gstart@2x.png */; };
 		E3ED4A671A2FF83E004A2D72 /* GcustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E3ED4A661A2FF83E004A2D72 /* GcustomActionSheet.m */; };
@@ -400,7 +400,6 @@
 		565EE8C21A2C41F10063CAA3 /* pinyin.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = pinyin.c; sourceTree = "<group>"; };
 		565EE8C31A2C41F10063CAA3 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
 		565EE8C51A2C47840063CAA3 /* loginBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginBackground@2x.png"; sourceTree = "<group>"; };
-		565EE8C61A2C47840063CAA3 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		565EE8C91A2C4C160063CAA3 /* MyPhoneNumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPhoneNumViewController.h; sourceTree = "<group>"; };
 		565EE8CA1A2C4C160063CAA3 /* MyPhoneNumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPhoneNumViewController.m; sourceTree = "<group>"; };
 		565EE8CB1A2C4C160063CAA3 /* VerificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationViewController.h; sourceTree = "<group>"; };
@@ -555,17 +554,18 @@
 		E377E4EC1A397D0600B2D6C9 /* UILabel+GautoMatchedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+GautoMatchedText.h"; sourceTree = "<group>"; };
 		E377E4ED1A397D0600B2D6C9 /* UILabel+GautoMatchedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+GautoMatchedText.m"; sourceTree = "<group>"; };
 		E381594F1A3AE1D500864F81 /* gBanner@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "gBanner@2x.jpg"; sourceTree = "<group>"; };
-		E38159511A3AE74400864F81 /* gback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gback@2x.png"; sourceTree = "<group>"; };
 		E38F1E181A2C16870048C58D /* GMAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMAPI.h; sourceTree = "<group>"; };
 		E38F1E191A2C16870048C58D /* GMAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMAPI.m; sourceTree = "<group>"; };
 		E38F1E1C1A2C3ABE0048C58D /* loginBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginBackground@2x.png"; sourceTree = "<group>"; };
-		E38F1E1D1A2C3ABE0048C58D /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		E392C3141A2815FA001AEA0D /* GloginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GloginView.h; sourceTree = "<group>"; };
 		E392C3151A2815FA001AEA0D /* GloginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GloginView.m; sourceTree = "<group>"; };
 		E392C3181A2818C9001AEA0D /* GzhuceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GzhuceViewController.h; sourceTree = "<group>"; };
 		E392C3191A2818C9001AEA0D /* GzhuceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GzhuceViewController.m; sourceTree = "<group>"; };
 		E392C31B1A2818FD001AEA0D /* GfindPasswViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GfindPasswViewController.h; sourceTree = "<group>"; };
 		E392C31C1A2818FD001AEA0D /* GfindPasswViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GfindPasswViewController.m; sourceTree = "<group>"; };
+		E3B2DC641A43ED8A00607B11 /* gback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gback@2x.png"; sourceTree = "<group>"; };
+		E3B2DC661A43EEC000607B11 /* noDataView@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noDataView@2x.png"; sourceTree = "<group>"; };
+		E3B2DC681A43FF3F00607B11 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		E3CA7B371A3598EB00B72008 /* GstartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GstartView.h; sourceTree = "<group>"; };
 		E3CA7B381A3598EB00B72008 /* GstartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GstartView.m; sourceTree = "<group>"; };
 		E3CA7B3A1A359BC300B72008 /* gstart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstart@2x.png"; sourceTree = "<group>"; };
@@ -1326,15 +1326,14 @@
 		569FFEEF1A2737C4008A02A6 /* LogInImages */ = {
 			isa = PBXGroup;
 			children = (
+				E3B2DC681A43FF3F00607B11 /* logo@2x.png */,
 				567B13A91A2C6B8C003A3C59 /* fanhui_image@2x.png */,
 				565EE8D81A2C50950063CAA3 /* logIn_close@2x.png */,
 				565EE8D41A2C50830063CAA3 /* zc_resendimage@2x.png */,
 				565EE8D51A2C50830063CAA3 /* zc_xieyi@2x.png */,
 				565EE8D21A2C50710063CAA3 /* zc_phoneNum@2x.png */,
 				565EE8C51A2C47840063CAA3 /* loginBackground@2x.png */,
-				565EE8C61A2C47840063CAA3 /* logo@2x.png */,
 				E38F1E1C1A2C3ABE0048C58D /* loginBackground@2x.png */,
-				E38F1E1D1A2C3ABE0048C58D /* logo@2x.png */,
 				569FFEF01A27380F008A02A6 /* login_close_image@2x.png */,
 				569FFEF11A27380F008A02A6 /* login_mima_image@2x.png */,
 				569FFEF21A27380F008A02A6 /* login_userName_image@2x.png */,
@@ -1483,8 +1482,9 @@
 		E35A00DF1A319E3400A9CD24 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E3B2DC661A43EEC000607B11 /* noDataView@2x.png */,
+				E3B2DC641A43ED8A00607B11 /* gback@2x.png */,
 				E3571F401A3E920C001F7C8C /* gstarBack@2x.png */,
-				E38159511A3AE74400864F81 /* gback@2x.png */,
 				E381594F1A3AE1D500864F81 /* gBanner@2x.jpg */,
 				E377E4EA1A39732700B2D6C9 /* gthreebtnback@2x.png */,
 				E36AAF6C1A385B2C006A6F21 /* gstart_half@2x.png */,
@@ -1692,7 +1692,6 @@
 				56621D521A28605B00310A48 /* send_selected@2x.png in Resources */,
 				132FB8C91A42DD7200D5A9F0 /* anli_touxiang_yuan@2x.png in Resources */,
 				13F9D4C21A2DA951002A6904 /* UMShareEditViewController.xib in Resources */,
-				E38F1E1F1A2C3ABE0048C58D /* logo@2x.png in Resources */,
 				13F9D4C61A2DA951002A6904 /* UMSShareListController.xib in Resources */,
 				566ADC221A2D5B4C009529A5 /* default_touxiang@2x.png in Resources */,
 				E311CD331A24573C007D69D3 /* LaunchScreen.xib in Resources */,
@@ -1723,13 +1722,15 @@
 				138178CB1A319572001DB92C /* CarTypeViewController.xib in Resources */,
 				5653E5191A3A9AA400CEB749 /* navigation_right_menu_image@2x.png in Resources */,
 				5653E5151A39A1E300CEB749 /* 20130502_fabiao.png in Resources */,
+				E3B2DC671A43EEC000607B11 /* noDataView@2x.png in Resources */,
 				13F9D4C01A2DA951002A6904 /* UMSCommentInputController.xib in Resources */,
 				56621D4E1A28605B00310A48 /* nav_btn_bg.png in Resources */,
 				56621D4A1A28605B00310A48 /* messages_toolbar_background.png in Resources */,
 				560CB53B1A270B230067F7AA /* navgationBar_background_image@2x.png in Resources */,
+				E3B2DC651A43ED8A00607B11 /* gback@2x.png in Resources */,
+				E3B2DC691A43FF3F00607B11 /* logo@2x.png in Resources */,
 				56621D431A28605B00310A48 /* item_cancel_selected@2x.png in Resources */,
 				56621D471A28605B00310A48 /* messages_right_bubble@2x.png in Resources */,
-				E38159521A3AE74400864F81 /* gback@2x.png in Resources */,
 				56621D3F1A28605B00310A48 /* blueArrow@2x.png in Resources */,
 				E3571F411A3E920C001F7C8C /* gstarBack@2x.png in Resources */,
 				569FFEF41A27380F008A02A6 /* login_mima_image@2x.png in Resources */,
@@ -1749,7 +1750,6 @@
 				56621D4B1A28605B00310A48 /* messages_toolbar_background@2x.png in Resources */,
 				1380232C1A2C69CF0053BDDA /* anli_shoucang@2x.png in Resources */,
 				13F9D4851A2DA7BB002A6904 /* shareweibo@2x.png in Resources */,
-				565EE8C81A2C47840063CAA3 /* logo@2x.png in Resources */,
 				56621D481A28605B00310A48 /* messages_tableview_background.png in Resources */,
 				56621D591A28605B00310A48 /* UMFeedbackViewController.xib in Resources */,
 			);
