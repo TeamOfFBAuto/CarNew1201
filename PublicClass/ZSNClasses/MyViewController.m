@@ -138,7 +138,7 @@ CGPoint began_point;
         
         UIButton *button_back=[[UIButton alloc]initWithFrame:CGRectMake(MY_MACRO_NAME? -5:5,8,40,44)];
         [button_back addTarget:self action:@selector(leftButtonTap:) forControlEvents:UIControlEventTouchUpInside];
-        [button_back setImage:BACK_DEFAULT_IMAGE2 forState:UIControlStateNormal];
+        [button_back setImage:[UIImage imageNamed:BACK_DEFAULT_IMAGE_GRAY] forState:UIControlStateNormal];
         UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:button_back];
         self.navigationItem.leftBarButtonItems=@[spaceButton1,back_item];
     }else if (theType == MyViewControllerLeftbuttonTypelogo)
