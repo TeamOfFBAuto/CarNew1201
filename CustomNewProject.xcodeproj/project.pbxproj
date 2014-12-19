@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1301DE5F1A43D315001EF486 /* navigaiton_menu_image_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1301DE5E1A43D315001EF486 /* navigaiton_menu_image_2@2x.png */; };
 		1312611B1A2C7237001E46E4 /* AnliViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 131261191A2C7237001E46E4 /* AnliViewCell.m */; };
 		1312611C1A2C7237001E46E4 /* AnliViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1312611A1A2C7237001E46E4 /* AnliViewCell.xib */; };
 		132FB8C71A42D2CB00D5A9F0 /* anli_touxian_quan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 132FB8C61A42D2CB00D5A9F0 /* anli_touxian_quan@2x.png */; };
@@ -227,6 +228,7 @@
 
 /* Begin PBXFileReference section */
 		0474E0B8AA75297C0DC9AFBA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1301DE5E1A43D315001EF486 /* navigaiton_menu_image_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigaiton_menu_image_2@2x.png"; sourceTree = "<group>"; };
 		131261181A2C7237001E46E4 /* AnliViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnliViewCell.h; sourceTree = SOURCE_ROOT; };
 		131261191A2C7237001E46E4 /* AnliViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnliViewCell.m; sourceTree = SOURCE_ROOT; };
 		1312611A1A2C7237001E46E4 /* AnliViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnliViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -1189,6 +1191,7 @@
 			children = (
 				56621CFC1A285A2500310A48 /* setting_image@2x.png */,
 				5662DEA61A353D9D009F75F6 /* navigaiton_menu_image@2x.png */,
+				1301DE5E1A43D315001EF486 /* navigaiton_menu_image_2@2x.png */,
 				566ADC211A2D5B4C009529A5 /* default_touxiang@2x.png */,
 			);
 			path = leftMenuImages;
@@ -1683,6 +1686,7 @@
 				56621D421A28605B00310A48 /* item_cancel@2x.png in Resources */,
 				13F9D4C41A2DA951002A6904 /* UMSLoginViewController.xib in Resources */,
 				132FB8C71A42D2CB00D5A9F0 /* anli_touxian_quan@2x.png in Resources */,
+				1301DE5F1A43D315001EF486 /* navigaiton_menu_image_2@2x.png in Resources */,
 				5653E5241A3AE9D200CEB749 /* navigation_back_jiantou_image@2x.png in Resources */,
 				5653E5171A39A1E300CEB749 /* 20130502_shubiao.png in Resources */,
 				56621D521A28605B00310A48 /* send_selected@2x.png in Resources */,

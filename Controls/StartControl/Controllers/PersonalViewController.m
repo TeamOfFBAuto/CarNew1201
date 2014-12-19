@@ -122,9 +122,9 @@ typedef enum{
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.leftString = @"菜单";
     self.myTitle = @"个人中心";
-    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeText WithRightButtonType:MyViewControllerRightbuttonTypeNull];
+    self.leftImageName = NAVIGATION_MENU_IMAGE_NAME;
+    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
     
     //设置tabelview headerview
@@ -151,7 +151,7 @@ typedef enum{
     
     
     UIButton *gBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [gBackBtn setImage:[UIImage imageNamed:@"gback.png"] forState:UIControlStateNormal];
+    [gBackBtn setImage:[UIImage imageNamed:NAVIGATION_MENU_IMAGE_NAME] forState:UIControlStateNormal];
     [gBackBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 10, 15)];
     [gBackBtn setFrame:CGRectMake(0, 15, 80.00/320*ALL_FRAME_WIDTH, 80.00/320*ALL_FRAME_WIDTH)];
     [gBackBtn addTarget:self action:@selector(gGoBack) forControlEvents:UIControlEventTouchUpInside];
