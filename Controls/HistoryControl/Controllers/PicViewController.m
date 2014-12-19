@@ -46,7 +46,7 @@
     self.isAddGestureRecognizer = YES;
 
     
-    self.leftImageName = NAVIGATION_MENU_IMAGE_NAME;
+    self.leftImageName = NAVIGATION_MENU_IMAGE_NAME2;
     self.myTitle = @"改装案例";
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     

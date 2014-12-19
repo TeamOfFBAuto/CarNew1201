@@ -71,11 +71,11 @@ alpha:(a)]
 #define BACK_DEFAULT_IMAGE2 [UIImage imageNamed:@"fanhui_image"]
 #define HEADER_DEFAULT_IMAGE @"default_touxiang"
 #define WRITE_DEFAULT_IMAGE @"default_write_pen_image.png"
-#define NAVIGATION_MENU_IMAGE_NAME2 @"navigaiton_menu_image"
+#define NAVIGATION_MENU_IMAGE_NAME2 @"navigaiton_menu_image" //白色
 #define TITLEFONT [UIFont fontWithName:@"Helvetica" size:20]
 
 //带描边
-#define NAVIGATION_MENU_IMAGE_NAME @"navigaiton_menu_image_2"
+#define NAVIGATION_MENU_IMAGE_NAME @"navigaiton_menu_image_2" //黑色
 
 
 #endif

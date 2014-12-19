@@ -41,7 +41,7 @@
         
     }else
     {
-        self.leftImageName = NAVIGATION_MENU_IMAGE_NAME;
+        self.leftImageName = NAVIGATION_MENU_IMAGE_NAME2;
 
         self.myTitle = @"改装商家";
         self.isAddGestureRecognizer = YES;
