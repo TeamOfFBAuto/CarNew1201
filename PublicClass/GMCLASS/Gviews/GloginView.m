@@ -306,8 +306,16 @@
 
 
 -(void)cleanUserNameAndPassWordTextfied{
-    self.userTf.text = nil;
-    self.passWordTf.text = nil;
+    
+    if (self.userTf) {
+        self.userTf.text = nil;
+    }
+    
+    
+    if (self.passWordTf) {
+        self.passWordTf.text = nil;
+    }
+    
 }
 
 @end
