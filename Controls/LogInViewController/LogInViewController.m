@@ -278,7 +278,14 @@
                 [GMAPI cache:userid ForKey:USER_UID];
                 [GMAPI cache:username ForKey:USER_NAME];
                 [GMAPI cache:authkey ForKey:USER_AUTHOD];
-
+            
+            
+            
+            //发通知
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"gdengluchenggong" object:nil];
+            
+            
+            
 //                AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 //                [delegate showControlView:Root_home];
             
