@@ -125,6 +125,8 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
         [self setEdgesForExtendedLayout:NO];
     }
     
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     // Init sessionViews
     sessionViews = [NSMutableDictionary dictionary];
     currentIndexSession = 0;
@@ -150,7 +152,7 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
     
     
     UIButton * setting_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    setting_button.frame = CGRectMake(DEVICE_WIDTH - 50,20,40,40);
+    setting_button.frame = CGRectMake(DEVICE_WIDTH - 40,30,40,40);
     [setting_button setImage:[UIImage imageNamed:@"setting_image"] forState:UIControlStateNormal];
     [setting_button addTarget:self action:@selector(settingTap:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:setting_button];
@@ -610,12 +612,17 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
             sessionView.containView.tag = i;
             [sessionView.containView addSubview:button];
             
-            UIImageView * headerBackImageView = [[UIImageView alloc] initWithFrame:CGRectMake(89,40,82,82)];
+            UIImageView * headerBackImageView = [[UIImageView alloc] initWithFrame:CGRectMake(89,20,82,82)];
             headerBackImageView.layer.borderColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4].CGColor;
             headerBackImageView.layer.cornerRadius = 41;
+            headerBackImageView.userInteractionEnabled = YES;
             headerBackImageView.layer.borderWidth = 0.5;
             [sessionView.containView addSubview:headerBackImageView];
-            UIImageView * headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(95,40,70,70)];
+            
+            UITapGestureRecognizer * header_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerTap:)];
+            [headerBackImageView addGestureRecognizer:header_tap];
+            
+            UIImageView * headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(95,20,70,70)];
             headerImageView.backgroundColor = [UIColor clearColor];
             headerImageView.center = CGPointMake(41,41);
             [headerImageView sd_setImageWithURL:[NSURL URLWithString:[ZSNApi returnMiddleUrl:[GMAPI getUid]]] placeholderImage:[UIImage imageNamed:HEADER_DEFAULT_IMAGE]];
@@ -623,16 +630,30 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
             headerImageView.layer.masksToBounds = YES;
             [headerBackImageView addSubview:headerImageView];
             
-            UILabel * userName = [[UILabel alloc] initWithFrame:CGRectMake(0,135,260,18)];
-            userName.text = [GMAPI getUsername];
+            UILabel * userName = [[UILabel alloc] initWithFrame:CGRectMake(0,115,260,18)];
+            
             userName.font = [UIFont systemFontOfSize:16];
             userName.textAlignment = NSTextAlignmentCenter;
             userName.textColor = [UIColor whiteColor];
             [sessionView.containView addSubview:userName];
+            
+            
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_IN])
+            {
+                userName.text = [GMAPI getUsername];
+            }else
+            {
+                userName.text = @"未登录";
+            }
         }
     }
     
     [self layoutContaintView];
+}
+
+-(void)headerTap:(UITapGestureRecognizer *)sender
+{
+    
 }
 
 - (void)layoutContaintView

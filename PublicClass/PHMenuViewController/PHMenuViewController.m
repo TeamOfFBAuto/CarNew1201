@@ -58,7 +58,6 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
 }
 
 #pragma mark - 跳到设置界面
@@ -68,6 +67,14 @@
     
     SliderRightSettingViewController * settingVC = [[SliderRightSettingViewController alloc] init];
     [self.navigationController pushViewController:settingVC animated:YES];
+}
+
+#pragma mark - 跳到登录界面
+-(void)headerTap:(UITapGestureRecognizer *)sender
+{
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_IN]) {
+        [self pushToLogInViewController];
+    }
 }
 
 #pragma mark - PHAirMenuDelegate & DataSource
