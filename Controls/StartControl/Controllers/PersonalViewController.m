@@ -149,6 +149,7 @@ typedef enum{
     
     _tableView.tableHeaderView = _upThreeViewBackGroundView;
     
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [_tableView showRefreshHeader:YES];//进入界面先刷新数据
     
@@ -960,6 +961,7 @@ typedef enum{
     _tableView.isReloadData = YES;
     
     _dataArray = nil;
+    _tableView.dataArray = nil;
     
     [self prepareNetDataWithCellType:_cellType];
     
@@ -1035,10 +1037,7 @@ typedef enum{
     }
     
     
-    
-    
-    
-    
+
     
     
     

@@ -226,6 +226,7 @@
         [self stopLoading:1];
         
     }else {
+        
         if (self.dataArray.count == 0 && self.pageNum ==1) {
             
             [self stopLoading:3];
