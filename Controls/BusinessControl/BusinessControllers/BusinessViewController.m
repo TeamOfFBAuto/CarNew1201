@@ -83,7 +83,7 @@
 -(void)getBusinessData
 {
     NSString * fullUrl = [NSString stringWithFormat:@"%@%@",BASE_URL,[NSString stringWithFormat:BUSINESS_LIST_URL,self.storeId,_myTableView.pageNum]];
-    NSLog(@"current_page -----  %d",_myTableView.pageNum);
+    NSLog(@"商家列表接口 -----  %@",fullUrl);
     AFHTTPRequestOperation * operation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
     __weak typeof(self)bself = self;
     __block typeof(operation) request = operation;

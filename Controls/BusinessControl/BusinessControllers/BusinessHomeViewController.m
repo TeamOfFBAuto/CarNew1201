@@ -305,8 +305,11 @@
     aHud.mode = MBProgressHUDModeIndeterminate;
     
     NSString *url = [NSString stringWithFormat:BUSINESS_COLLECTION_URL,[GMAPI getUid],_business_id];
+    NSLog(@"收藏接口 ------    %@",url);
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+        
+        NSLog(@"收藏结果 ----  %@",result);
         
         int errcode = [[result objectForKey:@"errcode"]intValue];
         if (errcode == 0)
@@ -324,6 +327,9 @@
         }
         
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        
+        NSLog(@"收藏结果 ----  %@",failDic);
+        
         [functionView setCollectionState:YES];
         aHud.labelText = [failDic objectForKey:ERROR_INFO];
         aHud.mode = MBProgressHUDModeText;
