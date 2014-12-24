@@ -226,16 +226,20 @@
         [self stopLoading:1];
         
     }else {
+        if (self.dataArray.count == 0 && self.pageNum ==1) {
+            
+            [self stopLoading:3];
+        }else{
+            
+            [self stopLoading:2];
+        }
         
         
-        [self stopLoading:2];
     }
     
     
     
-    if (self.dataArray.count == 0) {
-        [self stopLoading:3];
-    }
+    
     
     self.userInteractionEnabled = YES;
 }
@@ -450,14 +454,21 @@
     [self.loadingIndicator stopAnimating];
     switch (loadingType) {
         case 1:
+            self.tableFooterView = nil;
+            [self createFooterView];
             [self.normalLabel setHidden:NO];
             [self.normalLabel setText:NSLocalizedString(NORMAL_TEXT, nil)];
             [self.loadingLabel setHidden:YES];
+            
             break;
         case 2:
+            
+            self.tableFooterView = nil;
+            [self createFooterView];
             [self.normalLabel setHidden:NO];
             [self.normalLabel setText:NSLocalizedString(NOMORE_TEXT, nil)];
             [self.loadingLabel setHidden:YES];
+            
             break;
         case 3:
         {

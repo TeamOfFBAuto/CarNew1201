@@ -236,24 +236,24 @@ typedef enum{
         
         NSLog(@"请求个人信息失败");
         
-        id obj=NSClassFromString(@"UIAlertController");
-        if ( obj!=nil){
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"个人信息加载失败请重新加载" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                
-            }];
-            [alertController addAction:cancelAction];
-            [self presentViewController:alertController animated:YES completion:^{
-                
-            }];
-        }
-        else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"个人信息加载失败请重新加载"
-                                                           delegate:self cancelButtonTitle:@"确定"
-                                                  otherButtonTitles:nil,nil];
-            
-            [alert show];
-        }
+//        id obj=NSClassFromString(@"UIAlertController");
+//        if ( obj!=nil){
+//            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"个人信息加载失败请重新加载" preferredStyle:UIAlertControllerStyleAlert];
+//            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//                
+//            }];
+//            [alertController addAction:cancelAction];
+//            [self presentViewController:alertController animated:YES completion:^{
+//                
+//            }];
+//        }
+//        else{
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"个人信息加载失败请重新加载"
+//                                                           delegate:self cancelButtonTitle:@"确定"
+//                                                  otherButtonTitles:nil,nil];
+//            
+//            [alert show];
+//        }
         
         
         
@@ -831,6 +831,9 @@ typedef enum{
         
         NSArray *dataArray = [datainfo objectForKey:@"data"];
         
+        _tableView.dataArray = [NSMutableArray arrayWithArray:dataArray];
+        _tableView.pageNum = _page;
+        
         if (dataArray.count < _pageCapacity) {
             
             _tableView.isHaveMoreData = NO;
@@ -885,29 +888,29 @@ typedef enum{
         
         
         
-        NSLog(@"%@",failDic);
-        if ([[failDic objectForKey:@"ERRO_INFO"]isEqualToString:@"结果为空"]) {
-            
-        }else{
-            id obj=NSClassFromString(@"UIAlertController");
-            NSString *tishiStr = [failDic objectForKey:@"ERRO_INFO"];
-            if ( obj!=nil){
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:tishiStr preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                    
-                }];
-                [alertController addAction:cancelAction];
-                [self presentViewController:alertController animated:YES completion:^{
-                    
-                }];
-            }
-            else{
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"加载数据失败请重新加载"
-                                                               delegate:self cancelButtonTitle:@"确定"
-                                                      otherButtonTitles:nil,nil];
-                [alert show];
-            }
-        }
+        NSLog(@"---%@",failDic);
+//        if ([[failDic objectForKey:@"ERRO_INFO"]isEqualToString:@"结果为空"]) {
+//            
+//        }else{
+//            id obj=NSClassFromString(@"UIAlertController");
+//            NSString *tishiStr = [failDic objectForKey:@"ERRO_INFO"];
+//            if ( obj!=nil){
+//                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:tishiStr preferredStyle:UIAlertControllerStyleAlert];
+//                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//                    
+//                }];
+//                [alertController addAction:cancelAction];
+//                [self presentViewController:alertController animated:YES completion:^{
+//                    
+//                }];
+//            }
+//            else{
+//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"加载数据失败请重新加载"
+//                                                               delegate:self cancelButtonTitle:@"确定"
+//                                                      otherButtonTitles:nil,nil];
+//                [alert show];
+//            }
+//        }
         
         if (_tableView.isReloadData) {
             
