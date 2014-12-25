@@ -42,6 +42,11 @@
     UITapGestureRecognizer * view_tap;
     
     float currentOffY;
+    
+    ///进度条
+    UIView * progress;
+    UIView * greenView;
+    NSTimer * timer;
 }
 
 @property(nonatomic,strong)UITableView * myTableView;
@@ -87,8 +92,8 @@
     _myWebView.backgroundColor = COLOR_WEB_DETAIL_BACKCOLOR;
     
     
-    hud = [ZSNApi showMBProgressWithText:@"加载中..." addToView:self.view];
-    hud.mode = MBProgressHUDModeIndeterminate;
+//    hud = [ZSNApi showMBProgressWithText:@"加载中..." addToView:self.view];
+//    hud.mode = MBProgressHUDModeIndeterminate;
     
     /*
     [self setTableSectionView];
@@ -144,6 +149,8 @@
     
     [self getBusinessDetailData];
     
+    [self progress];
+    
 }
 
 
@@ -158,6 +165,8 @@
 {
     [hud hide:YES];
     bottomView.hidden = NO;
+    
+    [self progressToFinish];
 }
 -(void)webViewDidStartLoad:(UIWebView *)webView
 {
@@ -482,16 +491,75 @@
     
     if (offset > currentOffY) {
         bottomView.hidden = NO;
-        _myWebView.height = ALL_FRAME_HEIGHT + 20 - 62;
+        _myWebView.height = DEVICE_HEIGHT-64;
         
     }else
     {
         bottomView.hidden = YES;
-        _myWebView.height = ALL_FRAME_HEIGHT + 20;
+        _myWebView.height = DEVICE_HEIGHT;
     }
     
     currentOffY = offset;
 }
+
+- (void)progress
+{
+    progress = [[UIView alloc]initWithFrame:CGRectMake(0, bottomView.bottom - 2, DEVICE_WIDTH, 2)];
+    progress.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:progress];
+    
+    greenView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, progress.height)];
+    greenView.backgroundColor = RGBCOLOR(0, 255, 0);
+    [progress addSubview:greenView];
+    
+    [self progressAnimation];
+    
+}
+
+- (void)progressAnimation
+{
+    CGFloat seg = DEVICE_WIDTH / 10.f;
+    
+    
+    [UIView animateWithDuration:1.5 animations:^{
+        
+        if (greenView.width <= 7 * seg) {
+            
+            greenView.width = 7 * seg;
+            
+        }
+        
+    } completion:^(BOOL finished) {
+        
+        
+        [UIView animateWithDuration:1.5 animations:^{
+            
+            greenView.width = 9 * seg;
+            
+        }];
+        
+    }];
+}
+
+- (void)progressToFinish
+{
+    [timer invalidate];
+    
+    [UIView animateWithDuration:1.f animations:^{
+        
+        greenView.width = DEVICE_WIDTH;
+        
+    } completion:^(BOOL finished) {
+        
+        [greenView removeFromSuperview];
+        greenView = nil;
+        [progress removeFromSuperview];
+        progress = nil;
+    }];
+    
+}
+
+
 
 
 #pragma mark-touches

@@ -105,10 +105,10 @@
             {
                 for (NSDictionary * dic in array) {
                     BusinessListModel * model = [[BusinessListModel alloc] initWithDictionary:dic];
-                    [_data_array addObject:model];
+                    [bself.data_array addObject:model];
                 }
                 
-                if (_data_array.count == allPages)
+                if (bself.data_array.count == allPages)
                 {
                     bself.myTableView.isHaveMoreData = NO;
                 }
