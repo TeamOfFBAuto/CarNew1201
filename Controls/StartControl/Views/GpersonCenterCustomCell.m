@@ -26,7 +26,6 @@
 -(void)loadCustomViewWithType:(int)theType{
     if (theType == 1) {//收藏案例
         _mainImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 240.00/320*ALL_FRAME_WIDTH)];
-//        88 42
         _logoImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 190.0/320*ALL_FRAME_WIDTH, 30.00/320*ALL_FRAME_WIDTH, 30.00/320*ALL_FRAME_WIDTH)];
         _logoImageView.backgroundColor = RGBCOLOR_ONE;
         _logoImageView.layer.cornerRadius = ALL_FRAME_WIDTH*30/320/2;
@@ -34,23 +33,15 @@
         _logoImageView.userInteractionEnabled = YES;
         
         _titleLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_logoImageView.frame)+10, _logoImageView.frame.origin.y-2, ALL_FRAME_WIDTH - 15-15-10-_logoImageView.frame.size.width, _logoImageView.frame.size.height*0.5)];
-//        _titleLabel1.backgroundColor = RGBCOLOR_ONE;
         _titleLabel1.textColor = [UIColor whiteColor];
         _titleLabel1.font = [UIFont systemFontOfSize:15];
-//        _titleLabel1.layer.shadowColor = [UIColor blackColor].CGColor;
-//        _titleLabel1.layer.shadowOffset = CGSizeMake(0,1);
-//        _titleLabel1.layer.shadowRadius = 0.5;
-//        _titleLabel1.layer.shadowOpacity = 0.8;
+
         
         
         _titleLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(_titleLabel1.frame.origin.x, CGRectGetMaxY(_titleLabel1.frame)+1, _titleLabel1.frame.size.width, _titleLabel1.frame.size.height)];
-//        _titleLabel2.backgroundColor = RGBCOLOR_ONE;
         _titleLabel2.textColor = RGBCOLOR(165, 163, 164);
         _titleLabel2.font = [UIFont systemFontOfSize:14];
-//        _titleLabel2.layer.shadowColor = [UIColor blackColor].CGColor;
-//        _titleLabel2.layer.shadowOffset = CGSizeMake(0,1);
-//        _titleLabel2.layer.shadowRadius = 0.5;
-//        _titleLabel2.layer.shadowOpacity = 0.8;
+
         
         UIImageView *_mainImv_backImv = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"anli_bottom_clear.png"]];
         
@@ -122,12 +113,9 @@
         //标签
         _labels_back_view = [[UIView alloc]initWithFrame:CGRectMake(_stars_back_view.frame.origin.x, CGRectGetMaxY(_stars_back_view.frame)+9, DEVICE_WIDTH - 12-12-12 - self.header_imageView.frame.size.width, 16.0)];
         _labels_back_view.backgroundColor = RGBCOLOR(244, 244, 244);
+    
         
-//        _biaoqianLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, _labels_back_view.frame.size.width, _labels_back_view.frame.size.height)];
-//        _biaoqianLabel.textColor = RGBCOLOR(103, 103, 103);
-//        _biaoqianLabel.font = [UIFont systemFontOfSize:_biaoqianLabel.frame.size.height-3];
-//        _biaoqianLabel.textAlignment = NSTextAlignmentCenter;
-//        [_labels_back_view addSubview:_biaoqianLabel];
+        NSLog(@"%@",NSStringFromCGRect(_labels_back_view.frame));
         
         
         //视图添加
@@ -144,6 +132,41 @@
 
 //填充数据 店铺
 -(void)setdataWithData:(BusinessListModel *)theModel{
+    
+    
+    NSArray *biaoqianArray = @[@"改装1",@"改装2",@"改装3",@"改装4",@"改装5"];
+    
+    NSMutableArray *biaoqianContentArray = [NSMutableArray arrayWithCapacity:1];
+    
+    int num = biaoqianArray.count;
+    CGFloat totalWidth = 0.0f;
+    for (int i = 0; i<num; i++) {
+        UILabel *biaoqianLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+        biaoqianLabel.font = [UIFont systemFontOfSize:16];
+        biaoqianLabel.text = biaoqianArray[i];
+        [biaoqianLabel setMatchedFrame4LabelWithOrigin:CGPointMake(0, 0) height:16 limitMaxWidth:224];
+        
+        NSLog(@"%@",NSStringFromCGRect(biaoqianLabel.frame));
+        totalWidth+=biaoqianLabel.frame.size.width;
+        
+        if (totalWidth<_labels_back_view.frame.size.width) {
+            [biaoqianContentArray addObject:biaoqianLabel];
+        }else{
+            return;
+        }
+    }
+    
+    int num1 = biaoqianContentArray.count;
+    for (int i = 0; i<num1; i++) {
+        UILabel *ll = biaoqianContentArray[i];
+        
+    }
+    
+    
+    
+    
+    
+    
     _business_name_label.text = theModel.storename;
     [self.header_imageView sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
     _comment_num_label.text = [NSString stringWithFormat:@"%@人评论",theModel.com_num];
@@ -154,18 +177,9 @@
     [_stars_back_view updateStartNum];
     
     
-//    CGSize aSize = [ZSNApi stringHeightAndWidthWith:theModel.business WithHeight:MAXFLOAT WithWidth:MAXFLOAT WithFont:11];
-//    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(0,0,aSize.width+10,16)];
-//    label.backgroundColor = RGBCOLOR(244,244,244);
-//    label.text = theModel.business;
-//    label.textAlignment = NSTextAlignmentCenter;
-//    label.font = [UIFont systemFontOfSize:11];
-//    label.textColor = RGBCOLOR(153,153,153);
-//    [_labels_back_view addSubview:label];
-    
-    
     _biaoqianLabel.text = theModel.business;
 //    _biaoqianLabel setMatchedFrame4LabelWithOrigin:<#(CGPoint)#> height:<#(CGFloat)#> limitMaxWidth:<#(CGFloat)#>
+    
     
 }
 
@@ -206,6 +220,7 @@
     
     _title1_chanpin.text = theModel.title;
     _title2_chanpin.text = theModel.gtype;
+    
     
     
     //调试颜色
