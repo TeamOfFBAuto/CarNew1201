@@ -639,7 +639,6 @@ typedef enum{
         NSLog(@"在此设置用户上传的头像");
         self.userUpBannerImageData = UIImagePNGRepresentation(self.userUpBannerImage);
         
-        
         //缓存到本地
         [GMAPI setUserBannerImageWithData:self.userUpBannerImageData];
         NSString *str = @"yes";

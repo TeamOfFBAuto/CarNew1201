@@ -120,14 +120,14 @@
         _comment_num_label.textColor = RGBCOLOR(253, 163, 72);
         
         //标签
-        _labels_back_view = [[UIView alloc]initWithFrame:CGRectMake(_stars_back_view.frame.origin.x, CGRectGetMaxY(_stars_back_view.frame)+9, _stars_back_view.frame.size.width, 16.0)];
+        _labels_back_view = [[UIView alloc]initWithFrame:CGRectMake(_stars_back_view.frame.origin.x, CGRectGetMaxY(_stars_back_view.frame)+9, DEVICE_WIDTH - 12-12-12 - self.header_imageView.frame.size.width, 16.0)];
         _labels_back_view.backgroundColor = RGBCOLOR(244, 244, 244);
         
-        _biaoqianLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, _labels_back_view.frame.size.width, _labels_back_view.frame.size.height)];
-        _biaoqianLabel.textColor = RGBCOLOR(103, 103, 103);
-        _biaoqianLabel.font = [UIFont systemFontOfSize:_biaoqianLabel.frame.size.height-3];
-        _biaoqianLabel.textAlignment = NSTextAlignmentCenter;
-        [_labels_back_view addSubview:_biaoqianLabel];
+//        _biaoqianLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, _labels_back_view.frame.size.width, _labels_back_view.frame.size.height)];
+//        _biaoqianLabel.textColor = RGBCOLOR(103, 103, 103);
+//        _biaoqianLabel.font = [UIFont systemFontOfSize:_biaoqianLabel.frame.size.height-3];
+//        _biaoqianLabel.textAlignment = NSTextAlignmentCenter;
+//        [_labels_back_view addSubview:_biaoqianLabel];
         
         
         //视图添加
@@ -165,6 +165,7 @@
     
     
     _biaoqianLabel.text = theModel.business;
+//    _biaoqianLabel setMatchedFrame4LabelWithOrigin:<#(CGPoint)#> height:<#(CGFloat)#> limitMaxWidth:<#(CGFloat)#>
     
 }
 

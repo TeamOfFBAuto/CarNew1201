@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Controls/StartControl/Controllers/PersonalViewController.m"
-            timestampString = "441106076.173253"
+            timestampString = "441167055.585697"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "838"
-            endingLineNumber = "838"
+            startingLineNumber = "837"
+            endingLineNumber = "837"
             landmarkName = "-prepareNetDataWithCellType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Controls/StartControl/Controllers/PersonalViewController.m"
-            timestampString = "441106076.173253"
+            timestampString = "441167055.585697"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "751"
-            endingLineNumber = "751"
+            startingLineNumber = "750"
+            endingLineNumber = "750"
             landmarkName = "-changeNumAndTitleColorWithTag:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Controls/StartControl/Controllers/PersonalViewController.m"
-            timestampString = "441106076.173253"
+            timestampString = "441167055.585697"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "825"
-            endingLineNumber = "825"
+            startingLineNumber = "824"
+            endingLineNumber = "824"
             landmarkName = "-prepareNetDataWithCellType:"
             landmarkType = "5">
          </BreakpointContent>
