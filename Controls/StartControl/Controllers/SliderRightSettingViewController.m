@@ -223,7 +223,11 @@
         
         label.backgroundColor = [UIColor clearColor];
         
-        label.text = [ZSNApi fileSizeAtPath:path];
+        float tmpSize = [[SDImageCache sharedImageCache] getSize]/1024.0f/1024.0f;
+        
+        NSString *clearCacheName = tmpSize >= 1 ? [NSString stringWithFormat:@"%.2fM",tmpSize] : [NSString stringWithFormat:@"%.2fK",tmpSize * 1024];
+        
+        label.text =  clearCacheName;//[NSString stringWithFormat:@"%d",[[SDImageCache sharedImageCache] getSize]];// [ZSNApi fileSizeAtPath:path];
         
         label.font = [UIFont systemFontOfSize:15];
         

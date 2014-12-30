@@ -68,8 +68,6 @@
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)viewDidLoad {
@@ -85,6 +83,7 @@
     _myWebView.delegate = self;
     _myWebView.scrollView.delegate = self;
     _myWebView.scrollView.bounces = NO;
+    
     [self.view addSubview:_myWebView];
     
     NSString * fullUrl = [NSString stringWithFormat:@"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=%@",_business_id];
@@ -126,7 +125,7 @@
             case BusinessCommentViewTapTypeComment://评论
             {
                 GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
-                cc.commentType = Comment_Anli;//评论类型（枚举）
+                cc.commentType = Comment_DianPu;//评论类型（枚举）
                 cc.commentId = bself.business_id;//对应的id
                 UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:cc];
                 [bself presentViewController:navc animated:YES completion:^{
@@ -262,7 +261,9 @@
 
 -(void)back:(UIButton *)button
 {
-    self.edgesForExtendedLayout = UIRectEdgeAll;
+      self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.navigationController.navigationBarHidden = NO;
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)rightButtonTap:(UIButton *)button
@@ -490,17 +491,35 @@
     CGFloat offset = scrollView.contentOffset.y;
     
     if (offset > currentOffY) {
-        bottomView.hidden = NO;
-        _myWebView.height = DEVICE_HEIGHT-64;
+//        bottomView.hidden = NO;
+//        _myWebView.height = DEVICE_HEIGHT-64;
+        
+        [self hiddenBottomViewWith:NO];
         
     }else
     {
-        bottomView.hidden = YES;
-        _myWebView.height = DEVICE_HEIGHT;
+//        bottomView.hidden = YES;
+//        _myWebView.height = DEVICE_HEIGHT;
+        [self hiddenBottomViewWith:YES];
     }
     
     currentOffY = offset;
 }
+
+///底部栏弹出消失动画
+-(void)hiddenBottomViewWith:(BOOL)isHidden
+{
+    [UIView animateWithDuration:0.4 animations:^{
+        bottomView.top = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
+        
+        _myWebView.height = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+
 
 - (void)progress
 {

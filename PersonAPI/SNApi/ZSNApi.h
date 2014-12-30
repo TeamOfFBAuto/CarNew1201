@@ -45,8 +45,9 @@
 ///按比例缩放图片
 +(UIImage *)scaleImage:(UIImage *)image toScale:(float)scaleSize;
 
-
+///根据uid返回论坛小头像
 +(NSString *)returnUrl:(NSString *)theUrl;
+///根据uid返回论坛中头像
 +(NSString *)returnMiddleUrl:(NSString *)theUrl;
 
 +(NSString *)timechange:(NSString *)placetime;

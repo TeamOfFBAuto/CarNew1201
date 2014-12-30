@@ -75,8 +75,10 @@
 
 -(void)rightButtonTap:(UIButton *)sender
 {
+    /*跳到筛选界面
     ScreeningViewController * screenVC = [[ScreeningViewController alloc] init];
     [self.navigationController pushViewController:screenVC animated:YES];
+     */
 }
 
 #pragma mark - 获取数据
@@ -94,7 +96,7 @@
         if ([[allDic objectForKey:@"errcode"] intValue] == 0)
         {
             if (bself.myTableView.pageNum == 1) {
-                [_data_array removeAllObjects];
+                [bself.data_array removeAllObjects];
                 bself.myTableView.isHaveMoreData = YES;
             }
             

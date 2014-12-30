@@ -40,7 +40,7 @@
     
     
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(72,16,232,30);
+    button.frame = CGRectMake(72,16,DEVICE_WIDTH-88,30);
     button.layer.borderColor = RGBCOLOR(255,183,88).CGColor;
     button.layer.borderWidth = 0.5;
     [button setTitle:@"下面,我简单说两句" forState:UIControlStateNormal];
@@ -50,7 +50,7 @@
     [button addTarget:self action:@selector(buttonTap:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     
-    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(180,2,50,26)];
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-140,2,50,26)];
     label.backgroundColor = RGBCOLOR(255,144,0);
     label.text = @"发表";
     label.font = [UIFont systemFontOfSize:16];
