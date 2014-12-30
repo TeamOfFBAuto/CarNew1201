@@ -157,10 +157,10 @@ alpha:(a)]
 #define ANLI_LIST @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&page=%d&ps=%d"
 
 //案例收藏
-#define ANLI_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=addFavCase&fbtype=json&uid=%@&caseid=%@"
+#define ANLI_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=addFavCase&fbtype=json&authkey=%@&caseid=%@"
 //案例收藏取消
 
-#define ANLI_CANCEL_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=delFav&fbtype=json&uid=%@&type=%d&tid=%@"
+#define ANLI_CANCEL_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=delFav&fbtype=json&authkey=%@&type=%d&tid=%@"
 
 //案例详情
 #define ANLI_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getCase&caseid=%@&uid=%@"

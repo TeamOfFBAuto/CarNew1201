@@ -267,7 +267,7 @@
  */
 - (void)networkForCancelCollect
 {
-    NSString *url = [NSString stringWithFormat:ANLI_CANCEL_COLLECT,[GMAPI getUid],1,self.anli_id];
+    NSString *url = [NSString stringWithFormat:ANLI_CANCEL_COLLECT,[GMAPI getAuthkey],1,self.anli_id];
     
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
@@ -295,7 +295,7 @@
  */
 - (void)networkForCollect
 {
-    NSString *url = [NSString stringWithFormat:ANLI_COLLECT,[GMAPI getUid],self.anli_id];
+    NSString *url = [NSString stringWithFormat:ANLI_COLLECT,[GMAPI getAuthkey],self.anli_id];
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
         
