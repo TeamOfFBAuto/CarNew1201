@@ -683,12 +683,7 @@
             detail.anli_id = dianpuId;
             
             detail.detailType = Detail_Peijian;
-            
-            //            detail.shareTitle = aModel.title;
-            //            detail.shareDescrition = aModel.sname;
-            //            detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
-            //            detail.storeName = aModel.sname;
-            //            detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
+    
             
             [self.navigationController pushViewController:detail animated:YES];
             
