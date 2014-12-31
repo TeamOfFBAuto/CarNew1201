@@ -31,6 +31,9 @@
         _logoImageView.layer.cornerRadius = ALL_FRAME_WIDTH*30/320/2;
         _logoImageView.layer.masksToBounds = YES;
         _logoImageView.userInteractionEnabled = YES;
+        _logoImageView.layer.borderWidth = 2;
+        _logoImageView.layer.borderColor = [RGBCOLOR(172, 172, 176)CGColor];
+        
         
         _titleLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_logoImageView.frame)+10, _logoImageView.frame.origin.y-2, ALL_FRAME_WIDTH - 15-15-10-_logoImageView.frame.size.width, _logoImageView.frame.size.height*0.5)];
         _titleLabel1.textColor = [UIColor whiteColor];
@@ -112,7 +115,7 @@
         
         //标签
         _labels_back_view = [[UIView alloc]initWithFrame:CGRectMake(_stars_back_view.frame.origin.x, CGRectGetMaxY(_stars_back_view.frame)+9, DEVICE_WIDTH - 12-12-12 - self.header_imageView.frame.size.width, 16.0)];
-        _labels_back_view.backgroundColor = RGBCOLOR(244, 244, 244);
+//        _labels_back_view.backgroundColor = RGBCOLOR(244, 244, 244);
     
         
         NSLog(@"%@",NSStringFromCGRect(_labels_back_view.frame));
@@ -134,33 +137,33 @@
 -(void)setdataWithData:(BusinessListModel *)theModel{
     
     
-    NSArray *biaoqianArray = @[@"改装1",@"改装2",@"改装3",@"改装4",@"改装5"];
-    
-    NSMutableArray *biaoqianContentArray = [NSMutableArray arrayWithCapacity:1];
-    
-    int num = biaoqianArray.count;
-    CGFloat totalWidth = 0.0f;
-    for (int i = 0; i<num; i++) {
-        UILabel *biaoqianLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
-        biaoqianLabel.font = [UIFont systemFontOfSize:16];
-        biaoqianLabel.text = biaoqianArray[i];
-        [biaoqianLabel setMatchedFrame4LabelWithOrigin:CGPointMake(0, 0) height:16 limitMaxWidth:224];
-        
-        NSLog(@"%@",NSStringFromCGRect(biaoqianLabel.frame));
-        totalWidth+=biaoqianLabel.frame.size.width;
-        
-        if (totalWidth<_labels_back_view.frame.size.width) {
-            [biaoqianContentArray addObject:biaoqianLabel];
-        }else{
-            return;
-        }
-    }
-    
-    int num1 = biaoqianContentArray.count;
-    for (int i = 0; i<num1; i++) {
-        UILabel *ll = biaoqianContentArray[i];
-        
-    }
+//    NSArray *biaoqianArray = @[@"改装1",@"改装2",@"改装3",@"改装4",@"改装5"];
+//    
+//    NSMutableArray *biaoqianContentArray = [NSMutableArray arrayWithCapacity:1];
+//    
+//    int num = biaoqianArray.count;
+//    CGFloat totalWidth = 0.0f;
+//    for (int i = 0; i<num; i++) {
+//        UILabel *biaoqianLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+//        biaoqianLabel.font = [UIFont systemFontOfSize:16];
+//        biaoqianLabel.text = biaoqianArray[i];
+//        [biaoqianLabel setMatchedFrame4LabelWithOrigin:CGPointMake(0, 0) height:16 limitMaxWidth:224];
+//        
+//        NSLog(@"%@",NSStringFromCGRect(biaoqianLabel.frame));
+//        totalWidth+=biaoqianLabel.frame.size.width;
+//        
+//        if (totalWidth<_labels_back_view.frame.size.width) {
+//            [biaoqianContentArray addObject:biaoqianLabel];
+//        }else{
+//            return;
+//        }
+//    }
+//    
+//    int num1 = biaoqianContentArray.count;
+//    for (int i = 0; i<num1; i++) {
+//        UILabel *ll = biaoqianContentArray[i];
+//        
+//    }
     
     
     
@@ -190,6 +193,14 @@
 -(void)setAnliDataWithData:(GCaseModel *)theModel{
 
     [_logoImageView sd_setImageWithURL:[NSURL URLWithString:theModel.spichead] placeholderImage:nil];
+    
+    
+    
+//    self.quanImageView.layer.masksToBounds = YES;
+//    self.quanImageView.layer.cornerRadius = 34 / 2.f;
+    
+    
+    
     [_mainImv sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
     
     _titleLabel1.text = theModel.title;

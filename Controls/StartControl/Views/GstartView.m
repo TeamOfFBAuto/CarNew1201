@@ -32,11 +32,23 @@
         [view removeFromSuperview];
     }
     
+    CGFloat kuan = 12;
+    
+    for (int i = 0; i<5; i++) {
+        UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(0+i*kuan, 0, kuan, self.frame.size.height)];
+        [imv setImage:[UIImage imageNamed:@"gstarBack.png"]];
+        [self addSubview:imv];
+    }
+    
+    
+    
+    
+    
     self.startNum = self.startNum>self.maxStartNum ? self.maxStartNum : self.startNum;
     
     int nnn_int = (int)self.startNum;
     
-    CGFloat kuan = 12;
+    
     
     if (nnn_int<self.startNum) {//有半颗星
         
