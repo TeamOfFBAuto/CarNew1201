@@ -963,6 +963,8 @@ typedef enum{
     _tableView.isReloadData = YES;
     
     _dataArray = nil;
+    _tableView.pageNum = 1;
+    _tableView.dataArray = nil;
     
     [self prepareNetDataWithCellType:_cellType];
     
