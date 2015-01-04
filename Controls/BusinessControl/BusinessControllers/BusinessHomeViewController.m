@@ -117,6 +117,7 @@
     bottomView.hidden = YES;
     [self.view addSubview:bottomView];
     __weak typeof(self)bself = self;
+    __weak typeof(telphone) phone = telphone;
     [bottomView setMyBlock:^(BusinessCommentViewTapType aType) {
         switch (aType) {
             case BusinessCommentViewTapTypeLogIn://登陆
@@ -139,7 +140,13 @@
                 break;
             case BusinessCommentViewTapTypeConsult://电话咨询
             {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",bself.businessModel.phone]]];
+                if (telphone.length > 0) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",telphone]]];
+                }else
+                {
+                    [LTools showMBProgressWithText:@"暂无商家电话信息" addToView:bself.view];
+                }
+                
             }
                 break;
                 
