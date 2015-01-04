@@ -90,10 +90,7 @@
     
     UIButton * button = (UIButton *)[self viewWithTag:101];
     
-    if (isCollect)
-    {
-        button.selected = isCollect;
-    }
+    button.selected = isCollect;
 }
 @end
 

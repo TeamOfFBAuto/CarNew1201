@@ -47,6 +47,10 @@
     UIView * progress;
     UIView * greenView;
     NSTimer * timer;
+    ///是否收藏
+    BOOL isCollected;
+    ///商家电话
+    NSString * telphone;
 }
 
 @property(nonatomic,strong)UITableView * myTableView;
@@ -272,6 +276,7 @@
     {
         functionView = [[NavigationFunctionView alloc] init];
         functionView.myHidden = YES;
+        
         [self.view addSubview:functionView];
         __weak typeof(self)bself = self;
         
@@ -293,7 +298,7 @@
             }
         }];
     }
-    
+    [functionView setCollectionState:isCollected];
     functionView.myHidden = !functionView.myHidden;
 }
 
@@ -310,13 +315,23 @@
 #pragma mark - 收藏或取消收藏
 -(void)collectionClicked
 {
+    NSString * fullUrl;
     
-    MBProgressHUD * aHud = [ZSNApi showMBProgressWithText:@"正在收藏..." addToView:self.view];
+    if (isCollected)
+    {
+        fullUrl = [NSString stringWithFormat:ANLI_CANCEL_COLLECT,[GMAPI getAuthkey],3,_business_id];
+    }else
+    {
+        fullUrl = [NSString stringWithFormat:BUSINESS_COLLECTION_URL,[GMAPI getAuthkey],_business_id];
+    }
+    
+    
+    MBProgressHUD * aHud = [ZSNApi showMBProgressWithText:isCollected?@"正在取消收藏...":@"正在收藏..." addToView:self.view];
     aHud.mode = MBProgressHUDModeIndeterminate;
     
-    NSString *url = [NSString stringWithFormat:BUSINESS_COLLECTION_URL,[GMAPI getUid],_business_id];
-    NSLog(@"收藏接口 ------    %@",url);
-    LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
+//    NSString *url = [NSString stringWithFormat:BUSINESS_COLLECTION_URL,[GMAPI getAuthkey],_business_id];
+    NSLog(@"收藏接口 ------    %@",fullUrl);
+    LTools *tool = [[LTools alloc]initWithUrl:fullUrl isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
         
         NSLog(@"收藏结果 ----  %@",result);
@@ -324,11 +339,13 @@
         int errcode = [[result objectForKey:@"errcode"]intValue];
         if (errcode == 0)
         {
-            aHud.labelText = @"收藏成功";
+            aHud.labelText = isCollected?@"取消收藏成功":@"收藏成功";
             aHud.mode = MBProgressHUDModeText;
             [aHud hide:YES afterDelay:1.5];
             
-            [functionView setCollectionState:YES];
+            isCollected = !isCollected;
+            
+            [functionView setCollectionState:isCollected];
         }else
         {
             aHud.labelText = [result objectForKey:ERROR_INFO];
@@ -398,7 +415,7 @@
 #pragma mark - 获取商家详情信息
 -(void)getBusinessDetailData
 {
-    NSString * fullUrl = [NSString stringWithFormat:BUSINESS_DETAIL_URL,_business_id,[GMAPI getUid]];
+    NSString * fullUrl = [NSString stringWithFormat:BUSINESS_DETAIL_URL,_business_id,[GMAPI getAuthkey]];
     
     AFHTTPRequestOperation * request = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
     __weak typeof(self)bself = self;
@@ -411,7 +428,12 @@
             
             if ([[allDic objectForKey:@"errcode"] intValue] == 0)
             {
-                bself.businessModel = [[BusinessDetailModel alloc] initWithDictionary:[allDic objectForKey:@"datainfo"]];
+//                bself.businessModel = [[BusinessDetailModel alloc] initWithDictionary:[allDic objectForKey:@"datainfo"]];
+                
+                NSDictionary * datainfo = [allDic objectForKey:@"datainfo"];
+                isCollected = [[datainfo objectForKey:@"isshoucang"] intValue];
+                telphone = [datainfo objectForKey:@"tel"];
+                [functionView setCollectionState:isCollected];
             }else
             {
                 
