@@ -398,7 +398,7 @@
 #pragma mark - 获取商家详情信息
 -(void)getBusinessDetailData
 {
-    NSString * fullUrl = [NSString stringWithFormat:BUSINESS_DETAIL_URL,_business_id];
+    NSString * fullUrl = [NSString stringWithFormat:BUSINESS_DETAIL_URL,_business_id,[GMAPI getUid]];
     
     AFHTTPRequestOperation * request = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
     __weak typeof(self)bself = self;

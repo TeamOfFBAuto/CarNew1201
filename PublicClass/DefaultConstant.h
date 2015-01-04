@@ -106,7 +106,7 @@ alpha:(a)]
 ///商家详情HTML5地址
 #define BUSINESS_DETAIL_HTML5_URL @"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=%@"
 ///商家详情接口
-#define BUSINESS_DETAIL_URL @"http://gztest.fblife.com/index.php?c=interface&a=getStoredetails&storeid=%@&fbtype=json"
+#define BUSINESS_DETAIL_URL @"http://gztest.fblife.com/index.php?c=interface&a=getStoredetails&storeid=%@&uid=%@&fbtype=json"
 ///收藏商家接口
 #define BUSINESS_COLLECTION_URL @"http://gztest.fblife.com/index.php?c=interface&a=addFavStore&fbtype=json&uid=%@&storeid=%@"
 
