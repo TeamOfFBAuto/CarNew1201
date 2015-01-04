@@ -117,7 +117,6 @@
     bottomView.hidden = YES;
     [self.view addSubview:bottomView];
     __weak typeof(self)bself = self;
-    __weak typeof(telphone) phone = telphone;
     [bottomView setMyBlock:^(BusinessCommentViewTapType aType) {
         switch (aType) {
             case BusinessCommentViewTapTypeLogIn://登陆
