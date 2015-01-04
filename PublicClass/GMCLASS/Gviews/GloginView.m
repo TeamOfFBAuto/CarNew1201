@@ -335,12 +335,12 @@
 -(void)cleanUserNameAndPassWordTextfied{
     
     if (self.userTf) {
-        self.userTf.text = nil;
+        self.userTf.text = @"";
     }
     
     
     if (self.passWordTf) {
-        self.passWordTf.text = nil;
+        self.passWordTf.text = @"";
     }
     
 }
