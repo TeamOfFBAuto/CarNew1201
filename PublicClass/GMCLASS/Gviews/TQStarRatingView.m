@@ -94,8 +94,15 @@
     }
     
     NSString * str = [NSString stringWithFormat:@"%0.2f",p.x / self.frame.size.width];
+    NSLog(@"-------%@",str);
     float score = [str floatValue];
-    p.x = score * self.frame.size.width;
+    
+    //半颗星一个单位
+    float score_ten = 10*score;
+    int score_ten_int = (int)score_ten;
+    p.x = score_ten_int*0.1 *self.frame.size.width;
+//    p.x = score * self.frame.size.width;
+    NSLog(@"p.x = %f",p.x);
     self.starForegroundView.frame = CGRectMake(0, 0, p.x, self.frame.size.height);
     
     if(self.delegate && [self.delegate respondsToSelector:@selector(starRatingView: score:)])

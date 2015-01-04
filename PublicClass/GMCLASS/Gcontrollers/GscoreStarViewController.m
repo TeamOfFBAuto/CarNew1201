@@ -65,7 +65,7 @@
     [textview_backView addSubview:_tv];
     
     //星星view
-    TQStarRatingView *starRatingView = [[TQStarRatingView alloc] initWithFrame:CGRectMake(50, CGRectGetMaxY(textview_backView.frame)+16, 210*GscreenRatio_320, 35) numberOfStar:5];
+    TQStarRatingView *starRatingView = [[TQStarRatingView alloc] initWithFrame:CGRectMake(50, CGRectGetMaxY(textview_backView.frame)+16, 210*GscreenRatio_320, 35*GscreenRatio_320) numberOfStar:5];
     starRatingView.delegate = self;
     [self.view addSubview:starRatingView];
     
