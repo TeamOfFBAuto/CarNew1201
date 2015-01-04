@@ -121,7 +121,7 @@ alpha:(a)]
 //获取个人信息
 #define G_USERINFO @"http://gztest.fblife.com/index.php?c=interface&a=getUser&uid=%@&fbtype=json"
 //更改用户banner
-#define G_CHANGEUSERBANNER @"http://gztest.fblife.com/index.php?c=interface&a=updatePichead&fbtype=json&uid=%@"
+#define G_CHANGEUSERBANNER @"http://gztest.fblife.com/index.php?c=interface&a=updatePichead&fbtype=json&authkey=%@"
 
 
 //搜索相关

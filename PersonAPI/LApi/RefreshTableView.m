@@ -253,6 +253,7 @@
     
     //图
     UIImageView *noDataImv = [[UIImageView alloc]initWithFrame:CGRectMake(90, 90, 130, 60)];
+    noDataImv.center = CGPointMake(DEVICE_WIDTH * 0.5, 120);
     [noDataImv setImage:[UIImage imageNamed:@"noDataView@2x"]];
     
     //上分割线

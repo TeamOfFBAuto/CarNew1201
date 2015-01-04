@@ -31,6 +31,9 @@
 
 #import "GscoreStarViewController.h"
 
+
+#import "BusinessHomeViewController.h"
+
 typedef enum{
     GANLI = 0,//案例
     GCHANPIN ,//产品
@@ -95,7 +98,7 @@ typedef enum{
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
-    self.navigationController.navigationBarHidden = NO;
+//    self.navigationController.navigationBarHidden = NO;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -700,7 +703,7 @@ typedef enum{
         });
     }else if (_changeImageType == USERBANNER){//上传用户banner
         
-        NSString* fullURL = [NSString stringWithFormat:G_CHANGEUSERBANNER,[GMAPI getUid]];
+        NSString* fullURL = [NSString stringWithFormat:G_CHANGEUSERBANNER,[GMAPI getAuthkey]];
         //上传标志位
         NSString *str = @"yes";
         [[NSUserDefaults standardUserDefaults]setObject:str forKey:@"gIsUpBanner"];
@@ -984,6 +987,34 @@ typedef enum{
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"%s",__FUNCTION__);
+    
+    
+    
+    
+//    AnliModel *aModel = [_table.dataArray objectAtIndex:indexPath.row];
+//    AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
+//    detail.anli_id = aModel.id;
+//    
+//    detail.shareTitle = aModel.title;
+//    detail.shareDescrition = aModel.sname;
+//    detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
+//    detail.storeName = aModel.sname;
+//    detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
+//    
+//    [self.navigationController pushViewController:detail animated:YES];
+//    
+//    [_table deselectRowAtIndexPath:indexPath animated:YES];
+//    
+//    
+//    
+//    GpersonCenterCustomCell * cell = (GpersonCenterCustomCell*)[_tableView cellForRowAtIndexPath:indexPath];
+//    
+//    BusinessListModel *model = _dataArray[indexPath.row];
+//    BusinessHomeViewController * home = [[BusinessHomeViewController alloc] init];
+//    home.business_id = model.id;
+//    home.share_title = model.storename;
+//    home.share_image = cell.header_imageView.image;
+//    [self.navigationController pushViewController:home animated:YES];
 }
 
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath
