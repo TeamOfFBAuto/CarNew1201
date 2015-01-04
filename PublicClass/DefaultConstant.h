@@ -162,6 +162,10 @@ alpha:(a)]
 
 #define ANLI_CANCEL_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=delFav&fbtype=json&authkey=%@&type=%d&tid=%@"
 
+//获取是否收藏状态
+
+#define ANLI_COLLECT_STATE @"http://gztest.fblife.com/web.php?c=interface&a=getCasedetails&cid=%@&authkey=%@"
+
 //案例详情
 #define ANLI_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getCase&caseid=%@&uid=%@"
 
@@ -173,11 +177,11 @@ alpha:(a)]
 //http://gztest.fblife.com/index.php?c=interface&a=addComCase&fbtype=json&uid=1102017&caseid=2&score=4&content=%E8%BF%99%E6%98%AF%E6%9D%A1%E8%AF%84%E8%AE%BA
 
 //http://gztest.fblife.com/index.php?c=interface&a=addComCase&fbtype=json&uid=1102017&caseid=2&score=4&content=%E8%BF%99%E6%98%AF%E6%9D%A1%E8%AF%84%E8%AE%BA
-#define COMMENT_ANLI_API @"http://gztest.fblife.com/index.php?c=interface&a=addComCase&fbtype=json&uid=%@&caseid=%@&score=%@&content=%@"
+#define COMMENT_ANLI_API @"http://gztest.fblife.com/index.php?c=interface&a=addComCase&fbtype=json&authkey=%@&caseid=%@&score=%@&content=%@"
 //店铺评论
-#define COMMENT_DIANPU_API @"http://gztest.fblife.com/index.php?c=interface&a=addComStore&fbtype=json&uid=%@&storeid=%@&score=%@&content=%@"
+#define COMMENT_DIANPU_API @"http://gztest.fblife.com/index.php?c=interface&a=addComStore&fbtype=json&authkey=%@&storeid=%@&score=%@&content=%@"
 //配件评论
-#define COMMENT_PEIJIAN_API @"http://gztest.fblife.com/index.php?c=interface&a=addComGoods&fbtype=json&uid=%@&goodsid=%@&score=%@&content=%@"
+#define COMMENT_PEIJIAN_API @"http://gztest.fblife.com/index.php?c=interface&a=addComGoods&fbtype=json&authkey=%@&goodsid=%@&score=%@&content=%@"
 
 
 

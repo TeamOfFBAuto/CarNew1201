@@ -41,6 +41,8 @@
     UIView *progress;
     UIView *greenView;//绿色
     NSTimer *timer;
+    
+    BOOL isCollect;
 }
 
 @end
@@ -99,9 +101,6 @@
     
     _webView.scrollView.bounces = NO;
     
-//    loading = [LTools MBProgressWithText:@"数据加载中..." addToView:self.view];
-//    [loading show:YES];
-
     NSString *api;
     if (self.detailType == Detail_Anli) {
         
@@ -120,6 +119,10 @@
     self.view.backgroundColor = COLOR_WEB_DETAIL_BACKCOLOR;
     
     [self setNavgationView];
+    
+//    [self rightButtonTap:nil];
+    
+    [self networkForCollectState];
     
     bottomView = [[CommentBottomView alloc] init];
     bottomView.hidden = YES;
@@ -235,6 +238,8 @@
         
         __weak typeof(self)weakSelf = self;
         
+        __block BOOL weakCollect = isCollect;
+        
         [functionView setFunctionBlock:^(int index) {
             
             if (index == 0) {
@@ -248,19 +253,58 @@
                 
             }else if (index == 1){
                 
-                [weakSelf networkForCollect];
-                
-//                [weakSelf networkForCancelCollect];
-                
+                [weakSelf clickToCollectAction];
             }
             
         }];
     }
     
+    [functionView setCollectionState:isCollect];
+    
     functionView.myHidden = !functionView.myHidden;
 }
 
+- (void)clickToCollectAction
+{
+    if (isCollect) {
+        
+        [self networkForCancelCollect];
+        
+    }else
+    {
+        [self networkForCollect];
+    }
+}
+
 #pragma mark -  网络请求
+
+/**
+ *  收藏状态
+ */
+- (void)networkForCollectState
+{
+    NSString *url = [NSString stringWithFormat:ANLI_COLLECT_STATE,self.anli_id,[GMAPI getAuthkey]];
+    
+    LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
+    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+        
+        int errcode = [[result objectForKey:@"errcode"]intValue];
+        if (errcode == 0) {
+            
+            NSDictionary *datainfo = result[@"datainfo"];
+            int isshoucang = [datainfo[@"isshoucang"]intValue];
+            
+            isCollect = (isshoucang == 1) ? YES : NO;
+            
+        }
+        
+    } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        
+        [LTools showMBProgressWithText:failDic[@"errinfo"] addToView:self.view];
+        
+    }];
+}
+
 
 /**
  *  取消收藏
@@ -275,12 +319,15 @@
         int errcode = [[result objectForKey:@"errcode"]intValue];
         if (errcode == 0) {
             
+            isCollect = NO;
+            
+            [functionView setCollectionState:NO];
             
         }else
         {
             
         }
-        [LTools showMBProgressWithText:result[@"errinfo"] addToView:self.view];
+        [LTools showMBProgressWithText:@"取消收藏成功" addToView:self.view];
         
         
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
@@ -302,6 +349,9 @@
         int errcode = [[result objectForKey:@"errcode"]intValue];
         if (errcode == 0) {
             
+            isCollect = YES;
+            
+            [functionView setCollectionState:YES];
             
         }else
         {

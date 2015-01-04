@@ -162,7 +162,7 @@
         api = COMMENT_PEIJIAN_API;
     }
     
-    NSString *url = [NSString stringWithFormat:api,[GMAPI getUid],self.commentId,scoreStr,content];
+    NSString *url = [NSString stringWithFormat:api,[GMAPI getAuthkey],self.commentId,scoreStr,content];
     
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
