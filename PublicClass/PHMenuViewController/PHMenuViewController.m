@@ -131,7 +131,9 @@
 
 -(void)pushToLogInViewController
 {
-    LogInViewController * logIn = [LogInViewController sharedManager];
+    
+    
+    LogInViewController * logIn = [[LogInViewController alloc]init];
     UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
     [self presentViewController:navc animated:YES completion:nil];
 }
