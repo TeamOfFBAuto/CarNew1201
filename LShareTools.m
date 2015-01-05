@@ -120,7 +120,7 @@
         WBWebpageObject *pageObject = [ WBWebpageObject object ];
         pageObject.objectID =@"nimeideid";
         pageObject.thumbnailData = UIImageJPEGRepresentation(shareImage, 0.1);
-        pageObject.title = @"分享自越野e族客户端";
+        pageObject.title = @"分享自改装车客户端";
         pageObject.description = description;
         pageObject.webpageUrl = string_url;
         WBMessageObject *message = [ [ WBMessageObject alloc ] init ];
@@ -167,7 +167,7 @@
             
             [WXApi sendReq:req];
         }else{
-            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信,无法使用此功能，使用微信可以方便的把你喜欢的作品分享给好友。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"免费下载微信", nil];
+            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
             [alView show];
             
         }
@@ -202,7 +202,7 @@
             
             [WXApi sendReq:req];
         }else{
-            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信,无法使用此功能，使用微信可以方便的把你喜欢的作品分享给好友。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"免费下载微信", nil];
+            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
             [alView show];
             
         }
