@@ -158,6 +158,10 @@ alpha:(a)]
 
 //案例收藏
 #define ANLI_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=addFavCase&fbtype=json&authkey=%@&caseid=%@"
+
+//配件收藏
+#define PEIJIAN_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=addFavGoods&fbtype=json&authkey=%@&goodsid=%@"
+
 //案例收藏取消
 
 #define ANLI_CANCEL_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=delFav&fbtype=json&authkey=%@&type=%d&tid=%@"
