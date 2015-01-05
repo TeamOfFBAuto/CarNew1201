@@ -31,6 +31,7 @@
 #import "GMAPI.h"
 #import "RefreshTableView.h"
 #import "RegexKitLite.h"
+#import "NSString+Emoji.h"
 
 #pragma mark - 自定义的宏，方便调动
 ///颜色

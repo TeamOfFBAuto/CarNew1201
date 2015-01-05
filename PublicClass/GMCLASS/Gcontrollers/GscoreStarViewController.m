@@ -129,6 +129,8 @@
     
     [self allShou];
     
+    self.cc_content = [self.cc_content stringByReplacingEmojiUnicodeWithCheatCodes];
+    
     if (self.cc_content.length == 0) {
         
         [LTools alertText:@"评论不能为空"];
