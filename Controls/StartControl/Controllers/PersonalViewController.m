@@ -80,6 +80,9 @@ typedef enum{
     
     ASIFormDataRequest *_request;//tap==123 上传头像
     CHANGEIMAGETYPE _changeImageType;//imagePicker 更改的是头像还是banner
+    
+    
+    UIView *_hudView;//浮层view
 
     
 }
@@ -112,6 +115,15 @@ typedef enum{
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     }
+    
+    if (_tableView) {
+        if ([_tableView respondsToSelector:@selector(showRefreshHeader:)]) {
+            [_tableView showRefreshHeader:YES];//进入界面先刷新数据
+        }
+        
+    }
+    
+    
 }
 
 
@@ -124,9 +136,7 @@ typedef enum{
         self.navigationController.navigationBar.translucent = NO;
     }
     
-    
-
-    
+   
     
     NSLog(@"%s",__FUNCTION__);
     
@@ -160,6 +170,9 @@ typedef enum{
     
     
     
+    
+    
+    
     UIButton *gBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [gBackBtn setImage:[UIImage imageNamed:NAVIGATION_MENU_IMAGE_NAME] forState:UIControlStateNormal];
     [gBackBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 10, 15)];
@@ -170,6 +183,23 @@ typedef enum{
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(dengluchenggong) name:@"gdengluchenggong" object:nil];
     
+    
+    
+    _hudView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_upThreeViewBackGroundView.frame), DEVICE_WIDTH, DEVICE_HEIGHT-_upThreeViewBackGroundView.frame.size.height)];
+    _hudView.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake((DEVICE_WIDTH-110)*0.5, 10, 110, 50)];
+    titleLabel.backgroundColor = RGBCOLOR(51, 51, 51);
+    titleLabel.font = [UIFont systemFontOfSize:15];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.layer.cornerRadius = 15;
+    titleLabel.layer.masksToBounds = YES;
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.text = @"正在加载";
+    [_hudView addSubview:titleLabel];
+    
+    _hudView.hidden = YES;
+    [self.view addSubview:_hudView];
     
     
 }
@@ -756,7 +786,8 @@ typedef enum{
     _dataArray = nil;
     _page = 1;
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hudView.hidden = NO;
     
     if (theTag == 10) {//点击的是收藏案例
         _anliTitleLabel.textColor = RGBCOLOR(155, 155, 155);
@@ -832,7 +863,8 @@ typedef enum{
     GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:api isPost:NO postData:nil];
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
         
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        _hudView.hidden = YES;
         
         NSLog(@"到底走了吗%@",result);
         
@@ -893,7 +925,8 @@ typedef enum{
         
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+//        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        _hudView.hidden = YES;
         
         
         
