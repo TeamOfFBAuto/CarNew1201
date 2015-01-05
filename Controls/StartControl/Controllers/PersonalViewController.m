@@ -235,7 +235,7 @@ typedef enum{
         
         
         
-        
+        _nameLabel.text = [dic stringValueForKey:@"username"];
         _anliNumLabel.text = [dic stringValueForKey:@"fcase"];
         _chanpinNumLabel.text = [dic stringValueForKey:@"fgoods"];
         _dianpuNumLabel.text = [dic stringValueForKey:@"fstore"];
@@ -344,7 +344,7 @@ typedef enum{
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_faceImv.frame)+8, ALL_FRAME_WIDTH, 19.00/320*ALL_FRAME_WIDTH)];
     _nameLabel.font = [UIFont systemFontOfSize:16];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
-    _nameLabel.text = [GMAPI getUsername];
+//    _nameLabel.text = [GMAPI getUsername];
     _nameLabel.textColor = [UIColor whiteColor];
     
     
