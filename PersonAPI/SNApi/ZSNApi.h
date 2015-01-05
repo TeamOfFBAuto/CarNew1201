@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import "NSString+Emoji.h"
 #import "MBProgressHUD.h"
-#define PERSONAL_DEFAULTS_IMAGE [UIImage imageNamed:@"gtouxiangHolderImage.png"]
+#define PERSONAL_DEFAULTS_IMAGE [UIImage imageNamed:@"gTouxiang"]
 
 ///大表情
 #define IMAGE_BIG_WIDTH 20

@@ -293,23 +293,23 @@
             [self CloseButtonTap:nil];
 
             }else{
-                id obj=NSClassFromString(@"UIAlertController");
-                if ( obj!=nil){
-                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:[result objectForKey:@"errinfo"] preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-
-                    }];
-                    [alertController addAction:cancelAction];
-                    [self presentViewController:alertController animated:YES completion:^{
-
-                    }];
-                }else{
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[result objectForKey:@"errinfo"]
-                                                                   delegate:self cancelButtonTitle:@"确定"
-                                                          otherButtonTitles:nil,nil];
-                    
-                    [alert show];
-                }
+//                id obj=NSClassFromString(@"UIAlertController");
+//                if ( obj!=nil){
+//                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:[result objectForKey:@"errinfo"] preferredStyle:UIAlertControllerStyleAlert];
+//                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//
+//                    }];
+//                    [alertController addAction:cancelAction];
+//                    [self presentViewController:alertController animated:YES completion:^{
+//
+//                    }];
+//                }else{
+//                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[result objectForKey:@"errinfo"]
+//                                                                   delegate:self cancelButtonTitle:@"确定"
+//                                                          otherButtonTitles:nil,nil];
+//                    
+//                    [alert show];
+//                }
                 
                 
                 
@@ -325,27 +325,27 @@
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         [j stopAnimating];
         
-        id obj=NSClassFromString(@"UIAlertController");
-        if ( obj!=nil){
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:[failDic objectForKey:@"ERRO_INFO"] preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                
-            }];
-            [alertController addAction:cancelAction];
-            [self presentViewController:alertController animated:YES completion:^{
-                
-            }];
-        }else{
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[failDic objectForKey:@"ERRO_INFO"]
-                                                           delegate:self cancelButtonTitle:@"确定"
-                                                  otherButtonTitles:nil,nil];
-            
-            [alert show];
-        }
+//        id obj=NSClassFromString(@"UIAlertController");
+//        if ( obj!=nil){
+//            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:[failDic objectForKey:@"ERRO_INFO"] preferredStyle:UIAlertControllerStyleAlert];
+//            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//                
+//            }];
+//            [alertController addAction:cancelAction];
+//            [self presentViewController:alertController animated:YES completion:^{
+//                
+//            }];
+//        }else{
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[failDic objectForKey:@"ERRO_INFO"]
+//                                                           delegate:self cancelButtonTitle:@"确定"
+//                                                  otherButtonTitles:nil,nil];
+//            
+//            [alert show];
+//        }
         
         NSLog(@"登录失败:%@",failDic);
         
-        [self loginFail];
+//        [self loginFail];
     }];
     
     

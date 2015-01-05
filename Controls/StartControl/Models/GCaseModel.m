@@ -16,7 +16,7 @@
 -(id)initWithDictionary:(NSDictionary *)dic{
     self = [super init];
     if (self) {
-        
+        self.id = [dic stringValueForKey:@"id"];
         self.title = [dic stringValueForKey:@"title"];
         self.pichead = [dic stringValueForKey:@"pichead"];
         self.province = [dic stringValueForKey:@"province"];

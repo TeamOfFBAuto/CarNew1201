@@ -283,6 +283,8 @@
  */
 - (void)networkForCollectState
 {
+    
+    
     NSString *url = [NSString stringWithFormat:ANLI_COLLECT_STATE,self.anli_id,[GMAPI getAuthkey]];
     
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
@@ -311,7 +313,18 @@
  */
 - (void)networkForCancelCollect
 {
-    NSString *url = [NSString stringWithFormat:ANLI_CANCEL_COLLECT,[GMAPI getAuthkey],1,self.anli_id];
+    int tag = 1;//案例
+    
+    if (self.detailType == Detail_Anli) {
+        
+        tag = 1;
+        
+    }else if (self.detailType == Detail_Peijian){
+        
+        tag = 2;
+    }
+    
+    NSString *url = [NSString stringWithFormat:ANLI_CANCEL_COLLECT,[GMAPI getAuthkey],tag,self.anli_id];
     
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
@@ -342,7 +355,19 @@
  */
 - (void)networkForCollect
 {
-    NSString *url = [NSString stringWithFormat:ANLI_COLLECT,[GMAPI getAuthkey],self.anli_id];
+    
+    NSString *api;
+    if (self.detailType == Detail_Anli) {
+        
+        api = ANLI_COLLECT;
+        
+    }else if (self.detailType == Detail_Peijian){
+        
+        api = PEIJIAN_COLLECT;
+    }
+    
+    NSString *url = [NSString stringWithFormat:api,[GMAPI getAuthkey],self.anli_id];
+    
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
         

@@ -107,7 +107,7 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E2D-Fh-rzN">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gTouxiang.png" translatesAutoresizingMaskIntoConstraints="NO" id="E2D-Fh-rzN">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -276,11 +276,12 @@
                 <outlet property="quanImageView" destination="duy-6f-Uyq" id="AKZ-md-gKf"/>
                 <outlet property="smallImageView" destination="E2D-Fh-rzN" id="t1H-OU-8DY"/>
             </connections>
-            <point key="canvasLocation" x="-2574" y="141.5"/>
+            <point key="canvasLocation" x="-2748" y="133.5"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="anli_bottom_clear.png" width="320" height="151"/>
         <image name="anli_list_defatult.png" width="162" height="92"/>
+        <image name="gTouxiang.png" width="52" height="56"/>
     </resources>
 </document>
