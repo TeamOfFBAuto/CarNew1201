@@ -161,6 +161,7 @@ typedef enum{
     _tableView = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, DEVICE_HEIGHT)];
     _tableView.refreshDelegate = self;//用refreshDelegate替换UITableViewDelegate
     _tableView.dataSource = self;
+    
     [self.view addSubview:_tableView];
     
     _tableView.tableHeaderView = _upThreeViewBackGroundView;
@@ -242,7 +243,7 @@ typedef enum{
             [_topImv setImage:[GMAPI getUserBannerImage]];
         }else{
             
-            [_topImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"bunner"]] placeholderImage:[UIImage imageNamed:@"gBanner.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [_topImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"bunner"]] placeholderImage:[UIImage imageNamed:@"gBanner.jpg"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                 NSData *imageData = UIImageJPEGRepresentation(_topImv.image, 1.0);
                 [GMAPI setUserBannerImageWithData:imageData];
             }];
@@ -275,7 +276,7 @@ typedef enum{
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         
         NSLog(@"请求个人信息失败");
-        
+        _nameLabel.text = [GMAPI getUsername];
 //        id obj=NSClassFromString(@"UIAlertController");
 //        if ( obj!=nil){
 //            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"个人信息加载失败请重新加载" preferredStyle:UIAlertControllerStyleAlert];
@@ -783,8 +784,9 @@ typedef enum{
 
 -(void)changeNumAndTitleColorWithTag:(NSInteger)theTag{
     
-    _dataArray = nil;
+    
     _page = 1;
+    
     
 //    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hudView.hidden = NO;
@@ -862,7 +864,8 @@ typedef enum{
     
     GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:api isPost:NO postData:nil];
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
-        
+        _tableView.netWorking = GIS;
+        _dataArray = nil;
 //        [MBProgressHUD hideHUDForView:self.view animated:YES];
         _hudView.hidden = YES;
         
@@ -954,12 +957,18 @@ typedef enum{
 //            }
 //        }
         
-        if (_tableView.isReloadData) {
+        if (_tableView.isLoadMoreData) {
             
             _page --;
-            
+            _tableView.netWorking = GNO;
+            [_tableView performSelector:@selector(finishReloadigData) withObject:nil afterDelay:0.2];
+        }else{
+            _tableView.netWorking = GNO;
             [_tableView performSelector:@selector(finishReloadigData) withObject:nil afterDelay:0.2];
         }
+        
+        
+        
     }];
     
 }

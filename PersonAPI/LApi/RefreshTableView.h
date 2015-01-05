@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "LRefreshTableHeaderView.h"
+typedef enum{
+    GIS = 0,//有网
+    GNO ,//没网
+}GNetWorking;
 
 @class HelperConnection;
 
@@ -43,6 +47,10 @@
 @property(nonatomic,retain)UILabel *normalLabel;
 @property(nonatomic,retain)UILabel *loadingLabel;
 @property(nonatomic,assign)BOOL hiddenLoadMore;//隐藏加载更多,默认隐藏
+@property(nonatomic,assign)GNetWorking netWorking;//yes有网  no没网
+@property(nonatomic,strong)NSString *noDataStr;
+
+
 
 -(void)createHeaderView;
 -(void)removeHeaderView;

@@ -15,6 +15,7 @@
 
 #define TABLEFOOTER_HEIGHT 50.f
 
+
 @implementation RefreshTableView
 
 - (id)initWithFrame:(CGRect)frame
@@ -227,12 +228,12 @@
         
     }else {
         
-        if (self.dataArray.count == 0 && self.pageNum ==1) {
+        if (self.dataArray.count == 0 && self.pageNum ==1 && self.netWorking != GNO) {//有网没数据
             
             [self stopLoading:3];
-        }else{
+        }else{//没网
             
-            [self stopLoading:2];
+            [self stopLoading:4];
         }
         
         
@@ -262,7 +263,10 @@
     
     //文字提示
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(shangxian.frame.origin.x, CGRectGetMaxY(shangxian.frame)+5, shangxian.frame.size.width, 13)];
-    titleLabel.text = @"没有收藏任何内容";
+    if (self.noDataStr == nil) {
+        self.noDataStr = @"没有收藏任何内容";
+    }
+    titleLabel.text = self.noDataStr;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont systemFontOfSize:13];
     titleLabel.textColor = RGBCOLOR(129, 129, 129);
@@ -479,6 +483,14 @@
             self.tableFooterView = _noDataView;
         }
             break;
+        case 4:
+        {
+            self.tableFooterView = nil;
+            [self createFooterView];
+            [self.normalLabel setHidden:NO];
+            [self.normalLabel setText:NSLocalizedString(@"请检查网络", nil)];
+            [self.loadingLabel setHidden:YES];
+        }
             
         default:
             break;
