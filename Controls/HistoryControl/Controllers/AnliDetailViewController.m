@@ -238,7 +238,6 @@
         
         __weak typeof(self)weakSelf = self;
         
-        __block BOOL weakCollect = isCollect;
         
         [functionView setFunctionBlock:^(int index) {
             
@@ -249,7 +248,9 @@
                 NSString *url = [NSString stringWithFormat:ANLI_DETAIL,weakSelf.anli_id,[GMAPI getUid]];
                 NSString *imageUrl = @"http://fbautoapp.fblife.com/resource/head/84/9b/thumb_1_Thu.jpg";
                 
-                [tool showOrHidden:YES title:@"这里是分享的标题" description:@"这是一个非常牛逼的应用" imageUrl:imageUrl aShareImage:[UIImage imageNamed:@""] linkUrl:url];
+                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
+                
+                [tool showOrHidden:YES title:@"这里是分享的标题" description:@"这是一个非常牛逼的应用" imageUrl:imageUrl aShareImage:image linkUrl:url];
                 
             }else if (index == 1){
                 
