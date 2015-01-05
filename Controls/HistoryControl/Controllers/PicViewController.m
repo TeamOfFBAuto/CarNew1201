@@ -64,6 +64,8 @@
     _table.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_table];
     
+    _table.noDataStr = @"没有改装案例";
+    
     [_table showRefreshHeader:YES];
 }
 
