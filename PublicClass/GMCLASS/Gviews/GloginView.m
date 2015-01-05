@@ -20,6 +20,19 @@
 
 @implementation GloginView
 
+
+
+- (void)dealloc
+{
+    
+    
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"gdenglu" object:nil];
+    
+    NSLog(@"%s",__FUNCTION__);
+}
+
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -227,21 +240,35 @@
 
 //收键盘
 -(void)Gshou{
-    [self.userTf resignFirstResponder];
-    [self.passWordTf resignFirstResponder];
+    
+    if (self.userTf) {
+        [self.userTf resignFirstResponder];
+    }
+    
+    if (self.passWordTf) {
+        [self.passWordTf resignFirstResponder];
+    }
     
     
-    [UIView animateWithDuration:0.3 animations:^{
-        self.Row3backView.frame = _Frame_row3Down;
-    } completion:^(BOOL finished) {
-        
-    }];
+    if (self.Row3backView) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.Row3backView.frame = _Frame_row3Down;
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
     
-    [UIView animateWithDuration:0.3 animations:^{
-        self.logoImv.frame = _Frame_logoDown;
-    } completion:^(BOOL finished) {
-        
-    }];
+    
+    
+    if (self.logoImv) {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.logoImv.frame = _Frame_logoDown;
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+    
+    
     
     
 }
@@ -308,12 +335,12 @@
 -(void)cleanUserNameAndPassWordTextfied{
     
     if (self.userTf) {
-        self.userTf.text = nil;
+        self.userTf.text = @"";
     }
     
     
     if (self.passWordTf) {
-        self.passWordTf.text = nil;
+        self.passWordTf.text = @"";
     }
     
 }

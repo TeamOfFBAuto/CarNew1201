@@ -34,6 +34,9 @@
 
 #import "BusinessHomeViewController.h"
 
+#import "AnliModel.h"
+#import "AnliDetailViewController.h"
+
 typedef enum{
     GANLI = 0,//案例
     GCHANPIN ,//产品
@@ -232,7 +235,7 @@ typedef enum{
         
         
         
-        
+        _nameLabel.text = [dic stringValueForKey:@"username"];
         _anliNumLabel.text = [dic stringValueForKey:@"fcase"];
         _chanpinNumLabel.text = [dic stringValueForKey:@"fgoods"];
         _dianpuNumLabel.text = [dic stringValueForKey:@"fstore"];
@@ -341,7 +344,7 @@ typedef enum{
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_faceImv.frame)+8, ALL_FRAME_WIDTH, 19.00/320*ALL_FRAME_WIDTH)];
     _nameLabel.font = [UIFont systemFontOfSize:16];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
-    _nameLabel.text = [GMAPI getUsername];
+//    _nameLabel.text = [GMAPI getUsername];
     _nameLabel.textColor = [UIColor whiteColor];
     
     
@@ -988,6 +991,30 @@ typedef enum{
 {
     NSLog(@"%s",__FUNCTION__);
     
+    if (_cellType == GDIANPU) {//点击的是
+        GpersonCenterCustomCell * cell = (GpersonCenterCustomCell*)[_tableView cellForRowAtIndexPath:indexPath];
+        
+        BusinessListModel *model = _dataArray[indexPath.row];
+        BusinessHomeViewController * home = [[BusinessHomeViewController alloc] init];
+        home.business_id = model.id;
+        home.share_title = model.storename;
+        home.share_image = cell.header_imageView.image;
+        [self.navigationController pushViewController:home animated:YES];
+    }else if (_cellType == GANLI){
+        GCaseModel *aModel = [_dataArray objectAtIndex:indexPath.row];
+        AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
+        detail.anli_id = aModel.id;
+        
+        detail.shareTitle = aModel.title;
+        detail.shareDescrition = aModel.sname;
+        detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
+        detail.storeName = aModel.sname;
+        detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
+        
+        [self.navigationController pushViewController:detail animated:YES];
+    }else if (_cellType == GCHANPIN){
+        
+    }
     
     
     

@@ -84,7 +84,8 @@
     
     
     [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(successLogIn) name:@"LogIn" object:nil];//登陆成功通知
+     addObserver:self selector:@selector(successToLogIn) name:@"gdengluchenggong" object:nil];//登陆成功通知
+    
     
 }
 

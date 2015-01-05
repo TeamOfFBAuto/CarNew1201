@@ -21,6 +21,8 @@ typedef void(^CommentBottomViewBlock)(CommentTapType aType);
 @interface CommentBottomView : UIView
 {
     CommentBottomViewBlock comment_bottom_block;
+    ///头像
+    UIImageView * headerImageView;
 }
 
 

@@ -24,7 +24,7 @@
 
 -(void)setup
 {
-    UIImageView * headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(16,10,42,42)];
+    headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(16,10,42,42)];
     headerImageView.layer.cornerRadius = 21;
     headerImageView.image = [UIImage imageNamed:HEADER_DEFAULT_IMAGE];
     headerImageView.layer.masksToBounds = YES;
@@ -57,7 +57,19 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = [UIColor whiteColor];
     [button addSubview:label];
+    
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(SuccesLogIn) name:@"gdengluchenggong" object:nil];
+    
 }
+
+#pragma mark - 登陆成功通知
+-(void)SuccesLogIn
+{
+    [headerImageView sd_setImageWithURL:[NSURL URLWithString:[ZSNApi returnMiddleUrl:[GMAPI getUid]]] placeholderImage:[UIImage imageNamed:HEADER_DEFAULT_IMAGE]];
+}
+
 -(void)doTap:(UITapGestureRecognizer *)sender
 {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_IN]) {
