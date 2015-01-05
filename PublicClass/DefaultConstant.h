@@ -183,6 +183,12 @@ alpha:(a)]
 //配件评论
 #define COMMENT_PEIJIAN_API @"http://gztest.fblife.com/index.php?c=interface&a=addComGoods&fbtype=json&authkey=%@&goodsid=%@&score=%@&content=%@"
 
+#pragma mark - 自留地相关接口*************************************************start by sn
+///自留地上传图片接口
+#define URLIMAGE @"http://fb.fblife.com/openapi/index.php?mod=doweibo&code=addpicmuliti&fromtype=b5eeec0b&authkey=%@&fbtype=json"
+///发送微博接口
+#define SEND_WEIBO_URL @"http://fb.fblife.com/openapi/index.php?mod=doweibo&code=add&fromtype=b5eeec0b&map=google&fbtype=json"
 
+#pragma mark - 自留地相关接口*************************************************end by sn
 
 

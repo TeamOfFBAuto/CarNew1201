@@ -13,6 +13,8 @@
 #import "WXApi.h"
 
 #import "AppDelegate.h"
+#import "ZSNAlertView.h"
+#import "LogInViewController.h"
 
 @implementation LShareTools
 
@@ -92,27 +94,27 @@
         
         NSLog(@"自留地");
         
-        //        BOOL islogin = [self isLogIn];
-        //
-        //        if (!islogin)
-        //        {
-        //            return;
-        //        }
-        //
-        //
-        //        if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_IN])
-        //        {
-        //            WriteBlogViewController * writeBlogView = [[WriteBlogViewController alloc] init];
-        //
-        //            writeBlogView.theText = [NSString stringWithFormat:@"分享图集:“%@”,链接:%@",string_title,string_url] ;
-        //
-        //            [self presentViewController:writeBlogView animated:YES completion:NULL];
-        //        }
-        //        else{
-        //            //没有激活fb，弹出激活提示
-        //            LogInViewController *login=[LogInViewController sharedManager];
-        //            [self presentViewController:login animated:YES completion:nil];
-        //        }
+        BOOL isLogIn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_IN];
+        if (!isLogIn)
+        {
+            UIViewController *root = ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController;
+            LogInViewController * logInVC = [LogInViewController sharedManager];
+        
+            [root presentViewController:logInVC animated:YES completion:nil];
+            
+            return;
+        }
+        
+        
+        
+        ZSNAlertView * alertView = [[ZSNAlertView alloc] init];
+        
+        [alertView setInformationWithImageUrl:_imageUrl WithShareUrl:_linkUrl WithUserName:_title WithContent:_description WithBlock:^(NSString *theString) {
+            
+        }];
+        
+        [alertView show];
+
         
         
     }else if(buttonIndex==3){

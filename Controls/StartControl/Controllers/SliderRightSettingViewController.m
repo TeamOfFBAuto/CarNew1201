@@ -194,9 +194,6 @@
         BOOL isLogIn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_IN];
         
         
-        NSLog(@"dadajsdlajdaksj 0--------%d",isLogIn);
-        
-        
         logOut_button = [UIButton buttonWithType:UIButtonTypeCustom];
         
         logOut_button.frame = CGRectMake(14,23,DEVICE_WIDTH - 14 * 2,85/2);
@@ -214,7 +211,7 @@
         
     }else if (indexPath.row == 1)
     {
-        NSString * path = [NSHomeDirectory() stringByAppendingPathComponent:@"tmp/data"];
+//        NSString * path = [NSHomeDirectory() stringByAppendingPathComponent:@"tmp/data"];
         
         lineView.center = CGPointMake(DEVICE_WIDTH / 2.f,0.25);
         
