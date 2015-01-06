@@ -279,6 +279,8 @@ typedef enum{
         
         NSLog(@"请求个人信息失败");
         _nameLabel.text = [GMAPI getUsername];
+        [ZSNApi showAutoHiddenMBProgressWithText:@"请求个人信息失败" addToView:self.view];
+        
 //        id obj=NSClassFromString(@"UIAlertController");
 //        if ( obj!=nil){
 //            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"个人信息加载失败请重新加载" preferredStyle:UIAlertControllerStyleAlert];
@@ -932,6 +934,8 @@ typedef enum{
         
 //        [MBProgressHUD hideHUDForView:self.view animated:YES];
         _hudView.hidden = YES;
+        
+        [ZSNApi showAutoHiddenMBProgressWithText:@"请求收藏信息失败" addToView:self.view];
         
         
         

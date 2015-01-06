@@ -240,6 +240,7 @@
 #pragma mark - 登录
 -(void)dengluWithUserName:(NSString *)name pass:(NSString *)passw{
     
+    _gloginView.userInteractionEnabled = NO;
     [[NSNotificationCenter defaultCenter]postNotificationName:@"gdenglu" object:nil];
     
     //菊花
@@ -328,6 +329,8 @@
      
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         [j stopAnimating];
+        
+        _gloginView.userInteractionEnabled = YES;
         
         [ZSNApi showAutoHiddenMBProgressWithText:@"登录失败" addToView:self.view];
         
