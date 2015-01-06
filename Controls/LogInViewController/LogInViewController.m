@@ -23,12 +23,15 @@
 
 #import "GmPrepareNetData.h"
 
+#import "ZSNApi.h"
+
 
 @interface LogInViewController ()
 {
     UIActivityIndicatorView *j;
     UIAlertView *al;
     GloginView *_gloginView;
+    MBProgressHUD *_hud;
 }
 
 @end
@@ -241,7 +244,8 @@
     
     //菊花
     if (j) {
-        
+        [self.view addSubview:j];
+        [j startAnimating];
     }else{
         j = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         if (iPhone5) {
@@ -324,6 +328,9 @@
      
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         [j stopAnimating];
+        
+        [ZSNApi showAutoHiddenMBProgressWithText:@"登录失败" addToView:self.view];
+        
         
 //        id obj=NSClassFromString(@"UIAlertController");
 //        if ( obj!=nil){
