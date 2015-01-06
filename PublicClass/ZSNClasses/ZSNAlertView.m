@@ -299,6 +299,7 @@
     [up_request setPostValue:imageId forKey:@"imgid"];
     
     __weak typeof(up_request)brequest = up_request;
+    __weak typeof(self)bself = self;
     [brequest setCompletionBlock:^{
         NSDictionary * jieguo = [brequest.responseData objectFromJSONData];
         NSLog(@"request.tag1111 = 2 ==%@",[jieguo objectForKey:@"data"]);
@@ -307,15 +308,15 @@
         {
             hud.mode = MBProgressHUDModeText;
             hud.labelText = @"成功分享到自留地";
-            [hud hide:YES];
-            [self removeFromSuperview];
+            [hud hide:YES afterDelay:1.5];
+            [bself performSelector:@selector(cancelButtonClick:) withObject:nil afterDelay:1.5];
             
         }else
         {
             hud.mode = MBProgressHUDModeText;
             hud.labelText = [jieguo objectForKey:@"data"];
             [hud hide:YES afterDelay:1.5];
-            [self performSelector:@selector(cancelButtonClick:) withObject:nil afterDelay:1.5];
+            [bself performSelector:@selector(cancelButtonClick:) withObject:nil afterDelay:1.5];
         }
     }];
     
@@ -324,8 +325,8 @@
         
         hud.mode = MBProgressHUDModeText;
         hud.labelText = @"分享失败，请检查您当前网络";
-        [hud hide:YES];
-        [self performSelector:@selector(cancelButtonClick:) withObject:nil afterDelay:1.5];
+        [hud hide:YES afterDelay:1.5];
+        [bself performSelector:@selector(cancelButtonClick:) withObject:nil afterDelay:1.5];
     }];
     
     [up_request startAsynchronous];
