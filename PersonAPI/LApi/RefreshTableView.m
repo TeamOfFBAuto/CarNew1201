@@ -231,9 +231,10 @@
         if (self.dataArray.count == 0 && self.pageNum ==1 && self.netWorking != GNO) {//有网没数据
             
             [self stopLoading:3];
-        }else{//没网
-            
+        }else if(self.netWorking == GNO){//没网
             [self stopLoading:4];
+        }else if (self.netWorking == GIS){
+            [self stopLoading:2];
         }
         
         

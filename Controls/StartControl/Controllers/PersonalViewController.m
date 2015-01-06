@@ -147,6 +147,7 @@ typedef enum{
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
     
+    
     //设置tabelview headerview
     [self creatHeaderView];
     
@@ -161,6 +162,7 @@ typedef enum{
     _tableView = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, DEVICE_HEIGHT)];
     _tableView.refreshDelegate = self;//用refreshDelegate替换UITableViewDelegate
     _tableView.dataSource = self;
+    _tableView.netWorking = GIS;
     
     [self.view addSubview:_tableView];
     

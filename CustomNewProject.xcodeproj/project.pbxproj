@@ -199,13 +199,13 @@
 		E311CD3F1A24573C007D69D3 /* CustomNewProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E311CD3E1A24573C007D69D3 /* CustomNewProjectTests.m */; };
 		E3571F291A3E71E6001F7C8C /* GscoreStarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3571F281A3E71E6001F7C8C /* GscoreStarViewController.m */; };
 		E3571F3F1A3E7D37001F7C8C /* TQStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3571F3E1A3E7D37001F7C8C /* TQStarRatingView.m */; };
-		E3571F411A3E920C001F7C8C /* gstarBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3571F401A3E920C001F7C8C /* gstarBack@2x.png */; };
 		E358B2C01A2DEAF700B0FA51 /* GmPrepareNetData.m in Sources */ = {isa = PBXBuildFile; fileRef = E358B2BF1A2DEAF700B0FA51 /* GmPrepareNetData.m */; };
 		E35A00E51A319E4000A9CD24 /* GCaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E35A00E21A319E4000A9CD24 /* GCaseModel.m */; };
 		E35A00E61A319E4000A9CD24 /* GGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E35A00E41A319E4000A9CD24 /* GGoodsModel.m */; };
 		E35A00E91A319E4E00A9CD24 /* GpersonCenterCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E35A00E81A319E4E00A9CD24 /* GpersonCenterCustomCell.m */; };
 		E35A00EC1A319FA100A9CD24 /* GSeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E35A00EB1A319FA100A9CD24 /* GSeachViewController.m */; };
 		E36AAF6B1A3854AE006A6F21 /* gTouxiang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E36AAF691A3854AE006A6F21 /* gTouxiang@2x.png */; };
+		E36C06B71A5B8270004DAC36 /* gstarBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E36C06B61A5B8270004DAC36 /* gstarBack@2x.png */; };
 		E372307A1A316C5100597D8C /* NSDictionary+GJson.m in Sources */ = {isa = PBXBuildFile; fileRef = E37230791A316C5100597D8C /* NSDictionary+GJson.m */; };
 		E377E4EB1A39732700B2D6C9 /* gthreebtnback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E377E4EA1A39732700B2D6C9 /* gthreebtnback@2x.png */; };
 		E377E4EE1A397D0600B2D6C9 /* UILabel+GautoMatchedText.m in Sources */ = {isa = PBXBuildFile; fileRef = E377E4ED1A397D0600B2D6C9 /* UILabel+GautoMatchedText.m */; };
@@ -556,7 +556,6 @@
 		E3571F281A3E71E6001F7C8C /* GscoreStarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GscoreStarViewController.m; sourceTree = "<group>"; };
 		E3571F3D1A3E7D37001F7C8C /* TQStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TQStarRatingView.h; sourceTree = "<group>"; };
 		E3571F3E1A3E7D37001F7C8C /* TQStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TQStarRatingView.m; sourceTree = "<group>"; };
-		E3571F401A3E920C001F7C8C /* gstarBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstarBack@2x.png"; sourceTree = "<group>"; };
 		E358B2BE1A2DEAF700B0FA51 /* GmPrepareNetData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmPrepareNetData.h; sourceTree = "<group>"; };
 		E358B2BF1A2DEAF700B0FA51 /* GmPrepareNetData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GmPrepareNetData.m; sourceTree = "<group>"; };
 		E35A00E11A319E4000A9CD24 /* GCaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCaseModel.h; sourceTree = "<group>"; };
@@ -568,6 +567,7 @@
 		E35A00EA1A319FA100A9CD24 /* GSeachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSeachViewController.h; sourceTree = "<group>"; };
 		E35A00EB1A319FA100A9CD24 /* GSeachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSeachViewController.m; sourceTree = "<group>"; };
 		E36AAF691A3854AE006A6F21 /* gTouxiang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gTouxiang@2x.png"; sourceTree = "<group>"; };
+		E36C06B61A5B8270004DAC36 /* gstarBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstarBack@2x.png"; sourceTree = "<group>"; };
 		E37230781A316C5100597D8C /* NSDictionary+GJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+GJson.h"; sourceTree = "<group>"; };
 		E37230791A316C5100597D8C /* NSDictionary+GJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+GJson.m"; sourceTree = "<group>"; };
 		E377E4EA1A39732700B2D6C9 /* gthreebtnback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gthreebtnback@2x.png"; sourceTree = "<group>"; };
@@ -1523,10 +1523,10 @@
 		E35A00DF1A319E3400A9CD24 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E36C06B61A5B8270004DAC36 /* gstarBack@2x.png */,
 				E3B37E091A47BA57009835A5 /* gstart_half@2x.png */,
 				E3B2DC661A43EEC000607B11 /* noDataView@2x.png */,
 				E3B2DC641A43ED8A00607B11 /* gback@2x.png */,
-				E3571F401A3E920C001F7C8C /* gstarBack@2x.png */,
 				E381594F1A3AE1D500864F81 /* gBanner@2x.jpg */,
 				E377E4EA1A39732700B2D6C9 /* gthreebtnback@2x.png */,
 				E36AAF691A3854AE006A6F21 /* gTouxiang@2x.png */,
@@ -1703,6 +1703,7 @@
 				1380232B1A2C69CF0053BDDA /* anli_fangda@2x.png in Resources */,
 				13F9D4831A2DA7BB002A6904 /* sharefriendquan@2x.png in Resources */,
 				1380232D1A2C69CF0053BDDA /* anli_zhuanfa@2x.png in Resources */,
+				E36C06B71A5B8270004DAC36 /* gstarBack@2x.png in Resources */,
 				567B13AA1A2C6B8C003A3C59 /* fanhui_image@2x.png in Resources */,
 				56621D501A28605B00310A48 /* nav_btn_bg_lighted@2x.png in Resources */,
 				565321631A5A79E700E43F80 /* button1-up252_94@2x.png in Resources */,
@@ -1780,7 +1781,6 @@
 				56621D431A28605B00310A48 /* item_cancel_selected@2x.png in Resources */,
 				56621D471A28605B00310A48 /* messages_right_bubble@2x.png in Resources */,
 				56621D3F1A28605B00310A48 /* blueArrow@2x.png in Resources */,
-				E3571F411A3E920C001F7C8C /* gstarBack@2x.png in Resources */,
 				569FFEF41A27380F008A02A6 /* login_mima_image@2x.png in Resources */,
 				5653E5101A39754500CEB749 /* newAboultIphone5@2x.png in Resources */,
 				198D4CCC1A42D49C008C9AD2 /* alfcircle@2x.png in Resources */,
