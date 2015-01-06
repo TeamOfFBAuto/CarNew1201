@@ -121,7 +121,7 @@
         switch (aType) {
             case BusinessCommentViewTapTypeLogIn://登陆
             {
-                LogInViewController * logInVC = [LogInViewController sharedManager];
+                LogInViewController * logInVC = [[LogInViewController alloc] init];
                 UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logInVC];
                 [bself presentViewController:navc animated:YES completion:nil];
             }

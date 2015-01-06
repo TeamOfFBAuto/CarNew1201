@@ -78,7 +78,7 @@
         self.window.rootViewController = menu_nav;
     }else if (type == Root_login)
     {
-        LogInViewController * logIn = [LogInViewController sharedManager];//[[LogInViewController alloc] initWithNibName:@"LogInViewController" bundle:nil];
+        LogInViewController * logIn = [[LogInViewController alloc] init];//[[LogInViewController alloc] initWithNibName:@"LogInViewController" bundle:nil];
         UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
         self.window.rootViewController = navc;
     }

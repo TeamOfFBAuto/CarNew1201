@@ -98,7 +98,7 @@
         if (!isLogIn)
         {
             UIViewController *root = ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController;
-            LogInViewController * logInVC = [LogInViewController sharedManager];
+            LogInViewController * logInVC = [[LogInViewController alloc] init];
         
             [root presentViewController:logInVC animated:YES completion:nil];
             
