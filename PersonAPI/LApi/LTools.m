@@ -738,7 +738,8 @@
     hud.mode = MBProgressHUDModeText;
     hud.labelText = text;
     hud.margin = 15.f;
-    hud.yOffset = 150.f;
+//    hud.yOffset = DEVICE_HEIGHT / 2.f;
+    hud.centerY = DEVICE_HEIGHT / 2.f;
     hud.removeFromSuperViewOnHide = YES;
     [hud hide:YES afterDelay:1.5];
 }
