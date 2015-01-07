@@ -119,6 +119,17 @@
         
     }else if(buttonIndex==3){
         NSLog(@"到新浪微博界面的");
+        
+        if ([WeiboSDK isWeiboAppInstalled] == NO) {
+            
+            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有新浪微博客户端。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+            [alView show];
+            
+            
+            return;
+        }
+        
+        
         WBWebpageObject *pageObject = [ WBWebpageObject object ];
         pageObject.objectID =@"nimeideid";
         pageObject.thumbnailData = UIImageJPEGRepresentation(shareImage, 0.1);
