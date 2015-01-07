@@ -28,7 +28,7 @@
     if (self) {
         _numberOfStar = number;
 //        self.starBackgroundView = [self buidlStarViewWithImageName:@"backgroundStar"];
-        self.starBackgroundView = [self buidlStarViewWithImageName:@"gstarBack.png"];
+        self.starBackgroundView = [self buidlStarViewWithImageName:@"gstarBack_dianping.png"];
         self.starForegroundView = [self buidlStarViewWithImageName:@"gstart.png"];
         [self addSubview:self.starBackgroundView];
         [self addSubview:self.starForegroundView];

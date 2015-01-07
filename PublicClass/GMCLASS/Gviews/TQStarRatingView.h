@@ -6,6 +6,9 @@
 //  Copyright (c) 2013年 TinyQ. All rights reserved.
 //
 
+
+
+//评论的星星封装view
 #import <UIKit/UIKit.h>
 @class TQStarRatingView;
 
