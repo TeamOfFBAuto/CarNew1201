@@ -32,6 +32,8 @@
     ///商家电话
     UIButton * phone_button;
     
+    UIButton * right_button;
+    
     MBProgressHUD * hud;
     
     ///右上角菜单栏
@@ -174,7 +176,7 @@
 {
     [hud hide:YES];
     bottomView.hidden = NO;
-    
+    right_button.userInteractionEnabled = YES;
     [self progressToFinish];
 }
 -(void)webViewDidStartLoad:(UIWebView *)webView
@@ -262,8 +264,9 @@
     [navigation_view addSubview:back_button];
     
     
-    UIButton * right_button = [UIButton buttonWithType:UIButtonTypeCustom];
+    right_button = [UIButton buttonWithType:UIButtonTypeCustom];
     right_button.frame = CGRectMake(DEVICE_WIDTH-44,20,44,44);
+    right_button.userInteractionEnabled = NO;
     [right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     [right_button setImage:[UIImage imageNamed:@"navigation_right_menu_image"] forState:UIControlStateNormal];
     [navigation_view addSubview:right_button];

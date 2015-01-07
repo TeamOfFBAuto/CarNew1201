@@ -93,4 +93,10 @@
     comment_bottom_block = aBlock;
 }
 
+-(void)dealloc
+{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gdengluchenggong" object:nil];
+}
+
 @end

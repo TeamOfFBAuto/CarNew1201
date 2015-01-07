@@ -214,10 +214,6 @@
     {
         [self submitWeiBoDataWithImageId:@""];
     }
-    
-    
-    
-    
 }
 
 
