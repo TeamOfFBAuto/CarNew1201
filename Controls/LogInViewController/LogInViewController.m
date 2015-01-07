@@ -270,6 +270,7 @@
     NSString *post = [NSString stringWithFormat:@"&username=%@&password=%@&token=%@",name,passw,deviceToken];
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:G_LOGIN isPost:YES postData:postData];
+    __weak typeof(self)bself = self;
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
         [j stopAnimating];
         NSLog(@"登录成功:%@",result);
@@ -285,7 +286,8 @@
                 [GMAPI cache:username ForKey:USER_NAME];
                 [GMAPI cache:authkey ForKey:USER_AUTHOD];
             
-            
+                ///验证是否开通fb
+            [bself checkFBState];
             
             //发通知
             [[NSNotificationCenter defaultCenter]postNotificationName:@"gdengluchenggong" object:nil];
@@ -295,7 +297,7 @@
 //                AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 //                [delegate showControlView:Root_home];
             
-            [self CloseButtonTap:nil];
+//            [self CloseButtonTap:nil];
 
             }else{
 //                id obj=NSClassFromString(@"UIAlertController");
@@ -372,6 +374,62 @@
     GfindPasswViewController *gfindwVc = [[GfindPasswViewController alloc]init];
     [self.navigationController pushViewController:gfindwVc animated:YES];
 }
+
+
+#pragma mark - 验证是否激活fb自留地
+-(void)checkFBState
+{
+    NSString * fullUrl = [NSString stringWithFormat:CHECK_FBUSER_URL,[GMAPI getAuthkey]];
+    NSLog(@"验证是否开通fb接口 ----  %@",fullUrl);
+
+    AFHTTPRequestOperation * request = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
+    
+    __weak typeof(self)bself = self;
+    [request setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSDictionary * allDic = [operation.responseString objectFromJSONString];
+        NSLog(@"验证是否开通fb ----  %@",allDic);
+        NSString * errcode = [allDic objectForKey:@"errcode"];
+        if ([errcode intValue] == 1)///已经开通fb
+        {
+            [bself CloseButtonTap:nil];
+        }else
+        {
+            [bself activationFB];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [bself CloseButtonTap:nil];
+    }];
+    
+    [request start];
+}
+
+#pragma mark - 激活fb自留地
+-(void)activationFB
+{
+    NSString * fullUrl = [NSString stringWithFormat:ACTIVE_FBUSER_URL,[GMAPI getAuthkey]];
+    NSLog(@"激活fb接口 ---   %@",fullUrl);
+    AFHTTPRequestOperation * request = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
+    
+    __weak typeof(self)bself = self;
+    [request setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSDictionary * allDic = [operation.responseString objectFromJSONString];
+        NSLog(@"激活fb ---   %@",allDic);
+        NSString * errcode = [allDic objectForKey:@"errcode"];
+//        if ([errcode intValue] == 1)///已经开通fb
+//        {
+            [bself CloseButtonTap:nil];
+//        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [bself CloseButtonTap:nil];
+    }];
+    
+    [request start];
+}
+
 
 
 - (void)didReceiveMemoryWarning {

@@ -96,6 +96,12 @@ alpha:(a)]
 #define SENDERVerification @"http://demo03.fblife.com/bbsapinew/register.php?type=phone&step=2&telphone=%@&telcode=%@&datatype=json"
 #define SENDUSERINFO @"http://demo03.fblife.com/bbsapinew/register.php?type=phone&step=3&telphone=%@&telcode=%@&username=%@&password=%@&email=%@&datatype=json"
 
+//验证用户是否开通FB
+#define CHECK_FBUSER_URL @"http://fb.fblife.com/openapi/index.php?mod=account&code=checkfbuser&authkey=%@&fbtype=json"
+//    //激活Fb账号
+#define ACTIVE_FBUSER_URL @"http://fb.fblife.com/openapi/index.php?mod=account&code=activeuser&authkey=%@&fbtype=json"
+
+
 #pragma mark - 商家信息相关接口
 #pragma mark - 商家列表接口
 
