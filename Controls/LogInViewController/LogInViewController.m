@@ -32,6 +32,7 @@
     UIAlertView *al;
     GloginView *_gloginView;
     MBProgressHUD *_hud;
+    NSDictionary * userInfo_dic;
 }
 
 @end
@@ -272,18 +273,12 @@
     GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:G_LOGIN isPost:YES postData:postData];
     __weak typeof(self)bself = self;
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
-        [j stopAnimating];
         NSLog(@"登录成功:%@",result);
         if ([[result objectForKey:@"errcode"] intValue] == 0) {//登录成功
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
             
-                NSDictionary *datainfo = [result objectForKey:@"datainfo"];
-                NSString *userid = [datainfo objectForKey:@"uid"];
-                NSString *username = [datainfo objectForKey:@"username"];
-                NSString *authkey = [datainfo objectForKey:@"authkey"];
-                [GMAPI cache:userid ForKey:USER_UID];
-                [GMAPI cache:username ForKey:USER_NAME];
-                [GMAPI cache:authkey ForKey:USER_AUTHOD];
+            userInfo_dic = [NSDictionary dictionaryWithDictionary:result];
+            
+            
 //            [bloginView cleanUserNameAndPassWordTextfied];
             
                 ///验证是否开通fb
@@ -346,14 +341,15 @@
         if ([errcode intValue] == 1)///已经开通fb
         {
             
-            [bself CloseButtonTap:nil];
+            [bself saveUserInfomation];
         }else
         {
             [bself activationFB];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [bself CloseButtonTap:nil];
+        _gloginView.userInteractionEnabled = YES;
+        [ZSNApi showAutoHiddenMBProgressWithText:@"登录失败" addToView:self.view];
     }];
     
     [request start];
@@ -371,19 +367,37 @@
         
         NSDictionary * allDic = [operation.responseString objectFromJSONString];
         NSLog(@"激活fb ---   %@",allDic);
-        NSString * errcode = [allDic objectForKey:@"errcode"];
-//        if ([errcode intValue] == 1)///已经开通fb
-//        {
-            [bself CloseButtonTap:nil];
-//        }
+        
+        [bself saveUserInfomation];
+        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [bself CloseButtonTap:nil];
+        _gloginView.userInteractionEnabled = YES;
+        
+        [ZSNApi showAutoHiddenMBProgressWithText:@"登录失败" addToView:self.view];
     }];
     
     [request start];
 }
 
+
+#pragma mark - 登陆成功保存用户信息
+-(void)saveUserInfomation
+{
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
+    
+    NSDictionary *datainfo = [userInfo_dic objectForKey:@"datainfo"];
+    NSString *userid = [datainfo objectForKey:@"uid"];
+    NSString *username = [datainfo objectForKey:@"username"];
+    NSString *authkey = [datainfo objectForKey:@"authkey"];
+    [GMAPI cache:userid ForKey:USER_UID];
+    [GMAPI cache:username ForKey:USER_NAME];
+    [GMAPI cache:authkey ForKey:USER_AUTHOD];
+    
+    [j stopAnimating];
+    
+    [self CloseButtonTap:nil];
+}
 
 
 - (void)didReceiveMemoryWarning {
