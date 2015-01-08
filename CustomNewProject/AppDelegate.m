@@ -24,6 +24,8 @@
 #import "WeiboSDK.h"
 #import "MobClick.h"
 
+#import "ZSNApi.h"
+
 
 #define UMENG_APPKEY @"548a8a05fd98c5318d001273" //mobile
 #define WXAPPID @"wxc007ca608b574af1" //mobile 审核通过
@@ -212,10 +214,12 @@
         if ([[dic objectForKey:@"errcode"]intValue] == 0) {
             NSLog(@"上传成功");
             NSString *str = @"no";
+            [ZSNApi showAutoHiddenMBProgressWithText:@"更改成功" addToView:self.window];
             [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"gIsUpBanner"];
             
         }else{
             NSString *str = @"yes";
+            [ZSNApi showAutoHiddenMBProgressWithText:@"更改失败，联网自动上传" addToView:self.window];
             [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"gIsUpBanner"];
             
         }

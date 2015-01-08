@@ -222,6 +222,7 @@ typedef enum{
 
 -(void)getUserInfo{
     NSString *api = [NSString stringWithFormat:G_USERINFO,[GMAPI getUid]];
+    
     NSLog(@"请求个人信息接口：%@",api);
     
     if ([GMAPI getUserBannerImage]) {
