@@ -141,8 +141,8 @@
                 break;
             case BusinessCommentViewTapTypeConsult://电话咨询
             {
-                if (telphone.length > 0) {
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",telphone]]];
+                if (bself.businessModel.tel.length > 0) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",bself.businessModel.tel]]];
                 }else
                 {
                     [LTools showMBProgressWithText:@"暂无商家电话信息" addToView:bself.view];
@@ -235,6 +235,13 @@
         }
         
         return NO;
+    }
+    
+    
+    if ([relativeUrl rangeOfString:@"map:"].length > 0)
+    {
+        NSString * address = [relativeUrl stringByReplacingOccurrencesOfString:@"map:" withString:@""];
+        NSLog(@"address ------   %@",address);
     }
     
     
@@ -437,12 +444,15 @@
             
             if ([[allDic objectForKey:@"errcode"] intValue] == 0)
             {
-//                bself.businessModel = [[BusinessDetailModel alloc] initWithDictionary:[allDic objectForKey:@"datainfo"]];
-                
+                bself.businessModel = [[BusinessDetailModel alloc] initWithDictionary:[allDic objectForKey:@"datainfo"]];
+                isCollected = [bself.businessModel.tel intValue];
+                [functionView setCollectionState:isCollected];
+                /*
                 NSDictionary * datainfo = [allDic objectForKey:@"datainfo"];
                 isCollected = [[datainfo objectForKey:@"isshoucang"] intValue];
                 telphone = [datainfo objectForKey:@"tel"];
-                [functionView setCollectionState:isCollected];
+                
+                 */
             }else
             {
                 
