@@ -277,7 +277,6 @@
         if ([[result objectForKey:@"errcode"] intValue] == 0) {//登录成功
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
             
-                [bloginView cleanUserNameAndPassWordTextfied];
                 NSDictionary *datainfo = [result objectForKey:@"datainfo"];
                 NSString *userid = [datainfo objectForKey:@"uid"];
                 NSString *username = [datainfo objectForKey:@"username"];
@@ -285,6 +284,7 @@
                 [GMAPI cache:userid ForKey:USER_UID];
                 [GMAPI cache:username ForKey:USER_NAME];
                 [GMAPI cache:authkey ForKey:USER_AUTHOD];
+//            [bloginView cleanUserNameAndPassWordTextfied];
             
                 ///验证是否开通fb
             [bself checkFBState];
@@ -292,36 +292,8 @@
             //发通知
             [[NSNotificationCenter defaultCenter]postNotificationName:@"gdengluchenggong" object:nil];
             
-            
-            
-//                AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//                [delegate showControlView:Root_home];
-            
-//            [self CloseButtonTap:nil];
-
             }else{
-//                id obj=NSClassFromString(@"UIAlertController");
-//                if ( obj!=nil){
-//                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:[result objectForKey:@"errinfo"] preferredStyle:UIAlertControllerStyleAlert];
-//                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-//
-//                    }];
-//                    [alertController addAction:cancelAction];
-//                    [self presentViewController:alertController animated:YES completion:^{
-//
-//                    }];
-//                }else{
-//                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[result objectForKey:@"errinfo"]
-//                                                                   delegate:self cancelButtonTitle:@"确定"
-//                                                          otherButtonTitles:nil,nil];
-//                    
-//                    [alert show];
-//                }
-                
-                
-                
-                
-                
+
                 [[NSUserDefaults standardUserDefaults] setBool:NO forKey:USER_IN];
             }
             
@@ -335,25 +307,6 @@
         _gloginView.userInteractionEnabled = YES;
         
         [ZSNApi showAutoHiddenMBProgressWithText:@"登录失败" addToView:self.view];
-        
-        
-//        id obj=NSClassFromString(@"UIAlertController");
-//        if ( obj!=nil){
-//            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:[failDic objectForKey:@"ERRO_INFO"] preferredStyle:UIAlertControllerStyleAlert];
-//            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-//                
-//            }];
-//            [alertController addAction:cancelAction];
-//            [self presentViewController:alertController animated:YES completion:^{
-//                
-//            }];
-//        }else{
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[failDic objectForKey:@"ERRO_INFO"]
-//                                                           delegate:self cancelButtonTitle:@"确定"
-//                                                  otherButtonTitles:nil,nil];
-//            
-//            [alert show];
-//        }
         
         NSLog(@"登录失败:%@",failDic);
         
@@ -392,6 +345,7 @@
         NSString * errcode = [allDic objectForKey:@"errcode"];
         if ([errcode intValue] == 1)///已经开通fb
         {
+            
             [bself CloseButtonTap:nil];
         }else
         {

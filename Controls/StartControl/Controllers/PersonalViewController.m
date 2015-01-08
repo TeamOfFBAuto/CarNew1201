@@ -73,7 +73,7 @@ typedef enum{
 
     int _page;//第几页
     int _pageCapacity;//一页请求几条数据
-    NSArray *_dataArray;//数据源
+    NSMutableArray *_dataArray;//数据源
     
     RefreshTableView *_tableView;//主tableview
     
@@ -244,13 +244,16 @@ typedef enum{
             
             [_topImv setImage:[GMAPI getUserBannerImage]];
         }else{
-            
+        
             [_topImv sd_setImageWithURL:[NSURL URLWithString:[dic stringValueForKey:@"bunner"]] placeholderImage:[UIImage imageNamed:@"gBanner.jpg"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                
+                NSLog(@"BannerImageURL:%@",imageURL);
+                
                 NSData *imageData = UIImageJPEGRepresentation(_topImv.image, 1.0);
                 [GMAPI setUserBannerImageWithData:imageData];
             }];
         }
-        
+     
         
         //头像
         if ([GMAPI getUserFaceImage]) {
@@ -869,7 +872,7 @@ typedef enum{
     GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:api isPost:NO postData:nil];
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
         _tableView.netWorking = GIS;
-        _dataArray = nil;
+        [_dataArray removeAllObjects];
 //        [MBProgressHUD hideHUDForView:self.view animated:YES];
         _hudView.hidden = YES;
         
@@ -1016,9 +1019,9 @@ typedef enum{
     _page = 1;
     _tableView.isReloadData = YES;
     
-    _dataArray = nil;
+    [_dataArray removeAllObjects];
     _tableView.pageNum = 1;
-    _tableView.dataArray = nil;
+    [_tableView.dataArray removeAllObjects];
     
     [self prepareNetDataWithCellType:_cellType];
     
