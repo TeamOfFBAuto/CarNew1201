@@ -240,7 +240,7 @@
     hud = [ZSNApi showMBProgressWithText:@"发表中..." addToView:self];
     hud.mode = MBProgressHUDModeIndeterminate;
     
-    NSString* fullURL = [NSString stringWithFormat:URLIMAGE,@"AzVWNV48UjcFO1o4ADMHfFHnAuQBlFLU"];
+    NSString* fullURL = [NSString stringWithFormat:URLIMAGE,[GMAPI getAuthkey_GBK]];
     
     NSLog(@"上传图片的url  ——--  %@",fullURL);
     ASIFormDataRequest * request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:fullURL]];
@@ -291,7 +291,7 @@
     
     ASIFormDataRequest * up_request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:SEND_WEIBO_URL]];
     [up_request setPostValue:_userName_label.text forKey:@"content"];
-    [up_request setPostValue:@"AzVWNV48UjcFO1o4ADMHfFHnAuQBlFLU" forKey:@"authkey"];
+    [up_request setPostValue:[GMAPI getAuthkey_GBK] forKey:@"authkey"];
     [up_request setPostValue:imageId forKey:@"imgid"];
     
     __weak typeof(up_request)brequest = up_request;

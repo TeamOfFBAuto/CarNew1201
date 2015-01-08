@@ -324,9 +324,9 @@
     LShareTools *tool = [LShareTools shareInstance];
     
     NSString *url = [NSString stringWithFormat:BUSINESS_DETAIL_HTML5_URL,_business_id];
-    NSString *imageUrl = @"http://fbautoapp.fblife.com/resource/head/84/9b/thumb_1_Thu.jpg";
+//    NSString *imageUrl = @"http://fbautoapp.fblife.com/resource/head/84/9b/thumb_1_Thu.jpg";
     
-    [tool showOrHidden:YES title:_share_title description:@"这是一个非常牛逼的应用" imageUrl:imageUrl aShareImage:_share_image linkUrl:url];
+    [tool showOrHidden:YES title:_businessModel.title description:_businessModel.content imageUrl:_businessModel.pichead aShareImage:_share_image linkUrl:url];
 }
 #pragma mark - 收藏或取消收藏
 -(void)collectionClicked
