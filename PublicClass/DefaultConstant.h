@@ -70,6 +70,7 @@ alpha:(a)]
 #define USER_UID @"useruid"
 #define USER_IN @"user_in" //0是未登陆  1是已登陆
 #define USER_AUTHOD @"user_authod"
+#define USER_AUTHKEY_GBK @"authkey_gbk"
 #define USER_CHECKUSER @"checkfbuser"
 #define TUPIANZHILIANG @"tupianzhiliang"
 #define NOTIFICATION_QUXIAOGUANZHU @"quxiaoguanzhu"

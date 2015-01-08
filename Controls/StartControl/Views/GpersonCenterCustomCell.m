@@ -181,7 +181,6 @@
     
     
     _biaoqianLabel.text = theModel.business;
-//    _biaoqianLabel setMatchedFrame4LabelWithOrigin:<#(CGPoint)#> height:<#(CGFloat)#> limitMaxWidth:<#(CGFloat)#>
     
     
 }

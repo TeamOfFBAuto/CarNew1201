@@ -24,9 +24,12 @@
 
 +(NSString *)getAuthkey;
 
++(NSString *)getAuthkey_GBK;
+
 +(NSString *)getUid;
 
 +(NSString *)getUserPassWord;
+
 
 
 + (MBProgressHUD *)showMBProgressWithText:(NSString *)text addToView:(UIView *)aView;

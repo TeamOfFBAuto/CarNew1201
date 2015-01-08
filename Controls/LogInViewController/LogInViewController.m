@@ -273,7 +273,9 @@
     __weak typeof(self)bself = self;
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
         [j stopAnimating];
+        
         NSLog(@"登录成功:%@",result);
+        
         if ([[result objectForKey:@"errcode"] intValue] == 0) {//登录成功
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_IN];
             
@@ -281,9 +283,12 @@
                 NSString *userid = [datainfo objectForKey:@"uid"];
                 NSString *username = [datainfo objectForKey:@"username"];
                 NSString *authkey = [datainfo objectForKey:@"authkey"];
+            NSString *authkey_gbk = [datainfo objectForKey:@"authkey_gbk"];
                 [GMAPI cache:userid ForKey:USER_UID];
                 [GMAPI cache:username ForKey:USER_NAME];
                 [GMAPI cache:authkey ForKey:USER_AUTHOD];
+            [GMAPI cache:authkey_gbk ForKey:USER_AUTHKEY_GBK];
+            
 //            [bloginView cleanUserNameAndPassWordTextfied];
             
                 ///验证是否开通fb
