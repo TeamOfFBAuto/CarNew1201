@@ -87,7 +87,7 @@
     
     __weak typeof(RefreshTableView *)weakTable = _table;
     __weak typeof(self)weakSelf = self;
-    NSString *url = [NSString stringWithFormat:ANLI_LIST,pageNum,10];
+    NSString *url = [NSString stringWithFormat:ANLI_LIST,pageNum,10,1];
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
         

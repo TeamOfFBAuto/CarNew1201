@@ -160,7 +160,7 @@ alpha:(a)]
 
 
 //案例列表
-#define ANLI_LIST @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&page=%d&ps=%d"
+#define ANLI_LIST @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&page=%d&ps=%d&ordertype=%d"
 
 //案例收藏
 #define ANLI_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=addFavCase&fbtype=json&authkey=%@&caseid=%@"
