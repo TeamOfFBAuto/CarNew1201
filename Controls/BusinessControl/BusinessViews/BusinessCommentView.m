@@ -51,7 +51,15 @@
 
 -(void)buttonTap:(UIButton *)button
 {
-    switch (button.tag-100) {
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_IN])
+    {
+        BusinessCommentView_block(BusinessCommentViewTapTypeLogIn);
+        return;
+    }
+    
+    switch (button.tag-100)
+    {
         case 0:
         {
             BusinessCommentView_block(BusinessCommentViewTapTypeConsult);
@@ -59,12 +67,7 @@
             break;
         case 1:
         {
-            if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_IN]) {
-                BusinessCommentView_block(BusinessCommentViewTapTypeComment);
-            }else
-            {
-                BusinessCommentView_block(BusinessCommentViewTapTypeLogIn);
-            }
+            BusinessCommentView_block(BusinessCommentViewTapTypeComment);
         }
             break;
             

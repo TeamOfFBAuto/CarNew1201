@@ -33,7 +33,7 @@
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:USER_IN])
     {
-        [headerImageView sd_setImageWithURL:[NSURL URLWithString:[ZSNApi returnMiddleUrl:[GMAPI getUid]]] placeholderImage:[UIImage imageNamed:HEADER_DEFAULT_IMAGE]];
+        [headerImageView sd_setImageWithURL:[NSURL URLWithString:[ZSNApi returnMiddleUrl:[GMAPI getUid]]] placeholderImage:[UIImage imageNamed:@"reminderLogIn_image"]];
     }
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doTap:)];
     [headerImageView addGestureRecognizer:tap];
@@ -67,7 +67,7 @@
 #pragma mark - 登陆成功通知
 -(void)SuccesLogIn
 {
-    [headerImageView sd_setImageWithURL:[NSURL URLWithString:[ZSNApi returnMiddleUrl:[GMAPI getUid]]] placeholderImage:[UIImage imageNamed:HEADER_DEFAULT_IMAGE]];
+    [headerImageView sd_setImageWithURL:[NSURL URLWithString:[ZSNApi returnMiddleUrl:[GMAPI getUid]]] placeholderImage:[UIImage imageNamed:@"reminderLogIn_image"]];
 }
 
 -(void)doTap:(UITapGestureRecognizer *)sender
