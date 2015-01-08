@@ -73,7 +73,7 @@ typedef enum{
 
     int _page;//第几页
     int _pageCapacity;//一页请求几条数据
-    NSMutableArray *_dataArray;//数据源
+    NSArray *_dataArray;//数据源
     
     RefreshTableView *_tableView;//主tableview
     
@@ -872,7 +872,7 @@ typedef enum{
     GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:api isPost:NO postData:nil];
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
         _tableView.netWorking = GIS;
-        [_dataArray removeAllObjects];
+        _dataArray = nil;
 //        [MBProgressHUD hideHUDForView:self.view animated:YES];
         _hudView.hidden = YES;
         
@@ -880,12 +880,13 @@ typedef enum{
         
         NSDictionary *datainfo = [result objectForKey:@"datainfo"];
         
-        NSArray *dataArray = [datainfo objectForKey:@"data"];
+        NSArray *data = [datainfo objectForKey:@"data"];
+        NSMutableArray *dataArr = [NSMutableArray arrayWithCapacity:1];
         
-        _tableView.dataArray = [NSMutableArray arrayWithArray:dataArray];
+        
         _tableView.pageNum = _page;
         
-        if (dataArray.count < _pageCapacity) {
+        if (data.count < _pageCapacity) {
             
             _tableView.isHaveMoreData = NO;
         }else
@@ -896,20 +897,17 @@ typedef enum{
         
         
         if (theType == GDIANPU) {//店铺
-            NSMutableArray *dataArr = [NSMutableArray arrayWithCapacity:1];
-            for (NSDictionary *dic in dataArray) {
+            for (NSDictionary *dic in data) {
                 
                 BusinessListModel *model = [[BusinessListModel alloc]initWithDictionary:dic];
                 [dataArr addObject:model];
                 
             }
             
-            _dataArray = (NSArray*)dataArr;
             
         }else if (theType == GCHANPIN){//产品
-            NSMutableArray *dataArr = [NSMutableArray arrayWithCapacity:1];
             
-            for (NSDictionary *dic in dataArray) {
+            for (NSDictionary *dic in data) {
                 
                 GGoodsModel *model = [[GGoodsModel alloc]initWithDictionary:dic];
                 
@@ -917,21 +915,19 @@ typedef enum{
                 
             }
             
-            _dataArray = (NSArray *)dataArr;
             
         }else if (theType == GANLI){//案例
-            NSMutableArray *dataArr = [NSMutableArray arrayWithCapacity:1];
-            for (NSDictionary *dic in dataArray) {
+            for (NSDictionary *dic in data) {
                 
                 GCaseModel *model = [[GCaseModel alloc]initWithDictionary:dic];
                 [dataArr addObject:model];
                 
             }
             
-            _dataArray = (NSArray *)dataArr;
         }
         
-        [bself reloadData:_dataArray isReload:_tableView.isReloadData];
+        
+        [bself reloadData:dataArr isReload:_tableView.isReloadData];
         
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         
@@ -995,11 +991,13 @@ typedef enum{
     if (isReload) {
         
         _dataArray = dataArr;
+        _tableView.dataArray = [NSMutableArray arrayWithArray:_dataArray];
         
     }else
     {
         NSMutableArray *newArr = [NSMutableArray arrayWithArray:_dataArray];
         [newArr addObjectsFromArray:dataArr];
+        _tableView.dataArray = newArr;
         _dataArray = newArr;
     }
     
@@ -1019,9 +1017,9 @@ typedef enum{
     _page = 1;
     _tableView.isReloadData = YES;
     
-    [_dataArray removeAllObjects];
+    _dataArray = nil;
     _tableView.pageNum = 1;
-    [_tableView.dataArray removeAllObjects];
+    _tableView.dataArray = nil;
     
     [self prepareNetDataWithCellType:_cellType];
     
