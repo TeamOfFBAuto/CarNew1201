@@ -62,9 +62,15 @@
                 
                 if (erroCode != 0) { //0代表无错误,  && erroCode != 1 1代表无结果
                     
-                    
-                    NSDictionary *failDic = @{ERROR_INFO:erroInfo};
-                    failBlock(failDic,connectionError);
+                    if ([self.shoucangchanpin isEqualToString:@"shoucang"]) {//收藏接口
+                        if (erroCode == 1) {//数据为空
+                            successBlock(dic,connectionError);
+                            return;
+                        }
+                    }else{
+                        NSDictionary *failDic = @{ERROR_INFO:erroInfo};
+                        failBlock(failDic,connectionError);
+                    }
                     
                     return ;
                 }else

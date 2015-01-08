@@ -870,15 +870,23 @@ typedef enum{
     __weak typeof (self)bself = self;
     
     GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:api isPost:NO postData:nil];
+    cc.shoucangchanpin = @"shoucang";
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
         _tableView.netWorking = GIS;
         _dataArray = nil;
-//        [MBProgressHUD hideHUDForView:self.view animated:YES];
         _hudView.hidden = YES;
         
         NSLog(@"到底走了吗%@",result);
         
         NSDictionary *datainfo = [result objectForKey:@"datainfo"];
+        
+        if (!datainfo || ![datainfo isKindOfClass:[NSDictionary class]]) {
+            NSArray *arr = [NSArray array];
+            _tableView.isHaveMoreData = NO;
+            _tableView.pageNum = _page;
+            [bself reloadData:arr isReload:_tableView.isReloadData];
+            return ;
+        }
         
         NSArray *data = [datainfo objectForKey:@"data"];
         NSMutableArray *dataArr = [NSMutableArray arrayWithCapacity:1];
@@ -931,7 +939,6 @@ typedef enum{
         
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         
-//        [MBProgressHUD hideHUDForView:self.view animated:YES];
         _hudView.hidden = YES;
         
         [ZSNApi showAutoHiddenMBProgressWithText:@"请求收藏信息失败" addToView:self.view];
@@ -939,6 +946,7 @@ typedef enum{
         
         
         NSLog(@"---%@",failDic);
+        
 //        if ([[failDic objectForKey:@"ERRO_INFO"]isEqualToString:@"结果为空"]) {
 //            
 //        }else{

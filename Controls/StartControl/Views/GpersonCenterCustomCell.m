@@ -41,7 +41,7 @@
 
         
         
-        _titleLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(_titleLabel1.frame.origin.x, CGRectGetMaxY(_titleLabel1.frame)+1, _titleLabel1.frame.size.width, _titleLabel1.frame.size.height)];
+        _titleLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(_titleLabel1.frame.origin.x, CGRectGetMaxY(_titleLabel1.frame)+4, _titleLabel1.frame.size.width, _titleLabel1.frame.size.height)];
         _titleLabel2.textColor = RGBCOLOR(165, 163, 164);
         _titleLabel2.font = [UIFont systemFontOfSize:14];
 

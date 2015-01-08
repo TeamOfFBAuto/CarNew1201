@@ -23,6 +23,8 @@ typedef void(^ urlRequestBlock)(NSDictionary *result,NSError *erro);
 }
 
 
+@property(nonatomic,strong)NSString *shoucangchanpin;
+
 /**
  *  对象初始化方法
  *
