@@ -1,0 +1,10 @@
+(function($){
+		$.extend({
+			showBtn:function(){
+				$(".show_img").css({"display":"block"});
+			},
+			hideBtn:function(){
+				$(".show_img").css({"display":"none"});
+			}
+		});
+})(jQuery);

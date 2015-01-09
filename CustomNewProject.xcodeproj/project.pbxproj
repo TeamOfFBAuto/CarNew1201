@@ -32,6 +32,7 @@
 		138178CB1A319572001DB92C /* CarTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 138178C91A319572001DB92C /* CarTypeViewController.xib */; };
 		138F59FB1A3E903F009B0612 /* navigation_back_jiantou_image_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138F59FA1A3E903F009B0612 /* navigation_back_jiantou_image_gray@2x.png */; };
 		138F59FF1A3E95D5009B0612 /* navigation_back_jiantou_image_kong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138F59FE1A3E95D5009B0612 /* navigation_back_jiantou_image_kong@2x.png */; };
+		13BB42701A5F86FF00B8E78E /* show_hide.js in Resources */ = {isa = PBXBuildFile; fileRef = 13BB426F1A5F86FF00B8E78E /* show_hide.js */; };
 		13F9D4701A2D5A6E002A6904 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D46F1A2D5A6E002A6904 /* BaseModel.m */; };
 		13F9D4731A2D5A80002A6904 /* AnliModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D4721A2D5A80002A6904 /* AnliModel.m */; };
 		13F9D4781A2D9A89002A6904 /* AnliDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D4761A2D9A89002A6904 /* AnliDetailViewController.m */; };
@@ -276,6 +277,7 @@
 		138178C91A319572001DB92C /* CarTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarTypeViewController.xib; sourceTree = "<group>"; };
 		138F59FA1A3E903F009B0612 /* navigation_back_jiantou_image_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_back_jiantou_image_gray@2x.png"; sourceTree = "<group>"; };
 		138F59FE1A3E95D5009B0612 /* navigation_back_jiantou_image_kong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_back_jiantou_image_kong@2x.png"; sourceTree = "<group>"; };
+		13BB426F1A5F86FF00B8E78E /* show_hide.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = show_hide.js; sourceTree = "<group>"; };
 		13F9D46E1A2D5A6E002A6904 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		13F9D46F1A2D5A6E002A6904 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		13F9D4711A2D5A80002A6904 /* AnliModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnliModel.h; sourceTree = "<group>"; };
@@ -889,6 +891,7 @@
 			children = (
 				19B34DCC1A2466A300ED1935 /* PicViewController.h */,
 				19B34DCD1A2466A300ED1935 /* PicViewController.m */,
+				13BB426F1A5F86FF00B8E78E /* show_hide.js */,
 				13F9D4751A2D9A89002A6904 /* AnliDetailViewController.h */,
 				13F9D4761A2D9A89002A6904 /* AnliDetailViewController.m */,
 				138178C71A319572001DB92C /* CarTypeViewController.h */,
@@ -1798,6 +1801,7 @@
 				560CB53B1A270B230067F7AA /* navgationBar_background_image@2x.png in Resources */,
 				E3B2DC651A43ED8A00607B11 /* gback@2x.png in Resources */,
 				E3B2DC691A43FF3F00607B11 /* logo@2x.png in Resources */,
+				13BB42701A5F86FF00B8E78E /* show_hide.js in Resources */,
 				56621D431A28605B00310A48 /* item_cancel_selected@2x.png in Resources */,
 				56621D471A28605B00310A48 /* messages_right_bubble@2x.png in Resources */,
 				56621D3F1A28605B00310A48 /* blueArrow@2x.png in Resources */,

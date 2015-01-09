@@ -42,7 +42,7 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="猛禽魔抓金卡杀菌前杠" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJG-nV-nL0">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="猛禽魔抓金卡杀菌前杠" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJG-nV-nL0">
                         <rect key="frame" x="10" y="228" width="212" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="3Jg-TC-tJn"/>
@@ -61,7 +61,7 @@
                             </mask>
                         </variation>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="运量改装" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJN-Hs-ZaQ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="运量改装" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJN-Hs-ZaQ">
                         <rect key="frame" x="10" y="248" width="212" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="ONq-S2-GF3"/>
@@ -85,7 +85,7 @@
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="duy-6f-Uyq">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                        <color key="backgroundColor" red="0.96919686283991602" green="0.97313071273097507" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.97254901960784312" blue="1" alpha="0.25" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="9SG-eM-jJb">
                                 <variation key="heightClass=regular-widthClass=compact" constant="34"/>
