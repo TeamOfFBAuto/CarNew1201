@@ -137,12 +137,16 @@
     
     self.cc_content = [self.cc_content stringByReplacingEmojiUnicodeWithCheatCodes];
     
+    
+    self.cc_content = [self.cc_content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
     if (self.cc_content.length == 0) {
         
         [ZSNApi showAutoHiddenMBProgressWithText:@"评论不能为空" addToView:self.view];
         
         return;
     }
+    
     
     [self networkForCommentContent:self.cc_content score:[NSString stringWithFormat:@"%.f",self.theScore]];
 }
