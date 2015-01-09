@@ -14,6 +14,7 @@
 #import "GscoreStarViewController.h"
 #import "LogInViewController.h"
 #import "BusinessDetailModel.h"
+#import "FBMapViewController.h"
 
 @interface BusinessHomeViewController ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate,UIScrollViewDelegate>
 {
@@ -249,6 +250,16 @@
     {
         NSString * address = [relativeUrl stringByReplacingOccurrencesOfString:@"map:" withString:@""];
         NSLog(@"address ------   %@",address);
+        
+        FBMapViewController * mapViewController = [[FBMapViewController alloc] init];
+        mapViewController.address_content = _businessModel.content;
+        mapViewController.address_title = _businessModel.title;
+        mapViewController.address_latitude = 39.8688;
+        mapViewController.address_longitude = 116.553;
+        
+        [self.navigationController pushViewController:mapViewController animated:YES];
+        
+        return NO;
     }
     
     if ([relativeUrl rangeOfString:@"tel:"].length > 0)

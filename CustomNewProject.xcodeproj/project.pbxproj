@@ -88,6 +88,8 @@
 		56508D7E1A5F83E800321B2F /* navigation_plus_n0_hidden_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56508D7C1A5F83E800321B2F /* navigation_plus_n0_hidden_image@2x.png */; };
 		56508D811A5F87CA00321B2F /* navigation_plus_hidden_image@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56508D7F1A5F87CA00321B2F /* navigation_plus_hidden_image@3x.png */; };
 		56508D821A5F87CA00321B2F /* navigation_plus_n0_hidden_image@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56508D801A5F87CA00321B2F /* navigation_plus_n0_hidden_image@3x.png */; };
+		56508D871A5FB60100321B2F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56508D861A5FB60100321B2F /* MapKit.framework */; };
+		56508D8A1A5FBA2000321B2F /* FBMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56508D891A5FBA2000321B2F /* FBMapViewController.m */; };
 		565321581A5A6FC500E43F80 /* ZSNAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 565321571A5A6FC500E43F80 /* ZSNAlertView.m */; };
 		5653215B1A5A706200E43F80 /* OHLableHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5653215A1A5A706200E43F80 /* OHLableHelper.m */; };
 		565321621A5A79E700E43F80 /* button1-down252_94@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5653215D1A5A79E700E43F80 /* button1-down252_94@2x.png */; };
@@ -384,6 +386,9 @@
 		56508D7C1A5F83E800321B2F /* navigation_plus_n0_hidden_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_plus_n0_hidden_image@2x.png"; sourceTree = "<group>"; };
 		56508D7F1A5F87CA00321B2F /* navigation_plus_hidden_image@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_plus_hidden_image@3x.png"; sourceTree = "<group>"; };
 		56508D801A5F87CA00321B2F /* navigation_plus_n0_hidden_image@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_plus_n0_hidden_image@3x.png"; sourceTree = "<group>"; };
+		56508D861A5FB60100321B2F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		56508D881A5FBA2000321B2F /* FBMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBMapViewController.h; sourceTree = "<group>"; };
+		56508D891A5FBA2000321B2F /* FBMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBMapViewController.m; sourceTree = "<group>"; };
 		565321561A5A6FC500E43F80 /* ZSNAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSNAlertView.h; sourceTree = "<group>"; };
 		565321571A5A6FC500E43F80 /* ZSNAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSNAlertView.m; sourceTree = "<group>"; };
 		565321591A5A706200E43F80 /* OHLableHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHLableHelper.h; sourceTree = "<group>"; };
@@ -615,6 +620,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56508D871A5FB60100321B2F /* MapKit.framework in Frameworks */,
 				563B322B1A382D7A00015088 /* libicucore.dylib in Frameworks */,
 				13F9D4CA1A2DAA66002A6904 /* MessageUI.framework in Frameworks */,
 				56CE4B311A2581A000876AC7 /* UIKit.framework in Frameworks */,
@@ -1006,6 +1012,7 @@
 		34D51D6C4A802172BEAD4711 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56508D861A5FB60100321B2F /* MapKit.framework */,
 				563B322A1A382D7A00015088 /* libicucore.dylib */,
 				13F9D4C91A2DAA66002A6904 /* MessageUI.framework */,
 				56CE4B301A2581A000876AC7 /* UIKit.framework */,
@@ -1421,6 +1428,8 @@
 				5653215A1A5A706200E43F80 /* OHLableHelper.m */,
 				56C951361A5A92DD00A083E4 /* NSString+Emoji.h */,
 				56C951371A5A92DD00A083E4 /* NSString+Emoji.m */,
+				56508D881A5FBA2000321B2F /* FBMapViewController.h */,
+				56508D891A5FBA2000321B2F /* FBMapViewController.m */,
 			);
 			path = ZSNClasses;
 			sourceTree = "<group>";
@@ -1906,6 +1915,7 @@
 				56621D3D1A28605B00310A48 /* UMEGORefreshTableHeaderView.m in Sources */,
 				56CC07111A2FF9C70014F285 /* PrivacyPolicyViewController.m in Sources */,
 				565EE8B61A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m in Sources */,
+				56508D8A1A5FBA2000321B2F /* FBMapViewController.m in Sources */,
 				1351179E1A257EB20015C133 /* LRefreshTableHeaderView.m in Sources */,
 				138178CA1A319572001DB92C /* CarTypeViewController.m in Sources */,
 				19B34DD11A2466C300ED1935 /* StoreViewController.m in Sources */,
@@ -2055,7 +2065,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "96c93639-ff5c-44ac-ad74-809c23c1de89";
+				PROVISIONING_PROFILE = "0c0fcf41-02c9-4bbc-b06a-e103275d3718";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2093,7 +2103,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "96c93639-ff5c-44ac-ad74-809c23c1de89";
+				PROVISIONING_PROFILE = "0c0fcf41-02c9-4bbc-b06a-e103275d3718";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2122,7 +2132,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "96c93639-ff5c-44ac-ad74-809c23c1de89";
+				PROVISIONING_PROFILE = "0c0fcf41-02c9-4bbc-b06a-e103275d3718";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -2150,7 +2160,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "96c93639-ff5c-44ac-ad74-809c23c1de89";
+				PROVISIONING_PROFILE = "0c0fcf41-02c9-4bbc-b06a-e103275d3718";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
