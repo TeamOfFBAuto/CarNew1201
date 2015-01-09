@@ -16,6 +16,7 @@
     if (self) {
         self.frame = CGRectMake(0,64,DEVICE_WIDTH,DEVICE_HEIGHT-64);
         self.backgroundColor = [UIColor clearColor];
+        _isShowThirdButton = YES;
         [self setup];
         
     }
@@ -27,6 +28,7 @@
 {
     back_view = [[UIView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-56,6,34,108)];
     back_view.backgroundColor = [UIColor blackColor];
+    back_view.clipsToBounds = YES;
     [self addSubview:back_view];
     
     NSArray * image_array = [NSArray arrayWithObjects:[UIImage imageNamed:@"navigation_forward_image"],[UIImage imageNamed:@"navigation_praise_image"],[UIImage imageNamed:@"navigation_plus_hidden_image"],nil];
@@ -54,7 +56,7 @@
         
         UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(0,-0.5+back_view.height/3.0f,33,0.5)];
         line_view.backgroundColor = RGBCOLOR(70,70,70);
-        line_view.center = CGPointMake(back_view.width/2,-0.5+(back_view.height/3.0f)*i);
+        line_view.center = CGPointMake(back_view.width/2,(back_view.height/3.0f)*(i+1)+0.5);
         [back_view addSubview:line_view];
     }
 }
@@ -107,6 +109,12 @@
     UIButton * button = (UIButton *)[self viewWithTag:102];
     button.selected = !button.selected;
     _isOpen = button.selected;
+}
+
+-(void)setIsShowThirdButton:(BOOL)isShowThirdButton
+{
+    _isShowThirdButton = isShowThirdButton;
+    back_view.height = isShowThirdButton?108:72;
 }
 
 @end

@@ -251,19 +251,14 @@
         NSLog(@"address ------   %@",address);
     }
     
-//    if ([relativeUrl rangeOfString:@"tel://"].length > 0)
-//    {
-//        NSString * phone = [relativeUrl stringByReplacingOccurrencesOfString:@"tel://" withString:@""];
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",phone]]];
-//    }
-    
-    
-    if (navigationType == UIWebViewNavigationTypeOther) {
-        return YES;
-    }else
+    if ([relativeUrl rangeOfString:@"tel:"].length > 0)
     {
-        return NO;
+        NSString * phone = [relativeUrl stringByReplacingOccurrencesOfString:@"tel:" withString:@""];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",phone]]];
     }
+    
+    
+    return YES;
 }
 
 
@@ -305,6 +300,7 @@
     {
         functionView = [[NavigationFunctionView alloc] init];
         functionView.myHidden = YES;
+        [functionView setIsShowThirdButton:NO];
         
         [self.view addSubview:functionView];
         __weak typeof(self)bself = self;
