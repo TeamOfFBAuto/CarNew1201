@@ -243,7 +243,7 @@
         
         __weak typeof(self)weakSelf = self;
         
-        
+        __weak typeof(functionView)weakFucntion = functionView;
         [functionView setFunctionBlock:^(int index) {
             
             if (index == 0) {
@@ -260,12 +260,19 @@
             }else if (index == 1){
                 
                 [weakSelf clickToCollectAction];
+            }else if (index == 2){
+                
+                [weakFucntion setEyesState:NO];
+                
+                if (!weakFucntion.isOpen) {
+                    
+                    [weakSelf.webView stringByEvaluatingJavaScriptFromString:@"$.showBtn();"];
+                    
+                }else
+                {
+                    [weakSelf.webView stringByEvaluatingJavaScriptFromString:@"$.hideBtn();"];
+                }
             }
-            
-            
-//            [weakSelf.webView stringByEvaluatingJavaScriptFromString:@"$.showBtn();"];
-            
-//            [weakSelf.webView stringByEvaluatingJavaScriptFromString:@"$.hideBtn();"];
             
         }];
     }
