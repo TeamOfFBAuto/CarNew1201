@@ -31,6 +31,7 @@
         self.pichead = [dic stringValueForKey:@"pichead"];
         self.updatetime = [dic stringValueForKey:@"updatetime"];
         self.com_num = [dic stringValueForKey:@"com_num"];
+        self.id = [dic stringValueForKey:@"id"];
     }
     return self;
 }

@@ -1049,7 +1049,7 @@ typedef enum{
 {
     NSLog(@"%s",__FUNCTION__);
     
-    if (_cellType == GDIANPU) {//点击的是
+    if (_cellType == GDIANPU) {
         GpersonCenterCustomCell * cell = (GpersonCenterCustomCell*)[_tableView cellForRowAtIndexPath:indexPath];
         
         BusinessListModel *model = _dataArray[indexPath.row];
@@ -1071,7 +1071,17 @@ typedef enum{
         
         [self.navigationController pushViewController:detail animated:YES];
     }else if (_cellType == GCHANPIN){
+        GGoodsModel *model = _dataArray[indexPath.row];
         
+        AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
+        detail.anli_id = model.id;
+        detail.detailType = Detail_Peijian;
+        detail.storeName = model.title;
+        detail.shareDescrition = model.username;
+        detail.shareImage = [LTools sd_imageForUrl:model.pichead];
+        detail.storeName = model.username;
+        detail.storeImage = [LTools sd_imageForUrl:model.pichead];
+        [self.navigationController pushViewController:detail animated:YES];
     }
     
     

@@ -317,7 +317,7 @@
         
         _gloginView.userInteractionEnabled = YES;
         
-        [ZSNApi showAutoHiddenMBProgressWithText:@"登录失败" addToView:self.view];
+        [ZSNApi showAutoHiddenMBProgressWithText:@"网络连接失败" addToView:self.view];
         
         NSLog(@"登录失败:%@",failDic);
         
@@ -365,7 +365,7 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         _gloginView.userInteractionEnabled = YES;
-        [ZSNApi showAutoHiddenMBProgressWithText:@"登录失败" addToView:self.view];
+        [ZSNApi showAutoHiddenMBProgressWithText:@"网络连接失败" addToView:self.view];
     }];
     
     [request start];

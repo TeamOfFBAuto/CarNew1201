@@ -23,7 +23,7 @@
 @property(nonatomic,strong)NSString *pichead;
 @property(nonatomic,strong)NSString *updatetime;
 @property(nonatomic,strong)NSString *com_num;
-
+@property(nonatomic,strong)NSString *id;
 
 
 -(id)initWithDictionary:(NSDictionary *)dic;
