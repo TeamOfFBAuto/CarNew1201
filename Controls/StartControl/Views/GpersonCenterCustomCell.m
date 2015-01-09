@@ -108,7 +108,7 @@
     }else if (theType == 3){//收藏店铺
         //图片
         self.header_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 12, 60.00, 60.00)];
-        
+        self.header_imageView.image = [UIImage imageNamed:BUSINESS_DEFAULT_IMAGE];
         //名字
         _business_name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.header_imageView.frame)+12, self.header_imageView.frame.origin.y, ALL_FRAME_WIDTH-self.header_imageView.frame.size.width-12-12-12, 17.0/320*ALL_FRAME_WIDTH)];
         _business_name_label.font = [UIFont systemFontOfSize:16];
@@ -179,7 +179,7 @@
     
     
     _business_name_label.text = theModel.storename;
-    [self.header_imageView sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
+    [self.header_imageView sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:[UIImage imageNamed:BUSINESS_DEFAULT_IMAGE]];
     _comment_num_label.text = [NSString stringWithFormat:@"%@人评论",theModel.com_num];
     
     _stars_back_view.startNum = [theModel.score floatValue];

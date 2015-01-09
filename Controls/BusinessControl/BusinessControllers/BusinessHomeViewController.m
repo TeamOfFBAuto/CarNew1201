@@ -252,7 +252,7 @@
         NSLog(@"address ------   %@",address);
         
         FBMapViewController * mapViewController = [[FBMapViewController alloc] init];
-        mapViewController.address_content = _businessModel.content;
+        mapViewController.address_content = _businessModel.phone;
         mapViewController.address_title = _businessModel.title;
         mapViewController.address_latitude = 39.8688;
         mapViewController.address_longitude = 116.553;
@@ -395,6 +395,8 @@
             isCollected = !isCollected;
             
             [functionView setCollectionState:isCollected];
+            
+//            [[NSNotificationCenter defaultCenter] postNotificationName:G_USERCENTERLOADUSERINFO object:nil userInfo:nil];
         }else
         {
             aHud.labelText = [result objectForKey:ERROR_INFO];

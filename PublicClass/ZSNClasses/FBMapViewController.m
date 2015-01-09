@@ -204,8 +204,15 @@
     
     
     UIButton * center_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    center_button.frame = CGRectMake(DEVICE_WIDTH-100,DEVICE_HEIGHT-64-100,50,50);
-    center_button.backgroundColor = [UIColor redColor];
+    center_button.frame = CGRectMake(DEVICE_WIDTH-40-12,DEVICE_HEIGHT-56-12-64,40,40);
+    center_button.backgroundColor = [UIColor whiteColor];
+//    center_button.layer.masksToBounds = YES;
+    center_button.layer.cornerRadius = 3;
+    center_button.layer.shadowColor = [UIColor blackColor].CGColor;
+    center_button.layer.shadowOffset = CGSizeMake(-0.1,-0.1);
+    center_button.layer.shadowOpacity = 0.3;
+    center_button.layer.shadowRadius = 1;
+    [center_button setImage:[UIImage imageNamed:@"map_icon_mine"] forState:UIControlStateNormal];
     [center_button addTarget:self action:@selector(centerButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:center_button];
     

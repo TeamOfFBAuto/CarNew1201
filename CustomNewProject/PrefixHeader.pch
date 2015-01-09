@@ -70,7 +70,12 @@ alpha:(a)]
 #define BACK_DEFAULT_IMAGE_Kong @"navigation_back_jiantou_image_kong"//投影
 
 #define BACK_DEFAULT_IMAGE2 [UIImage imageNamed:@"fanhui_image"]
+///用户默认头像（圆形）
 #define HEADER_DEFAULT_IMAGE @"default_touxiang"
+///用户默认头像（方形）
+#define HEADER_DEFAULT_SQUARE_IMAGE @"gaizhuang_user_header_image"
+///商家默认头像
+#define BUSINESS_DEFAULT_IMAGE @"business_header_image"
 #define WRITE_DEFAULT_IMAGE @"default_write_pen_image.png"
 #define NAVIGATION_MENU_IMAGE_NAME2 @"navigaiton_menu_image" //白色
 #define TITLEFONT [UIFont fontWithName:@"Helvetica" size:20]

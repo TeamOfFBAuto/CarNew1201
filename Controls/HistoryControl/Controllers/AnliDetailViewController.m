@@ -604,6 +604,14 @@
             //已经登录
             NSLog(@"已经登录");
             
+            GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
+            cc.commentType = Comment_Anli;
+            cc.commentId = self.anli_id;
+            UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:cc];
+            [self presentViewController:navc animated:YES completion:^{
+                
+            }];
+            
             
         }else
         {
