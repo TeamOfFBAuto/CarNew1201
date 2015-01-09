@@ -139,7 +139,7 @@
     
     if (self.cc_content.length == 0) {
         
-        [LTools alertText:@"评论不能为空"];
+        [ZSNApi showAutoHiddenMBProgressWithText:@"评论不能为空" addToView:self.view];
         
         return;
     }

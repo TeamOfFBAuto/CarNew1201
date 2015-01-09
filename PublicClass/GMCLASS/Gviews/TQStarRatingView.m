@@ -84,9 +84,10 @@
 {
     CGPoint p = point;
     
-    if (p.x < 0)
+    CGFloat yikexing = 42.00*self.frame.size.width/210;
+    if (p.x < yikexing)
     {
-        p.x = 0;
+        p.x = yikexing;
     }
     else if (p.x > self.frame.size.width)
     {
