@@ -18,6 +18,23 @@
 
 @implementation GscoreStarViewController
 
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    if (IOS7_OR_LATER) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    if (IOS7_OR_LATER) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -27,8 +44,11 @@
         self.navigationController.navigationBar.translucent = NO;
     }
     
+    
+    
     self.view.backgroundColor = [UIColor whiteColor];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,100,44)];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.text = @"我要点评";
     titleLabel.font = [UIFont systemFontOfSize:18];
     self.navigationItem.titleView = titleLabel;
@@ -71,7 +91,7 @@
     [textview_backView addSubview:_tv];
     
     //星星view
-    TQStarRatingView *starRatingView = [[TQStarRatingView alloc] initWithFrame:CGRectMake(50, CGRectGetMaxY(textview_backView.frame)+16, 210*GscreenRatio_320, 35*GscreenRatio_320) numberOfStar:5];
+    TQStarRatingView *starRatingView = [[TQStarRatingView alloc] initWithFrame:CGRectMake((DEVICE_WIDTH-200)*0.5, CGRectGetMaxY(textview_backView.frame)+16, 200, 35) numberOfStar:5];
     starRatingView.delegate = self;
     [self.view addSubview:starRatingView];
     
@@ -83,6 +103,7 @@
     [btn setBackgroundColor:RGBCOLOR(253, 144, 39)];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn setFrame:CGRectMake(20, CGRectGetMaxY(starRatingView.frame)+20, 280*GscreenRatio_320, 46)];
+    btn.titleLabel.font = [UIFont systemFontOfSize:17];
     [btn setTitle:@"提交评论" forState:UIControlStateNormal];
     [self.view addSubview:btn];
     

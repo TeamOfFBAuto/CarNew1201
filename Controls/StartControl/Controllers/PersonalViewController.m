@@ -36,6 +36,7 @@
 
 #import "AnliModel.h"
 #import "AnliDetailViewController.h"
+#import "AnliViewCell.h"
 
 typedef enum{
     GANLI = 0,//案例
@@ -116,12 +117,7 @@ typedef enum{
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     }
     
-    if (_tableView) {
-        if ([_tableView respondsToSelector:@selector(showRefreshHeader:)]) {
-            [_tableView showRefreshHeader:YES];//进入界面先刷新数据
-        }
-        
-    }
+    
     
     
 }
@@ -136,7 +132,6 @@ typedef enum{
         self.navigationController.navigationBar.translucent = NO;
     }
     
-   
     
     NSLog(@"%s",__FUNCTION__);
     
@@ -203,6 +198,10 @@ typedef enum{
     
     _hudView.hidden = YES;
     [self.view addSubview:_hudView];
+    
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loadNewData) name:G_USERCENTERLOADUSERINFO object:nil];
+    
     
     
 }
@@ -348,28 +347,31 @@ typedef enum{
     [_topImv addGestureRecognizer:ddd];
     
     
-    //zking
-    
-    
-    UIImageView *imgV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 6+ALL_FRAME_WIDTH*70/320.0,6+ ALL_FRAME_WIDTH*70/320.0)];
-    
-    imgV.center=CGPointMake(ALL_FRAME_WIDTH/2,88.00/320*ALL_FRAME_WIDTH);
-    
-    imgV.layer.cornerRadius = ALL_FRAME_WIDTH*72/320/2;
-    imgV.layer.masksToBounds = YES;
-
-    
-    imgV.backgroundColor=[[UIColor whiteColor]colorWithAlphaComponent:0.5];
-    
-    [_upThreeViewBackGroundView addSubview:imgV];
+//    //zking
+//    
+//    
+//    UIImageView *imgV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 6+ALL_FRAME_WIDTH*70/320.0,6+ ALL_FRAME_WIDTH*70/320.0)];
+//    
+//    imgV.center=CGPointMake(ALL_FRAME_WIDTH/2,88.00/320*ALL_FRAME_WIDTH);
+//    
+//    imgV.layer.cornerRadius = ALL_FRAME_WIDTH*72/320/2;
+//    imgV.layer.masksToBounds = YES;
+//
+//    
+//    imgV.backgroundColor=[[UIColor whiteColor]colorWithAlphaComponent:0.5];
+//    
+//    [_upThreeViewBackGroundView addSubview:imgV];
     
     //头像
-    _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH*70/320.0, ALL_FRAME_WIDTH*70/320.0)];
+    _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 78, 78)];
 //    _faceImv.backgroundColor = RGBCOLOR_ONE;
     _faceImv.center = CGPointMake(ALL_FRAME_WIDTH/2,88.00/320*ALL_FRAME_WIDTH);
-    _faceImv.layer.cornerRadius = ALL_FRAME_WIDTH*70/320/2;
+    _faceImv.layer.cornerRadius = 78*GscreenRatio_320*0.5;
     _faceImv.layer.masksToBounds = YES;
+    _faceImv.layer.borderWidth = 4;
+    _faceImv.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
     _faceImv.userInteractionEnabled = YES;
+    _faceImv.layer.masksToBounds = YES;
     UITapGestureRecognizer *ccc = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userFaceClicked)];
     [_faceImv addGestureRecognizer:ccc];
     [_upThreeViewBackGroundView addSubview:_faceImv];
@@ -928,8 +930,8 @@ typedef enum{
         }else if (theType == GANLI){//案例
             for (NSDictionary *dic in data) {
                 
-                GCaseModel *model = [[GCaseModel alloc]initWithDictionary:dic];
-                [dataArr addObject:model];
+                AnliModel *aModel = [[AnliModel alloc]initWithDictionary:dic];
+                [dataArr addObject:aModel];
                 
             }
             
@@ -1163,6 +1165,7 @@ typedef enum{
         [cell setAnliDataWithData:model];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
+
     }
     
     
