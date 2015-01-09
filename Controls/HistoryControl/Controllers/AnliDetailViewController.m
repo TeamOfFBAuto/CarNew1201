@@ -253,7 +253,7 @@
                 LShareTools *tool = [LShareTools shareInstance];
                 
                 NSString *url = [NSString stringWithFormat:ANLI_DETAIL,weakSelf.anli_id,[GMAPI getUid]];
-                NSString *imageUrl = @"http://fbautoapp.fblife.com/resource/head/84/9b/thumb_1_Thu.jpg";
+                NSString *imageUrl = weakSelf.detail_info.pichead;
                 
                 UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
                 
