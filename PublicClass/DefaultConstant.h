@@ -179,8 +179,10 @@ alpha:(a)]
 #define ANLI_COLLECT_STATE @"http://gztest.fblife.com/web.php?c=interface&a=getCasedetails&cid=%@&authkey=%@"
 
 //案例详情
-#define ANLI_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getCase&caseid=%@&uid=%@"
+#define ANLI_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getCase&caseid=%@&authkey=%@"
 
+//案例详情分享出去
+#define ANLI_DETAIL_SHARE @"http://gztest.fblife.com/web.php?c=wap&a=getCase&caseid=%@&authkey=%@&isshare=1"
 
 //评论接口
 

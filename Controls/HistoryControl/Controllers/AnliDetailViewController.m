@@ -90,6 +90,17 @@
     
 }
 
+-(void)back:(UIButton *)button
+{
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    
+//    if (self.isFromAnli) {
+//        [self.navigationController setNavigationBarHidden:NO animated:YES];
+//    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -108,11 +119,11 @@
     NSString *api;
     if (self.detailType == Detail_Anli) {
         
-        api = ANLI_DETAIL;
+        api = [NSString stringWithFormat:ANLI_DETAIL,self.anli_id,[GMAPI getAuthkey]];
         
     }else if (self.detailType == Detail_Peijian){
         
-        api = ANLI_PEIJIAN_DETAIL;
+        api =[NSString stringWithFormat:ANLI_PEIJIAN_DETAIL,self.anli_id,[GMAPI getUid]];
     }
     
     NSString *url = [NSString stringWithFormat:api,self.anli_id,[GMAPI getUid]];
@@ -128,11 +139,14 @@
     
     [self networkForCollectState];
     
-    bottomView = [[CommentBottomView alloc] init];
-//    bottomView.hidden = YES;
-    [self.view addSubview:bottomView];
     
-    bottomView.top = DEVICE_HEIGHT;
+    //评论view
+    
+//    bottomView = [[CommentBottomView alloc] init];
+////    bottomView.hidden = YES;
+//    [self.view addSubview:bottomView];
+//    
+//    bottomView.top = DEVICE_HEIGHT;
     
     __weak typeof(self)weakSelf = self;
     
@@ -225,15 +239,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
--(void)back:(UIButton *)button
-{
-    self.edgesForExtendedLayout = UIRectEdgeAll;
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 -(void)rightButtonTap:(UIButton *)button
 {
     if (!functionView)
@@ -252,7 +257,7 @@
                 
                 LShareTools *tool = [LShareTools shareInstance];
                 
-                NSString *url = [NSString stringWithFormat:ANLI_DETAIL,weakSelf.anli_id,[GMAPI getUid]];
+                NSString *url = [NSString stringWithFormat:ANLI_DETAIL_SHARE,weakSelf.anli_id,[GMAPI getAuthkey]];
                 NSString *imageUrl = weakSelf.detail_info.pichead;
                 
                 UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
@@ -486,6 +491,28 @@
 
 #pragma mark 事件处理
 
+/**
+ *  登录之后刷新
+ */
+- (void)loginAndRefresh
+{
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"gdengluchenggong" object:nil];
+    
+    NSString *api;
+    if (self.detailType == Detail_Anli) {
+        
+        api = [NSString stringWithFormat:ANLI_DETAIL,self.anli_id,[GMAPI getAuthkey]];
+        
+    }else if (self.detailType == Detail_Peijian){
+        
+        api =[NSString stringWithFormat:ANLI_PEIJIAN_DETAIL,self.anli_id,[GMAPI getUid]];
+    }
+    
+    NSString *url = [NSString stringWithFormat:api,self.anli_id,[GMAPI getUid]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+}
+
 - (void)clickToShouCang:(UIButton *)sender
 {
     [self networkForCollect];
@@ -546,6 +573,7 @@
         return NO;
     }
     
+    //配件第一种情况
     
     if ([relativeUrl rangeOfString:@"peijianxiangqing"].length > 0) {
         
@@ -568,6 +596,28 @@
         return NO;
     }
 
+
+    if ([relativeUrl rangeOfString:@"pinglun"].length > 0) {
+        
+        if ([LTools cacheBoolForKey:USER_IN]) {
+            
+            //已经登录
+            NSLog(@"已经登录");
+            
+            
+        }else
+        {
+            
+            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginAndRefresh) name:@"gdengluchenggong" object:nil];
+            LogInViewController * logIn = [[LogInViewController alloc] init];
+            UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
+            [self presentViewController:navc animated:YES completion:nil];
+            
+        }
+        
+        return NO;
+        
+    }
     
     return YES;
 }
@@ -604,24 +654,24 @@
 {
     NSLog(@"=== %@",NSStringFromCGSize(scrollView.contentSize));
     
-    CGFloat offset = scrollView.contentOffset.y;
-        
-    if (offset > currentOffY) {
-//        bottomView.hidden = NO;
+//    CGFloat offset = scrollView.contentOffset.y;
 //        
-//        self.webView.height = ALL_FRAME_HEIGHT + 20 - 62;
-        
-        [self hiddenBottomViewWith:NO];
-        
-    }else
-    {
-//        bottomView.hidden = YES;
-//        self.webView.height = ALL_FRAME_HEIGHT + 20;
-        
-        [self hiddenBottomViewWith:YES];
-    }
-    
-    currentOffY = offset;
+//    if (offset > currentOffY) {
+////        bottomView.hidden = NO;
+////        
+////        self.webView.height = ALL_FRAME_HEIGHT + 20 - 62;
+//        
+//        [self hiddenBottomViewWith:NO];
+//        
+//    }else
+//    {
+////        bottomView.hidden = YES;
+////        self.webView.height = ALL_FRAME_HEIGHT + 20;
+//        
+//        [self hiddenBottomViewWith:YES];
+//    }
+//    
+//    currentOffY = offset;
 }
 
 ///底部栏弹出消失动画
