@@ -165,7 +165,7 @@
 
 - (void)progress
 {
-    progress = [[UIView alloc]initWithFrame:CGRectMake(0, bottomView.bottom - 2, DEVICE_WIDTH, 2)];
+    progress = [[UIView alloc]initWithFrame:CGRectMake(0, DEVICE_HEIGHT - 2, DEVICE_WIDTH, 2)];
     progress.backgroundColor = [UIColor clearColor];
     [self.view addSubview:progress];
     
