@@ -25,6 +25,7 @@
 #import "GscoreStarViewController.h"
 
 #import "CommentBottomView.h"
+#import "BusinessDetailModel.h"
 
 @interface AnliDetailViewController ()<MFMailComposeViewControllerDelegate,UIWebViewDelegate,UIScrollViewDelegate>
 {
@@ -44,6 +45,9 @@
     
     BOOL isCollect;
 }
+
+///存放标题、图片、是否收藏 、简介信息
+@property(nonatomic,strong)BusinessDetailModel * detail_info;
 
 @end
 
@@ -250,7 +254,7 @@
                 
                 UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
                 
-                [tool showOrHidden:YES title:@"这里是分享的标题" description:@"这是一个非常牛逼的应用" imageUrl:imageUrl aShareImage:image linkUrl:url];
+                [tool showOrHidden:YES title:weakSelf.detail_info.title description:weakSelf.detail_info.content imageUrl:weakSelf.detail_info.pichead aShareImage:image linkUrl:url];
                 
             }else if (index == 1){
                 
@@ -280,14 +284,22 @@
 #pragma mark -  网络请求
 
 /**
- *  收藏状态
+ *  收藏状态(调取的详情接口)
  */
 - (void)networkForCollectState
 {
+    NSString *url;
+    if (self.detailType == Detail_Anli) {
+        
+        url = [NSString stringWithFormat:ANLI_COLLECT_STATE,self.anli_id,[GMAPI getAuthkey]];
+        
+    }else if (self.detailType == Detail_Peijian){
+        
+        url = [NSString stringWithFormat:ANLI_PEIJIAN_INFORMATION_URL,self.anli_id,[GMAPI getAuthkey]];
+    }
     
-    
-    NSString *url = [NSString stringWithFormat:ANLI_COLLECT_STATE,self.anli_id,[GMAPI getAuthkey]];
-    
+//    NSString *url = [NSString stringWithFormat:ANLI_COLLECT_STATE,self.anli_id,[GMAPI getAuthkey]];
+    __weak typeof(self)bself = self;
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
         
@@ -295,7 +307,8 @@
         if (errcode == 0) {
             
             NSDictionary *datainfo = result[@"datainfo"];
-            int isshoucang = [datainfo[@"isshoucang"]intValue];
+            bself.detail_info = [[BusinessDetailModel alloc] initWithDictionary:datainfo];
+            int isshoucang = [bself.detail_info.isshoucang intValue];
             
             isCollect = (isshoucang == 1) ? YES : NO;
             

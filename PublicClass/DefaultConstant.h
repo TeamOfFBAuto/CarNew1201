@@ -155,9 +155,10 @@ alpha:(a)]
 //按商家搜索配件
 #define G_SEARCH_PEIJIAN_SHANGJIA @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&storeid=%@"
 
-//配件详情
+//配件详情HTML5地址
 #define ANLI_PEIJIAN_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&uid=%@"
-
+///配件详情接口
+#define ANLI_PEIJIAN_INFORMATION_URL @"http://gztest.fblife.com/web.php?c=interface&a=getGoodsdetails&gid=%@&authkey=%@"
 
 
 //案例列表

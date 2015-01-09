@@ -445,7 +445,7 @@
             if ([[allDic objectForKey:@"errcode"] intValue] == 0)
             {
                 bself.businessModel = [[BusinessDetailModel alloc] initWithDictionary:[allDic objectForKey:@"datainfo"]];
-                isCollected = [bself.businessModel.tel intValue];
+                isCollected = [bself.businessModel.isshoucang intValue];
                 [functionView setCollectionState:isCollected];
                 /*
                 NSDictionary * datainfo = [allDic objectForKey:@"datainfo"];
