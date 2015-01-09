@@ -25,20 +25,16 @@
 
 -(void)setup
 {
-    back_view = [[UIView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-56,6,34,72)];
+    back_view = [[UIView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-56,6,34,108)];
     back_view.backgroundColor = [UIColor blackColor];
     [self addSubview:back_view];
     
-    NSArray * image_array = [NSArray arrayWithObjects:[UIImage imageNamed:@"navigation_forward_image"],[UIImage imageNamed:@"navigation_praise_image"],nil];
+    NSArray * image_array = [NSArray arrayWithObjects:[UIImage imageNamed:@"navigation_forward_image"],[UIImage imageNamed:@"navigation_praise_image"],[UIImage imageNamed:@"navigation_plus_hidden_image"],nil];
     
-    UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,33,0.5)];
-    line_view.backgroundColor = RGBCOLOR(70,70,70);
-    line_view.center = CGPointMake(back_view.width/2,back_view.height/2);
-    [back_view addSubview:line_view];
-    for (int i = 0;i < 2;i++)
+    for (int i = 0;i < 3;i++)
     {
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(0,(back_view.height/2+0.5)*i,back_view.width,(back_view.height-0.5)/2);
+        button.frame = CGRectMake(0,(back_view.height/3+0.5)*i,back_view.width,(back_view.height-0.5)/3);
         [button setImage:[image_array objectAtIndex:i] forState:UIControlStateNormal];
         [button setTag:100+i];
         [button addTarget:self action:@selector(buttonTap:) forControlEvents:UIControlEventTouchUpInside];
@@ -48,6 +44,18 @@
         {
             [button setImage:[UIImage imageNamed:@"navigation_praised_image"] forState:UIControlStateSelected];
         }
+        
+        if (i == 2)
+        {
+            [button setImage:[UIImage imageNamed:@"navigation_plus_hidden_image"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"navigation_plus_n0_hidden_image"] forState:UIControlStateSelected];
+        }
+        
+        
+        UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(0,-0.5+back_view.height/3.0f,33,0.5)];
+        line_view.backgroundColor = RGBCOLOR(70,70,70);
+        line_view.center = CGPointMake(back_view.width/2,-0.5+(back_view.height/3.0f)*i);
+        [back_view addSubview:line_view];
     }
 }
 
@@ -92,6 +100,15 @@
     
     button.selected = isCollect;
 }
+
+#pragma mark- 设置锚点隐藏显示状态
+-(void)setEyesState:(BOOL)isOpen
+{
+    UIButton * button = (UIButton *)[self viewWithTag:102];
+    button.selected = !button.selected;
+    _isOpen = button.selected;
+}
+
 @end
 
 

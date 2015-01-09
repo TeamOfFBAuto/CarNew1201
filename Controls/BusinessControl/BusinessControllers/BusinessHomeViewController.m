@@ -147,7 +147,6 @@
                 {
                     [LTools showMBProgressWithText:@"暂无商家电话信息" addToView:bself.view];
                 }
-                
             }
                 break;
                 
@@ -244,6 +243,12 @@
         NSLog(@"address ------   %@",address);
     }
     
+    if ([relativeUrl rangeOfString:@"tel://"].length > 0)
+    {
+        NSString * phone = [relativeUrl stringByReplacingOccurrencesOfString:@"tel://" withString:@""];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",phone]]];
+    }
+    
     
     if (navigationType == UIWebViewNavigationTypeOther) {
         return YES;
@@ -295,7 +300,7 @@
         
         [self.view addSubview:functionView];
         __weak typeof(self)bself = self;
-        
+        __weak typeof(functionView)bFunctionView = functionView;
         [functionView setFunctionBlock:^(int index) {
             switch (index) {
                 case 0:
@@ -306,6 +311,11 @@
                 case 1:
                 {
                     [bself collectionClicked];
+                }
+                    break;
+                case 2:
+                {
+                    [bFunctionView setEyesState:YES];
                 }
                     break;
                     

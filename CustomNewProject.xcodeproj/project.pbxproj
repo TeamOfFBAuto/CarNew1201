@@ -83,6 +83,10 @@
 		56500AFB1A2D63CC00E834A1 /* BusinessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56500AF81A2D63CC00E834A1 /* BusinessViewController.m */; };
 		56500AFF1A2D676900E834A1 /* BusinessListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56500AFD1A2D676900E834A1 /* BusinessListTableViewCell.m */; };
 		56500B001A2D676900E834A1 /* BusinessListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56500AFE1A2D676900E834A1 /* BusinessListTableViewCell.xib */; };
+		56508D7D1A5F83E800321B2F /* navigation_plus_hidden_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56508D7B1A5F83E800321B2F /* navigation_plus_hidden_image@2x.png */; };
+		56508D7E1A5F83E800321B2F /* navigation_plus_n0_hidden_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56508D7C1A5F83E800321B2F /* navigation_plus_n0_hidden_image@2x.png */; };
+		56508D811A5F87CA00321B2F /* navigation_plus_hidden_image@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56508D7F1A5F87CA00321B2F /* navigation_plus_hidden_image@3x.png */; };
+		56508D821A5F87CA00321B2F /* navigation_plus_n0_hidden_image@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56508D801A5F87CA00321B2F /* navigation_plus_n0_hidden_image@3x.png */; };
 		565321581A5A6FC500E43F80 /* ZSNAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 565321571A5A6FC500E43F80 /* ZSNAlertView.m */; };
 		5653215B1A5A706200E43F80 /* OHLableHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5653215A1A5A706200E43F80 /* OHLableHelper.m */; };
 		565321621A5A79E700E43F80 /* button1-down252_94@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5653215D1A5A79E700E43F80 /* button1-down252_94@2x.png */; };
@@ -373,6 +377,10 @@
 		56500AFC1A2D676900E834A1 /* BusinessListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessListTableViewCell.h; sourceTree = "<group>"; };
 		56500AFD1A2D676900E834A1 /* BusinessListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessListTableViewCell.m; sourceTree = "<group>"; };
 		56500AFE1A2D676900E834A1 /* BusinessListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessListTableViewCell.xib; sourceTree = "<group>"; };
+		56508D7B1A5F83E800321B2F /* navigation_plus_hidden_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_plus_hidden_image@2x.png"; sourceTree = "<group>"; };
+		56508D7C1A5F83E800321B2F /* navigation_plus_n0_hidden_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_plus_n0_hidden_image@2x.png"; sourceTree = "<group>"; };
+		56508D7F1A5F87CA00321B2F /* navigation_plus_hidden_image@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_plus_hidden_image@3x.png"; sourceTree = "<group>"; };
+		56508D801A5F87CA00321B2F /* navigation_plus_n0_hidden_image@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_plus_n0_hidden_image@3x.png"; sourceTree = "<group>"; };
 		565321561A5A6FC500E43F80 /* ZSNAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSNAlertView.h; sourceTree = "<group>"; };
 		565321571A5A6FC500E43F80 /* ZSNAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSNAlertView.m; sourceTree = "<group>"; };
 		565321591A5A706200E43F80 /* OHLableHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHLableHelper.h; sourceTree = "<group>"; };
@@ -1346,6 +1354,10 @@
 		568848CB1A32E1D500862472 /* businessImages */ = {
 			isa = PBXGroup;
 			children = (
+				56508D7F1A5F87CA00321B2F /* navigation_plus_hidden_image@3x.png */,
+				56508D801A5F87CA00321B2F /* navigation_plus_n0_hidden_image@3x.png */,
+				56508D7B1A5F83E800321B2F /* navigation_plus_hidden_image@2x.png */,
+				56508D7C1A5F83E800321B2F /* navigation_plus_n0_hidden_image@2x.png */,
 				56BD7EA11A3EAE940038E378 /* reminderLogIn_image@2x.png */,
 				138F59FE1A3E95D5009B0612 /* navigation_back_jiantou_image_kong@2x.png */,
 				138F59FA1A3E903F009B0612 /* navigation_back_jiantou_image_gray@2x.png */,
@@ -1713,10 +1725,12 @@
 				13F9D4861A2DA7BB002A6904 /* shareweixin@2x.png in Resources */,
 				568848CD1A32E1EB00862472 /* default_navigation_clear_image@2x.png in Resources */,
 				E3A87D5D1A5CD52D006B7049 /* gstarBack_dianping@2x.png in Resources */,
+				56508D811A5F87CA00321B2F /* navigation_plus_hidden_image@3x.png in Resources */,
 				56621D4F1A28605B00310A48 /* nav_btn_bg@2x.png in Resources */,
 				565EE8C71A2C47840063CAA3 /* loginBackground@2x.png in Resources */,
 				5653E51C1A3A9B5B00CEB749 /* navigation_forward_image@2x.png in Resources */,
 				138023291A2C69CF0053BDDA /* anli_carType@2x.png in Resources */,
+				56508D821A5F87CA00321B2F /* navigation_plus_n0_hidden_image@3x.png in Resources */,
 				138F59FB1A3E903F009B0612 /* navigation_back_jiantou_image_gray@2x.png in Resources */,
 				E377E4EB1A39732700B2D6C9 /* gthreebtnback@2x.png in Resources */,
 				13F9D4841A2DA7BB002A6904 /* sharemail@2x.png in Resources */,
@@ -1752,6 +1766,7 @@
 				56621D4D1A28605B00310A48 /* nav_bg.png in Resources */,
 				5653E5111A39754500CEB749 /* newAbout@2x.png in Resources */,
 				1351179D1A257EB20015C133 /* blueup1@2x.png in Resources */,
+				56508D7D1A5F83E800321B2F /* navigation_plus_hidden_image@2x.png in Resources */,
 				56621D551A28605B00310A48 /* UMContactViewController.xib in Resources */,
 				1351179C1A257EB20015C133 /* bluedown1@2x.png in Resources */,
 				56621D411A28605B00310A48 /* icon_rightArrow_selected@2x.png in Resources */,
@@ -1772,6 +1787,7 @@
 				56500B001A2D676900E834A1 /* BusinessListTableViewCell.xib in Resources */,
 				56CC07211A302C3C0014F285 /* 隐私条款.html in Resources */,
 				138178CB1A319572001DB92C /* CarTypeViewController.xib in Resources */,
+				56508D7E1A5F83E800321B2F /* navigation_plus_n0_hidden_image@2x.png in Resources */,
 				5653E5191A3A9AA400CEB749 /* navigation_right_menu_image@2x.png in Resources */,
 				5653E5151A39A1E300CEB749 /* 20130502_fabiao.png in Resources */,
 				E3B2DC671A43EEC000607B11 /* noDataView@2x.png in Resources */,

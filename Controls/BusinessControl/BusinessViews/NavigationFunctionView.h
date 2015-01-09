@@ -24,6 +24,8 @@ typedef void(^navFunctionBlock)(int index);
 @property(nonatomic,assign)BOOL myHidden;
 ///设置是否收藏
 @property(nonatomic,assign)BOOL isCollection;
+///隐藏是否打开 YES为打开 NO为未打开
+@property(nonatomic,assign)BOOL isOpen;
 
 //@property(nonatomic,weak)navFunctionBlock nav_function_block;
 
@@ -33,4 +35,6 @@ typedef void(^navFunctionBlock)(int index);
 -(void)setFunctionBlock:(navFunctionBlock)aBlock;
 ///isCollect为NO,未收藏为YES已收藏，默认为NO
 -(void)setCollectionState:(BOOL)isCollect;
+///设置是否隐藏锚点
+-(void)setEyesState:(BOOL)isOpen;
 @end
