@@ -1166,12 +1166,7 @@ typedef enum{
     }
     
     
-    
-    
-    
-    
-    
-    
+    cell.separatorInset = UIEdgeInsetsZero;
     
     return cell;
 }

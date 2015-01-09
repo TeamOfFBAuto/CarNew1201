@@ -196,6 +196,7 @@
 		56CE4B641A25D48100876AC7 /* PHAirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CE4B5D1A25D48100876AC7 /* PHAirViewController.m */; };
 		56CE4B651A25D48100876AC7 /* PHSessionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CE4B5F1A25D48100876AC7 /* PHSessionView.m */; };
 		B81955FF5D777D50684F10B6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0474E0B8AA75297C0DC9AFBA /* libPods.a */; };
+		E304792F1A5FB82300709985 /* dianping@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E304792E1A5FB82300709985 /* dianping@2x.png */; };
 		E311CD251A24573C007D69D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E311CD241A24573C007D69D3 /* main.m */; };
 		E311CD281A24573C007D69D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E311CD271A24573C007D69D3 /* AppDelegate.m */; };
 		E311CD2B1A24573C007D69D3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E311CD2A1A24573C007D69D3 /* ViewController.m */; };
@@ -551,6 +552,7 @@
 		56CE4B5E1A25D48100876AC7 /* PHSessionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHSessionView.h; sourceTree = "<group>"; };
 		56CE4B5F1A25D48100876AC7 /* PHSessionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHSessionView.m; sourceTree = "<group>"; };
 		A595FD62CE4EBA341EE0037F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E304792E1A5FB82300709985 /* dianping@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dianping@2x.png"; path = "LogInImages/dianping@2x.png"; sourceTree = "<group>"; };
 		E311CD1F1A24573C007D69D3 /* CustomNewProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomNewProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E311CD231A24573C007D69D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E311CD241A24573C007D69D3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1031,6 +1033,7 @@
 				56621CFB1A285A1900310A48 /* leftMenuImages */,
 				569FFEEF1A2737C4008A02A6 /* LogInImages */,
 				560CB53A1A270B230067F7AA /* navgationBar_background_image@2x.png */,
+				E304792E1A5FB82300709985 /* dianping@2x.png */,
 			);
 			path = AllImages;
 			sourceTree = "<group>";
@@ -1718,6 +1721,7 @@
 				56BD7EA21A3EAE940038E378 /* reminderLogIn_image@2x.png in Resources */,
 				13F9D4C81A2DA951002A6904 /* UMSocialSDKResourcesNew.bundle in Resources */,
 				138023281A2C69CF0053BDDA /* anli_back@2x.png in Resources */,
+				E304792F1A5FB82300709985 /* dianping@2x.png in Resources */,
 				1380232B1A2C69CF0053BDDA /* anli_fangda@2x.png in Resources */,
 				13F9D4831A2DA7BB002A6904 /* sharefriendquan@2x.png in Resources */,
 				1380232D1A2C69CF0053BDDA /* anli_zhuanfa@2x.png in Resources */,

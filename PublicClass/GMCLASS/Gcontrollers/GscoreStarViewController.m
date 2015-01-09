@@ -28,7 +28,10 @@
     }
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = @"我要点评";
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,100,44)];
+    titleLabel.text = @"我要点评";
+    titleLabel.font = [UIFont systemFontOfSize:18];
+    self.navigationItem.titleView = titleLabel;
     
     //收键盘
     UIControl *backControl = [[UIControl alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_HEIGHT)];
@@ -44,12 +47,15 @@
 //    [imv setImage:[UIImage imageNamed:@"logIn_close.png"]];
 //    [rightView_buttonItem addSubview:imv];
 //    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithCustomView:rightView_buttonItem];
-    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logIn_close.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(Gdismiss)];
+    
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightBtn setFrame:CGRectMake(0,0,36/2,33/2)];
+    [rightBtn setImage:[UIImage imageNamed:@"dianping.png"] forState:UIControlStateNormal];
+    [rightBtn addTarget:self action:@selector(Gdismiss) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *right = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
     
     
     self.navigationItem.rightBarButtonItem = right;
-    
-//    self.navigationItem.rightBarButtonItems = []
     
     
     //框
