@@ -284,6 +284,14 @@
 
 - (void)clickToCollectAction
 {
+    BOOL isLogIn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_IN];
+    if (!isLogIn) {
+        LogInViewController * logInVc = [[LogInViewController alloc] init];
+        [self presentViewController:logInVc animated:YES completion:nil];
+        
+        return;
+    }
+    
     if (isCollect) {
         
         [self networkForCancelCollect];

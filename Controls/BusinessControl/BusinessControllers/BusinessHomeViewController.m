@@ -69,11 +69,14 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     self.navigationController.navigationBarHidden = YES;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successLogIn) name:@"gdengluchenggong" object:nil];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gdengluchenggong" object:nil];
 }
 
 - (void)viewDidLoad {
@@ -162,6 +165,11 @@
     [self progress];
     
 }
+#pragma mark - 登陆成功通知
+-(void)successLogIn
+{
+    [self getBusinessDetailData];
+}
 
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
@@ -243,11 +251,11 @@
         NSLog(@"address ------   %@",address);
     }
     
-    if ([relativeUrl rangeOfString:@"tel://"].length > 0)
-    {
-        NSString * phone = [relativeUrl stringByReplacingOccurrencesOfString:@"tel://" withString:@""];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",phone]]];
-    }
+//    if ([relativeUrl rangeOfString:@"tel://"].length > 0)
+//    {
+//        NSString * phone = [relativeUrl stringByReplacingOccurrencesOfString:@"tel://" withString:@""];
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",phone]]];
+//    }
     
     
     if (navigationType == UIWebViewNavigationTypeOther) {
@@ -341,6 +349,14 @@
 #pragma mark - 收藏或取消收藏
 -(void)collectionClicked
 {
+    BOOL isLogIn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_IN];
+    if (!isLogIn) {
+        LogInViewController * logInVc = [[LogInViewController alloc] init];
+        [self presentViewController:logInVc animated:YES completion:nil];
+        
+        return;
+    }
+    
     NSString * fullUrl;
     
     if (isCollected)
