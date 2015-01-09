@@ -396,7 +396,7 @@
             
             [functionView setCollectionState:isCollected];
             
-//            [[NSNotificationCenter defaultCenter] postNotificationName:G_USERCENTERLOADUSERINFO object:nil userInfo:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:G_USERCENTERLOADUSERINFO object:nil userInfo:nil];
         }else
         {
             aHud.labelText = [result objectForKey:ERROR_INFO];

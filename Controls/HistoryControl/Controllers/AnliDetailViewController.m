@@ -377,7 +377,8 @@
             isCollect = NO;
             
             [functionView setCollectionState:NO];
-            
+            [[NSNotificationCenter defaultCenter] postNotificationName:G_USERCENTERLOADUSERINFO object:nil userInfo:nil];
+
         }else
         {
             
@@ -419,7 +420,8 @@
             isCollect = YES;
             
             [functionView setCollectionState:YES];
-            
+            [[NSNotificationCenter defaultCenter] postNotificationName:G_USERCENTERLOADUSERINFO object:nil userInfo:nil];
+
         }else
         {
             
