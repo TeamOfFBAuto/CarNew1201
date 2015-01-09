@@ -103,7 +103,7 @@
     [self.view addSubview:_webView];
     _webView.scrollView.delegate = self;
     
-//    _webView.scrollView.bounces = NO;
+    _webView.scrollView.bounces = NO;
     
     NSString *api;
     if (self.detailType == Detail_Anli) {
@@ -129,8 +129,10 @@
     [self networkForCollectState];
     
     bottomView = [[CommentBottomView alloc] init];
-    bottomView.hidden = YES;
+//    bottomView.hidden = YES;
     [self.view addSubview:bottomView];
+    
+    bottomView.top = DEVICE_HEIGHT;
     
     __weak typeof(self)weakSelf = self;
     
@@ -603,20 +605,36 @@
     NSLog(@"=== %@",NSStringFromCGSize(scrollView.contentSize));
     
     CGFloat offset = scrollView.contentOffset.y;
-    
-    
-    if (offset > currentOffY) {
-        bottomView.hidden = NO;
         
-        self.webView.height = ALL_FRAME_HEIGHT + 20 - 62;
+    if (offset > currentOffY) {
+//        bottomView.hidden = NO;
+//        
+//        self.webView.height = ALL_FRAME_HEIGHT + 20 - 62;
+        
+        [self hiddenBottomViewWith:NO];
         
     }else
     {
-        bottomView.hidden = YES;
-        self.webView.height = ALL_FRAME_HEIGHT + 20;
+//        bottomView.hidden = YES;
+//        self.webView.height = ALL_FRAME_HEIGHT + 20;
+        
+        [self hiddenBottomViewWith:YES];
     }
     
     currentOffY = offset;
+}
+
+///底部栏弹出消失动画
+-(void)hiddenBottomViewWith:(BOOL)isHidden
+{
+    [UIView animateWithDuration:0.4 animations:^{
+        bottomView.top = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
+        
+        self.webView.height = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
+        
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 @end
