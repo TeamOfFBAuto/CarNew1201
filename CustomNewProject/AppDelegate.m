@@ -219,7 +219,7 @@
             
         }else{
             NSString *str = @"yes";
-            [ZSNApi showAutoHiddenMBProgressWithText:@"更改失败，联网自动上传" addToView:self.window];
+            [ZSNApi showAutoHiddenMBProgressWithText:@"更改失败，联网自动更新" addToView:self.window];
             [[NSUserDefaults standardUserDefaults] setObject:str forKey:@"gIsUpBanner"];
             
         }
