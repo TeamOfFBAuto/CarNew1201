@@ -44,6 +44,10 @@
     NSTimer *timer;
     
     BOOL isCollect;
+    ///返回按钮
+    UIButton * back_button;
+    ///菜单按钮
+    UIButton * right_button;
 }
 
 ///存放标题、图片、是否收藏 、简介信息
@@ -85,7 +89,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
+    [self setNavigationViewHidden:NO];
 //    self.navigationController.navigationBarHidden = NO;
     
 }
@@ -477,14 +481,14 @@
 //    [self.view bringSubviewToFront:navigation_view];
     
     
-    UIButton * back_button = [UIButton buttonWithType:UIButtonTypeCustom];
+    back_button = [UIButton buttonWithType:UIButtonTypeCustom];
     back_button.frame = CGRectMake(0,20,40,44);
     //    back_button.backgroundColor = [UIColor orangeColor];
     [back_button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [back_button setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];
     [self.view addSubview:back_button];
     
-    UIButton * right_button = [UIButton buttonWithType:UIButtonTypeCustom];
+    right_button = [UIButton buttonWithType:UIButtonTypeCustom];
     right_button.frame = CGRectMake(DEVICE_WIDTH-44,20,44,44);
     [right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     [right_button setImage:[UIImage imageNamed:@"navigation_right_menu_image"] forState:UIControlStateNormal];
@@ -597,7 +601,18 @@
         
         return NO;
     }
-
+    
+    ///放大缩小图片
+    if ([relativeUrl rangeOfString:@"big_view"].length)
+    {
+        [self setNavigationViewHidden:YES];
+        return NO;
+    }
+    if ([relativeUrl rangeOfString:@"small_view"].length)
+    {
+        [self setNavigationViewHidden:NO];
+        return NO;
+    }
 
     if ([relativeUrl rangeOfString:@"pinglun"].length > 0) {
         
@@ -607,7 +622,15 @@
             NSLog(@"已经登录");
             
             GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
-            cc.commentType = Comment_Anli;
+//            cc.commentType = Comment_Anli;
+            if (self.detailType == Detail_Anli) {
+                
+                cc.commentType = Comment_Anli;
+                
+            }else if (self.detailType == Detail_Peijian){
+                
+                cc.commentType = Comment_PeiJian;
+            }
             cc.commentId = self.anli_id;
             UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:cc];
             [self presentViewController:navc animated:YES completion:^{
@@ -692,6 +715,16 @@
         
         self.webView.height = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
         
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+///设置导航栏显示隐藏
+-(void)setNavigationViewHidden:(BOOL)isHidden
+{
+    [UIView animateWithDuration:0.35 animations:^{
+        back_button.top = isHidden?-64:20;
+        right_button.top = isHidden?-64:20;
     } completion:^(BOOL finished) {
         
     }];

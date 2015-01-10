@@ -73,6 +73,9 @@
             if ([app canOpenURL:[NSURL URLWithString:string]])
             {
                 [app openURL:[NSURL URLWithString:string]];
+            }else
+            {
+                [ZSNApi showAutoHiddenMBProgressWithText:@"您还没有安转百度地图" addToView:self.view];
             }
         }
             break;

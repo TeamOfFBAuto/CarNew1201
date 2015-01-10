@@ -49,8 +49,8 @@
         
         if (i == 2)
         {
-            [button setImage:[UIImage imageNamed:@"navigation_plus_hidden_image"] forState:UIControlStateNormal];
-            [button setImage:[UIImage imageNamed:@"navigation_plus_n0_hidden_image"] forState:UIControlStateSelected];
+            [button setImage:[UIImage imageNamed:@"navigation_plus_hidden_image"] forState:UIControlStateSelected];
+            [button setImage:[UIImage imageNamed:@"navigation_plus_n0_hidden_image"] forState:UIControlStateNormal];
         }
         
         
