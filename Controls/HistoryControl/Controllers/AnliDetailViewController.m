@@ -127,7 +127,7 @@
         
     }else if (self.detailType == Detail_Peijian){
         
-        api =[NSString stringWithFormat:ANLI_PEIJIAN_DETAIL,self.anli_id,[GMAPI getUid]];
+        api =[NSString stringWithFormat:ANLI_PEIJIAN_DETAIL,self.anli_id,[GMAPI getAuthkey]];
     }
     
     NSString *url = [NSString stringWithFormat:api,self.anli_id,[GMAPI getUid]];

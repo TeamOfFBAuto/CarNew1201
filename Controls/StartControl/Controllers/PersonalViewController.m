@@ -37,6 +37,7 @@
 #import "AnliModel.h"
 #import "AnliDetailViewController.h"
 #import "AnliViewCell.h"
+#import "GaiZhuangRefreshTableView.h"
 
 typedef enum{
     GANLI = 0,//案例
@@ -50,7 +51,7 @@ typedef enum{
     USERIMAGENULL,
 }CHANGEIMAGETYPE;
 
-@interface PersonalViewController ()<GcustomActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,MLImageCropDelegate>
+@interface PersonalViewController ()<GcustomActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,MLImageCropDelegate,RefreshDelegate>
 {
     UIView *_upThreeViewBackGroundView;//headerview
     UIImageView *_topImv;//banner
@@ -76,7 +77,7 @@ typedef enum{
     int _pageCapacity;//一页请求几条数据
     NSArray *_dataArray;//数据源
     
-    RefreshTableView *_tableView;//主tableview
+    GaiZhuangRefreshTableView *_tableView;//主tableview
     
     
     ASIFormDataRequest *_request;//tap==123 上传头像
@@ -147,25 +148,22 @@ typedef enum{
     [self creatHeaderView];
     
     [_topImv setImage:[UIImage imageNamed:@"gBanner.png"]];
-    [_faceImv setImage:[UIImage imageNamed:@"gTouxiang.png"]];
+    [_faceImv setImage:[UIImage imageNamed:HEADER_DEFAULT_IMAGE]];
     
     _page = 1;
     _pageCapacity = 10;
     
     [self changeNumAndTitleColorWithTag:11];
     
-    _tableView = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, DEVICE_HEIGHT)];
+    _tableView = [[GaiZhuangRefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, DEVICE_HEIGHT)];
     _tableView.refreshDelegate = self;//用refreshDelegate替换UITableViewDelegate
     _tableView.dataSource = self;
     _tableView.netWorking = GIS;
-    
     [self.view addSubview:_tableView];
     
     _tableView.tableHeaderView = _upThreeViewBackGroundView;
     
-    
-    [_tableView showRefreshHeader:YES];//进入界面先刷新数据
-    
+    [_tableView addObserver:self forKeyPath:@"offsetY" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     
     
     
@@ -174,6 +172,7 @@ typedef enum{
     UIButton *gBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [gBackBtn setImage:[UIImage imageNamed:NAVIGATION_MENU_IMAGE_NAME] forState:UIControlStateNormal];
     [gBackBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 10, 15)];
+    gBackBtn.adjustsImageWhenHighlighted = NO;
     [gBackBtn setFrame:CGRectMake(0, 15, 80.00/320*ALL_FRAME_WIDTH, 80.00/320*ALL_FRAME_WIDTH)];
     [gBackBtn addTarget:self action:@selector(gGoBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:gBackBtn];
@@ -262,8 +261,11 @@ typedef enum{
             
             NSString *midleUserFaceStr = [ZSNApi returnMiddleUrl:[GMAPI getUid]];
             
-            [_faceImv sd_setImageWithURL:[NSURL URLWithString:midleUserFaceStr] placeholderImage:[UIImage imageNamed:@"gTouxiang.png"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [_faceImv sd_setImageWithURL:[NSURL URLWithString:midleUserFaceStr] placeholderImage:[UIImage imageNamed:HEADER_DEFAULT_IMAGE] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL){
+                
+                
                 NSData *imageData = UIImageJPEGRepresentation(_faceImv.image, 1.0);
+                NSLog(@"error ------  %@",error);
                 [GMAPI setUserFaceImageWithData:imageData];
             }];
         }
@@ -326,8 +328,8 @@ typedef enum{
     
     //bannaer 头像 用户名 三个按钮底层view 的下层view
     _upThreeViewBackGroundView = [[UIView alloc]initWithFrame:CGRectZero];
-    _upThreeViewBackGroundView.frame = CGRectMake(0, 0, ALL_FRAME_WIDTH,240.00/320*ALL_FRAME_WIDTH);
-   
+    _upThreeViewBackGroundView.frame = CGRectMake(0,0, ALL_FRAME_WIDTH,240.00/320*ALL_FRAME_WIDTH);
+//    _upThreeViewBackGroundView.clipsToBounds = YES;
     
     
     //banner
@@ -362,27 +364,36 @@ typedef enum{
 //    
 //    [_upThreeViewBackGroundView addSubview:imgV];
     
+    
+    UIView * face_quan_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,76,76)];
+    face_quan_view.center = CGPointMake(ALL_FRAME_WIDTH/2,88.00/320*ALL_FRAME_WIDTH);
+    face_quan_view.layer.masksToBounds = YES;
+    face_quan_view.layer.cornerRadius = face_quan_view.width*0.5;
+    face_quan_view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
+    [_upThreeViewBackGroundView addSubview:face_quan_view];
+    
+    
+    
+    
+    
     //头像
-    _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 78, 78)];
+    _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(3,3,70,70)];
 //    _faceImv.backgroundColor = RGBCOLOR_ONE;
-    _faceImv.center = CGPointMake(ALL_FRAME_WIDTH/2,88.00/320*ALL_FRAME_WIDTH);
-    _faceImv.layer.cornerRadius = 78*GscreenRatio_320*0.5;
+//    _faceImv.center = CGPointMake(ALL_FRAME_WIDTH/2,88.00/320*ALL_FRAME_WIDTH);
+    _faceImv.layer.cornerRadius = 70*0.5;
+    _faceImv.backgroundColor = [UIColor clearColor];
     _faceImv.layer.masksToBounds = YES;
-    _faceImv.layer.borderWidth = 4;
-    _faceImv.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
-    _faceImv.userInteractionEnabled = YES;
-    _faceImv.layer.masksToBounds = YES;
+//    _faceImv.layer.borderWidth = 4;
+//    _faceImv.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
+//    _faceImv.userInteractionEnabled = YES;
+//    _faceImv.layer.masksToBounds = YES;
     UITapGestureRecognizer *ccc = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userFaceClicked)];
     [_faceImv addGestureRecognizer:ccc];
-    [_upThreeViewBackGroundView addSubview:_faceImv];
-    
-    
-    
-
+    [face_quan_view addSubview:_faceImv];
     
     
     //用户名
-    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_faceImv.frame)+8, ALL_FRAME_WIDTH, 19.00/320*ALL_FRAME_WIDTH)];
+    _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(face_quan_view.frame)+8, ALL_FRAME_WIDTH, 19.00/320*ALL_FRAME_WIDTH)];
     _nameLabel.font = [UIFont systemFontOfSize:16];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
 //    _nameLabel.text = [GMAPI getUsername];
@@ -1128,6 +1139,30 @@ typedef enum{
 //- (CGFloat)heightForHeaderInSection:(NSInteger)section;
 
 
+
+#pragma mark - 获取偏移量
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if([keyPath isEqualToString:@"offsetY"])
+    {
+        float offsetY_new = [[change objectForKey:@"new"] floatValue];
+        
+        if (offsetY_new > 0) {
+            return;
+        }
+        
+        ///宽高比
+        float kuanggaobi = DEVICE_WIDTH/(_upThreeViewBackGroundView.height+20);
+        
+        _topImv.top = offsetY_new-20;
+        //            _topImv.top += abs(offsetY_new - offsetY_old)*scale;
+        _topImv.height = abs(offsetY_new) + 20 + _upThreeViewBackGroundView.height;
+        _topImv.width = _topImv.height*kuanggaobi;
+
+        _topImv.center = CGPointMake(DEVICE_WIDTH/2,_topImv.center.y);
+        
+    }
+}
 
 
 #pragma mark -  UITableViewDataSource

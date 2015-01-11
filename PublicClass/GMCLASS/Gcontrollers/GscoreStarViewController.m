@@ -86,12 +86,14 @@
     [self.view addSubview:textview_backView];
     
     //textview
-    _tv = [[UITextView alloc]initWithFrame:CGRectMake(15, 15, textview_backView.frame.size.width-30, textview_backView.frame.size.height-30)];
+    _tv = [[UITextView alloc]initWithFrame:CGRectMake(5,5, textview_backView.frame.size.width-20, textview_backView.frame.size.height-20)];
     _tv.delegate = self;
+    _tv.font = [UIFont systemFontOfSize:16];
+    [_tv becomeFirstResponder];
     [textview_backView addSubview:_tv];
     
     //星星view
-    TQStarRatingView *starRatingView = [[TQStarRatingView alloc] initWithFrame:CGRectMake((DEVICE_WIDTH-200)*0.5, CGRectGetMaxY(textview_backView.frame)+16, 200, 35) numberOfStar:5];
+    TQStarRatingView *starRatingView = [[TQStarRatingView alloc] initWithFrame:CGRectMake((DEVICE_WIDTH-(75/2.0f)*5)*0.5, CGRectGetMaxY(textview_backView.frame)+16,(75/2.0f)*5,72/2) numberOfStar:5];
     starRatingView.delegate = self;
     [self.view addSubview:starRatingView];
     

@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.frame = CGRectMake(0,DEVICE_HEIGHT-64,DEVICE_WIDTH,64);
+        self.frame = CGRectMake(0,DEVICE_HEIGHT,DEVICE_WIDTH,64);
         self.backgroundColor = [UIColor whiteColor];
         [self setup];
     }

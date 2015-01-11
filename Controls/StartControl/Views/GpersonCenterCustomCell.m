@@ -28,7 +28,7 @@
         _mainImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 240.00/320*ALL_FRAME_WIDTH)];
         _logoImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 190.0*GscreenRatio_320, 34.00*GscreenRatio_320, 34.00*GscreenRatio_320)];
         _logoImageView.backgroundColor = RGBCOLOR_ONE;
-        _logoImageView.layer.cornerRadius = ALL_FRAME_WIDTH*30/320/2;
+        _logoImageView.layer.cornerRadius = 34.00*GscreenRatio_320/2;
         _logoImageView.layer.masksToBounds = YES;
         _logoImageView.userInteractionEnabled = YES;
         _logoImageView.layer.borderWidth = 2;
