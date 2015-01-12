@@ -27,6 +27,8 @@
 #import "CommentBottomView.h"
 #import "BusinessDetailModel.h"
 
+#import "BusinessCommentView.h"
+
 @interface AnliDetailViewController ()<MFMailComposeViewControllerDelegate,UIWebViewDelegate,UIScrollViewDelegate>
 {
     ShareView *_shareView;
@@ -35,7 +37,7 @@
     
     UIView *comment_view;//评论视图
     
-    CommentBottomView *bottomView;
+//    CommentBottomView *bottomView;
     
     CGFloat currentOffY;
     
@@ -44,6 +46,9 @@
     NSTimer *timer;
     
     BOOL isCollect;
+    
+    ///底部评论视图
+    BusinessCommentView * bottomView;
 }
 
 ///存放标题、图片、是否收藏 、简介信息
@@ -112,7 +117,11 @@
     self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT + 20)];
     _webView.delegate = self;
     [self.view addSubview:_webView];
-    _webView.scrollView.delegate = self;
+    
+    if (self.detailType == Detail_Peijian) {
+        _webView.scrollView.delegate = self;
+    }
+    
     
     _webView.scrollView.bounces = NO;
     
@@ -133,6 +142,13 @@
     
     self.view.backgroundColor = COLOR_WEB_DETAIL_BACKCOLOR;
     
+    
+    if (self.detailType == Detail_Peijian) {
+        
+        [self createBottom];
+    }
+    
+    
     [self setNavgationView];
     
 //    [self rightButtonTap:nil];
@@ -148,30 +164,30 @@
 //    
 //    bottomView.top = DEVICE_HEIGHT;
     
-    __weak typeof(self)weakSelf = self;
-    
-    [bottomView setMyBlock:^(CommentTapType aType) {
-        NSLog(@"bottom tap : %d",aType);
-        
-        if (aType == CommentTypeLogIn) {
-            
-            LogInViewController * logIn = [[LogInViewController alloc] init];
-            UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
-            [weakSelf presentViewController:navc animated:YES completion:nil];
-            
-        }else if (aType == CommentTypeComent){
-            
-            GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
-            cc.commentType = Comment_Anli;
-            cc.commentId = weakSelf.anli_id;
-            UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:cc];
-            [weakSelf presentViewController:navc animated:YES completion:^{
-                
-            }];
-            
-        }
-        
-    }];
+//    __weak typeof(self)weakSelf = self;
+//    
+//    [bottomView setMyBlock:^(CommentTapType aType) {
+//        NSLog(@"bottom tap : %d",aType);
+//        
+//        if (aType == CommentTypeLogIn) {
+//            
+//            LogInViewController * logIn = [[LogInViewController alloc] init];
+//            UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
+//            [weakSelf presentViewController:navc animated:YES completion:nil];
+//            
+//        }else if (aType == CommentTypeComent){
+//            
+//            GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
+//            cc.commentType = Comment_Anli;
+//            cc.commentId = weakSelf.anli_id;
+//            UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:cc];
+//            [weakSelf presentViewController:navc animated:YES completion:^{
+//                
+//            }];
+//            
+//        }
+//        
+//    }];
     
     [self progress];
 
@@ -435,6 +451,52 @@
 }
 
 #pragma mark 创建视图
+/**
+ *  评论 和 电话咨询
+ */
+- (void)createBottom
+{
+    bottomView = [[BusinessCommentView alloc] init];
+    bottomView.hidden = YES;
+    [self.view addSubview:bottomView];
+    __weak typeof(self)bself = self;
+    [bottomView setMyBlock:^(BusinessCommentViewTapType aType) {
+        switch (aType) {
+            case BusinessCommentViewTapTypeLogIn://登陆
+            {
+                LogInViewController * logInVC = [[LogInViewController alloc] init];
+                UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logInVC];
+                [bself presentViewController:navc animated:YES completion:nil];
+            }
+                break;
+            case BusinessCommentViewTapTypeComment://评论
+            {
+                GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
+                cc.commentType = Comment_DianPu;//评论类型（枚举）
+                cc.commentId = bself.detail_info.id;//对应的id
+                UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:cc];
+                [bself presentViewController:navc animated:YES completion:^{
+                    
+                }];
+            }
+                break;
+            case BusinessCommentViewTapTypeConsult://电话咨询
+            {
+                if (bself.detail_info.tel.length > 0) {
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",bself.detail_info.tel]]];
+                }else
+                {
+                    [LTools showMBProgressWithText:@"暂无商家电话信息" addToView:bself.view];
+                }
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }];
+
+}
 
 //导航右上角按钮
 - (void)createNavigationTools
@@ -627,7 +689,7 @@
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-//    bottomView.hidden = NO;
+    bottomView.hidden = NO;
     
     [loading hide:YES];
     
@@ -650,28 +712,24 @@
 
 #pragma mark - UIScrollViewDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSLog(@"=== %@",NSStringFromCGSize(scrollView.contentSize));
+    CGFloat offset = scrollView.contentOffset.y;
     
-//    CGFloat offset = scrollView.contentOffset.y;
-//        
-//    if (offset > currentOffY) {
-////        bottomView.hidden = NO;
-////        
-////        self.webView.height = ALL_FRAME_HEIGHT + 20 - 62;
-//        
-//        [self hiddenBottomViewWith:NO];
-//        
-//    }else
-//    {
-////        bottomView.hidden = YES;
-////        self.webView.height = ALL_FRAME_HEIGHT + 20;
-//        
-//        [self hiddenBottomViewWith:YES];
-//    }
-//    
-//    currentOffY = offset;
+    if (offset > currentOffY) {
+        //        bottomView.hidden = NO;
+        //        _myWebView.height = DEVICE_HEIGHT-64;
+        
+        [self hiddenBottomViewWith:NO];
+        
+    }else
+    {
+        //        bottomView.hidden = YES;
+        //        _myWebView.height = DEVICE_HEIGHT;
+        [self hiddenBottomViewWith:YES];
+    }
+    
+    currentOffY = offset;
 }
 
 ///底部栏弹出消失动画
@@ -680,7 +738,7 @@
     [UIView animateWithDuration:0.4 animations:^{
         bottomView.top = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
         
-        self.webView.height = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
+        _webView.height = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
         
     } completion:^(BOOL finished) {
         
