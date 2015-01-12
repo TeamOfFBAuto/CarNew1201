@@ -85,6 +85,8 @@ typedef enum{
     
     
     UIView *_hudView;//浮层view
+    
+    BOOL _isLoadUserInfoSuccess;
 
     
 }
@@ -118,6 +120,7 @@ typedef enum{
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     }
     
+    _isLoadUserInfoSuccess = NO;
     
     
     
@@ -235,6 +238,7 @@ typedef enum{
     GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:api isPost:NO postData:nil];
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
         NSLog(@"请求个人信息成功");
+        _isLoadUserInfoSuccess = YES;
         NSLog(@"个人信息dic：%@",result);
         NSDictionary *dic = [result dictionaryValueForKey:@"datainfo"];
         
@@ -282,7 +286,9 @@ typedef enum{
         
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         
+        
         NSLog(@"请求个人信息失败");
+        _isLoadUserInfoSuccess = NO;
         _nameLabel.text = [GMAPI getUsername];
         [ZSNApi showAutoHiddenMBProgressWithText:@"请求个人信息失败" addToView:self.view];
         
@@ -824,7 +830,12 @@ typedef enum{
         
         _cellHight = 240.00/320*ALL_FRAME_WIDTH;
         _cellType = GANLI;
-        [self loadNewData];
+        if (_isLoadUserInfoSuccess) {
+            [self loadChooseData];
+        }else{
+            [self loadNewData];
+        }
+        
         
         
     }else if (theTag == 11){//点击的是收藏产品
@@ -840,7 +851,11 @@ typedef enum{
         
         _cellHight = 240.00/320*ALL_FRAME_WIDTH;
         _cellType = GCHANPIN;
-        [self loadNewData];
+        if (_isLoadUserInfoSuccess) {
+            [self loadChooseData];
+        }else{
+            [self loadNewData];
+        }
         
         
     }else if (theTag == 12){//收藏店铺
@@ -856,7 +871,11 @@ typedef enum{
         
         _cellHight = 85.00;
         _cellType = GDIANPU;
-        [self loadNewData];
+        if (_isLoadUserInfoSuccess) {
+            [self loadChooseData];
+        }else{
+            [self loadNewData];
+        }
         
     }
 }
@@ -1047,6 +1066,19 @@ typedef enum{
     
     [self getUserInfo];
 }
+
+
+-(void)loadChooseData{
+    _page = 1;
+    _tableView.isReloadData = YES;
+    
+    _dataArray = nil;
+    _tableView.pageNum = 1;
+    _tableView.dataArray = nil;
+    
+    [self prepareNetDataWithCellType:_cellType];
+}
+
 
 - (void)loadMoreData
 {
