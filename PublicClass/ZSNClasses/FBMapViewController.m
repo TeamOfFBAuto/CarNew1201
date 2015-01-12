@@ -64,7 +64,7 @@
 //            NSString * string = [NSString stringWithFormat:@"baidumap://map/marker?location=%f,%f&title=%@&content=%@",_address_latitude,_address_longitude,[_address_title stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding],[_address_content stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding]];
             
             ///name:起始位置
-            NSString * string = [NSString stringWithFormat:@"baidumap://map/direction?origin=latlng:%f,%f|name:%@&destination=latlng:%f,%f|name:%@&mode=driving",userLatitude,userlongitude,@"nihao",_address_latitude,_address_longitude,[@"nihao" stringByAddingPercentEscapesUsingEncoding:  NSUTF8StringEncoding]];
+            NSString * string = [NSString stringWithFormat:@"baidumap://map/direction?origin=%f,%f&destination=%f,%f&mode=driving&src=gaizhuang",userLatitude,userlongitude,_address_latitude,_address_longitude];
             
             NSLog(@"我我我我我我我我我我我我我我我我我我我哦我我我我我 ---  %@",string);
             
@@ -73,11 +73,15 @@
             if ([app canOpenURL:[NSURL URLWithString:string]])
             {
                 [app openURL:[NSURL URLWithString:string]];
+            }else
+            {
+                [ZSNApi showAutoHiddenMBProgressWithText:@"您还没有安转百度地图" addToView:self.view];
             }
         }
             break;
         case 1:
         {//手机
+            /*
             if (IOS_VERSION>=6.0)
             {
                 
@@ -85,7 +89,6 @@
                 
                 CLLocationCoordinate2D coords =
                 CLLocationCoordinate2DMake(_address_latitude,_address_longitude);
-                
                 
                 MKPlacemark *place = [[MKPlacemark alloc] initWithCoordinate:coords addressDictionary:dicOfAddress];
                 
@@ -99,6 +102,47 @@
                 
                 [[UIApplication sharedApplication]  openURL:[NSURL URLWithString:string]];
             }
+            
+            
+            
+            */
+            
+            
+            
+            CLLocationCoordinate2D from = CLLocationCoordinate2DMake(userLatitude,userlongitude);
+            MKPlacemark * fromMark = [[MKPlacemark alloc] initWithCoordinate:from
+                                                            addressDictionary:nil];
+            MKMapItem * fromLocation = [[MKMapItem alloc] initWithPlacemark:fromMark];
+            fromLocation.name = @"我的位置";
+            
+            
+            CLLocationCoordinate2D to = CLLocationCoordinate2DMake(_address_latitude,_address_longitude);
+            MKPlacemark * toMark = [[MKPlacemark alloc] initWithCoordinate:to
+                                                          addressDictionary:nil];
+            MKMapItem * toLocation = [[MKMapItem alloc] initWithPlacemark:toMark];
+            toLocation.name = _address_title;
+            
+            NSArray  * values = [NSArray arrayWithObjects:
+                                 MKLaunchOptionsDirectionsModeDriving,
+                                 [NSNumber numberWithBool:YES],
+                                 [NSNumber numberWithInt:2],
+                                 nil];
+            NSArray * keys = [NSArray arrayWithObjects:
+                              MKLaunchOptionsDirectionsModeKey,
+                              MKLaunchOptionsShowsTrafficKey,
+                              MKLaunchOptionsMapTypeKey,nil];
+            
+            [MKMapItem openMapsWithItems:[NSArray arrayWithObjects:fromLocation, toLocation, nil]
+                           launchOptions:[NSDictionary dictionaryWithObjects:values
+                                                                     forKeys:keys]];
+
+            
+            
+            
+            
+            
+            
+            
             
             
         }
@@ -134,7 +178,7 @@
     self.rightString = @"导航";
     
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeText];
-
+    [self.my_right_button setTitleColor:RGBCOLOR(80,80,80) forState:UIControlStateNormal];
     
     _myMapView = [[MKMapView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
     _myMapView.mapType=MKMapTypeStandard;
@@ -163,8 +207,15 @@
     
     
     UIButton * center_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    center_button.frame = CGRectMake(DEVICE_WIDTH-100,DEVICE_HEIGHT-64-100,50,50);
-    center_button.backgroundColor = [UIColor redColor];
+    center_button.frame = CGRectMake(DEVICE_WIDTH-40-12,DEVICE_HEIGHT-56-12-64,40,40);
+    center_button.backgroundColor = [UIColor whiteColor];
+//    center_button.layer.masksToBounds = YES;
+    center_button.layer.cornerRadius = 3;
+    center_button.layer.shadowColor = [UIColor blackColor].CGColor;
+    center_button.layer.shadowOffset = CGSizeMake(-0.1,-0.1);
+    center_button.layer.shadowOpacity = 0.3;
+    center_button.layer.shadowRadius = 1;
+    [center_button setImage:[UIImage imageNamed:@"map_icon_mine"] forState:UIControlStateNormal];
     [center_button addTarget:self action:@selector(centerButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:center_button];
     

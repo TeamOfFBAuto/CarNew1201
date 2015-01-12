@@ -26,9 +26,9 @@
 -(void)loadCustomViewWithType:(int)theType{
     if (theType == 1) {//收藏案例
         _mainImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 240.00/320*ALL_FRAME_WIDTH)];
-        _logoImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 190.0/320*ALL_FRAME_WIDTH, 30.00/320*ALL_FRAME_WIDTH, 30.00/320*ALL_FRAME_WIDTH)];
+        _logoImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 190.0*GscreenRatio_320, 34.00*GscreenRatio_320, 34.00*GscreenRatio_320)];
         _logoImageView.backgroundColor = RGBCOLOR_ONE;
-        _logoImageView.layer.cornerRadius = ALL_FRAME_WIDTH*30/320/2;
+        _logoImageView.layer.cornerRadius = 34.00*GscreenRatio_320/2;
         _logoImageView.layer.masksToBounds = YES;
         _logoImageView.userInteractionEnabled = YES;
         _logoImageView.layer.borderWidth = 2;
@@ -37,13 +37,21 @@
         
         _titleLabel1 = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_logoImageView.frame)+10, _logoImageView.frame.origin.y-2, ALL_FRAME_WIDTH - 15-15-10-_logoImageView.frame.size.width, _logoImageView.frame.size.height*0.5)];
         _titleLabel1.textColor = [UIColor whiteColor];
+        _titleLabel1.layer.shadowColor = [UIColor blackColor].CGColor;
         _titleLabel1.font = [UIFont systemFontOfSize:15];
+        _titleLabel1.layer.shadowOffset = CGSizeMake(0,1);
+        _titleLabel1.layer.shadowRadius = 0.5;
+        _titleLabel1.layer.shadowOpacity = 0.8;
 
         
         
         _titleLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(_titleLabel1.frame.origin.x, CGRectGetMaxY(_titleLabel1.frame)+4, _titleLabel1.frame.size.width, _titleLabel1.frame.size.height)];
         _titleLabel2.textColor = RGBCOLOR(165, 163, 164);
         _titleLabel2.font = [UIFont systemFontOfSize:14];
+        _titleLabel2.layer.shadowColor = [UIColor blackColor].CGColor;
+        _titleLabel2.layer.shadowOffset = CGSizeMake(0,1);
+        _titleLabel2.layer.shadowRadius = 0.5;
+        _titleLabel2.layer.shadowOpacity = 0.8;
 
         
         UIImageView *_mainImv_backImv = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"anli_bottom_clear.png"]];
@@ -100,7 +108,7 @@
     }else if (theType == 3){//收藏店铺
         //图片
         self.header_imageView = [[UIImageView alloc]initWithFrame:CGRectMake(12, 12, 60.00, 60.00)];
-        
+        self.header_imageView.image = [UIImage imageNamed:BUSINESS_DEFAULT_IMAGE];
         //名字
         _business_name_label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.header_imageView.frame)+12, self.header_imageView.frame.origin.y, ALL_FRAME_WIDTH-self.header_imageView.frame.size.width-12-12-12, 17.0/320*ALL_FRAME_WIDTH)];
         _business_name_label.font = [UIFont systemFontOfSize:16];
@@ -171,7 +179,7 @@
     
     
     _business_name_label.text = theModel.storename;
-    [self.header_imageView sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
+    [self.header_imageView sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:[UIImage imageNamed:BUSINESS_DEFAULT_IMAGE]];
     _comment_num_label.text = [NSString stringWithFormat:@"%@人评论",theModel.com_num];
     
     _stars_back_view.startNum = [theModel.score floatValue];

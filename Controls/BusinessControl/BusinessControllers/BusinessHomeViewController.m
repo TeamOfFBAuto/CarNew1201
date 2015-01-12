@@ -89,7 +89,7 @@
     _businessModel = [[BusinessDetailModel alloc] init];
     currentOffY = 0.f;
     
-    _myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
+    _myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
     _myWebView.delegate = self;
     _myWebView.scrollView.delegate = self;
     _myWebView.scrollView.bounces = NO;
@@ -120,7 +120,6 @@
     
     
     bottomView = [[BusinessCommentView alloc] init];
-    bottomView.hidden = YES;
     [self.view addSubview:bottomView];
     __weak typeof(self)bself = self;
     [bottomView setMyBlock:^(BusinessCommentViewTapType aType) {
@@ -183,7 +182,6 @@
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [hud hide:YES];
-    bottomView.hidden = NO;
     right_button.userInteractionEnabled = YES;
     [self progressToFinish];
 }
@@ -248,14 +246,36 @@
     
     if ([relativeUrl rangeOfString:@"map:"].length > 0)
     {
+        NSString * lat;
+        NSString * lng;
+        NSString * latlng = [relativeUrl stringByReplacingOccurrencesOfString:@"map:" withString:@""];
+        
+        
+        NSArray * array = [latlng componentsSeparatedByString:@","];
+        
+        NSLog(@"array ------   %@",array);
+        
+        if (latlng)
+        {
+            lat = [array objectAtIndex:1];
+            lng = [array objectAtIndex:0];
+            
+            if ([lat isEqualToString:@"0"] && [lng isEqualToString:@"0"])
+            {
+                [ZSNApi showAutoHiddenMBProgressWithText:@"商家没有上传地图信息" addToView:self.view];
+                return NO;
+            }
+        }
+        
+        
         NSString * address = [relativeUrl stringByReplacingOccurrencesOfString:@"map:" withString:@""];
         NSLog(@"address ------   %@",address);
         
         FBMapViewController * mapViewController = [[FBMapViewController alloc] init];
-        mapViewController.address_content = _businessModel.content;
+        mapViewController.address_content = _businessModel.phone;
         mapViewController.address_title = _businessModel.title;
-        mapViewController.address_latitude = 39.8688;
-        mapViewController.address_longitude = 116.553;
+        mapViewController.address_latitude = [lat doubleValue];
+        mapViewController.address_longitude = [lng doubleValue];
         
         [self.navigationController pushViewController:mapViewController animated:YES];
         
@@ -301,9 +321,9 @@
 -(void)back:(UIButton *)button
 {
       self.edgesForExtendedLayout = UIRectEdgeNone;
-        self.navigationController.navigationBarHidden = NO;
 
     [self.navigationController popViewControllerAnimated:YES];
+    self.navigationController.navigationBarHidden = NO;
 }
 -(void)rightButtonTap:(UIButton *)button
 {
@@ -395,6 +415,8 @@
             isCollected = !isCollected;
             
             [functionView setCollectionState:isCollected];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:G_USERCENTERLOADUSERINFO object:nil userInfo:nil];
         }else
         {
             aHud.labelText = [result objectForKey:ERROR_INFO];

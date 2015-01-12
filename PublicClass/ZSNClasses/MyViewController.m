@@ -178,7 +178,10 @@ CGPoint began_point;
         self.navigationItem.leftBarButtonItems = @[spaceButton,[[UIBarButtonItem alloc] initWithCustomView:left_button]];
     }else
     {
-        
+        UIButton * left_button = [UIButton buttonWithType:UIButtonTypeCustom];
+        left_button.frame = CGRectMake(0,0,30,44);
+        self.navigationItem.leftBarButtonItems = @[spaceButton,[[UIBarButtonItem alloc] initWithCustomView:left_button]];
+
     }
     
     

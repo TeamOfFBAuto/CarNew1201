@@ -129,6 +129,8 @@ alpha:(a)]
 #define G_USERINFO @"http://gztest.fblife.com/index.php?c=interface&a=getUser&uid=%@&fbtype=json"
 //更改用户banner
 #define G_CHANGEUSERBANNER @"http://gztest.fblife.com/index.php?c=interface&a=updatePichead&fbtype=json&authkey=%@"
+//个人中心 需要刷新个人数据
+#define G_USERCENTERLOADUSERINFO @"g_usercenterloaduserinfo"
 
 
 //搜索相关
@@ -156,7 +158,7 @@ alpha:(a)]
 #define G_SEARCH_PEIJIAN_SHANGJIA @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&storeid=%@"
 
 //配件详情HTML5地址
-#define ANLI_PEIJIAN_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&uid=%@"
+#define ANLI_PEIJIAN_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&authkey=%@"
 ///配件详情接口
 #define ANLI_PEIJIAN_INFORMATION_URL @"http://gztest.fblife.com/web.php?c=interface&a=getGoodsdetails&gid=%@&authkey=%@"
 

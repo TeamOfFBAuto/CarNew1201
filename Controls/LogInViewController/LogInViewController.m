@@ -274,7 +274,7 @@
     __weak typeof(self)bself = self;
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
 
-        [j stopAnimating];
+     //   [j stopAnimating];
         
 
         NSLog(@"登录成功:%@",result);
