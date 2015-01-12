@@ -616,7 +616,7 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
             headerBackImageView.layer.borderColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4].CGColor;
             headerBackImageView.layer.cornerRadius = 41;
             headerBackImageView.userInteractionEnabled = YES;
-            headerBackImageView.layer.borderWidth = 0.5;
+            headerBackImageView.layer.borderWidth = 1;
             [sessionView.containView addSubview:headerBackImageView];
             
             UITapGestureRecognizer * header_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerTap:)];
