@@ -28,7 +28,7 @@
         self.dataArray = [NSMutableArray array];
         
         [self createHeaderView];
-        [self createFooterView];
+//        [self createFooterView];
         self.delegate = self;
         
     }

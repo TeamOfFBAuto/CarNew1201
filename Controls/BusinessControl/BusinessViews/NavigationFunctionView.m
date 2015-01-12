@@ -31,7 +31,9 @@
     back_view.clipsToBounds = YES;
     [self addSubview:back_view];
     
-    NSArray * image_array = [NSArray arrayWithObjects:[UIImage imageNamed:@"navigation_forward_image"],[UIImage imageNamed:@"navigation_praise_image"],[UIImage imageNamed:@"navigation_plus_hidden_image"],nil];
+//    NSArray * image_array = [NSArray arrayWithObjects:[UIImage imageNamed:@"navigation_forward_image"],[UIImage imageNamed:@"navigation_praise_image"],[UIImage imageNamed:@"navigation_plus_hidden_image"],nil];
+    
+    NSArray * image_array = [NSArray arrayWithObjects:[UIImage imageNamed:@"shareImage"],[UIImage imageNamed:@"shoucangImage"],[UIImage imageNamed:@"eyeImage"],nil];
     
     for (int i = 0;i < 3;i++)
     {
@@ -44,13 +46,13 @@
         
         if (i == 1)
         {
-            [button setImage:[UIImage imageNamed:@"navigation_praised_image"] forState:UIControlStateSelected];
+            [button setImage:[UIImage imageNamed:@"shoucangImage_2"] forState:UIControlStateSelected];
         }
         
         if (i == 2)
         {
-            [button setImage:[UIImage imageNamed:@"navigation_plus_hidden_image"] forState:UIControlStateSelected];
-            [button setImage:[UIImage imageNamed:@"navigation_plus_n0_hidden_image"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"eyeImage"] forState:UIControlStateSelected];
+            [button setImage:[UIImage imageNamed:@"eyeImage_2"] forState:UIControlStateNormal];
         }
         
         

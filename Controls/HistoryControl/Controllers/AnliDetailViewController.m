@@ -53,6 +53,10 @@
     UIButton * back_button;
     ///菜单按钮
     UIButton * right_button;
+    
+    CGFloat web_old_height;//记录原始高度
+    
+    BOOL noHidden;//不需要隐藏
 }
 
 ///存放标题、图片、是否收藏 、简介信息
@@ -161,37 +165,6 @@
     
     
     //评论view
-    
-//    bottomView = [[CommentBottomView alloc] init];
-////    bottomView.hidden = YES;
-//    [self.view addSubview:bottomView];
-//    
-//    bottomView.top = DEVICE_HEIGHT;
-    
-//    __weak typeof(self)weakSelf = self;
-//    
-//    [bottomView setMyBlock:^(CommentTapType aType) {
-//        NSLog(@"bottom tap : %d",aType);
-//        
-//        if (aType == CommentTypeLogIn) {
-//            
-//            LogInViewController * logIn = [[LogInViewController alloc] init];
-//            UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
-//            [weakSelf presentViewController:navc animated:YES completion:nil];
-//            
-//        }else if (aType == CommentTypeComent){
-//            
-//            GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
-//            cc.commentType = Comment_Anli;
-//            cc.commentId = weakSelf.anli_id;
-//            UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:cc];
-//            [weakSelf presentViewController:navc animated:YES completion:^{
-//                
-//            }];
-//            
-//        }
-//        
-//    }];
     
     [self progress];
 
@@ -478,8 +451,8 @@
             case BusinessCommentViewTapTypeComment://评论
             {
                 GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
-                cc.commentType = Comment_DianPu;//评论类型（枚举）
-                cc.commentId = bself.detail_info.id;//对应的id
+                cc.commentType = Comment_PeiJian;//评论类型（枚举）
+                cc.commentId = bself.anli_id;//对应的id
                 UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:cc];
                 [bself presentViewController:navc animated:YES completion:^{
                     
@@ -730,11 +703,27 @@
     
     [self progressToFinish];
     
-//    webView.scrollView.contentSize  = CGSizeMake(webView.width, webView.scrollView.contentSize.height + 62);
-//    [webView.scrollView addSubview:bottomView];
-//    bottomView.top = webView.scrollView.contentSize.height - 62;
-    
-    
+    if (self.detailType == Detail_Peijian) {
+        
+        CGFloat height = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight"] floatValue];
+        
+        NSLog(@"webheight %f",height);
+        
+        if (DEVICE_HEIGHT - height == 64) {
+            
+            [self hiddenBottomViewWith:NO];
+            noHidden = YES;
+        }
+        
+        if (height <= DEVICE_HEIGHT && DEVICE_HEIGHT - height != 64) {
+            
+            web_old_height = height;
+            
+            _webView.scrollView.contentSize = CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT + 64 + 100);
+            
+        }
+        
+    }
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
@@ -750,15 +739,11 @@
     CGFloat offset = scrollView.contentOffset.y;
     
     if (offset > currentOffY) {
-        //        bottomView.hidden = NO;
-        //        _myWebView.height = DEVICE_HEIGHT-64;
         
         [self hiddenBottomViewWith:NO];
         
     }else
     {
-        //        bottomView.hidden = YES;
-        //        _myWebView.height = DEVICE_HEIGHT;
         [self hiddenBottomViewWith:YES];
     }
     
@@ -768,10 +753,25 @@
 ///底部栏弹出消失动画
 -(void)hiddenBottomViewWith:(BOOL)isHidden
 {
+    if (noHidden) {
+        return;
+    }
+    
+    if (isHidden) {
+        _webView.height = DEVICE_HEIGHT;//增加时不需要动画,防止延迟造成的 黑底显示
+        
+        if (web_old_height <= DEVICE_HEIGHT) {
+            
+            _webView.scrollView.contentSize = CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT + 64);
+        }
+    }
+    
     [UIView animateWithDuration:0.4 animations:^{
         bottomView.top = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
         
-        _webView.height = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
+        if (isHidden == NO) {
+            _webView.height = DEVICE_HEIGHT-64;
+        }
         
     } completion:^(BOOL finished) {
         
