@@ -638,12 +638,12 @@
     }
     
     ///放大缩小图片
-    if ([relativeUrl rangeOfString:@"big_view"].length)
+    if ([relativeUrl rangeOfString:@"#big_view"].length)
     {
         [self setNavigationViewHidden:YES];
         return NO;
     }
-    if ([relativeUrl rangeOfString:@"small_view"].length)
+    if ([relativeUrl rangeOfString:@"#small_view"].length)
     {
         [self setNavigationViewHidden:NO];
         return NO;
@@ -709,13 +709,13 @@
         
         NSLog(@"webheight %f",height);
         
-        if (DEVICE_HEIGHT - height == 64) {
+        if (DEVICE_HEIGHT - height >= 64) {
             
-            [self hiddenBottomViewWith:NO];
+            [self hiddenBottomViewWith:NO withDuration:0.f];
             noHidden = YES;
         }
         
-        if (height <= DEVICE_HEIGHT && DEVICE_HEIGHT - height != 64) {
+        if (height <= DEVICE_HEIGHT && DEVICE_HEIGHT - height < 64) {
             
             web_old_height = height;
             
@@ -777,6 +777,37 @@
         
     }];
 }
+
+///底部栏弹出消失动画 加个动画时间参数
+
+-(void)hiddenBottomViewWith:(BOOL)isHidden withDuration:(CGFloat)duration
+{
+    if (noHidden) {
+        return;
+    }
+    
+    if (isHidden) {
+        _webView.height = DEVICE_HEIGHT;//增加时不需要动画,防止延迟造成的 黑底显示
+        
+        if (web_old_height <= DEVICE_HEIGHT) {
+            
+            _webView.scrollView.contentSize = CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT + 64);
+        }
+    }
+    
+    [UIView animateWithDuration:duration animations:^{
+        bottomView.top = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
+        
+        if (isHidden == NO) {
+            _webView.height = DEVICE_HEIGHT-64;
+        }
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+
 ///设置导航栏显示隐藏
 -(void)setNavigationViewHidden:(BOOL)isHidden
 {
