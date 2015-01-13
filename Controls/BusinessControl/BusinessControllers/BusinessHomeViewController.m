@@ -282,11 +282,11 @@
         return NO;
     }
     
-    if ([relativeUrl rangeOfString:@"tel:"].length > 0)
-    {
-        NSString * phone = [relativeUrl stringByReplacingOccurrencesOfString:@"tel:" withString:@""];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",phone]]];
-    }
+//    if ([relativeUrl rangeOfString:@"tel:"].length > 0)
+//    {
+//        NSString * phone = [relativeUrl stringByReplacingOccurrencesOfString:@"tel:" withString:@""];
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",phone]]];
+//    }
     
     
     return YES;

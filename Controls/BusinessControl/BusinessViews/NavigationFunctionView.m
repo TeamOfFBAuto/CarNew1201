@@ -26,9 +26,11 @@
 
 -(void)setup
 {
-    back_view = [[UIView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-56,6,34,108)];
+    back_view = [[UIView alloc] initWithFrame:CGRectMake(DEVICE_WIDTH-56,6,39,108)];
     back_view.backgroundColor = [UIColor blackColor];
     back_view.clipsToBounds = YES;
+//    back_view.layer.borderColor = RGBCOLOR(246,251,243).CGColor;
+//    back_view.layer.borderWidth = 0.5;
     [self addSubview:back_view];
     
 //    NSArray * image_array = [NSArray arrayWithObjects:[UIImage imageNamed:@"navigation_forward_image"],[UIImage imageNamed:@"navigation_praise_image"],[UIImage imageNamed:@"navigation_plus_hidden_image"],nil];
@@ -56,7 +58,7 @@
         }
         
         
-        UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(0,-0.5+back_view.height/3.0f,33,0.5)];
+        UIView * line_view = [[UIView alloc] initWithFrame:CGRectMake(0,-0.5+back_view.height/3.0f,back_view.width,0.5)];
         line_view.backgroundColor = RGBCOLOR(70,70,70);
         line_view.center = CGPointMake(back_view.width/2,(back_view.height/3.0f)*(i+1)+0.5);
         [back_view addSubview:line_view];
@@ -88,7 +90,7 @@
             bself.alpha = 0;
         }else
         {
-            bself.alpha = 0.8;
+            bself.alpha = 0.7;
         }
     } completion:^(BOOL finished) {
         
