@@ -222,7 +222,6 @@
 		E35A00E91A319E4E00A9CD24 /* GpersonCenterCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E35A00E81A319E4E00A9CD24 /* GpersonCenterCustomCell.m */; };
 		E35A00EC1A319FA100A9CD24 /* GSeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E35A00EB1A319FA100A9CD24 /* GSeachViewController.m */; };
 		E36AAF6B1A3854AE006A6F21 /* gTouxiang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E36AAF691A3854AE006A6F21 /* gTouxiang@2x.png */; };
-		E36C06B71A5B8270004DAC36 /* gstart_half@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E36C06B61A5B8270004DAC36 /* gstart_half@2x.png */; };
 		E372307A1A316C5100597D8C /* NSDictionary+GJson.m in Sources */ = {isa = PBXBuildFile; fileRef = E37230791A316C5100597D8C /* NSDictionary+GJson.m */; };
 		E377E4EB1A39732700B2D6C9 /* gthreebtnback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E377E4EA1A39732700B2D6C9 /* gthreebtnback@2x.png */; };
 		E377E4EE1A397D0600B2D6C9 /* UILabel+GautoMatchedText.m in Sources */ = {isa = PBXBuildFile; fileRef = E377E4ED1A397D0600B2D6C9 /* UILabel+GautoMatchedText.m */; };
@@ -237,8 +236,9 @@
 		E3B2DC671A43EEC000607B11 /* noDataView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B2DC661A43EEC000607B11 /* noDataView@2x.png */; };
 		E3B2DC691A43FF3F00607B11 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B2DC681A43FF3F00607B11 /* logo@2x.png */; };
 		E3CA7B391A3598EB00B72008 /* GstartView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CA7B381A3598EB00B72008 /* GstartView.m */; };
-		E3CA7B3B1A359BC300B72008 /* gstart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CA7B3A1A359BC300B72008 /* gstart@2x.png */; };
+		E3CA7B3B1A359BC300B72008 /* gstart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CA7B3A1A359BC300B72008 /* gstart@3x.png */; };
 		E3CF26D01A64FBC800FDC4BC /* gstarBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CF26CF1A64FBC800FDC4BC /* gstarBack@2x.png */; };
+		E3CF26D21A6521CD00FDC4BC /* gstart_half@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CF26D11A6521CD00FDC4BC /* gstart_half@3x.png */; };
 		E3ED4A671A2FF83E004A2D72 /* GcustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E3ED4A661A2FF83E004A2D72 /* GcustomActionSheet.m */; };
 		E3ED4A6A1A30233A004A2D72 /* MLImageCrop.m in Sources */ = {isa = PBXBuildFile; fileRef = E3ED4A691A30233A004A2D72 /* MLImageCrop.m */; };
 /* End PBXBuildFile section */
@@ -604,7 +604,6 @@
 		E35A00EA1A319FA100A9CD24 /* GSeachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSeachViewController.h; sourceTree = "<group>"; };
 		E35A00EB1A319FA100A9CD24 /* GSeachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSeachViewController.m; sourceTree = "<group>"; };
 		E36AAF691A3854AE006A6F21 /* gTouxiang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gTouxiang@2x.png"; sourceTree = "<group>"; };
-		E36C06B61A5B8270004DAC36 /* gstart_half@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstart_half@2x.png"; sourceTree = "<group>"; };
 		E37230781A316C5100597D8C /* NSDictionary+GJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+GJson.h"; sourceTree = "<group>"; };
 		E37230791A316C5100597D8C /* NSDictionary+GJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+GJson.m"; sourceTree = "<group>"; };
 		E377E4EA1A39732700B2D6C9 /* gthreebtnback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gthreebtnback@2x.png"; sourceTree = "<group>"; };
@@ -626,8 +625,9 @@
 		E3B2DC681A43FF3F00607B11 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		E3CA7B371A3598EB00B72008 /* GstartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GstartView.h; sourceTree = "<group>"; };
 		E3CA7B381A3598EB00B72008 /* GstartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GstartView.m; sourceTree = "<group>"; };
-		E3CA7B3A1A359BC300B72008 /* gstart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstart@2x.png"; sourceTree = "<group>"; };
+		E3CA7B3A1A359BC300B72008 /* gstart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstart@3x.png"; sourceTree = "<group>"; };
 		E3CF26CF1A64FBC800FDC4BC /* gstarBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstarBack@2x.png"; sourceTree = "<group>"; };
+		E3CF26D11A6521CD00FDC4BC /* gstart_half@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstart_half@3x.png"; sourceTree = "<group>"; };
 		E3ED4A651A2FF83E004A2D72 /* GcustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GcustomActionSheet.h; sourceTree = "<group>"; };
 		E3ED4A661A2FF83E004A2D72 /* GcustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GcustomActionSheet.m; sourceTree = "<group>"; };
 		E3ED4A681A30233A004A2D72 /* MLImageCrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLImageCrop.h; sourceTree = "<group>"; };
@@ -1589,14 +1589,14 @@
 		E35A00DF1A319E3400A9CD24 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E3CF26D11A6521CD00FDC4BC /* gstart_half@3x.png */,
 				E3CF26CF1A64FBC800FDC4BC /* gstarBack@2x.png */,
-				E36C06B61A5B8270004DAC36 /* gstart_half@2x.png */,
 				E3B2DC661A43EEC000607B11 /* noDataView@2x.png */,
 				E3B2DC641A43ED8A00607B11 /* gback@2x.png */,
 				E381594F1A3AE1D500864F81 /* gBanner@2x.jpg */,
 				E377E4EA1A39732700B2D6C9 /* gthreebtnback@2x.png */,
 				E36AAF691A3854AE006A6F21 /* gTouxiang@2x.png */,
-				E3CA7B3A1A359BC300B72008 /* gstart@2x.png */,
+				E3CA7B3A1A359BC300B72008 /* gstart@3x.png */,
 				E35A00E11A319E4000A9CD24 /* GCaseModel.h */,
 				E35A00E21A319E4000A9CD24 /* GCaseModel.m */,
 				E35A00E31A319E4000A9CD24 /* GGoodsModel.h */,
@@ -1773,7 +1773,6 @@
 				1380232B1A2C69CF0053BDDA /* anli_fangda@2x.png in Resources */,
 				13F9D4831A2DA7BB002A6904 /* sharefriendquan@2x.png in Resources */,
 				1380232D1A2C69CF0053BDDA /* anli_zhuanfa@2x.png in Resources */,
-				E36C06B71A5B8270004DAC36 /* gstart_half@2x.png in Resources */,
 				567B13AA1A2C6B8C003A3C59 /* fanhui_image@2x.png in Resources */,
 				56621D501A28605B00310A48 /* nav_btn_bg_lighted@2x.png in Resources */,
 				565321631A5A79E700E43F80 /* button1-up252_94@2x.png in Resources */,
@@ -1819,11 +1818,8 @@
 				5653E51D1A3A9B5B00CEB749 /* navigation_praise_image@2x.png in Resources */,
 				56CC07201A302C3C0014F285 /* 服务条款.html in Resources */,
 				56621D4D1A28605B00310A48 /* nav_bg.png in Resources */,
-
 				E3CF26D01A64FBC800FDC4BC /* gstarBack@2x.png in Resources */,
-
 				13AE9EF51A63B62000FC3E6E /* shareImage@2x.png in Resources */,
-
 				5653E5111A39754500CEB749 /* newAbout@2x.png in Resources */,
 				13AE9EF71A63B62000FC3E6E /* shoucangImage@2x.png in Resources */,
 				1351179D1A257EB20015C133 /* blueup1@2x.png in Resources */,
@@ -1877,8 +1873,9 @@
 				56CC071F1A302C3C0014F285 /* zhuce.css in Resources */,
 				56621D531A28605B00310A48 /* umeng_logo1.png in Resources */,
 				565EE8D31A2C50710063CAA3 /* zc_phoneNum@2x.png in Resources */,
+				E3CF26D21A6521CD00FDC4BC /* gstart_half@3x.png in Resources */,
 				137664E31A382DE100C8695D /* anli_bottom_clear@2x.png in Resources */,
-				E3CA7B3B1A359BC300B72008 /* gstart@2x.png in Resources */,
+				E3CA7B3B1A359BC300B72008 /* gstart@3x.png in Resources */,
 				565EE8D71A2C50830063CAA3 /* zc_xieyi@2x.png in Resources */,
 				56621D4B1A28605B00310A48 /* messages_toolbar_background@2x.png in Resources */,
 				1380232C1A2C69CF0053BDDA /* anli_shoucang@2x.png in Resources */,
@@ -2165,15 +2162,9 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage2;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
-
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
-
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CustomNewProject/PrefixHeader.pch";
 				INFOPLIST_FILE = CustomNewProject/Info.plist;
@@ -2199,15 +2190,9 @@
 			buildSettings = {
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage2;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
-
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
-
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CustomNewProject/PrefixHeader.pch";
 				INFOPLIST_FILE = CustomNewProject/Info.plist;
