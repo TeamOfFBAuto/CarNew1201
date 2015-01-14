@@ -84,7 +84,7 @@
 {
     CGPoint p = point;
     
-    CGFloat yikexing = 40.00*self.frame.size.width/210;
+    CGFloat yikexing = 40.00*self.frame.size.width/200;
     if (p.x < yikexing)
     {
         p.x = yikexing;
@@ -105,6 +105,12 @@
 //    p.x = score * self.frame.size.width;
     NSLog(@"p.x = %f",p.x);
     self.starForegroundView.frame = CGRectMake(0, 0, p.x, self.frame.size.height);
+    
+    
+    
+    
+    
+    
     
     if(self.delegate && [self.delegate respondsToSelector:@selector(starRatingView: score:)])
     {

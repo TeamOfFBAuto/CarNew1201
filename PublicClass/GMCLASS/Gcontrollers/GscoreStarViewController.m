@@ -170,8 +170,14 @@
         return;
     }
     
+    //点5
+    if (self.theScore - (int)self.theScore >=0.5) {
+        self.theScore = (int)self.theScore+0.5;
+    }else{
+        self.theScore = (int)self.theScore;
+    }
     
-    [self networkForCommentContent:self.cc_content score:[NSString stringWithFormat:@"%.f",self.theScore]];
+    [self networkForCommentContent:self.cc_content score:[NSString stringWithFormat:@"%.1f",self.theScore]];
 }
 
 
@@ -198,6 +204,9 @@
     }
     
     NSString *url = [NSString stringWithFormat:api,[GMAPI getAuthkey],self.commentId,scoreStr,content];
+    
+    
+    NSLog(@"评论的url:%@",url);
     
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
