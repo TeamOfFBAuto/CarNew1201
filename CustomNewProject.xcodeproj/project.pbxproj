@@ -238,7 +238,7 @@
 		E3CA7B391A3598EB00B72008 /* GstartView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CA7B381A3598EB00B72008 /* GstartView.m */; };
 		E3CA7B3B1A359BC300B72008 /* gstart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CA7B3A1A359BC300B72008 /* gstart@3x.png */; };
 		E3CF26D01A64FBC800FDC4BC /* gstarBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CF26CF1A64FBC800FDC4BC /* gstarBack@2x.png */; };
-		E3CF26D21A6521CD00FDC4BC /* gstart_half@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CF26D11A6521CD00FDC4BC /* gstart_half@3x.png */; };
+		E3E8323E1A65FF4900026DAC /* gstart_half@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E8323D1A65FF4900026DAC /* gstart_half@3x.png */; };
 		E3ED4A671A2FF83E004A2D72 /* GcustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E3ED4A661A2FF83E004A2D72 /* GcustomActionSheet.m */; };
 		E3ED4A6A1A30233A004A2D72 /* MLImageCrop.m in Sources */ = {isa = PBXBuildFile; fileRef = E3ED4A691A30233A004A2D72 /* MLImageCrop.m */; };
 /* End PBXBuildFile section */
@@ -627,7 +627,7 @@
 		E3CA7B381A3598EB00B72008 /* GstartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GstartView.m; sourceTree = "<group>"; };
 		E3CA7B3A1A359BC300B72008 /* gstart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstart@3x.png"; sourceTree = "<group>"; };
 		E3CF26CF1A64FBC800FDC4BC /* gstarBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstarBack@2x.png"; sourceTree = "<group>"; };
-		E3CF26D11A6521CD00FDC4BC /* gstart_half@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstart_half@3x.png"; sourceTree = "<group>"; };
+		E3E8323D1A65FF4900026DAC /* gstart_half@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstart_half@3x.png"; sourceTree = "<group>"; };
 		E3ED4A651A2FF83E004A2D72 /* GcustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GcustomActionSheet.h; sourceTree = "<group>"; };
 		E3ED4A661A2FF83E004A2D72 /* GcustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GcustomActionSheet.m; sourceTree = "<group>"; };
 		E3ED4A681A30233A004A2D72 /* MLImageCrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLImageCrop.h; sourceTree = "<group>"; };
@@ -1589,7 +1589,7 @@
 		E35A00DF1A319E3400A9CD24 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E3CF26D11A6521CD00FDC4BC /* gstart_half@3x.png */,
+				E3E8323D1A65FF4900026DAC /* gstart_half@3x.png */,
 				E3CF26CF1A64FBC800FDC4BC /* gstarBack@2x.png */,
 				E3B2DC661A43EEC000607B11 /* noDataView@2x.png */,
 				E3B2DC641A43ED8A00607B11 /* gback@2x.png */,
@@ -1873,7 +1873,7 @@
 				56CC071F1A302C3C0014F285 /* zhuce.css in Resources */,
 				56621D531A28605B00310A48 /* umeng_logo1.png in Resources */,
 				565EE8D31A2C50710063CAA3 /* zc_phoneNum@2x.png in Resources */,
-				E3CF26D21A6521CD00FDC4BC /* gstart_half@3x.png in Resources */,
+				E3E8323E1A65FF4900026DAC /* gstart_half@3x.png in Resources */,
 				137664E31A382DE100C8695D /* anli_bottom_clear@2x.png in Resources */,
 				E3CA7B3B1A359BC300B72008 /* gstart@3x.png in Resources */,
 				565EE8D71A2C50830063CAA3 /* zc_xieyi@2x.png in Resources */,
