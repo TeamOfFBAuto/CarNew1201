@@ -204,12 +204,8 @@
             
             AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
             detail.anli_id = dianpuId;
-            
-//            detail.shareTitle = aModel.title;
-//            detail.shareDescrition = aModel.sname;
-//            detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
-//            detail.storeName = aModel.sname;
-//            detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
+            detail.detailType = Detail_Anli;
+            detail.storeImage = self.share_image;
             
             [self.navigationController pushViewController:detail animated:YES];
         }
@@ -229,12 +225,7 @@
             detail.anli_id = dianpuId;
             
             detail.detailType = Detail_Peijian;
-            
-            //            detail.shareTitle = aModel.title;
-            //            detail.shareDescrition = aModel.sname;
-            //            detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
-            //            detail.storeName = aModel.sname;
-            //            detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
+            detail.storeImage = self.share_image;
             
             [self.navigationController pushViewController:detail animated:YES];
 
@@ -605,11 +596,9 @@
 ///底部栏弹出消失动画
 -(void)hiddenBottomViewWith:(BOOL)isHidden
 {
+    _myWebView.height = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
     [UIView animateWithDuration:0.4 animations:^{
         bottomView.top = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
-        
-        _myWebView.height = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
-        
     } completion:^(BOOL finished) {
         
     }];
@@ -619,7 +608,7 @@
 
 - (void)progress
 {
-    progress = [[UIView alloc]initWithFrame:CGRectMake(0, bottomView.bottom - 2, DEVICE_WIDTH, 2)];
+    progress = [[UIView alloc]initWithFrame:CGRectMake(0, DEVICE_HEIGHT - 2, DEVICE_WIDTH, 2)];
     progress.backgroundColor = [UIColor clearColor];
     [self.view addSubview:progress];
     
