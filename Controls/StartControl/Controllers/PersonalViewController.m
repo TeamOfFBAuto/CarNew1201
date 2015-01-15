@@ -906,7 +906,6 @@ typedef enum{
     cc.shoucangchanpin = @"shoucang";
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
         _tableView.netWorking = GIS;
-        _dataArray = nil;
         _hudView.hidden = YES;
         
         NSLog(@"到底走了吗%@",result);
@@ -940,8 +939,11 @@ typedef enum{
         if (theType == GDIANPU) {//店铺
             for (NSDictionary *dic in data) {
                 
-                BusinessListModel *model = [[BusinessListModel alloc]initWithDictionary:dic];
-                [dataArr addObject:model];
+                if (dic) {
+                    BusinessListModel *model = [[BusinessListModel alloc]initWithDictionary:dic];
+                    [dataArr addObject:model];
+                }
+                
                 
             }
             
@@ -950,9 +952,11 @@ typedef enum{
             
             for (NSDictionary *dic in data) {
                 
-                GGoodsModel *model = [[GGoodsModel alloc]initWithDictionary:dic];
+                if (dic) {
+                    GGoodsModel *model = [[GGoodsModel alloc]initWithDictionary:dic];
+                    [dataArr addObject:model];
+                }
                 
-                [dataArr addObject:model];
                 
             }
             
@@ -960,23 +964,27 @@ typedef enum{
         }else if (theType == GANLI){//案例
             for (NSDictionary *dic in data) {
                 
-                AnliModel *aModel = [[AnliModel alloc]initWithDictionary:dic];
-                [dataArr addObject:aModel];
+                if (dic) {
+                    GCaseModel *aModel = [[GCaseModel alloc]initWithDictionary:dic];
+                    [dataArr addObject:aModel];
+                }
+                
                 
             }
             
         }
         
         
-        [bself reloadData:dataArr isReload:_tableView.isReloadData];
+        if (dataArr) {
+            [bself reloadData:dataArr isReload:_tableView.isReloadData];
+        }
+        
         
     } failBlock:^(NSDictionary *failDic, NSError *erro) {
         
         _hudView.hidden = YES;
         
         [ZSNApi showAutoHiddenMBProgressWithText:@"请求收藏信息失败" addToView:self.view];
-        
-        
         
         NSLog(@"---%@",failDic);
         
@@ -1044,7 +1052,7 @@ typedef enum{
     
     
     
-    _tableView.dataArray = [NSMutableArray arrayWithArray:_dataArray];
+//    _tableView.dataArray = [NSMutableArray arrayWithArray:_dataArray];
     
     [_tableView performSelector:@selector(finishReloadigData) withObject:nil afterDelay:0.2];
 }
@@ -1060,7 +1068,7 @@ typedef enum{
     
     _dataArray = nil;
     _tableView.pageNum = 1;
-    _tableView.dataArray = nil;
+    [_tableView.dataArray removeAllObjects];
     
     [self prepareNetDataWithCellType:_cellType];
     
@@ -1074,7 +1082,7 @@ typedef enum{
     
     _dataArray = nil;
     _tableView.pageNum = 1;
-    _tableView.dataArray = nil;
+    [_tableView.dataArray removeAllObjects];
     
     [self prepareNetDataWithCellType:_cellType];
 }
@@ -1094,17 +1102,18 @@ typedef enum{
 {
     NSLog(@"%s",__FUNCTION__);
     
-    if (_cellType == GDIANPU) {
+    if (_cellType == GDIANPU) {//店铺
         GpersonCenterCustomCell * cell = (GpersonCenterCustomCell*)[_tableView cellForRowAtIndexPath:indexPath];
         
-        BusinessListModel *model = _dataArray[indexPath.row];
+        BusinessListModel *model = _tableView.dataArray[indexPath.row];
         BusinessHomeViewController * home = [[BusinessHomeViewController alloc] init];
         home.business_id = model.id;
         home.share_title = model.storename;
         home.share_image = cell.header_imageView.image;
         [self.navigationController pushViewController:home animated:YES];
-    }else if (_cellType == GANLI){
-        GCaseModel *aModel = [_dataArray objectAtIndex:indexPath.row];
+    }else if (_cellType == GANLI){//案例
+        
+        GCaseModel *aModel = [_tableView.dataArray objectAtIndex:indexPath.row];
         AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
         detail.anli_id = aModel.id;
         
@@ -1115,8 +1124,9 @@ typedef enum{
         detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
         
         [self.navigationController pushViewController:detail animated:YES];
-    }else if (_cellType == GCHANPIN){
-        GGoodsModel *model = _dataArray[indexPath.row];
+    }else if (_cellType == GCHANPIN){//产品
+        
+        GGoodsModel *model = _tableView.dataArray[indexPath.row];
         
         AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
         detail.anli_id = model.id;
@@ -1211,28 +1221,38 @@ typedef enum{
     }
 
     if (_cellType == GDIANPU) {//收藏店铺
-        BusinessListModel *model = _dataArray[indexPath.row];
-        [cell loadCustomViewWithType:3];
-        [cell setdataWithData:model];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
+        if (_tableView.dataArray.count>indexPath.row) {
+            BusinessListModel *model = _tableView.dataArray[indexPath.row];
+            [cell loadCustomViewWithType:3];
+            [cell setdataWithData:model];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+        
         
     }else if (_cellType == GCHANPIN){//收藏产品
         
         [cell loadCustomViewWithType:2];
-        GGoodsModel *model = _dataArray[indexPath.row];
-        [cell setChanpinWithData:model];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
+        
+        if (_tableView.dataArray.count >indexPath.row) {
+            GGoodsModel *model = _tableView.dataArray[indexPath.row];
+            [cell setChanpinWithData:model];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+        
+        
         
     }else if (_cellType == GANLI){//收藏案例
         
         [cell loadCustomViewWithType:1];
-        GCaseModel *model = _dataArray[indexPath.row];
-        [cell setAnliDataWithData:model];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-
+        if (_tableView.dataArray.count > indexPath.row) {
+            GCaseModel *model = _tableView.dataArray[indexPath.row];
+            [cell setAnliDataWithData:model];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+        
     }
     
     
