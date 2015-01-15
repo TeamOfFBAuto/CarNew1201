@@ -605,11 +605,9 @@
 ///底部栏弹出消失动画
 -(void)hiddenBottomViewWith:(BOOL)isHidden
 {
+    _myWebView.height = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
     [UIView animateWithDuration:0.4 animations:^{
         bottomView.top = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
-        
-        _myWebView.height = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
-        
     } completion:^(BOOL finished) {
         
     }];
@@ -619,7 +617,7 @@
 
 - (void)progress
 {
-    progress = [[UIView alloc]initWithFrame:CGRectMake(0, bottomView.bottom - 2, DEVICE_WIDTH, 2)];
+    progress = [[UIView alloc]initWithFrame:CGRectMake(0, DEVICE_HEIGHT - 2, DEVICE_WIDTH, 2)];
     progress.backgroundColor = [UIColor clearColor];
     [self.view addSubview:progress];
     
