@@ -251,11 +251,11 @@
                 LShareTools *tool = [LShareTools shareInstance];
                 
                 NSString *url = [NSString stringWithFormat:ANLI_DETAIL_SHARE,weakSelf.anli_id,[GMAPI getAuthkey]];
-                NSString *imageUrl = weakSelf.detail_info.pichead;
+//                NSString *imageUrl = weakSelf.detail_info.pichead;
                 
-                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
+//                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
                 
-                [tool showOrHidden:YES title:weakSelf.detail_info.title description:weakSelf.detail_info.content imageUrl:weakSelf.detail_info.pichead aShareImage:image linkUrl:url];
+                [tool showOrHidden:YES title:weakSelf.detail_info.title description:weakSelf.detail_info.content imageUrl:weakSelf.detail_info.pichead aShareImage:weakSelf.storeImage linkUrl:url];
                 
             }else if (index == 1){
                 
@@ -629,6 +629,7 @@
             
             detail.detailType = Detail_Peijian;
     
+            detail.storeImage = self.storeImage;
             
             [self.navigationController pushViewController:detail animated:YES];
             

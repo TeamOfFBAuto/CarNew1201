@@ -204,12 +204,8 @@
             
             AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
             detail.anli_id = dianpuId;
-            
-//            detail.shareTitle = aModel.title;
-//            detail.shareDescrition = aModel.sname;
-//            detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
-//            detail.storeName = aModel.sname;
-//            detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
+            detail.detailType = Detail_Anli;
+            detail.storeImage = self.share_image;
             
             [self.navigationController pushViewController:detail animated:YES];
         }
@@ -229,12 +225,7 @@
             detail.anli_id = dianpuId;
             
             detail.detailType = Detail_Peijian;
-            
-            //            detail.shareTitle = aModel.title;
-            //            detail.shareDescrition = aModel.sname;
-            //            detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
-            //            detail.storeName = aModel.sname;
-            //            detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
+            detail.storeImage = self.share_image;
             
             [self.navigationController pushViewController:detail animated:YES];
 
