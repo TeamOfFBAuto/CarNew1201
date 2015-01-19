@@ -199,45 +199,50 @@
 //填充数据 ： 案例
 -(void)setAnliDataWithData:(GCaseModel *)theModel{
 
-    [_logoImageView sd_setImageWithURL:[NSURL URLWithString:theModel.spichead] placeholderImage:nil];
+    
+    
+    if ([theModel isKindOfClass:[GCaseModel class]]) {
+        [_logoImageView sd_setImageWithURL:[NSURL URLWithString:theModel.spichead] placeholderImage:nil];
+        [_mainImv sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
+        
+        _titleLabel1.text = theModel.title;
+        _titleLabel2.text = theModel.sname;
+    }
     
     
     
-//    self.quanImageView.layer.masksToBounds = YES;
-//    self.quanImageView.layer.cornerRadius = 34 / 2.f;
     
-    
-    
-    [_mainImv sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
-    
-    _titleLabel1.text = theModel.title;
-    _titleLabel2.text = theModel.sname;
     
 }
 
 //填充数据 ： 产品
 -(void)setChanpinWithData:(GGoodsModel *)theModel{
     
-    [_mainImv_chapin sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
+    
+    if ([theModel isKindOfClass:[GGoodsModel class]]) {
+        [_mainImv_chapin sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
+        
+        
+        NSString *sss = [NSString stringWithFormat:@"￥%@",theModel.price];
+        NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:sss];
+        
+        [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20] range:NSMakeRange(0, 1)];
+        [str addAttribute:NSForegroundColorAttributeName value:RGBCOLOR(253, 180, 44) range:NSMakeRange(0,1)];
+        
+        _price_chanpin.attributedText = str;
+        _price_chanpin.font = [UIFont systemFontOfSize:35];
+        [_price_chanpin setMatchedFrame4LabelWithOrigin:CGPointMake(15, 200.00/320*ALL_FRAME_WIDTH-15) height:35 limitMaxWidth:130];
+        _price_chanpin.attributedText = str;
+        
+        
+        [_title1_chanpin setFrame:CGRectMake(CGRectGetMaxX(_price_chanpin.frame), _price_chanpin.frame.origin.y+2, ALL_FRAME_WIDTH - 15 -_price_chanpin.frame.size.width-15, _price_chanpin.frame.size.height*0.5)];
+        [_title2_chanpin setFrame:CGRectMake(_title1_chanpin.frame.origin.x, CGRectGetMaxY(_title1_chanpin.frame), _title1_chanpin.frame.size.width, _title1_chanpin.frame.size.height)];
+        
+        _title1_chanpin.text = theModel.title;
+        _title2_chanpin.text = theModel.gtype;
+    }
     
     
-    NSString *sss = [NSString stringWithFormat:@"￥%@",theModel.price];
-    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:sss];
-    
-    [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20] range:NSMakeRange(0, 1)];
-    [str addAttribute:NSForegroundColorAttributeName value:RGBCOLOR(253, 180, 44) range:NSMakeRange(0,1)];
-    
-    _price_chanpin.attributedText = str;
-    _price_chanpin.font = [UIFont systemFontOfSize:35];
-    [_price_chanpin setMatchedFrame4LabelWithOrigin:CGPointMake(15, 200.00/320*ALL_FRAME_WIDTH-15) height:35 limitMaxWidth:130];
-    _price_chanpin.attributedText = str;
-    
-    
-    [_title1_chanpin setFrame:CGRectMake(CGRectGetMaxX(_price_chanpin.frame), _price_chanpin.frame.origin.y+2, ALL_FRAME_WIDTH - 15 -_price_chanpin.frame.size.width-15, _price_chanpin.frame.size.height*0.5)];
-    [_title2_chanpin setFrame:CGRectMake(_title1_chanpin.frame.origin.x, CGRectGetMaxY(_title1_chanpin.frame), _title1_chanpin.frame.size.width, _title1_chanpin.frame.size.height)];
-    
-    _title1_chanpin.text = theModel.title;
-    _title2_chanpin.text = theModel.gtype;
     
     
     
