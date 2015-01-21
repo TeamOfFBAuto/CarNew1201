@@ -220,8 +220,10 @@ static UITapGestureRecognizer *tapRecognizer;
 
     tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapAnywhere:)];
 }
+#define UMENG_APPKEYs @"548a8a05fd98c5318d001273" //mobile
 
 - (void)setFeedbackClient {
+    self.appkey=UMENG_APPKEYs;
     _mFeedbackData = [[NSArray alloc] init];
     feedbackClient = [UMFeedback sharedInstance];
     if ([self.appkey isEqualToString:@""]) {
