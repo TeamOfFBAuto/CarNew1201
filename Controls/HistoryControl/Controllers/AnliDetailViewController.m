@@ -759,17 +759,12 @@
     }
     
     if (isHidden) {
-        _webView.height = DEVICE_HEIGHT;//增加时不需要动画,防止延迟造成的 黑底显示
-        
-        if (web_old_height <= DEVICE_HEIGHT) {
-            
-            _webView.scrollView.contentSize = CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT + 64);
-        }
+        _webView.height = DEVICE_HEIGHT;
+
     }
-    
+
     [UIView animateWithDuration:0.4 animations:^{
         bottomView.top = isHidden?DEVICE_HEIGHT:(DEVICE_HEIGHT-64);
-        
         if (isHidden == NO) {
             _webView.height = DEVICE_HEIGHT-64;
         }
