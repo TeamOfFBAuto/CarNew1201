@@ -170,8 +170,6 @@ typedef enum{
     
     
     
-    
-    
     UIButton *gBackBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [gBackBtn setImage:[UIImage imageNamed:NAVIGATION_MENU_IMAGE_NAME] forState:UIControlStateNormal];
     [gBackBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 10, 15)];

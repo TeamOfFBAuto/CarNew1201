@@ -161,7 +161,7 @@
     [self setNavgationView];
     
     [self getBusinessDetailData];
-    
+
     [self progress];
     
 }
