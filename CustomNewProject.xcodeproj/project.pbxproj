@@ -1724,7 +1724,7 @@
 				TargetAttributes = {
 					E311CD1E1A24573C007D69D3 = {
 						CreatedOnToolsVersion = 6.1;
-						DevelopmentTeam = HXFU9MZ8SD;
+						DevelopmentTeam = 96PFYKQ596;
 					};
 					E311CD371A24573C007D69D3 = {
 						CreatedOnToolsVersion = 6.1;
@@ -2090,8 +2090,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iOS Development: Bing Jin (KMZ2AD5LZY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: Bing Jin (KMZ2AD5LZY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2113,6 +2113,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "30e43e44-0fce-4cb8-9220-f5362f626592";
+				PROVISIONING_PROFILE = "27e08856-f67b-488e-978d-fe2673561b24";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2134,8 +2135,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iOS Development: Bing Jin (KMZ2AD5LZY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: Bing Jin (KMZ2AD5LZY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2151,6 +2152,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "30e43e44-0fce-4cb8-9220-f5362f626592";
+				PROVISIONING_PROFILE = "27e08856-f67b-488e-978d-fe2673561b24";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2181,6 +2183,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "30e43e44-0fce-4cb8-9220-f5362f626592";
+				PROVISIONING_PROFILE = "27e08856-f67b-488e-978d-fe2673561b24";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -2194,6 +2197,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iOS Development: Bing Jin (KMZ2AD5LZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CustomNewProject/PrefixHeader.pch";
 				INFOPLIST_FILE = CustomNewProject/Info.plist;
@@ -2209,6 +2213,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "30e43e44-0fce-4cb8-9220-f5362f626592";
+				PROVISIONING_PROFILE = "27e08856-f67b-488e-978d-fe2673561b24";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
