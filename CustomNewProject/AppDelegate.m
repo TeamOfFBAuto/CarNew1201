@@ -50,10 +50,21 @@
     [WeiboSDK registerApp:SINAAPPID];
     [WeiboSDK enableDebugMode:YES ];
     
-    
     [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:BATCH channelId:nil];
     
     [MobClick setLogEnabled:YES];
+    
+    
+#pragma mark 版本检测
+    
+    //版本更新
+    
+    [[LTools shareInstance]versionForAppid:@"950579792" Block:^(BOOL isNewVersion, NSString *updateUrl, NSString *updateContent) {
+        
+        NSLog(@"updateContent %@ %@",updateUrl,updateContent);
+        
+    }];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     

@@ -434,7 +434,7 @@
 -(void)checkVersionUpdate
 {
 
-    [LTools versionForAppid:@"933737704" Block:^(BOOL isNewVersion, NSString *updateUrl, NSString *updateContent) {
+    [[LTools shareInstance] versionForAppid:@"950579792" Block:^(BOOL isNewVersion, NSString *updateUrl, NSString *updateContent) {
         
         NSLog(@"updateContent %@ %@",updateUrl,updateContent);
         

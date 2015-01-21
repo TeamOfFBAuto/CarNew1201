@@ -1,18 +1,28 @@
 //
 //  AboutViewController.h
-//  FbLife
+//  CustomNewProject
 //
-//  Created by szk on 13-2-22.
-//  Copyright (c) 2013年 szk. All rights reserved.
+//  Created by soulnear on 15-1-21.
+//  Copyright (c) 2015年 FBLIFE. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "downloadtool.h"
-@interface AboutViewController : MyViewController<downloaddelegate>{
-    downloadtool *newstool;
-    UIImageView * imageView;
-    int currentpage;
-    int flagofpage;
-    UIImageView *img_TEST;
-}
+
+@interface AboutViewController : MyViewController
+
+
+@property (strong, nonatomic) IBOutlet UIImageView *logo_imageView;
+
+@property (strong, nonatomic) IBOutlet UILabel *version_label;
+
+@property (strong, nonatomic) IBOutlet UILabel *description_label;
+
+@property (strong, nonatomic) IBOutlet UIImageView *bottom_imageView;
+
+
+
+
+
+
+
 @end
