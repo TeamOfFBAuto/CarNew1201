@@ -43,7 +43,7 @@
                 [wself clickedButtonAtIndex:indexPath];
             }];
         }
-        [_shareView ShareViewShow];
+//        [_shareView ShareViewShow];
     }
     return self;
 }
@@ -74,6 +74,45 @@
         [_shareView shareviewHiden];
     }
     
+}
+/**
+ *  一键分享
+ */
+- (void)shareToPlat:(ShareStyle)shareStyle
+              title:(NSString *)atitle
+        description:(NSString *)description
+           imageUrl:(NSString *)aimageUrl
+        aShareImage:(UIImage *)aImage
+            linkUrl:(NSString *)linkUrl
+{
+    _title = atitle;
+    _description = description;
+    _imageUrl = aimageUrl;
+    _aShareImage = aImage;
+    _linkUrl = linkUrl;
+    
+//    [_shareView shareviewHiden];
+    
+    switch (shareStyle) {
+        case ShareToWeibo:
+        {
+            [self clickedButtonAtIndex:3];
+        }
+            break;
+        case ShareToPengyouquan:
+        {
+            [self clickedButtonAtIndex:2];
+        }
+            break;
+        case ShareToWeixin:
+        {
+            [self clickedButtonAtIndex:1];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 

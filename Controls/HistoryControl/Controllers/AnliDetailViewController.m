@@ -29,6 +29,8 @@
 
 #import "BusinessCommentView.h"
 
+#import "FBMapViewController.h"
+
 @interface AnliDetailViewController ()<MFMailComposeViewControllerDelegate,UIWebViewDelegate,UIScrollViewDelegate>
 {
     ShareView *_shareView;
@@ -110,7 +112,7 @@
 //    if (self.isFromAnli) {
 //        [self.navigationController setNavigationBarHidden:NO animated:YES];
 //    }
-    
+
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -231,6 +233,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark 分享
 
 -(void)rightButtonTap:(UIButton *)button
 {
@@ -649,6 +653,78 @@
         [self setNavigationViewHidden:NO];
         return NO;
     }
+    
+    //分享朋友圈
+    if ([relativeUrl rangeOfString:@"pengyouquan"].length > 0)
+    {
+        LShareTools *tool = [LShareTools shareInstance];
+        
+        NSString *url = [NSString stringWithFormat:ANLI_DETAIL_SHARE,self.anli_id,[GMAPI getAuthkey]];
+        
+        [tool shareToPlat:ShareToPengyouquan title:self.detail_info.title description:self.detail_info.content imageUrl:self.detail_info.pichead aShareImage:self.storeImage linkUrl:url];
+        
+        return NO;
+        
+    }else if ([relativeUrl rangeOfString:@"weixin"].length > 0)
+    {
+        LShareTools *tool = [LShareTools shareInstance];
+        
+        NSString *url = [NSString stringWithFormat:ANLI_DETAIL_SHARE,self.anli_id,[GMAPI getAuthkey]];
+        
+        [tool shareToPlat:ShareToWeixin title:self.detail_info.title description:self.detail_info.content imageUrl:self.detail_info.pichead aShareImage:self.storeImage linkUrl:url];
+        
+        return NO;
+        
+    }else if ([relativeUrl rangeOfString:@"weibo"].length > 0)
+    {
+        LShareTools *tool = [LShareTools shareInstance];
+        
+        NSString *url = [NSString stringWithFormat:ANLI_DETAIL_SHARE,self.anli_id,[GMAPI getAuthkey]];
+        
+        [tool shareToPlat:ShareToWeibo title:self.detail_info.title description:self.detail_info.content imageUrl:self.detail_info.pichead aShareImage:self.storeImage linkUrl:url];
+        
+        return NO;
+    }
+
+    
+    if ([relativeUrl rangeOfString:@"map:"].length > 0)
+    {
+        NSString * lat;
+        NSString * lng;
+        NSString * latlng = [relativeUrl stringByReplacingOccurrencesOfString:@"map:" withString:@""];
+        
+        
+        NSArray * array = [latlng componentsSeparatedByString:@","];
+        
+        NSLog(@"array ------   %@",array);
+        
+        if (latlng)
+        {
+            lat = [array objectAtIndex:1];
+            lng = [array objectAtIndex:0];
+            
+            if ([lat isEqualToString:@"0"] && [lng isEqualToString:@"0"])
+            {
+                [ZSNApi showAutoHiddenMBProgressWithText:@"商家没有上传地图信息" addToView:self.view];
+                return NO;
+            }
+        }
+        
+        
+        NSString * address = [relativeUrl stringByReplacingOccurrencesOfString:@"map:" withString:@""];
+        NSLog(@"address ------   %@",address);
+        
+        FBMapViewController * mapViewController = [[FBMapViewController alloc] init];
+        mapViewController.address_content = self.detail_info.phone;
+        mapViewController.address_title = self.storeName;
+        mapViewController.address_latitude = [lat doubleValue];
+        mapViewController.address_longitude = [lng doubleValue];
+        
+        [self.navigationController pushViewController:mapViewController animated:YES];
+        
+        return NO;
+    }
+    
 
     if ([relativeUrl rangeOfString:@"pinglun"].length > 0) {
         

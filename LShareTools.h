@@ -11,6 +11,14 @@
 
 @class ShareView;
 
+typedef enum {
+  
+    ShareToWeibo = 0,//分享到微博
+    ShareToWeixin,//分享到微信
+    ShareToPengyouquan //朋友圈
+    
+}ShareStyle;
+
 @interface LShareTools : NSObject<MFMailComposeViewControllerDelegate>
 {
     ShareView *_shareView;
@@ -28,6 +36,13 @@
          description:(NSString *)description
             imageUrl:(NSString *)aimageUrl
          aShareImage:(UIImage *)aImage
-             linkUrl:(NSString *)linkUrl;
+             linkUrl:(NSString *)linkUrl;//分享view
+
+- (void)shareToPlat:(ShareStyle)shareStyle
+               title:(NSString *)atitle
+         description:(NSString *)description
+            imageUrl:(NSString *)aimageUrl
+         aShareImage:(UIImage *)aImage
+            linkUrl:(NSString *)linkUrl;//一键分享
 
 @end
