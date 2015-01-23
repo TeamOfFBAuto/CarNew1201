@@ -174,6 +174,8 @@
     //评论view
     
     [self progress];
+    ///接受评论成功通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successComment) name:@"successedComment" object:nil];
 
 }
 
@@ -951,6 +953,13 @@
     } completion:^(BOOL finished) {
         
     }];
+}
+
+
+#pragma mark - 评论成功刷新该界面
+-(void)successComment
+{
+    [_webView reload];
 }
 
 @end

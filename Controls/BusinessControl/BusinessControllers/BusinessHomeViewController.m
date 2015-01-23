@@ -79,6 +79,7 @@
     self.edgesForExtendedLayout = UIRectEdgeAll;
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     self.navigationController.navigationBarHidden = NO;
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -176,13 +177,20 @@
 
     [self progress];
     
+    ///接受评论成功通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successComment) name:@"successedComment" object:nil];
+    
 }
 #pragma mark - 登陆成功通知
 -(void)successLogIn
 {
     [self getBusinessDetailData];
 }
-
+#pragma mark - 评论成功
+-(void)successComment
+{
+    [_myWebView reload];
+}
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
