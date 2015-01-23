@@ -82,8 +82,8 @@
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    
-    [self updateStatusBarColor];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+   // [self updateStatusBarColor];
     
 }
 
@@ -101,6 +101,7 @@
 {
     [super viewWillDisappear:animated];
     [self setNavigationViewHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 //    self.navigationController.navigationBarHidden = NO;
     
 }
@@ -521,14 +522,14 @@
     
     
     back_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    back_button.frame = CGRectMake(0,20,40,44);
+    back_button.frame = CGRectMake(0,0,40,44);
     //    back_button.backgroundColor = [UIColor orangeColor];
     [back_button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [back_button setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];
     [self.view addSubview:back_button];
     
     right_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    right_button.frame = CGRectMake(DEVICE_WIDTH-44,20,44,44);
+    right_button.frame = CGRectMake(DEVICE_WIDTH-44,0,44,44);
     [right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     [right_button setImage:[UIImage imageNamed:@"navigation_right_menu_image"] forState:UIControlStateNormal];
     [self.view addSubview:right_button];
@@ -776,7 +777,7 @@
     
     [loading hide:YES];
     
-    [self updateStatusBarColor];
+  //  [self updateStatusBarColor];
     
     [self progressToFinish];
     
