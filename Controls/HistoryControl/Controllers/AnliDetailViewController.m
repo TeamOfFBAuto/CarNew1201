@@ -86,8 +86,8 @@
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    
-    [self updateStatusBarColor];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+   // [self updateStatusBarColor];
     
 }
 
@@ -105,6 +105,7 @@
 {
     [super viewWillDisappear:animated];
     [self setNavigationViewHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 //    self.navigationController.navigationBarHidden = NO;
     
 }
@@ -128,7 +129,7 @@
     
     currentOffY = 0.f;
     
-    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT + 20)];
+    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT + 20-64)];
     _webView.delegate = self;
     [self.view addSubview:_webView];
     
@@ -258,7 +259,15 @@
                 
                 LShareTools *tool = [LShareTools shareInstance];
                 
-                NSString *url = [NSString stringWithFormat:ANLI_DETAIL_SHARE,weakSelf.anli_id,[GMAPI getAuthkey]];
+                NSString *url; //= [NSString stringWithFormat:ANLI_DETAIL_SHARE,weakSelf.anli_id,[GMAPI getAuthkey]];
+                
+                if (weakSelf.detailType == Detail_Peijian) {
+                    url = [NSString stringWithFormat:PEIJIAN_SHARE_URL,weakSelf.anli_id];
+                }else
+                {
+                    url = [NSString stringWithFormat:ANLI_DETAIL_SHARE,weakSelf.anli_id,[GMAPI getAuthkey]];
+                }
+                
 //                NSString *imageUrl = weakSelf.detail_info.pichead;
                 
 //                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
@@ -444,7 +453,6 @@
 - (void)createBottom
 {
     bottomView = [[BusinessCommentView alloc] init];
-    bottomView.hidden = YES;
     [self.view addSubview:bottomView];
     __weak typeof(self)bself = self;
     [bottomView setMyBlock:^(BusinessCommentViewTapType aType) {
@@ -525,14 +533,14 @@
     
     
     back_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    back_button.frame = CGRectMake(0,20,40,44);
+    back_button.frame = CGRectMake(0,0,40,44);
     //    back_button.backgroundColor = [UIColor orangeColor];
     [back_button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [back_button setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];
     [self.view addSubview:back_button];
     
     right_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    right_button.frame = CGRectMake(DEVICE_WIDTH-44,20,44,44);
+    right_button.frame = CGRectMake(DEVICE_WIDTH-44,0,44,44);
     [right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     [right_button setImage:[UIImage imageNamed:@"navigation_right_menu_image"] forState:UIControlStateNormal];
     [self.view addSubview:right_button];
@@ -825,7 +833,7 @@
     
     [loading hide:YES];
     
-    [self updateStatusBarColor];
+  //  [self updateStatusBarColor];
     
     [self progressToFinish];
     
@@ -862,6 +870,7 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    /*
     CGFloat offset = scrollView.contentOffset.y;
     
     if (offset > currentOffY) {
@@ -874,6 +883,7 @@
     }
     
     currentOffY = offset;
+     */
 }
 
 ///底部栏弹出消失动画

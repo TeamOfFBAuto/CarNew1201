@@ -120,12 +120,17 @@ typedef enum{
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     }
     
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     _isLoadUserInfoSuccess = NO;
     
     
     
 }
-
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -174,7 +179,7 @@ typedef enum{
     [gBackBtn setImage:[UIImage imageNamed:NAVIGATION_MENU_IMAGE_NAME] forState:UIControlStateNormal];
     [gBackBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 10, 15)];
     gBackBtn.adjustsImageWhenHighlighted = NO;
-    [gBackBtn setFrame:CGRectMake(0, 15, 80.00/320*ALL_FRAME_WIDTH, 80.00/320*ALL_FRAME_WIDTH)];
+    [gBackBtn setFrame:CGRectMake(0,0, 80.00/320*ALL_FRAME_WIDTH, 80.00/320*ALL_FRAME_WIDTH)];
     [gBackBtn addTarget:self action:@selector(gGoBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:gBackBtn];
     

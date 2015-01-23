@@ -68,28 +68,33 @@
 {
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     self.navigationController.navigationBarHidden = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successLogIn) name:@"gdengluchenggong" object:nil];
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gdengluchenggong" object:nil];
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     _businessModel = [[BusinessDetailModel alloc] init];
     currentOffY = 0.f;
     
-    _myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+    _myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
     _myWebView.delegate = self;
     _myWebView.scrollView.delegate = self;
     _myWebView.scrollView.bounces = NO;
@@ -287,14 +292,14 @@
 
 -(void)setNavgationView
 {
-    UIImageView * navigation_view = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,64)];
+    UIImageView * navigation_view = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,44)];
     navigation_view.image = [UIImage imageNamed:@"default_navigation_clear_image"];
     [self.view addSubview:navigation_view];
     navigation_view.userInteractionEnabled = YES;
     [self.view bringSubviewToFront:navigation_view];
     
     UIButton * back_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    back_button.frame = CGRectMake(0,20,40,44);
+    back_button.frame = CGRectMake(0,0,40,44);
     //    back_button.backgroundColor = [UIColor orangeColor];
     [back_button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [back_button setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];
@@ -302,7 +307,7 @@
     
     
     right_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    right_button.frame = CGRectMake(DEVICE_WIDTH-44,20,44,44);
+    right_button.frame = CGRectMake(DEVICE_WIDTH-44,0,44,44);
     right_button.userInteractionEnabled = NO;
     [right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     [right_button setImage:[UIImage imageNamed:@"navigation_right_menu_image"] forState:UIControlStateNormal];
@@ -311,10 +316,8 @@
 
 -(void)back:(UIButton *)button
 {
-      self.edgesForExtendedLayout = UIRectEdgeNone;
-
+    self.edgesForExtendedLayout = UIRectEdgeAll;
     [self.navigationController popViewControllerAnimated:YES];
-    self.navigationController.navigationBarHidden = NO;
 }
 -(void)rightButtonTap:(UIButton *)button
 {
@@ -359,7 +362,7 @@
 {
     LShareTools *tool = [LShareTools shareInstance];
     
-    NSString *url = [NSString stringWithFormat:BUSINESS_DETAIL_HTML5_URL,_business_id];
+    NSString *url = [NSString stringWithFormat:BUSINESS_SHARE_URL,_business_id];
 //    NSString *imageUrl = @"http://fbautoapp.fblife.com/resource/head/84/9b/thumb_1_Thu.jpg";
     
     [tool showOrHidden:YES title:_businessModel.title description:_businessModel.content imageUrl:_businessModel.pichead aShareImage:_share_image linkUrl:url];
@@ -575,6 +578,7 @@
 #pragma mark - UIScrollViewDelegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    /*
     CGFloat offset = scrollView.contentOffset.y;
     
     if (offset > currentOffY) {
@@ -591,6 +595,7 @@
     }
     
     currentOffY = offset;
+     */
 }
 
 ///底部栏弹出消失动画

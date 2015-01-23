@@ -120,6 +120,8 @@ alpha:(a)]
 #define BUSINESS_LIST_URL @"index.php?c=interface&a=getStore&storeid=%@&ps=20&page=%d&fbtype=json"
 //登录
 #define G_LOGIN @"http://gztest.fblife.com/index.php?c=interface&a=dologin&fbtype=json"
+///商家详情分享出去的链接地址
+#define BUSINESS_SHARE_URL @"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=%@"
 ///商家详情HTML5地址
 #define BUSINESS_DETAIL_HTML5_URL @"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=%@"
 ///商家详情接口
@@ -166,7 +168,8 @@ alpha:(a)]
 #define G_SEARCH_PEIJIAN_GUANJIANZI @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&keyword=%@"
 //按商家搜索配件
 #define G_SEARCH_PEIJIAN_SHANGJIA @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&storeid=%@"
-
+//配件详情分享地址
+#define PEIJIAN_SHARE_URL @"http://gztest.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&peijianxiangqing168"
 //配件详情HTML5地址
 #define ANLI_PEIJIAN_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&authkey=%@"
 ///配件详情接口

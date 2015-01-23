@@ -29,6 +29,11 @@
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
+		<key>Pods-RongCloudIMKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>Pods-SDWebImage.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -77,7 +82,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>158988B92B42EFD8BA68A777</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>18326E0C301AD68E31E87DFD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1E5F256B7E1D62995AB2F393</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2135B21C2EC2A92B062B581F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3684E4ECB271476489FB355F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,6 +122,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>45DF4EB7484467933B6AF8EF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>49A3F78FF7771A40456EA25C</key>
 		<dict>
 			<key>primary</key>
@@ -107,7 +137,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>51B512967BB580E76F010452</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5E08B824B2C0E89560EA0C2B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5EABE4775A16CD9EA056F658</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,7 +167,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6954E8DB0F86C54FB0AF5CE1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6D8EB07BD4A4CD68DDA27BC5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>70A997291D613E7D2D347269</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -167,12 +217,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>BE1202B4B18D75070FE42F47</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C4AD73BD928BFE534CFCC453</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C6803EE82C3F5614AC7A7051</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C866661E88C5FE4B965E82E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

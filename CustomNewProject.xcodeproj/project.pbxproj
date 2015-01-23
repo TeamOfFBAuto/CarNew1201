@@ -2144,7 +2144,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "804f450e-34aa-4865-98fa-73148c4573e8";
+				PROVISIONING_PROFILE = "6aba6bb0-4826-4623-9fd9-0ee7978414fe";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2182,7 +2182,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "804f450e-34aa-4865-98fa-73148c4573e8";
+				PROVISIONING_PROFILE = "6aba6bb0-4826-4623-9fd9-0ee7978414fe";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2195,9 +2195,9 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CustomNewProject/PrefixHeader.pch";
 				INFOPLIST_FILE = CustomNewProject/Info.plist;
@@ -2212,7 +2212,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "804f450e-34aa-4865-98fa-73148c4573e8";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -2224,8 +2224,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: FBLIFE (Beijing) Media & Technology Co., Ltd. (96PFYKQ596)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CustomNewProject/PrefixHeader.pch";
 				INFOPLIST_FILE = CustomNewProject/Info.plist;
@@ -2240,7 +2240,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "804f450e-34aa-4865-98fa-73148c4573e8";
+				PROVISIONING_PROFILE = "";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
