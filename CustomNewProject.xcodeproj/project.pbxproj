@@ -121,6 +121,7 @@
 		5653E5201A3A9BBF00CEB749 /* NavigationFunctionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5653E51F1A3A9BBF00CEB749 /* NavigationFunctionView.m */; };
 		5653E5221A3AE91A00CEB749 /* navigation_praised_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5653E5211A3AE91A00CEB749 /* navigation_praised_image@2x.png */; };
 		5653E5241A3AE9D200CEB749 /* navigation_back_jiantou_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5653E5231A3AE9D200CEB749 /* navigation_back_jiantou_image@2x.png */; };
+		5659D42C1A71EF9600D8799C /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5659D42B1A71EF9600D8799C /* MessageViewController.m */; };
 		565EE8B61A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A31A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		565EE8B71A2C3DEE0063CAA3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A61A2C3DEE0063CAA3 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		565EE8B81A2C3DEE0063CAA3 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A81A2C3DEE0063CAA3 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -436,6 +437,8 @@
 		5653E51F1A3A9BBF00CEB749 /* NavigationFunctionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationFunctionView.m; sourceTree = "<group>"; };
 		5653E5211A3AE91A00CEB749 /* navigation_praised_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_praised_image@2x.png"; sourceTree = "<group>"; };
 		5653E5231A3AE9D200CEB749 /* navigation_back_jiantou_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_back_jiantou_image@2x.png"; sourceTree = "<group>"; };
+		5659D42A1A71EF9600D8799C /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		5659D42B1A71EF9600D8799C /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		565EE8A21A2C3DEE0063CAA3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		565EE8A31A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		565EE8A41A2C3DEE0063CAA3 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -866,6 +869,7 @@
 				19B34DB91A2465F300ED1935 /* PicControl */,
 				19B34DBD1A2465F300ED1935 /* StoreControl */,
 				19B34DC51A2465F300ED1935 /* PersonalControl */,
+				5659D4291A71EF8A00D8799C /* MessageViewController */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -1241,6 +1245,15 @@
 				5653E50F1A39754500CEB749 /* newAbout@2x.png */,
 			);
 			path = personalImages;
+			sourceTree = "<group>";
+		};
+		5659D4291A71EF8A00D8799C /* MessageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5659D42A1A71EF9600D8799C /* MessageViewController.h */,
+				5659D42B1A71EF9600D8799C /* MessageViewController.m */,
+			);
+			path = MessageViewController;
 			sourceTree = "<group>";
 		};
 		565EE8A11A2C3DEE0063CAA3 /* ASIHttpRequest */ = {
@@ -1990,6 +2003,7 @@
 				56500AFF1A2D676900E834A1 /* BusinessListTableViewCell.m in Sources */,
 				567760931A31410800A4A23B /* ScreeningAreaView.m in Sources */,
 				56CE4B641A25D48100876AC7 /* PHAirViewController.m in Sources */,
+				5659D42C1A71EF9600D8799C /* MessageViewController.m in Sources */,
 				56621D141A28600300310A48 /* UMTableViewCell.m in Sources */,
 				56621D611A28620200310A48 /* downloadtool.m in Sources */,
 				E3ED4A671A2FF83E004A2D72 /* GcustomActionSheet.m in Sources */,

@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "SliderRightSettingViewController.h"
 #import "LogInViewController.h"
+#import "MessageViewController.h"
 
 @implementation PHMenuViewController
 {
@@ -26,6 +27,8 @@
     UINavigationController *_personalNav;
     
     UINavigationController * _settingNav;
+    
+    UINavigationController * _messageNav;
     
     NSArray * titles;
 }
@@ -42,11 +45,13 @@
     
     _businessNav=[[UINavigationController alloc]initWithRootViewController:[[BusinessViewController alloc]init]];
     
+    _messageNav = [[UINavigationController alloc]initWithRootViewController:[[MessageViewController alloc]init]];
+    
     _personalNav=[[UINavigationController alloc]initWithRootViewController:[[PersonalViewController alloc]init]];
     
     _settingNav = [[UINavigationController alloc] initWithRootViewController:[[SliderRightSettingViewController alloc] init]];
     
-    titles = @[@"改装案例", @"服务商家", @"个人中心"];
+    titles = @[@"改装案例", @"服务商家",@"我的消息",@"个人中心"];
     
 }
 -(void)viewWillAppear:(BOOL)animated
@@ -110,13 +115,13 @@
 //            viewController = _picNav;
             viewController = [(AppDelegate*)[UIApplication sharedApplication].delegate picNavc];
             break;
-        case 3:///商品
-            viewController = _storeNav;
+        case 2:///我的消息
+            viewController = _messageNav;
             break;
         case 1:///服务商家
             viewController = _businessNav;
             break;
-        case 2:///个人中心
+        case 3:///个人中心
         {
             viewController = _personalNav;
         }
@@ -131,8 +136,6 @@
 
 -(void)pushToLogInViewController
 {
-    
-    
     LogInViewController * logIn = [[LogInViewController alloc]init];
     UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
     [self presentViewController:navc animated:YES completion:nil];
