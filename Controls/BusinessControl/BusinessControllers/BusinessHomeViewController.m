@@ -147,14 +147,22 @@
                 }];
             }
                 break;
-            case BusinessCommentViewTapTypeConsult://电话咨询
+            case BusinessCommentViewTapTypeConsult://购买咨询
             {
+                /*电话咨询
                 if (bself.businessModel.tel.length > 0) {
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",bself.businessModel.tel]]];
                 }else
                 {
                     [LTools showMBProgressWithText:@"暂无商家电话信息" addToView:bself.view];
                 }
+                 */
+                
+                
+                
+                
+                
+                
             }
                 break;
                 
