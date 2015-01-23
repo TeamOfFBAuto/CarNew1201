@@ -94,7 +94,7 @@
     _businessModel = [[BusinessDetailModel alloc] init];
     currentOffY = 0.f;
     
-    _myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+    _myWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
     _myWebView.delegate = self;
     _myWebView.scrollView.delegate = self;
     _myWebView.scrollView.bounces = NO;
@@ -362,7 +362,7 @@
 {
     LShareTools *tool = [LShareTools shareInstance];
     
-    NSString *url = [NSString stringWithFormat:BUSINESS_DETAIL_HTML5_URL,_business_id];
+    NSString *url = [NSString stringWithFormat:BUSINESS_SHARE_URL,_business_id];
 //    NSString *imageUrl = @"http://fbautoapp.fblife.com/resource/head/84/9b/thumb_1_Thu.jpg";
     
     [tool showOrHidden:YES title:_businessModel.title description:_businessModel.content imageUrl:_businessModel.pichead aShareImage:_share_image linkUrl:url];
@@ -578,6 +578,7 @@
 #pragma mark - UIScrollViewDelegate
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    /*
     CGFloat offset = scrollView.contentOffset.y;
     
     if (offset > currentOffY) {
@@ -594,6 +595,7 @@
     }
     
     currentOffY = offset;
+     */
 }
 
 ///底部栏弹出消失动画

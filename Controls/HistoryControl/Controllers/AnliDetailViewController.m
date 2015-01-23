@@ -125,7 +125,7 @@
     
     currentOffY = 0.f;
     
-    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT + 20)];
+    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT + 20-64)];
     _webView.delegate = self;
     [self.view addSubview:_webView];
     
@@ -255,7 +255,15 @@
                 
                 LShareTools *tool = [LShareTools shareInstance];
                 
-                NSString *url = [NSString stringWithFormat:ANLI_DETAIL_SHARE,weakSelf.anli_id,[GMAPI getAuthkey]];
+                NSString *url; //= [NSString stringWithFormat:ANLI_DETAIL_SHARE,weakSelf.anli_id,[GMAPI getAuthkey]];
+                
+                if (weakSelf.detailType == Detail_Peijian) {
+                    url = [NSString stringWithFormat:PEIJIAN_SHARE_URL,weakSelf.anli_id];
+                }else
+                {
+                    url = [NSString stringWithFormat:ANLI_DETAIL_SHARE,weakSelf.anli_id,[GMAPI getAuthkey]];
+                }
+                
 //                NSString *imageUrl = weakSelf.detail_info.pichead;
                 
 //                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
@@ -441,7 +449,6 @@
 - (void)createBottom
 {
     bottomView = [[BusinessCommentView alloc] init];
-    bottomView.hidden = YES;
     [self.view addSubview:bottomView];
     __weak typeof(self)bself = self;
     [bottomView setMyBlock:^(BusinessCommentViewTapType aType) {
@@ -814,6 +821,7 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    /*
     CGFloat offset = scrollView.contentOffset.y;
     
     if (offset > currentOffY) {
@@ -826,6 +834,7 @@
     }
     
     currentOffY = offset;
+     */
 }
 
 ///底部栏弹出消失动画

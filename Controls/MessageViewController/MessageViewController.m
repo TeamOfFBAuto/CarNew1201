@@ -24,8 +24,6 @@
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    
 }
 
 -(void)leftButtonTap:(UIButton *)sender
