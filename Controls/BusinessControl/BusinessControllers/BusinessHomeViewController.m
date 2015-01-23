@@ -218,7 +218,7 @@
             detail.anli_id = dianpuId;
             detail.detailType = Detail_Anli;
             detail.storeImage = self.share_image;
-            
+            detail.storeName = self.business_name;
             [self.navigationController pushViewController:detail animated:YES];
         }
         
@@ -235,7 +235,7 @@
             
             AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
             detail.anli_id = dianpuId;
-            
+            detail.storeName = self.business_name;
             detail.detailType = Detail_Peijian;
             detail.storeImage = self.share_image;
             
