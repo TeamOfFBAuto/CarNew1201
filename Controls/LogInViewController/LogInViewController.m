@@ -25,6 +25,7 @@
 
 #import "ZSNApi.h"
 
+#import "RCIM.h"
 
 @interface LogInViewController ()
 {
@@ -236,9 +237,42 @@
         [alert show];
     }
 }
+//
+//#pragma mark - 获取融云token
+//
+//- (void)loginToRoncloudUserId:(NSString *)userId
+//                     userName:(NSString *)userName
+//                userHeadImage:(NSString *)headImage
+//{
+//    
+//    if (headImage.length == 0) {
+//        headImage = @"nnn";
+//    }
+//    
+//    NSString *url = [NSString stringWithFormat:RONCLOUD_GET_TOKEN,userId,userName,headImage];
+//    LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
+//    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+//        
+//        NSLog(@"result %@",result);
+//        
+//        [LTools cache:result[@"token"] ForKey:RONGCLOUD_TOKEN];
+//        
+//        [self rongCloudDefaultLoginWithToken:result[@"token"]];
+//        
+//        
+//    } failBlock:^(NSDictionary *result, NSError *erro) {
+//        
+//        NSLog(@"获取融云token失败 %@",result);
+//        
+////        [LTools showMBProgressWithText:result[RESULT_INFO] addToView:self.window];
+//        
+//    }];
+//}
+
 
 
 #pragma mark - 登录
+
 -(void)dengluWithUserName:(NSString *)name pass:(NSString *)passw{
     
     _gloginView.userInteractionEnabled = NO;
@@ -293,7 +327,6 @@
             [GMAPI cache:authkey_gbk ForKey:USER_AUTHKEY_GBK];
             userInfo_dic = [NSDictionary dictionaryWithDictionary:result];
             
-
             
 //            [bloginView cleanUserNameAndPassWordTextfied];
             
@@ -356,8 +389,8 @@
         NSString * errcode = [allDic objectForKey:@"errcode"];
         if ([errcode intValue] == 1)///已经开通fb
         {
+            [bself getRoncloudLoginToken];
             
-            [bself saveUserInfomation];
         }else
         {
             [bself activationFB];
@@ -384,7 +417,7 @@
         NSDictionary * allDic = [operation.responseString objectFromJSONString];
         NSLog(@"激活fb ---   %@",allDic);
         
-        [bself saveUserInfomation];
+        [bself getRoncloudLoginToken];
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -394,6 +427,58 @@
     }];
     
     [request start];
+}
+
+#pragma mark - 获取融云loginToken
+
+- (void)getRoncloudLoginToken
+{
+    NSString *userId = [GMAPI getUid];
+    NSString *userName = [GMAPI getUsername];
+    NSString *headImage = [ZSNApi returnUrl:[GMAPI getUid]];
+    
+    NSString *url = [NSString stringWithFormat:RONCLOUD_GET_TOKEN,userId,userName,headImage];
+    LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
+    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+        
+        NSLog(@"result %@",result);
+        
+        [LTools cache:result[@"token"] ForKey:RONGCLOUD_TOKEN];
+        
+        [self rongCloudDefaultLoginWithToken:result[@"token"]];
+        
+        
+    } failBlock:^(NSDictionary *result, NSError *erro) {
+        
+        NSLog(@"获取融云token失败 %@",result);
+        
+        [LTools showMBProgressWithText:result[ERROR_INFO] addToView:self.view];
+        
+    }];
+}
+
+- (void)rongCloudDefaultLoginWithToken:(NSString *)loginToken
+{
+    //默认测试
+    
+    if (loginToken.length > 0) {
+        
+        
+        __weak typeof(self)weakSelf = self;
+        [RCIM connectWithToken:loginToken completion:^(NSString *userId) {
+            
+            NSLog(@"------> rongCloud 登陆成功 %@",userId);
+            
+            [weakSelf saveUserInfomation];
+            
+        } error:^(RCConnectErrorCode status) {
+            
+            NSLog(@"------> rongCloud 登陆失败 %d",(int)status);
+            
+            [LTools showMBProgressWithText:@"rongCloud登录失败" addToView:self.view];
+            
+        }];
+    }
 }
 
 

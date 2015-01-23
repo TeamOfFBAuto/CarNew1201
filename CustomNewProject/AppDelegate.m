@@ -26,12 +26,21 @@
 
 #import "ZSNApi.h"
 
+#import "RCIM.h"
+#import "RCIMClient.h"
 
 #define UMENG_APPKEY @"548a8a05fd98c5318d001273" //mobile
 #define WXAPPID @"wxc007ca608b574af1" //mobile 审核通过
 #define SINAAPPID @"2128173805"//mobile 审核通过
 
-@interface AppDelegate ()<MobClickDelegate,WXApiDelegate>
+/**
+ *  融合mobile@fblife.com Fblife201314
+ */
+
+#define Rong_AppKey_Develope @"82hegw5uh7wmx"
+#define Rong_AppSecret_Develope @"DsqPPDTruQ609"
+
+@interface AppDelegate ()<MobClickDelegate,WXApiDelegate,RCIMConnectionStatusDelegate,RCConnectDelegate,RCIMReceiveMessageDelegate,RCIMUserInfoFetcherDelegagte>
 
 @end
 
@@ -53,6 +62,33 @@
     [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:BATCH channelId:nil];
     
     [MobClick setLogEnabled:YES];
+    
+#pragma mark 融云
+    
+#pragma mark 融云
+    
+    [RCIM initWithAppKey:Rong_AppKey_Develope deviceToken:nil];
+    
+    [[RCIM sharedRCIM]setConnectionStatusDelegate:self];//监控连接状态
+    [[RCIM sharedRCIM] setReceiveMessageDelegate:self];//接受消息
+    [RCIM setUserInfoFetcherWithDelegate:self isCacheUserInfo:YES];
+    
+    //系统登录成功通知 登录融云
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginToRongCloud) name:@"gdengluchenggong" object:nil];
+    
+    [self rongCloudDefaultLoginWithToken:[LTools cacheForKey:RONGCLOUD_TOKEN]];
+    
+#ifdef __IPHONE_8_0
+    // 在 iOS 8 下注册苹果推送，申请推送权限。
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge
+                                                                                         |UIUserNotificationTypeSound
+                                                                                         |UIUserNotificationTypeAlert) categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+#else
+    // 注册苹果推送，申请推送权限。
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound];
+#endif
     
     
 #pragma mark 版本检测
@@ -140,9 +176,6 @@
     
     
     
-    
-    
-    
     _root_nav.navigationBarHidden = YES;
     self.window.rootViewController = _root_nav;//sideMenuViewController;
     
@@ -161,7 +194,34 @@
 
 
 
+#ifdef __IPHONE_8_0
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    // Register to receive notifications.
+    [application registerForRemoteNotifications];
+}
 
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void(^)())completionHandler
+{
+    // Handle the actions.
+    if ([identifier isEqualToString:@"declineAction"]){
+    }
+    else if ([identifier isEqualToString:@"answerAction"]){
+    }
+}
+#endif
+
+// 获取苹果推送权限成功。
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    // 设置 deviceToken。
+    [[RCIM sharedRCIM] setDeviceToken:deviceToken];
+}
+
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    
+    NSLog(@"RegisterForRemote Erro");
+}
 
 
 
@@ -267,5 +327,172 @@
     }
     
 }
+
+
+#pragma - mark - 获取融云token -
+
+- (void)loginToRongCloud
+{
+    [self loginToRoncloudUserId:[GMAPI getUid] userName:[GMAPI getUsername] userHeadImage:[ZSNApi returnUrl:[GMAPI getUid]]];
+}
+
+- (void)loginToRoncloudUserId:(NSString *)userId
+                     userName:(NSString *)userName
+                userHeadImage:(NSString *)headImage
+{
+    
+    if (headImage.length == 0) {
+        headImage = @"nnn";
+    }
+    
+    NSString *url = [NSString stringWithFormat:RONCLOUD_GET_TOKEN,userId,userName,headImage];
+    LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
+    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+        
+        NSLog(@"result %@",result);
+        
+        [LTools cache:result[@"token"] ForKey:RONGCLOUD_TOKEN];
+        
+        [self rongCloudDefaultLoginWithToken:result[@"token"]];
+        
+        
+    } failBlock:^(NSDictionary *result, NSError *erro) {
+        
+        NSLog(@"获取融云token失败 %@",result);
+        
+        [LTools showMBProgressWithText:result[ERROR_INFO] addToView:self.window];
+        
+    }];
+}
+
+/**
+ *  聊天登录失败
+ */
+- (void)chatLoginFailInfo:(NSString *)errInfo
+{
+    UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"" message:errInfo delegate:self cancelButtonTitle:@"取消" otherButtonTitles: @"确定",nil];
+    alert.tag = 2001;
+    [alert show];
+}
+
+- (void)rongCloudDefaultLoginWithToken:(NSString *)loginToken
+{
+    //测试token
+    
+    //    [LTools cache:@"Z+v61ga3tUUkgHbgG6eFblki5ktT/tK95honsc0yvtV+p7lzHFE9Vop/XwArqiec9DnDrmeC0is=" ForKey:RONGCLOUD_TOKEN];
+    
+    //默认测试
+    
+    if (loginToken.length > 0) {
+        
+        [RCIM connectWithToken:loginToken completion:^(NSString *userId) {
+            
+            NSLog(@"------> rongCloud 登陆成功 %@",userId);
+            
+//            [LTools cacheBool:YES ForKey:LOGIN_RONGCLOUD_STATE];
+            
+        } error:^(RCConnectErrorCode status) {
+            
+            NSLog(@"------> rongCloud 登陆失败 %d",(int)status);
+            
+//            [LTools cacheBool:NO ForKey:LOGIN_RONGCLOUD_STATE];
+            
+        }];
+    }
+}
+
+/**
+ *  监测融云连接状态
+ */
+-(void)rongCloudConnectionState{
+    
+    
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [[RCIM sharedRCIM] setConnectionStatusDelegate:nil];
+}
+
+#pragma mark - RCIMReceiveMessageDelegate
+
+-(void)didReceivedMessage:(RCMessage *)message left:(int)nLeft
+{
+    if (0 == nLeft) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [UIApplication sharedApplication].applicationIconBadgeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber+1;
+        });
+    }
+    
+//    [[RCIM sharedRCIM] invokeVoIPCall:self message:message];
+}
+
+#pragma mark - RCIMUserInfoFetcherDelegagte method
+
+- (void)getUserInfoWithUserId:(NSString *)userId completion:(void(^)(RCUserInfo* userInfo))completion
+{
+    NSString *userName = [LTools rongCloudUserNameWithUid:userId];
+    
+    RCUserInfo *userInfo = [[RCUserInfo alloc]initWithUserId:userId name:userName portrait:[ZSNApi returnUrl:userId]];
+    
+    return completion(userInfo);
+}
+
+#pragma mark - RCIMConnectionStatusDelegate <NSObject>
+
+-(void)responseConnectionStatus:(RCConnectionStatus)status{
+    if (ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT == status) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"" message:@"您已下线，重新连接？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles: @"确定",nil];
+            alert.tag = 2000;
+            [alert show];
+        });
+        
+//        [LTools cacheBool:NO ForKey:LOGIN_RONGCLOUD_STATE];
+    }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (2000 == alertView.tag) {
+        
+        if (0 == buttonIndex) {
+            
+            NSLog(@"NO");
+        }
+        
+        if (1 == buttonIndex) {
+            
+            NSLog(@"YES");
+            
+            [RCIMClient reconnect:self];
+        }
+    }
+    
+}
+
+#pragma mark - ReConnectDelegate
+/**
+ *  回调成功。
+ *
+ *  @param userId 当前登录的用户 Id，既换取登录 Token 时，App 服务器传递给融云服务器的用户 Id。
+ */
+- (void)responseConnectSuccess:(NSString*)userId{
+    
+    NSLog(@"userId %@ rongCloud登录成功",userId);
+}
+
+/**
+ *  回调出错。
+ *
+ *  @param errorCode 连接错误代码。
+ */
+- (void)responseConnectError:(RCConnectErrorCode)errorCode
+{
+    NSLog(@"rongCloud重新连接失败--- %d",(int)errorCode);
+}
+
+
 
 @end

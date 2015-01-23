@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MessageViewController : MyViewController
+#import "RCChatListViewController.h"
+@interface MessageViewController : RCChatListViewController
 
 @end

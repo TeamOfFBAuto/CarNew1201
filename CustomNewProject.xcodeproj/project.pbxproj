@@ -30,6 +30,7 @@
 		1380232D1A2C69CF0053BDDA /* anli_zhuanfa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023271A2C69CF0053BDDA /* anli_zhuanfa@2x.png */; };
 		138178CA1A319572001DB92C /* CarTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 138178C81A319572001DB92C /* CarTypeViewController.m */; };
 		138178CB1A319572001DB92C /* CarTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 138178C91A319572001DB92C /* CarTypeViewController.xib */; };
+		138F4BA71A71FDE500593D06 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 138F4BA61A71FDE500593D06 /* ChatViewController.m */; };
 		138F59FB1A3E903F009B0612 /* navigation_back_jiantou_image_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138F59FA1A3E903F009B0612 /* navigation_back_jiantou_image_gray@2x.png */; };
 		138F59FF1A3E95D5009B0612 /* navigation_back_jiantou_image_kong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138F59FE1A3E95D5009B0612 /* navigation_back_jiantou_image_kong@2x.png */; };
 		13AE9EF31A63B62000FC3E6E /* eyeImage_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 13AE9EEE1A63B62000FC3E6E /* eyeImage_2@2x.png */; };
@@ -291,6 +292,8 @@
 		138178C71A319572001DB92C /* CarTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTypeViewController.h; sourceTree = "<group>"; };
 		138178C81A319572001DB92C /* CarTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarTypeViewController.m; sourceTree = "<group>"; };
 		138178C91A319572001DB92C /* CarTypeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarTypeViewController.xib; sourceTree = "<group>"; };
+		138F4BA51A71FDE500593D06 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		138F4BA61A71FDE500593D06 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		138F59FA1A3E903F009B0612 /* navigation_back_jiantou_image_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_back_jiantou_image_gray@2x.png"; sourceTree = "<group>"; };
 		138F59FE1A3E95D5009B0612 /* navigation_back_jiantou_image_kong@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_back_jiantou_image_kong@2x.png"; sourceTree = "<group>"; };
 		13AE9EEE1A63B62000FC3E6E /* eyeImage_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eyeImage_2@2x.png"; sourceTree = "<group>"; };
@@ -1252,6 +1255,8 @@
 			children = (
 				5659D42A1A71EF9600D8799C /* MessageViewController.h */,
 				5659D42B1A71EF9600D8799C /* MessageViewController.m */,
+				138F4BA51A71FDE500593D06 /* ChatViewController.h */,
+				138F4BA61A71FDE500593D06 /* ChatViewController.m */,
 			);
 			path = MessageViewController;
 			sourceTree = "<group>";
@@ -1989,6 +1994,7 @@
 				56508D8A1A5FBA2000321B2F /* FBMapViewController.m in Sources */,
 				1351179E1A257EB20015C133 /* LRefreshTableHeaderView.m in Sources */,
 				138178CA1A319572001DB92C /* CarTypeViewController.m in Sources */,
+				138F4BA71A71FDE500593D06 /* ChatViewController.m in Sources */,
 				19B34DD11A2466C300ED1935 /* StoreViewController.m in Sources */,
 				56CE4B611A25D48100876AC7 /* PHMenuViewController.m in Sources */,
 				563B32281A382AF900015088 /* RegexKitLite.m in Sources */,

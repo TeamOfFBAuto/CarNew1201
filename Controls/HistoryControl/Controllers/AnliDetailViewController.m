@@ -31,6 +31,10 @@
 
 #import "FBMapViewController.h"
 
+#import "ChatViewController.h"
+
+#import "RCIM.h"
+
 @interface AnliDetailViewController ()<MFMailComposeViewControllerDelegate,UIWebViewDelegate,UIScrollViewDelegate>
 {
     ShareView *_shareView;
@@ -685,6 +689,51 @@
         
         return NO;
     }
+    
+    //融云聊天
+    
+    if ([relativeUrl rangeOfString:@"#liaotian"].length > 0) {
+        
+        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"#liaotian"];
+        if (dianpu.count > 1) {
+            
+            NSString *dianpuId = dianpu[1];
+            NSLog(@"与商家聊天 id:%@",dianpuId);
+            
+            [LTools rongCloudChatWithUserId:dianpuId userName:self.storeName viewController:self];
+            
+//            if ([LTools cacheBoolForKey:USER_IN]) {
+//                
+//                //已登录成功自己服务器
+//                
+//                ChatViewController *contact = [[ChatViewController alloc]init];
+//                contact.currentTarget = dianpuId;
+//                contact.currentTargetName = self.storeName;
+//                contact.shopName = self.storeName;
+//                contact.portraitStyle = RCUserAvatarCycle;
+//                contact.enableSettings = NO;
+//                contact.conversationType = ConversationType_PRIVATE;
+//                
+//                [LTools cacheRongCloudUserName:self.storeName forUserId:dianpuId];
+//                [LTools cacheRongCloudUserIcon:[ZSNApi returnUrl:dianpuId] forUserId:dianpuId];
+//                
+//                [self.navigationController pushViewController:contact animated:YES];
+//                
+//            }else
+//            {
+//                LogInViewController * logIn = [[LogInViewController alloc] init];
+//                UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
+//                [self presentViewController:navc animated:YES completion:nil];
+//                
+//                return NO;
+//            }
+            
+            
+        }
+        
+        return NO;
+    }
+
 
     
     if ([relativeUrl rangeOfString:@"map:"].length > 0)

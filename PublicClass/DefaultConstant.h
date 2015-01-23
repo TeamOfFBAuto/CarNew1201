@@ -92,6 +92,16 @@ alpha:(a)]
 
 #define BASE_URL @"http://gztest.fblife.com/"
 
+
+//融云
+
+//是否登录成功
+#define RONGCLOUD_LOGIN_STATE @"rongcloudLoginState"
+#define RONGCLOUD_TOKEN @"rongcloudToken"//融云token
+
+//token
+#define RONCLOUD_GET_TOKEN @"http://gztest.fblife.com/gettoken.php?uid=%@&name=%@&photo=%@"//获取融云 token
+
 //注册
 #define SENDPHONENUMBER @"http://bbs.fblife.com/bbsapinew/register.php?type=phone&step=1&telphone=%@&keycode=e2e3420683&datatype=json"
 #define SENDERVerification @"http://bbs.fblife.com/bbsapinew/register.php?type=phone&step=2&telphone=%@&telcode=%@&datatype=json"

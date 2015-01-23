@@ -45,6 +45,9 @@
     
     _businessNav=[[UINavigationController alloc]initWithRootViewController:[[BusinessViewController alloc]init]];
     
+    MessageViewController *message = [[MessageViewController alloc]init];
+    [message showCustomEmptyBackView];
+    
     _messageNav = [[UINavigationController alloc]initWithRootViewController:[[MessageViewController alloc]init]];
     
     _personalNav=[[UINavigationController alloc]initWithRootViewController:[[PersonalViewController alloc]init]];
