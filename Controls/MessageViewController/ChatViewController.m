@@ -7,12 +7,26 @@
 //
 
 #import "ChatViewController.h"
+#import "LocationViewController.h"
 
-@interface ChatViewController ()
+//#import "RCLocationPickerViewControllerDataSource"
+
+@interface ChatViewController ()<RCLocationPickerViewControllerDataSource>
 
 @end
 
 @implementation ChatViewController
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (MY_MACRO_NAME) {
+        self.edgesForExtendedLayout = UIRectEdgeAll;
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,6 +37,7 @@
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     }
+    
     if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] )
     {
         //iOS 5 new UINavigationBar custom background
@@ -51,6 +66,8 @@
     [button_back setImage:[UIImage imageNamed:BACK_DEFAULT_IMAGE_GRAY] forState:UIControlStateNormal];
     UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:button_back];
     self.navigationItem.leftBarButtonItems=@[spaceButton1,back_item];
+    
+    self.enablePOI = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,14 +81,22 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)openLocationPicker:(id)sender; {
+    LocationViewController *locationViewController = [[LocationViewController alloc] initWithDataSource:Nil];
+    [self.navigationController pushViewController:locationViewController animated:YES];
 }
-*/
+
+//- (UIView*)mapView
+//{
+//    
+//}
+//- (CLLocationCoordinate2d)mapViewCenter
+//{
+//    
+//}
+//-  \- (void)setOnPoiSearchResult:(OnPoiSearchResul)poiSearchResult
+//-  \- (void)beginFetchPoisOfCurrentLocation;
+//-  \- (UIImage*)mapViewScreenShot;
 
 @end

@@ -344,7 +344,7 @@
 
 - (void)loginToRongCloud
 {
-    [self loginToRoncloudUserId:[GMAPI getUid] userName:[GMAPI getUsername] userHeadImage:[ZSNApi returnUrl:[GMAPI getUid]]];
+    [self loginToRoncloudUserId:[GMAPI getUid] userName:[GMAPI getUsername] userHeadImage:[ZSNApi returnMiddleUrl:[GMAPI getUid]]];
 }
 
 - (void)loginToRoncloudUserId:(NSString *)userId
@@ -437,7 +437,7 @@
     
     [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_UNREADNUM object:nil];
     
-//    [[RCIM sharedRCIM] invokeVoIPCall:self message:message];
+    [[RCIM sharedRCIM] invokeVoIPCall:self.window.rootViewController message:message];
 }
 
 #pragma mark - RCIMUserInfoFetcherDelegagte method
@@ -451,9 +451,44 @@
         userName = [GMAPI getUsername];
     }
     
-    RCUserInfo *userInfo = [[RCUserInfo alloc]initWithUserId:userId name:userName portrait:[ZSNApi returnUrl:userId]];
+    if (userName.length == 0) {
+        NSString *url = [NSString stringWithFormat:G_USERINFO,userId];
+        LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
+        [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+            
+            NSDictionary *dic = [result objectForKey:@"datainfo"];
+            
+            NSString *name = dic[@"username"];
+            
+            if (name.length > 0) {
+                
+                [LTools cacheRongCloudUserName:name forUserId:userId];
+            }
+            
+            RCUserInfo *userInfo = [[RCUserInfo alloc]initWithUserId:userId name:name portrait:[ZSNApi returnMiddleUrl:userId]];
+            
+            return completion(userInfo);
+            
+        } failBlock:^(NSDictionary *failDic, NSError *erro) {
+            
+        }];
+    }
+    
+    RCUserInfo *userInfo = [[RCUserInfo alloc]initWithUserId:userId name:userName portrait:[ZSNApi returnMiddleUrl:userId]];
     
     return completion(userInfo);
+}
+
+- (void)getUserInfoWithUserId:(NSString *)userId
+{
+    NSString *url = [NSString stringWithFormat:G_USERINFO,userId];
+    LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
+    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
+        
+        
+    } failBlock:^(NSDictionary *failDic, NSError *erro) {
+        
+    }];
 }
 
 #pragma mark - RCIMConnectionStatusDelegate <NSObject>

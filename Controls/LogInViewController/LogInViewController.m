@@ -350,9 +350,9 @@
         
         _gloginView.userInteractionEnabled = YES;
         
-        [ZSNApi showAutoHiddenMBProgressWithText:@"网络连接失败" addToView:self.view];
+        [ZSNApi showAutoHiddenMBProgressWithText:[failDic objectForKey:@"ERRO_INFO"] addToView:self.view];
         
-        NSLog(@"登录失败:%@",failDic);
+        NSLog(@"登录失败:%@",[failDic objectForKey:@"ERRO_INFO"]);
         
 //        [self loginFail];
     }];
@@ -398,7 +398,15 @@
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         _gloginView.userInteractionEnabled = YES;
-        [ZSNApi showAutoHiddenMBProgressWithText:@"网络连接失败" addToView:self.view];
+        
+        NSDictionary * allDic = [operation.responseString objectFromJSONString];
+        NSLog(@"验证是否开通fb ----  %@",allDic);
+        NSString * errcode = [allDic objectForKey:@"errcode"];
+        
+        [ZSNApi showAutoHiddenMBProgressWithText:errcode addToView:self.view];
+
+//        [ZSNApi showAutoHiddenMBProgressWithText:@"网络连接失败" addToView:self.view];
+        
     }];
     
     [request start];
@@ -423,7 +431,13 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         _gloginView.userInteractionEnabled = YES;
         
-        [ZSNApi showAutoHiddenMBProgressWithText:@"登录失败" addToView:self.view];
+        NSDictionary * allDic = [operation.responseString objectFromJSONString];
+        NSLog(@"验证是否开通fb ----  %@",allDic);
+        NSString * errcode = [allDic objectForKey:@"errcode"];
+        
+        [ZSNApi showAutoHiddenMBProgressWithText:errcode addToView:self.view];
+        
+//        [ZSNApi showAutoHiddenMBProgressWithText:@"登录失败" addToView:self.view];
     }];
     
     [request start];
@@ -435,7 +449,7 @@
 {
     NSString *userId = [GMAPI getUid];
     NSString *userName = [GMAPI getUsername];
-    NSString *headImage = [ZSNApi returnUrl:[GMAPI getUid]];
+    NSString *headImage = [ZSNApi returnMiddleUrl:[GMAPI getUid]];
     
     NSString *url = [NSString stringWithFormat:RONCLOUD_GET_TOKEN,userId,userName,headImage];
     LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];

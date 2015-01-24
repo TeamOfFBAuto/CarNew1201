@@ -127,6 +127,10 @@
                 
                 [weakTable reloadData:temp_arr total:total];
                 
+            }else
+            {
+                [LTools showMBProgressWithText:@"获取数据失败" addToView:self.view];
+                [weakTable loadFail];
             }
             
         }

@@ -99,9 +99,11 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     
+    self.navigationItem.rightBarButtonItem = nil;
+    
     self.portraitStyle = RCUserAvatarCycle;
     
-    [self setNodataView];
+//    [self setNodataView];
     
     
 }
@@ -163,6 +165,8 @@
     chat.conversationType = conversation.conversationType;
     //chat.currentTargetName = curCell.userNameLabel.text;
     chat.currentTargetName = conversation.conversationTitle;
+    chat.enablePOI = NO;
+    chat.enableSettings = NO;
     [self.navigationController pushViewController:chat animated:YES];
 }
 
@@ -172,7 +176,7 @@
 
 -(BOOL)showCustomEmptyBackView
 {
-    return YES;
+    return NO;
 }
 
 -(void)leftButtonTap:(UIButton *)sender

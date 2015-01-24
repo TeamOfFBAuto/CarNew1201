@@ -473,6 +473,13 @@
                        userName:(NSString *)userName
                  viewController:(UIViewController *)viewController
 {
+    if ([userId isEqualToString:[GMAPI getUid]]) {
+        
+        [LTools showMBProgressWithText:@"您不能和自己发起会话" addToView:viewController.view];
+        
+        return;
+    }
+    
     if ([LTools cacheBoolForKey:USER_IN]) {
         
         //已登录成功自己服务器
@@ -484,7 +491,7 @@
         contact.portraitStyle = RCUserAvatarCycle;
         contact.enableSettings = NO;
         contact.conversationType = ConversationType_PRIVATE;
-        
+        contact.enablePOI = NO;
         [LTools cacheRongCloudUserName:userName forUserId:userId];
         
         [viewController.navigationController pushViewController:contact animated:YES];

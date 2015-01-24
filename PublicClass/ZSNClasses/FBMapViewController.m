@@ -138,13 +138,6 @@
 
             
             
-            
-            
-            
-            
-            
-            
-            
         }
             break;
             
@@ -156,6 +149,12 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (MY_MACRO_NAME) {
+        self.edgesForExtendedLayout = UIRectEdgeAll;
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    }
     
 }
 -(void)viewWillDisappear:(BOOL)animated
@@ -172,6 +171,13 @@
     UIBarButtonItem * spaceBar = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     
     spaceBar.width = MY_MACRO_NAME?0:5;
+    
+    
+    if (MY_MACRO_NAME) {
+        self.edgesForExtendedLayout = UIRectEdgeAll;
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    }
     
     self.myTitle = @"地图";
     

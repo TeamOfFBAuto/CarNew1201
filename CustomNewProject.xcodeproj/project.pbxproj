@@ -24,6 +24,7 @@
 		1372EAAE1A73805A00D54F39 /* new_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1372EAAB1A73805A00D54F39 /* new_logo@2x.png */; };
 		1372EAAF1A73805A00D54F39 /* new_menu-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1372EAAC1A73805A00D54F39 /* new_menu-2@2x.png */; };
 		1372EAB01A73805A00D54F39 /* new_menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1372EAAD1A73805A00D54F39 /* new_menu@2x.png */; };
+		1372EAB31A73997500D54F39 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1372EAB21A73997500D54F39 /* LocationViewController.m */; };
 		137664E31A382DE100C8695D /* anli_bottom_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 137664E21A382DE100C8695D /* anli_bottom_clear@2x.png */; };
 		137664E51A38557300C8695D /* anli_list_defatult@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 137664E41A38557300C8695D /* anli_list_defatult@2x.png */; };
 		138023281A2C69CF0053BDDA /* anli_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023221A2C69CF0053BDDA /* anli_back@2x.png */; };
@@ -289,6 +290,8 @@
 		1372EAAB1A73805A00D54F39 /* new_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_logo@2x.png"; sourceTree = "<group>"; };
 		1372EAAC1A73805A00D54F39 /* new_menu-2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_menu-2@2x.png"; sourceTree = "<group>"; };
 		1372EAAD1A73805A00D54F39 /* new_menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_menu@2x.png"; sourceTree = "<group>"; };
+		1372EAB11A73997500D54F39 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		1372EAB21A73997500D54F39 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		137664E21A382DE100C8695D /* anli_bottom_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_bottom_clear@2x.png"; sourceTree = "<group>"; };
 		137664E41A38557300C8695D /* anli_list_defatult@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_list_defatult@2x.png"; sourceTree = "<group>"; };
 		138023221A2C69CF0053BDDA /* anli_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_back@2x.png"; sourceTree = "<group>"; };
@@ -1269,6 +1272,8 @@
 				5659D42B1A71EF9600D8799C /* MessageViewController.m */,
 				138F4BA51A71FDE500593D06 /* ChatViewController.h */,
 				138F4BA61A71FDE500593D06 /* ChatViewController.m */,
+				1372EAB11A73997500D54F39 /* LocationViewController.h */,
+				1372EAB21A73997500D54F39 /* LocationViewController.m */,
 			);
 			path = MessageViewController;
 			sourceTree = "<group>";
@@ -2033,6 +2038,7 @@
 				56CE4B2E1A257FC600876AC7 /* MyViewController.m in Sources */,
 				56621D561A28605B00310A48 /* UMFeedbackTableViewCellLeft.m in Sources */,
 				E311CD281A24573C007D69D3 /* AppDelegate.m in Sources */,
+				1372EAB31A73997500D54F39 /* LocationViewController.m in Sources */,
 				563B32291A382AF900015088 /* SCGIFImageView.m in Sources */,
 				135117A71A257F2D0015C133 /* UIView+Frame.m in Sources */,
 				56621D671A286A0900310A48 /* ZSNApi.m in Sources */,
