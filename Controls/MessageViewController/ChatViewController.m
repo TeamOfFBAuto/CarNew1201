@@ -9,6 +9,14 @@
 #import "ChatViewController.h"
 #import "LocationViewController.h"
 
+#import "DemoLocationPickerBaiduMapDataSource.h"
+#import "DemoLocationViewController.h"
+
+#import "FBMapViewController.h"
+
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+
 //#import "RCLocationPickerViewControllerDataSource"
 
 @interface ChatViewController ()<RCLocationPickerViewControllerDataSource>
@@ -24,7 +32,14 @@
     if (MY_MACRO_NAME) {
         self.edgesForExtendedLayout = UIRectEdgeAll;
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+    }
+    
+    if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] )
+    {
+        //iOS 5 new UINavigationBar custom background
+        
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:MY_MACRO_NAME?IOS7DAOHANGLANBEIJING_PUSH:IOS6DAOHANGLANBEIJING] forBarMetrics: UIBarMetricsDefault];
     }
 }
 
@@ -35,7 +50,7 @@
     if (MY_MACRO_NAME) {
         self.edgesForExtendedLayout = UIRectEdgeAll;
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
     }
     
     if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] )
@@ -81,22 +96,30 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-- (void)openLocationPicker:(id)sender; {
-    LocationViewController *locationViewController = [[LocationViewController alloc] initWithDataSource:Nil];
-    [self.navigationController pushViewController:locationViewController animated:YES];
+- (void)openLocationPicker:(id)sender
+{
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"black"] forBarMetrics: UIBarMetricsDefault];
+    [super openLocationPicker:sender];
+    
+//    LocationViewController *location = [[LocationViewController alloc]initWithDataSource:self];
+//    [self.navigationController pushViewController:location animated:YES];
+    
 }
 
-//- (UIView*)mapView
-//{
-//    
+
+//- (id<RCLocationPickerViewControllerDataSource>)locationPickerDataSource {
+//    return [[DemoLocationPickerBaiduMapDataSource alloc] init];
 //}
-//- (CLLocationCoordinate2d)mapViewCenter
-//{
-//    
-//}
-//-  \- (void)setOnPoiSearchResult:(OnPoiSearchResul)poiSearchResult
-//-  \- (void)beginFetchPoisOfCurrentLocation;
-//-  \- (UIImage*)mapViewScreenShot;
+
+- (void)openLocation:(CLLocationCoordinate2D)location locationName:(NSString *)locationName {
+    
+    FBMapViewController * mapViewController = [[FBMapViewController alloc] init];
+    mapViewController.address_title = locationName;
+    mapViewController.address_latitude = location.latitude;
+    mapViewController.address_longitude = location.longitude;
+    
+    [self.navigationController pushViewController:mapViewController animated:YES];
+}
 
 @end

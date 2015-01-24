@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface FBMapViewController : MyViewController<MKMapViewDelegate,UIActionSheetDelegate>
+@interface FBMapViewController : UIViewController<MKMapViewDelegate,UIActionSheetDelegate>
 {
    double userLatitude;
    double userlongitude;

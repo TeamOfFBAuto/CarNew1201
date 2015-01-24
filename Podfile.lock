@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Baidu-Maps-iOS-SDK (2.6.0)
   - JSONKit (1.5pre)
   - MBProgressHUD (0.9)
   - MMDrawerController (0.5.7):
@@ -45,6 +46,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.3.1)
+  - Baidu-Maps-iOS-SDK (~> 2.6.0)
   - JSONKit (~> 1.5pre)
   - MBProgressHUD (~> 0.8)
   - MMDrawerController (~> 0.5.6)
@@ -57,6 +59,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  Baidu-Maps-iOS-SDK: 4327f6719c8e478c933d0809d20aafa2e5a2ef97
   JSONKit: efef3bbd3372ff33f96b9c6f34cf4fe18e74ab69
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   MMDrawerController: c3ab7a318ddc7e2bcd133139c3161af08c6e1197

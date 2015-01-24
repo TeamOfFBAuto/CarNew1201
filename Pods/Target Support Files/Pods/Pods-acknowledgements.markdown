@@ -24,6 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## Baidu-Maps-iOS-SDK
+
+LICENSE  ©2014 Baidu, Inc. All rights reserved
+
 ## MBProgressHUD
 
 Copyright (c) 2013 Matej Bukovinski

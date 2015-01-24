@@ -40,7 +40,14 @@
 #define Rong_AppKey_Develope @"82hegw5uh7wmx"
 #define Rong_AppSecret_Develope @"DsqPPDTruQ609"
 
-@interface AppDelegate ()<MobClickDelegate,WXApiDelegate,RCIMConnectionStatusDelegate,RCConnectDelegate,RCIMReceiveMessageDelegate,RCIMUserInfoFetcherDelegagte>
+//百度
+#define BAIDU_APPKEY @"APMdmYcmGzQGBs3MUzr086Fk"
+
+#import "BMapKit.h"
+
+@interface AppDelegate ()<MobClickDelegate,WXApiDelegate,RCIMConnectionStatusDelegate,RCConnectDelegate,RCIMReceiveMessageDelegate,RCIMUserInfoFetcherDelegagte,BMKGeneralDelegate>
+
+@property (strong, nonatomic) BMKMapManager *mapManager;
 
 @end
 
@@ -63,7 +70,14 @@
     
     [MobClick setLogEnabled:YES];
     
-#pragma mark 融云
+#pragma mark 百度
+    
+    //注册百度地图
+    self.mapManager = [[BMKMapManager alloc] init];
+    BOOL ret = [self.mapManager start:BAIDU_APPKEY generalDelegate:self];
+    if (!ret) {
+        NSLog(@"百度地图启动失败");
+    }
     
 #pragma mark 融云
     
@@ -546,6 +560,15 @@
     NSLog(@"rongCloud重新连接失败--- %d",(int)errorCode);
 }
 
+#pragma mark -
+#pragma mark BMKGeneralDelegate
+- (void)onGetNetworkState:(int)iError {
+    NSLog(@"百度地图：网络状态 %i", iError);
+}
+
+- (void)onGetPermissionState:(int)iError {
+    NSLog(@"百度地图：授权状态 %i", iError);
+}
 
 
 @end

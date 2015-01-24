@@ -25,6 +25,9 @@
 		1372EAAF1A73805A00D54F39 /* new_menu-2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1372EAAC1A73805A00D54F39 /* new_menu-2@2x.png */; };
 		1372EAB01A73805A00D54F39 /* new_menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1372EAAD1A73805A00D54F39 /* new_menu@2x.png */; };
 		1372EAB31A73997500D54F39 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1372EAB21A73997500D54F39 /* LocationViewController.m */; };
+		1372EABB1A73B10100D54F39 /* DemoLocationPickerBaiduMapDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1372EAB81A73B10100D54F39 /* DemoLocationPickerBaiduMapDataSource.m */; };
+		1372EABC1A73B10100D54F39 /* DemoLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1372EABA1A73B10100D54F39 /* DemoLocationViewController.m */; };
+		1372EABE1A73BF0F00D54F39 /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = 1372EABD1A73BF0F00D54F39 /* black.png */; };
 		137664E31A382DE100C8695D /* anli_bottom_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 137664E21A382DE100C8695D /* anli_bottom_clear@2x.png */; };
 		137664E51A38557300C8695D /* anli_list_defatult@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 137664E41A38557300C8695D /* anli_list_defatult@2x.png */; };
 		138023281A2C69CF0053BDDA /* anli_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 138023221A2C69CF0053BDDA /* anli_back@2x.png */; };
@@ -292,6 +295,11 @@
 		1372EAAD1A73805A00D54F39 /* new_menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_menu@2x.png"; sourceTree = "<group>"; };
 		1372EAB11A73997500D54F39 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		1372EAB21A73997500D54F39 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		1372EAB71A73B10100D54F39 /* DemoLocationPickerBaiduMapDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoLocationPickerBaiduMapDataSource.h; sourceTree = "<group>"; };
+		1372EAB81A73B10100D54F39 /* DemoLocationPickerBaiduMapDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoLocationPickerBaiduMapDataSource.m; sourceTree = "<group>"; };
+		1372EAB91A73B10100D54F39 /* DemoLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoLocationViewController.h; sourceTree = "<group>"; };
+		1372EABA1A73B10100D54F39 /* DemoLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoLocationViewController.m; sourceTree = "<group>"; };
+		1372EABD1A73BF0F00D54F39 /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
 		137664E21A382DE100C8695D /* anli_bottom_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_bottom_clear@2x.png"; sourceTree = "<group>"; };
 		137664E41A38557300C8695D /* anli_list_defatult@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_list_defatult@2x.png"; sourceTree = "<group>"; };
 		138023221A2C69CF0053BDDA /* anli_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anli_back@2x.png"; sourceTree = "<group>"; };
@@ -943,6 +951,7 @@
 				19B34DCC1A2466A300ED1935 /* PicViewController.h */,
 				19B34DCD1A2466A300ED1935 /* PicViewController.m */,
 				13BB426F1A5F86FF00B8E78E /* show_hide.js */,
+				1372EABD1A73BF0F00D54F39 /* black.png */,
 				13F9D4751A2D9A89002A6904 /* AnliDetailViewController.h */,
 				13F9D4761A2D9A89002A6904 /* AnliDetailViewController.m */,
 				138178C71A319572001DB92C /* CarTypeViewController.h */,
@@ -1268,6 +1277,10 @@
 		5659D4291A71EF8A00D8799C /* MessageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1372EAB71A73B10100D54F39 /* DemoLocationPickerBaiduMapDataSource.h */,
+				1372EAB81A73B10100D54F39 /* DemoLocationPickerBaiduMapDataSource.m */,
+				1372EAB91A73B10100D54F39 /* DemoLocationViewController.h */,
+				1372EABA1A73B10100D54F39 /* DemoLocationViewController.m */,
 				5659D42A1A71EF9600D8799C /* MessageViewController.h */,
 				5659D42B1A71EF9600D8799C /* MessageViewController.m */,
 				138F4BA51A71FDE500593D06 /* ChatViewController.h */,
@@ -1843,6 +1856,7 @@
 				138F59FF1A3E95D5009B0612 /* navigation_back_jiantou_image_kong@2x.png in Resources */,
 				565EE8D91A2C50950063CAA3 /* logIn_close@2x.png in Resources */,
 				565321681A5A7A4A00E43F80 /* bg-540_420@2x.png in Resources */,
+				1372EABE1A73BF0F00D54F39 /* black.png in Resources */,
 				13F9D4C51A2DA951002A6904 /* UMSnsAccountViewController.xib in Resources */,
 				565EE8D61A2C50830063CAA3 /* zc_resendimage@2x.png in Resources */,
 				E38159501A3AE1D500864F81 /* gBanner@2x.jpg in Resources */,
@@ -2019,6 +2033,7 @@
 				19B34DD11A2466C300ED1935 /* StoreViewController.m in Sources */,
 				56CE4B611A25D48100876AC7 /* PHMenuViewController.m in Sources */,
 				563B32281A382AF900015088 /* RegexKitLite.m in Sources */,
+				1372EABC1A73B10100D54F39 /* DemoLocationViewController.m in Sources */,
 				56CE4B651A25D48100876AC7 /* PHSessionView.m in Sources */,
 				E35A00EC1A319FA100A9CD24 /* GSeachViewController.m in Sources */,
 				19B34DDD1A246DDE00ED1935 /* RightViewController.m in Sources */,
@@ -2055,6 +2070,7 @@
 				563E4CBF1A2DC3540022755C /* ScreeningViewController.m in Sources */,
 				56ADBFF11A6291A800E03AB6 /* GaiZhuangRefreshTableView.m in Sources */,
 				565EE8B71A2C3DEE0063CAA3 /* ASIDataCompressor.m in Sources */,
+				1372EABB1A73B10100D54F39 /* DemoLocationPickerBaiduMapDataSource.m in Sources */,
 				E35A00E91A319E4E00A9CD24 /* GpersonCenterCustomCell.m in Sources */,
 				563B32271A382AF900015088 /* OHAttributedLabel.m in Sources */,
 				E3CA7B391A3598EB00B72008 /* GstartView.m in Sources */,

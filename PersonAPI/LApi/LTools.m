@@ -491,7 +491,7 @@
         contact.portraitStyle = RCUserAvatarCycle;
         contact.enableSettings = NO;
         contact.conversationType = ConversationType_PRIVATE;
-        contact.enablePOI = NO;
+//        contact.enablePOI = NO;
         [LTools cacheRongCloudUserName:userName forUserId:userId];
         
         [viewController.navigationController pushViewController:contact animated:YES];

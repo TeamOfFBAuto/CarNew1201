@@ -9,3 +9,5 @@ pod 'WeChatSDK', '~> 0.0.1'
 pod 'MBProgressHUD', '~> 0.8'
 pod 'Reachability', '~> 3.1.1'
 pod 'RongCloudIMKit','~> 1.3.2.1'
+pod 'Baidu-Maps-iOS-SDK', '~> 2.6.0'
+

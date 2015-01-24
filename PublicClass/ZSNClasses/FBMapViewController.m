@@ -146,6 +146,7 @@
     }
 }
 
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -153,14 +154,8 @@
     if (MY_MACRO_NAME) {
         self.edgesForExtendedLayout = UIRectEdgeAll;
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
     }
-    
-}
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
 }
 
 
@@ -168,23 +163,68 @@
 {
     [super viewDidLoad];
     
-    UIBarButtonItem * spaceBar = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    
-    spaceBar.width = MY_MACRO_NAME?0:5;
-    
-    
     if (MY_MACRO_NAME) {
         self.edgesForExtendedLayout = UIRectEdgeAll;
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+    }
+
+    if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] )
+    {
+        //iOS 5 new UINavigationBar custom background
+        
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:MY_MACRO_NAME?IOS7DAOHANGLANBEIJING_PUSH:IOS6DAOHANGLANBEIJING] forBarMetrics: UIBarMetricsDefault];
     }
     
-    self.myTitle = @"地图";
     
-    self.rightString = @"导航";
     
-    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeText];
-    [self.my_right_button setTitleColor:RGBCOLOR(80,80,80) forState:UIControlStateNormal];
+    UILabel *_myTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,100,44)];
+    _myTitleLabel.textAlignment = NSTextAlignmentCenter;
+    _myTitleLabel.text = @"地图";
+    _myTitleLabel.textColor = [UIColor blackColor];
+    _myTitleLabel.font = [UIFont systemFontOfSize:17];
+    self.navigationItem.titleView = _myTitleLabel;
+    
+    UIBarButtonItem *spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    spaceButton.width = MY_MACRO_NAME?-5:5;
+    
+    self.navigationController.navigationBarHidden=NO;
+    
+    
+    UIBarButtonItem * spaceButton1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    spaceButton1.width = MY_MACRO_NAME?-13:5;
+    
+    UIButton *button_back=[[UIButton alloc]initWithFrame:CGRectMake(MY_MACRO_NAME? -5:5,8,40,44)];
+    [button_back addTarget:self action:@selector(clickToBack:) forControlEvents:UIControlEventTouchUpInside];
+    [button_back setImage:[UIImage imageNamed:BACK_DEFAULT_IMAGE_GRAY] forState:UIControlStateNormal];
+    UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:button_back];
+    self.navigationItem.leftBarButtonItems=@[spaceButton1,back_item];
+    
+    
+    UIButton *_my_right_button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    _my_right_button.frame = CGRectMake(0,0,30,44);
+    
+    _my_right_button.titleLabel.textAlignment = NSTextAlignmentRight;
+    
+    [_my_right_button setTitle:@"导航" forState:UIControlStateNormal];
+    
+    _my_right_button.titleLabel.font = [UIFont systemFontOfSize:15];
+    
+    [_my_right_button setTitleColor:RGBCOLOR(80,80,80) forState:UIControlStateNormal];
+    
+    [_my_right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.rightBarButtonItems = @[spaceButton,[[UIBarButtonItem alloc] initWithCustomView:_my_right_button]];
+    
+    
+    
+//    self.myTitle = @"地图";
+//
+//    self.rightString = @"导航";
+//    
+//    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeText];
+//    [self.my_right_button setTitleColor:RGBCOLOR(80,80,80) forState:UIControlStateNormal];
     
     _myMapView = [[MKMapView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT-64)];
     _myMapView.mapType=MKMapTypeStandard;
@@ -234,6 +274,10 @@
     [locationManager startUpdatingLocation];
 
 	
+}
+- (void)clickToBack:(UIButton *)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - 回到获取到的位置

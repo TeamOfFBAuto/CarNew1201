@@ -165,7 +165,7 @@
     chat.conversationType = conversation.conversationType;
     //chat.currentTargetName = curCell.userNameLabel.text;
     chat.currentTargetName = conversation.conversationTitle;
-    chat.enablePOI = NO;
+//    chat.enablePOI = NO;
     chat.enableSettings = NO;
     [self.navigationController pushViewController:chat animated:YES];
 }
