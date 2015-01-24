@@ -48,7 +48,10 @@
 
         self.myTitle = @"改装商家";
         self.isAddGestureRecognizer = YES;
+        
+        self.isShowUnreadNumLabel = YES;//左上角是否显示未读消息
     }
+    
     
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     

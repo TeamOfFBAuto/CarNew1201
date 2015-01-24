@@ -23,19 +23,25 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     
-    panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGestures:)];
-    panGestureRecognizer.minimumNumberOfTouches = 1;
-    panGestureRecognizer.maximumNumberOfTouches = 1;
-    [self.view addGestureRecognizer:panGestureRecognizer];
-    
-    
-    swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeOnAirImageView:)];
-    swipe.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:swipe];
-    
+
+    if (self.isPush == NO) {
+        panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGestures:)];
+        panGestureRecognizer.minimumNumberOfTouches = 1;
+        panGestureRecognizer.maximumNumberOfTouches = 1;
+        [self.view addGestureRecognizer:panGestureRecognizer];
+        
+        
+        swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeOnAirImageView:)];
+        swipe.direction = UISwipeGestureRecognizerDirectionRight;
+        [self.view addGestureRecognizer:swipe];
+
+    }
+        
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -48,8 +54,11 @@
     [super viewDidLoad];
     
     if (MY_MACRO_NAME) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.edgesForExtendedLayout = UIRectEdgeAll;
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     }
+    
     if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] )
     {
         //iOS 5 new UINavigationBar custom background
@@ -70,10 +79,19 @@
     self.navigationController.navigationBarHidden=NO;
     
     
-    UIImage * leftImage = [UIImage imageNamed:NAVIGATION_MENU_IMAGE_NAME2];
+    NSString *imageName;
+    if (self.isPush) {
+        
+        imageName = BACK_DEFAULT_IMAGE_GRAY;
+    }else
+    {
+        imageName = NAVIGATION_MENU_IMAGE_NAME2;
+    }
+    
+    UIImage * leftImage = [UIImage imageNamed:imageName];
     UIButton * leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftButton addTarget:self action:@selector(leftButtonTap:) forControlEvents:UIControlEventTouchUpInside];
-    [leftButton setImage:[UIImage imageNamed:NAVIGATION_MENU_IMAGE_NAME2] forState:UIControlStateNormal];
+    [leftButton setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     leftButton.frame = CGRectMake(0,0,leftImage.size.width,leftImage.size.height);
     UIBarButtonItem * leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItems = @[spaceButton,leftBarButton];
@@ -81,11 +99,51 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     
-    [self showCustomEmptyBackView];
-    
     self.portraitStyle = RCUserAvatarCycle;
     
+    [self setNodataView];
+    
+    
 }
+
+-(void)setNodataView{
+    //整个视图
+    UIView * _noDataView = [[UIView alloc]initWithFrame:CGRectMake(0, 240, DEVICE_WIDTH, 105)];
+    _noDataView.backgroundColor = [UIColor whiteColor];
+    
+    //图
+    UIImageView *noDataImv = [[UIImageView alloc]initWithFrame:CGRectMake(90, 90, 130, 60)];
+    noDataImv.center = CGPointMake(DEVICE_WIDTH * 0.5, 120);
+    [noDataImv setImage:[UIImage imageNamed:@"noDataView"]];
+    
+    //上分割线
+    UIView *shangxian = [[UIView alloc]initWithFrame:CGRectMake(noDataImv.frame.origin.x, CGRectGetMaxY(noDataImv.frame)+12, noDataImv.frame.size.width, 1)];
+    shangxian.backgroundColor = RGBCOLOR(233, 233, 233);
+    
+    //文字提示
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(shangxian.frame.origin.x, CGRectGetMaxY(shangxian.frame)+5, shangxian.frame.size.width, 13)];
+    titleLabel.text = @"没有任何消息";
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.font = [UIFont systemFontOfSize:13];
+    titleLabel.textColor = RGBCOLOR(129, 129, 129);
+    
+    //下分割线
+    UIView *xiaxian = [[UIView alloc]initWithFrame:CGRectMake(titleLabel.frame.origin.x, CGRectGetMaxY(titleLabel.frame)+5, titleLabel.frame.size.width, 1)];
+    xiaxian.backgroundColor = RGBCOLOR(233, 233, 233);
+    
+    
+    
+    //视图添加
+    [_noDataView addSubview:noDataImv];
+    [_noDataView addSubview:shangxian];
+    [_noDataView addSubview:titleLabel];
+    [_noDataView addSubview:xiaxian];
+    
+    [self.conversationListView setBackgroundView:_noDataView];
+    
+    
+}
+
 
 /**
  *  重载选择表格事件
@@ -119,7 +177,13 @@
 
 -(void)leftButtonTap:(UIButton *)sender
 {
-    [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
+    if (self.isPush) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+    }else
+    {
+        [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -78,7 +78,6 @@
     [super viewWillDisappear:animated];
     self.edgesForExtendedLayout = UIRectEdgeAll;
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-    self.navigationController.navigationBarHidden = NO;
     
 }
 

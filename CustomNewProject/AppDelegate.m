@@ -270,6 +270,8 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [UMSocialSnsService  applicationDidBecomeActive];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_UNREADNUM object:nil];
 }
 
 
@@ -433,6 +435,8 @@
         });
     }
     
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_UNREADNUM object:nil];
+    
 //    [[RCIM sharedRCIM] invokeVoIPCall:self message:message];
 }
 
@@ -441,6 +445,11 @@
 - (void)getUserInfoWithUserId:(NSString *)userId completion:(void(^)(RCUserInfo* userInfo))completion
 {
     NSString *userName = [LTools rongCloudUserNameWithUid:userId];
+    
+    if ([userId isEqualToString:[GMAPI getUid]]) {
+        
+        userName = [GMAPI getUsername];
+    }
     
     RCUserInfo *userInfo = [[RCUserInfo alloc]initWithUserId:userId name:userName portrait:[ZSNApi returnUrl:userId]];
     

@@ -56,6 +56,9 @@ typedef enum
 ///是否添加滑动到侧边栏手势
 @property(nonatomic,assign)BOOL isAddGestureRecognizer;
 
+@property(nonatomic,assign)BOOL isShowUnreadNumLabel;//是否显示未读消息label
+@property(nonatomic,retain)UILabel *unreadNum_label;//未读消息label
+
 
 -(void)setMyViewControllerLeftButtonType:(MyViewControllerLeftbuttonType)theType WithRightButtonType:(MyViewControllerRightbuttonType)rightType;
 

@@ -84,6 +84,8 @@ alpha:(a)]
 ///没网啦
 #define NOTIFICATION_NO_NETWORK @"noNetWork"
 
+#define NOTIFICATION_UNREADNUM @"unreadMessageNum"//未读消息条数通知
+
 #define NOTIFICATION_REPLY @"reply"
 #define DEVICETOKEN @"pushdevicetoken"
 

@@ -11,4 +11,6 @@
 #import "RCChatListViewController.h"
 @interface MessageViewController : RCChatListViewController
 
+@property(nonatomic,assign)BOOL isPush;//是否是push过来的
+
 @end

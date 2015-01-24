@@ -106,7 +106,6 @@
     [super viewWillDisappear:animated];
     [self setNavigationViewHidden:NO];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-//    self.navigationController.navigationBarHidden = NO;
     
 }
 
@@ -713,34 +712,9 @@
             NSString *dianpuId = dianpu[1];
             NSLog(@"与商家聊天 id:%@",dianpuId);
             
-            [LTools rongCloudChatWithUserId:@"1102017" userName:self.storeName viewController:self];
+            dianpuId = @"1102017";
             
-//            if ([LTools cacheBoolForKey:USER_IN]) {
-//                
-//                //已登录成功自己服务器
-//                
-//                ChatViewController *contact = [[ChatViewController alloc]init];
-//                contact.currentTarget = dianpuId;
-//                contact.currentTargetName = self.storeName;
-//                contact.shopName = self.storeName;
-//                contact.portraitStyle = RCUserAvatarCycle;
-//                contact.enableSettings = NO;
-//                contact.conversationType = ConversationType_PRIVATE;
-//                
-//                [LTools cacheRongCloudUserName:self.storeName forUserId:dianpuId];
-//                [LTools cacheRongCloudUserIcon:[ZSNApi returnUrl:dianpuId] forUserId:dianpuId];
-//                
-//                [self.navigationController pushViewController:contact animated:YES];
-//                
-//            }else
-//            {
-//                LogInViewController * logIn = [[LogInViewController alloc] init];
-//                UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
-//                [self presentViewController:navc animated:YES completion:nil];
-//                
-//                return NO;
-//            }
-            
+            [LTools rongCloudChatWithUserId:dianpuId userName:self.storeName viewController:self];
             
         }
         

@@ -7,6 +7,7 @@
 //
 
 #import "MyViewController.h"
+#import "RCIM.h"
 
 @interface MyViewController ()
 {
@@ -56,6 +57,8 @@
         swipe.direction = UISwipeGestureRecognizerDirectionRight;
         [self.view addGestureRecognizer:swipe];
     }
+    
+    [self updateUnreadNum:nil];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -92,8 +95,36 @@
     spaceButton.width = MY_MACRO_NAME?-5:5;
     
     self.navigationController.navigationBarHidden=NO;
+    
+    //监控未读消息数
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateUnreadNum:) name:NOTIFICATION_UNREADNUM object:nil];
 
 }
+
+#pragma mark - 更新未读消息条数
+
+- (void)updateUnreadNum:(NSNotification *)notification
+{
+    int unreadNum = [[RCIM sharedRCIM]getTotalUnreadCount];
+    
+    unreadNum = (unreadNum >= 0) ? unreadNum : 0;
+    
+    if (unreadNum == 0) {
+        
+        _unreadNum_label.hidden = YES;
+    }else
+    {
+        _unreadNum_label.hidden =NO;
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        self.unreadNum_label.text = [NSString stringWithFormat:@"%d",unreadNum];
+        
+    });
+}
+
 
 #pragma mark - 拖拽手势
 BOOL isFirst;
@@ -157,8 +188,26 @@ CGPoint began_point;
         [leftButton addTarget:self action:@selector(leftButtonTap:) forControlEvents:UIControlEventTouchUpInside];
         [leftButton setImage:[UIImage imageNamed:self.leftImageName] forState:UIControlStateNormal];
         leftButton.frame = CGRectMake(0,0,leftImage.size.width,leftImage.size.height);
+//        leftButton.backgroundColor = [UIColor orangeColor];
         UIBarButtonItem * leftBarButton = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
-        self.navigationItem.leftBarButtonItems = @[spaceButton,leftBarButton];;
+        self.navigationItem.leftBarButtonItems = @[spaceButton,leftBarButton];
+        
+        if (self.isShowUnreadNumLabel) {
+            
+            
+                self.unreadNum_label = [[UILabel alloc]initWithFrame:CGRectMake(leftButton.right - 5 - 10 + 2, -5, 14, 14)];
+                self.unreadNum_label.backgroundColor = [UIColor colorWithHexString:@"fe0000"];
+                self.unreadNum_label.layer.cornerRadius = 7;
+                self.unreadNum_label.textColor = [UIColor whiteColor];
+                self.unreadNum_label.font = [UIFont systemFontOfSize:9];
+                self.unreadNum_label.clipsToBounds = YES;
+                self.unreadNum_label.textAlignment = NSTextAlignmentCenter;
+                [leftButton addSubview:self.unreadNum_label];
+                
+        }
+
+        
+        
     }else if (theType == MyViewControllerLeftbuttonTypeText)
     {
         UIButton * left_button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -268,6 +317,7 @@ CGPoint began_point;
     {
         
     }
+    
 }
 
 -(void)setMyTitle:(NSString *)myTitle
