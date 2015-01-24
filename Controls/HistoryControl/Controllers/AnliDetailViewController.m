@@ -708,7 +708,7 @@
             NSString *dianpuId = dianpu[1];
             NSLog(@"与商家聊天 id:%@",dianpuId);
             
-            [LTools rongCloudChatWithUserId:dianpuId userName:self.storeName viewController:self];
+            [LTools rongCloudChatWithUserId:@"1102017" userName:self.storeName viewController:self];
             
 //            if ([LTools cacheBoolForKey:USER_IN]) {
 //                
