@@ -76,7 +76,10 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    self.edgesForExtendedLayout = UIRectEdgeAll;
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    self.navigationController.navigationBarHidden = NO;
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -147,14 +150,19 @@
                 }];
             }
                 break;
-            case BusinessCommentViewTapTypeConsult://电话咨询
+            case BusinessCommentViewTapTypeConsult://购买咨询
             {
+                /*电话咨询
                 if (bself.businessModel.tel.length > 0) {
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",bself.businessModel.tel]]];
                 }else
                 {
                     [LTools showMBProgressWithText:@"暂无商家电话信息" addToView:bself.view];
                 }
+                 */
+                
+                
+                [LTools rongCloudChatWithUserId:bself.business_id userName:bself.business_name viewController:bself];
             }
                 break;
                 
@@ -169,13 +177,20 @@
 
     [self progress];
     
+    ///接受评论成功通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successComment) name:@"successedComment" object:nil];
+    
 }
 #pragma mark - 登陆成功通知
 -(void)successLogIn
 {
     [self getBusinessDetailData];
 }
-
+#pragma mark - 评论成功
+-(void)successComment
+{
+    [_myWebView reload];
+}
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
@@ -211,7 +226,7 @@
             detail.anli_id = dianpuId;
             detail.detailType = Detail_Anli;
             detail.storeImage = self.share_image;
-            
+            detail.storeName = self.business_name;
             [self.navigationController pushViewController:detail animated:YES];
         }
         
@@ -228,7 +243,7 @@
             
             AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
             detail.anli_id = dianpuId;
-            
+            detail.storeName = self.business_name;
             detail.detailType = Detail_Peijian;
             detail.storeImage = self.share_image;
             
@@ -292,22 +307,22 @@
 
 -(void)setNavgationView
 {
-    UIImageView * navigation_view = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,44)];
+    UIImageView * navigation_view = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,64)];
     navigation_view.image = [UIImage imageNamed:@"default_navigation_clear_image"];
     [self.view addSubview:navigation_view];
     navigation_view.userInteractionEnabled = YES;
     [self.view bringSubviewToFront:navigation_view];
     
     UIButton * back_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    back_button.frame = CGRectMake(0,0,40,44);
-    //    back_button.backgroundColor = [UIColor orangeColor];
+    back_button.frame = CGRectMake(2,0,38.5,39.5);
+//        back_button.backgroundColor = [UIColor orangeColor];
     [back_button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [back_button setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];
     [navigation_view addSubview:back_button];
     
     
     right_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    right_button.frame = CGRectMake(DEVICE_WIDTH-44,0,44,44);
+    right_button.frame = CGRectMake(DEVICE_WIDTH-40,6,40,24.5);
     right_button.userInteractionEnabled = NO;
     [right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     [right_button setImage:[UIImage imageNamed:@"navigation_right_menu_image"] forState:UIControlStateNormal];

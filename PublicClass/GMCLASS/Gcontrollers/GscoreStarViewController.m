@@ -220,6 +220,9 @@
             
             [self performSelector:@selector(Gdismiss) withObject:nil afterDelay:0.5];
             
+            ///发送评论成功通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"successedComment" object:nil];
+            
         }else
         {
             

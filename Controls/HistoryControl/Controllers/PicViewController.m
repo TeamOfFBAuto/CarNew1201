@@ -29,7 +29,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
     if (self.navigationController.isNavigationBarHidden) {
         
@@ -44,7 +45,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.isAddGestureRecognizer = YES;
-
+    
     
     self.leftImageName = NAVIGATION_MENU_IMAGE_NAME2;
     self.myTitle = @"改装案例";
@@ -55,7 +56,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chooseCarType:) name:@"ChooseCarTypeNotification" object:nil];
     
     //数据展示table
-    _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT - 44)];
+    _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT - 44 + 20)];
     _table.refreshDelegate = self;
     _table.dataSource = self;
     
