@@ -33,6 +33,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import <objc/runtime.h>
 
+#import "RCIM.h"
+
 #define kMenuItemHeight 50
 #define kSessionWidth   260
 
@@ -58,6 +60,8 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
 @property (nonatomic, strong) UIView      * leftView;
 @property (nonatomic, strong) UIView      * rightView;
 @property (nonatomic, strong) UIImageView * airImageView;
+
+@property(nonatomic,retain)UILabel *unreadNum_label;//未读消息
 
 @property (nonatomic)         float         lastDeegreesRotateTransform;
 
@@ -118,6 +122,43 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
     return self;
 }
 
+#pragma mark - 更新未读消息条数
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    
+    // layout menu
+    [self reloadData];
+    
+    [self updateUnreadNum:nil];
+}
+
+- (void)updateUnreadNum:(NSNotification *)notification
+{
+    int unreadNum = [[RCIM sharedRCIM]getTotalUnreadCount];
+    
+    unreadNum = (unreadNum >= 0) ? unreadNum : 0;
+    
+    if (unreadNum == 0) {
+        
+        _unreadNum_label.hidden = YES;
+    }else
+    {
+        _unreadNum_label.hidden = NO;
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        self.unreadNum_label.text = [NSString stringWithFormat:@"%d",unreadNum];
+        
+    });
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -126,6 +167,10 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
     }
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    //未读消息通知
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateUnreadNum:) name:NOTIFICATION_UNREADNUM object:nil];
+
     
     // Init sessionViews
     sessionViews = [NSMutableDictionary dictionary];
@@ -192,16 +237,7 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
     heightAirMenuRow = 36;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 
-    // layout menu
-    [self reloadData];
-}
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -608,9 +644,25 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
             button.frame = CGRectMake(0,200+60*j,260, 50);
             button.titleLabel.font = [UIFont systemFontOfSize:23];
             button.tag = j;
+//            button.backgroundColor = [UIColor orangeColor];
             [button addTarget:self action:@selector(rowDidTouch:) forControlEvents:UIControlEventTouchUpInside];
             sessionView.containView.tag = i;
             [sessionView.containView addSubview:button];
+            
+            if (j == 2) {
+                
+                //未读消息
+                
+                self.unreadNum_label = [[UILabel alloc]initWithFrame:CGRectMake(button.width / 4.f * 3 - 20, button.height / 4 - 5, 14, 14)];
+                self.unreadNum_label.backgroundColor = [UIColor colorWithHexString:@"fe0000"];
+                self.unreadNum_label.layer.cornerRadius = 7;
+                self.unreadNum_label.textColor = [UIColor whiteColor];
+                self.unreadNum_label.font = [UIFont systemFontOfSize:9];
+                self.unreadNum_label.clipsToBounds = YES;
+                self.unreadNum_label.textAlignment = NSTextAlignmentCenter;
+                [button addSubview:self.unreadNum_label];
+            }
+            
             
             UIImageView * headerBackImageView = [[UIImageView alloc] initWithFrame:CGRectMake(89,20,82,82)];
             headerBackImageView.layer.borderColor = [[UIColor whiteColor] colorWithAlphaComponent:0.4].CGColor;
@@ -871,6 +923,8 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
 - (void)showAirViewFromViewController:(UIViewController*)controller
                              complete:(void (^)(void))complete
 {
+    //未读消息
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_UNREADNUM object:nil];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
@@ -1099,9 +1153,12 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
 // Duplicate UIView
 - (UIView*)duplicate:(UIView*)view
 {
-    NSData * tempArchive = [NSKeyedArchiver archivedDataWithRootObject:view];
-    return [NSKeyedUnarchiver unarchiveObjectWithData:tempArchive];
+//    NSData * tempArchive = [NSKeyedArchiver archivedDataWithRootObject:view];
+//    return [NSKeyedUnarchiver unarchiveObjectWithData:tempArchive];
+    
+    return nil;
 }
+
 
 #pragma mark - Clean up
 
