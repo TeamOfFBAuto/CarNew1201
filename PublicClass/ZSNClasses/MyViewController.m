@@ -273,7 +273,7 @@ CGPoint began_point;
         
         _my_right_button.titleLabel.font = [UIFont systemFontOfSize:15];
         
-        [_my_right_button setTitleColor:RGBCOLOR(91,138,59) forState:UIControlStateNormal];
+        [_my_right_button setTitleColor:RGBCOLOR(80,80,80) forState:UIControlStateNormal];
         
         [_my_right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
         

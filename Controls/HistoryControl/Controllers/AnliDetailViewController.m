@@ -712,48 +712,16 @@
     
     //融云聊天
     
-    if ([relativeUrl rangeOfString:@"#liaotian"].length > 0) {
+    if ([relativeUrl rangeOfString:@"liaotian"].length > 0) {
         
-        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"#liaotian"];
+        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"liaotian"];
         if (dianpu.count > 1) {
             
             NSString *dianpuId = dianpu[1];
             NSLog(@"与商家聊天 id:%@",dianpuId);
             
-//            dianpuId = @"1102017";
-            
             [LTools rongCloudChatWithUserId:dianpuId userName:self.storeName viewController:self];
             
-//            if ([dianpuId isEqualToString:[GMAPI getUid]]) {
-//                
-//                [LTools showMBProgressWithText:@"您不能和自己发起会话" addToView:self.view];
-//                
-//                return NO;
-//            }
-//            
-//            if ([LTools cacheBoolForKey:USER_IN]) {
-//                
-//                //已登录成功自己服务器
-//                
-//                ChatViewController *contact = [[ChatViewController alloc]init];
-//                contact.currentTarget = dianpuId;
-//                contact.currentTargetName = self.storeName;
-//                contact.shopName = self.storeName;
-//                contact.portraitStyle = RCUserAvatarCycle;
-//                contact.enableSettings = NO;
-//                contact.conversationType = ConversationType_PRIVATE;
-//                contact.enablePOI = NO;
-//                [LTools cacheRongCloudUserName:self.storeName forUserId:dianpuId];
-//                
-//                [self.navigationController pushViewController:contact animated:YES];
-//                
-//            }else
-//            {
-//                LogInViewController * logIn = [[LogInViewController alloc] init];
-//                UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
-//                [self presentViewController:navc animated:YES completion:nil];
-//            }
-
             
         }
         

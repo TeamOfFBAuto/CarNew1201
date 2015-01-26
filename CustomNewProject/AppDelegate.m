@@ -45,7 +45,10 @@
 
 #import "BMapKit.h"
 
-@interface AppDelegate ()<MobClickDelegate,WXApiDelegate,RCIMConnectionStatusDelegate,RCConnectDelegate,RCIMReceiveMessageDelegate,RCIMUserInfoFetcherDelegagte,BMKGeneralDelegate>
+@interface AppDelegate ()<MobClickDelegate,WXApiDelegate,RCIMConnectionStatusDelegate,RCConnectDelegate,RCIMReceiveMessageDelegate,RCIMUserInfoFetcherDelegagte,BMKGeneralDelegate,CLLocationManagerDelegate>
+{
+    CLLocationManager    *location;
+}
 
 @property (strong, nonatomic) BMKMapManager *mapManager;
 
@@ -72,14 +75,22 @@
     
     [MobClick setLogEnabled:YES];
     
-#pragma mark 百度
+#pragma mark 地图
     
-    //注册百度地图
-    self.mapManager = [[BMKMapManager alloc] init];
-    BOOL ret = [self.mapManager start:BAIDU_APPKEY generalDelegate:self];
-    if (!ret) {
-        NSLog(@"百度地图启动失败");
+    location = [[CLLocationManager alloc] init];
+    location.delegate= self;
+    
+    if( ([[[UIDevice currentDevice] systemVersion] doubleValue]>=8.0)) {
+        
+        [location requestAlwaysAuthorization];
     }
+    
+//    //注册百度地图
+//    self.mapManager = [[BMKMapManager alloc] init];
+//    BOOL ret = [self.mapManager start:BAIDU_APPKEY generalDelegate:self];
+//    if (!ret) {
+//        NSLog(@"百度地图启动失败");
+//    }
     
 #pragma mark 融云
     
@@ -138,6 +149,23 @@
     
   //  [self NewShowMainVC];
     return YES;
+}
+
+#pragma mark - CLLocationDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    switch (status) {
+        case kCLAuthorizationStatusNotDetermined:
+            if ([location respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+                [location requestAlwaysAuthorization];
+            }
+            break;
+        default:
+            break;
+            
+            
+    } 
 }
 
 - (void)showControlView:(ROOTVC_TYPE)type

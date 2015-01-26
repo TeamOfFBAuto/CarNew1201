@@ -17,9 +17,11 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
+#import "PreviewImageController.h"
+
 //#import "RCLocationPickerViewControllerDataSource"
 
-@interface ChatViewController ()<RCLocationPickerViewControllerDataSource,UINavigationControllerDelegate>
+@interface ChatViewController ()<UINavigationControllerDelegate>
 
 @end
 
@@ -141,6 +143,25 @@
     mapViewController.address_longitude = location.longitude;
     
     [self.navigationController pushViewController:mapViewController animated:YES];
+}
+
+#pragma mark - 调用看大图
+
+-(void)showPreviewPictureController:(RCMessage*)rcMessage
+{
+    RCImageMessage *image = (RCImageMessage *)rcMessage.content;
+    
+    NSLog(@"image %@ %@ %@",image.thumbnailImage,image.imageUrl,image.originalImage
+          );
+    PreviewImageController *preview = [[PreviewImageController alloc]init];
+//    preview.rcMessage = rcMessage;
+    preview.imageUrl = image.imageUrl;
+    preview.thumImage = image.thumbnailImage;
+    UINavigationController *unvc = [[UINavigationController alloc]initWithRootViewController:preview];
+    
+    [self presentViewController:unvc animated:YES completion:^{
+        
+    }];
 }
 
 @end
