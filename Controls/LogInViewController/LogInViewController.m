@@ -333,8 +333,8 @@
                 ///验证是否开通fb
             [bself checkFBState];
             
-            //发通知
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"gdengluchenggong" object:nil];
+//            //发通知
+//            [[NSNotificationCenter defaultCenter]postNotificationName:@"gdengluchenggong" object:nil];
             
             }else{
 
@@ -510,6 +510,8 @@
     [GMAPI cache:authkey ForKey:USER_AUTHOD];
     
     [j stopAnimating];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"gdengluchenggong" object:nil];
     
     [self CloseButtonTap:nil];
 }

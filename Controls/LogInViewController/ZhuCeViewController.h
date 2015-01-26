@@ -16,7 +16,7 @@
     
     UITextField * youxiang_tf;
     
-    ASIHTTPRequest * request_;
+    ASIFormDataRequest * request_;
 }
 
 @property(nonatomic,strong)NSString * PhoneNumber;

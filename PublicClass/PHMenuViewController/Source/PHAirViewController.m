@@ -282,6 +282,14 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
 
 - (void)handleSwipeOnAirImageView:(UISwipeGestureRecognizer*)swipe
 {
+    ///点击个人中心或者消息的
+    if ((_currentIndexPath.row == 2 | _currentIndexPath.row == 3) && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_IN])
+    {
+        [self pushToLogInViewController];
+        
+        return;
+    }
+    
     [self hideAirViewOnComplete:^{
         [self bringViewControllerToTop:self.fontViewController
                            atIndexPath:self.currentIndexPath];
@@ -753,8 +761,8 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
 
 - (void)rowDidTouch:(UIButton*)button
 {
-    ///点击个人中心的
-    if (button.tag == 2 && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_IN])
+    ///点击个人中心或者消息的
+    if ((button.tag == 2 | button.tag == 3) && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_IN])
     {
         [self pushToLogInViewController];
         

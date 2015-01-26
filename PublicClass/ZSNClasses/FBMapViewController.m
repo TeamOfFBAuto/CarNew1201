@@ -151,10 +151,22 @@
 {
     [super viewWillAppear:animated];
     
+    self.navigationController.navigationBarHidden = NO;
+    
     if (MY_MACRO_NAME) {
         self.edgesForExtendedLayout = UIRectEdgeAll;
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+    }
+    
+    
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    
+    if (self.navigationController.isNavigationBarHidden) {
+        
+        self.navigationController.navigationBarHidden = NO;
+        
     }
 }
 
@@ -273,7 +285,14 @@
     locationManager.distanceFilter = kCLDistanceFilterNone;
     [locationManager startUpdatingLocation];
 
-	
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground) name:@"applicationWillEnterForeground" object:nil];
+}
+#pragma mark - 从后台切换到程序通知
+-(void)applicationWillEnterForeground
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+
 }
 - (void)clickToBack:(UIButton *)sender
 {

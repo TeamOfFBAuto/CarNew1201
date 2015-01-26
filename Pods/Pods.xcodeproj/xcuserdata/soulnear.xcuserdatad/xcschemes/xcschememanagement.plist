@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>Pods-Baidu-Maps-iOS-SDK.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 		<key>Pods-JSONKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -92,6 +97,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>18B458E2E04342744E013F08</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1CB77FB1C61A50AE0F2922AF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1E5F256B7E1D62995AB2F393</key>
 		<dict>
 			<key>primary</key>
@@ -117,7 +132,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3D038A04F1B900BC01F290E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4230AF5F3C63384D320FEEE9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>44FCA20B7A5058CB842E1FCD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,12 +157,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4BB9A71671D8A7407C47081F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4E8F7A1CCEA195F32E57F0B0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>51B512967BB580E76F010452</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5A1F212CF1AB758A463EFF49</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -197,6 +232,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9684B738FE7D0EEC385345F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>99F63B1B22D3DBE05DF0FBC0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9D0426A135F8F076B540F811</key>
 		<dict>
 			<key>primary</key>
@@ -232,6 +277,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C71A6400991F8424C482BE1B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C866661E88C5FE4B965E82E5</key>
 		<dict>
 			<key>primary</key>
@@ -247,6 +297,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>D8B7A7C4860441C8F3FCE7AA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DC190CB801AD7C8704AD11B8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E2154E299FC67ACFB71D7DCD</key>
 		<dict>
 			<key>primary</key>
@@ -258,6 +318,11 @@
 			<true/>
 		</dict>
 		<key>EAACD2B258B75A1ABB03E8B0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB1C9FDEA4DF1A95C20F0F4F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

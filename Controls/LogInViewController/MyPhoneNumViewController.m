@@ -128,11 +128,11 @@
 
 -(void)nextStep:(UIButton *)sender
 {
-//    [ZSNApi showAutoHiddenMBProgressWithText:@"发送成功" addToView:self.view];
-//    VerificationViewController * verification = [[VerificationViewController alloc] init];
-//    verification.MyPhoneNumber = phone_textField.text;
-//    [self.navigationController pushViewController:verification animated:YES];
-//    return;
+    [ZSNApi showAutoHiddenMBProgressWithText:@"发送成功" addToView:self.view];
+    VerificationViewController * verification = [[VerificationViewController alloc] init];
+    verification.MyPhoneNumber = phone_textField.text;
+    [self.navigationController pushViewController:verification animated:YES];
+    return;
     
     if (phone_textField.text.length != 11)
     {

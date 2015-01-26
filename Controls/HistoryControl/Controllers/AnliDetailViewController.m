@@ -105,6 +105,8 @@
 {
     [super viewWillDisappear:animated];
     [self setNavigationViewHidden:NO];
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     
 }
@@ -249,6 +251,11 @@
         functionView = [[NavigationFunctionView alloc] init];
         functionView.myHidden = YES;
         [self.view addSubview:functionView];
+        
+        if (self.detailType == Detail_Peijian)
+        {
+            [functionView setIsShowThirdButton:NO];
+        }
         
         
         __weak typeof(self)weakSelf = self;
@@ -615,9 +622,9 @@
     }
     
     
-    if ([relativeUrl rangeOfString:@"dianpu"].length > 0) {
+    if ([relativeUrl rangeOfString:@"dianpuli"].length > 0) {
         
-        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"&dianpu"];
+        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"/dianpuli"];
         if (dianpu.count > 1) {
             
             NSString *dianpuId = dianpu[1];
@@ -627,6 +634,7 @@
             home.business_id = dianpuId;
             home.share_title = self.storeName;
             home.share_image = self.storeImage;
+            home.business_name = _storeName;
             [self.navigationController pushViewController:home animated:YES];
 
         }

@@ -210,8 +210,19 @@
     
     aHud = [ZSNApi showMBProgressWithText:@"正在注册..." addToView:self.view];
     
-    NSString * fullUrl = [NSString stringWithFormat:SENDUSERINFO,self.PhoneNumber,self.verification,[userName_tf.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],mima_tf.text,youxiang_tf.text];
-    request_ = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:fullUrl]];
+//    NSString * fullUrl = [NSString stringWithFormat:SENDUSERINFO,self.PhoneNumber,self.verification,[userName_tf.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],mima_tf.text,youxiang_tf.text];
+//    request_ = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:fullUrl]];
+//    request_.delegate = self;
+//    request_.shouldAttemptPersistentConnection = NO;
+//    [request_ startAsynchronous];
+    
+    
+    request_ = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:@"http://bbs.fblife.com/bbsapinew/register.php?type=phone&step=3&datatype=json"]];
+    [request_ setPostValue:self.PhoneNumber forKey:@"telphone"];
+    [request_ setPostValue:self.verification forKey:@"telcode"];
+    [request_ setPostValue:userName_tf.text forKey:@"username"];
+    [request_ setPostValue:mima_tf.text forKey:@"password"];
+    [request_ setPostValue:youxiang_tf.text forKey:@"email"];
     request_.delegate = self;
     request_.shouldAttemptPersistentConnection = NO;
     [request_ startAsynchronous];
