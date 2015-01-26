@@ -252,9 +252,9 @@
 		E3B2DC671A43EEC000607B11 /* noDataView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B2DC661A43EEC000607B11 /* noDataView@2x.png */; };
 		E3B2DC691A43FF3F00607B11 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3B2DC681A43FF3F00607B11 /* logo@2x.png */; };
 		E3CA7B391A3598EB00B72008 /* GstartView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CA7B381A3598EB00B72008 /* GstartView.m */; };
-		E3CA7B3B1A359BC300B72008 /* gstart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CA7B3A1A359BC300B72008 /* gstart@3x.png */; };
+		E3CA7B3B1A359BC300B72008 /* gstart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CA7B3A1A359BC300B72008 /* gstart@2x.png */; };
 		E3CF26D01A64FBC800FDC4BC /* gstarBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3CF26CF1A64FBC800FDC4BC /* gstarBack@2x.png */; };
-		E3E8323E1A65FF4900026DAC /* gstart_half@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E8323D1A65FF4900026DAC /* gstart_half@3x.png */; };
+		E3E8323E1A65FF4900026DAC /* gstart_half@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3E8323D1A65FF4900026DAC /* gstart_half@2x.png */; };
 		E3ED4A671A2FF83E004A2D72 /* GcustomActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E3ED4A661A2FF83E004A2D72 /* GcustomActionSheet.m */; };
 		E3ED4A6A1A30233A004A2D72 /* MLImageCrop.m in Sources */ = {isa = PBXBuildFile; fileRef = E3ED4A691A30233A004A2D72 /* MLImageCrop.m */; };
 /* End PBXBuildFile section */
@@ -665,9 +665,9 @@
 		E3B2DC681A43FF3F00607B11 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		E3CA7B371A3598EB00B72008 /* GstartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GstartView.h; sourceTree = "<group>"; };
 		E3CA7B381A3598EB00B72008 /* GstartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GstartView.m; sourceTree = "<group>"; };
-		E3CA7B3A1A359BC300B72008 /* gstart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstart@3x.png"; sourceTree = "<group>"; };
+		E3CA7B3A1A359BC300B72008 /* gstart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstart@2x.png"; sourceTree = "<group>"; };
 		E3CF26CF1A64FBC800FDC4BC /* gstarBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstarBack@2x.png"; sourceTree = "<group>"; };
-		E3E8323D1A65FF4900026DAC /* gstart_half@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstart_half@3x.png"; sourceTree = "<group>"; };
+		E3E8323D1A65FF4900026DAC /* gstart_half@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gstart_half@2x.png"; sourceTree = "<group>"; };
 		E3ED4A651A2FF83E004A2D72 /* GcustomActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GcustomActionSheet.h; sourceTree = "<group>"; };
 		E3ED4A661A2FF83E004A2D72 /* GcustomActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GcustomActionSheet.m; sourceTree = "<group>"; };
 		E3ED4A681A30233A004A2D72 /* MLImageCrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLImageCrop.h; sourceTree = "<group>"; };
@@ -1669,14 +1669,14 @@
 		E35A00DF1A319E3400A9CD24 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E3E8323D1A65FF4900026DAC /* gstart_half@3x.png */,
+				E3E8323D1A65FF4900026DAC /* gstart_half@2x.png */,
 				E3CF26CF1A64FBC800FDC4BC /* gstarBack@2x.png */,
 				E3B2DC661A43EEC000607B11 /* noDataView@2x.png */,
 				E3B2DC641A43ED8A00607B11 /* gback@2x.png */,
 				E381594F1A3AE1D500864F81 /* gBanner@2x.jpg */,
 				E377E4EA1A39732700B2D6C9 /* gthreebtnback@2x.png */,
 				E36AAF691A3854AE006A6F21 /* gTouxiang@2x.png */,
-				E3CA7B3A1A359BC300B72008 /* gstart@3x.png */,
+				E3CA7B3A1A359BC300B72008 /* gstart@2x.png */,
 				E35A00E11A319E4000A9CD24 /* GCaseModel.h */,
 				E35A00E21A319E4000A9CD24 /* GCaseModel.m */,
 				E35A00E31A319E4000A9CD24 /* GGoodsModel.h */,
@@ -1961,9 +1961,9 @@
 				56621D531A28605B00310A48 /* umeng_logo1.png in Resources */,
 				565EE8D31A2C50710063CAA3 /* zc_phoneNum@2x.png in Resources */,
 				5647574D1A6F5FD70011F3C4 /* about_logo_image@2x.png in Resources */,
-				E3E8323E1A65FF4900026DAC /* gstart_half@3x.png in Resources */,
+				E3E8323E1A65FF4900026DAC /* gstart_half@2x.png in Resources */,
 				137664E31A382DE100C8695D /* anli_bottom_clear@2x.png in Resources */,
-				E3CA7B3B1A359BC300B72008 /* gstart@3x.png in Resources */,
+				E3CA7B3B1A359BC300B72008 /* gstart@2x.png in Resources */,
 				565EE8D71A2C50830063CAA3 /* zc_xieyi@2x.png in Resources */,
 				56621D4B1A28605B00310A48 /* messages_toolbar_background@2x.png in Resources */,
 				1380232C1A2C69CF0053BDDA /* anli_shoucang@2x.png in Resources */,
@@ -2208,7 +2208,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+
+				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
+
 				PROVISIONING_PROFILE = "12d9f3d9-2aed-4e6b-bebb-b1844f9ac12d";
+
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2246,7 +2250,11 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
+
+				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
+
 				PROVISIONING_PROFILE = "12d9f3d9-2aed-4e6b-bebb-b1844f9ac12d";
+
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2277,6 +2285,11 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1e5ed15f-83ef-4fe2-af9f-5c0e8c28defc";
+
+				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
+
+				PROVISIONING_PROFILE = "12d9f3d9-2aed-4e6b-bebb-b1844f9ac12d";
+
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -2305,6 +2318,11 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "1e5ed15f-83ef-4fe2-af9f-5c0e8c28defc";
+
+				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
+
+				PROVISIONING_PROFILE = "12d9f3d9-2aed-4e6b-bebb-b1844f9ac12d";
+
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
