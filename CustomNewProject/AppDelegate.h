@@ -17,6 +17,7 @@ typedef enum{
 #import "SelectedViewController.h"
 
 @class PicViewController;
+@class PHMenuViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -34,6 +35,8 @@ typedef enum{
 @property(nonatomic,strong)SelectedViewController * selectedVC;
 @property(nonatomic,strong)PicViewController * picVC;
 @property(nonatomic,strong)UINavigationController * picNavc;
+
+@property(nonatomic,strong)PHMenuViewController *root_menu;
 
 - (void)showControlView:(ROOTVC_TYPE)type;
 @end

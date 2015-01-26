@@ -34,6 +34,10 @@
 {
     [super viewWillAppear:animated];
     self.edgesForExtendedLayout = UIRectEdgeAll;
+//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    
+    NSLog(@"--------");
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
     if (self.navigationController.isNavigationBarHidden) {
@@ -43,6 +47,7 @@
     }
     
 }
+
 
 
 #pragma mark - 更新未读消息条数
