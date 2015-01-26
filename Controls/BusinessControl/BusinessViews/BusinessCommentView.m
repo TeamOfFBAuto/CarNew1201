@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.frame = CGRectMake(0,DEVICE_HEIGHT,DEVICE_WIDTH,64);
+        self.frame = CGRectMake(0,DEVICE_HEIGHT-64,DEVICE_WIDTH,64);
         self.backgroundColor = [UIColor whiteColor];
         [self setup];
     }
@@ -35,7 +35,7 @@
         [button addTarget:self action:@selector(buttonTap:) forControlEvents:UIControlEventTouchUpInside];
         if (i == 0)
         {
-            [button setTitle:@"电话咨询" forState:UIControlStateNormal];
+            [button setTitle:@"购买咨询" forState:UIControlStateNormal];
             button.backgroundColor = RGBCOLOR(254,160,28);
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             

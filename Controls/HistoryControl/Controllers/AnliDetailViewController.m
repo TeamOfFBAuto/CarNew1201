@@ -31,6 +31,10 @@
 
 #import "FBMapViewController.h"
 
+#import "ChatViewController.h"
+
+#import "RCIM.h"
+
 @interface AnliDetailViewController ()<MFMailComposeViewControllerDelegate,UIWebViewDelegate,UIScrollViewDelegate>
 {
     ShareView *_shareView;
@@ -82,8 +86,8 @@
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    
-    [self updateStatusBarColor];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+   // [self updateStatusBarColor];
     
 }
 
@@ -101,7 +105,7 @@
 {
     [super viewWillDisappear:animated];
     [self setNavigationViewHidden:NO];
-//    self.navigationController.navigationBarHidden = NO;
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     
 }
 
@@ -154,7 +158,7 @@
     
     
     if (self.detailType == Detail_Peijian) {
-        
+        _webView.height = DEVICE_HEIGHT-64;
         [self createBottom];
     }
     
@@ -169,6 +173,8 @@
     //评论view
     
     [self progress];
+    ///接受评论成功通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successComment) name:@"successedComment" object:nil];
 
 }
 
@@ -254,7 +260,15 @@
                 
                 LShareTools *tool = [LShareTools shareInstance];
                 
-                NSString *url = [NSString stringWithFormat:ANLI_DETAIL_SHARE,weakSelf.anli_id,[GMAPI getAuthkey]];
+                NSString *url; //= [NSString stringWithFormat:ANLI_DETAIL_SHARE,weakSelf.anli_id,[GMAPI getAuthkey]];
+                
+                if (weakSelf.detailType == Detail_Peijian) {
+                    url = [NSString stringWithFormat:PEIJIAN_SHARE_URL,weakSelf.anli_id];
+                }else
+                {
+                    url = [NSString stringWithFormat:ANLI_DETAIL_SHARE,weakSelf.anli_id,[GMAPI getAuthkey]];
+                }
+                
 //                NSString *imageUrl = weakSelf.detail_info.pichead;
                 
 //                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
@@ -440,7 +454,6 @@
 - (void)createBottom
 {
     bottomView = [[BusinessCommentView alloc] init];
-    bottomView.hidden = YES;
     [self.view addSubview:bottomView];
     __weak typeof(self)bself = self;
     [bottomView setMyBlock:^(BusinessCommentViewTapType aType) {
@@ -465,12 +478,15 @@
                 break;
             case BusinessCommentViewTapTypeConsult://电话咨询
             {
+                /*
                 if (bself.detail_info.tel.length > 0) {
                     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",bself.detail_info.tel]]];
                 }else
                 {
                     [LTools showMBProgressWithText:@"暂无商家电话信息" addToView:bself.view];
                 }
+                 */
+                [LTools rongCloudChatWithUserId:bself.anli_id userName:bself.storeName viewController:bself];
             }
                 break;
                 
@@ -521,14 +537,14 @@
     
     
     back_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    back_button.frame = CGRectMake(0,20,40,44);
+    back_button.frame = CGRectMake(2,0,38.5,39.5);
     //    back_button.backgroundColor = [UIColor orangeColor];
     [back_button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [back_button setImage:BACK_DEFAULT_IMAGE forState:UIControlStateNormal];
     [self.view addSubview:back_button];
     
     right_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    right_button.frame = CGRectMake(DEVICE_WIDTH-44,20,44,44);
+    right_button.frame = CGRectMake(DEVICE_WIDTH-40,6,40,24.5);
     [right_button addTarget:self action:@selector(rightButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     [right_button setImage:[UIImage imageNamed:@"navigation_right_menu_image"] forState:UIControlStateNormal];
     [self.view addSubview:right_button];
@@ -685,6 +701,57 @@
         
         return NO;
     }
+    
+    //融云聊天
+    
+    if ([relativeUrl rangeOfString:@"#liaotian"].length > 0) {
+        
+        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"#liaotian"];
+        if (dianpu.count > 1) {
+            
+            NSString *dianpuId = dianpu[1];
+            NSLog(@"与商家聊天 id:%@",dianpuId);
+            
+//            dianpuId = @"1102017";
+            
+            [LTools rongCloudChatWithUserId:dianpuId userName:self.storeName viewController:self];
+            
+//            if ([dianpuId isEqualToString:[GMAPI getUid]]) {
+//                
+//                [LTools showMBProgressWithText:@"您不能和自己发起会话" addToView:self.view];
+//                
+//                return NO;
+//            }
+//            
+//            if ([LTools cacheBoolForKey:USER_IN]) {
+//                
+//                //已登录成功自己服务器
+//                
+//                ChatViewController *contact = [[ChatViewController alloc]init];
+//                contact.currentTarget = dianpuId;
+//                contact.currentTargetName = self.storeName;
+//                contact.shopName = self.storeName;
+//                contact.portraitStyle = RCUserAvatarCycle;
+//                contact.enableSettings = NO;
+//                contact.conversationType = ConversationType_PRIVATE;
+//                contact.enablePOI = NO;
+//                [LTools cacheRongCloudUserName:self.storeName forUserId:dianpuId];
+//                
+//                [self.navigationController pushViewController:contact animated:YES];
+//                
+//            }else
+//            {
+//                LogInViewController * logIn = [[LogInViewController alloc] init];
+//                UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
+//                [self presentViewController:navc animated:YES completion:nil];
+//            }
+
+            
+        }
+        
+        return NO;
+    }
+
 
     
     if ([relativeUrl rangeOfString:@"map:"].length > 0)
@@ -772,35 +839,35 @@
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    bottomView.hidden = NO;
+//    bottomView.hidden = NO;
     
     [loading hide:YES];
     
-    [self updateStatusBarColor];
+  //  [self updateStatusBarColor];
     
     [self progressToFinish];
     
-    if (self.detailType == Detail_Peijian) {
-        
-        CGFloat height = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight"] floatValue];
-        
-        NSLog(@"webheight %f",height);
-        
-        if (DEVICE_HEIGHT - height >= 64) {
-            
-            [self hiddenBottomViewWith:NO withDuration:0.f];
-            noHidden = YES;
-        }
-        
-        if (height <= DEVICE_HEIGHT && DEVICE_HEIGHT - height < 64) {
-            
-            web_old_height = height;
-            
-            _webView.scrollView.contentSize = CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT + 64 + 100);
-            
-        }
-        
-    }
+//    if (self.detailType == Detail_Peijian) {
+//        
+//        CGFloat height = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight"] floatValue];
+//        
+//        NSLog(@"webheight %f",height);
+//        
+//        if (DEVICE_HEIGHT - height >= 64) {
+//            
+//            [self hiddenBottomViewWith:NO withDuration:0.f];
+//            noHidden = YES;
+//        }
+//        
+//        if (height <= DEVICE_HEIGHT && DEVICE_HEIGHT - height < 64) {
+//            
+//            web_old_height = height;
+//            
+//            _webView.scrollView.contentSize = CGSizeMake(DEVICE_WIDTH, DEVICE_HEIGHT + 64 + 100);
+//            
+//        }
+//        
+//    }
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
@@ -813,6 +880,7 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    /*
     CGFloat offset = scrollView.contentOffset.y;
     
     if (offset > currentOffY) {
@@ -825,6 +893,7 @@
     }
     
     currentOffY = offset;
+     */
 }
 
 ///底部栏弹出消失动画
@@ -884,11 +953,18 @@
 -(void)setNavigationViewHidden:(BOOL)isHidden
 {
     [UIView animateWithDuration:0.35 animations:^{
-        back_button.top = isHidden?-64:20;
-        right_button.top = isHidden?-64:20;
+        back_button.top = isHidden?-64:0;
+        right_button.top = isHidden?-64:6;
     } completion:^(BOOL finished) {
         
     }];
+}
+
+
+#pragma mark - 评论成功刷新该界面
+-(void)successComment
+{
+    [_webView reload];
 }
 
 @end

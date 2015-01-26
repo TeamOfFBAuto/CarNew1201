@@ -16,6 +16,8 @@
 #import "LogInViewController.h"
 #import "GMAPI.h"
 
+#import "RCIM.h"
+
 @interface SliderRightSettingViewController ()
 {
     UMUFPTableView * _mTableView;
@@ -320,6 +322,9 @@
         [user setObject:@"" forKey:USER_FACE];
         
         [user setBool:NO forKey:USER_IN];
+        
+        [[RCIM sharedRCIM]disconnect:NO];//注销融云
+        [[RCIM sharedRCIM]clearConversations:ConversationType_PRIVATE,ConversationType_GROUP,ConversationType_DISCUSSION,nil];
         
         [user removeObjectForKey:@"friendList"];
         [user removeObjectForKey:@"RecentContact"];

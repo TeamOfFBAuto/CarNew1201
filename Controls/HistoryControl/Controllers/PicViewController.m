@@ -17,9 +17,13 @@
 
 #import "GSeachViewController.h"
 
+#import "RCIM.h"
+
 @interface PicViewController ()<UITableViewDataSource,RefreshDelegate>
 {
     RefreshTableView *_table;
+    
+    UILabel *unreadNum_label;
 }
 
 @end
@@ -29,7 +33,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
     if (self.navigationController.isNavigationBarHidden) {
         
@@ -39,15 +44,27 @@
     
 }
 
+
+#pragma mark - 更新未读消息条数
+
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.isAddGestureRecognizer = YES;
+    
+    self.isShowUnreadNumLabel = YES;//左上角是否显示未读消息
+    
+    self.leftImageName = @"new_menu-2";
+    self.myTitle = @"改装案例";
+    
+    
+    UIImageView *titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"new_logo"]];
+    
+    self.navigationItem.titleView = titleView;
 
     
-    self.leftImageName = NAVIGATION_MENU_IMAGE_NAME2;
-    self.myTitle = @"改装案例";
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
 //    [self createNavigationTools];//暂时没有筛选和搜索
@@ -55,7 +72,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chooseCarType:) name:@"ChooseCarTypeNotification" object:nil];
     
     //数据展示table
-    _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT - 44)];
+    _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT - 44 + 20)];
     _table.refreshDelegate = self;
     _table.dataSource = self;
     
@@ -67,6 +84,9 @@
     _table.noDataStr = @"没有改装案例";
     
     [_table showRefreshHeader:YES];
+    
+    [self.view bringSubviewToFront:self.unreadNum_label];
+    
 }
 
 
@@ -107,6 +127,10 @@
                 
                 [weakTable reloadData:temp_arr total:total];
                 
+            }else
+            {
+                [LTools showMBProgressWithText:@"获取数据失败" addToView:self.view];
+                [weakTable loadFail];
             }
             
         }

@@ -26,7 +26,10 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO;
+    
+    if (self.navigationController.navigationBarHidden) {
+        self.navigationController.navigationBarHidden = NO;
+    }
 }
 
 - (void)viewDidLoad {
@@ -45,7 +48,10 @@
 
         self.myTitle = @"改装商家";
         self.isAddGestureRecognizer = YES;
+        
+        self.isShowUnreadNumLabel = YES;//左上角是否显示未读消息
     }
+    
     
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
@@ -167,6 +173,7 @@
 }
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     GpersonCenterCustomCell * cell = (GpersonCenterCustomCell*)[_myTableView cellForRowAtIndexPath:indexPath];
     
     BusinessListModel *model = _data_array[indexPath.row];
@@ -174,6 +181,7 @@
     home.business_id = model.id;
     home.share_title = model.storename;
     home.share_image = cell.header_imageView.image;
+    home.business_name = model.storename;
     [self.navigationController pushViewController:home animated:YES];
 }
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath

@@ -75,6 +75,20 @@ typedef void(^versionBlock)(BOOL isNewVersion,NSString *updateUrl,NSString *upda
 
 + (BOOL)cacheBoolForKey:(NSString *)key;
 
+#pragma mark - 融云用户数据
+
++ (void)rongCloudChatWithUserId:(NSString *)userId
+                       userName:(NSString *)userName
+                 viewController:(UIViewController *)viewController;
+
++ (void)cacheRongCloudUserName:(NSString *)userName forUserId:(NSString *)userId;
+
++ (NSString *)rongCloudUserNameWithUid:(NSString *)userId;
+
++ (void)cacheRongCloudUserIcon:(NSString *)iconUrl forUserId:(NSString *)userId;
+
++ (NSString *)rongCloudUserIconWithUid:(NSString *)userId;
+
 #pragma mark - 常用视图快速创建
 
 + (UITableViewCell *)cellForIdentify:(NSString *)identify

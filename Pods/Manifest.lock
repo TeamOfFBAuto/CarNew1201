@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - Baidu-Maps-iOS-SDK (2.6.0)
   - JSONKit (1.5pre)
   - MBProgressHUD (0.9)
   - MMDrawerController (0.5.7):
@@ -35,6 +36,7 @@ PODS:
   - MMDrawerController/Subclass (0.5.7):
     - MMDrawerController/Core
   - Reachability (3.1.1)
+  - RongCloudIMKit (1.3.2.1)
   - SDWebImage (3.7.1):
     - SDWebImage/Core
   - SDWebImage/Core (3.7.1)
@@ -44,10 +46,12 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.3.1)
+  - Baidu-Maps-iOS-SDK (~> 2.6.0)
   - JSONKit (~> 1.5pre)
   - MBProgressHUD (~> 0.8)
   - MMDrawerController (~> 0.5.6)
   - Reachability (~> 3.1.1)
+  - RongCloudIMKit (~> 1.3.2.1)
   - SDWebImage (~> 3.7.1)
   - UMeng (~> 2.2.1)
   - UMengFeedback (~> 1.4.1)
@@ -55,10 +59,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  Baidu-Maps-iOS-SDK: 4327f6719c8e478c933d0809d20aafa2e5a2ef97
   JSONKit: efef3bbd3372ff33f96b9c6f34cf4fe18e74ab69
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   MMDrawerController: c3ab7a318ddc7e2bcd133139c3161af08c6e1197
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
+  RongCloudIMKit: 570136b9c8f56d76f13e8dc73cae63a41df9c9f7
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   UMeng: e5b6c6a06215aeba33cb59159341ab3d6d292935
   UMengFeedback: a57656e8441ea05cf6c812927eb4d3cdb21a25ef

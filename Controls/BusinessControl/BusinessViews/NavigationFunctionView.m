@@ -35,7 +35,7 @@
     
 //    NSArray * image_array = [NSArray arrayWithObjects:[UIImage imageNamed:@"navigation_forward_image"],[UIImage imageNamed:@"navigation_praise_image"],[UIImage imageNamed:@"navigation_plus_hidden_image"],nil];
     
-    NSArray * image_array = [NSArray arrayWithObjects:[UIImage imageNamed:@"shareImage"],[UIImage imageNamed:@"shoucangImage"],[UIImage imageNamed:@"eyeImage"],nil];
+    NSArray * image_array = [NSArray arrayWithObjects:[UIImage imageNamed:@"shareImage"],[UIImage imageNamed:@"shoucangImage"],[UIImage imageNamed:@"eyeImage_2"],nil];
     
     for (int i = 0;i < 3;i++)
     {
@@ -53,8 +53,8 @@
         
         if (i == 2)
         {
-            [button setImage:[UIImage imageNamed:@"eyeImage"] forState:UIControlStateSelected];
-            [button setImage:[UIImage imageNamed:@"eyeImage_2"] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:@"eyeImage_2"] forState:UIControlStateSelected];
+            [button setImage:[UIImage imageNamed:@"eyeImage"] forState:UIControlStateNormal];
         }
         
         

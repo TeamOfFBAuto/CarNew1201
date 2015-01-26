@@ -10,6 +10,8 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "AppDelegate.h"
 
+#import "ChatViewController.h"
+#import "LogInViewController.h"
 
 @implementation LTools
 {
@@ -464,6 +466,68 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     return [defaults boolForKey:key];
 }
+
+#pragma mark - 融云用户数据
+
++ (void)rongCloudChatWithUserId:(NSString *)userId
+                       userName:(NSString *)userName
+                 viewController:(UIViewController *)viewController
+{
+    if ([userId isEqualToString:[GMAPI getUid]]) {
+        
+        [LTools showMBProgressWithText:@"您不能和自己发起会话" addToView:viewController.view];
+        
+        return;
+    }
+    
+    if ([LTools cacheBoolForKey:USER_IN]) {
+        
+        //已登录成功自己服务器
+        
+        ChatViewController *contact = [[ChatViewController alloc]init];
+        contact.currentTarget = userId;
+        contact.currentTargetName = userName;
+        contact.shopName = userName;
+        contact.portraitStyle = RCUserAvatarCycle;
+        contact.enableSettings = NO;
+        contact.conversationType = ConversationType_PRIVATE;
+//        contact.enablePOI = NO;
+        [LTools cacheRongCloudUserName:userName forUserId:userId];
+        
+        [viewController.navigationController pushViewController:contact animated:YES];
+        
+    }else
+    {
+        LogInViewController * logIn = [[LogInViewController alloc] init];
+        UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
+        [viewController presentViewController:navc animated:YES completion:nil];
+    }
+}
+
++ (void)cacheRongCloudUserName:(NSString *)userName forUserId:(NSString *)userId
+{
+    NSString *key = [NSString stringWithFormat:@"userName_%@",userId];
+    [LTools cache:userName ForKey:key];
+}
+
++ (NSString *)rongCloudUserNameWithUid:(NSString *)userId
+{
+    NSString *key = [NSString stringWithFormat:@"userName_%@",userId];
+    return [LTools cacheForKey:key];
+}
+
++ (void)cacheRongCloudUserIcon:(NSString *)iconUrl forUserId:(NSString *)userId
+{
+    NSString *key = [NSString stringWithFormat:@"userIcon_%@",userId];
+    [LTools cache:iconUrl ForKey:key];
+}
+
++ (NSString *)rongCloudUserIconWithUid:(NSString *)userId
+{
+    NSString *key = [NSString stringWithFormat:@"userIcon_%@",userId];
+    return [LTools cacheForKey:key];
+}
+
 #pragma mark - 常用视图快速创建
 
 

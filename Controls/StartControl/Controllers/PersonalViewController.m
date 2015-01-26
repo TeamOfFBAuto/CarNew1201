@@ -39,6 +39,10 @@
 #import "AnliViewCell.h"
 #import "GaiZhuangRefreshTableView.h"
 
+#import "MessageViewController.h"
+
+#import "RCIM.h"
+
 typedef enum{
     GANLI = 0,//案例
     GCHANPIN ,//产品
@@ -87,6 +91,8 @@ typedef enum{
     UIView *_hudView;//浮层view
     
     BOOL _isLoadUserInfoSuccess;
+    
+    UILabel *unreadLabel;//未读消息label
 
     
 }
@@ -120,12 +126,17 @@ typedef enum{
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     }
     
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     _isLoadUserInfoSuccess = NO;
     
     
     
 }
-
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -174,7 +185,7 @@ typedef enum{
     [gBackBtn setImage:[UIImage imageNamed:NAVIGATION_MENU_IMAGE_NAME] forState:UIControlStateNormal];
     [gBackBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 10, 15)];
     gBackBtn.adjustsImageWhenHighlighted = NO;
-    [gBackBtn setFrame:CGRectMake(0, 15, 80.00/320*ALL_FRAME_WIDTH, 80.00/320*ALL_FRAME_WIDTH)];
+    [gBackBtn setFrame:CGRectMake(0,0, 80.00/320*ALL_FRAME_WIDTH, 80.00/320*ALL_FRAME_WIDTH)];
     [gBackBtn addTarget:self action:@selector(gGoBack) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:gBackBtn];
     
@@ -377,7 +388,25 @@ typedef enum{
     [_upThreeViewBackGroundView addSubview:face_quan_view];
     
     
+    //未读消息view
     
+    UIButton *unread_btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    unread_btn.frame = CGRectMake(0, 0, 62, 127 / 2.f);
+    [unread_btn setImage:[UIImage imageNamed:@"xiaoxi_icon"] forState:UIControlStateNormal];
+    [_upThreeViewBackGroundView addSubview:unread_btn];
+    unread_btn.center = CGPointMake(DEVICE_WIDTH / 4.f * 3 + 10, face_quan_view.centerY - 2);
+    [unread_btn addTarget:self action:@selector(clickToMessageList:) forControlEvents:UIControlEventTouchUpInside];
+    
+    //self.unreadNum_label 只需要指向 需要显示 未读消息的label就可以,控制显示数字在 父类中
+    self.unreadNum_label = [[UILabel alloc]initWithFrame:CGRectMake(-5, 27, 14, 14)];
+    self.unreadNum_label.backgroundColor = [UIColor colorWithHexString:@"fe0000"];
+    self.unreadNum_label.layer.cornerRadius = 7;
+    self.unreadNum_label.textColor = [UIColor whiteColor];
+    self.unreadNum_label.font = [UIFont systemFontOfSize:9];
+    self.unreadNum_label.clipsToBounds = YES;
+    self.unreadNum_label.textAlignment = NSTextAlignmentCenter;
+    [unread_btn addSubview:self.unreadNum_label];
+    self.unreadNum_label.center = CGPointMake(unread_btn.width / 2.f + 16, unread_btn.height / 2.f -14);
     
     
     //头像
@@ -610,6 +639,15 @@ typedef enum{
     }
     
     
+}
+
+#pragma mark - 事件处理
+
+- (void)clickToMessageList:(UIButton *)btn
+{
+    MessageViewController *messageList = [[MessageViewController alloc]init];
+    messageList.isPush = YES;
+    [self.navigationController pushViewController:messageList animated:YES];
 }
 
 

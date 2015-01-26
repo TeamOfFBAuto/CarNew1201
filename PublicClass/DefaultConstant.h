@@ -84,6 +84,8 @@ alpha:(a)]
 ///没网啦
 #define NOTIFICATION_NO_NETWORK @"noNetWork"
 
+#define NOTIFICATION_UNREADNUM @"unreadMessageNum"//未读消息条数通知
+
 #define NOTIFICATION_REPLY @"reply"
 #define DEVICETOKEN @"pushdevicetoken"
 
@@ -91,6 +93,16 @@ alpha:(a)]
 #pragma mark - 所有接口 -************************************************************
 
 #define BASE_URL @"http://gztest.fblife.com/"
+
+
+//融云
+
+//是否登录成功
+#define RONGCLOUD_LOGIN_STATE @"rongcloudLoginState"
+#define RONGCLOUD_TOKEN @"rongcloudToken"//融云token
+
+//token
+#define RONCLOUD_GET_TOKEN @"http://gztest.fblife.com/gettoken.php?uid=%@&name=%@&photo=%@"//获取融云 token
 
 //注册
 #define SENDPHONENUMBER @"http://bbs.fblife.com/bbsapinew/register.php?type=phone&step=1&telphone=%@&keycode=e2e3420683&datatype=json"
@@ -110,6 +122,8 @@ alpha:(a)]
 #define BUSINESS_LIST_URL @"index.php?c=interface&a=getStore&storeid=%@&ps=20&page=%d&fbtype=json"
 //登录
 #define G_LOGIN @"http://gztest.fblife.com/index.php?c=interface&a=dologin&fbtype=json"
+///商家详情分享出去的链接地址
+#define BUSINESS_SHARE_URL @"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=%@"
 ///商家详情HTML5地址
 #define BUSINESS_DETAIL_HTML5_URL @"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=%@"
 ///商家详情接口
@@ -156,7 +170,8 @@ alpha:(a)]
 #define G_SEARCH_PEIJIAN_GUANJIANZI @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&keyword=%@"
 //按商家搜索配件
 #define G_SEARCH_PEIJIAN_SHANGJIA @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&storeid=%@"
-
+//配件详情分享地址
+#define PEIJIAN_SHARE_URL @"http://gztest.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&peijianxiangqing168"
 //配件详情HTML5地址
 #define ANLI_PEIJIAN_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&authkey=%@"
 ///配件详情接口
