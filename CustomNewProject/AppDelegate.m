@@ -57,6 +57,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+
+    
     
     NSLog(@"屏幕宽度 %f  %f",ALL_FRAME_WIDTH,ALL_FRAME_HEIGHT);
     
@@ -125,7 +127,12 @@
     _picVC = [[PicViewController alloc] init];
     _picNavc = [[UINavigationController alloc] initWithRootViewController:_picVC];
     
+    [LTools cache:NSStringFromClass([_picVC class]) ForKey:SHOWCONTROLLER];
+    
     PHMenuViewController   * menuController = [[PHMenuViewController alloc] initWithRootViewController:_picNavc atIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    
+    self.root_menu = menuController;
+    
     UINavigationController * menu_nav = [[UINavigationController alloc] initWithRootViewController:menuController];
     self.window.rootViewController = menu_nav;
     
@@ -256,6 +263,14 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = [[RCIM sharedRCIM] getTotalUnreadCount];
+    
+    //_picVC
+    
+    UIViewController *root = self.window.rootViewController;
+    
+//    if (root isKindOfClass:<#(__unsafe_unretained Class)#>) {
+//        <#statements#>
+//    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -284,6 +299,14 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [UMSocialSnsService  applicationDidBecomeActive];
+    
+
+    NSLog(@"applicationDidBecomeActive-%@",self.root_menu.currentIndexPath);
+    
+    int index = self.root_menu.currentIndexPath.row;
+    if (index == 0) {
+        [application setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    }
     
     [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_UNREADNUM object:nil];
 }

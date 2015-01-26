@@ -89,6 +89,8 @@ alpha:(a)]
 #define NOTIFICATION_REPLY @"reply"
 #define DEVICETOKEN @"pushdevicetoken"
 
+#define SHOWCONTROLLER @"currentController"//
+
 
 #pragma mark - 所有接口 -************************************************************
 
