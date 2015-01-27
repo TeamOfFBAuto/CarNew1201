@@ -213,6 +213,8 @@ typedef enum{
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loadNewData) name:G_USERCENTERLOADUSERINFO object:nil];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(clearPersonData) name:NOTIFICATION_LOGOUT_SUCCESS object:nil];
+    
     
     
 }
@@ -222,6 +224,14 @@ typedef enum{
     [self changeNumAndTitleColorWithTag:11];
 }
 
+
+//清数据
+-(void)clearPersonData{
+    for (UIView *view in self.view.subviews) {
+        [view removeFromSuperview];
+    }
+    [_tableView reloadData];
+}
 
 
 
@@ -1158,6 +1168,7 @@ typedef enum{
         detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
         detail.storeName = aModel.sname;
         detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
+        detail.storeId = aModel.uid;
         
         [self.navigationController pushViewController:detail animated:YES];
     }else if (_cellType == GCHANPIN){//产品
@@ -1172,6 +1183,7 @@ typedef enum{
         detail.shareImage = [LTools sd_imageForUrl:model.pichead];
         detail.storeName = model.username;
         detail.storeImage = [LTools sd_imageForUrl:model.pichead];
+//        detail.storeId = //// uid
         [self.navigationController pushViewController:detail animated:YES];
     }
     

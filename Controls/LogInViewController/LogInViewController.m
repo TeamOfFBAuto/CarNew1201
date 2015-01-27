@@ -334,6 +334,7 @@
             [bself checkFBState];
             
 //            //发通知
+            [[NSNotificationCenter defaultCenter]postNotificationName:G_USERCENTERLOADUSERINFO object:nil];
 //            [[NSNotificationCenter defaultCenter]postNotificationName:@"gdengluchenggong" object:nil];
             
             }else{
@@ -395,6 +396,9 @@
         {
             [bself activationFB];
         }
+        
+        
+        
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         _gloginView.userInteractionEnabled = YES;
