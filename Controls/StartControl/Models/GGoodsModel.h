@@ -25,6 +25,7 @@
 @property(nonatomic,strong)NSString *com_num;
 @property(nonatomic,strong)NSString *id;
 
+@property(nonatomic,strong)NSString *uid;
 
 -(id)initWithDictionary:(NSDictionary *)dic;
 

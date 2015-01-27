@@ -227,9 +227,14 @@ typedef enum{
 
 //清数据
 -(void)clearPersonData{
-    for (UIView *view in self.view.subviews) {
-        [view removeFromSuperview];
-    }
+    [_topImv setImage:[UIImage imageNamed:@"gBanner.jpg"]];
+    [_faceImv setImage:[UIImage imageNamed:HEADER_DEFAULT_IMAGE]];
+    _nameLabel.text = @"";
+    _anliNumLabel.text = 0;
+    _chanpinNumLabel.text = 0;
+    _dianpuNumLabel.text = 0;
+    _dataArray = nil;
+    
     [_tableView reloadData];
 }
 
@@ -1185,7 +1190,7 @@ typedef enum{
         detail.shareImage = [LTools sd_imageForUrl:model.pichead];
         detail.storeName = model.username;
         detail.storeImage = [LTools sd_imageForUrl:model.pichead];
-//        detail.storeId = //// uid
+        detail.storeId = model.uid;
         [self.navigationController pushViewController:detail animated:YES];
     }
     
