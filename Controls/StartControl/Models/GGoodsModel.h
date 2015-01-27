@@ -26,6 +26,7 @@
 @property(nonatomic,strong)NSString *id;
 
 @property(nonatomic,strong)NSString *uid;
+@property(nonatomic,strong)NSString *storename;
 
 -(id)initWithDictionary:(NSDictionary *)dic;
 

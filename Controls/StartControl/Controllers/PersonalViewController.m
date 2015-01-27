@@ -1190,7 +1190,7 @@ typedef enum{
         detail.detailType = Detail_Peijian;
         detail.shareDescrition = model.username;
         detail.shareImage = [LTools sd_imageForUrl:model.pichead];
-        detail.storeName = model.username;
+        detail.storeName = model.storename;
         detail.storeId = model.uid;
         [self.navigationController pushViewController:detail animated:YES];
     }
