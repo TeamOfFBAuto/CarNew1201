@@ -110,12 +110,19 @@
     
     unreadNum = (unreadNum >= 0) ? unreadNum : 0;
     
+    NSLog(@"unreadNum -->%d",unreadNum);
+    
+    if ([LTools cacheBoolForKey:USER_IN] == NO) {
+        
+        unreadNum = 0;
+    }
+    
     if (unreadNum == 0) {
         
         _unreadNum_label.hidden = YES;
     }else
     {
-        _unreadNum_label.hidden =NO;
+        _unreadNum_label.hidden = NO;
     }
     
     dispatch_async(dispatch_get_main_queue(), ^{

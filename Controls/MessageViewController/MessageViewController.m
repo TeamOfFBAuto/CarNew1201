@@ -42,7 +42,16 @@
 
     }
     
-//    [RCIMClient sharedRCIMClient]
+    int sum = [[RCIMClient sharedRCIMClient] getConversationList].count;
+    if (sum > 0) {
+        
+        
+    }else
+    {
+        
+    }
+    
+    NSLog(@"会话列表数 %d",sum);
     
 }
 
