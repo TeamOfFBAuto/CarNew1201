@@ -32,6 +32,7 @@
         self.updatetime = [dic stringValueForKey:@"updatetime"];
         self.com_num = [dic stringValueForKey:@"com_num"];
         self.id = [dic stringValueForKey:@"id"];
+        self.uid = [dic stringValueForKey:@"uid"];
     }
     return self;
 }

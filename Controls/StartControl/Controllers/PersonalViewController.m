@@ -259,6 +259,9 @@ typedef enum{
         [_faceImv setImage:[GMAPI getUserFaceImage]];
     }
     
+    
+    
+    
     GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:api isPost:NO postData:nil];
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
         NSLog(@"请求个人信息成功");
@@ -1185,11 +1188,9 @@ typedef enum{
         AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
         detail.anli_id = model.id;
         detail.detailType = Detail_Peijian;
-        detail.storeName = model.title;
         detail.shareDescrition = model.username;
         detail.shareImage = [LTools sd_imageForUrl:model.pichead];
         detail.storeName = model.username;
-        detail.storeImage = [LTools sd_imageForUrl:model.pichead];
         detail.storeId = model.uid;
         [self.navigationController pushViewController:detail animated:YES];
     }
