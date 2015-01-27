@@ -226,6 +226,7 @@
             detail.detailType = Detail_Anli;
             detail.storeImage = self.share_image;
             detail.storeName = self.business_name;
+            detail.storeId = self.business_id;
             [self.navigationController pushViewController:detail animated:YES];
         }
         
@@ -245,7 +246,7 @@
             detail.storeName = self.business_name;
             detail.detailType = Detail_Peijian;
             detail.storeImage = self.share_image;
-            
+            detail.storeId = self.business_id;
             [self.navigationController pushViewController:detail animated:YES];
 
         }

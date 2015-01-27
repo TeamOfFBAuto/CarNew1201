@@ -518,7 +518,7 @@
         userName = [GMAPI getUsername];
     }
     
-    if (userName.length == 0) {
+    if ([userName isKindOfClass:[NSString class]] && userName.length == 0) {
         NSString *url = [NSString stringWithFormat:G_USERINFO,userId];
         LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
         [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
@@ -527,7 +527,7 @@
             
             NSString *name = dic[@"username"];
             
-            if (name.length > 0) {
+            if ([name isKindOfClass:[NSString class]]) {
                 
                 [LTools cacheRongCloudUserName:name forUserId:userId];
             }
