@@ -359,31 +359,29 @@
                          delegate:(id<RCSendMessageDelegate>)delegate
                            object:(id)object;
 /**
- 获取会话列表。
- 
- 会话列表按照时间从前往后排列，如果有置顶会话，则置顶会话在前。
- 
- @return 会话列表，返回 RCConversation 数组。
+ *  获取会话列表,会话列表按照时间从前往后排列，如果有置顶会话，则置顶会话在前。
+ *
+ *  @param conversationTypes 会话类型,会话类型枚举转换成NSNumber数组
+ *
+ *  @return 会话列表
  */
-@property (NS_NONATOMIC_IOSONLY, getter=getConversationList, readonly, copy) NSArray *conversationList;
+-(NSArray*)getConversationList:(NSArray*)conversationTypes;
 
 /**
- *  清空会话列表
+ *  清空会话列表.
  *
- *  @param conversationtype 会话类型
- *
- *  @param ... 不定参数
+ *  @param conversationtypes 会话类型,会话类型枚举转换成NSNumber数组
  *
  *  @return 操作结果
  */
--(BOOL)clearConversations:(RCConversationType)conversationtype,...;
+-(BOOL)clearConversations:(NSArray *)conversationtypes;
 
 /**
  获取所有未读消息数。
  
  @return 未读消息数。
  */
-@property (NS_NONATOMIC_IOSONLY, getter=getTotalUnreadCount, readonly) int totalUnreadCount;
+@property (NS_NONATOMIC_IOSONLY, getter=getTotalUnreadCount, readonly) NSInteger totalUnreadCount;
 
 /**
  获取来自某用户（某会话）的未读消息数。
@@ -393,7 +391,7 @@
  
  @return 未读消息数。
  */
--(int)getUnreadCount:(RCConversationType)conversationType targetId:(NSString*)targetId;
+-(NSInteger)getUnreadCount:(RCConversationType)conversationType targetId:(NSString*)targetId;
 
 /**
  设置获取用户信息的获取器，供 RongIM 调用获取用户名称和头像信息。
@@ -518,7 +516,7 @@
  @param conversationType 会话类型
  @param targetId   会话 Id
  */
--(void)removeConversation:(RCConversationType)conversationType targetId:(NSString *)targetId;
+-(BOOL)removeConversation:(RCConversationType)conversationType targetId:(NSString *)targetId;
 
 /**
  清除指定会话的会话记录
@@ -526,7 +524,7 @@
  @param conversationType 会话类型
  @param targetId   会话 Id
  */
--(void)clearMessages:(RCConversationType)conversationType targetId:(NSString *)targetId;
+-(BOOL)clearMessages:(RCConversationType)conversationType targetId:(NSString *)targetId;
 
 /**
  *  设置某一会话为置顶或者取消置顶。

@@ -17,6 +17,8 @@
 @interface GCaseModel : NSObject
 
 @property (nonatomic,retain)NSString *id;
+@property (nonatomic,retain)NSString *uid;
+
 @property(nonatomic,strong)NSString *title;
 @property(nonatomic,strong)NSString *pichead;
 @property(nonatomic,strong)NSString *province;

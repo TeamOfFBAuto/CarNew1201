@@ -11,6 +11,7 @@
 @interface AnliModel : BaseModel
 
 @property (nonatomic,retain)NSString *id;
+@property (nonatomic,retain)NSString *uid;
 @property (nonatomic,retain)NSString *title;//案例名称
 @property (nonatomic,retain)NSString *pichead;//图片路径
 @property (nonatomic,retain)NSString *province;

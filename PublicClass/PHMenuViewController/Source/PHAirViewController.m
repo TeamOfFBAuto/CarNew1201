@@ -143,6 +143,11 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
     
     unreadNum = (unreadNum >= 0) ? unreadNum : 0;
     
+    if ([LTools cacheBoolForKey:USER_IN] == NO) {
+        
+        unreadNum = 0;
+    }
+    
     if (unreadNum == 0) {
         
         _unreadNum_label.hidden = YES;

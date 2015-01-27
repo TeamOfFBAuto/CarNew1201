@@ -16,6 +16,8 @@
 #import "LogInViewController.h"
 #import "MessageViewController.h"
 
+#import "NewLogInView.h"
+
 @implementation PHMenuViewController
 {
     UINavigationController *_picNav;
@@ -139,6 +141,14 @@
 
 -(void)pushToLogInViewController
 {
+    NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:loginView];
+    
+    return;
+    
+    
+    
     LogInViewController * logIn = [[LogInViewController alloc]init];
     UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
     [self presentViewController:navc animated:YES completion:nil];

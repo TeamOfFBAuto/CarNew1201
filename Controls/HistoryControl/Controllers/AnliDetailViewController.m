@@ -493,7 +493,7 @@
                     [LTools showMBProgressWithText:@"暂无商家电话信息" addToView:bself.view];
                 }
                  */
-                [LTools rongCloudChatWithUserId:bself.anli_id userName:bself.storeName viewController:bself];
+                [LTools rongCloudChatWithUserId:bself.storeId userName:bself.storeName viewController:bself];
             }
                 break;
                 
@@ -658,6 +658,10 @@
             detail.detailType = Detail_Peijian;
     
             detail.storeImage = self.storeImage;
+            
+            detail.storeId = self.storeId;
+            
+            detail.storeName = self.storeName;
             
             [self.navigationController pushViewController:detail animated:YES];
             

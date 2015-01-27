@@ -337,6 +337,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"postSectionCollectionArray" object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"forumSectionCollectionArray" object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_LOGOUT_SUCCESS object:nil];
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_UNREADNUM object:nil];
         
         [user synchronize];
     }else

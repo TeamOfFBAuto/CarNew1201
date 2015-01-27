@@ -31,6 +31,7 @@ typedef enum {
 
 @property(nonatomic,retain)NSString *storeName;//店铺名称
 @property(nonatomic,retain)UIImage *storeImage;//店铺图标
+@property(nonatomic,retain)NSString *storeId;//商家id
 
 @property(nonatomic,assign)BOOL isFromAnli;//是否是来自案例详情页
 

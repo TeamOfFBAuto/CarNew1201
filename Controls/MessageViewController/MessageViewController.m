@@ -41,6 +41,7 @@
         [self.view addGestureRecognizer:swipe];
 
     }
+
         
 }
 
@@ -141,7 +142,7 @@
     [_noDataView addSubview:titleLabel];
     [_noDataView addSubview:xiaxian];
     
-    [self.conversationListView setBackgroundView:_noDataView];
+    [self.view addSubview:_noDataView];
     
     
 }
@@ -174,10 +175,10 @@
  *  隐藏 默认背景图
  */
 
--(BOOL)showCustomEmptyBackView
-{
-    return NO;
-}
+//-(BOOL)showCustomEmptyBackView
+//{
+//    return YES;
+//}
 
 -(void)leftButtonTap:(UIButton *)sender
 {

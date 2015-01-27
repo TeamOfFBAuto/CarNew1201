@@ -105,6 +105,12 @@ typedef void (^didTapMessageHandler)(RCMessage *metadata);
 -(void)drag4ResetDefaultBottomBarStatus;
 
 /**
+ * @override, 子类需要重写来实现简单监听发送消息，此方法不用于消息处理
+ * 监听发送消息，可以获取UI界面发送的消息
+ */
+-(void)willSendMessage:(RCMessage *)message;
+
+/**
  *  导航左面按钮点击事件
  */
 -(void)leftBarButtonItemPressed:(id)sender;
@@ -168,5 +174,11 @@ typedef void (^didTapMessageHandler)(RCMessage *metadata);
  *  @param URL URL description
  */
 - (void)openURL:(NSURL*)URL;
+/**
+ *  是否隐藏输入框
+ *
+ *  @param hiden 是否隐藏
+ */
+- (void)setChatSessionInputBarViewHidden:(BOOL)hidden;
 
 @end

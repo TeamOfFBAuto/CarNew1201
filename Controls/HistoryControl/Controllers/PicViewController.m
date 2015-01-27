@@ -264,7 +264,7 @@
     detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
     detail.storeName = aModel.sname;
     detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
-    
+    detail.storeId = aModel.uid;
     [self.navigationController pushViewController:detail animated:YES];
     
     [_table deselectRowAtIndexPath:indexPath animated:YES];

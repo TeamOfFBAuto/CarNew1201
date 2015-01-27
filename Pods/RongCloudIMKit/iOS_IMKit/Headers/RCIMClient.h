@@ -86,13 +86,13 @@
 -(void)setDeviceToken:(NSData*)deviceToken;
 
 /**
- *  获取会话列表。
+ *  获取会话列表,会话列表按照时间从前往后排列，如果有置顶会话，则置顶会话在前。
  *
- *  会话列表按照时间从前往后排列，如果有置顶会话，则置顶会话在前。
+ *  @param conversationTypes 会话类型,会话类型枚举转换成NSNumber数组
  *
- *  @return 会话列表。
+ *  @return 会话列表
  */
-@property (NS_NONATOMIC_IOSONLY, getter=getConversationList, readonly, copy) NSArray *conversationList;
+-(NSArray*)getConversationList:(NSArray*)conversationTypes;
 
 /**
  *  获取会话信息。
@@ -132,7 +132,7 @@
  *
  *  @return 未读消息数。
  */
-@property (NS_NONATOMIC_IOSONLY, getter=getTotalUnreadCount, readonly) int totalUnreadCount;
+-(NSInteger)getTotalUnreadCount;
 
 /**
  *  获取来自某用户（某会话）的未读消息数。
@@ -142,7 +142,7 @@
  *
  *  @return 未读消息数。
  */
--(int)getUnreadCount:(RCConversationType)conversationType targetId:(NSString*)targetId;
+-(NSInteger)getUnreadCount:(RCConversationType)conversationType targetId:(NSString*)targetId;
 
 /**
  *  获取某会话类型的未读消息数.
@@ -151,7 +151,7 @@
  *
  *  @return 未读消息数。
  */
--(int)getUnreadCount:(NSArray*)conversationTypes;
+-(NSInteger)getUnreadCount:(NSArray*)conversationTypes;
 
 /**
  *  获取最新消息记录。
@@ -219,15 +219,13 @@
 -(BOOL)clearMessagesUnreadStatus:(RCConversationType)conversationType targetId:(NSString*)targetId;
 
 /**
- *  清空会话列表
+ *  清空会话列表.
  *
- *  @param conversationtype 会话类型
- *
- *  @param ... 不定参数
+ *  @param conversationtypes 会话类型,会话类型枚举转换成NSNumber数组。
  *
  *  @return 操作结果
  */
--(BOOL)clearConversations:(RCConversationType)conversationtype,...;
+-(BOOL)clearConversations:(NSArray *)conversationtypes;
 
 /**
  *  设置消息的附加信息，此信息只保存在本地。

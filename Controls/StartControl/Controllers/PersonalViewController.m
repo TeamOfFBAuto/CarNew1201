@@ -213,6 +213,8 @@ typedef enum{
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loadNewData) name:G_USERCENTERLOADUSERINFO object:nil];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(clearPersonData) name:NOTIFICATION_LOGOUT_SUCCESS object:nil];
+    
     
     
 }
@@ -222,6 +224,19 @@ typedef enum{
     [self changeNumAndTitleColorWithTag:11];
 }
 
+
+//清数据
+-(void)clearPersonData{
+    [_topImv setImage:[UIImage imageNamed:@"gBanner.jpg"]];
+    [_faceImv setImage:[UIImage imageNamed:HEADER_DEFAULT_IMAGE]];
+    _nameLabel.text = @"";
+    _anliNumLabel.text = 0;
+    _chanpinNumLabel.text = 0;
+    _dianpuNumLabel.text = 0;
+    _dataArray = nil;
+    
+    [_tableView reloadData];
+}
 
 
 
@@ -243,6 +258,9 @@ typedef enum{
     if ([GMAPI getUserFaceImage]) {
         [_faceImv setImage:[GMAPI getUserFaceImage]];
     }
+    
+    
+    
     
     GmPrepareNetData *cc = [[GmPrepareNetData alloc]initWithUrl:api isPost:NO postData:nil];
     [cc requestCompletion:^(NSDictionary *result, NSError *erro) {
@@ -1146,7 +1164,9 @@ typedef enum{
         home.business_id = model.id;
         home.share_title = model.storename;
         home.share_image = cell.header_imageView.image;
+        home.business_name = model.storename;
         [self.navigationController pushViewController:home animated:YES];
+        
     }else if (_cellType == GANLI){//案例
         
         GCaseModel *aModel = [_tableView.dataArray objectAtIndex:indexPath.row];
@@ -1158,6 +1178,7 @@ typedef enum{
         detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
         detail.storeName = aModel.sname;
         detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
+        detail.storeId = aModel.uid;
         
         [self.navigationController pushViewController:detail animated:YES];
     }else if (_cellType == GCHANPIN){//产品
@@ -1167,11 +1188,10 @@ typedef enum{
         AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
         detail.anli_id = model.id;
         detail.detailType = Detail_Peijian;
-        detail.storeName = model.title;
         detail.shareDescrition = model.username;
         detail.shareImage = [LTools sd_imageForUrl:model.pichead];
-        detail.storeName = model.username;
-        detail.storeImage = [LTools sd_imageForUrl:model.pichead];
+        detail.storeName = model.storename;
+        detail.storeId = model.uid;
         [self.navigationController pushViewController:detail animated:YES];
     }
     

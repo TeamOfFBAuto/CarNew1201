@@ -443,15 +443,6 @@
     }];
 }
 
-/**
- *  聊天登录失败
- */
-- (void)chatLoginFailInfo:(NSString *)errInfo
-{
-    UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"" message:errInfo delegate:self cancelButtonTitle:@"取消" otherButtonTitles: @"确定",nil];
-    alert.tag = 2001;
-    [alert show];
-}
 
 - (void)rongCloudDefaultLoginWithToken:(NSString *)loginToken
 {
@@ -487,11 +478,6 @@
     
 }
 
--(void)viewDidDisappear:(BOOL)animated
-{
-    [[RCIM sharedRCIM] setConnectionStatusDelegate:nil];
-}
-
 #pragma mark - RCIMReceiveMessageDelegate
 
 -(void)didReceivedMessage:(RCMessage *)message left:(int)nLeft
@@ -518,7 +504,7 @@
         userName = [GMAPI getUsername];
     }
     
-    if (userName.length == 0) {
+    if ([userName isKindOfClass:[NSString class]] && userName.length == 0) {
         NSString *url = [NSString stringWithFormat:G_USERINFO,userId];
         LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
         [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
@@ -527,7 +513,7 @@
             
             NSString *name = dic[@"username"];
             
-            if (name.length > 0) {
+            if ([name isKindOfClass:[NSString class]] && name.length > 0) {
                 
                 [LTools cacheRongCloudUserName:name forUserId:userId];
             }
@@ -546,17 +532,6 @@
     return completion(userInfo);
 }
 
-- (void)getUserInfoWithUserId:(NSString *)userId
-{
-    NSString *url = [NSString stringWithFormat:G_USERINFO,userId];
-    LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
-    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
-        
-        
-    } failBlock:^(NSDictionary *failDic, NSError *erro) {
-        
-    }];
-}
 
 #pragma mark - RCIMConnectionStatusDelegate <NSObject>
 
@@ -564,11 +539,17 @@
     if (ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT == status) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"" message:@"您已下线，重新连接？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles: @"确定",nil];
-            alert.tag = 2000;
-            [alert show];
+            
+            NSLog(@"----->%d %d",status,self.alert.isVisible);
+//            if ([self.alert isVisible] == NO) {
+//                
+//                self.alert= [[UIAlertView alloc]initWithTitle:@"" message:@"您已下线，重新连接？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles: @"确定",nil];
+//                self.alert.tag = 2000;
+//                [self.alert show];
+//            }
+            
         });
-        
+
 //        [LTools cacheBool:NO ForKey:LOGIN_RONGCLOUD_STATE];
     }
 }

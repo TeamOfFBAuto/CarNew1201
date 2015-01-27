@@ -134,6 +134,13 @@
 		5653E5221A3AE91A00CEB749 /* navigation_praised_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5653E5211A3AE91A00CEB749 /* navigation_praised_image@2x.png */; };
 		5653E5241A3AE9D200CEB749 /* navigation_back_jiantou_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5653E5231A3AE9D200CEB749 /* navigation_back_jiantou_image@2x.png */; };
 		5659D42C1A71EF9600D8799C /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5659D42B1A71EF9600D8799C /* MessageViewController.m */; };
+		565B3FDB1A766A1100BBA1F7 /* NewLogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = 565B3FDA1A766A1100BBA1F7 /* NewLogInView.m */; };
+		565B3FE11A766D6D00BBA1F7 /* LogInView_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565B3FDE1A766D6D00BBA1F7 /* LogInView_close@2x.png */; };
+		565B3FE21A766D6D00BBA1F7 /* LoginView_password_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565B3FDF1A766D6D00BBA1F7 /* LoginView_password_image@2x.png */; };
+		565B3FE31A766D6D00BBA1F7 /* LoginView_username_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565B3FE01A766D6D00BBA1F7 /* LoginView_username_image@2x.png */; };
+		565B3FE51A76778F00BBA1F7 /* Login_background_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565B3FE41A76778F00BBA1F7 /* Login_background_image@2x.png */; };
+		565B3FE81A7686CA00BBA1F7 /* Loginview_up_background_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565B3FE61A7686CA00BBA1F7 /* Loginview_up_background_image@2x.png */; };
+		565B3FE91A7686CA00BBA1F7 /* loginview_bottom_background_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565B3FE71A7686CA00BBA1F7 /* loginview_bottom_background_image@2x.png */; };
 		565EE8B61A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A31A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		565EE8B71A2C3DEE0063CAA3 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A61A2C3DEE0063CAA3 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		565EE8B81A2C3DEE0063CAA3 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565EE8A81A2C3DEE0063CAA3 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -470,6 +477,14 @@
 		5653E5231A3AE9D200CEB749 /* navigation_back_jiantou_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_back_jiantou_image@2x.png"; sourceTree = "<group>"; };
 		5659D42A1A71EF9600D8799C /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		5659D42B1A71EF9600D8799C /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		565B3FD91A766A1100BBA1F7 /* NewLogInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLogInView.h; sourceTree = "<group>"; };
+		565B3FDA1A766A1100BBA1F7 /* NewLogInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLogInView.m; sourceTree = "<group>"; };
+		565B3FDE1A766D6D00BBA1F7 /* LogInView_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogInView_close@2x.png"; sourceTree = "<group>"; };
+		565B3FDF1A766D6D00BBA1F7 /* LoginView_password_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginView_password_image@2x.png"; sourceTree = "<group>"; };
+		565B3FE01A766D6D00BBA1F7 /* LoginView_username_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginView_username_image@2x.png"; sourceTree = "<group>"; };
+		565B3FE41A76778F00BBA1F7 /* Login_background_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_background_image@2x.png"; sourceTree = "<group>"; };
+		565B3FE61A7686CA00BBA1F7 /* Loginview_up_background_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loginview_up_background_image@2x.png"; sourceTree = "<group>"; };
+		565B3FE71A7686CA00BBA1F7 /* loginview_bottom_background_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginview_bottom_background_image@2x.png"; sourceTree = "<group>"; };
 		565EE8A21A2C3DEE0063CAA3 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		565EE8A31A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		565EE8A41A2C3DEE0063CAA3 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -1132,6 +1147,7 @@
 		560CB53D1A2719DE0067F7AA /* LogInViewController */ = {
 			isa = PBXGroup;
 			children = (
+				565B3FD81A7669FD00BBA1F7 /* NewLogInViews */,
 				194015F31A7639EF006E6710 /* LoginView */,
 				56CC071B1A302C3C0014F285 /* htmlsource */,
 				569FFEEA1A272EA6008A02A6 /* LogInViewController.h */,
@@ -1322,6 +1338,15 @@
 			path = MessageViewController;
 			sourceTree = "<group>";
 		};
+		565B3FD81A7669FD00BBA1F7 /* NewLogInViews */ = {
+			isa = PBXGroup;
+			children = (
+				565B3FD91A766A1100BBA1F7 /* NewLogInView.h */,
+				565B3FDA1A766A1100BBA1F7 /* NewLogInView.m */,
+			);
+			path = NewLogInViews;
+			sourceTree = "<group>";
+		};
 		565EE8A11A2C3DEE0063CAA3 /* ASIHttpRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -1509,6 +1534,12 @@
 		569FFEEF1A2737C4008A02A6 /* LogInImages */ = {
 			isa = PBXGroup;
 			children = (
+				565B3FE61A7686CA00BBA1F7 /* Loginview_up_background_image@2x.png */,
+				565B3FE71A7686CA00BBA1F7 /* loginview_bottom_background_image@2x.png */,
+				565B3FE41A76778F00BBA1F7 /* Login_background_image@2x.png */,
+				565B3FDE1A766D6D00BBA1F7 /* LogInView_close@2x.png */,
+				565B3FDF1A766D6D00BBA1F7 /* LoginView_password_image@2x.png */,
+				565B3FE01A766D6D00BBA1F7 /* LoginView_username_image@2x.png */,
 				E3B2DC681A43FF3F00607B11 /* logo@2x.png */,
 				567B13A91A2C6B8C003A3C59 /* fanhui_image@2x.png */,
 				565EE8D81A2C50950063CAA3 /* logIn_close@2x.png */,
@@ -1846,10 +1877,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				565B3FE81A7686CA00BBA1F7 /* Loginview_up_background_image@2x.png in Resources */,
 				56621D511A28605B00310A48 /* send1sss@2x.png in Resources */,
 				1380232A1A2C69CF0053BDDA /* anli_daohang@2x.png in Resources */,
 				5653E5161A39A1E300CEB749 /* 20130502_pinglun@2x.png in Resources */,
 				565321661A5A79E700E43F80 /* shuru-446_60@2x.png in Resources */,
+				565B3FE51A76778F00BBA1F7 /* Login_background_image@2x.png in Resources */,
 				563B32221A382AF900015088 /* emotion.plist in Resources */,
 				1372EAAF1A73805A00D54F39 /* new_menu-2@2x.png in Resources */,
 				13F9D4BF1A2DA951002A6904 /* UMSCommentDetailController.xib in Resources */,
@@ -1871,9 +1904,11 @@
 				13F9D4861A2DA7BB002A6904 /* shareweixin@2x.png in Resources */,
 				568848CD1A32E1EB00862472 /* default_navigation_clear_image@2x.png in Resources */,
 				E3A87D5D1A5CD52D006B7049 /* gstarBack_dianping@2x.png in Resources */,
+				565B3FE21A766D6D00BBA1F7 /* LoginView_password_image@2x.png in Resources */,
 				1372EAAE1A73805A00D54F39 /* new_logo@2x.png in Resources */,
 				56508D811A5F87CA00321B2F /* navigation_plus_hidden_image@3x.png in Resources */,
 				56621D4F1A28605B00310A48 /* nav_btn_bg@2x.png in Resources */,
+				565B3FE11A766D6D00BBA1F7 /* LogInView_close@2x.png in Resources */,
 				565EE8C71A2C47840063CAA3 /* loginBackground@2x.png in Resources */,
 				5653E51C1A3A9B5B00CEB749 /* navigation_forward_image@2x.png in Resources */,
 				138023291A2C69CF0053BDDA /* anli_carType@2x.png in Resources */,
@@ -1960,6 +1995,7 @@
 				569FFEF41A27380F008A02A6 /* login_mima_image@2x.png in Resources */,
 				5653E5101A39754500CEB749 /* newAboultIphone5@2x.png in Resources */,
 				198D4CCC1A42D49C008C9AD2 /* alfcircle@2x.png in Resources */,
+				565B3FE91A7686CA00BBA1F7 /* loginview_bottom_background_image@2x.png in Resources */,
 				13F9D4BA1A2DA951002A6904 /* WeiboSDK.bundle in Resources */,
 				569FFEF51A27380F008A02A6 /* login_userName_image@2x.png in Resources */,
 				56621D401A28605B00310A48 /* icon_rightArrow@2x.png in Resources */,
@@ -1972,6 +2008,7 @@
 				E3E8323E1A65FF4900026DAC /* gstart_half@2x.png in Resources */,
 				137664E31A382DE100C8695D /* anli_bottom_clear@2x.png in Resources */,
 				E3CA7B3B1A359BC300B72008 /* gstart@2x.png in Resources */,
+				565B3FE31A766D6D00BBA1F7 /* LoginView_username_image@2x.png in Resources */,
 				565EE8D71A2C50830063CAA3 /* zc_xieyi@2x.png in Resources */,
 				56621D4B1A28605B00310A48 /* messages_toolbar_background@2x.png in Resources */,
 				1380232C1A2C69CF0053BDDA /* anli_shoucang@2x.png in Resources */,
@@ -2083,6 +2120,7 @@
 				E3ED4A671A2FF83E004A2D72 /* GcustomActionSheet.m in Sources */,
 				56BD7EA01A3EAC660038E378 /* CommentBottomView.m in Sources */,
 				56CE4B2E1A257FC600876AC7 /* MyViewController.m in Sources */,
+				565B3FDB1A766A1100BBA1F7 /* NewLogInView.m in Sources */,
 				56621D561A28605B00310A48 /* UMFeedbackTableViewCellLeft.m in Sources */,
 				E311CD281A24573C007D69D3 /* AppDelegate.m in Sources */,
 				1372EAB31A73997500D54F39 /* LocationViewController.m in Sources */,
@@ -2194,8 +2232,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2238,8 +2276,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
