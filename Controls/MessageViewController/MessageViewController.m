@@ -41,7 +41,9 @@
         [self.view addGestureRecognizer:swipe];
 
     }
-        
+    
+//    [RCIMClient sharedRCIMClient]
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
