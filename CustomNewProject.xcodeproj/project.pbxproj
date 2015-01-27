@@ -917,6 +917,13 @@
 			path = SocialSDKXib;
 			sourceTree = "<group>";
 		};
+		194015F31A7639EF006E6710 /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
 		19B34DB41A2465F300ED1935 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
@@ -1141,6 +1148,7 @@
 			isa = PBXGroup;
 			children = (
 				565B3FD81A7669FD00BBA1F7 /* NewLogInViews */,
+				194015F31A7639EF006E6710 /* LoginView */,
 				56CC071B1A302C3C0014F285 /* htmlsource */,
 				569FFEEA1A272EA6008A02A6 /* LogInViewController.h */,
 				569FFEEB1A272EA6008A02A6 /* LogInViewController.m */,
