@@ -105,10 +105,9 @@
 
 // RongCloudIMKit
 #define COCOAPODS_POD_AVAILABLE_RongCloudIMKit
-// This library does not follow semantic-versioning,
-// so we were not able to define version macros.
-// Please contact the author.
-// Version: 1.3.2.1.
+#define COCOAPODS_VERSION_MAJOR_RongCloudIMKit 1
+#define COCOAPODS_VERSION_MINOR_RongCloudIMKit 3
+#define COCOAPODS_VERSION_PATCH_RongCloudIMKit 3
 
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
