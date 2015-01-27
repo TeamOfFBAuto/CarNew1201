@@ -2255,7 +2255,6 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "1e5ed15f-83ef-4fe2-af9f-5c0e8c28defc";
-				PROVISIONING_PROFILE = "12d9f3d9-2aed-4e6b-bebb-b1844f9ac12d";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2294,7 +2293,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "1e5ed15f-83ef-4fe2-af9f-5c0e8c28defc";
-				PROVISIONING_PROFILE = "12d9f3d9-2aed-4e6b-bebb-b1844f9ac12d";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
