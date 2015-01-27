@@ -661,6 +661,8 @@
             
             detail.storeId = self.storeId;
             
+            detail.storeName = self.storeName;
+            
             [self.navigationController pushViewController:detail animated:YES];
             
         }

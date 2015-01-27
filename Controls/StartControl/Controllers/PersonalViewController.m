@@ -1156,7 +1156,9 @@ typedef enum{
         home.business_id = model.id;
         home.share_title = model.storename;
         home.share_image = cell.header_imageView.image;
+        home.business_name = model.storename;
         [self.navigationController pushViewController:home animated:YES];
+        
     }else if (_cellType == GANLI){//案例
         
         GCaseModel *aModel = [_tableView.dataArray objectAtIndex:indexPath.row];

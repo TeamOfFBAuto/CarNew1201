@@ -527,7 +527,7 @@
             
             NSString *name = dic[@"username"];
             
-            if ([name isKindOfClass:[NSString class]]) {
+            if ([name isKindOfClass:[NSString class]] && name.length > 0) {
                 
                 [LTools cacheRongCloudUserName:name forUserId:userId];
             }
@@ -546,17 +546,6 @@
     return completion(userInfo);
 }
 
-- (void)getUserInfoWithUserId:(NSString *)userId
-{
-    NSString *url = [NSString stringWithFormat:G_USERINFO,userId];
-    LTools *tool = [[LTools alloc]initWithUrl:url isPost:NO postData:nil];
-    [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
-        
-        
-    } failBlock:^(NSDictionary *failDic, NSError *erro) {
-        
-    }];
-}
 
 #pragma mark - RCIMConnectionStatusDelegate <NSObject>
 

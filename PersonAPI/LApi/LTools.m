@@ -480,6 +480,13 @@
         return;
     }
     
+    if (userId.length == 0) {
+        [LTools showMBProgressWithText:@"您咨询的对象不存在" addToView:viewController.view];
+        return;
+    }
+    
+    userName = userName.length > 0 ? userName : @"";
+    
     if ([LTools cacheBoolForKey:USER_IN]) {
         
         //已登录成功自己服务器
