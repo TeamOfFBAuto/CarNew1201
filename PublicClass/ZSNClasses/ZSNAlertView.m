@@ -62,6 +62,7 @@
         if (!_imageView) {
             _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20,70,45,45)];
             _imageView.clipsToBounds = YES;
+            _imageView.image = PERSONAL_DEFAULTS_IMAGE;
             _imageView.contentMode = UIViewContentModeScaleAspectFill;
             [_backgroundImageView addSubview:_imageView];
         }
@@ -154,7 +155,7 @@
     _userName_label.text = [NSString stringWithFormat:@"分享自改装志:“%@”,链接:%@",userName,shareUrl];
     
     zsnAlertViewBlock = theBlock;
-    [_imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil];
+    [_imageView sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:PERSONAL_DEFAULTS_IMAGE];
 }
 
 -(void)show

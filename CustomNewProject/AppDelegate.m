@@ -180,9 +180,12 @@
         self.window.rootViewController = menu_nav;
     }else if (type == Root_login)
     {
-        LogInViewController * logIn = [[LogInViewController alloc] init];//[[LogInViewController alloc] initWithNibName:@"LogInViewController" bundle:nil];
-        UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
-        self.window.rootViewController = navc;
+//        LogInViewController * logIn = [[LogInViewController alloc] init];//[[LogInViewController alloc] initWithNibName:@"LogInViewController" bundle:nil];
+//        UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
+//        self.window.rootViewController = navc;
+        NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+        loginView.backgroundColor = [UIColor colorWithPatternImage:[ZSNApi screenShot]];
+        [[UIApplication sharedApplication].keyWindow addSubview:loginView];
     }
 }
 

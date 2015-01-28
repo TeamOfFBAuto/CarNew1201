@@ -505,9 +505,13 @@
         
     }else
     {
-        LogInViewController * logIn = [[LogInViewController alloc] init];
-        UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
-        [viewController presentViewController:navc animated:YES completion:nil];
+//        LogInViewController * logIn = [[LogInViewController alloc] init];
+//        UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
+//        [viewController presentViewController:navc animated:YES completion:nil];
+        
+        NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+        loginView.backgroundColor = [UIColor colorWithPatternImage:[ZSNApi screenShot]];
+        [[UIApplication sharedApplication].keyWindow addSubview:loginView];
     }
 }
 

@@ -76,8 +76,8 @@
 + (NSString*)FBEximgreplace:(NSString*)imgSrc;
 
 
-///删除asyncimage某个缓存图片
-+(void)deleteFileWithUrl:(NSString *)path;
+/////删除asyncimage某个缓存图片
+//+(void)deleteFileWithUrl:(NSString *)path;
 
 //保存图片到沙盒
 
@@ -93,7 +93,8 @@
 + (MBProgressHUD *)showMBProgressWithText:(NSString *)text addToView:(UIView *)aView;
 ///弹出框，1.5秒后自动消失
 + (void)showAutoHiddenMBProgressWithText:(NSString *)text addToView:(UIView *)aView;
-
+///弹出提示框（包含标题，内容），1.5秒后消失
++(void)showautoHiddenMBProgressWithTitle:(NSString *)title WithContent:(NSString *)content addToView:(UIView *)aView;
 ///字符串编码
 +(NSString *)encodeToPercentEscapeString: (NSString *) input;
 ///字符串解码
@@ -120,6 +121,8 @@
 +(BOOL) validateEmail: (NSString *) candidate;
 ///获取字符串高宽度
 +(CGSize)stringHeightAndWidthWith:(NSString *)string WithHeight:(float)aHeight WithWidth:(float)aWidth WithFont:(float)aFont;
+///截取当前屏幕并模糊处理
++(UIImage *)screenShot;
 @end
 
 

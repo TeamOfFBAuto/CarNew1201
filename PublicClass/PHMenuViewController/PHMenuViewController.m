@@ -17,6 +17,7 @@
 #import "MessageViewController.h"
 
 #import "NewLogInView.h"
+#import "UIImage+ImageEffects.h"
 
 @implementation PHMenuViewController
 {
@@ -141,17 +142,28 @@
 
 -(void)pushToLogInViewController
 {
-    NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
     
+    NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+    loginView.backgroundColor = [UIColor colorWithPatternImage:[ZSNApi screenShot]];
     [[UIApplication sharedApplication].keyWindow addSubview:loginView];
     
-    return;
+//    LogInViewController * logIn = [[LogInViewController alloc]init];
+//    UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
+//    [self presentViewController:navc animated:YES completion:nil];
     
+}
+
+///截图并模糊处理
+- (UIImage *)screenShot
+{
+//    UIView * aview = [[UIApplication sharedApplication].keyWindow snapshotViewAfterScreenUpdates:YES];
+    UIGraphicsBeginImageContextWithOptions([UIApplication sharedApplication].keyWindow.bounds.size,YES,0.0f);
+    [[UIApplication sharedApplication].keyWindow drawViewHierarchyInRect:[UIApplication sharedApplication].keyWindow.bounds afterScreenUpdates:YES];
+    UIImage *uiImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    UIImage * screenShot = [uiImage applyBlurWithRadius:5 tintColor:[UIColor colorWithWhite:0.2 alpha:0.1] saturationDeltaFactor:1.0 maskImage:nil];
     
-    
-    LogInViewController * logIn = [[LogInViewController alloc]init];
-    UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
-    [self presentViewController:navc animated:YES completion:nil];
+    return screenShot;
 }
 
 
