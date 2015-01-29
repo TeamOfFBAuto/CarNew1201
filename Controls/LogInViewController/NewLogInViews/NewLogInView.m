@@ -86,50 +86,84 @@
 #pragma mark - 创建登陆视图
 -(void)createLoginView
 {
-    ///登陆按钮
-    loginButton = [self createButtonWithFrame:CGRectMake(10,13,main_view.width-20,BUTTON_HEIGHT) WithTitle:@"登录" WithTag:100];
-    [bottom_background_view addSubview:loginButton];
+    if (_info_username_tf)
+    {
+        _info_username_tf.left = -_info_username_tf.width;
+        _info_password_tf.left = -_info_password_tf.width;
+        line_view.left = -line_view.width;
+        line_view1.left = -line_view1.width;
+        line_view2.left = -line_view2.width;
+        xieyi_button.left = -xieyi_button.width;
+        _email_tf.left = -_email_tf.width;
+        content_label.left = -content_label.width;
+        info_done_button.left = -info_done_button.width;
+        phone_jieshao_view.left = -phone_jieshao_view.width;
+        
+        [UIView beginAnimations:@"animation" context:@"context"];
+        [UIView setAnimationDuration:0.3];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:main_view cache:YES];
+        [UIView commitAnimations];
+    }
     
-    ///注册按钮
-    zhuce_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    zhuce_button.frame = loginButton.frame;
-    zhuce_button.tag = 99;
+    
+    
+    if (!loginButton)
+    {
+        ///登陆按钮
+        loginButton = [self createButtonWithFrame:CGRectMake(10,13,main_view.width-20,BUTTON_HEIGHT) WithTitle:@"登录" WithTag:100];
+        [bottom_background_view addSubview:loginButton];
+        
+        ///注册按钮
+        zhuce_button = [UIButton buttonWithType:UIButtonTypeCustom];
+        zhuce_button.frame = loginButton.frame;
+        zhuce_button.tag = 99;
+        zhuce_button.top = loginButton.bottom + 10;
+        zhuce_button.height = 20;
+        zhuce_button.backgroundColor = [UIColor clearColor];
+        [zhuce_button setTitle:@"创建一个新账号>>" forState:UIControlStateNormal];
+        [zhuce_button setTitleColor:RGBCOLOR(142,142,142) forState:UIControlStateNormal];
+        zhuce_button.titleLabel.font = [UIFont systemFontOfSize:13];
+        [zhuce_button addTarget:self action:@selector(buttonTap:) forControlEvents:UIControlEventTouchUpInside];
+        [bottom_background_view addSubview:zhuce_button];
+        
+        
+        _username_tf = [self createTextFieldWithPlaceHolder:@"用户名" WithFrame:CGRectMake(0,up_background_imageView.bottom,main_view.width,TEXTFIELD_HEIGHT)];
+        _username_tf.leftView.width = 45;
+        
+        line_view = [[UIView alloc] initWithFrame:CGRectMake(0,_username_tf.bottom-0.5,main_view.width,0.5)];
+        line_view.backgroundColor = LINE_BACKGROUND_COLOR;
+        
+        _password_tf = [self createTextFieldWithPlaceHolder:@"密码" WithFrame:CGRectMake(0,line_view.bottom,main_view.width,TEXTFIELD_HEIGHT)];
+        _password_tf.secureTextEntry = YES;
+        _password_tf.leftView.width = 45;
+        
+        
+        
+        UIImageView * userName_image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LoginView_username_image"]];
+        userName_image.center = CGPointMake(userName_image.image.size.width/2.0+10,_username_tf.height/2.0f);
+        [_username_tf addSubview:userName_image];
+        
+        UIImageView * password_image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LoginView_password_image"]];
+        password_image.center = CGPointMake(password_image.image.size.width/2.0+10,_password_tf.height/2.0f);
+        [_password_tf addSubview:password_image];
+        
+        
+        [main_view addSubview:_username_tf];
+        [main_view addSubview:line_view];
+        [main_view addSubview:_password_tf];
+    }
+    
+    
+    _username_tf.text = _info_username_tf.text;
+    _password_tf.text = _info_password_tf.text;
+   
+    loginButton.left = 10;
+    zhuce_button.left = loginButton.left;
     zhuce_button.top = loginButton.bottom + 10;
     zhuce_button.height = 20;
-    zhuce_button.backgroundColor = [UIColor clearColor];
-    [zhuce_button setTitle:@"创建一个新账号>>" forState:UIControlStateNormal];
-    [zhuce_button setTitleColor:RGBCOLOR(142,142,142) forState:UIControlStateNormal];
-    zhuce_button.titleLabel.font = [UIFont systemFontOfSize:13];
-    [zhuce_button addTarget:self action:@selector(buttonTap:) forControlEvents:UIControlEventTouchUpInside];
-    [bottom_background_view addSubview:zhuce_button];
-    
-    
-    _username_tf = [self createTextFieldWithPlaceHolder:@"用户名" WithFrame:CGRectMake(0,up_background_imageView.bottom,main_view.width,TEXTFIELD_HEIGHT)];
-    _username_tf.leftView.width = 45;
-    
-    line_view = [[UIView alloc] initWithFrame:CGRectMake(0,_username_tf.bottom-0.5,main_view.width,0.5)];
-    line_view.backgroundColor = LINE_BACKGROUND_COLOR;
-    
-    _password_tf = [self createTextFieldWithPlaceHolder:@"密码" WithFrame:CGRectMake(0,line_view.bottom,main_view.width,TEXTFIELD_HEIGHT)];
-    _password_tf.secureTextEntry = YES;
-    _password_tf.leftView.width = 45;
-    
-    
-    
-    UIImageView * userName_image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LoginView_username_image"]];
-    userName_image.center = CGPointMake(userName_image.image.size.width/2.0+10,_username_tf.height/2.0f);
-    [_username_tf addSubview:userName_image];
-    
-    UIImageView * password_image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LoginView_password_image"]];
-    password_image.center = CGPointMake(password_image.image.size.width/2.0+10,_password_tf.height/2.0f);
-    [_password_tf addSubview:password_image];
-    
-    
-    
-    
-    [main_view addSubview:_username_tf];
-    [main_view addSubview:line_view];
-    [main_view addSubview:_password_tf];
+    _username_tf.left = 0;
+    line_view.left = 0;
+    _password_tf.left = 0;
     
     
     bottom_background_view.top = _password_tf.bottom-1;
@@ -145,8 +179,6 @@
 #pragma mark - 创建输入手机号码界面
 -(void)createPhoneView
 {
-    line_view.alpha = 0;
-    
     phone_jieshao_view = [[UIView alloc] initWithFrame:CGRectMake(up_background_imageView.width,up_background_imageView.bottom,up_background_imageView.width,50)];
     phone_jieshao_view.backgroundColor = [UIColor whiteColor];
     [main_view addSubview:phone_jieshao_view];
@@ -275,7 +307,7 @@
     _info_username_tf = [self createTextFieldWithPlaceHolder:@"用户名" WithFrame:CGRectMake(0,phone_jieshao_view.bottom,main_view.width,TEXTFIELD_HEIGHT)];
     [main_view addSubview:_info_username_tf];
     
-    UIView * line_view1 = [[UIView alloc] initWithFrame:CGRectMake(0,_info_username_tf.bottom-0.5,main_view.width,0.5)];
+    line_view1 = [[UIView alloc] initWithFrame:CGRectMake(0,_info_username_tf.bottom-0.5,main_view.width,0.5)];
     line_view1.backgroundColor = LINE_BACKGROUND_COLOR;
     [main_view addSubview:line_view1];
     
@@ -283,7 +315,7 @@
     _info_password_tf.secureTextEntry = YES;
     [main_view addSubview:_info_password_tf];
     
-    UIView * line_view2 = [[UIView alloc] initWithFrame:CGRectMake(0,_info_password_tf.bottom-0.5,main_view.width,0.5)];
+    line_view2 = [[UIView alloc] initWithFrame:CGRectMake(0,_info_password_tf.bottom-0.5,main_view.width,0.5)];
     line_view2.backgroundColor = LINE_BACKGROUND_COLOR;
     [main_view addSubview:line_view2];
     
@@ -294,7 +326,7 @@
     [bottom_background_view addSubview:info_done_button];
     
     
-    UIButton * xieyi_button = [UIButton buttonWithType:UIButtonTypeCustom];
+    xieyi_button = [UIButton buttonWithType:UIButtonTypeCustom];
     xieyi_button.frame = CGRectMake(10,5,28,30);
     [xieyi_button setImage:[UIImage imageNamed:@"login_agree_xieyi_image"] forState:UIControlStateNormal];
     [xieyi_button setImage:[UIImage imageNamed:@"login_unagree_xieyi_image"] forState:UIControlStateSelected];
@@ -303,7 +335,7 @@
     
     
     CGRect content_frame = CGRectMake(40,12,200,30);
-    OHAttributedLabel * content_label = [[OHAttributedLabel alloc] initWithFrame:content_frame];
+    content_label = [[OHAttributedLabel alloc] initWithFrame:content_frame];
     content_label.textColor = [UIColor blackColor];
     content_label.font = [UIFont systemFontOfSize:14];
     [bottom_background_view addSubview:content_label];
@@ -443,9 +475,10 @@
             break;
         case 102:///验证验证码是否正确
         {
+            
             [self createInfomationView];
 //            if (_code_tf.text.length != 0) {
-//                [self createInfomationView];
+//                [self networkYanZhengCode];
 //            }else
 //            {
 //                [ZSNApi showAutoHiddenMBProgressWithText:@"请输入验证码" addToView:self];
@@ -627,6 +660,7 @@
         }
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [aHud hide:YES];
         [ZSNApi showAutoHiddenMBProgressWithText:@"验证失败，请检查您当前网络" addToView:self];
     }];
     
@@ -651,6 +685,13 @@
         return;
     }
     
+    
+//    [self endEditing:YES];
+//    [self setMainViewUp:NO];
+//    
+//    [self createLoginView];
+//    
+//    return;
     
     hud = [ZSNApi showMBProgressWithText:@"正在注册..." addToView:self];
     
@@ -685,9 +726,17 @@
     
     if ([errcode intValue] == 0)
     {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"注册成功,马上去登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认",nil];
-        alert.delegate = self;
-        [alert show];
+        [ZSNApi showAutoHiddenMBProgressWithText:@"注册成功" addToView:self];
+        
+        _username_tf.text = _info_username_tf.text;
+        _password_tf.text = _info_password_tf.text;
+        
+        [self endEditing:YES];
+        [self setMainViewUp:NO];
+        
+        [self createLoginView];
+        [self networkForLogIn];
+        
     }else
     {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:bbsinfo message:@"" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil,nil];
