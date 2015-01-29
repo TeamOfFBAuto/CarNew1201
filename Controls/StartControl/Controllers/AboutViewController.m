@@ -7,8 +7,9 @@
 //
 
 #import "AboutViewController.h"
+#import "GaiZhuangWebViewController.h"
 
-@interface AboutViewController ()
+@interface AboutViewController ()<UIAlertViewDelegate>
 
 @end
 
@@ -18,7 +19,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     self.navigationController.navigationBarHidden = YES;
 }
 
@@ -134,11 +135,42 @@
 */
 
 - (IBAction)telphoneTap:(id)sender {
+    
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"操作提示" message:@"是否呼叫金牌客服金先生:\n18663909030" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alertView show];
 }
 
 - (IBAction)talkTap:(id)sender {
+    
+    
+    
 }
 
 - (IBAction)moreTap:(id)sender {
+    
+    GaiZhuangWebViewController * webview = [[GaiZhuangWebViewController alloc] init];
+    webview.web_url = @"http://mobile.fblife.com";
+    [self.navigationController pushViewController:webview animated:YES];
+    
 }
+
+
+
+#pragma mark - UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",@"18663909030"]]];
+    }
+}
+
+
+
+
+
+
+
+
+
 @end
