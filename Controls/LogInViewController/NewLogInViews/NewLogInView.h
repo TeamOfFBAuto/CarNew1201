@@ -45,7 +45,10 @@
     
     ///完善个人信息界面
     UIButton * info_done_button;
-    
+    UIView * line_view1;
+    UIView * line_view2;
+    UIButton * xieyi_button;
+    OHAttributedLabel * content_label;
     
     ASIFormDataRequest * request_;
 }

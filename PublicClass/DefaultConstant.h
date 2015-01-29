@@ -173,7 +173,7 @@ alpha:(a)]
 //按商家搜索配件
 #define G_SEARCH_PEIJIAN_SHANGJIA @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&storeid=%@"
 //配件详情分享地址
-#define PEIJIAN_SHARE_URL @"http://gztest.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&peijianxiangqing168"
+#define PEIJIAN_SHARE_URL @"http://gztest.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&peijianxiangqing168&isshare=1"
 //配件详情HTML5地址
 #define ANLI_PEIJIAN_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&authkey=%@"
 ///配件详情接口
