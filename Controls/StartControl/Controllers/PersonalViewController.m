@@ -173,6 +173,7 @@ typedef enum{
     _tableView.refreshDelegate = self;//用refreshDelegate替换UITableViewDelegate
     _tableView.dataSource = self;
     _tableView.netWorking = GIS;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     
     _tableView.tableHeaderView = _upThreeViewBackGroundView;
