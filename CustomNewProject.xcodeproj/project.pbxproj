@@ -106,6 +106,8 @@
 		563E8CFF1A78E95200455ED3 /* LoginView_username_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563E8CFB1A78E95200455ED3 /* LoginView_username_image@2x.png */; };
 		563E8D001A78E95200455ED3 /* LoginView_password_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563E8CFC1A78E95200455ED3 /* LoginView_password_image@2x.png */; };
 		563E8D031A78ED7600455ED3 /* PrivacyPolicyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563E8D021A78ED7600455ED3 /* PrivacyPolicyView.m */; };
+		563F18421A79CBD5004ED0A7 /* LogInView_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563F18401A79CBD5004ED0A7 /* LogInView_close@3x.png */; };
+		563F18431A79CBD5004ED0A7 /* LogInView_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 563F18411A79CBD5004ED0A7 /* LogInView_close@2x.png */; };
 		5647574D1A6F5FD70011F3C4 /* about_logo_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5647574B1A6F5FD70011F3C4 /* about_logo_image@2x.png */; };
 		5647574E1A6F5FD70011F3C4 /* about_mountain_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5647574C1A6F5FD70011F3C4 /* about_mountain_image@2x.png */; };
 		564757521A6F61000011F3C4 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 564757501A6F61000011F3C4 /* AboutViewController.m */; };
@@ -143,7 +145,6 @@
 		5653E5241A3AE9D200CEB749 /* navigation_back_jiantou_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5653E5231A3AE9D200CEB749 /* navigation_back_jiantou_image@2x.png */; };
 		5659D42C1A71EF9600D8799C /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5659D42B1A71EF9600D8799C /* MessageViewController.m */; };
 		565B3FDB1A766A1100BBA1F7 /* NewLogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = 565B3FDA1A766A1100BBA1F7 /* NewLogInView.m */; };
-		565B3FE11A766D6D00BBA1F7 /* LogInView_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565B3FDE1A766D6D00BBA1F7 /* LogInView_close@2x.png */; };
 		565B3FE51A76778F00BBA1F7 /* Login_background_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565B3FE41A76778F00BBA1F7 /* Login_background_image@2x.png */; };
 		565B3FE81A7686CA00BBA1F7 /* Loginview_up_background_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565B3FE61A7686CA00BBA1F7 /* Loginview_up_background_image@2x.png */; };
 		565B3FE91A7686CA00BBA1F7 /* loginview_bottom_background_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565B3FE71A7686CA00BBA1F7 /* loginview_bottom_background_image@2x.png */; };
@@ -236,6 +237,8 @@
 		56CE4B631A25D48100876AC7 /* PHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CE4B5A1A25D48100876AC7 /* PHViewController.m */; };
 		56CE4B641A25D48100876AC7 /* PHAirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CE4B5D1A25D48100876AC7 /* PHAirViewController.m */; };
 		56CE4B651A25D48100876AC7 /* PHSessionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CE4B5F1A25D48100876AC7 /* PHSessionView.m */; };
+		56E673E31A791037007BA2E1 /* login_agree_xieyi_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56E673E11A791037007BA2E1 /* login_agree_xieyi_image@2x.png */; };
+		56E673E41A791037007BA2E1 /* login_unagree_xieyi_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56E673E21A791037007BA2E1 /* login_unagree_xieyi_image@2x.png */; };
 		B81955FF5D777D50684F10B6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0474E0B8AA75297C0DC9AFBA /* libPods.a */; };
 		E304792F1A5FB82300709985 /* dianping@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E304792E1A5FB82300709985 /* dianping@2x.png */; };
 		E311CD251A24573C007D69D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E311CD241A24573C007D69D3 /* main.m */; };
@@ -450,6 +453,8 @@
 		563E8CFC1A78E95200455ED3 /* LoginView_password_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginView_password_image@2x.png"; sourceTree = "<group>"; };
 		563E8D011A78ED7600455ED3 /* PrivacyPolicyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivacyPolicyView.h; sourceTree = "<group>"; };
 		563E8D021A78ED7600455ED3 /* PrivacyPolicyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivacyPolicyView.m; sourceTree = "<group>"; };
+		563F18401A79CBD5004ED0A7 /* LogInView_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogInView_close@3x.png"; sourceTree = "<group>"; };
+		563F18411A79CBD5004ED0A7 /* LogInView_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogInView_close@2x.png"; sourceTree = "<group>"; };
 		5647574B1A6F5FD70011F3C4 /* about_logo_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_logo_image@2x.png"; sourceTree = "<group>"; };
 		5647574C1A6F5FD70011F3C4 /* about_mountain_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_mountain_image@2x.png"; sourceTree = "<group>"; };
 		5647574F1A6F61000011F3C4 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
@@ -496,7 +501,6 @@
 		5659D42B1A71EF9600D8799C /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		565B3FD91A766A1100BBA1F7 /* NewLogInView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLogInView.h; sourceTree = "<group>"; };
 		565B3FDA1A766A1100BBA1F7 /* NewLogInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLogInView.m; sourceTree = "<group>"; };
-		565B3FDE1A766D6D00BBA1F7 /* LogInView_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogInView_close@2x.png"; sourceTree = "<group>"; };
 		565B3FE41A76778F00BBA1F7 /* Login_background_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login_background_image@2x.png"; sourceTree = "<group>"; };
 		565B3FE61A7686CA00BBA1F7 /* Loginview_up_background_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loginview_up_background_image@2x.png"; sourceTree = "<group>"; };
 		565B3FE71A7686CA00BBA1F7 /* loginview_bottom_background_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginview_bottom_background_image@2x.png"; sourceTree = "<group>"; };
@@ -646,6 +650,8 @@
 		56CE4B5D1A25D48100876AC7 /* PHAirViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHAirViewController.m; sourceTree = "<group>"; };
 		56CE4B5E1A25D48100876AC7 /* PHSessionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHSessionView.h; sourceTree = "<group>"; };
 		56CE4B5F1A25D48100876AC7 /* PHSessionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHSessionView.m; sourceTree = "<group>"; };
+		56E673E11A791037007BA2E1 /* login_agree_xieyi_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_agree_xieyi_image@2x.png"; sourceTree = "<group>"; };
+		56E673E21A791037007BA2E1 /* login_unagree_xieyi_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_unagree_xieyi_image@2x.png"; sourceTree = "<group>"; };
 		A595FD62CE4EBA341EE0037F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E304792E1A5FB82300709985 /* dianping@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "dianping@2x.png"; path = "LogInImages/dianping@2x.png"; sourceTree = "<group>"; };
 		E311CD1F1A24573C007D69D3 /* CustomNewProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomNewProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1552,6 +1558,8 @@
 		569FFEEF1A2737C4008A02A6 /* LogInImages */ = {
 			isa = PBXGroup;
 			children = (
+				56E673E11A791037007BA2E1 /* login_agree_xieyi_image@2x.png */,
+				56E673E21A791037007BA2E1 /* login_unagree_xieyi_image@2x.png */,
 				563E8CF91A78E95200455ED3 /* LoginView_username_image@3x.png */,
 				563E8CFA1A78E95200455ED3 /* LoginView_password_image@3x.png */,
 				563E8CFB1A78E95200455ED3 /* LoginView_username_image@2x.png */,
@@ -1562,7 +1570,8 @@
 				565B3FE61A7686CA00BBA1F7 /* Loginview_up_background_image@2x.png */,
 				565B3FE71A7686CA00BBA1F7 /* loginview_bottom_background_image@2x.png */,
 				565B3FE41A76778F00BBA1F7 /* Login_background_image@2x.png */,
-				565B3FDE1A766D6D00BBA1F7 /* LogInView_close@2x.png */,
+				563F18401A79CBD5004ED0A7 /* LogInView_close@3x.png */,
+				563F18411A79CBD5004ED0A7 /* LogInView_close@2x.png */,
 				E3B2DC681A43FF3F00607B11 /* logo@2x.png */,
 				567B13A91A2C6B8C003A3C59 /* fanhui_image@2x.png */,
 				565EE8D81A2C50950063CAA3 /* logIn_close@2x.png */,
@@ -1934,7 +1943,6 @@
 				1372EAAE1A73805A00D54F39 /* new_logo@2x.png in Resources */,
 				56508D811A5F87CA00321B2F /* navigation_plus_hidden_image@3x.png in Resources */,
 				56621D4F1A28605B00310A48 /* nav_btn_bg@2x.png in Resources */,
-				565B3FE11A766D6D00BBA1F7 /* LogInView_close@2x.png in Resources */,
 				565EE8C71A2C47840063CAA3 /* loginBackground@2x.png in Resources */,
 				5653E51C1A3A9B5B00CEB749 /* navigation_forward_image@2x.png in Resources */,
 				138023291A2C69CF0053BDDA /* anli_carType@2x.png in Resources */,
@@ -1952,6 +1960,7 @@
 				1372EABE1A73BF0F00D54F39 /* black.png in Resources */,
 				13F9D4C51A2DA951002A6904 /* UMSnsAccountViewController.xib in Resources */,
 				565EE8D61A2C50830063CAA3 /* zc_resendimage@2x.png in Resources */,
+				563F18421A79CBD5004ED0A7 /* LogInView_close@3x.png in Resources */,
 				E38159501A3AE1D500864F81 /* gBanner@2x.jpg in Resources */,
 				56621D171A28600300310A48 /* UMUFP.bundle in Resources */,
 				564757531A6F61000011F3C4 /* AboutViewController.xib in Resources */,
@@ -1962,10 +1971,12 @@
 				13F9D4C41A2DA951002A6904 /* UMSLoginViewController.xib in Resources */,
 				132FB8C71A42D2CB00D5A9F0 /* anli_touxian_quan@2x.png in Resources */,
 				1301DE5F1A43D315001EF486 /* navigaiton_menu_image_2@2x.png in Resources */,
+				56E673E41A791037007BA2E1 /* login_unagree_xieyi_image@2x.png in Resources */,
 				563E8CF61A78DD1F00455ED3 /* loginview_logo_image@2x.png in Resources */,
 				5653E5241A3AE9D200CEB749 /* navigation_back_jiantou_image@2x.png in Resources */,
 				5653E5171A39A1E300CEB749 /* 20130502_shubiao.png in Resources */,
 				56621D521A28605B00310A48 /* send_selected@2x.png in Resources */,
+				56E673E31A791037007BA2E1 /* login_agree_xieyi_image@2x.png in Resources */,
 				132FB8C91A42DD7200D5A9F0 /* anli_touxiang_yuan@2x.png in Resources */,
 				13F9D4C21A2DA951002A6904 /* UMShareEditViewController.xib in Resources */,
 				13F9D4C61A2DA951002A6904 /* UMSShareListController.xib in Resources */,
@@ -2012,6 +2023,7 @@
 				E3B2DC671A43EEC000607B11 /* noDataView@2x.png in Resources */,
 				13F9D4C01A2DA951002A6904 /* UMSCommentInputController.xib in Resources */,
 				56621D4E1A28605B00310A48 /* nav_btn_bg.png in Resources */,
+				563F18431A79CBD5004ED0A7 /* LogInView_close@2x.png in Resources */,
 				56621D4A1A28605B00310A48 /* messages_toolbar_background.png in Resources */,
 				565321641A5A79E700E43F80 /* button2-down252_94@2x.png in Resources */,
 				13AE9EF61A63B62000FC3E6E /* shoucangImage_2@2x.png in Resources */,
@@ -2264,8 +2276,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2286,7 +2298,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "12d9f3d9-2aed-4e6b-bebb-b1844f9ac12d";
+				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2308,8 +2320,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2324,7 +2336,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "12d9f3d9-2aed-4e6b-bebb-b1844f9ac12d";
+				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2354,7 +2366,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "12d9f3d9-2aed-4e6b-bebb-b1844f9ac12d";
+				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -2382,7 +2394,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "12d9f3d9-2aed-4e6b-bebb-b1844f9ac12d";
+				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;

@@ -44,6 +44,7 @@
     UIView * code_line_view;
     
     ///完善个人信息界面
+    UIButton * info_done_button;
     
     
     ASIFormDataRequest * request_;

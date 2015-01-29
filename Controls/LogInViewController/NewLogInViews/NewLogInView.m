@@ -71,7 +71,7 @@
     
     ///关闭按钮
     UIButton * close_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    close_button.frame = CGRectMake(main_view.width-30,0,30,30);
+    close_button.frame = CGRectMake(main_view.width-40,0,40,40);
     [close_button setImage:[UIImage imageNamed:@"LogInView_close"] forState:UIControlStateNormal];
     [close_button addTarget:self action:@selector(closeTap:) forControlEvents:UIControlEventTouchUpInside];
     [main_view addSubview:close_button];
@@ -106,11 +106,14 @@
     
     _username_tf = [self createTextFieldWithPlaceHolder:@"用户名" WithFrame:CGRectMake(0,up_background_imageView.bottom,main_view.width,TEXTFIELD_HEIGHT)];
     _username_tf.leftView.width = 45;
-    line_view = [[UIView alloc] initWithFrame:CGRectMake(0,_username_tf.bottom,main_view.width,0.5)];
+    
+    line_view = [[UIView alloc] initWithFrame:CGRectMake(0,_username_tf.bottom-0.5,main_view.width,0.5)];
+    line_view.backgroundColor = LINE_BACKGROUND_COLOR;
+    
     _password_tf = [self createTextFieldWithPlaceHolder:@"密码" WithFrame:CGRectMake(0,line_view.bottom,main_view.width,TEXTFIELD_HEIGHT)];
     _password_tf.secureTextEntry = YES;
     _password_tf.leftView.width = 45;
-    line_view.backgroundColor = LINE_BACKGROUND_COLOR;
+    
     
     
     UIImageView * userName_image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LoginView_username_image"]];
@@ -123,8 +126,9 @@
     
     
     
-    [main_view addSubview:line_view];
+    
     [main_view addSubview:_username_tf];
+    [main_view addSubview:line_view];
     [main_view addSubview:_password_tf];
     
     
@@ -141,6 +145,7 @@
 #pragma mark - 创建输入手机号码界面
 -(void)createPhoneView
 {
+    line_view.alpha = 0;
     
     phone_jieshao_view = [[UIView alloc] initWithFrame:CGRectMake(up_background_imageView.width,up_background_imageView.bottom,up_background_imageView.width,50)];
     phone_jieshao_view.backgroundColor = [UIColor whiteColor];
@@ -198,8 +203,6 @@
 #pragma mark - 创建输入手机验证码界面
 -(void)createCodeView
 {
-    phone_jieshao_label.text = INPUT_CODE_NUM_TEXT;
-    
     code_phone_label = [[UILabel alloc] initWithFrame:CGRectMake(main_view.width,phone_jieshao_view.bottom,main_view.width,TEXTFIELD_HEIGHT)];
     code_phone_label.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
     code_phone_label.text = [NSString stringWithFormat:@"+86%@",_phone_tf.text];
@@ -208,7 +211,7 @@
     code_phone_label.font = [UIFont systemFontOfSize:14];
     [main_view addSubview:code_phone_label];
     
-    code_line_view = [[UIView alloc] initWithFrame:CGRectMake(0,code_phone_label.bottom,main_view.width,0.5)];
+    code_line_view = [[UIView alloc] initWithFrame:CGRectMake(0,code_phone_label.bottom-0.5,main_view.width,0.5)];
     code_line_view.backgroundColor = LINE_BACKGROUND_COLOR;
     [main_view addSubview:code_line_view];
     
@@ -256,6 +259,8 @@
 #pragma mark - 创建完善资料界面
 -(void)createInfomationView
 {
+    code_line_view.alpha = 0;
+    
     phone_jieshao_view.height = 32;
     phone_jieshao_label.height = 32;
     
@@ -270,7 +275,7 @@
     _info_username_tf = [self createTextFieldWithPlaceHolder:@"用户名" WithFrame:CGRectMake(0,phone_jieshao_view.bottom,main_view.width,TEXTFIELD_HEIGHT)];
     [main_view addSubview:_info_username_tf];
     
-    UIView * line_view1 = [[UIView alloc] initWithFrame:CGRectMake(0,_info_username_tf.bottom,main_view.width,0.5)];
+    UIView * line_view1 = [[UIView alloc] initWithFrame:CGRectMake(0,_info_username_tf.bottom-0.5,main_view.width,0.5)];
     line_view1.backgroundColor = LINE_BACKGROUND_COLOR;
     [main_view addSubview:line_view1];
     
@@ -278,34 +283,36 @@
     _info_password_tf.secureTextEntry = YES;
     [main_view addSubview:_info_password_tf];
     
-    UIView * line_view2 = [[UIView alloc] initWithFrame:CGRectMake(0,_info_password_tf.bottom,main_view.width,0.5)];
+    UIView * line_view2 = [[UIView alloc] initWithFrame:CGRectMake(0,_info_password_tf.bottom-0.5,main_view.width,0.5)];
     line_view2.backgroundColor = LINE_BACKGROUND_COLOR;
     [main_view addSubview:line_view2];
     
     _email_tf = [self createTextFieldWithPlaceHolder:@"电子邮箱" WithFrame:CGRectMake(0,line_view2.bottom,main_view.width,TEXTFIELD_HEIGHT)];
     [main_view addSubview:_email_tf];
     
-    UIButton * info_done_button = [self createButtonWithFrame:CGRectMake(10,50,main_view.width-20,29) WithTitle:@"完成" WithTag:104];
+    info_done_button = [self createButtonWithFrame:CGRectMake(10,50,main_view.width-20,29) WithTitle:@"完成" WithTag:104];
     [bottom_background_view addSubview:info_done_button];
     
     
     UIButton * xieyi_button = [UIButton buttonWithType:UIButtonTypeCustom];
     xieyi_button.frame = CGRectMake(10,5,28,30);
-    [xieyi_button setImage:[UIImage imageNamed:@"Loginview_agree_xieyi_image"] forState:UIControlStateNormal];
+    [xieyi_button setImage:[UIImage imageNamed:@"login_agree_xieyi_image"] forState:UIControlStateNormal];
+    [xieyi_button setImage:[UIImage imageNamed:@"login_unagree_xieyi_image"] forState:UIControlStateSelected];
+    [xieyi_button addTarget:self action:@selector(xieyibuttonTap:) forControlEvents:UIControlEventTouchUpInside];
     [bottom_background_view addSubview:xieyi_button];
     
     
-    CGRect content_frame = CGRectMake(40,12,150,30);
+    CGRect content_frame = CGRectMake(40,12,200,30);
     OHAttributedLabel * content_label = [[OHAttributedLabel alloc] initWithFrame:content_frame];
     content_label.textColor = [UIColor blackColor];
-    content_label.font = [UIFont systemFontOfSize:11];
+    content_label.font = [UIFont systemFontOfSize:14];
     [bottom_background_view addSubview:content_label];
     
     NSString * content_string = @"我接受\n用户协议并且隐私政策的条件";
     [OHLableHelper creatAttributedText:content_string Label:content_label OHDelegate:self WithWidht:16 WithHeight:18 WithLineBreak:NO];
 
     [content_label addCustomLink:[NSURL URLWithString:@"用户协议"] inRange:[content_string rangeOfString:@"用户协议"]];
-    [content_label addCustomLink:[NSURL URLWithString:@"隐私政策"] inRange:[content_string rangeOfString:@"隐私政策"]];
+    [content_label addCustomLink:[NSURL URLWithString:@"隐私政策的条件的条件"] inRange:[content_string rangeOfString:@"隐私政策"]];
     
     
     bottom_background_view.top = _email_tf.bottom-1;
@@ -371,6 +378,9 @@
 #pragma mark - OHAttributeDelegate
 -(BOOL)attributedLabel:(OHAttributedLabel*)attributedLabel shouldFollowLink:(NSTextCheckingResult*)linkInfo
 {
+    [self setMainViewUp:NO];
+    [self endEditing:YES];
+    
     ppv = [[PrivacyPolicyView alloc] initWithFrame:CGRectMake(10,20,DEVICE_WIDTH-20,DEVICE_HEIGHT-40)];
     ppv.alpha = 0;
     ppv.backgroundColor = [UIColor whiteColor];
@@ -392,6 +402,21 @@
 -(UIColor*)colorForLink:(NSTextCheckingResult*)linkInfo underlineStyle:(int32_t*)underlineStyle
 {
     return RGBCOLOR(255,180,0);
+}
+
+#pragma mark - 点击协议按钮
+-(void)xieyibuttonTap:(UIButton *)button
+{
+    button.selected = !button.selected;
+    if (button.selected)
+    {
+        info_done_button.userInteractionEnabled = NO;
+        info_done_button.backgroundColor = RGBCOLOR(230,230,230);
+    }else
+    {
+        info_done_button.userInteractionEnabled = YES;
+        info_done_button.backgroundColor = RGBCOLOR(255,180,0);
+    }
 }
 
 #pragma mark - 完成按钮

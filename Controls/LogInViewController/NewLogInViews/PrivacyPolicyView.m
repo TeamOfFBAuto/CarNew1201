@@ -28,7 +28,7 @@
     
     ///关闭按钮
     UIButton * close_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    close_button.frame = CGRectMake(self.width-30,0,30,30);
+    close_button.frame = CGRectMake(self.width-40,0,40,40);
     [close_button setImage:[UIImage imageNamed:@"LogInView_close"] forState:UIControlStateNormal];
     [close_button addTarget:self action:@selector(closeTap:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:close_button];
