@@ -36,6 +36,8 @@ typedef enum{
 @property(nonatomic,strong)PicViewController * picVC;
 @property(nonatomic,strong)UINavigationController * picNavc;
 
+@property(nonatomic,strong)UIAlertView *alert;
+
 @property(nonatomic,strong)PHMenuViewController *root_menu;
 
 - (void)showControlView:(ROOTVC_TYPE)type;

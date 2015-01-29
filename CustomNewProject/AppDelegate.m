@@ -180,9 +180,12 @@
         self.window.rootViewController = menu_nav;
     }else if (type == Root_login)
     {
-        LogInViewController * logIn = [[LogInViewController alloc] init];//[[LogInViewController alloc] initWithNibName:@"LogInViewController" bundle:nil];
-        UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
-        self.window.rootViewController = navc;
+//        LogInViewController * logIn = [[LogInViewController alloc] init];//[[LogInViewController alloc] initWithNibName:@"LogInViewController" bundle:nil];
+//        UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
+//        self.window.rootViewController = navc;
+        NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+        loginView.backgroundColor = [UIColor colorWithPatternImage:[ZSNApi screenShot]];
+        [[UIApplication sharedApplication].keyWindow addSubview:loginView];
     }
 }
 
@@ -443,15 +446,6 @@
     }];
 }
 
-/**
- *  聊天登录失败
- */
-- (void)chatLoginFailInfo:(NSString *)errInfo
-{
-    UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"" message:errInfo delegate:self cancelButtonTitle:@"取消" otherButtonTitles: @"确定",nil];
-    alert.tag = 2001;
-    [alert show];
-}
 
 - (void)rongCloudDefaultLoginWithToken:(NSString *)loginToken
 {
@@ -485,11 +479,6 @@
 -(void)rongCloudConnectionState{
     
     
-}
-
--(void)viewDidDisappear:(BOOL)animated
-{
-    [[RCIM sharedRCIM] setConnectionStatusDelegate:nil];
 }
 
 #pragma mark - RCIMReceiveMessageDelegate
@@ -553,11 +542,17 @@
     if (ConnectionStatus_KICKED_OFFLINE_BY_OTHER_CLIENT == status) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"" message:@"您已下线，重新连接？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles: @"确定",nil];
-            alert.tag = 2000;
-            [alert show];
+            
+            NSLog(@"----->%d %d",status,self.alert.isVisible);
+//            if ([self.alert isVisible] == NO) {
+//                
+//                self.alert= [[UIAlertView alloc]initWithTitle:@"" message:@"您已下线，重新连接？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles: @"确定",nil];
+//                self.alert.tag = 2000;
+//                [self.alert show];
+//            }
+            
         });
-        
+
 //        [LTools cacheBool:NO ForKey:LOGIN_RONGCLOUD_STATE];
     }
 }

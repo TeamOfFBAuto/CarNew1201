@@ -133,9 +133,13 @@
         switch (aType) {
             case BusinessCommentViewTapTypeLogIn://登陆
             {
-                LogInViewController * logInVC = [[LogInViewController alloc] init];
-                UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logInVC];
-                [bself presentViewController:navc animated:YES completion:nil];
+//                LogInViewController * logInVC = [[LogInViewController alloc] init];
+//                UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logInVC];
+//                [bself presentViewController:navc animated:YES completion:nil];
+                
+                NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+                loginView.backgroundColor = [UIColor colorWithPatternImage:[ZSNApi screenShot]];
+                [[UIApplication sharedApplication].keyWindow addSubview:loginView];
             }
                 break;
             case BusinessCommentViewTapTypeComment://评论
@@ -178,6 +182,8 @@
     
     ///接受评论成功通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successComment) name:@"successedComment" object:nil];
+    ///接受收藏成功通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successComment) name:G_USERCENTERLOADUSERINFO object:nil];
     
 }
 #pragma mark - 登陆成功通知
@@ -387,8 +393,13 @@
 {
     BOOL isLogIn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_IN];
     if (!isLogIn) {
-        LogInViewController * logInVc = [[LogInViewController alloc] init];
-        [self presentViewController:logInVc animated:YES completion:nil];
+//        LogInViewController * logInVc = [[LogInViewController alloc] init];
+//        [self presentViewController:logInVc animated:YES completion:nil];
+        
+        
+        NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+        loginView.backgroundColor = [UIColor colorWithPatternImage:[ZSNApi screenShot]];
+        [[UIApplication sharedApplication].keyWindow addSubview:loginView];
         
         return;
     }
@@ -410,6 +421,7 @@
 //    NSString *url = [NSString stringWithFormat:BUSINESS_COLLECTION_URL,[GMAPI getAuthkey],_business_id];
     NSLog(@"收藏接口 ------    %@",fullUrl);
     LTools *tool = [[LTools alloc]initWithUrl:fullUrl isPost:NO postData:nil];
+    __weak typeof(self)bself = self;
     [tool requestCompletion:^(NSDictionary *result, NSError *erro) {
         
         NSLog(@"收藏结果 ----  %@",result);
@@ -424,7 +436,7 @@
             isCollected = !isCollected;
             
             [functionView setCollectionState:isCollected];
-            
+            [bself.myWebView reload];
             [[NSNotificationCenter defaultCenter] postNotificationName:G_USERCENTERLOADUSERINFO object:nil userInfo:nil];
         }else
         {

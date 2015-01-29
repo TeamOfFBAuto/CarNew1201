@@ -342,10 +342,14 @@
         [user synchronize];
     }else
     {
-        LogInViewController * logIn = [[LogInViewController alloc] init];
-        UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
-        [self presentViewController:navc animated:YES completion:nil];
+//        LogInViewController * logIn = [[LogInViewController alloc] init];
+//        UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
+//        [self presentViewController:navc animated:YES completion:nil];
         
+        
+        NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+        loginView.backgroundColor = [UIColor colorWithPatternImage:[ZSNApi screenShot]];
+        [[UIApplication sharedApplication].keyWindow addSubview:loginView];
         
 //        AppDelegate * delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 //        [delegate showControlView:Root_login];
@@ -380,8 +384,6 @@
     ASIHTTPRequest * request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:fullURL]];
     
     __block ASIHTTPRequest * _requset = request;
-    
-    _requset.delegate = self;
     
     [_requset setCompletionBlock:^{
         

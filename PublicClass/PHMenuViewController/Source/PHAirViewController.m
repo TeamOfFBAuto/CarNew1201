@@ -55,11 +55,6 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
 
 @interface PHAirViewController()
 
-@property (nonatomic, strong) UIView      * wrapperView;
-@property (nonatomic, strong) UIView      * contentView;
-@property (nonatomic, strong) UIView      * leftView;
-@property (nonatomic, strong) UIView      * rightView;
-@property (nonatomic, strong) UIImageView * airImageView;
 
 @property(nonatomic,retain)UILabel *unreadNum_label;//未读消息
 
@@ -142,6 +137,11 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
     int unreadNum = [[RCIM sharedRCIM]getTotalUnreadCount];
     
     unreadNum = (unreadNum >= 0) ? unreadNum : 0;
+    
+    if ([LTools cacheBoolForKey:USER_IN] == NO) {
+        
+        unreadNum = 0;
+    }
     
     if (unreadNum == 0) {
         
@@ -235,6 +235,9 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
     
      // Default height row value
     heightAirMenuRow = 36;
+    
+    ///登陆成功通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successLogIn) name:@"gdengluchenggong" object:nil];
 }
 
 
@@ -246,6 +249,12 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
 -(void)settingTap:(UIButton *)sender
 {
     
+}
+
+#pragma mark - 登陆成功通知
+-(void)successLogIn
+{
+    [self reloadData];
 }
 
 - (void)bringViewControllerToTop:(UIViewController*)controller atIndexPath:(NSIndexPath*)indexPath
@@ -334,6 +343,13 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
 
 - (void)handleTapOnAirImageView:(UITapGestureRecognizer*)swipe
 {
+    ///点击个人中心或者消息的
+    if ((_currentIndexPath.row == 2 || _currentIndexPath.row == 3) && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_IN])
+    {
+        [self pushToLogInViewController];
+        
+        return;
+    }
     [self hideAirViewOnComplete:^{
         [self bringViewControllerToTop:self.fontViewController
                            atIndexPath:self.currentIndexPath];
@@ -931,6 +947,13 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
 - (void)showAirViewFromViewController:(UIViewController*)controller
                              complete:(void (^)(void))complete
 {
+    ///点击个人中心或者消息的
+    if ((_currentIndexPath.row == 2 || _currentIndexPath.row == 3) && ![[NSUserDefaults standardUserDefaults] boolForKey:USER_IN])
+    {
+        [self pushToLogInViewController];
+        
+        return;
+    }
     //未读消息
     [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_UNREADNUM object:nil];
     

@@ -10,6 +10,7 @@
 #include "sys/stat.h"
 #include <dirent.h>
 #import "FriendAttribute.h"
+#import "UIImage+ImageEffects.h"
 
 @implementation ZSNApi
 
@@ -669,6 +670,18 @@
     hud.removeFromSuperViewOnHide = YES;
     [hud hide:YES afterDelay:1.5];
 }
+#pragma mark - 弹出提示框（包含标题，内容），1.5秒后消失
++(void)showautoHiddenMBProgressWithTitle:(NSString *)title WithContent:(NSString *)content addToView:(UIView *)aView
+{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:aView animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = title;
+    hud.detailsLabelText = content;
+    hud.margin = 15.f;
+    hud.yOffset = 0.f;
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay:1.5];
+}
 
 ///字符串编码
 +(NSString *)encodeToPercentEscapeString: (NSString *) input
@@ -806,6 +819,18 @@
 {
    CGRect rectr = [string boundingRectWithSize:CGSizeMake(aWidth,aHeight) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:aFont]} context:nil];
     return rectr.size;
+}
+
+///截图并模糊处理
++(UIImage *)screenShot
+{
+    UIGraphicsBeginImageContextWithOptions([UIApplication sharedApplication].keyWindow.bounds.size,YES,0.0f);
+    [[UIApplication sharedApplication].keyWindow drawViewHierarchyInRect:[UIApplication sharedApplication].keyWindow.bounds afterScreenUpdates:YES];
+    UIImage *uiImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    UIImage * screenShot = [uiImage applyBlurWithRadius:3 tintColor:[UIColor colorWithWhite:0.2 alpha:0.1] saturationDeltaFactor:1.0 maskImage:nil];
+    
+    return screenShot;
 }
 
 @end

@@ -47,6 +47,14 @@
 @property (nonatomic, readonly) UIViewController * fontViewController;
 @property (nonatomic, strong)   NSIndexPath      * currentIndexPath;
 
+
+@property (nonatomic, strong) UIView      * wrapperView;
+@property (nonatomic, strong) UIView      * contentView;
+@property (nonatomic, strong) UIView      * leftView;
+@property (nonatomic, strong) UIView      * rightView;
+@property (nonatomic, strong) UIImageView * airImageView;
+
+
 - (id)initWithRootViewController:(UIViewController*)viewController atIndexPath:(NSIndexPath*)indexPath;
 
 - (void)reloadData;

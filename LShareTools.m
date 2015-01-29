@@ -136,10 +136,14 @@
         BOOL isLogIn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_IN];
         if (!isLogIn)
         {
-            UIViewController *root = ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController;
-            LogInViewController * logInVC = [[LogInViewController alloc] init];
-        
-            [root presentViewController:logInVC animated:YES completion:nil];
+//            UIViewController *root = ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController;
+//            LogInViewController * logInVC = [[LogInViewController alloc] init];
+//        
+//            [root presentViewController:logInVC animated:YES completion:nil];
+            
+            NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+            loginView.backgroundColor = [UIColor colorWithPatternImage:[ZSNApi screenShot]];
+            [[UIApplication sharedApplication].keyWindow addSubview:loginView];
             
             return;
         }

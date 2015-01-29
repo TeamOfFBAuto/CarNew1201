@@ -86,7 +86,7 @@
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
    // [self updateStatusBarColor];
     
 }
@@ -177,7 +177,9 @@
     [self progress];
     ///接受评论成功通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successComment) name:@"successedComment" object:nil];
-
+    ///接受收藏变更通知
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successComment) name:G_USERCENTERLOADUSERINFO object:nil];
 }
 
 - (void)progress
@@ -311,9 +313,12 @@
 {
     BOOL isLogIn = [[NSUserDefaults standardUserDefaults] boolForKey:USER_IN];
     if (!isLogIn) {
-        LogInViewController * logInVc = [[LogInViewController alloc] init];
-        [self presentViewController:logInVc animated:YES completion:nil];
+//        LogInViewController * logInVc = [[LogInViewController alloc] init];
+//        [self presentViewController:logInVc animated:YES completion:nil];
         
+        NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+        loginView.backgroundColor = [UIColor colorWithPatternImage:[ZSNApi screenShot]];
+        [[UIApplication sharedApplication].keyWindow addSubview:loginView];
         return;
     }
     
@@ -467,9 +472,13 @@
         switch (aType) {
             case BusinessCommentViewTapTypeLogIn://登陆
             {
-                LogInViewController * logInVC = [[LogInViewController alloc] init];
-                UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logInVC];
-                [bself presentViewController:navc animated:YES completion:nil];
+//                LogInViewController * logInVC = [[LogInViewController alloc] init];
+//                UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logInVC];
+//                [bself presentViewController:navc animated:YES completion:nil];
+                
+                NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+                loginView.backgroundColor = [UIColor colorWithPatternImage:[ZSNApi screenShot]];
+                [[UIApplication sharedApplication].keyWindow addSubview:loginView];
             }
                 break;
             case BusinessCommentViewTapTypeComment://评论
@@ -621,7 +630,7 @@
         return NO;
     }
     
-    
+    ///店铺情况
     if ([relativeUrl rangeOfString:@"dianpuli"].length > 0) {
         
         NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"/dianpuli"];
@@ -637,6 +646,26 @@
             home.business_name = _storeName;
             [self.navigationController pushViewController:home animated:YES];
 
+        }
+        
+        return NO;
+    }
+    ///这也是店铺情况
+    if ([relativeUrl rangeOfString:@"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid="].length > 0) {
+        
+        NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"&storeid="];
+        if (dianpu.count > 1) {
+            
+            NSString *dianpuId = dianpu[1];
+            NSLog(@"店铺 id:%@",dianpuId);
+            
+            BusinessHomeViewController * home = [[BusinessHomeViewController alloc] init];
+            home.business_id = dianpuId;
+            home.share_title = self.storeName;
+            home.share_image = self.storeImage;
+            home.business_name = _storeName;
+            [self.navigationController pushViewController:home animated:YES];
+            
         }
         
         return NO;
@@ -800,11 +829,14 @@
         }else
         {
             
-            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginAndRefresh) name:@"gdengluchenggong" object:nil];
-            LogInViewController * logIn = [[LogInViewController alloc] init];
-            UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
-            [self presentViewController:navc animated:YES completion:nil];
+//            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginAndRefresh) name:@"gdengluchenggong" object:nil];
+//            LogInViewController * logIn = [[LogInViewController alloc] init];
+//            UINavigationController * navc = [[UINavigationController alloc] initWithRootViewController:logIn];
+//            [self presentViewController:navc animated:YES completion:nil];
             
+            NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+            loginView.backgroundColor = [UIColor colorWithPatternImage:[ZSNApi screenShot]];
+            [[UIApplication sharedApplication].keyWindow addSubview:loginView];
         }
         
         return NO;
