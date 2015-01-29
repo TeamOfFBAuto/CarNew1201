@@ -156,10 +156,7 @@
 
 - (IBAction)moreTap:(id)sender {
     
-    GaiZhuangWebViewController * webview = [[GaiZhuangWebViewController alloc] init];
-    webview.web_url = @"http://mobile.fblife.com";
-    [self.navigationController pushViewController:webview animated:YES];
-    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/yue-yee-zu/id605673005?l=zh&ls=1&mt=8"]];
 }
 
 

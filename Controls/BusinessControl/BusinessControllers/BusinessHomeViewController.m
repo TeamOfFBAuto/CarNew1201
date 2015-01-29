@@ -16,6 +16,7 @@
 #import "BusinessDetailModel.h"
 #import "FBMapViewController.h"
 #import "PicViewController.h"
+#import "PeiJianListViewController.h"
 
 @interface BusinessHomeViewController ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate,UIScrollViewDelegate>
 {
@@ -254,6 +255,9 @@
             detail.detailType = Detail_Peijian;
             detail.storeImage = self.share_image;
             detail.storeId = self.business_id;
+            self.edgesForExtendedLayout = UIRectEdgeAll;
+            self.navigationController.navigationBarHidden = NO;
+            [[UIApplication sharedApplication] setStatusBarHidden:NO];
             [self.navigationController pushViewController:detail animated:YES];
 
         }
@@ -320,7 +324,10 @@
     ///配件更多按钮
     if ([relativeUrl rangeOfString:@"goods"].length > 0) {
         
-        
+        PeiJianListViewController * peijianList = [[PeiJianListViewController alloc] init];
+        peijianList.business_id = _business_id;
+        self.edgesForExtendedLayout = UIRectEdgeAll;
+        [self.navigationController pushViewController:peijianList animated:YES];
         
         return NO;
     }

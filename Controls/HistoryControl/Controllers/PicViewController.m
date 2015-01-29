@@ -34,18 +34,19 @@
 {
     [super viewWillAppear:animated];
     self.edgesForExtendedLayout = UIRectEdgeAll;
-//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-    
-    NSLog(@"--------");
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
-    if (self.navigationController.isNavigationBarHidden) {
-        
-        self.navigationController.navigationBarHidden = NO;
-
+    if (_business_id.length)
+    {
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+        UINavigationBar *bar = [self.navigationController navigationBar];
+        CGFloat navBarHeight = 64;
+        CGRect frame = CGRectMake(0.0f,0, DEVICE_WIDTH, navBarHeight);
+        [bar setFrame:frame];
     }
     
+    self.navigationController.navigationBarHidden = NO;
 }
 
 
@@ -61,14 +62,20 @@
     
     self.isShowUnreadNumLabel = YES;//左上角是否显示未读消息
     
-    self.leftImageName = @"new_menu-2";
+    if (_business_id.length)
+    {
+        self.leftImageName = BACK_DEFAULT_IMAGE_GRAY;
+    }else
+    {
+        self.leftImageName = @"new_menu-2";
+        
+        UIImageView *titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"new_logo"]];
+        
+        self.navigationItem.titleView = titleView;
+    }
+    
     self.myTitle = @"改装案例";
     
-    
-    UIImageView *titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"new_logo"]];
-    
-    self.navigationItem.titleView = titleView;
-
     
     [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeOther WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
@@ -97,7 +104,14 @@
 
 -(void)leftButtonTap:(UIButton *)sender
 {
-    [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
+    if (_business_id.length)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else
+    {
+        [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

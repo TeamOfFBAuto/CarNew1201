@@ -12,7 +12,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PeiJianListViewController : MyViewController
+@interface PeiJianListViewController : UIViewController
 {
     
 }

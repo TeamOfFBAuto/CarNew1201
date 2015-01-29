@@ -13,19 +13,13 @@
 
 @property(nonatomic,strong)NSString * id;
 @property(nonatomic,strong)NSString * uid;
-@property(nonatomic,strong)NSString * title;
-@property(nonatomic,strong)NSString * pichead;
+@property(nonatomic,strong)NSString * storename;
 @property(nonatomic,strong)NSString * username;
+@property(nonatomic,strong)NSString * gtype;
+@property(nonatomic,strong)NSString * title;
+@property(nonatomic,strong)NSString * price;
+@property(nonatomic,strong)NSString * pichead;
 @property(nonatomic,strong)NSString * com_num;
-@property(nonatomic,strong)NSString * province;
-@property(nonatomic,strong)NSString * city;
-@property(nonatomic,strong)NSString * brand;
-@property(nonatomic,strong)NSString * models;
-@property(nonatomic,strong)NSString * tpltype;
-@property(nonatomic,strong)NSString * dateline;
-@property(nonatomic,strong)NSString * spichead;
-@property(nonatomic,strong)NSString * sname;
-
 
 
 @end

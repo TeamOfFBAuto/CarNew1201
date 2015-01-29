@@ -8,7 +8,8 @@
 
 #import "PeiJianListViewController.h"
 #import "PeiJianListModel.h"
-
+#import "PeiJianListCell.h"
+#import "AnliDetailViewController.h"
 
 
 @interface PeiJianListViewController ()<RefreshDelegate,UITableViewDataSource>
@@ -22,11 +23,50 @@
 
 @implementation PeiJianListViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+   
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+     self.edgesForExtendedLayout = UIRectEdgeAll;
+    if (self.navigationController.navigationBarHidden) {
+        self.navigationController.navigationBarHidden = NO;
+    }
+}
+
+-(void)leftButtonTap:(UIButton *)button
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setMyViewControllerLeftButtonType:MyViewControllerLeftbuttonTypeBack WithRightButtonType:MyViewControllerRightbuttonTypeNull];
     
+    if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] )
+    {
+        //iOS 5 new UINavigationBar custom background
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:MY_MACRO_NAME?IOS7DAOHANGLANBEIJING_PUSH:IOS6DAOHANGLANBEIJING] forBarMetrics: UIBarMetricsDefault];
+    }
+    
+    UIBarButtonItem * spaceButton1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    spaceButton1.width = MY_MACRO_NAME?-13:5;
+    
+    UIButton *button_back=[[UIButton alloc]initWithFrame:CGRectMake(MY_MACRO_NAME? -5:5,8,40,44)];
+    [button_back addTarget:self action:@selector(leftButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+    [button_back setImage:[UIImage imageNamed:BACK_DEFAULT_IMAGE_GRAY] forState:UIControlStateNormal];
+    UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:button_back];
+    self.navigationItem.leftBarButtonItems=@[spaceButton1,back_item];
+    
+    UILabel * _myTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,100,44)];
+    _myTitleLabel.textAlignment = NSTextAlignmentCenter;
+    _myTitleLabel.text = @"配件列表";
+    _myTitleLabel.textColor = [UIColor blackColor];
+    _myTitleLabel.font = [UIFont systemFontOfSize:17];
+    self.navigationItem.titleView = _myTitleLabel;
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     //数据展示table
     _myTableView = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT - 44 + 20)];
@@ -36,6 +76,7 @@
     _myTableView.backgroundColor = [UIColor clearColor];
     
     _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     [self.view addSubview:_myTableView];
     
     _myTableView.noDataStr = @"没有配件商品";
@@ -87,8 +128,30 @@
     [request start];
 }
 
+#pragma mark - UITableViewDataSource
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _myTableView.dataArray.count;
+}
 
-
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString * identifier = @"identifier";
+    
+    PeiJianListCell * cell = (PeiJianListCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"PeiJianListCell" owner:self options:nil] objectAtIndex:0];
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    PeiJianListModel * model = (PeiJianListModel *)[_myTableView.dataArray objectAtIndex:indexPath.row];
+    
+    [cell setInfoWithModel:model];
+    
+    return cell;
+}
 
 
 #pragma mark - Refresh Delegate
@@ -102,11 +165,21 @@
 }
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    PeiJianListCell * cell = (PeiJianListCell *)[_myTableView cellForRowAtIndexPath:indexPath];
     
+    PeiJianListModel * model = (PeiJianListModel *)[_myTableView.dataArray objectAtIndex:indexPath.row];
+    
+    AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
+    detail.anli_id = model.id;
+    detail.storeName = model.storename;
+    detail.detailType = Detail_Peijian;
+    detail.storeImage = cell.header_imageView.image;
+    detail.storeId = self.business_id;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath
 {
-    return 0;
+    return 90;
 }
 
 
