@@ -685,6 +685,7 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
                 self.unreadNum_label.clipsToBounds = YES;
                 self.unreadNum_label.textAlignment = NSTextAlignmentCenter;
                 [button addSubview:self.unreadNum_label];
+                self.unreadNum_label.hidden = YES;
             }
             
             
