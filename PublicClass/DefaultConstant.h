@@ -125,7 +125,7 @@ alpha:(a)]
 //登录
 #define G_LOGIN @"http://gztest.fblife.com/index.php?c=interface&a=dologin&fbtype=json"
 ///商家详情分享出去的链接地址
-#define BUSINESS_SHARE_URL @"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=%@"
+#define BUSINESS_SHARE_URL @"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=%@&isshare=1"
 ///商家详情HTML5地址
 #define BUSINESS_DETAIL_HTML5_URL @"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=%@"
 ///商家详情接口
@@ -179,9 +179,11 @@ alpha:(a)]
 ///配件详情接口
 #define ANLI_PEIJIAN_INFORMATION_URL @"http://gztest.fblife.com/web.php?c=interface&a=getGoodsdetails&gid=%@&authkey=%@"
 
+///配件列表接口
+#define PEIJIAN_LIEST_URL @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&id=%@&page=%d&ps=10"
 
 //案例列表
-#define ANLI_LIST @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&page=%d&ps=%d&ordertype=%d"
+#define ANLI_LIST @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&page=%d&ps=%d&ordertype=%d&id=%@"
 
 //案例收藏
 #define ANLI_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=addFavCase&fbtype=json&authkey=%@&caseid=%@"

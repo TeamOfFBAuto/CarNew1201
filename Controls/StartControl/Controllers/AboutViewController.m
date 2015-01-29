@@ -142,8 +142,16 @@
 
 - (IBAction)talkTap:(id)sender {
     
-    
-    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_IN])
+    {
+        NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+        loginView.backgroundColor = [UIColor colorWithPatternImage:[ZSNApi screenShot]];
+        [[UIApplication sharedApplication].keyWindow addSubview:loginView];
+
+    }else
+    {
+        [LTools rongCloudChatWithUserId:@"141490" userName:@"中国顶火穿越车会" viewController:self];
+    }
 }
 
 - (IBAction)moreTap:(id)sender {
