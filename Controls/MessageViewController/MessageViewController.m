@@ -134,18 +134,25 @@
     UIView *xiaxian = [[UIView alloc]initWithFrame:CGRectMake(titleLabel.frame.origin.x, CGRectGetMaxY(titleLabel.frame)+5, titleLabel.frame.size.width, 1)];
     xiaxian.backgroundColor = RGBCOLOR(233, 233, 233);
     
-    
-    
     //视图添加
     [_noDataView addSubview:noDataImv];
     [_noDataView addSubview:shangxian];
     [_noDataView addSubview:titleLabel];
     [_noDataView addSubview:xiaxian];
     
-    [self.view addSubview:_noDataView];
-    
-    
+    [self.conversationListView setBackgroundView:_noDataView];
+
 }
+
+///**
+// *  隐藏 默认背景图
+// */
+//
+//-(BOOL)showCustomEmptyBackView
+//{
+//    return YES;
+//}
+
 
 
 /**
@@ -169,16 +176,8 @@
 //    chat.enablePOI = NO;
     chat.enableSettings = NO;
     [self.navigationController pushViewController:chat animated:YES];
+    
 }
-
-/**
- *  隐藏 默认背景图
- */
-
-//-(BOOL)showCustomEmptyBackView
-//{
-//    return YES;
-//}
 
 -(void)leftButtonTap:(UIButton *)sender
 {
