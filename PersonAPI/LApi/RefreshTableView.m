@@ -260,7 +260,7 @@
     center_view.center = CGPointMake(DEVICE_WIDTH/2.f, _noDataView.height/2.f);
     
     //图
-    UIImageView *noDataImv = [[UIImageView alloc]initWithFrame:CGRectMake((DEVICE_WIDTH-130)*0.5, 1, 130, 60)];
+    UIImageView *noDataImv = [[UIImageView alloc]initWithFrame:CGRectMake((DEVICE_WIDTH-130)*0.5, 1 - 22, 130, 60)];
     
     [noDataImv setImage:[UIImage imageNamed:@"noanydata.png"]];
     [center_view addSubview:noDataImv];
@@ -286,6 +286,8 @@
     xiaxian.backgroundColor = RGBCOLOR(233, 233, 233);
     
     [center_view addSubview:xiaxian];
+    
+    center_view.height = xiaxian.bottom;
     
     //视图添加
     [_noDataView addSubview:center_view];
