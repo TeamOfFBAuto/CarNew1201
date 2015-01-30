@@ -250,39 +250,38 @@
 
 -(void)setNodataView{
     //整个视图
-    _noDataView = [[UIView alloc]initWithFrame:CGRectMake(0, 240, DEVICE_WIDTH, 105)];
+    _noDataView = [[UIView alloc]initWithFrame:CGRectMake(0, 240, DEVICE_WIDTH, DEVICE_WIDTH)];
     _noDataView.backgroundColor = [UIColor whiteColor];
     
     //图
-    UIImageView *noDataImv = [[UIImageView alloc]initWithFrame:CGRectMake(90, 90, 130, 60)];
-    noDataImv.center = CGPointMake(DEVICE_WIDTH * 0.5, 120);
-    [noDataImv setImage:[UIImage imageNamed:@"noDataView@2x"]];
+    UIImageView *noDataImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_WIDTH)];
+    [noDataImv setImage:[UIImage imageNamed:@"noanydata.jpg"]];
     
-    //上分割线
-    UIView *shangxian = [[UIView alloc]initWithFrame:CGRectMake(noDataImv.frame.origin.x, CGRectGetMaxY(noDataImv.frame)+12, noDataImv.frame.size.width, 1)];
-    shangxian.backgroundColor = RGBCOLOR(233, 233, 233);
-    
-    //文字提示
-    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(shangxian.frame.origin.x, CGRectGetMaxY(shangxian.frame)+5, shangxian.frame.size.width, 13)];
-    if (self.noDataStr == nil) {
-        self.noDataStr = @"没有收藏任何内容";
-    }
-    titleLabel.text = self.noDataStr;
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.font = [UIFont systemFontOfSize:13];
-    titleLabel.textColor = RGBCOLOR(129, 129, 129);
-    
-    //下分割线
-    UIView *xiaxian = [[UIView alloc]initWithFrame:CGRectMake(titleLabel.frame.origin.x, CGRectGetMaxY(titleLabel.frame)+5, titleLabel.frame.size.width, 1)];
-    xiaxian.backgroundColor = RGBCOLOR(233, 233, 233);
+//    //上分割线
+//    UIView *shangxian = [[UIView alloc]initWithFrame:CGRectMake(noDataImv.frame.origin.x, CGRectGetMaxY(noDataImv.frame)+12, noDataImv.frame.size.width, 1)];
+//    shangxian.backgroundColor = RGBCOLOR(233, 233, 233);
+//    
+//    //文字提示
+//    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(shangxian.frame.origin.x, CGRectGetMaxY(shangxian.frame)+5, shangxian.frame.size.width, 13)];
+//    if (self.noDataStr == nil) {
+//        self.noDataStr = @"没有收藏任何内容";
+//    }
+//    titleLabel.text = self.noDataStr;
+//    titleLabel.textAlignment = NSTextAlignmentCenter;
+//    titleLabel.font = [UIFont systemFontOfSize:13];
+//    titleLabel.textColor = RGBCOLOR(129, 129, 129);
+//    
+//    //下分割线
+//    UIView *xiaxian = [[UIView alloc]initWithFrame:CGRectMake(titleLabel.frame.origin.x, CGRectGetMaxY(titleLabel.frame)+5, titleLabel.frame.size.width, 1)];
+//    xiaxian.backgroundColor = RGBCOLOR(233, 233, 233);
     
     
     
     //视图添加
     [_noDataView addSubview:noDataImv];
-    [_noDataView addSubview:shangxian];
-    [_noDataView addSubview:titleLabel];
-    [_noDataView addSubview:xiaxian];
+//    [_noDataView addSubview:shangxian];
+//    [_noDataView addSubview:titleLabel];
+//    [_noDataView addSubview:xiaxian];
     
 }
 

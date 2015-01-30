@@ -682,6 +682,7 @@
     
     [self progressAnimation];
     
+    [self performSelector:@selector(progressAnimation) withObject:nil afterDelay:5.0f];
 }
 
 - (void)progressAnimation
