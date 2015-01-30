@@ -178,6 +178,7 @@ typedef enum{
     _tableView.dataSource = self;
     _tableView.netWorking = GIS;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.headerHeight =DEVICE_HEIGHT-240.00/320*ALL_FRAME_WIDTH;
     [self.view addSubview:_tableView];
     
     _tableView.tableHeaderView = _upThreeViewBackGroundView;

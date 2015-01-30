@@ -250,17 +250,25 @@
 
 -(void)setNodataView{
     //整个视图
-    _noDataView = [[UIView alloc]initWithFrame:CGRectMake(0, 240, DEVICE_WIDTH, 105)];
+    _noDataView = [[UIView alloc]initWithFrame:CGRectMake(0, 240*GscreenRatio_568, DEVICE_WIDTH, self.headerHeight)];
     _noDataView.backgroundColor = [UIColor whiteColor];
     
+    
+    UIView *center_view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, 60 + 1 + 5 + 13 + 5 + 1)];
+    center_view.backgroundColor = [UIColor whiteColor];
+    [_noDataView addSubview:center_view];
+    center_view.center = CGPointMake(DEVICE_WIDTH/2.f, _noDataView.height/2.f);
+    
     //图
-    UIImageView *noDataImv = [[UIImageView alloc]initWithFrame:CGRectMake((DEVICE_WIDTH-130)*0.5, 90, 130, 60)];
+    UIImageView *noDataImv = [[UIImageView alloc]initWithFrame:CGRectMake((DEVICE_WIDTH-130)*0.5, 1, 130, 60)];
     
     [noDataImv setImage:[UIImage imageNamed:@"noanydata.png"]];
+    [center_view addSubview:noDataImv];
     
     //上分割线
     UIView *shangxian = [[UIView alloc]initWithFrame:CGRectMake(noDataImv.frame.origin.x, CGRectGetMaxY(noDataImv.frame)+12, noDataImv.frame.size.width, 1)];
     shangxian.backgroundColor = RGBCOLOR(233, 233, 233);
+    [center_view addSubview:shangxian];
     
     //文字提示
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(shangxian.frame.origin.x, CGRectGetMaxY(shangxian.frame)+5, shangxian.frame.size.width, 13)];
@@ -271,18 +279,16 @@
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.font = [UIFont systemFontOfSize:13];
     titleLabel.textColor = RGBCOLOR(129, 129, 129);
-    
+    [center_view addSubview:titleLabel];
+
     //下分割线
     UIView *xiaxian = [[UIView alloc]initWithFrame:CGRectMake(titleLabel.frame.origin.x, CGRectGetMaxY(titleLabel.frame)+5, titleLabel.frame.size.width, 1)];
     xiaxian.backgroundColor = RGBCOLOR(233, 233, 233);
     
-    
+    [center_view addSubview:xiaxian];
     
     //视图添加
-    [_noDataView addSubview:noDataImv];
-    [_noDataView addSubview:shangxian];
-    [_noDataView addSubview:titleLabel];
-    [_noDataView addSubview:xiaxian];
+    [_noDataView addSubview:center_view];
     
 }
 
