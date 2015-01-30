@@ -19,6 +19,6 @@
 
 @property(nonatomic,strong)NSString * business_id;
 
-@property(nonatomic,strong)NSString * business_share_image;
+@property(nonatomic,strong)UIImage * business_share_image;
 
 @end
