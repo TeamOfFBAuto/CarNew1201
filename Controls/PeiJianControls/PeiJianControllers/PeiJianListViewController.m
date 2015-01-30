@@ -33,6 +33,7 @@
     if (self.navigationController.navigationBarHidden) {
         self.navigationController.navigationBarHidden = NO;
     }
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
 -(void)leftButtonTap:(UIButton *)button
@@ -174,7 +175,7 @@
     detail.anli_id = model.id;
     detail.storeName = model.storename;
     detail.detailType = Detail_Peijian;
-    detail.storeImage = cell.header_imageView.image;
+//    detail.storeImage = cell.header_imageView.image;
     detail.storeId = self.business_id;
     [self.navigationController pushViewController:detail animated:YES];
 }
