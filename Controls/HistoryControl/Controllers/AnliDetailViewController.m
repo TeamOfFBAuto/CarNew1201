@@ -169,7 +169,7 @@
     
 //    [self rightButtonTap:nil];
     
-    [self networkForCollectState];
+    [self networkForCollectState];//获取收藏状态
     
     
     //评论view
@@ -282,7 +282,7 @@
                 
 //                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
                 
-                [tool showOrHidden:YES title:weakSelf.detail_info.title description:weakSelf.detail_info.content imageUrl:weakSelf.detail_info.pichead aShareImage:weakSelf.storeImage linkUrl:url];
+                [tool showOrHidden:YES title:weakSelf.detail_info.title description:weakSelf.detail_info.content imageUrl:weakSelf.detail_info.pichead aShareImage:weakSelf.storeImage linkUrl:url isNativeImage:NO];
                 
             }else if (index == 1){
                 

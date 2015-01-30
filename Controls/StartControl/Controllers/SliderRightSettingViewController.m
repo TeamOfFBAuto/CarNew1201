@@ -323,7 +323,7 @@
         
         [user setBool:NO forKey:USER_IN];
         
-        [[RCIM sharedRCIM]disconnect:NO];//注销融云
+        [[RCIM sharedRCIM]disconnect];//注销融云
 //        [[RCIM sharedRCIM]clearConversations:ConversationType_PRIVATE,ConversationType_GROUP,ConversationType_DISCUSSION,nil];
         
         [user removeObjectForKey:@"friendList"];
