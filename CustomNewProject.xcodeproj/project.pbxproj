@@ -257,6 +257,7 @@
 		E311CD301A24573C007D69D3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E311CD2F1A24573C007D69D3 /* Images.xcassets */; };
 		E311CD331A24573C007D69D3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E311CD311A24573C007D69D3 /* LaunchScreen.xib */; };
 		E311CD3F1A24573C007D69D3 /* CustomNewProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E311CD3E1A24573C007D69D3 /* CustomNewProjectTests.m */; };
+		E3539A4D1A7B77640079447C /* noanydata@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3539A4C1A7B77640079447C /* noanydata@2x.jpg */; };
 		E3571F291A3E71E6001F7C8C /* GscoreStarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3571F281A3E71E6001F7C8C /* GscoreStarViewController.m */; };
 		E3571F3F1A3E7D37001F7C8C /* TQStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E3571F3E1A3E7D37001F7C8C /* TQStarRatingView.m */; };
 		E358B2C01A2DEAF700B0FA51 /* GmPrepareNetData.m in Sources */ = {isa = PBXBuildFile; fileRef = E358B2BF1A2DEAF700B0FA51 /* GmPrepareNetData.m */; };
@@ -690,6 +691,7 @@
 		E311CD381A24573C007D69D3 /* CustomNewProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomNewProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E311CD3D1A24573C007D69D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E311CD3E1A24573C007D69D3 /* CustomNewProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomNewProjectTests.m; sourceTree = "<group>"; };
+		E3539A4C1A7B77640079447C /* noanydata@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "noanydata@2x.jpg"; sourceTree = "<group>"; };
 		E3571F271A3E71E6001F7C8C /* GscoreStarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GscoreStarViewController.h; sourceTree = "<group>"; };
 		E3571F281A3E71E6001F7C8C /* GscoreStarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GscoreStarViewController.m; sourceTree = "<group>"; };
 		E3571F3D1A3E7D37001F7C8C /* TQStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TQStarRatingView.h; sourceTree = "<group>"; };
@@ -1868,6 +1870,7 @@
 		E392C3131A2815FA001AEA0D /* Gviews */ = {
 			isa = PBXGroup;
 			children = (
+				E3539A4C1A7B77640079447C /* noanydata@2x.jpg */,
 				E3A87D5C1A5CD52D006B7049 /* gstarBack_dianping@2x.png */,
 				E3571F3D1A3E7D37001F7C8C /* TQStarRatingView.h */,
 				E3571F3E1A3E7D37001F7C8C /* TQStarRatingView.m */,
@@ -2041,6 +2044,7 @@
 				563F184D1A79D92E004ED0A7 /* about_jieshao_image@2x.png in Resources */,
 				563F184B1A79D866004ED0A7 /* about_jieshao_image@3x.png in Resources */,
 				13F9D4871A2DA7BB002A6904 /* shareziliudi@2x.png in Resources */,
+				E3539A4D1A7B77640079447C /* noanydata@2x.jpg in Resources */,
 				56621D421A28605B00310A48 /* item_cancel@2x.png in Resources */,
 				13F9D4C41A2DA951002A6904 /* UMSLoginViewController.xib in Resources */,
 				132FB8C71A42D2CB00D5A9F0 /* anli_touxian_quan@2x.png in Resources */,
@@ -2378,8 +2382,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0c1b68b6-94ba-43b9-b1d3-dea4d4ca3175";
-				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
+				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2417,8 +2420,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0c1b68b6-94ba-43b9-b1d3-dea4d4ca3175";
-				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
+				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2448,8 +2450,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c1b68b6-94ba-43b9-b1d3-dea4d4ca3175";
-				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
+				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -2477,8 +2478,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c1b68b6-94ba-43b9-b1d3-dea4d4ca3175";
-				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
+				PROVISIONING_PROFILE = "f0f07b52-40c5-4f8a-86b2-fee6114d7a20";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
