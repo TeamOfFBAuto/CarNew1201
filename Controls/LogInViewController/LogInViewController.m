@@ -493,6 +493,12 @@
             
             NSLog(@"------> rongCloud 登陆失败 %d",(int)status);
             
+            if (status == ConnectErrorCode_TOKEN_INCORRECT) {
+                //错误的令牌 服务器重新获取
+                
+                [weakSelf getRoncloudLoginToken];
+            }
+            
             [LTools showMBProgressWithText:@"rongCloud登录失败" addToView:self.view];
             
         }];
