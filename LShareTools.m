@@ -154,7 +154,7 @@
         [self shareToEmail:string_bodyofemail];
         
         
-    }else if(buttonIndex == 1 || buttonIndex == 2){
+    }else if(buttonIndex == 1 || buttonIndex == 2 || buttonIndex == 3){
         NSLog(@"1分享给微信好友");
         NSLog(@"2分享给微信朋友圈");
         NSLog(@"3到新浪微博界面的");
