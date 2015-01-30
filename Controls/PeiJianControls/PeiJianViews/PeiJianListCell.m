@@ -28,7 +28,7 @@
 
 -(void)setInfoWithModel:(PeiJianListModel *)model
 {
-    [_header_imageView sd_setImageWithURL:[NSURL URLWithString:model.pichead] placeholderImage:nil];
+    [_header_imageView sd_setImageWithURL:[NSURL URLWithString:model.pichead] placeholderImage:[UIImage imageNamed:@"peijian_default_image"]];
     _title_label.text = model.title;
     _price_label.text = [NSString stringWithFormat:@"￥%@",model.price];
 }

@@ -33,6 +33,7 @@
     if (self.navigationController.navigationBarHidden) {
         self.navigationController.navigationBarHidden = NO;
     }
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
 -(void)leftButtonTap:(UIButton *)button
@@ -43,6 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.edgesForExtendedLayout = UIRectEdgeAll;
     
     if([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)] )
     {
@@ -69,7 +71,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     //数据展示table
-    _myTableView = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT - 44 + 20)];
+    _myTableView = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH,DEVICE_HEIGHT-64)];
     _myTableView.refreshDelegate = self;
     _myTableView.dataSource = self;
     
@@ -173,7 +175,7 @@
     detail.anli_id = model.id;
     detail.storeName = model.storename;
     detail.detailType = Detail_Peijian;
-    detail.storeImage = cell.header_imageView.image;
+//    detail.storeImage = cell.header_imageView.image;
     detail.storeId = self.business_id;
     [self.navigationController pushViewController:detail animated:YES];
 }
