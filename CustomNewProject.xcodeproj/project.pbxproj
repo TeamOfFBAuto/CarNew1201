@@ -171,6 +171,7 @@
 		565EE8D61A2C50830063CAA3 /* zc_resendimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565EE8D41A2C50830063CAA3 /* zc_resendimage@2x.png */; };
 		565EE8D71A2C50830063CAA3 /* zc_xieyi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565EE8D51A2C50830063CAA3 /* zc_xieyi@2x.png */; };
 		565EE8D91A2C50950063CAA3 /* logIn_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 565EE8D81A2C50950063CAA3 /* logIn_close@2x.png */; };
+		566156B51A7B5C8700D29956 /* peijian_default_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 566156B41A7B5C8700D29956 /* peijian_default_image@2x.png */; };
 		56621CFD1A285A2500310A48 /* setting_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56621CFC1A285A2500310A48 /* setting_image@2x.png */; };
 		56621D001A285FA800310A48 /* SliderRightSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56621CFF1A285FA800310A48 /* SliderRightSettingViewController.m */; };
 		56621D131A28600300310A48 /* libUMAppNetwork_3.5.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 56621D021A28600300310A48 /* libUMAppNetwork_3.5.6.a */; };
@@ -554,6 +555,7 @@
 		565EE8D41A2C50830063CAA3 /* zc_resendimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zc_resendimage@2x.png"; sourceTree = "<group>"; };
 		565EE8D51A2C50830063CAA3 /* zc_xieyi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zc_xieyi@2x.png"; sourceTree = "<group>"; };
 		565EE8D81A2C50950063CAA3 /* logIn_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logIn_close@2x.png"; sourceTree = "<group>"; };
+		566156B41A7B5C8700D29956 /* peijian_default_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "peijian_default_image@2x.png"; sourceTree = "<group>"; };
 		56621CFC1A285A2500310A48 /* setting_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_image@2x.png"; sourceTree = "<group>"; };
 		56621CFE1A285FA800310A48 /* SliderRightSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderRightSettingViewController.h; sourceTree = "<group>"; };
 		56621CFF1A285FA800310A48 /* SliderRightSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderRightSettingViewController.m; sourceTree = "<group>"; };
@@ -1561,6 +1563,7 @@
 		568848CB1A32E1D500862472 /* businessImages */ = {
 			isa = PBXGroup;
 			children = (
+				566156B41A7B5C8700D29956 /* peijian_default_image@2x.png */,
 				13AE9EEE1A63B62000FC3E6E /* eyeImage_2@2x.png */,
 				13AE9EEF1A63B62000FC3E6E /* eyeImage@2x.png */,
 				13AE9EF01A63B62000FC3E6E /* shareImage@2x.png */,
@@ -2045,6 +2048,7 @@
 				13F9D4C41A2DA951002A6904 /* UMSLoginViewController.xib in Resources */,
 				132FB8C71A42D2CB00D5A9F0 /* anli_touxian_quan@2x.png in Resources */,
 				1301DE5F1A43D315001EF486 /* navigaiton_menu_image_2@2x.png in Resources */,
+				566156B51A7B5C8700D29956 /* peijian_default_image@2x.png in Resources */,
 				56E673E41A791037007BA2E1 /* login_unagree_xieyi_image@2x.png in Resources */,
 				563E8CF61A78DD1F00455ED3 /* loginview_logo_image@2x.png in Resources */,
 				5653E5241A3AE9D200CEB749 /* navigation_back_jiantou_image@2x.png in Resources */,
@@ -2378,7 +2382,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0c1b68b6-94ba-43b9-b1d3-dea4d4ca3175";
 				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
 				SDKROOT = iphoneos;
 			};
@@ -2417,7 +2420,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0c1b68b6-94ba-43b9-b1d3-dea4d4ca3175";
 				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -2448,7 +2450,6 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c1b68b6-94ba-43b9-b1d3-dea4d4ca3175";
 				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
@@ -2477,7 +2478,6 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0c1b68b6-94ba-43b9-b1d3-dea4d4ca3175";
 				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
