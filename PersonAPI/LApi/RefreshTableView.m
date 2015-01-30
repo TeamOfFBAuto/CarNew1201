@@ -250,12 +250,13 @@
 
 -(void)setNodataView{
     //整个视图
-    _noDataView = [[UIView alloc]initWithFrame:CGRectMake(0, 240, DEVICE_WIDTH, DEVICE_WIDTH)];
+    _noDataView = [[UIView alloc]initWithFrame:CGRectMake(0, 240, DEVICE_WIDTH, 105)];
     _noDataView.backgroundColor = [UIColor whiteColor];
     
     //图
-    UIImageView *noDataImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, DEVICE_WIDTH, DEVICE_WIDTH)];
-    [noDataImv setImage:[UIImage imageNamed:@"noanydata.jpg"]];
+    UIImageView *noDataImv = [[UIImageView alloc]initWithFrame:CGRectMake((DEVICE_WIDTH-130)*0.5, 90, 130, 60)];
+    
+    [noDataImv setImage:[UIImage imageNamed:@"noanydata.png"]];
     
     //上分割线
     UIView *shangxian = [[UIView alloc]initWithFrame:CGRectMake(noDataImv.frame.origin.x, CGRectGetMaxY(noDataImv.frame)+12, noDataImv.frame.size.width, 1)];
@@ -279,9 +280,9 @@
     
     //视图添加
     [_noDataView addSubview:noDataImv];
-//    [_noDataView addSubview:shangxian];
-//    [_noDataView addSubview:titleLabel];
-//    [_noDataView addSubview:xiaxian];
+    [_noDataView addSubview:shangxian];
+    [_noDataView addSubview:titleLabel];
+    [_noDataView addSubview:xiaxian];
     
 }
 
