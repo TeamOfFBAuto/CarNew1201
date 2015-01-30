@@ -49,6 +49,7 @@ typedef enum{
 @property(nonatomic,assign)BOOL hiddenLoadMore;//隐藏加载更多,默认隐藏
 @property(nonatomic,assign)GNetWorking netWorking;//yes有网  no没网
 @property(nonatomic,strong)NSString *noDataStr;
+@property(nonatomic,assign)CGFloat headerHeight;
 
 
 

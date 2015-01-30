@@ -75,6 +75,7 @@
 - (void)dealloc
 {
     NSLog(@"---dealloc");
+    [self.webView stopLoading];
     self.webView.delegate = nil;
     self.webView = nil;
     bottomView = nil;

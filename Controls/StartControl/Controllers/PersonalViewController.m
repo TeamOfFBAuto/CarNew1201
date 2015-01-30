@@ -178,6 +178,7 @@ typedef enum{
     _tableView.dataSource = self;
     _tableView.netWorking = GIS;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.headerHeight =DEVICE_HEIGHT-240.00/320*ALL_FRAME_WIDTH;
     [self.view addSubview:_tableView];
     
     _tableView.tableHeaderView = _upThreeViewBackGroundView;
@@ -204,7 +205,7 @@ typedef enum{
     _hudView.backgroundColor = [UIColor clearColor];
     
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:_hudView.bounds];
-    titleLabel.backgroundColor = RGBCOLOR(51, 51, 51);
+    titleLabel.backgroundColor = RGBCOLOR(42, 42, 42);
     titleLabel.font = [UIFont systemFontOfSize:15];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.layer.cornerRadius = 15;
@@ -797,7 +798,7 @@ typedef enum{
     
     _page = 1;
     
-    _hudView.hidden = NO;
+    
     
     if (theTag == 10) {//点击的是收藏案例
         _anliTitleLabel.textColor = RGBCOLOR(155, 155, 155);
@@ -868,6 +869,9 @@ typedef enum{
 //请求网络数据
 -(void)prepareNetDataWithCellType:(CELLTYPE)theType{
     
+    _hudView.hidden = NO;
+    
+    
     //请求地址
     NSString *api = nil;
     
@@ -878,6 +882,46 @@ typedef enum{
     }else if (theType == GDIANPU){//店铺
         api = [NSString stringWithFormat:G_DIANPU,[GMAPI getUid],_page,_pageCapacity];
     }
+    
+    
+    
+    //点击切换不走网
+    if (theType == GANLI && _dataArray_anli.count>0) {//案例
+        [self reloadData:_dataArray_anli isReload:_tableView.isReloadData];
+        _hudView.hidden = YES;
+        return;
+    }else if (theType == GCHANPIN && _dataArray_chanpin.count>0){//产品
+        [self reloadData:_dataArray_chanpin isReload:_tableView.isReloadData];
+        _hudView.hidden = YES;
+        return;
+    }else if (theType == GDIANPU && _dataArray_dianpu.count>0){//店铺
+        [self reloadData:_dataArray_dianpu isReload:_tableView.isReloadData];
+        _hudView.hidden = YES;
+        return;
+    }
+    
+    //新用户收藏为0不走网
+    if (_isLoadUserInfoSuccess) {
+        if ([_chanpinNumLabel.text intValue]== 0 && theType == GCHANPIN) {
+            [self reloadData:_dataArray_chanpin isReload:_tableView.isReloadData];
+            _hudView.hidden = YES;
+            return;
+        }
+        if ([_anliNumLabel.text intValue] == 0 && theType == GANLI) {
+            [self reloadData:_dataArray_anli isReload:_tableView.isReloadData];
+            _hudView.hidden = YES;
+            return;
+        }
+        if ([_dianpuNumLabel.text intValue] == 0 && theType == GDIANPU) {
+            [self reloadData:_dataArray_dianpu isReload:_tableView.isReloadData];
+            _hudView.hidden = YES;
+            return;
+        }
+    }
+    
+    
+    
+    
     
     NSLog(@"请求的接口:%@",api);
     
@@ -957,6 +1001,16 @@ typedef enum{
         
         
         if (dataArr) {
+            
+            if (theType == GDIANPU) {
+                _dataArray_dianpu = dataArr;
+            }else if (theType == GCHANPIN){
+                _dataArray_chanpin = dataArr;
+            }else if (theType == GANLI){
+                _dataArray_anli = dataArr;
+            }
+            
+            
             [bself reloadData:dataArr isReload:_tableView.isReloadData];
         }
         
@@ -1021,10 +1075,14 @@ typedef enum{
 
 - (void)loadNewData
 {
+    _isLoadUserInfoSuccess = NO;
     _page = 1;
     _tableView.isReloadData = YES;
     _tableView.pageNum = 1;
     [_tableView.dataArray removeAllObjects];
+    _dataArray_dianpu = nil;
+    _dataArray_chanpin = nil;
+    _dataArray_anli = nil;
     
     [self prepareNetDataWithCellType:_cellType];
     

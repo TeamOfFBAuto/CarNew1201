@@ -451,14 +451,12 @@
 
 - (void)rongCloudDefaultLoginWithToken:(NSString *)loginToken
 {
-    //测试token
-    
-    //    [LTools cache:@"Z+v61ga3tUUkgHbgG6eFblki5ktT/tK95honsc0yvtV+p7lzHFE9Vop/XwArqiec9DnDrmeC0is=" ForKey:RONGCLOUD_TOKEN];
-    
     //默认测试
     
     if (loginToken.length > 0) {
         
+        
+        __weak typeof(self)weakSelf = self;
         [RCIM connectWithToken:loginToken completion:^(NSString *userId) {
             
             NSLog(@"------> rongCloud 登陆成功 %@",userId);
@@ -470,6 +468,12 @@
             NSLog(@"------> rongCloud 登陆失败 %d",(int)status);
             
 //            [LTools cacheBool:NO ForKey:LOGIN_RONGCLOUD_STATE];
+            
+            if (status == ConnectErrorCode_TOKEN_INCORRECT) {
+                //错误的令牌 服务器重新获取
+                
+                [weakSelf loginToRongCloud];
+            }
             
         }];
     }
@@ -597,6 +601,12 @@
 - (void)responseConnectError:(RCConnectErrorCode)errorCode
 {
     NSLog(@"rongCloud重新连接失败--- %d",(int)errorCode);
+    
+    if (errorCode == ConnectErrorCode_TOKEN_INCORRECT) {
+        //错误的令牌 服务器重新获取
+        
+        [self loginToRongCloud];
+    }
 }
 
 #pragma mark -

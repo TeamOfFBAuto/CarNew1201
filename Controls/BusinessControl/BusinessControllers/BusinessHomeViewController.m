@@ -69,9 +69,12 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+//    self.navigationController.navigationBarHidden = YES;
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
-    self.navigationController.navigationBarHidden = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successLogIn) name:@"gdengluchenggong" object:nil];
 }
