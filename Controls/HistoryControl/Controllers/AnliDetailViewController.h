@@ -18,7 +18,7 @@ typedef enum {
 /**
  *  案例详情 配件详情
  */
-@interface AnliDetailViewController : MyViewController
+@interface AnliDetailViewController : UIViewController
 
 @property(nonatomic,assign)Detail_Type detailType;
 

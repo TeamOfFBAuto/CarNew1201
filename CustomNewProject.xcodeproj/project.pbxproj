@@ -223,6 +223,11 @@
 		569FFEF31A27380F008A02A6 /* login_close_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 569FFEF01A27380F008A02A6 /* login_close_image@2x.png */; };
 		569FFEF41A27380F008A02A6 /* login_mima_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 569FFEF11A27380F008A02A6 /* login_mima_image@2x.png */; };
 		569FFEF51A27380F008A02A6 /* login_userName_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 569FFEF21A27380F008A02A6 /* login_userName_image@2x.png */; };
+		56AA50E51A7A0DE600F6DA7D /* GaiZhuangWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AA50E41A7A0DE600F6DA7D /* GaiZhuangWebViewController.m */; };
+		56AA50EB1A7A24AB00F6DA7D /* PeiJianListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AA50EA1A7A24AB00F6DA7D /* PeiJianListViewController.m */; };
+		56AA50EF1A7A2B4E00F6DA7D /* PeiJianListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AA50EE1A7A2B4E00F6DA7D /* PeiJianListModel.m */; };
+		56AA50F31A7A35DE00F6DA7D /* PeiJianListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AA50F11A7A35DE00F6DA7D /* PeiJianListCell.m */; };
+		56AA50F41A7A35DE00F6DA7D /* PeiJianListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56AA50F21A7A35DE00F6DA7D /* PeiJianListCell.xib */; };
 		56ADBFF11A6291A800E03AB6 /* GaiZhuangRefreshTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56ADBFF01A6291A800E03AB6 /* GaiZhuangRefreshTableView.m */; };
 		56BD7EA01A3EAC660038E378 /* CommentBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BD7E9F1A3EAC660038E378 /* CommentBottomView.m */; };
 		56BD7EA21A3EAE940038E378 /* reminderLogIn_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 56BD7EA11A3EAE940038E378 /* reminderLogIn_image@2x.png */; };
@@ -626,6 +631,15 @@
 		569FFEF01A27380F008A02A6 /* login_close_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_close_image@2x.png"; sourceTree = "<group>"; };
 		569FFEF11A27380F008A02A6 /* login_mima_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_mima_image@2x.png"; sourceTree = "<group>"; };
 		569FFEF21A27380F008A02A6 /* login_userName_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_userName_image@2x.png"; sourceTree = "<group>"; };
+		56AA50E31A7A0DE600F6DA7D /* GaiZhuangWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaiZhuangWebViewController.h; sourceTree = "<group>"; };
+		56AA50E41A7A0DE600F6DA7D /* GaiZhuangWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaiZhuangWebViewController.m; sourceTree = "<group>"; };
+		56AA50E91A7A24AB00F6DA7D /* PeiJianListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeiJianListViewController.h; sourceTree = "<group>"; };
+		56AA50EA1A7A24AB00F6DA7D /* PeiJianListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeiJianListViewController.m; sourceTree = "<group>"; };
+		56AA50ED1A7A2B4E00F6DA7D /* PeiJianListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeiJianListModel.h; sourceTree = "<group>"; };
+		56AA50EE1A7A2B4E00F6DA7D /* PeiJianListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeiJianListModel.m; sourceTree = "<group>"; };
+		56AA50F01A7A35DE00F6DA7D /* PeiJianListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeiJianListCell.h; sourceTree = "<group>"; };
+		56AA50F11A7A35DE00F6DA7D /* PeiJianListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeiJianListCell.m; sourceTree = "<group>"; };
+		56AA50F21A7A35DE00F6DA7D /* PeiJianListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PeiJianListCell.xib; sourceTree = "<group>"; };
 		56ADBFEF1A6291A800E03AB6 /* GaiZhuangRefreshTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaiZhuangRefreshTableView.h; sourceTree = "<group>"; };
 		56ADBFF01A6291A800E03AB6 /* GaiZhuangRefreshTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaiZhuangRefreshTableView.m; sourceTree = "<group>"; };
 		56BD7E9E1A3EAC660038E378 /* CommentBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentBottomView.h; sourceTree = "<group>"; };
@@ -959,6 +973,7 @@
 		19B34DB41A2465F300ED1935 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				56AA50E61A7A246000F6DA7D /* PeiJianControls */,
 				563E4CB91A2DC32D0022755C /* AllScreeningControls */,
 				56500AF51A2D63CC00E834A1 /* BusinessControl */,
 				560CB53D1A2719DE0067F7AA /* LogInViewController */,
@@ -1602,6 +1617,44 @@
 			path = LogInImages;
 			sourceTree = "<group>";
 		};
+		56AA50E61A7A246000F6DA7D /* PeiJianControls */ = {
+			isa = PBXGroup;
+			children = (
+				56AA50E71A7A249600F6DA7D /* PeiJianControllers */,
+				56AA50E81A7A249600F6DA7D /* PeiJianViews */,
+				56AA50EC1A7A2B3C00F6DA7D /* PeiJianModels */,
+			);
+			path = PeiJianControls;
+			sourceTree = "<group>";
+		};
+		56AA50E71A7A249600F6DA7D /* PeiJianControllers */ = {
+			isa = PBXGroup;
+			children = (
+				56AA50E91A7A24AB00F6DA7D /* PeiJianListViewController.h */,
+				56AA50EA1A7A24AB00F6DA7D /* PeiJianListViewController.m */,
+			);
+			path = PeiJianControllers;
+			sourceTree = "<group>";
+		};
+		56AA50E81A7A249600F6DA7D /* PeiJianViews */ = {
+			isa = PBXGroup;
+			children = (
+				56AA50F01A7A35DE00F6DA7D /* PeiJianListCell.h */,
+				56AA50F11A7A35DE00F6DA7D /* PeiJianListCell.m */,
+				56AA50F21A7A35DE00F6DA7D /* PeiJianListCell.xib */,
+			);
+			path = PeiJianViews;
+			sourceTree = "<group>";
+		};
+		56AA50EC1A7A2B3C00F6DA7D /* PeiJianModels */ = {
+			isa = PBXGroup;
+			children = (
+				56AA50ED1A7A2B4E00F6DA7D /* PeiJianListModel.h */,
+				56AA50EE1A7A2B4E00F6DA7D /* PeiJianListModel.m */,
+			);
+			path = PeiJianModels;
+			sourceTree = "<group>";
+		};
 		56CC071B1A302C3C0014F285 /* htmlsource */ = {
 			isa = PBXGroup;
 			children = (
@@ -1635,6 +1688,8 @@
 				56508D891A5FBA2000321B2F /* FBMapViewController.m */,
 				56ADBFEF1A6291A800E03AB6 /* GaiZhuangRefreshTableView.h */,
 				56ADBFF01A6291A800E03AB6 /* GaiZhuangRefreshTableView.m */,
+				56AA50E31A7A0DE600F6DA7D /* GaiZhuangWebViewController.h */,
+				56AA50E41A7A0DE600F6DA7D /* GaiZhuangWebViewController.m */,
 			);
 			path = ZSNClasses;
 			sourceTree = "<group>";
@@ -1982,6 +2037,7 @@
 				564757531A6F61000011F3C4 /* AboutViewController.xib in Resources */,
 				56621D461A28605B00310A48 /* messages_left_bubble@2x.png in Resources */,
 				137664E51A38557300C8695D /* anli_list_defatult@2x.png in Resources */,
+				56AA50F41A7A35DE00F6DA7D /* PeiJianListCell.xib in Resources */,
 				563F184D1A79D92E004ED0A7 /* about_jieshao_image@2x.png in Resources */,
 				563F184B1A79D866004ED0A7 /* about_jieshao_image@3x.png in Resources */,
 				13F9D4871A2DA7BB002A6904 /* shareziliudi@2x.png in Resources */,
@@ -2158,6 +2214,7 @@
 				56CC07111A2FF9C70014F285 /* PrivacyPolicyViewController.m in Sources */,
 				5639CD601A77365100D6F645 /* UIImage+ImageEffects.m in Sources */,
 				565EE8B61A2C3DEE0063CAA3 /* ASIAuthenticationDialog.m in Sources */,
+				56AA50E51A7A0DE600F6DA7D /* GaiZhuangWebViewController.m in Sources */,
 				56508D8A1A5FBA2000321B2F /* FBMapViewController.m in Sources */,
 				1351179E1A257EB20015C133 /* LRefreshTableHeaderView.m in Sources */,
 				138178CA1A319572001DB92C /* CarTypeViewController.m in Sources */,
@@ -2209,8 +2266,10 @@
 				563B32271A382AF900015088 /* OHAttributedLabel.m in Sources */,
 				E3CA7B391A3598EB00B72008 /* GstartView.m in Sources */,
 				E392C31A1A2818C9001AEA0D /* GzhuceViewController.m in Sources */,
+				56AA50EF1A7A2B4E00F6DA7D /* PeiJianListModel.m in Sources */,
 				563B32251A382AF900015088 /* MarkupParser.m in Sources */,
 				5697221F1A40447F004B6641 /* BusinessDetailModel.m in Sources */,
+				56AA50F31A7A35DE00F6DA7D /* PeiJianListCell.m in Sources */,
 				567760961A31453200A4A23B /* SliderBBSTitleView.m in Sources */,
 				56CC07271A3039630014F285 /* BrandModel.m in Sources */,
 				135117A61A257F2D0015C133 /* UIColor+ConvertColor.m in Sources */,
@@ -2223,6 +2282,7 @@
 				565EE8BB1A2C3DEE0063CAA3 /* ASIHTTPRequest.m in Sources */,
 				56CE4B631A25D48100876AC7 /* PHViewController.m in Sources */,
 				13AC96F61A762A1400464D9C /* PreviewImageController.m in Sources */,
+				56AA50EB1A7A24AB00F6DA7D /* PeiJianListViewController.m in Sources */,
 				565EE8CD1A2C4C160063CAA3 /* MyPhoneNumViewController.m in Sources */,
 				563E4CB81A2D8C2D0022755C /* BusinessListModel.m in Sources */,
 				13F9D47C1A2DA767002A6904 /* ShareView.m in Sources */,
@@ -2296,8 +2356,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2319,6 +2379,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "0c1b68b6-94ba-43b9-b1d3-dea4d4ca3175";
+				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2340,8 +2401,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2357,6 +2418,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "0c1b68b6-94ba-43b9-b1d3-dea4d4ca3175";
+				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2369,9 +2431,9 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CustomNewProject/PrefixHeader.pch";
 				INFOPLIST_FILE = CustomNewProject/Info.plist;
@@ -2387,6 +2449,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0c1b68b6-94ba-43b9-b1d3-dea4d4ca3175";
+				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
@@ -2398,8 +2461,8 @@
 				ARCHS = armv7;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Zhong Kun Shi (6NH6VCUU57)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bing Jin (KMZ2AD5LZY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/CustomNewProject/PrefixHeader.pch";
 				INFOPLIST_FILE = CustomNewProject/Info.plist;
@@ -2415,6 +2478,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0c1b68b6-94ba-43b9-b1d3-dea4d4ca3175";
+				PROVISIONING_PROFILE = "62774b15-cf37-4fc8-953c-6464d6d11d7d";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;

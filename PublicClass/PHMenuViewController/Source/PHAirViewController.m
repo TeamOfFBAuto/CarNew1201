@@ -665,7 +665,7 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [button setTitleColor:RGBCOLOR(255,144,0) forState:UIControlStateHighlighted];
             [button setTitleColor:RGBCOLOR(255,144,0) forState:UIControlStateSelected];
-            button.frame = CGRectMake(0,200+60*j,260, 50);
+            button.frame = CGRectMake(0,100+(100*DEVICE_HEIGHT/568)+60*j,260, 50);
             button.titleLabel.font = [UIFont systemFontOfSize:23];
             button.tag = j;
 //            button.backgroundColor = [UIColor orangeColor];

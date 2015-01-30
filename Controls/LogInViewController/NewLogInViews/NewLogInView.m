@@ -179,38 +179,40 @@
 #pragma mark - 创建输入手机号码界面
 -(void)createPhoneView
 {
-    phone_jieshao_view = [[UIView alloc] initWithFrame:CGRectMake(up_background_imageView.width,up_background_imageView.bottom,up_background_imageView.width,50)];
-    phone_jieshao_view.backgroundColor = [UIColor whiteColor];
-    [main_view addSubview:phone_jieshao_view];
+    if (!_phone_tf) {
+        phone_jieshao_view = [[UIView alloc] initWithFrame:CGRectMake(up_background_imageView.width,up_background_imageView.bottom,up_background_imageView.width,50)];
+        phone_jieshao_view.backgroundColor = [UIColor whiteColor];
+        [main_view addSubview:phone_jieshao_view];
+        
+        phone_jieshao_label = [[UILabel alloc] initWithFrame:CGRectMake(15,0,phone_jieshao_view.width-30,50)];
+        phone_jieshao_label.numberOfLines = 0;
+        phone_jieshao_label.text = INPUT_PHONE_NUM_TEXT;
+        phone_jieshao_label.textAlignment = NSTextAlignmentLeft;
+        phone_jieshao_label.textColor = RGBCOLOR(90, 90, 90);
+        phone_jieshao_label.font = [UIFont systemFontOfSize:12];
+        [phone_jieshao_view  addSubview:phone_jieshao_label];
+        
+        _phone_tf = [self createTextFieldWithPlaceHolder:@"手机号码" WithFrame:CGRectMake(up_background_imageView.width,phone_jieshao_view.bottom,main_view.width,TEXTFIELD_HEIGHT)];
+        _phone_tf.leftView.width = 80;
+        [main_view addSubview:_phone_tf];
+        
+        ///前边介绍“中国 +86”
+        UILabel * font_label = [[UILabel alloc] initWithFrame:CGRectMake(0,0,80,_phone_tf.height)];
+        font_label.text = @"中国 +86";
+        font_label.textAlignment = NSTextAlignmentCenter;
+        font_label.textColor = RGBCOLOR(3,3,3);
+        font_label.font = [UIFont systemFontOfSize:16];
+        [_phone_tf addSubview:font_label];
+        
+        
+        
+        get_code_button = [self createButtonWithFrame:CGRectMake(10,main_view.height,main_view.width-20,29) WithTitle:@"获取验证码" WithTag:101];
+        [bottom_background_view addSubview:get_code_button];
+
+    }
     
-    phone_jieshao_label = [[UILabel alloc] initWithFrame:CGRectMake(15,0,phone_jieshao_view.width-30,50)];
-    phone_jieshao_label.numberOfLines = 0;
-    phone_jieshao_label.text = INPUT_PHONE_NUM_TEXT;
-    phone_jieshao_label.textAlignment = NSTextAlignmentLeft;
-    phone_jieshao_label.textColor = RGBCOLOR(90, 90, 90);
-    phone_jieshao_label.font = [UIFont systemFontOfSize:12];
-    [phone_jieshao_view  addSubview:phone_jieshao_label];
     
-    _phone_tf = [self createTextFieldWithPlaceHolder:@"手机号码" WithFrame:CGRectMake(up_background_imageView.width,phone_jieshao_view.bottom,main_view.width,TEXTFIELD_HEIGHT)];
-    _phone_tf.leftView.width = 80;
-    [main_view addSubview:_phone_tf];
-    
-    ///前边介绍“中国 +86”
-    UILabel * font_label = [[UILabel alloc] initWithFrame:CGRectMake(0,0,80,_phone_tf.height)];
-    font_label.text = @"中国 +86";
-    font_label.textAlignment = NSTextAlignmentCenter;
-    font_label.textColor = RGBCOLOR(3,3,3);
-    font_label.font = [UIFont systemFontOfSize:16];
-    [_phone_tf addSubview:font_label];
-    
-    
-    
-    get_code_button = [self createButtonWithFrame:CGRectMake(10,main_view.height,main_view.width-20,29) WithTitle:@"获取验证码" WithTag:101];
-    [bottom_background_view addSubview:get_code_button];
-    
-    
-    
-    
+    get_code_button.left = 10;
     
 //    [UIView animateWithDuration:0.3 animations:^{
         _username_tf.left = -_username_tf.width;
@@ -235,35 +237,42 @@
 #pragma mark - 创建输入手机验证码界面
 -(void)createCodeView
 {
-    code_phone_label = [[UILabel alloc] initWithFrame:CGRectMake(main_view.width,phone_jieshao_view.bottom,main_view.width,TEXTFIELD_HEIGHT)];
-    code_phone_label.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
-    code_phone_label.text = [NSString stringWithFormat:@"+86%@",_phone_tf.text];
-    code_phone_label.textAlignment = NSTextAlignmentCenter;
-    code_phone_label.textColor = TEXT_COLOR;
-    code_phone_label.font = [UIFont systemFontOfSize:14];
-    [main_view addSubview:code_phone_label];
+    if (!_code_tf)
+    {
+        code_phone_label = [[UILabel alloc] initWithFrame:CGRectMake(main_view.width,phone_jieshao_view.bottom,main_view.width,TEXTFIELD_HEIGHT)];
+        code_phone_label.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
+        code_phone_label.text = [NSString stringWithFormat:@"+86%@",_phone_tf.text];
+        code_phone_label.textAlignment = NSTextAlignmentCenter;
+        code_phone_label.textColor = TEXT_COLOR;
+        code_phone_label.font = [UIFont systemFontOfSize:14];
+        [main_view addSubview:code_phone_label];
+        
+        code_line_view = [[UIView alloc] initWithFrame:CGRectMake(0,code_phone_label.bottom-0.5,main_view.width,0.5)];
+        code_line_view.backgroundColor = LINE_BACKGROUND_COLOR;
+        [main_view addSubview:code_line_view];
+        
+        _code_tf = [self createTextFieldWithPlaceHolder:@"请输入验证码" WithFrame:CGRectMake(main_view.width,code_line_view.bottom,main_view.width,TEXTFIELD_HEIGHT)];
+        _code_tf.textAlignment = NSTextAlignmentCenter;
+        [main_view addSubview:_code_tf];
+        
+        
+        code_done_button = [self createButtonWithFrame:CGRectMake(main_view.width,10,main_view.width-20,29) WithTitle:@"完成" WithTag:102];
+        [bottom_background_view addSubview:code_done_button];
+        
+        send_code_again_button = [UIButton buttonWithType:UIButtonTypeCustom];
+        send_code_again_button.frame = code_done_button.frame;
+        send_code_again_button.tag = 103;
+        send_code_again_button.top = code_done_button.bottom + 5;
+        [send_code_again_button setTitle:@"再次发送编码" forState:UIControlStateNormal];
+        send_code_again_button.titleLabel.font = [UIFont systemFontOfSize:12];
+        [send_code_again_button setTitleColor:RGBCOLOR(255,180,0) forState:UIControlStateNormal];
+        [send_code_again_button addTarget:self action:@selector(buttonTap:) forControlEvents:UIControlEventTouchUpInside];
+        [bottom_background_view addSubview:send_code_again_button];
+    }
     
-    code_line_view = [[UIView alloc] initWithFrame:CGRectMake(0,code_phone_label.bottom-0.5,main_view.width,0.5)];
-    code_line_view.backgroundColor = LINE_BACKGROUND_COLOR;
-    [main_view addSubview:code_line_view];
+    code_line_view.left = 0;
+    _code_tf.left = 0;
     
-    _code_tf = [self createTextFieldWithPlaceHolder:@"请输入验证码" WithFrame:CGRectMake(main_view.width,code_line_view.bottom,main_view.width,TEXTFIELD_HEIGHT)];
-    _code_tf.textAlignment = NSTextAlignmentCenter;
-    [main_view addSubview:_code_tf];
-    
-    
-    code_done_button = [self createButtonWithFrame:CGRectMake(main_view.width,10,main_view.width-20,29) WithTitle:@"完成" WithTag:102];
-    [bottom_background_view addSubview:code_done_button];
-    
-    send_code_again_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    send_code_again_button.frame = code_done_button.frame;
-    send_code_again_button.tag = 103;
-    send_code_again_button.top = code_done_button.bottom + 5;
-    [send_code_again_button setTitle:@"再次发送编码" forState:UIControlStateNormal];
-    send_code_again_button.titleLabel.font = [UIFont systemFontOfSize:12];
-    [send_code_again_button setTitleColor:RGBCOLOR(255,180,0) forState:UIControlStateNormal];
-    [send_code_again_button addTarget:self action:@selector(buttonTap:) forControlEvents:UIControlEventTouchUpInside];
-    [bottom_background_view addSubview:send_code_again_button];
     
     
 //    [UIView animateWithDuration:0.3 animations:^{
@@ -291,8 +300,6 @@
 #pragma mark - 创建完善资料界面
 -(void)createInfomationView
 {
-    code_line_view.alpha = 0;
-    
     phone_jieshao_view.height = 32;
     phone_jieshao_label.height = 32;
     
@@ -304,47 +311,60 @@
     phone_jieshao_label.text = @"请完善好个人资料";
     phone_jieshao_label.textAlignment = NSTextAlignmentCenter;
     
-    _info_username_tf = [self createTextFieldWithPlaceHolder:@"用户名" WithFrame:CGRectMake(0,phone_jieshao_view.bottom,main_view.width,TEXTFIELD_HEIGHT)];
-    [main_view addSubview:_info_username_tf];
     
-    line_view1 = [[UIView alloc] initWithFrame:CGRectMake(0,_info_username_tf.bottom-0.5,main_view.width,0.5)];
-    line_view1.backgroundColor = LINE_BACKGROUND_COLOR;
-    [main_view addSubview:line_view1];
+    if (!_info_username_tf) {
+        _info_username_tf = [self createTextFieldWithPlaceHolder:@"用户名" WithFrame:CGRectMake(0,phone_jieshao_view.bottom,main_view.width,TEXTFIELD_HEIGHT)];
+        [main_view addSubview:_info_username_tf];
+        
+        line_view1 = [[UIView alloc] initWithFrame:CGRectMake(0,_info_username_tf.bottom-0.5,main_view.width,0.5)];
+        line_view1.backgroundColor = LINE_BACKGROUND_COLOR;
+        [main_view addSubview:line_view1];
+        
+        _info_password_tf = [self createTextFieldWithPlaceHolder:@"密码" WithFrame:CGRectMake(0,line_view1.bottom,main_view.width,TEXTFIELD_HEIGHT)];
+        _info_password_tf.secureTextEntry = YES;
+        [main_view addSubview:_info_password_tf];
+        
+        line_view2 = [[UIView alloc] initWithFrame:CGRectMake(0,_info_password_tf.bottom-0.5,main_view.width,0.5)];
+        line_view2.backgroundColor = LINE_BACKGROUND_COLOR;
+        [main_view addSubview:line_view2];
+        
+        _email_tf = [self createTextFieldWithPlaceHolder:@"电子邮箱" WithFrame:CGRectMake(0,line_view2.bottom,main_view.width,TEXTFIELD_HEIGHT)];
+        [main_view addSubview:_email_tf];
+        
+        info_done_button = [self createButtonWithFrame:CGRectMake(10,50,main_view.width-20,29) WithTitle:@"完成" WithTag:104];
+        [bottom_background_view addSubview:info_done_button];
+        
+        
+        xieyi_button = [UIButton buttonWithType:UIButtonTypeCustom];
+        xieyi_button.frame = CGRectMake(10,5,28,30);
+        [xieyi_button setImage:[UIImage imageNamed:@"login_agree_xieyi_image"] forState:UIControlStateNormal];
+        [xieyi_button setImage:[UIImage imageNamed:@"login_unagree_xieyi_image"] forState:UIControlStateSelected];
+        [xieyi_button addTarget:self action:@selector(xieyibuttonTap:) forControlEvents:UIControlEventTouchUpInside];
+        [bottom_background_view addSubview:xieyi_button];
+        
+        
+        CGRect content_frame = CGRectMake(40,12,200,30);
+        content_label = [[OHAttributedLabel alloc] initWithFrame:content_frame];
+        content_label.textColor = [UIColor blackColor];
+        content_label.font = [UIFont systemFontOfSize:14];
+        [bottom_background_view addSubview:content_label];
+        
+        NSString * content_string = @"我接受\n用户协议并且隐私政策的条件";
+        [OHLableHelper creatAttributedText:content_string Label:content_label OHDelegate:self WithWidht:16 WithHeight:18 WithLineBreak:NO];
+        
+        [content_label addCustomLink:[NSURL URLWithString:@"用户协议"] inRange:[content_string rangeOfString:@"用户协议"]];
+        [content_label addCustomLink:[NSURL URLWithString:@"隐私政策的条件的条件"] inRange:[content_string rangeOfString:@"隐私政策"]];
+    }
     
-    _info_password_tf = [self createTextFieldWithPlaceHolder:@"密码" WithFrame:CGRectMake(0,line_view1.bottom,main_view.width,TEXTFIELD_HEIGHT)];
-    _info_password_tf.secureTextEntry = YES;
-    [main_view addSubview:_info_password_tf];
+    _info_username_tf.left = 0;
+    _info_password_tf.left = 0;
+    _email_tf.left = 0;
+    line_view1.left = 0;
+    line_view2.left = 0;
+    xieyi_button.left = 10;
+    content_label.left = 40;
+    info_done_button.left = 10;
     
-    line_view2 = [[UIView alloc] initWithFrame:CGRectMake(0,_info_password_tf.bottom-0.5,main_view.width,0.5)];
-    line_view2.backgroundColor = LINE_BACKGROUND_COLOR;
-    [main_view addSubview:line_view2];
-    
-    _email_tf = [self createTextFieldWithPlaceHolder:@"电子邮箱" WithFrame:CGRectMake(0,line_view2.bottom,main_view.width,TEXTFIELD_HEIGHT)];
-    [main_view addSubview:_email_tf];
-    
-    info_done_button = [self createButtonWithFrame:CGRectMake(10,50,main_view.width-20,29) WithTitle:@"完成" WithTag:104];
-    [bottom_background_view addSubview:info_done_button];
-    
-    
-    xieyi_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    xieyi_button.frame = CGRectMake(10,5,28,30);
-    [xieyi_button setImage:[UIImage imageNamed:@"login_agree_xieyi_image"] forState:UIControlStateNormal];
-    [xieyi_button setImage:[UIImage imageNamed:@"login_unagree_xieyi_image"] forState:UIControlStateSelected];
-    [xieyi_button addTarget:self action:@selector(xieyibuttonTap:) forControlEvents:UIControlEventTouchUpInside];
-    [bottom_background_view addSubview:xieyi_button];
-    
-    
-    CGRect content_frame = CGRectMake(40,12,200,30);
-    content_label = [[OHAttributedLabel alloc] initWithFrame:content_frame];
-    content_label.textColor = [UIColor blackColor];
-    content_label.font = [UIFont systemFontOfSize:14];
-    [bottom_background_view addSubview:content_label];
-    
-    NSString * content_string = @"我接受\n用户协议并且隐私政策的条件";
-    [OHLableHelper creatAttributedText:content_string Label:content_label OHDelegate:self WithWidht:16 WithHeight:18 WithLineBreak:NO];
-
-    [content_label addCustomLink:[NSURL URLWithString:@"用户协议"] inRange:[content_string rangeOfString:@"用户协议"]];
-    [content_label addCustomLink:[NSURL URLWithString:@"隐私政策的条件的条件"] inRange:[content_string rangeOfString:@"隐私政策"]];
     
     
     bottom_background_view.top = _email_tf.bottom-1;
@@ -469,20 +489,20 @@
             break;
         case 101:///获取验证码
         {
-            [self createCodeView];
-//            [self networkSendCode];
+//            [self createCodeView];
+            [self networkSendCode];
         }
             break;
         case 102:///验证验证码是否正确
         {
             
-            [self createInfomationView];
-//            if (_code_tf.text.length != 0) {
-//                [self networkYanZhengCode];
-//            }else
-//            {
-//                [ZSNApi showAutoHiddenMBProgressWithText:@"请输入验证码" addToView:self];
-//            }
+//            [self createInfomationView];
+            if (_code_tf.text.length != 0) {
+                [self networkYanZhengCode];
+            }else
+            {
+                [ZSNApi showAutoHiddenMBProgressWithText:@"请输入验证码" addToView:self];
+            }
         }
             break;
         case 103:///再次获取验证码
@@ -492,6 +512,8 @@
             break;
         case 104:///提交注册信息进行注册
         {
+            [self endEditing:YES];
+            [self setMainViewUp:NO];
             [self networkZhuCe];
         }
             break;
@@ -680,8 +702,8 @@
         return;
     }
     
-    if (_email_tf.text.length == 0) {
-        [ZSNApi showAutoHiddenMBProgressWithText:@"电子邮箱不能为空" addToView:self];
+    if (_email_tf.text.length == 0 || ![ZSNApi validateEmail:_email_tf.text]) {
+        [ZSNApi showAutoHiddenMBProgressWithText:@"请输入正确的邮箱地址" addToView:self];
         return;
     }
     

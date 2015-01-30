@@ -7,8 +7,9 @@
 //
 
 #import "AboutViewController.h"
+#import "GaiZhuangWebViewController.h"
 
-@interface AboutViewController ()
+@interface AboutViewController ()<UIAlertViewDelegate>
 
 @end
 
@@ -18,7 +19,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     self.navigationController.navigationBarHidden = YES;
 }
 
@@ -134,11 +135,47 @@
 */
 
 - (IBAction)telphoneTap:(id)sender {
+    
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"操作提示" message:@"是否呼叫金牌客服金先生:\n18663909030" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alertView show];
 }
 
 - (IBAction)talkTap:(id)sender {
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_IN])
+    {
+        NewLogInView * loginView = [[NewLogInView alloc] initWithFrame:CGRectMake(0,0,DEVICE_WIDTH,DEVICE_HEIGHT)];
+        loginView.backgroundColor = [UIColor colorWithPatternImage:[ZSNApi screenShot]];
+        [[UIApplication sharedApplication].keyWindow addSubview:loginView];
+
+    }else
+    {
+        [LTools rongCloudChatWithUserId:@"141490" userName:@"中国顶火穿越车会" viewController:self];
+    }
 }
 
 - (IBAction)moreTap:(id)sender {
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/yue-yee-zu/id605673005?l=zh&ls=1&mt=8"]];
 }
+
+
+
+#pragma mark - UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",@"18663909030"]]];
+    }
+}
+
+
+
+
+
+
+
+
+
 @end
