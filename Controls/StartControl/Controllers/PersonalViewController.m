@@ -204,7 +204,7 @@ typedef enum{
     _hudView.backgroundColor = [UIColor clearColor];
     
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:_hudView.bounds];
-    titleLabel.backgroundColor = RGBCOLOR(153, 153, 153);
+    titleLabel.backgroundColor = RGBCOLOR(42, 42, 42);
     titleLabel.font = [UIFont systemFontOfSize:15];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.layer.cornerRadius = 15;
