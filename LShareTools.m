@@ -150,7 +150,7 @@
         
         NSLog(@"分享到邮箱");
         
-        NSString *string_bodyofemail=[NSString stringWithFormat:@"%@ \n %@ \n\n 下载越野e族客户端 http://mobile.fblife.com/download.php",_title,_linkUrl] ;
+        NSString *string_bodyofemail=[NSString stringWithFormat:@"%@ \n %@ \n\n 下载改装志客户端 http://mobile.fblife.com",_title,_linkUrl] ;
         [self shareToEmail:string_bodyofemail];
         
         
@@ -287,7 +287,7 @@
     pageObject.objectID =@"nimeideid";
 
     pageObject.thumbnailData = imageData;
-    pageObject.title = @"分享自改装车客户端";
+    pageObject.title = @"分享自改装志客户端";
     pageObject.description = _description;
     pageObject.webpageUrl = _linkUrl;
     WBMessageObject *message = [ [ WBMessageObject alloc ] init ];
@@ -322,7 +322,7 @@
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
     picker.mailComposeDelegate = self;
     
-    [picker setSubject:@"分享自越野e族"];
+    [picker setSubject:@"分享自改装志"];
     
     // Fill out the email body text
     NSString *emailBody =___str;
