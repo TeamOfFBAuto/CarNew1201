@@ -44,6 +44,7 @@
         CGFloat navBarHeight = 64;
         CGRect frame = CGRectMake(0.0f,0, DEVICE_WIDTH, navBarHeight);
         [bar setFrame:frame];
+        _table.height = DEVICE_HEIGHT-64;
     }
     
     self.navigationController.navigationBarHidden = NO;
@@ -84,7 +85,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chooseCarType:) name:@"ChooseCarTypeNotification" object:nil];
     
     //数据展示table
-    _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT - 44 + 20)];
+    _table = [[RefreshTableView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, DEVICE_HEIGHT-44)];
     _table.refreshDelegate = self;
     _table.dataSource = self;
     
