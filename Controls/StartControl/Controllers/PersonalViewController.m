@@ -80,6 +80,10 @@ typedef enum{
     int _page;//第几页
     int _pageCapacity;//一页请求几条数据
     NSArray *_dataArray;//数据源
+    NSArray *_dataArray_anli;//案例收藏数组
+    NSArray *_dataArray_chanpin;//产品收藏数组
+    NSArray *_dataArray_dianpu;//店铺收藏数组
+    
     
     GaiZhuangRefreshTableView *_tableView;//主tableview
     
@@ -195,10 +199,11 @@ typedef enum{
     
     
     
-    _hudView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_upThreeViewBackGroundView.frame), DEVICE_WIDTH, DEVICE_HEIGHT-_upThreeViewBackGroundView.frame.size.height)];
-    _hudView.backgroundColor = [UIColor whiteColor];
+    _hudView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 110, 50)];
+    _hudView.center = self.view.center;
+    _hudView.backgroundColor = [UIColor clearColor];
     
-    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake((DEVICE_WIDTH-110)*0.5, 10, 110, 50)];
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:_hudView.bounds];
     titleLabel.backgroundColor = RGBCOLOR(51, 51, 51);
     titleLabel.font = [UIFont systemFontOfSize:15];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -320,24 +325,7 @@ typedef enum{
         _nameLabel.text = [GMAPI getUsername];
         [ZSNApi showAutoHiddenMBProgressWithText:@"请求个人信息失败" addToView:self.view];
         
-//        id obj=NSClassFromString(@"UIAlertController");
-//        if ( obj!=nil){
-//            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"个人信息加载失败请重新加载" preferredStyle:UIAlertControllerStyleAlert];
-//            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-//                
-//            }];
-//            [alertController addAction:cancelAction];
-//            [self presentViewController:alertController animated:YES completion:^{
-//                
-//            }];
-//        }
-//        else{
-//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"个人信息加载失败请重新加载"
-//                                                           delegate:self cancelButtonTitle:@"确定"
-//                                                  otherButtonTitles:nil,nil];
-//            
-//            [alert show];
-//        }
+
         
         
         
@@ -363,7 +351,7 @@ typedef enum{
     //bannaer 头像 用户名 三个按钮底层view 的下层view
     _upThreeViewBackGroundView = [[UIView alloc]initWithFrame:CGRectZero];
     _upThreeViewBackGroundView.frame = CGRectMake(0,0, ALL_FRAME_WIDTH,240.00/320*ALL_FRAME_WIDTH);
-//    _upThreeViewBackGroundView.clipsToBounds = YES;
+
     
     
     //banner
@@ -383,21 +371,7 @@ typedef enum{
     [_topImv addGestureRecognizer:ddd];
     
     
-//    //zking
-//    
-//    
-//    UIImageView *imgV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 6+ALL_FRAME_WIDTH*70/320.0,6+ ALL_FRAME_WIDTH*70/320.0)];
-//    
-//    imgV.center=CGPointMake(ALL_FRAME_WIDTH/2,88.00/320*ALL_FRAME_WIDTH);
-//    
-//    imgV.layer.cornerRadius = ALL_FRAME_WIDTH*72/320/2;
-//    imgV.layer.masksToBounds = YES;
-//
-//    
-//    imgV.backgroundColor=[[UIColor whiteColor]colorWithAlphaComponent:0.5];
-//    
-//    [_upThreeViewBackGroundView addSubview:imgV];
-    
+
     
     UIView * face_quan_view = [[UIView alloc] initWithFrame:CGRectMake(0,0,76,76)];
     face_quan_view.center = CGPointMake(ALL_FRAME_WIDTH/2,88.00/320*ALL_FRAME_WIDTH);
@@ -430,15 +404,11 @@ typedef enum{
     
     //头像
     _faceImv = [[UIImageView alloc]initWithFrame:CGRectMake(3,3,70,70)];
-//    _faceImv.backgroundColor = RGBCOLOR_ONE;
-//    _faceImv.center = CGPointMake(ALL_FRAME_WIDTH/2,88.00/320*ALL_FRAME_WIDTH);
+
     _faceImv.layer.cornerRadius = 70*0.5;
     _faceImv.backgroundColor = [UIColor clearColor];
     _faceImv.layer.masksToBounds = YES;
-//    _faceImv.layer.borderWidth = 4;
-//    _faceImv.layer.borderColor = [[[UIColor whiteColor]colorWithAlphaComponent:0.5]CGColor];
-//    _faceImv.userInteractionEnabled = YES;
-//    _faceImv.layer.masksToBounds = YES;
+
     UITapGestureRecognizer *ccc = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userFaceClicked)];
     [_faceImv addGestureRecognizer:ccc];
     [face_quan_view addSubview:_faceImv];
@@ -452,10 +422,7 @@ typedef enum{
     _nameLabel.textColor = [UIColor whiteColor];
     
     
-//    _nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-//    _nameLabel.layer.shadowOffset = CGSizeMake(0,1);
-//    _nameLabel.layer.shadowRadius = 0.5;
-//    _nameLabel.layer.shadowOpacity = 0.8;
+
     
     [_upThreeViewBackGroundView addSubview:_nameLabel];
     
@@ -479,9 +446,7 @@ typedef enum{
     _topImv.layer.shadowOpacity = 0.5f;//阴影透明度，默认0
     _topImv.layer.shadowRadius = 4;//阴影半径，默认3
     
-    //整个图片变模糊 四周
-//    UIBezierPath *shadowPath = [UIBezierPath bezierPathWithRect:_topImv.bounds];
-//    _topImv.layer.shadowPath = shadowPath.CGPath;
+
     
     for (int i = 0; i<3; i++) {
         
@@ -566,12 +531,7 @@ typedef enum{
 //banner的点击方法
 -(void)userBannerClicked{
     NSLog(@"点击用户banner");
-    
-//    GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
-//    UINavigationController *navc = [[UINavigationController alloc]initWithRootViewController:cc];
-//    [self presentViewController:navc animated:YES completion:^{
-//        
-//    }];
+
     
     
     GcustomActionSheet *aaa = [[GcustomActionSheet alloc]initWithTitle:nil
@@ -595,20 +555,7 @@ typedef enum{
 //头像的点击方法
 -(void)userFaceClicked{
     NSLog(@"点击头像");
-//    
-//    GcustomActionSheet *aaa = [[GcustomActionSheet alloc]initWithTitle:nil
-//                                                          buttonTitles:@[@"更换头像"]
-//                                                     buttonTitlesColor:[UIColor blackColor]
-//                                                           buttonColor:[UIColor whiteColor]
-//                                                           CancelTitle:@"取消"
-//                                                      cancelTitelColor:[UIColor whiteColor]
-//                                                           CancelColor:RGBCOLOR(253, 144, 39)
-//                                                       actionBackColor:RGBCOLOR(236, 236, 236)];
-//    
-//    
-//    aaa.tag = 91;
-//    aaa.delegate = self;
-//    [aaa showInView:self.view WithAnimation:YES];
+
 }
 
 
@@ -622,20 +569,10 @@ typedef enum{
             UIImagePickerController *picker = [[UIImagePickerController alloc]init];
             picker.delegate = self;
             
-            //        [picker.navigationBar setBackgroundImage:FBCIRCLE_NAVIGATION_IMAGE forBarMetrics: UIBarMetricsDefault];
-            
-//            picker.navigationBar.barTintColor = [UIColor blackColor];
-//            UIColor * cc = [UIColor whiteColor];
-//            NSDictionary * dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:cc,[UIFont systemFontOfSize:18],[UIColor clearColor],nil] forKeys:[NSArray arrayWithObjects:UITextAttributeTextColor,UITextAttributeFont,UITextAttributeTextShadowColor,nil]];
-//            picker.navigationBar.titleTextAttributes = dict;
-            
             picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
             
             [self presentViewController:picker animated:YES completion:^{
-//                if (IOS7_OR_LATER) {
-//                    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-//                    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-//                }
+
             }];
         }
         
@@ -649,10 +586,7 @@ typedef enum{
             picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
             
             [self presentViewController:picker animated:YES completion:^{
-//                if (IOS7_OR_LATER) {
-//                    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-//                    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-//                }
+
             }];
         }
     }
@@ -766,12 +700,6 @@ typedef enum{
         [self test];
     }
     
-    
-    
-    
-    
-    
-//    _isChooseTouxiang = YES;
     [_tableView reloadData];
     
 }
@@ -869,8 +797,6 @@ typedef enum{
     
     _page = 1;
     
-    
-//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hudView.hidden = NO;
     
     if (theTag == 10) {//点击的是收藏案例
@@ -1043,29 +969,6 @@ typedef enum{
         
         NSLog(@"---%@",failDic);
         
-//        if ([[failDic objectForKey:@"ERRO_INFO"]isEqualToString:@"结果为空"]) {
-//            
-//        }else{
-//            id obj=NSClassFromString(@"UIAlertController");
-//            NSString *tishiStr = [failDic objectForKey:@"ERRO_INFO"];
-//            if ( obj!=nil){
-//                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:tishiStr preferredStyle:UIAlertControllerStyleAlert];
-//                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-//                    
-//                }];
-//                [alertController addAction:cancelAction];
-//                [self presentViewController:alertController animated:YES completion:^{
-//                    
-//                }];
-//            }
-//            else{
-//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"加载数据失败请重新加载"
-//                                                               delegate:self cancelButtonTitle:@"确定"
-//                                                      otherButtonTitles:nil,nil];
-//                [alert show];
-//            }
-//        }
-        
         if (_tableView.isLoadMoreData) {
             
             _page --;
@@ -1120,8 +1023,6 @@ typedef enum{
 {
     _page = 1;
     _tableView.isReloadData = YES;
-    
-    _dataArray = nil;
     _tableView.pageNum = 1;
     [_tableView.dataArray removeAllObjects];
     
@@ -1134,8 +1035,6 @@ typedef enum{
 -(void)loadChooseData{
     _page = 1;
     _tableView.isReloadData = YES;
-    
-    _dataArray = nil;
     _tableView.pageNum = 1;
     [_tableView.dataArray removeAllObjects];
     
@@ -1196,32 +1095,6 @@ typedef enum{
         [self.navigationController pushViewController:detail animated:YES];
     }
     
-    
-    
-//    AnliModel *aModel = [_table.dataArray objectAtIndex:indexPath.row];
-//    AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
-//    detail.anli_id = aModel.id;
-//    
-//    detail.shareTitle = aModel.title;
-//    detail.shareDescrition = aModel.sname;
-//    detail.shareImage = [LTools sd_imageForUrl:aModel.pichead];
-//    detail.storeName = aModel.sname;
-//    detail.storeImage = [LTools sd_imageForUrl:aModel.spichead];
-//    
-//    [self.navigationController pushViewController:detail animated:YES];
-//    
-//    [_table deselectRowAtIndexPath:indexPath animated:YES];
-//    
-//    
-//    
-//    GpersonCenterCustomCell * cell = (GpersonCenterCustomCell*)[_tableView cellForRowAtIndexPath:indexPath];
-//    
-//    BusinessListModel *model = _dataArray[indexPath.row];
-//    BusinessHomeViewController * home = [[BusinessHomeViewController alloc] init];
-//    home.business_id = model.id;
-//    home.share_title = model.storename;
-//    home.share_image = cell.header_imageView.image;
-//    [self.navigationController pushViewController:home animated:YES];
 }
 
 - (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath
@@ -1230,12 +1103,7 @@ typedef enum{
 }
 
 
-//- (void)loadNewData;
-//- (void)loadMoreData;
-//- (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
-//- (CGFloat)heightForRowIndexPath:(NSIndexPath *)indexPath;
-//- (UIView *)viewForHeaderInSection:(NSInteger)section;
-//- (CGFloat)heightForHeaderInSection:(NSInteger)section;
+
 
 
 
@@ -1324,21 +1192,6 @@ typedef enum{
 }
 
 
-
-
-
-
-
-//单元格个数一个屏幕里占不满的话 下面不显示出来
-//_tableView继承自RefreshTableView  RefreshTableView遵循UITableViewDelegate协议
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-//{
-//    return [UIView new];
-//}
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-//{
-//    return 0.01f;
-//}
 
 
 #pragma mark - 上提下拉相关方法结束
