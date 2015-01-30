@@ -416,7 +416,8 @@
     NSString *url = [NSString stringWithFormat:BUSINESS_SHARE_URL,_business_id];
 //    NSString *imageUrl = @"http://fbautoapp.fblife.com/resource/head/84/9b/thumb_1_Thu.jpg";
     
-    [tool showOrHidden:YES title:_businessModel.title description:_businessModel.content imageUrl:_businessModel.pichead aShareImage:_share_image linkUrl:url];
+    
+    [tool showOrHidden:YES title:_businessModel.title description:_businessModel.content imageUrl:_businessModel.pichead aShareImage:_share_image linkUrl:url isNativeImage:YES];
 }
 #pragma mark - 收藏或取消收藏
 -(void)collectionClicked

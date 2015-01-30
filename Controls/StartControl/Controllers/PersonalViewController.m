@@ -1065,6 +1065,7 @@ typedef enum{
         home.share_title = model.storename;
         home.share_image = cell.header_imageView.image;
         home.business_name = model.storename;
+        
         [self.navigationController pushViewController:home animated:YES];
         
     }else if (_cellType == GANLI){//案例

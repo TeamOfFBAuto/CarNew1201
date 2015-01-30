@@ -27,6 +27,8 @@ typedef enum {
     NSString *_imageUrl;//图片url
     UIImage *_aShareImage;//图片对象
     NSString *_linkUrl;//连接地址
+    
+    BOOL _isNativeImage;//是否是本地图片
 }
 
 + (id)shareInstance;
@@ -36,7 +38,8 @@ typedef enum {
          description:(NSString *)description
             imageUrl:(NSString *)aimageUrl
          aShareImage:(UIImage *)aImage
-             linkUrl:(NSString *)linkUrl;//分享view
+             linkUrl:(NSString *)linkUrl
+       isNativeImage:(BOOL)isNative;//分享view
 
 - (void)shareToPlat:(ShareStyle)shareStyle
                title:(NSString *)atitle

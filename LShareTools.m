@@ -11,6 +11,7 @@
 
 #import "WeiboSDK.h"
 #import "WXApi.h"
+#import "WXApiObject.h"
 
 #import "AppDelegate.h"
 #import "ZSNAlertView.h"
@@ -54,17 +55,15 @@
                  imageUrl:(NSString *)aimageUrl
                aShareImage:(UIImage *)aImage
             linkUrl:(NSString *)linkUrl
+       isNativeImage:(BOOL)isNative
 {
-//    NSString *title;//标题
-//    NSString *imageUrl;//图片url
-//    UIImage *aShareImage;//图片对象
-//    NSString *linkUrl;//连接地址
-    
     _title = atitle;
     _description = description;
     _imageUrl = aimageUrl;
     _aShareImage = aImage;
     _linkUrl = linkUrl;
+    _isNativeImage = isNative;
+
     
     if (show) {
         
@@ -117,18 +116,7 @@
 
 
 -(void)clickedButtonAtIndex:(NSInteger)buttonIndex{
-    
-    
-    NSString * string_url = _linkUrl;
-    
-    NSString *string_title = _title;
-    
-    NSString *description = _description;
-    
-    UIImage *shareImage = _aShareImage;//[UIImage imageNamed:@"Icon@2x.png"]
-    
-    NSString *imageUrl = _imageUrl;
-    
+   
     if(buttonIndex==0){
         
         NSLog(@"自留地");
@@ -148,8 +136,6 @@
             return;
         }
         
-        
-        
         ZSNAlertView * alertView = [[ZSNAlertView alloc] init];
         
         [alertView setInformationWithImageUrl:_imageUrl WithShareUrl:_linkUrl WithUserName:_title WithContent:_description WithBlock:^(NSString *theString) {
@@ -157,35 +143,6 @@
         }];
         
         [alertView show];
-
-        
-        
-    }else if(buttonIndex==3){
-        NSLog(@"到新浪微博界面的");
-        
-        if ([WeiboSDK isWeiboAppInstalled] == NO) {
-            
-            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有新浪微博客户端。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-            [alView show];
-            
-            
-            return;
-        }
-        
-        
-        WBWebpageObject *pageObject = [ WBWebpageObject object ];
-        pageObject.objectID =@"nimeideid";
-        pageObject.thumbnailData = UIImageJPEGRepresentation(shareImage, 0.1);
-        pageObject.title = @"分享自改装车客户端";
-        pageObject.description = description;
-        pageObject.webpageUrl = string_url;
-        WBMessageObject *message = [ [ WBMessageObject alloc ] init ];
-        message.text =[NSString stringWithFormat:@"%@（分享自@越野e族）",string_title] ;
-        
-        message.mediaObject = pageObject;
-        WBSendMessageToWeiboRequest *req = [ [  WBSendMessageToWeiboRequest alloc ] init  ];
-        req.message = message;
-        [ WeiboSDK sendRequest:req ];
         
     }
     
@@ -193,82 +150,171 @@
         
         NSLog(@"分享到邮箱");
         
-        NSString *string_bodyofemail=[NSString stringWithFormat:@"%@ \n %@ \n\n 下载越野e族客户端 http://mobile.fblife.com/download.php",string_title,string_url] ;
+        NSString *string_bodyofemail=[NSString stringWithFormat:@"%@ \n %@ \n\n 下载越野e族客户端 http://mobile.fblife.com/download.php",_title,_linkUrl] ;
         [self shareToEmail:string_bodyofemail];
         
         
-    }else if(buttonIndex==1){
-        NSLog(@"分享给微信好友");
+    }else if(buttonIndex == 1 || buttonIndex == 2){
+        NSLog(@"1分享给微信好友");
+        NSLog(@"2分享给微信朋友圈");
+        NSLog(@"3到新浪微博界面的");
         
-        
-        if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi]) {
-            WXMediaMessage *message = [WXMediaMessage message];
-            message.title = string_title;
-            message.description = description;
+        if (_isNativeImage) {
             
-//            [message setThumbImage:shareImage] ;
-            
-            message.thumbData = UIImageJPEGRepresentation(shareImage, 0.1);
-            
-            WXWebpageObject *ext = [WXWebpageObject object];
-            //ext.imageData = _weburl_Str;
-            ext.webpageUrl=string_url;
-            message.mediaObject = ext;
-            
-            SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-            
-            req.bText = NO;
-            req.message = message;
-            req.scene=WXSceneSession;
-            
-            [WXApi sendReq:req];
-        }else{
-            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-            [alView show];
-            
+            [self shareWithNativeImage:_aShareImage buttonIndex:buttonIndex];
+                        
+        }else
+        {
+            [self shareWithImageUrl:_imageUrl buttonIndex:buttonIndex];
         }
-        
     }
-    else if(buttonIndex==2){
-        
-        NSLog(@"分享给微信朋友圈");
-        
-        if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi]) {
-            WXMediaMessage *message = [WXMediaMessage message];
-            message.title = string_title;
-            message.description = description;
-            
-//            [message setThumbImage:shareImage] ;
-            
-            message.thumbData = UIImageJPEGRepresentation(shareImage, 0.1);
-            
-            WXWebpageObject *ext = [WXWebpageObject object];
-//            ext.imageData = _weburl_Str;
-            
-            ext.webpageUrl=string_url;
-
-            message.mediaObject = ext;
-            
-            SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-            
-            req.bText = NO;
-            req.message = message;
-            req.scene=WXSceneTimeline;
-            
-            
-            [WXApi sendReq:req];
-        }else{
-            UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-            [alView show];
-            
-        }
-        
-        
-        NSLog(@"分享到微信朋友圈");
-        
-    }
+    
     //分享编辑页面的接口
     
+}
+
+/**
+ *  分享本地with本地图片
+ */
+- (void)shareWithNativeImage:(UIImage *)shareImage buttonIndex:(int)buttonIndex
+{
+    NSData *data = [self thumbDataWithImage:shareImage];
+    
+    if (buttonIndex == 1) {
+        
+        [self shareToWeiXinIsFriend:YES image:data];
+    }else if (buttonIndex == 2){
+        [self shareToWeiXinIsFriend:NO image:data];
+    }else if (buttonIndex == 3){
+        [self shareToSinaWithImaegeData:data];
+    }
+}
+
+/**
+ *  分享网络图片 需要下载之后再分享
+ *
+ *  @param imageUrl    分享图片地址
+ *
+ */
+- (void)shareWithImageUrl:(NSString *)imageUrl buttonIndex:(int)buttonIndex
+{
+    MBProgressHUD *load = [LTools MBProgressWithText:nil addToView:[UIApplication sharedApplication].keyWindow];
+    [load show:YES];
+    
+    __weak typeof(self)weakSelf = self;
+    
+    SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
+    [downloader downloadImageWithURL:[NSURL URLWithString:imageUrl] options:SDWebImageDownloaderLowPriority | SDWebImageDownloaderUseNSURLCache progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+        
+        NSLog(@"progress %ld",(long)receivedSize);
+        
+    } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+        
+        [load hide:YES];
+        if (finished && error == nil && image) {
+            
+            
+        }else
+        {
+            image = [UIImage imageNamed:@"icon_share"];
+        }
+        
+        data = [self thumbDataWithImage:image];
+        
+        if (buttonIndex == 1) {
+            
+            [weakSelf shareToWeiXinIsFriend:YES image:data];
+        }else if (buttonIndex == 2){
+            [weakSelf shareToWeiXinIsFriend:NO image:data];
+        }else if (buttonIndex == 3){
+            [weakSelf shareToSinaWithImaegeData:data];
+        }
+        
+    }];
+}
+
+/**
+ *  分享至微信好友及朋友圈
+ *
+ *  @param isFriend  是否是分享到好友
+ *  @param imageData 图片data
+ */
+- (void)shareToWeiXinIsFriend:(BOOL)isFriend image:(NSData *)imageData
+{
+    
+    if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi]) {
+        WXMediaMessage *message = [WXMediaMessage message];
+        
+        message.title = _title;
+        message.description = _description;
+        
+        message.thumbData = imageData;
+        
+        WXWebpageObject *ext = [WXWebpageObject object];
+        ext.webpageUrl = _linkUrl;
+        message.mediaObject = ext;
+        
+        SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+        
+        req.bText = NO;
+        req.message = message;
+        req.scene = isFriend ? WXSceneSession : WXSceneTimeline;
+        
+        [WXApi sendReq:req];
+    }else{
+        UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有安装微信。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+        [alView show];
+        
+    }
+
+}
+
+/**
+ *  分享至新浪微博
+ *
+ *  @param imageData 图片data
+ */
+- (void)shareToSinaWithImaegeData:(NSData *)imageData
+{
+    if ([WeiboSDK isWeiboAppInstalled] == NO) {
+        
+        UIAlertView *alView = [[UIAlertView alloc]initWithTitle:@"" message:@"你的iPhone上还没有新浪微博客户端。" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+        [alView show];
+        return;
+    }
+    
+    WBWebpageObject *pageObject = [ WBWebpageObject object ];
+    pageObject.objectID =@"nimeideid";
+
+    pageObject.thumbnailData = imageData;
+    pageObject.title = @"分享自改装车客户端";
+    pageObject.description = _description;
+    pageObject.webpageUrl = _linkUrl;
+    WBMessageObject *message = [ [ WBMessageObject alloc ] init ];
+    message.text =[NSString stringWithFormat:@"%@（分享自@越野e族）",_title] ;
+    
+    message.mediaObject = pageObject;
+    WBSendMessageToWeiboRequest *req = [ [  WBSendMessageToWeiboRequest alloc ] init  ];
+    req.message = message;
+    [ WeiboSDK sendRequest:req ];
+}
+
+//处理图片 不超过32KB
+- (NSData *)thumbDataWithImage:(UIImage *)aImage
+{
+    NSData *data = UIImageJPEGRepresentation(aImage, 1);
+    CGFloat ss = data.length/1000.f;
+    NSLog(@"image1-->%f",ss);
+    if (ss > 32) {
+        
+        data = UIImageJPEGRepresentation(aImage, 32/ss);
+        
+        NSLog(@"image2-->%f",data.length/1000.f);
+
+        return data;
+    }
+    
+    return data;
 }
 
 

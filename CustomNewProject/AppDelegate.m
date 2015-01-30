@@ -30,9 +30,9 @@
 #import "RCIMClient.h"
 
 #define UMENG_APPKEY @"548a8a05fd98c5318d001273" //mobile
-#define WXAPPID @"wxf53513ba14a2e141" //mobile 审核通过 改装志iOS
+#define WXAPPID @"wxf53513ba14a2e141" //mobile 审核通过 改装志
 #define SINAAPPID @"2128173805"//mobile 审核通过
-//#define WXAPPID @"wxc007ca608b574af1" //mobile 审核通过 改装志
+//#define WXAPPID @"wxc007ca608b574af1" //mobile 审核通过 改装志iOS
 
 
 /**

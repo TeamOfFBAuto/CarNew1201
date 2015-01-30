@@ -169,12 +169,12 @@
     
 //    [self rightButtonTap:nil];
     
-    [self networkForCollectState];
+    [self networkForCollectState];//获取收藏状态
     
     
-    //评论view
+    [self progress];//底部进度条
     
-    [self progress];
+    
     ///接受评论成功通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successComment) name:@"successedComment" object:nil];
     ///接受收藏变更通知
@@ -193,6 +193,8 @@
     [progress addSubview:greenView];
     
     [self progressAnimation];
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:5.f target:self selector:@selector(progressToFinish) userInfo:nil repeats:NO];
 
 }
 
@@ -223,6 +225,8 @@
 
 - (void)progressToFinish
 {
+    NSLog(@"------finish 5s");
+    
     [timer invalidate];
     
     [UIView animateWithDuration:1.f animations:^{
@@ -282,7 +286,7 @@
                 
 //                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageUrl]]];
                 
-                [tool showOrHidden:YES title:weakSelf.detail_info.title description:weakSelf.detail_info.content imageUrl:weakSelf.detail_info.pichead aShareImage:weakSelf.storeImage linkUrl:url];
+                [tool showOrHidden:YES title:weakSelf.detail_info.title description:weakSelf.detail_info.content imageUrl:weakSelf.detail_info.pichead aShareImage:weakSelf.storeImage linkUrl:url isNativeImage:NO];
                 
             }else if (index == 1){
                 
@@ -858,6 +862,8 @@
   //  [self updateStatusBarColor];
     
     [self progressToFinish];
+    
+    NSLog(@"webViewDidFinishLoad");
     
 //    if (self.detailType == Detail_Peijian) {
 //        
