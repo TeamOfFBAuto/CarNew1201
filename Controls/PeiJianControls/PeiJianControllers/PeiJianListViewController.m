@@ -172,6 +172,7 @@
     AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
     detail.anli_id = model.id;
     detail.storeName = model.storename;
+    detail.storeImage = _business_share_image;
     detail.detailType = Detail_Peijian;
     detail.storeId = self.business_id;
     [self.navigationController pushViewController:detail animated:YES];

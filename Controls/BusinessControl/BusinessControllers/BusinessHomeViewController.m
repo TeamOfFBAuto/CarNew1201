@@ -70,7 +70,7 @@
 {
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     self.navigationController.navigationBarHidden = YES;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successLogIn) name:@"gdengluchenggong" object:nil];
@@ -79,7 +79,7 @@
 {
     [super viewWillDisappear:animated];
     self.edgesForExtendedLayout = UIRectEdgeAll;
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     
 }
 
@@ -326,6 +326,7 @@
         
         PeiJianListViewController * peijianList = [[PeiJianListViewController alloc] init];
         peijianList.business_id = _business_id;
+        peijianList.business_share_image = _share_image;
         self.edgesForExtendedLayout = UIRectEdgeAll;
         [self.navigationController pushViewController:peijianList animated:YES];
         
