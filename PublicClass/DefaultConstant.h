@@ -94,7 +94,7 @@ alpha:(a)]
 
 #pragma mark - 所有接口 -************************************************************
 
-#define BASE_URL @"http://gztest.fblife.com/"
+#define BASE_URL @"http://g.fblife.com/"
 
 
 //融云
@@ -104,7 +104,7 @@ alpha:(a)]
 #define RONGCLOUD_TOKEN @"rongcloudToken"//融云token
 
 //token
-#define RONCLOUD_GET_TOKEN @"http://gztest.fblife.com/gettoken.php?uid=%@&name=%@&photo=%@"//获取融云 token
+#define RONCLOUD_GET_TOKEN @"http://g.fblife.com/gettoken.php?uid=%@&name=%@&photo=%@"//获取融云 token
 
 //注册
 #define SENDPHONENUMBER @"http://bbs.fblife.com/bbsapinew/register.php?type=phone&step=1&telphone=%@&keycode=e2e3420683&datatype=json"
@@ -123,28 +123,28 @@ alpha:(a)]
 //案例列表
 #define BUSINESS_LIST_URL @"index.php?c=interface&a=getStore&storeid=%@&ps=20&page=%d&fbtype=json"
 //登录
-#define G_LOGIN @"http://gztest.fblife.com/index.php?c=interface&a=dologin&fbtype=json"
+#define G_LOGIN @"http://g.fblife.com/index.php?c=interface&a=dologin&fbtype=json"
 ///商家详情分享出去的链接地址
-#define BUSINESS_SHARE_URL @"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=%@&isshare=1"
+#define BUSINESS_SHARE_URL @"http://g.fblife.com/web.php?c=wap&a=getStore&storeid=%@&isshare=1"
 ///商家详情HTML5地址
-#define BUSINESS_DETAIL_HTML5_URL @"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid=%@"
+#define BUSINESS_DETAIL_HTML5_URL @"http://g.fblife.com/web.php?c=wap&a=getStore&storeid=%@"
 ///商家详情接口
-#define BUSINESS_DETAIL_URL @"http://gztest.fblife.com/web.php?c=interface&a=getStoredetails&sid=%@&authkey=%@"
+#define BUSINESS_DETAIL_URL @"http://g.fblife.com/web.php?c=interface&a=getStoredetails&sid=%@&authkey=%@"
 ///收藏商家接口
-#define BUSINESS_COLLECTION_URL @"http://gztest.fblife.com/index.php?c=interface&a=addFavStore&fbtype=json&authkey=%@&storeid=%@"
+#define BUSINESS_COLLECTION_URL @"http://g.fblife.com/index.php?c=interface&a=addFavStore&fbtype=json&authkey=%@&storeid=%@"
 
 
 //个人中心相关
 //获取收藏案例
-#define G_ANLI @"http://gztest.fblife.com/index.php?c=interface&a=getFavCase&fbtype=json&uid=%@&page=%d&ps=%d"
+#define G_ANLI @"http://g.fblife.com/index.php?c=interface&a=getFavCase&fbtype=json&uid=%@&page=%d&ps=%d"
 //获取收藏配件
-#define G_PEIJIAN @"http://gztest.fblife.com/index.php?c=interface&a=getFavGoods&fbtype=json&uid=%@&page=%d&ps=%d"
+#define G_PEIJIAN @"http://g.fblife.com/index.php?c=interface&a=getFavGoods&fbtype=json&uid=%@&page=%d&ps=%d"
 //获取收藏店铺：
-#define G_DIANPU @"http://gztest.fblife.com/index.php?c=interface&a=getFavStore&fbtype=json&uid=%@&page=%d&ps=%d"
+#define G_DIANPU @"http://g.fblife.com/index.php?c=interface&a=getFavStore&fbtype=json&uid=%@&page=%d&ps=%d"
 //获取个人信息
-#define G_USERINFO @"http://gztest.fblife.com/index.php?c=interface&a=getUser&uid=%@&fbtype=json"
+#define G_USERINFO @"http://g.fblife.com/index.php?c=interface&a=getUser&uid=%@&fbtype=json"
 //更改用户banner
-#define G_CHANGEUSERBANNER @"http://gztest.fblife.com/index.php?c=interface&a=updatePichead&fbtype=json&authkey=%@"
+#define G_CHANGEUSERBANNER @"http://g.fblife.com/index.php?c=interface&a=updatePichead&fbtype=json&authkey=%@"
 //个人中心 需要刷新个人数据
 #define G_USERCENTERLOADUSERINFO @"g_usercenterloaduserinfo"
 
@@ -153,70 +153,70 @@ alpha:(a)]
 
 //搜索店铺
 //按店铺名称搜索
-#define G_SEACHER_DIANPU_NAME @"http://gztest.fblife.com/index.php?c=interface&a=getStore&fbtype=json&keyword=%@"
+#define G_SEACHER_DIANPU_NAME @"http://g.fblife.com/index.php?c=interface&a=getStore&fbtype=json&keyword=%@"
 //按地区搜索
-#define G_SEACHER_DIANPU_AREA @"http://gztest.fblife.com/index.php?c=interface&a=getStore&fbtype=json&province=%d&city=%d"
+#define G_SEACHER_DIANPU_AREA @"http://g.fblife.com/index.php?c=interface&a=getStore&fbtype=json&province=%d&city=%d"
 
 //搜索案例
 //按案例名称搜索
-#define G_SEACHER_ANLI_NAME @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&keyword=%@"
+#define G_SEACHER_ANLI_NAME @"http://g.fblife.com/index.php?c=interface&a=getCase&fbtype=json&keyword=%@"
 //按品牌搜索
-#define G_SEACHER_ANLI_PINPAINAME @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&brand=%d&models=%d"
+#define G_SEACHER_ANLI_PINPAINAME @"http://g.fblife.com/index.php?c=interface&a=getCase&fbtype=json&brand=%d&models=%d"
 //按地区搜索
-#define G_SEACHER_ANLI_AREA @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&city=%d&province=%d"
+#define G_SEACHER_ANLI_AREA @"http://g.fblife.com/index.php?c=interface&a=getCase&fbtype=json&city=%d&province=%d"
 
 
 
 //搜索配件
 //按关键字搜索配件
-#define G_SEARCH_PEIJIAN_GUANJIANZI @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&keyword=%@"
+#define G_SEARCH_PEIJIAN_GUANJIANZI @"http://g.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&keyword=%@"
 //按商家搜索配件
-#define G_SEARCH_PEIJIAN_SHANGJIA @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&storeid=%@"
+#define G_SEARCH_PEIJIAN_SHANGJIA @"http://g.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&storeid=%@"
 //配件详情分享地址
-#define PEIJIAN_SHARE_URL @"http://gztest.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&peijianxiangqing168&isshare=1"
+#define PEIJIAN_SHARE_URL @"http://g.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&peijianxiangqing168&isshare=1"
 //配件详情HTML5地址
-#define ANLI_PEIJIAN_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&authkey=%@"
+#define ANLI_PEIJIAN_DETAIL @"http://g.fblife.com/web.php?c=wap&a=getGoods&goodsid=%@&authkey=%@"
 ///配件详情接口
-#define ANLI_PEIJIAN_INFORMATION_URL @"http://gztest.fblife.com/web.php?c=interface&a=getGoodsdetails&gid=%@&authkey=%@"
+#define ANLI_PEIJIAN_INFORMATION_URL @"http://g.fblife.com/web.php?c=interface&a=getGoodsdetails&gid=%@&authkey=%@"
 
 ///配件列表接口
-#define PEIJIAN_LIEST_URL @"http://gztest.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&id=%@&page=%d&ps=10"
+#define PEIJIAN_LIEST_URL @"http://g.fblife.com/index.php?c=interface&a=getGoods&fbtype=json&id=%@&page=%d&ps=10"
 
 //案例列表
-#define ANLI_LIST @"http://gztest.fblife.com/index.php?c=interface&a=getCase&fbtype=json&page=%d&ps=%d&ordertype=%d&id=%@"
+#define ANLI_LIST @"http://g.fblife.com/index.php?c=interface&a=getCase&fbtype=json&page=%d&ps=%d&ordertype=%d&id=%@"
 
 //案例收藏
-#define ANLI_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=addFavCase&fbtype=json&authkey=%@&caseid=%@"
+#define ANLI_COLLECT @"http://g.fblife.com/index.php?c=interface&a=addFavCase&fbtype=json&authkey=%@&caseid=%@"
 
 //配件收藏
-#define PEIJIAN_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=addFavGoods&fbtype=json&authkey=%@&goodsid=%@"
+#define PEIJIAN_COLLECT @"http://g.fblife.com/index.php?c=interface&a=addFavGoods&fbtype=json&authkey=%@&goodsid=%@"
 
 //案例收藏取消
 
-#define ANLI_CANCEL_COLLECT @"http://gztest.fblife.com/index.php?c=interface&a=delFav&fbtype=json&authkey=%@&type=%d&tid=%@"
+#define ANLI_CANCEL_COLLECT @"http://g.fblife.com/index.php?c=interface&a=delFav&fbtype=json&authkey=%@&type=%d&tid=%@"
 
 //获取是否收藏状态
 
-#define ANLI_COLLECT_STATE @"http://gztest.fblife.com/web.php?c=interface&a=getCasedetails&cid=%@&authkey=%@"
+#define ANLI_COLLECT_STATE @"http://g.fblife.com/web.php?c=interface&a=getCasedetails&cid=%@&authkey=%@"
 
 //案例详情
-#define ANLI_DETAIL @"http://gztest.fblife.com/web.php?c=wap&a=getCase&caseid=%@&authkey=%@"
+#define ANLI_DETAIL @"http://g.fblife.com/web.php?c=wap&a=getCase&caseid=%@&authkey=%@"
 
 //案例详情分享出去
-#define ANLI_DETAIL_SHARE @"http://gztest.fblife.com/web.php?c=wap&a=getCase&caseid=%@&authkey=%@&isshare=1"
+#define ANLI_DETAIL_SHARE @"http://g.fblife.com/web.php?c=wap&a=getCase&caseid=%@&authkey=%@&isshare=1"
 
 //评论接口
 
 //案例评论
 
-//http://gztest.fblife.com/index.php?c=interface&a=addComCase&fbtype=json&uid=1102017&caseid=2&score=4&content=%E8%BF%99%E6%98%AF%E6%9D%A1%E8%AF%84%E8%AE%BA
+//http://g.fblife.com/index.php?c=interface&a=addComCase&fbtype=json&uid=1102017&caseid=2&score=4&content=%E8%BF%99%E6%98%AF%E6%9D%A1%E8%AF%84%E8%AE%BA
 
-//http://gztest.fblife.com/index.php?c=interface&a=addComCase&fbtype=json&uid=1102017&caseid=2&score=4&content=%E8%BF%99%E6%98%AF%E6%9D%A1%E8%AF%84%E8%AE%BA
-#define COMMENT_ANLI_API @"http://gztest.fblife.com/index.php?c=interface&a=addComCase&fbtype=json&authkey=%@&caseid=%@&score=%@&content=%@"
+//http://g.fblife.com/index.php?c=interface&a=addComCase&fbtype=json&uid=1102017&caseid=2&score=4&content=%E8%BF%99%E6%98%AF%E6%9D%A1%E8%AF%84%E8%AE%BA
+#define COMMENT_ANLI_API @"http://g.fblife.com/index.php?c=interface&a=addComCase&fbtype=json&authkey=%@&caseid=%@&score=%@&content=%@"
 //店铺评论
-#define COMMENT_DIANPU_API @"http://gztest.fblife.com/index.php?c=interface&a=addComStore&fbtype=json&authkey=%@&storeid=%@&score=%@&content=%@"
+#define COMMENT_DIANPU_API @"http://g.fblife.com/index.php?c=interface&a=addComStore&fbtype=json&authkey=%@&storeid=%@&score=%@&content=%@"
 //配件评论
-#define COMMENT_PEIJIAN_API @"http://gztest.fblife.com/index.php?c=interface&a=addComGoods&fbtype=json&authkey=%@&goodsid=%@&score=%@&content=%@"
+#define COMMENT_PEIJIAN_API @"http://g.fblife.com/index.php?c=interface&a=addComGoods&fbtype=json&authkey=%@&goodsid=%@&score=%@&content=%@"
 
 #pragma mark - 自留地相关接口*************************************************start by sn
 ///自留地上传图片接口

@@ -656,7 +656,7 @@
         return NO;
     }
     ///这也是店铺情况
-    if ([relativeUrl rangeOfString:@"http://gztest.fblife.com/web.php?c=wap&a=getStore&storeid="].length > 0) {
+    if ([relativeUrl rangeOfString:@"http://g.fblife.com/web.php?c=wap&a=getStore&storeid="].length > 0) {
         
         NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"&storeid="];
         if (dianpu.count > 1) {

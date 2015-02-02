@@ -39,8 +39,8 @@
  *  融合mobile@fblife.com Fblife201314
  */
 
-#define Rong_AppKey_Develope @"82hegw5uh7wmx"
-#define Rong_AppSecret_Develope @"DsqPPDTruQ609"
+#define Rong_AppKey_Develope @"e0x9wycfxjyaq"
+#define Rong_AppSecret_Develope @"ePqoE3K7SuSgTH"
 
 //百度
 #define BAIDU_APPKEY @"APMdmYcmGzQGBs3MUzr086Fk"
