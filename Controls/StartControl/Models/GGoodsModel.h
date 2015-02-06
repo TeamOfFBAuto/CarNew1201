@@ -8,7 +8,6 @@
 
 
 //收藏产品的model
-//http://gztest.fblife.com/index.php?c=interface&a=getFavGoods&fbtype=json&uid=967897&page=1&ps=10
 
 #import <Foundation/Foundation.h>
 

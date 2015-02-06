@@ -196,11 +196,13 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
     [self.rightView addSubview:self.airImageView];
     
     
-    UIButton * setting_button = [UIButton buttonWithType:UIButtonTypeCustom];
-    setting_button.frame = CGRectMake(DEVICE_WIDTH - 40,30,40,40);
-    [setting_button setImage:[UIImage imageNamed:@"setting_image"] forState:UIControlStateNormal];
-    [setting_button addTarget:self action:@selector(settingTap:) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:setting_button];
+     _setting_button = [UIButton buttonWithType:UIButtonTypeCustom];
+    _setting_button.frame = CGRectMake(DEVICE_WIDTH - 40,30,40,40);
+    [_setting_button setImage:[UIImage imageNamed:@"setting_image"] forState:UIControlStateNormal];
+    [_setting_button addTarget:self action:@selector(settingTap:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [self.contentView addSubview:_setting_button];
     
     // Setting color
     _titleNormalColor    = [UIColor colorWithRed:0.45 green:0.45 blue:0.45 alpha:1];
@@ -248,6 +250,7 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
 #pragma mark - 设置按钮
 -(void)settingTap:(UIButton *)sender
 {
+    
     
 }
 
@@ -844,8 +847,13 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
     self.currentIndexPath = [NSIndexPath indexPathForRow:button.tag
                                                inSection:button.superview.tag];
     
+    
     // Should select ?
     if (self.delegate && [self.delegate respondsToSelector:@selector(shouldSelectRowAtIndex:)]) {
+        
+        
+        
+        
         if (![self.delegate shouldSelectRowAtIndex:self.currentIndexPath]) {
             return;
         }
@@ -861,7 +869,14 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
         self.airImageView.image = nextThumbnail;
     }
     
+    self.setting_button.hidden=YES;
+    
     [self hideAirViewOnComplete:^{
+        
+        
+
+        
+        
         UIViewController * controller = [self getViewControllerAtIndexPath:self.currentIndexPath];
         if (controller) {
             [self bringViewControllerToTop:controller atIndexPath:self.currentIndexPath];
@@ -886,7 +901,14 @@ static NSString * const PHSegueRootIdentifier  = @"phair_root";
             UIViewController * controller = [self.dataSource viewControllerForIndexPath:self.currentIndexPath];
             [self bringViewControllerToTop:controller atIndexPath:self.currentIndexPath];
         }
+        
+        
+        
+        self.setting_button.hidden=NO;
+
     }];
+    
+    
     
 }
 

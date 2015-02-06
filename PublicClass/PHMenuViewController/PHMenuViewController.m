@@ -76,8 +76,12 @@
 {
     NSLog(@"设置");
     
+    self.setting_button.hidden=YES;
+    
     SliderRightSettingViewController * settingVC = [[SliderRightSettingViewController alloc] init];
     [self.navigationController pushViewController:settingVC animated:YES];
+    
+    self.setting_button.hidden=NO;
 }
 
 #pragma mark - 跳到登录界面

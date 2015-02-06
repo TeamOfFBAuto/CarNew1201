@@ -41,6 +41,8 @@
 @property (nonatomic, strong) UIColor * titleNormalColor;
 @property (nonatomic, strong) UIColor * titleHighlightColor;
 
+@property(nonatomic,strong)UIButton * setting_button;
+
 @property (nonatomic, assign) id <PHAirMenuDelegate>   delegate;
 @property (nonatomic, assign) id <PHAirMenuDataSource> dataSource;
 

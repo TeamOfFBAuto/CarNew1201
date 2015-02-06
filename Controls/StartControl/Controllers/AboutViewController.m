@@ -136,7 +136,7 @@
 
 - (IBAction)telphoneTap:(id)sender {
     
-    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"操作提示" message:@"是否呼叫金牌客服金先生:\n18663909030" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil message:@"呼叫合作热线:\n18663909030" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     [alertView show];
 }
 
@@ -150,7 +150,7 @@
 
     }else
     {
-        [LTools rongCloudChatWithUserId:@"141490" userName:@"中国顶火穿越车会" viewController:self];
+        [LTools rongCloudChatWithUserId:@"141490" userName:@"客户服务" viewController:self];
     }
 }
 

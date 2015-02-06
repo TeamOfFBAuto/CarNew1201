@@ -121,14 +121,25 @@
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    UIBarButtonItem * spaceButton1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    spaceButton1.width = MY_MACRO_NAME?-13:5;
     
-    UIButton *button_back=[[UIButton alloc]initWithFrame:CGRectMake(MY_MACRO_NAME? -5:5,8,40,44)];
-    [button_back addTarget:self action:@selector(leftButtonTap:) forControlEvents:UIControlEventTouchUpInside];
-    [button_back setImage:[UIImage imageNamed:BACK_DEFAULT_IMAGE_GRAY] forState:UIControlStateNormal];
-    UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:button_back];
-    viewController.navigationItem.leftBarButtonItems=@[spaceButton1,back_item];
+    NSLog(@"viewController %@",NSStringFromClass([viewController class]));
+    
+//    UIBarButtonItem * spaceButton1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+//    spaceButton1.width = MY_MACRO_NAME?-13:5;
+//    
+//    UIButton *button_back=[[UIButton alloc]initWithFrame:CGRectMake(MY_MACRO_NAME? -5:5,8,40,44)];
+//    [button_back addTarget:self action:@selector(leftButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+//    [button_back setImage:[UIImage imageNamed:BACK_DEFAULT_IMAGE_GRAY] forState:UIControlStateNormal];
+//    UIBarButtonItem *back_item=[[UIBarButtonItem alloc]initWithCustomView:button_back];
+//    viewController.navigationItem.leftBarButtonItems=@[spaceButton1,back_item];
+    
+//    if( [NSStringFromClass([viewController class]) isEqualToString:@"PUUIAlbumListViewController"]) {
+//        
+//        button_back.hidden = YES;
+//    }else
+//    {
+//        button_back.hidden = NO;
+//    }
 }
 
 //- (id<RCLocationPickerViewControllerDataSource>)locationPickerDataSource {

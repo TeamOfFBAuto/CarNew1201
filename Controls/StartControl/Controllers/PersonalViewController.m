@@ -178,6 +178,7 @@ typedef enum{
     _tableView.dataSource = self;
     _tableView.netWorking = GIS;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.headerHeight =DEVICE_HEIGHT-240.00/320*ALL_FRAME_WIDTH;
     [self.view addSubview:_tableView];
     
     _tableView.tableHeaderView = _upThreeViewBackGroundView;
@@ -204,7 +205,7 @@ typedef enum{
     _hudView.backgroundColor = [UIColor clearColor];
     
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:_hudView.bounds];
-    titleLabel.backgroundColor = RGBCOLOR(153, 153, 153);
+    titleLabel.backgroundColor = RGBCOLOR(42, 42, 42);
     titleLabel.font = [UIFont systemFontOfSize:15];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.layer.cornerRadius = 15;
