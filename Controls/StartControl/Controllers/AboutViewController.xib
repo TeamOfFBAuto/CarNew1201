@@ -79,13 +79,13 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="270" y="332"/>
+            <point key="canvasLocation" x="-135" y="79"/>
         </view>
     </objects>
     <resources>
-        <image name="about_talk_image.png" width="54" height="54"/>
-        <image name="about_telphone_image.png" width="54" height="54"/>
-        <image name="new_about_logo_image.png" width="115" height="115"/>
+        <image name="about_talk_image.png" width="106" height="105"/>
+        <image name="about_telphone_image.png" width="106" height="105"/>
+        <image name="new_about_logo_image.png" width="223" height="224"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
