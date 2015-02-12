@@ -77,12 +77,18 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successLogIn) name:@"gdengluchenggong" object:nil];
+    
+    
+    [MobClick beginEvent:@"BusinessHomeViewController"];
+    
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     self.edgesForExtendedLayout = UIRectEdgeAll;
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    
+    [MobClick endEvent:@"BusinessHomeViewController"];
     
 }
 
@@ -149,6 +155,9 @@
                 break;
             case BusinessCommentViewTapTypeComment://评论
             {
+                
+                [MobClick event:@"BusinessHomeViewController_dianping"];
+                
                 GscoreStarViewController *cc = [[GscoreStarViewController alloc]init];
                 cc.commentType = Comment_DianPu;//评论类型（枚举）
                 cc.commentId = bself.business_id;//对应的id
@@ -169,6 +178,7 @@
                 }
                  */
                 
+                [MobClick event:@"BusinessHomeViewController_goumaizixun"];
                 
                 [LTools rongCloudChatWithUserId:bself.business_id userName:bself.business_name viewController:bself];
             }
@@ -229,6 +239,8 @@
         NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"&anlixingqing"];
         if (dianpu.count > 1) {
             
+            [MobClick event:@"BusinessHomeViewController_anlidetail"];
+            
             NSString *dianpuId = dianpu[1];
             NSLog(@"案例详情 id:%@",dianpuId);
             
@@ -248,6 +260,8 @@
         
         NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"&peijianxiangqing"];
         if (dianpu.count > 1) {
+            
+            [MobClick endEvent:@"BusinessHomeViewController_peijianDetail"];
             
             NSString *dianpuId = dianpu[1];
             NSLog(@"配件详情 id:%@",dianpuId);
@@ -271,6 +285,9 @@
     
     if ([relativeUrl rangeOfString:@"map:"].length > 0)
     {
+        
+        [MobClick event:@"BusinessHomeViewController_map"];
+        
         NSString * lat;
         NSString * lng;
         NSString * latlng = [relativeUrl stringByReplacingOccurrencesOfString:@"map:" withString:@""];
@@ -317,6 +334,8 @@
     ///案例更过按钮
     if ([relativeUrl rangeOfString:@"case"].length > 0) {
         
+        [MobClick event:@"BusinessHomeViewController_anlimore"];
+        
         PicViewController * pic = [[PicViewController alloc] init];
         pic.business_id = _business_id;
         [self.navigationController pushViewController:pic animated:YES];
@@ -326,6 +345,8 @@
     
     ///配件更多按钮
     if ([relativeUrl rangeOfString:@"goods"].length > 0) {
+        
+        [MobClick event:@"BusinessHomeViewController_peijianmore"];
         
         PeiJianListViewController * peijianList = [[PeiJianListViewController alloc] init];
         peijianList.business_id = _business_id;
@@ -337,7 +358,7 @@
     }
     
     
-    
+    [MobClick event:@"BusinessHomeViewController_phone"];
     
     
     return YES;
@@ -389,11 +410,13 @@
             switch (index) {
                 case 0:
                 {
+                    [MobClick event:@"BusinessHomeViewController_fenxiang"];
                     [bself shareClicked];
                 }
                     break;
                 case 1:
                 {
+                    [MobClick event:@"BusinessHomeViewController_zan"];
                     [bself collectionClicked];
                 }
                     break;

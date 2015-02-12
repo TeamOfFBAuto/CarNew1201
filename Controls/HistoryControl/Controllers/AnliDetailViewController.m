@@ -89,7 +89,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
    // [self updateStatusBarColor];
-    
+    [MobClick beginEvent:@"AnliDetailViewController"];
 }
 
 //更新状态栏颜色
@@ -109,7 +109,7 @@
     self.edgesForExtendedLayout = UIRectEdgeAll;
 
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-    
+    [MobClick endEvent:@"AnliDetailViewController"];
 }
 
 -(void)back:(UIButton *)button
@@ -272,6 +272,8 @@
             
             if (index == 0) {
                 
+                [MobClick event:@"AnliDetailViewController_fenxiang"];
+                
                 LShareTools *tool = [LShareTools shareInstance];
                 
                 NSString *url; //= [NSString stringWithFormat:ANLI_DETAIL_SHARE,weakSelf.anli_id,[GMAPI getAuthkey]];
@@ -290,9 +292,11 @@
                 [tool showOrHidden:YES title:weakSelf.detail_info.title description:weakSelf.detail_info.content imageUrl:weakSelf.detail_info.pichead aShareImage:weakSelf.storeImage linkUrl:url isNativeImage:NO];
                 
             }else if (index == 1){
-                
+                [MobClick event:@"AnliDetailViewController_dianzan"];
                 [weakSelf clickToCollectAction];
             }else if (index == 2){
+                
+                [MobClick event:@"AnliDetailViewController_quxiaomaodian"];
                 
                 [weakFucntion setEyesState:NO];
                 
@@ -754,6 +758,8 @@
         
         NSArray *dianpu = [relativeUrl componentsSeparatedByString:@"liaotian"];
         if (dianpu.count > 1) {
+            
+            [MobClick event:@"AnliDetailViewController_shangjialiaotian"];
             
             NSString *dianpuId = dianpu[1];
             NSLog(@"与商家聊天 id:%@",dianpuId);

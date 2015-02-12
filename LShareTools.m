@@ -95,16 +95,19 @@
     switch (shareStyle) {
         case ShareToWeibo:
         {
+            
             [self clickedButtonAtIndex:3];
         }
             break;
         case ShareToPengyouquan:
         {
+            
             [self clickedButtonAtIndex:2];
         }
             break;
         case ShareToWeixin:
         {
+            
             [self clickedButtonAtIndex:1];
         }
             break;
@@ -118,6 +121,9 @@
 -(void)clickedButtonAtIndex:(NSInteger)buttonIndex{
    
     if(buttonIndex==0){
+        
+        
+        [MobClick event:@"LShareTools_ziliudi"];
         
         NSLog(@"自留地");
         
@@ -148,6 +154,8 @@
     
     else if(buttonIndex==4){
         
+        [MobClick event:@"LShareTools_youxiang"];
+        
         NSLog(@"分享到邮箱");
         
         NSString *string_bodyofemail=[NSString stringWithFormat:@"%@ \n %@ \n\n 下载改装志客户端 http://mobile.fblife.com",_title,_linkUrl] ;
@@ -155,6 +163,9 @@
         
         
     }else if(buttonIndex == 1 || buttonIndex == 2 || buttonIndex == 3){
+        
+        [MobClick event:@"LShareTools_weixin"];
+        
         NSLog(@"1分享给微信好友");
         NSLog(@"2分享给微信朋友圈");
         NSLog(@"3到新浪微博界面的");

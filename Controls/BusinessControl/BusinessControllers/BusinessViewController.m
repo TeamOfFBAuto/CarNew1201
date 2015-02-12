@@ -30,6 +30,14 @@
     if (self.navigationController.navigationBarHidden) {
         self.navigationController.navigationBarHidden = NO;
     }
+    
+    
+    [MobClick beginEvent:@"BusinessViewController"];
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [MobClick endEvent:@"BusinessViewController"];
 }
 
 - (void)viewDidLoad {
@@ -173,6 +181,8 @@
 }
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    [MobClick event:@"BusinessViewController_cellClicked"];
     
     GpersonCenterCustomCell * cell = (GpersonCenterCustomCell*)[_myTableView cellForRowAtIndexPath:indexPath];
     

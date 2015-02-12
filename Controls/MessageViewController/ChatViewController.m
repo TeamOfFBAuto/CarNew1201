@@ -31,6 +31,10 @@
 {
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    [MobClick endEvent:@"ChatViewController"];
+}
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -48,6 +52,8 @@
         
         [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:MY_MACRO_NAME?IOS7DAOHANGLANBEIJING_PUSH:IOS6DAOHANGLANBEIJING] forBarMetrics: UIBarMetricsDefault];
     }
+    
+    [MobClick beginEvent:@"ChatViewController"];
 }
 
 - (void)viewDidLoad {

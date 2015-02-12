@@ -45,6 +45,22 @@
     return self;
 }
 
+
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    [MobClick beginEvent:@"SliderRightSettingViewController"];
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    [MobClick endEvent:@"SliderRightSettingViewController"];
+}
+
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -266,6 +282,7 @@
 {
     if (indexPath.row == 1)//清除缓存
     {
+        [MobClick event:@"qingchuhuancun"];
         [self removeCache];
     }else if (indexPath.row == 2)//意见反馈
     {

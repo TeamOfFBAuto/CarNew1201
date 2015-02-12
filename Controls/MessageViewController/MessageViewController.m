@@ -41,6 +41,8 @@
         [self.view addGestureRecognizer:swipe];
 
     }
+    
+    [MobClick beginEvent:@"MessageViewController"];
 
         
 }
@@ -49,6 +51,8 @@
 {
     [self.view removeGestureRecognizer:panGestureRecognizer];
     [self.view removeGestureRecognizer:swipe];
+    
+    [MobClick endEvent:@"MessageViewController"];
 }
 
 - (void)viewDidLoad {

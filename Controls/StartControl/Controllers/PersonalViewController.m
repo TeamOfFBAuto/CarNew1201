@@ -133,6 +133,8 @@ typedef enum{
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     _isLoadUserInfoSuccess = NO;
     
+    [MobClick beginEvent:@"PersonalViewController"];
+    
     
     
 }
@@ -140,6 +142,7 @@ typedef enum{
 {
     [super viewWillDisappear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
+    [MobClick endEvent:@"PersonalViewController"];
 }
 
 - (void)viewDidLoad {
@@ -599,6 +602,9 @@ typedef enum{
 
 - (void)clickToMessageList:(UIButton *)btn
 {
+    
+    [MobClick event:@"PersonalViewController_xiaoxi"];
+    
     MessageViewController *messageList = [[MessageViewController alloc]init];
     messageList.isPush = YES;
     [self.navigationController pushViewController:messageList animated:YES];
@@ -801,6 +807,8 @@ typedef enum{
     
     
     if (theTag == 10) {//点击的是收藏案例
+        
+        [MobClick event:@"PersonalViewController_shoucanganli"];
         _anliTitleLabel.textColor = RGBCOLOR(155, 155, 155);
         _anliNumLabel.textColor = RGBCOLOR(155, 155, 155);
         
@@ -821,7 +829,7 @@ typedef enum{
         
         
     }else if (theTag == 11){//点击的是收藏产品
-        
+        [MobClick event:@"PersonalViewController_shoucangchanpin"];
         _anliTitleLabel.textColor = [UIColor whiteColor];
         _anliNumLabel.textColor = [UIColor whiteColor];
         
@@ -841,7 +849,7 @@ typedef enum{
         
         
     }else if (theTag == 12){//收藏店铺
-        
+        [MobClick event:@"PersonalViewController_shoucangdianpu"];
         _anliTitleLabel.textColor = [UIColor whiteColor];
         _anliNumLabel.textColor = [UIColor whiteColor];
         
@@ -1115,6 +1123,10 @@ typedef enum{
     NSLog(@"%s",__FUNCTION__);
     
     if (_cellType == GDIANPU) {//店铺
+        
+        
+        [MobClick event:@" PersonalViewController_click_dianpu"];
+        
         GpersonCenterCustomCell * cell = (GpersonCenterCustomCell*)[_tableView cellForRowAtIndexPath:indexPath];
         
         BusinessListModel *model = _tableView.dataArray[indexPath.row];
@@ -1127,6 +1139,8 @@ typedef enum{
         [self.navigationController pushViewController:home animated:YES];
         
     }else if (_cellType == GANLI){//案例
+        
+        [MobClick event:@"PersonalViewController_click_anli"];
         
         GCaseModel *aModel = [_tableView.dataArray objectAtIndex:indexPath.row];
         AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
@@ -1141,6 +1155,8 @@ typedef enum{
         
         [self.navigationController pushViewController:detail animated:YES];
     }else if (_cellType == GCHANPIN){//产品
+        
+        [MobClick event:@"PersonalViewController_click_chanpin"];
         
         GGoodsModel *model = _tableView.dataArray[indexPath.row];
         

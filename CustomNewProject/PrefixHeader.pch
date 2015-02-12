@@ -34,6 +34,9 @@
 #import "NSString+Emoji.h"
 #import "NewLogInView.h"
 
+//友盟自定义事件统计
+#import "MobClick.h"
+
 #pragma mark - 自定义的宏，方便调动
 ///颜色
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
@@ -83,6 +86,8 @@ alpha:(a)]
 
 //带描边
 #define NAVIGATION_MENU_IMAGE_NAME @"navigaiton_menu_image_2" //黑色
+
+
 
 
 #endif

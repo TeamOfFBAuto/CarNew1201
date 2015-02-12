@@ -48,8 +48,15 @@
     }
     
     self.navigationController.navigationBarHidden = NO;
+    
+    [MobClick beginEvent:@"PicViewController"];
 }
 
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [MobClick endEvent:@"PicViewController"];
+}
 
 
 #pragma mark - 更新未读消息条数
@@ -271,6 +278,9 @@
 
 - (void)didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    [MobClick event:@"PicViewController_clicked"];
+    
     AnliModel *aModel = [_table.dataArray objectAtIndex:indexPath.row];
     AnliDetailViewController *detail = [[AnliDetailViewController alloc]init];
     detail.anli_id = aModel.id;

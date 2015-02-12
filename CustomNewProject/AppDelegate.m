@@ -62,7 +62,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-
     
     
     NSLog(@"屏幕宽度 %f  %f",ALL_FRAME_WIDTH,ALL_FRAME_HEIGHT);
@@ -73,8 +72,8 @@
     [WeiboSDK registerApp:SINAAPPID];
     [WeiboSDK enableDebugMode:YES ];
     
-    [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:BATCH channelId:nil];
-    
+    [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:REALTIME channelId:nil];
+//    [MobClick setLogSendInterval:60];
     [MobClick setLogEnabled:YES];
     
 #pragma mark 地图
@@ -308,6 +307,10 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+//    [MobClick setDelegate:self];
+//    [MobClick appLaunched];
+    [MobClick startWithAppkey:UMENG_APPKEY reportPolicy:BATCH channelId:nil];
+    
     
 }
 
