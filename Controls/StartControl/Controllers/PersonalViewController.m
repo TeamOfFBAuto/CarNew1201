@@ -622,7 +622,7 @@ typedef enum{
         //压缩图片 不展示原图
         UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         
-        //按比例缩放
+        //按比例缩放测试
         UIImage *scaleImage = [self scaleImage:originImage toScale:0.5];
         
         
