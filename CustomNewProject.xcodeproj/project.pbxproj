@@ -116,6 +116,7 @@
 		5647574E1A6F5FD70011F3C4 /* about_mountain_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5647574C1A6F5FD70011F3C4 /* about_mountain_image@2x.png */; };
 		564757521A6F61000011F3C4 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 564757501A6F61000011F3C4 /* AboutViewController.m */; };
 		564757531A6F61000011F3C4 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 564757511A6F61000011F3C4 /* AboutViewController.xib */; };
+		564D04031AB12FEE00427198 /* RecordDataClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = 564D04021AB12FEE00427198 /* RecordDataClasses.m */; };
 		56500AFB1A2D63CC00E834A1 /* BusinessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56500AF81A2D63CC00E834A1 /* BusinessViewController.m */; };
 		56500AFF1A2D676900E834A1 /* BusinessListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56500AFD1A2D676900E834A1 /* BusinessListTableViewCell.m */; };
 		56500B001A2D676900E834A1 /* BusinessListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56500AFE1A2D676900E834A1 /* BusinessListTableViewCell.xib */; };
@@ -478,6 +479,8 @@
 		5647574F1A6F61000011F3C4 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		564757501A6F61000011F3C4 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		564757511A6F61000011F3C4 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		564D04011AB12FEE00427198 /* RecordDataClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordDataClasses.h; sourceTree = "<group>"; };
+		564D04021AB12FEE00427198 /* RecordDataClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordDataClasses.m; sourceTree = "<group>"; };
 		56500AF71A2D63CC00E834A1 /* BusinessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessViewController.h; sourceTree = "<group>"; };
 		56500AF81A2D63CC00E834A1 /* BusinessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessViewController.m; sourceTree = "<group>"; };
 		56500AFC1A2D676900E834A1 /* BusinessListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessListTableViewCell.h; sourceTree = "<group>"; };
@@ -1136,6 +1139,7 @@
 		19B34DE41A24818400ED1935 /* PublicClass */ = {
 			isa = PBXGroup;
 			children = (
+				564D04001AB12FBD00427198 /* 记录数据类 */,
 				563B32121A382AF900015088 /* RichViewAndGif */,
 				13F9D4881A2DA951002A6904 /* 社会化分享 */,
 				13F9D47A1A2DA767002A6904 /* ShareView.h */,
@@ -1291,6 +1295,15 @@
 				567760921A31410800A4A23B /* ScreeningAreaView.m */,
 			);
 			path = ScreeningViews;
+			sourceTree = "<group>";
+		};
+		564D04001AB12FBD00427198 /* 记录数据类 */ = {
+			isa = PBXGroup;
+			children = (
+				564D04011AB12FEE00427198 /* RecordDataClasses.h */,
+				564D04021AB12FEE00427198 /* RecordDataClasses.m */,
+			);
+			path = "记录数据类";
 			sourceTree = "<group>";
 		};
 		56500AF51A2D63CC00E834A1 /* BusinessControl */ = {
@@ -2297,6 +2310,7 @@
 				565EE8BC1A2C3DEE0063CAA3 /* ASIInputStream.m in Sources */,
 				E392C31D1A2818FD001AEA0D /* GfindPasswViewController.m in Sources */,
 				56CE4B601A25D48100876AC7 /* UIViewAdditions.m in Sources */,
+				564D04031AB12FEE00427198 /* RecordDataClasses.m in Sources */,
 				565EE8BB1A2C3DEE0063CAA3 /* ASIHTTPRequest.m in Sources */,
 				56CE4B631A25D48100876AC7 /* PHViewController.m in Sources */,
 				13AC96F61A762A1400464D9C /* PreviewImageController.m in Sources */,
