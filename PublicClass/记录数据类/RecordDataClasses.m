@@ -9,6 +9,9 @@
 #import "RecordDataClasses.h"
 
 @implementation RecordDataClasses
+{
+    AFHTTPRequestOperation * request;
+}
 
 + (RecordDataClasses *)sharedManager
 {
@@ -33,20 +36,45 @@
 
 -(void)timing{
     
-    [NSTimer scheduledTimerWithTimeInterval:60.0f target:self selector:@selector(updateData) userInfo:nil repeats:YES];
+   NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:60.0f target:self selector:@selector(updateData) userInfo:nil repeats:YES];
+    
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
 }
 
 -(void)updateData
 {
     NSLog(@"record data ----  %@",_action_string);
-    _action_string = @"";
+    
+    if (request)
+    {
+        [request cancel];
+        request = nil;
+    }
+    
+    NSString * fullUrl = [NSString stringWithFormat:RECORD_ACTION_DATA_URL,_action_string];
+    
+    request = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
+    __weak typeof(self)bself = self;
+    [request setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary * allDic = [operation.responseString objectFromJSONString];
+        
+        if ([[allDic objectForKey:@"errorcode"] intValue] == 0)
+        {
+            bself.action_string = @"";
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    
+    [request start];
+    
 }
 
 -(void)setActionStringWithAction:(NSString *)aAction WithObject:(NSString *)aObject WithValue:(NSString *)aValue
 {
     NSString * UID = [GMAPI getUid];
     
-    if (UID.length == 0 || [UID isKindOfClass:[NSNull class]]) {
+    if (UID.length == 0 || [UID isKindOfClass:[NSNull class]] || [UID isEqualToString:@"(null)"]) {
         UID = @"0";
     }
     
