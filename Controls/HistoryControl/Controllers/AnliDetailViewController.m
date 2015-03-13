@@ -35,6 +35,8 @@
 
 #import "RCIM.h"
 
+
+
 @interface AnliDetailViewController ()<MFMailComposeViewControllerDelegate,UIWebViewDelegate,UIScrollViewDelegate>
 {
     ShareView *_shareView;
@@ -63,6 +65,8 @@
     CGFloat web_old_height;//记录原始高度
     
     BOOL noHidden;//不需要隐藏
+    
+    NSString * CURRENT_SHOW_NUM;
 }
 
 ///存放标题、图片、是否收藏 、简介信息
@@ -90,6 +94,8 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
    // [self updateStatusBarColor];
     [MobClick beginEvent:@"AnliDetailViewController"];
+    
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@""];
 }
 
 //更新状态栏颜色
@@ -131,7 +137,7 @@
     
     currentOffY = 0.f;
     
-    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, ALL_FRAME_HEIGHT + 20)];
+    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH,DEVICE_HEIGHT)];
     _webView.delegate = self;
     [self.view addSubview:_webView];
     
@@ -159,8 +165,9 @@
     
     self.view.backgroundColor = COLOR_WEB_DETAIL_BACKCOLOR;
     
-    
+    CURRENT_SHOW_NUM = @"1";
     if (self.detailType == Detail_Peijian) {
+        CURRENT_SHOW_NUM = @"3";
         _webView.height = DEVICE_HEIGHT-64;
         [self createBottom];
     }
@@ -274,6 +281,8 @@
                 
                 [MobClick event:@"AnliDetailViewController_fenxiang"];
                 
+                [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_SHARE WithObject:CURRENT_SHOW_NUM WithValue:weakSelf.anli_id];
+                
                 LShareTools *tool = [LShareTools shareInstance];
                 
                 NSString *url; //= [NSString stringWithFormat:ANLI_DETAIL_SHARE,weakSelf.anli_id,[GMAPI getAuthkey]];
@@ -331,12 +340,15 @@
         return;
     }
     
+    
+    
     if (isCollect) {
-        
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_CANCEL_COLLECT WithObject:CURRENT_SHOW_NUM WithValue:_anli_id];
         [self networkForCancelCollect];
         
     }else
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_ADD_COLLECT WithObject:CURRENT_SHOW_NUM WithValue:_anli_id];
         [self networkForCollect];
     }
 }
@@ -711,18 +723,32 @@
     ///放大缩小图片
     if ([relativeUrl rangeOfString:@"#big_view"].length)
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_CLICKBIG_BIG WithObject:CURRENT_SHOW_NUM WithValue:_anli_id];
         [self setNavigationViewHidden:YES];
         return NO;
     }
     if ([relativeUrl rangeOfString:@"#small_view"].length)
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_CLICKBIG_SMALL WithObject:CURRENT_SHOW_NUM WithValue:_anli_id];
         [self setNavigationViewHidden:NO];
         return NO;
     }
     
+    ///点击+-显示隐藏简介
+    if ([relativeUrl rangeOfString:@"#clickplus"].length)
+    {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_CLICKPLUS_PLUS WithObject:CURRENT_SHOW_NUM WithValue:_anli_id];
+    }
+    if ([relativeUrl rangeOfString:@"#clickminus"].length)
+    {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_CLICKPLUS_MINUS WithObject:CURRENT_SHOW_NUM WithValue:_anli_id];
+    }
+    
+    
     //分享朋友圈
     if ([relativeUrl rangeOfString:@"pengyouquan"].length > 0)
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_SHARE WithObject:CURRENT_SHOW_NUM WithValue:_anli_id];
         LShareTools *tool = [LShareTools shareInstance];
         
         NSString *url = [NSString stringWithFormat:ANLI_DETAIL_SHARE,self.anli_id,[GMAPI getAuthkey]];
@@ -733,6 +759,7 @@
         
     }else if ([relativeUrl rangeOfString:@"weixin"].length > 0)
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_SHARE WithObject:CURRENT_SHOW_NUM WithValue:_anli_id];
         LShareTools *tool = [LShareTools shareInstance];
         
         NSString *url = [NSString stringWithFormat:ANLI_DETAIL_SHARE,self.anli_id,[GMAPI getAuthkey]];
@@ -743,6 +770,7 @@
         
     }else if ([relativeUrl rangeOfString:@"weibo"].length > 0)
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_SHARE WithObject:CURRENT_SHOW_NUM WithValue:_anli_id];
         LShareTools *tool = [LShareTools shareInstance];
         
         NSString *url = [NSString stringWithFormat:ANLI_DETAIL_SHARE,self.anli_id,[GMAPI getAuthkey]];
@@ -797,6 +825,8 @@
             }
         }
         
+        
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_LOCATION WithObject:[NSString stringWithFormat:@"%@,%@",lat,lng] WithValue:@""];
         
         NSString * address = [relativeUrl stringByReplacingOccurrencesOfString:@"map:" withString:@""];
         NSLog(@"address ------   %@",address);

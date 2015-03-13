@@ -43,6 +43,9 @@
 
 #import "RCIM.h"
 
+#define CURRENT_SHOW_NUM @"7"
+
+
 typedef enum{
     GANLI = 0,//案例
     GCHANPIN ,//产品
@@ -339,6 +342,7 @@ typedef enum{
 
 -(void)leftButtonTap:(UIButton *)sender
 {
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"1"];
     [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
 }
 
@@ -536,7 +540,7 @@ typedef enum{
 -(void)userBannerClicked{
     NSLog(@"点击用户banner");
 
-    
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"2"];
     
     GcustomActionSheet *aaa = [[GcustomActionSheet alloc]initWithTitle:nil
                                                           buttonTitles:@[@"更换相册封面"]
@@ -602,7 +606,7 @@ typedef enum{
 
 - (void)clickToMessageList:(UIButton *)btn
 {
-    
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"3"];
     [MobClick event:@"PersonalViewController_xiaoxi"];
     
     MessageViewController *messageList = [[MessageViewController alloc]init];
@@ -807,7 +811,7 @@ typedef enum{
     
     
     if (theTag == 10) {//点击的是收藏案例
-        
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"4"];
         [MobClick event:@"PersonalViewController_shoucanganli"];
         _anliTitleLabel.textColor = RGBCOLOR(155, 155, 155);
         _anliNumLabel.textColor = RGBCOLOR(155, 155, 155);
@@ -829,6 +833,7 @@ typedef enum{
         
         
     }else if (theTag == 11){//点击的是收藏产品
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"5"];
         [MobClick event:@"PersonalViewController_shoucangchanpin"];
         _anliTitleLabel.textColor = [UIColor whiteColor];
         _anliNumLabel.textColor = [UIColor whiteColor];
@@ -849,6 +854,7 @@ typedef enum{
         
         
     }else if (theTag == 12){//收藏店铺
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"6"];
         [MobClick event:@"PersonalViewController_shoucangdianpu"];
         _anliTitleLabel.textColor = [UIColor whiteColor];
         _anliNumLabel.textColor = [UIColor whiteColor];

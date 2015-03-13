@@ -10,6 +10,8 @@
 #import "PeiJianListModel.h"
 #import "PeiJianListCell.h"
 #import "AnliDetailViewController.h"
+///数据统计该类代表的数字
+#define CURRENT_SHOW_NUM @"10"
 
 
 @interface PeiJianListViewController ()<RefreshDelegate,UITableViewDataSource>
@@ -26,6 +28,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@""];
    
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];

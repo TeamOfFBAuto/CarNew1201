@@ -155,7 +155,7 @@
 }
 
 - (IBAction)moreTap:(id)sender {
-    
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:@"18" WithValue:@"2"];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/yue-yee-zu/id605673005?l=zh&ls=1&mt=8"]];
 }
 
@@ -166,6 +166,7 @@
 {
     if (buttonIndex == 1)
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_DAIL WithObject:@"18663909030" WithValue:@""];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",@"18663909030"]]];
     }
 }

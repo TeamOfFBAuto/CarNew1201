@@ -47,6 +47,9 @@
 #define kAirImageViewRotateMax -42
 
 #define kDuration 0.2f
+///数据统计该类代表的数字
+#define CURRENT_SHOW_NUM @"8"
+
 
 CGFloat AirDegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 CGFloat AirRadiansToDegrees(CGFloat radians) {return radians * 180/M_PI;};

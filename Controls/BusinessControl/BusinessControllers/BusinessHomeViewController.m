@@ -17,6 +17,9 @@
 #import "FBMapViewController.h"
 #import "PicViewController.h"
 #import "PeiJianListViewController.h"
+///数据统计该类代表的数字
+#define CURRENT_SHOW_NUM @"2"
+
 
 @interface BusinessHomeViewController ()<UITableViewDataSource,UITableViewDelegate,UIWebViewDelegate,UIScrollViewDelegate>
 {
@@ -72,6 +75,8 @@
 //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
 //    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 //    self.navigationController.navigationBarHidden = YES;
+    
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@""];
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
@@ -310,6 +315,8 @@
         }
         
         
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_LOCATION WithObject:[NSString stringWithFormat:@"%@,%@",lat,lng] WithValue:@""];
+        
         NSString * address = [relativeUrl stringByReplacingOccurrencesOfString:@"map:" withString:@""];
         NSLog(@"address ------   %@",address);
         
@@ -324,11 +331,12 @@
         return NO;
     }
     
-//    if ([relativeUrl rangeOfString:@"tel:"].length > 0)
-//    {
-//        NSString * phone = [relativeUrl stringByReplacingOccurrencesOfString:@"tel:" withString:@""];
+    if ([relativeUrl rangeOfString:@"tel:"].length > 0)
+    {
+        NSString * phone = [relativeUrl stringByReplacingOccurrencesOfString:@"tel:" withString:@""];
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_DAIL WithObject:phone WithValue:@""];
 //        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",phone]]];
-//    }
+    }
     
     
     ///案例更过按钮
@@ -438,11 +446,12 @@
 #pragma mark - 分享
 -(void)shareClicked
 {
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_SHARE WithObject:@"2" WithValue:_business_id];
+    
     LShareTools *tool = [LShareTools shareInstance];
     
     NSString *url = [NSString stringWithFormat:BUSINESS_SHARE_URL,_business_id];
 //    NSString *imageUrl = @"http://fbautoapp.fblife.com/resource/head/84/9b/thumb_1_Thu.jpg";
-    
     
     [tool showOrHidden:YES title:_businessModel.title description:_businessModel.content imageUrl:_businessModel.pichead aShareImage:_share_image linkUrl:url isNativeImage:YES];
 }
@@ -462,13 +471,17 @@
         return;
     }
     
+    
+    
     NSString * fullUrl;
     
     if (isCollected)
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_CANCEL_COLLECT WithObject:CURRENT_SHOW_NUM WithValue:_business_id];
         fullUrl = [NSString stringWithFormat:ANLI_CANCEL_COLLECT,[GMAPI getAuthkey],3,_business_id];
     }else
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_ADD_COLLECT WithObject:CURRENT_SHOW_NUM WithValue:_business_id];
         fullUrl = [NSString stringWithFormat:BUSINESS_COLLECTION_URL,[GMAPI getAuthkey],_business_id];
     }
     

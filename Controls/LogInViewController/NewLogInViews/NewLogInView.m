@@ -24,6 +24,9 @@
 ///按钮高度
 #define BUTTON_HEIGHT 38
 
+///数据统计该类代表的数字
+///登陆：12 注册：13 获取验证码：14 完善个人信息：15
+
 
 @implementation NewLogInView
 {
@@ -477,11 +480,13 @@
     switch (button.tag) {
         case 99:///注册按钮
         {
+            [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:@"13" WithValue:@""];
             [self createPhoneView];
         }
             break;
         case 100:///登陆按钮
         {
+            [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:@"12" WithValue:@""];
             [self endEditing:YES];
             [self setMainViewUp:NO];
             [self networkForLogIn];
@@ -489,6 +494,7 @@
             break;
         case 101:///获取验证码
         {
+            [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:@"14" WithValue:@""];
 //            [self createCodeView];
             [self networkSendCode];
         }
@@ -512,6 +518,7 @@
             break;
         case 104:///提交注册信息进行注册
         {
+            [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:@"15" WithValue:@""];
             [self endEditing:YES];
             [self setMainViewUp:NO];
             [self networkZhuCe];

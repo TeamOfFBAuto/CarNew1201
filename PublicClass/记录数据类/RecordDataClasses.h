@@ -25,13 +25,19 @@
 ///拨打电话
 #define USER_ACTION_DAIL @"6"
 ///收藏
-#define USER_ACTION_COLLECT @"7"
+#define USER_ACTION_ADD_COLLECT @"7"
+///取消收藏
+#define USER_ACTION_CANCEL_COLLECT @"8"
 ///点小图看大图
-#define USER_ACTION_CLICKBIG @"8"
+#define USER_ACTION_CLICKBIG_BIG @"9"
+///点大图看小图
+#define USER_ACTION_CLICKBIG_SMALL @"10"
 ///点+号看说明
-#define USER_ACTION_CLICKPLUS @"9"
+#define USER_ACTION_CLICKPLUS_PLUS @"11"
+///点-号取消说明
+#define USER_ACTION_CLICKPLUS_MINUS @"12"
 ///退出登录
-#define USER_ACTION_EXIT @"10"
+#define USER_ACTION_EXIT @"13"
 
 
 @interface RecordDataClasses : NSObject
@@ -44,6 +50,6 @@
 
 + (RecordDataClasses *)sharedManager;
 
--(void)setActionStringWithAction:(NSString *)aAction WithObject:(NSString *)aObject;
+-(void)setActionStringWithAction:(NSString *)aAction WithObject:(NSString *)aObject WithValue:(NSString *)aValue;
 
 @end

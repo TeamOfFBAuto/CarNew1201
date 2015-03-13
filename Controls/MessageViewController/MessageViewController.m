@@ -10,6 +10,10 @@
 
 #import "ChatViewController.h"
 
+
+///数据统计该类代表的数字
+#define CURRENT_SHOW_NUM @"6"
+
 @interface MessageViewController ()
 {
     UIPanGestureRecognizer * panGestureRecognizer;
@@ -23,7 +27,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@""];
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
@@ -190,6 +194,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     }else
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"1"];
         [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
     }
 }
