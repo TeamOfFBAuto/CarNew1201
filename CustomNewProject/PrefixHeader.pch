@@ -90,4 +90,9 @@ alpha:(a)]
 
 
 
+//图片多选
+#define FBCIRCLE_NAVIGATION_IMAGE [UIImage imageNamed:@"add_beijing@2x.png"]
+#define FBCIRCLE_BACK_IMAGE [UIImage imageNamed:@"fanhui-daohanglan-20_38.png"]
+
+
 #endif

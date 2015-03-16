@@ -7,6 +7,7 @@
 //
 
 #import "GHolderTextView.h"
+#import "GFabuAnliViewController.h"
 
 
 @implementation GHolderTextView
@@ -40,8 +41,19 @@
     
     NSLog(@"%@",self.text);
     
-    
 }
+
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    [self.delegate_fbvc changeTheTableViewContentOffset];
+    return YES;
+}
+
+-(BOOL)textViewShouldEndEditing:(UITextView *)textView{
+    [self.delegate_fbvc changeTheTableViewContentOffset1];
+    return YES;
+}
+
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     

@@ -43,6 +43,11 @@
 
 #import "RCIM.h"
 
+
+//测试
+#import "GFabuAnliViewController.h"
+#import "QBImagePickerController.h"
+
 typedef enum{
     GANLI = 0,//案例
     GCHANPIN ,//产品
@@ -55,7 +60,7 @@ typedef enum{
     USERIMAGENULL,
 }CHANGEIMAGETYPE;
 
-@interface PersonalViewController ()<GcustomActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,MLImageCropDelegate,RefreshDelegate>
+@interface PersonalViewController ()<GcustomActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,MLImageCropDelegate,RefreshDelegate,QBImagePickerControllerDelegate>
 {
     UIView *_upThreeViewBackGroundView;//headerview
     UIImageView *_topImv;//banner
@@ -97,6 +102,10 @@ typedef enum{
     BOOL _isLoadUserInfoSuccess;
     
     UILabel *unreadLabel;//未读消息label
+    
+    
+    QBImagePickerController *_imagePickerController;
+    
 
     
 }
@@ -141,6 +150,7 @@ typedef enum{
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    self.edgesForExtendedLayout = UIRectEdgeAll;
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
     [MobClick endEvent:@"PersonalViewController"];
 }
@@ -415,6 +425,7 @@ typedef enum{
 
     UITapGestureRecognizer *ccc = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userFaceClicked)];
     [_faceImv addGestureRecognizer:ccc];
+    _faceImv.userInteractionEnabled = YES;
     [face_quan_view addSubview:_faceImv];
     
     
@@ -559,6 +570,27 @@ typedef enum{
 //头像的点击方法
 -(void)userFaceClicked{
     NSLog(@"点击头像");
+    NSLog(@"测试发布案例");
+    
+    if (!_imagePickerController)
+    {
+        _imagePickerController = nil;
+    }
+    
+    _imagePickerController = [[QBImagePickerController alloc] init];
+    _imagePickerController.delegate = self;
+    _imagePickerController.allowsMultipleSelection = YES;
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:_imagePickerController];
+    
+    [self presentViewController:navigationController animated:YES completion:NULL];
+    
+    
+//
+//    GFabuAnliViewController *ccc  = [[GFabuAnliViewController alloc]init];
+//    ccc.isPush = YES;
+//    [self.navigationController pushViewController:ccc animated:YES];
+//    
 
 }
 
@@ -1273,8 +1305,107 @@ typedef enum{
 
 
 
+//多图选择
+#pragma mark-QBImagePickerControllerDelegate
+
+-(void)imagePickerControllerDidCancel:(QBImagePickerController *)imagePickerController
+{
+    [imagePickerController dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
 
 
+
+-(void)imagePickerControllerWillFinishPickingMedia:(QBImagePickerController *)imagePickerController
+{
+    
+}
+
+-(void)imagePickerController1:(QBImagePickerController *)imagePickerController didFinishPickingMediaWithInfo:(id)info
+{
+    NSArray *mediaInfoArray = (NSArray *)info;
+    
+    
+    
+    
+    NSMutableArray * allImageArray = [NSMutableArray array];
+    
+    NSMutableArray * allAssesters = [[NSMutableArray alloc] init];
+    
+    for (int i = 0;i < mediaInfoArray.count;i++)
+    {
+//        UIImage * image = [[mediaInfoArray objectAtIndex:i] objectForKey:@"UIImagePickerControllerOriginalImage"];
+//        
+////        UIImage * newImage = [SzkAPI scaleToSizeWithImage:image size:CGSizeMake(image.size.width>1024?1024:image.size.width,image.size.width>1024?image.size.height*1024/image.size.width:image.size.height)];
+//        UIImage *newImage = image;
+//        [allImageArray addObject:newImage];
+//        
+//        NSURL * url = [[mediaInfoArray objectAtIndex:i] objectForKey:@"UIImagePickerControllerReferenceURL"];
+//        
+//        NSString * url_string = [[url absoluteString] stringByReplacingOccurrencesOfString:@"/" withString:@""];
+//        
+//        url_string = [url_string stringByAppendingString:@".png"];
+//        
+//        [allAssesters addObject:url_string];
+        
+        
+        UIImage * image = [[mediaInfoArray objectAtIndex:i] objectForKey:@"UIImagePickerControllerOriginalImage"];
+        
+        UIImage * newImage = [self scaleToSizeWithImage:image size:CGSizeMake(image.size.width>1024?1024:image.size.width,image.size.width>1024?image.size.height*1024/image.size.width:image.size.height)];
+        
+        [allImageArray addObject:newImage];
+        newImage = nil;
+        
+        NSURL * url = [[mediaInfoArray objectAtIndex:i] objectForKey:@"UIImagePickerControllerReferenceURL"];
+        
+        NSString * url_string = [[url absoluteString] stringByReplacingOccurrencesOfString:@"/" withString:@""];
+        
+        url_string = [url_string stringByAppendingString:@".png"];
+        
+        [allAssesters addObject:url_string];
+        
+        
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
+            [ZSNApi saveImageToDocWith:url_string WithImage:image];
+        });
+        
+    }
+    
+    __weak typeof (self)bself = self;
+    [self dismissViewControllerAnimated:YES completion:^{
+        GFabuAnliViewController * WriteBlog = [[GFabuAnliViewController alloc] init];
+        
+        WriteBlog.TempAllImageArray = allImageArray;
+        
+        WriteBlog.TempAllAssesters = allAssesters;
+        
+//        WriteBlog.theType = WriteBlogWithImagesAndContent;
+        
+        UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:WriteBlog];
+        
+        [bself presentViewController:nav animated:YES completion:^{
+            
+        }];
+    }];
+}
+
+
+
+-(UIImage *)scaleToSizeWithImage:(UIImage *)img size:(CGSize)size{
+    // 创建一个bitmap的context
+    // 并把它设置成为当前正在使用的context
+    UIGraphicsBeginImageContext(size);
+    // 绘制改变大小的图片
+    [img drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    // 从当前context中创建一个改变大小后的图片
+    UIImage* scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    // 使当前的context出堆栈
+    UIGraphicsEndImageContext();
+    // 返回新的改变大小后的图片
+    return scaledImage;
+}
 
 
 @end
