@@ -33,6 +33,7 @@
 #import "RegexKitLite.h"
 #import "NSString+Emoji.h"
 #import "NewLogInView.h"
+#import "RecordDataClasses.h"
 
 //友盟自定义事件统计
 #import "MobClick.h"

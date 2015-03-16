@@ -19,11 +19,16 @@
 
 #import "RCIM.h"
 
+
 @interface PicViewController ()<UITableViewDataSource,RefreshDelegate>
 {
     RefreshTableView *_table;
     
     UILabel *unreadNum_label;
+    
+    ///数据统计该类代表的数字
+    NSString * CURRENT_SHOW_NUM;
+
 }
 
 @end
@@ -32,6 +37,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@""];
+    
     [super viewWillAppear:animated];
     self.edgesForExtendedLayout = UIRectEdgeAll;
     
@@ -64,6 +71,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.isAddGestureRecognizer = YES;
@@ -72,9 +80,11 @@
     
     if (_business_id.length)
     {
+        CURRENT_SHOW_NUM = @"11";
         self.leftImageName = BACK_DEFAULT_IMAGE_GRAY;
     }else
     {
+        CURRENT_SHOW_NUM = @"4";
         self.leftImageName = @"new_menu-2";
         
         UIImageView *titleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"new_logo"]];
@@ -118,6 +128,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     }else
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"1"];
         [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
     }
     

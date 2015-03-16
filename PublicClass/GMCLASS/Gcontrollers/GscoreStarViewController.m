@@ -13,6 +13,8 @@
 @interface GscoreStarViewController ()<StarRatingViewDelegate,UITextViewDelegate>
 {
     UITextView *_tv;//textView
+    ///数据统计代表的数字
+    NSString * current_show_num;
 }
 @end
 
@@ -32,6 +34,19 @@
     if (IOS7_OR_LATER) {
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    }
+    
+    if (self.commentType == Comment_Anli) {
+        
+        current_show_num = @"1";
+        
+    }else if (self.commentType == Comment_DianPu){
+        
+        current_show_num = @"2";
+        
+    }else if (self.commentType == Comment_PeiJian){
+        
+        current_show_num = @"3";
     }
 }
 
@@ -188,6 +203,8 @@
  */
 - (void)networkForCommentContent:(NSString *)content score:(NSString *)scoreStr
 {
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_CHAT WithObject:current_show_num WithValue:_commentId];
+    
     NSString *api;
     
     if (self.commentType == Comment_Anli) {

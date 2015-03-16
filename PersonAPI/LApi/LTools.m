@@ -488,7 +488,7 @@
     userName = userName.length > 0 ? userName : @"";
     
     if ([LTools cacheBoolForKey:USER_IN]) {
-        
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_CHAT WithObject:userId WithValue:@""];
         //已登录成功自己服务器
         
         ChatViewController *contact = [[ChatViewController alloc]init];

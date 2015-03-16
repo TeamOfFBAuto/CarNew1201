@@ -18,6 +18,9 @@
 
 #import "RCIM.h"
 
+///当前类统计代表的数字
+#define CURRENT_SHOW_NUM @"9"
+
 @interface SliderRightSettingViewController ()
 {
     UMUFPTableView * _mTableView;
@@ -50,6 +53,8 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillDisappear:YES];
     [MobClick beginEvent:@"SliderRightSettingViewController"];
+    
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@""];
     
 }
 
@@ -109,6 +114,7 @@
 
 -(void)leftButtonTap:(UIButton *)sender
 {
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"6"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -286,15 +292,18 @@
         [self removeCache];
     }else if (indexPath.row == 2)//意见反馈
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"2"];
         UMFeedbackViewController *feedb=[[UMFeedbackViewController alloc]init];
         [self.navigationController pushViewController:feedb animated:YES];
         
         
     }else if (indexPath.row == 3)//版本更新
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"3"];
         [self checkVersionUpdate];
     }else if (indexPath.row == 4)//关于
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"4"];
         AboutViewController * aboutVC = [[AboutViewController alloc] init];
         [self.navigationController pushViewController:aboutVC animated:YES];
     }else if (indexPath.row == 6)//精品应用
@@ -323,6 +332,8 @@
     
     if (isLogIn)
     {
+        [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"5"];
+        
         [logOut_button setTitle:@"立即登录" forState:UIControlStateNormal];
         
         [GMAPI cleanUserFaceAndBanner];
@@ -439,7 +450,7 @@
 
 -(void)removeCache
 {
-    
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"1"];
     [[SDImageCache sharedImageCache] clearDisk];
     NSIndexPath *reloadIndexPath = [NSIndexPath indexPathForRow:1 inSection:0];
     NSArray *arra=[NSArray arrayWithObject:reloadIndexPath];

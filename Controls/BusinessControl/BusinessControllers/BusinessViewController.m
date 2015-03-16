@@ -12,6 +12,8 @@
 #import "ScreeningViewController.h"
 #import "BusinessHomeViewController.h"
 #import "GpersonCenterCustomCell.h"
+///数据统计该类代表的数字
+#define CURRENT_SHOW_NUM @"5"
 @interface BusinessViewController ()<SNRefreshDelegate,UITableViewDataSource,UIScrollViewDelegate>
 {
     
@@ -33,7 +35,7 @@
     
     
     [MobClick beginEvent:@"BusinessViewController"];
-    
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@""];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -84,6 +86,7 @@
         [self.navigationController popViewControllerAnimated:YES];
         return;
     }
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@"1"];
     [self.airViewController showAirViewFromViewController:self.navigationController complete:nil];
 }
 
