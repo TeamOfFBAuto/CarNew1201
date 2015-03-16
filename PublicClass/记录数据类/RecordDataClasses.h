@@ -42,7 +42,7 @@
 
 @interface RecordDataClasses : NSObject
 {
-    
+
 }
 
 ///记录活动行为

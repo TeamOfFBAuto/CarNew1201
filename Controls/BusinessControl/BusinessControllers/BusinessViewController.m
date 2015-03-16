@@ -35,7 +35,7 @@
     
     
     [MobClick beginEvent:@"BusinessViewController"];
-    
+    [[RecordDataClasses sharedManager] setActionStringWithAction:USER_ACTION_GOTO WithObject:CURRENT_SHOW_NUM WithValue:@""];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
