@@ -236,6 +236,6 @@ alpha:(a)]
  type:返回值类型xml和json，默认为json类型的数据
  errorcode:0,1,2分别表示：数据收录成功，没有发送数据，数据格式化失败
  */
-#define RECORD_ACTION_DATA_URL @"http://analysis.fblife.com/index.php?c=interface&a=resavelog&actionData=%@&type=json"
+#define RECORD_ACTION_DATA_URL @"http://analysis.fblife.com/index.php?c=interface&a=resavelog&type=json"
 
 

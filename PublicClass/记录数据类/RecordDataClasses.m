@@ -10,7 +10,7 @@
 
 @implementation RecordDataClasses
 {
-    AFHTTPRequestOperation * request;
+    ASIFormDataRequest * request;
 }
 
 + (RecordDataClasses *)sharedManager
@@ -45,12 +45,13 @@
 {
     NSLog(@"record data ----  %@",_action_string);
     
+    /*
+     
     if (request)
     {
         [request cancel];
         request = nil;
     }
-    
     NSString * fullUrl = [NSString stringWithFormat:RECORD_ACTION_DATA_URL,_action_string];
     
     request = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:fullUrl]]];
@@ -67,6 +68,40 @@
     }];
     
     [request start];
+     */
+    
+    
+    if (request)
+    {
+        [request cancel];
+        request = nil;
+    }
+    
+    if (_action_string.length == 0) {
+        return;
+    }
+    
+    request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:RECORD_ACTION_DATA_URL]];
+    [request setPostValue:_action_string forKey:@"actionData"];
+    
+    __weak typeof(self)bself = self;
+    __weak typeof(request)brequest = request;
+    
+    [request setCompletionBlock:^{
+        NSDictionary * allDic = [brequest.responseString objectFromJSONString];
+        
+        if ([[allDic objectForKey:@"errorcode"] intValue] == 0)
+        {
+            bself.action_string = @"";
+        }
+    }];
+    
+    
+    [request setFailedBlock:^{
+        
+    }];
+    
+    [request startAsynchronous];
     
 }
 
