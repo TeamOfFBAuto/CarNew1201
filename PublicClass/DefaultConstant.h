@@ -234,6 +234,7 @@ alpha:(a)]
  a:固定的，不用管
  actionData:传递过来的用户的行为，类型为字符串,格式为:uid_action_影响的对象_操作的时间戳|uid_action_影响的对象_操作的时间戳
  type:返回值类型xml和json，默认为json类型的数据
+ fromsite:来源自那个app,例如改装app则为gz,库车为kc等
  errorcode:0,1,2分别表示：数据收录成功，没有发送数据，数据格式化失败
  */
 #define RECORD_ACTION_DATA_URL @"http://analysis.fblife.com/index.php?c=interface&a=resavelog&fromsite=gz&type=json"
