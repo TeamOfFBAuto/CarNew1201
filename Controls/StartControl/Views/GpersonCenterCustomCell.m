@@ -27,7 +27,7 @@
     if (theType == 1) {//收藏案例
         _mainImv = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ALL_FRAME_WIDTH, 240.00/320*ALL_FRAME_WIDTH)];
         _logoImageView = [[UIImageView alloc]initWithFrame:CGRectMake(15, 190.0*GscreenRatio_320, 34.00*GscreenRatio_320, 34.00*GscreenRatio_320)];
-        _logoImageView.backgroundColor = RGBCOLOR_ONE;
+        [_logoImageView setImage:[UIImage imageNamed:@"anli_touxiang_yuan.png"]];
         _logoImageView.layer.cornerRadius = 34.00*GscreenRatio_320/2;
         _logoImageView.layer.masksToBounds = YES;
         _logoImageView.userInteractionEnabled = YES;
@@ -202,7 +202,7 @@
     
     
     if ([theModel isKindOfClass:[GCaseModel class]]) {
-        [_logoImageView sd_setImageWithURL:[NSURL URLWithString:theModel.spichead] placeholderImage:nil];
+        [_logoImageView sd_setImageWithURL:[NSURL URLWithString:theModel.spichead] placeholderImage:[UIImage imageNamed:@"anli_touxiang_yuan.png"]];
         [_mainImv sd_setImageWithURL:[NSURL URLWithString:theModel.pichead] placeholderImage:nil];
         
         _titleLabel1.text = theModel.title;

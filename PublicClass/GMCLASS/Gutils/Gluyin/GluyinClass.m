@@ -108,7 +108,12 @@
     if (self.recorder.isRecording){
         //更新峰值
         [self.recorder updateMeters];
+        
         _curCount += 0.1f;
+        
+        if (_curCount>=self.maxTime) {
+            [self.recorder stop];
+        }
     }
 }
 
@@ -118,12 +123,13 @@
     NSLog(@"录音停止");
     NSLog(@"录音保存路径:%@",self.recordFilePath);
     [self stopTimer];
-    _curCount = 0;
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(theRecord:indexPath:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(theRecord:indexPath:Time:)]) {
         NSData *data = [NSData dataWithContentsOfFile:self.recordFilePath];
-        [self.delegate theRecord:data indexPath:self.theIndexPath];
+        [self.delegate theRecord:data indexPath:self.theIndexPath Time:_curCount];
     }
+    
+    _curCount = 0;
     
     
 }

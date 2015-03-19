@@ -15,7 +15,7 @@
 
 @protocol GluyinDelegate <NSObject>
 
--(void)theRecord:(NSData *)data indexPath:(NSIndexPath *)theIndexPath;
+-(void)theRecord:(NSData *)data indexPath:(NSIndexPath *)theIndexPath Time:(CGFloat)theTime;
 
 @end
 
@@ -27,6 +27,7 @@
 @property (retain, nonatomic)AVAudioRecorder *recorder;//录音对象
 @property (nonatomic,assign)id<GluyinDelegate>delegate;
 @property(nonatomic,strong)NSIndexPath *theIndexPath;
+@property(nonatomic,assign)int maxTime;
 
 //播放录音相关
 @property(nonatomic,strong)AVAudioPlayer *paleyer;

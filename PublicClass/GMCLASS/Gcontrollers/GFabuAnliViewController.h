@@ -51,4 +51,18 @@
 //删除录音
 -(void)deletTheRecordWithIndexPath:(NSIndexPath*)theIndexPath;
 
+//完成文字描述输入
+-(void)addContentTextToDataArrayWithIndexPath:(NSIndexPath*)theIndexPath ContentString:(NSString *)theString;
+
+//判断文字录入框是否出现
+-(BOOL)panduanContentTfHiddenWithIndexPath:(NSIndexPath*)theIndexPath;
+
+//有文字 然后又录音会调用这个方法
+-(void)clearContentTextWithIndexPath:(NSIndexPath*)theIndexPath;
+
+//删除cell
+-(void)deletCellWithIndexPath:(NSIndexPath *)theIndexPath;
+
+
+
 @end

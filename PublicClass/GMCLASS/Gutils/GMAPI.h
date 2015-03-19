@@ -76,4 +76,8 @@
 //取
 + (id)cacheForKey:(NSString *)key;
 
+
+
++ (void)showAutoHiddenMBProgressWithText:(NSString *)text addToView:(UIView *)aView;
+
 @end

@@ -29,10 +29,10 @@
     _flagIndexPath = theIndexPath;
     
     //数据源
-    NSDictionary *data_dic = theData[theIndexPath.row];
-    UIImage *image = [data_dic objectForKeyedSubscript:@"image"];
-    NSString *text = [data_dic objectForKeyedSubscript:@"text"];
-    NSData *voice = [data_dic objectForKeyedSubscript:@"voice"];
+    _data_dic = theData[theIndexPath.row];
+    UIImage *image = [_data_dic objectForKeyedSubscript:@"image"];
+    NSString *text = [_data_dic objectForKeyedSubscript:@"text"];
+    NSData *voice = [_data_dic objectForKeyedSubscript:@"voice"];
     
     
     
@@ -62,7 +62,18 @@
     [_mainImv_backImv setFrame:r];
     _mainImv_backImv.userInteractionEnabled = YES;
     [self.imv addSubview:_mainImv_backImv];
-
+    
+    //文字内容显示Label
+    CGRect rrrr = _mainImv_backImv.frame;
+    rrrr.origin.x+=15;
+    rrrr.origin.y+=30;
+    rrrr.size.width -=30;
+    rrrr.size.height -=20;
+    self.theContentLabel = [[UILabel alloc]initWithFrame:rrrr];
+    self.theContentLabel.numberOfLines = 2;
+    self.theContentLabel.hidden = NO;
+    self.theContentLabel.textColor = [UIColor whiteColor];
+    [self.imv addSubview:self.theContentLabel];
     
     
     
@@ -71,6 +82,7 @@
     [self.tubiao setFrame:CGRectMake(16, self.imv.frame.size.height-14-24, 24, 24)];
     [self.tubiao setBackgroundImage:[UIImage imageNamed:@"jianpan.png"] forState:UIControlStateNormal];
     self.tubiao.layer.cornerRadius = 12;
+    [self.tubiao addTarget:self action:@selector(Gnoluyin) forControlEvents:UIControlEventTouchUpInside];
     self.tubiao.layer.masksToBounds = YES;
     self.tubiao.hidden = YES;
     [self.imv addSubview:self.tubiao];
@@ -82,6 +94,7 @@
     [self.btn addTarget:self action:@selector(Gspeak_TouchDown:) forControlEvents:UIControlEventTouchDown];//按下
     [self.btn addTarget:self action:@selector(Gspeak_TouchUpInside:) forControlEvents:UIControlEventTouchUpInside];//松开
     [self.btn setTitle:@"按住 说话" forState:UIControlStateNormal];
+    [self.btn setImage:nil forState:UIControlStateNormal];
     self.btn.titleLabel.font = [UIFont systemFontOfSize:14];
     self.btn.layer.cornerRadius = 4;
     self.btn.layer.masksToBounds = YES;
@@ -90,9 +103,55 @@
     self.btn.hidden = YES;
     [self.imv addSubview:self.btn];
     
+    
+    //文字输入
+    CGRect rrr = self.btn.frame;
+    rrr.size.width -=50;
+    self.theContentTf = [[UITextField alloc]initWithFrame:rrr];
+    self.theContentTf.layer.cornerRadius = 4;
+    self.theContentTf.placeholder = @"请输入内容";
+    self.theContentTf.font = [UIFont systemFontOfSize:14];
+    self.theContentTf.layer.masksToBounds = YES;
+    self.theContentTf.backgroundColor = [UIColor whiteColor];
+    self.theContentTf.hidden = YES;
+    self.theContentTf.delegate = self;
+    [self.imv addSubview:self.theContentTf];
+    
+    //文字输入完成确认按钮
+    self.theContentTf_queren = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.theContentTf_queren setFrame:CGRectMake(CGRectGetMaxX(self.theContentTf.frame)+5, self.theContentTf.frame.origin.y, 45, self.theContentTf.frame.size.height)];
+    [self.theContentTf_queren setTitle:@"完成" forState:UIControlStateNormal];
+    [self.theContentTf_queren addTarget:self action:@selector(finishicontentEditAndChangeTheView) forControlEvents:UIControlEventTouchUpInside];
+    self.theContentTf_queren.hidden = YES;
+    self.theContentTf_queren.backgroundColor = [UIColor whiteColor];
+    [self.theContentTf_queren setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.theContentTf_queren.layer.cornerRadius = 4;
+    self.theContentTf_queren.titleLabel.font = [UIFont systemFontOfSize:14];
+    self.theContentTf_queren.layer.masksToBounds = YES;
+    [self.imv addSubview:self.theContentTf_queren];
+    
+    //右上角的叉叉删除按钮
+    self.rightDeletBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.rightDeletBtn setFrame:CGRectMake(CGRectGetMaxX(self.imv.frame)-40, 0, 40, 40)];
+    [self.rightDeletBtn setImage:[UIImage imageNamed:@"pub_case_x.png"] forState:UIControlStateNormal];
+    [self.imv addSubview:self.rightDeletBtn];
+    self.rightDeletBtn.hidden = YES;
+    [self.rightDeletBtn addTarget:self action:@selector(rightDeletBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
+    
+    
+    
     if (self.isHaveRecording) {
         [self finishiLuyinAndChangeTheView];
     }
+    
+    if (self.isHaveText) {
+        [self haveTextAndfixContentTfAndChangeTheView];
+    }
+    
+    
     
     
     
@@ -102,7 +161,10 @@
     return self.imv.frame.size.height+24;
 }
 
-
+//右上角删除按钮
+-(void)rightDeletBtnClicked{
+    [self.delegate deletCellWithIndexPath:_flagIndexPath];
+}
 
 //录音开始
 -(void)Gspeak_TouchDown:(UIButton *)sender{
@@ -121,9 +183,6 @@
     NSLog(@"%s",__FUNCTION__);
     
     [self.delegate stopLuyinWithIndexPath:_flagIndexPath];
-    [self.delegate.haveLuyinArray addObject:_flagIndexPath];
-    
-    [sender setTitle:@"播放" forState:UIControlStateNormal];
     
     
     [self finishiLuyinAndChangeTheView];
@@ -136,7 +195,16 @@
     CGRect r = self.btn.frame;
     r.origin.x = 15;
     self.btn.frame = r;
-    [self.btn setTitle:@"播放" forState:UIControlStateNormal];
+    
+    NSString *timestr = [NSString stringWithFormat:@"%@''",[_data_dic objectForKey:@"voice_time"]];
+    [self.btn setTitle:timestr forState:UIControlStateNormal];
+    [self.btn setImage:[UIImage imageNamed:@"pub_case_wave.png"] forState:UIControlStateNormal];
+    [self.btn setTitleEdgeInsets:UIEdgeInsetsMake(5, -500,5, 0)];
+    [self.btn setImageEdgeInsets:UIEdgeInsetsMake(5, 45, 5, 5)];
+    
+    
+    NSLog(@"%@",self.btn.titleLabel.text);
+    
     [self.btn removeTarget:self action:@selector(Gspeak_TouchDown:) forControlEvents:UIControlEventTouchDown];
     [self.btn removeTarget:self action:@selector(Gspeak_TouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     [self.btn addTarget:self action:@selector(GspeakLuyin) forControlEvents:UIControlEventTouchUpInside];
@@ -149,14 +217,22 @@
     [self.tubiao removeTarget:self action:@selector(Gnoluyin) forControlEvents:UIControlEventTouchUpInside];
     [self.tubiao addTarget:self action:@selector(GdeleteLuyin) forControlEvents:UIControlEventTouchUpInside];
     
+    [self clearTheContentLabelText];
 }
+
+-(void)clearTheContentLabelText{
+    self.theContentLabel.text = @" ";
+    [self.delegate clearContentTextWithIndexPath:_flagIndexPath];
+    
+}
+
 
 //删除录音后改变视图和点击方法
 -(void)deleteLuyinAndChangeTheView{
     
     //键盘/说话
     [self.tubiao setFrame:CGRectMake(16, self.imv.frame.size.height-14-24, 24, 24)];
-    [self.tubiao setBackgroundImage:[UIImage imageNamed:@"jianpan.png"] forState:UIControlStateNormal];
+    [self.tubiao setImage:[UIImage imageNamed:@"jianpan.png"] forState:UIControlStateNormal];
     [self.tubiao removeTarget:self action:@selector(GdeleteLuyin) forControlEvents:UIControlEventTouchUpInside];
     [self.tubiao addTarget:self action:@selector(Gnoluyin) forControlEvents:UIControlEventTouchUpInside];
     
@@ -169,6 +245,8 @@
     [self.btn addTarget:self action:@selector(Gspeak_TouchDown:) forControlEvents:UIControlEventTouchDown];//按下
     [self.btn addTarget:self action:@selector(Gspeak_TouchUpInside:) forControlEvents:UIControlEventTouchUpInside];//松开
     [self.btn setTitle:@"按住 说话" forState:UIControlStateNormal];
+    [self.btn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.btn setImage:nil forState:UIControlStateNormal];
     [self.btn setTitleColor:RGBCOLOR(107, 109, 119) forState:UIControlStateNormal];
     
 }
@@ -182,14 +260,66 @@
 //删除录音
 -(void)GdeleteLuyin{
     [self deleteLuyinAndChangeTheView];
-    [self.delegate.haveLuyinArray removeObject:_flagIndexPath];
     [self.delegate deletTheRecordWithIndexPath:_flagIndexPath];
 }
 
 
 //切换到文字描述输入
 -(void)Gnoluyin{
+    self.theContentTf.hidden = NO;
+    self.theContentTf_queren.hidden = NO;
+    self.btn.hidden = YES;
+    self.tubiao.hidden = NO;
+    [self.tubiao setImage:[UIImage imageNamed:@"pub_case_yy.png"] forState:UIControlStateNormal];
+    [self.tubiao removeTarget:self action:@selector(Gnoluyin) forControlEvents:UIControlEventTouchUpInside];
+    [self.tubiao addTarget:self action:@selector(Gluyin) forControlEvents:UIControlEventTouchUpInside];
     
 }
+
+
+//切换到录音界面
+-(void)Gluyin{
+    [self.tubiao setImage:[UIImage imageNamed:@"jianpan.png"] forState:UIControlStateNormal];
+    [self.tubiao removeTarget:self action:@selector(Gluyin) forControlEvents:UIControlEventTouchUpInside];
+    [self.tubiao addTarget:self action:@selector(Gnoluyin) forControlEvents:UIControlEventTouchUpInside];
+    self.theContentTf.hidden = YES;
+    self.theContentTf_queren.hidden = YES;
+    self.btn.hidden = NO;
+}
+
+
+
+
+
+
+//文字录入完成之后切换图标的点击方法和图标
+-(void)finishicontentEditAndChangeTheView{
+    [self.theContentTf resignFirstResponder];
+    self.tubiao.hidden = YES;
+    self.btn.hidden = YES;
+    self.theContentTf.hidden = YES;
+    self.theContentTf_queren.hidden = YES;
+    self.theContentLabel.hidden = NO;
+    self.theContentLabel.text = self.theContentTf.text;
+    [self.delegate addContentTextToDataArrayWithIndexPath:_flagIndexPath ContentString:self.theContentTf.text];
+    
+}
+
+//tableVIew reloadData时候给contentTf赋值
+-(void)haveTextAndfixContentTfAndChangeTheView{
+    [self Gnoluyin];
+    self.theContentTf.text = [_data_dic objectForKey:@"text"];
+    self.theContentLabel.text = [_data_dic objectForKey:@"text"];
+    BOOL hiden = [self.delegate panduanContentTfHiddenWithIndexPath:_flagIndexPath];
+    self.theContentTf.hidden = hiden;
+    self.tubiao.hidden = hiden;
+    self.theContentTf_queren.hidden = hiden;
+    self.theContentLabel.hidden = NO;
+    
+}
+
+
+
+
 
 @end
